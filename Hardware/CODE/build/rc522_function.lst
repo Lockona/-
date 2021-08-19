@@ -1,0 +1,4146 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m7
+	.eabi_attribute	6, 13	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 2	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-d16
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"rc522_function.c"
+	.file	1 "D:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
+	.file	2 "E:\\STM32\\Learning\\STM32H750_ART_PI_RGBLCD" "libraries/STM32H7xx_HAL/CMSIS/Device/ST/STM32H7xx/Include/stm32h750xx.h"
+	.section	.text.SPI_RC522_SendByte,"ax",%progbits
+	.hidden	SPI_RC522_SendByte              @ -- Begin function SPI_RC522_SendByte
+	.globl	SPI_RC522_SendByte
+	.p2align	3
+	.type	SPI_RC522_SendByte,%function
+	.code	16                              @ @SPI_RC522_SendByte
+	.thumb_func
+SPI_RC522_SendByte:
+.Lfunc_begin0:
+	.file	3 "E:\\STM32\\Learning\\STM32H750_ART_PI_RGBLCD" "applications/RC522/rc522_function.c"
+	.loc	3 15 0                          @ applications/RC522/rc522_function.c:15:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #15]
+	movs	r0, #0
+.Ltmp0:
+	.loc	3 18 16 prologue_end            @ applications/RC522/rc522_function.c:18:16
+	strb.w	r0, [sp, #14]
+	.loc	3 18 8 is_stmt 0                @ applications/RC522/rc522_function.c:18:8
+	b	.LBB0_1
+.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp1:
+	.loc	3 18 21                         @ applications/RC522/rc522_function.c:18:21
+	ldrb.w	r0, [sp, #14]
+.Ltmp2:
+	.loc	3 18 3                          @ applications/RC522/rc522_function.c:18:3
+	cmp	r0, #7
+	bgt	.LBB0_7
+	b	.LBB0_2
+.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
+.Ltmp3:
+	.loc	3 20 9 is_stmt 1                @ applications/RC522/rc522_function.c:20:9
+	ldrb.w	r0, [sp, #15]
+.Ltmp4:
+	.loc	3 20 9 is_stmt 0                @ applications/RC522/rc522_function.c:20:9
+	lsls	r0, r0, #24
+	cmp	r0, #0
+	bpl	.LBB0_4
+	b	.LBB0_3
+.LBB0_3:                                @   in Loop: Header=BB0_1 Depth=1
+	.loc	3 0 9                           @ applications/RC522/rc522_function.c:0:9
+	movw	r1, #1044
+	movt	r1, #22530
+.Ltmp5:
+	.loc	3 21 7 is_stmt 1                @ applications/RC522/rc522_function.c:21:7
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB0_5
+.LBB0_4:                                @   in Loop: Header=BB0_1 Depth=1
+	.loc	3 0 7 is_stmt 0                 @ applications/RC522/rc522_function.c:0:7
+	movw	r1, #1044
+	movt	r1, #22530
+	.loc	3 23 7 is_stmt 1                @ applications/RC522/rc522_function.c:23:7
+	ldr	r0, [r1]
+	bic	r0, r0, #4
+	str	r0, [r1]
+	b	.LBB0_5
+.Ltmp6:
+.LBB0_5:                                @   in Loop: Header=BB0_1 Depth=1
+	.loc	3 0 7 is_stmt 0                 @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #20
+	.loc	3 25 5 is_stmt 1                @ applications/RC522/rc522_function.c:25:5
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	bl	rt_hw_us_delay
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	movw	r2, #7188
+	movt	r2, #22530
+	.loc	3 26 5                          @ applications/RC522/rc522_function.c:26:5
+	str	r2, [sp, #4]                    @ 4-byte Spill
+	ldr	r1, [r2]
+	bic	r1, r1, #8
+	str	r1, [r2]
+	.loc	3 28 5                          @ applications/RC522/rc522_function.c:28:5
+	bl	rt_hw_us_delay
+	ldr	r2, [sp, #4]                    @ 4-byte Reload
+	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	.loc	3 29 5                          @ applications/RC522/rc522_function.c:29:5
+	ldr	r1, [r2]
+	orr	r1, r1, #8
+	str	r1, [r2]
+	.loc	3 31 5                          @ applications/RC522/rc522_function.c:31:5
+	bl	rt_hw_us_delay
+	.loc	3 32 10                         @ applications/RC522/rc522_function.c:32:10
+	ldrb.w	r0, [sp, #15]
+	lsls	r0, r0, #1
+	strb.w	r0, [sp, #15]
+	.loc	3 33 3                          @ applications/RC522/rc522_function.c:33:3
+	b	.LBB0_6
+.Ltmp7:
+.LBB0_6:                                @   in Loop: Header=BB0_1 Depth=1
+	.loc	3 18 41                         @ applications/RC522/rc522_function.c:18:41
+	ldrb.w	r0, [sp, #14]
+	adds	r0, #1
+	strb.w	r0, [sp, #14]
+	.loc	3 18 3 is_stmt 0                @ applications/RC522/rc522_function.c:18:3
+	b	.LBB0_1
+.Ltmp8:
+.LBB0_7:
+	.loc	3 34 1 is_stmt 1                @ applications/RC522/rc522_function.c:34:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp9:
+.Lfunc_end0:
+	.size	SPI_RC522_SendByte, .Lfunc_end0-SPI_RC522_SendByte
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SPI_RC522_ReadByte,"ax",%progbits
+	.hidden	SPI_RC522_ReadByte              @ -- Begin function SPI_RC522_ReadByte
+	.globl	SPI_RC522_ReadByte
+	.p2align	3
+	.type	SPI_RC522_ReadByte,%function
+	.code	16                              @ @SPI_RC522_ReadByte
+	.thumb_func
+SPI_RC522_ReadByte:
+.Lfunc_begin1:
+	.loc	3 42 0                          @ applications/RC522/rc522_function.c:42:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #0
+.Ltmp10:
+	.loc	3 46 16 prologue_end            @ applications/RC522/rc522_function.c:46:16
+	strb.w	r0, [sp, #7]
+	.loc	3 46 8 is_stmt 0                @ applications/RC522/rc522_function.c:46:8
+	b	.LBB1_1
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp11:
+	.loc	3 46 21                         @ applications/RC522/rc522_function.c:46:21
+	ldrb.w	r0, [sp, #7]
+.Ltmp12:
+	.loc	3 46 3                          @ applications/RC522/rc522_function.c:46:3
+	cmp	r0, #7
+	bgt	.LBB1_6
+	b	.LBB1_2
+.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+.Ltmp13:
+	.loc	3 48 14 is_stmt 1               @ applications/RC522/rc522_function.c:48:14
+	ldrb.w	r0, [sp, #6]
+	lsls	r0, r0, #1
+	strb.w	r0, [sp, #6]
+	movw	r1, #7188
+	movt	r1, #22530
+	.loc	3 49 5                          @ applications/RC522/rc522_function.c:49:5
+	ldr	r0, [r1]
+	bic	r0, r0, #8
+	str	r0, [r1]
+	movs	r0, #20
+	.loc	3 51 5                          @ applications/RC522/rc522_function.c:51:5
+	bl	rt_hw_us_delay
+	movw	r0, #1040
+	movt	r0, #22530
+.Ltmp14:
+	.loc	3 52 8                          @ applications/RC522/rc522_function.c:52:8
+	ldr	r0, [r0]
+.Ltmp15:
+	.loc	3 52 8 is_stmt 0                @ applications/RC522/rc522_function.c:52:8
+	lsls	r0, r0, #31
+	cbz	r0, .LBB1_4
+	b	.LBB1_3
+.LBB1_3:                                @   in Loop: Header=BB1_1 Depth=1
+.Ltmp16:
+	.loc	3 53 16 is_stmt 1               @ applications/RC522/rc522_function.c:53:16
+	ldrb.w	r0, [sp, #6]
+	orr	r0, r0, #1
+	strb.w	r0, [sp, #6]
+	.loc	3 53 7 is_stmt 0                @ applications/RC522/rc522_function.c:53:7
+	b	.LBB1_4
+.Ltmp17:
+.LBB1_4:                                @   in Loop: Header=BB1_1 Depth=1
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #20
+	.loc	3 55 5 is_stmt 1                @ applications/RC522/rc522_function.c:55:5
+	str	r0, [sp]                        @ 4-byte Spill
+	bl	rt_hw_us_delay
+	ldr	r0, [sp]                        @ 4-byte Reload
+	movw	r2, #7188
+	movt	r2, #22530
+	.loc	3 56 5                          @ applications/RC522/rc522_function.c:56:5
+	ldr	r1, [r2]
+	orr	r1, r1, #8
+	str	r1, [r2]
+	.loc	3 58 5                          @ applications/RC522/rc522_function.c:58:5
+	bl	rt_hw_us_delay
+	.loc	3 59 3                          @ applications/RC522/rc522_function.c:59:3
+	b	.LBB1_5
+.Ltmp18:
+.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
+	.loc	3 46 41                         @ applications/RC522/rc522_function.c:46:41
+	ldrb.w	r0, [sp, #7]
+	adds	r0, #1
+	strb.w	r0, [sp, #7]
+	.loc	3 46 3 is_stmt 0                @ applications/RC522/rc522_function.c:46:3
+	b	.LBB1_1
+.Ltmp19:
+.LBB1_6:
+	.loc	3 60 10 is_stmt 1               @ applications/RC522/rc522_function.c:60:10
+	ldrb.w	r0, [sp, #6]
+	.loc	3 60 3 is_stmt 0                @ applications/RC522/rc522_function.c:60:3
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp20:
+.Lfunc_end1:
+	.size	SPI_RC522_ReadByte, .Lfunc_end1-SPI_RC522_ReadByte
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ReadRawRC,"ax",%progbits
+	.hidden	ReadRawRC                       @ -- Begin function ReadRawRC
+	.globl	ReadRawRC
+	.p2align	3
+	.type	ReadRawRC,%function
+	.code	16                              @ @ReadRawRC
+	.thumb_func
+ReadRawRC:
+.Lfunc_begin2:
+	.loc	3 69 0 is_stmt 1                @ applications/RC522/rc522_function.c:69:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+.Ltmp21:
+	.loc	3 72 14 prologue_end            @ applications/RC522/rc522_function.c:72:14
+	ldrb.w	r1, [sp, #7]
+	movs	r0, #128
+	.loc	3 72 38 is_stmt 0               @ applications/RC522/rc522_function.c:72:38
+	orr.w	r0, r0, r1, lsl #1
+	.loc	3 72 10                         @ applications/RC522/rc522_function.c:72:10
+	strb.w	r0, [sp, #6]
+	movw	r1, #1044
+	movt	r1, #22530
+	.loc	3 73 3 is_stmt 1                @ applications/RC522/rc522_function.c:73:3
+	str	r1, [sp]                        @ 4-byte Spill
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	.loc	3 75 22                         @ applications/RC522/rc522_function.c:75:22
+	ldrb.w	r0, [sp, #6]
+	.loc	3 75 3 is_stmt 0                @ applications/RC522/rc522_function.c:75:3
+	bl	SPI_RC522_SendByte
+	.loc	3 76 14 is_stmt 1               @ applications/RC522/rc522_function.c:76:14
+	bl	SPI_RC522_ReadByte
+	ldr	r1, [sp]                        @ 4-byte Reload
+	.loc	3 76 12 is_stmt 0               @ applications/RC522/rc522_function.c:76:12
+	strb.w	r0, [sp, #5]
+	.loc	3 78 3 is_stmt 1                @ applications/RC522/rc522_function.c:78:3
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	.loc	3 80 10                         @ applications/RC522/rc522_function.c:80:10
+	ldrb.w	r0, [sp, #5]
+	.loc	3 80 3 is_stmt 0                @ applications/RC522/rc522_function.c:80:3
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp22:
+.Lfunc_end2:
+	.size	ReadRawRC, .Lfunc_end2-ReadRawRC
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.WriteRawRC,"ax",%progbits
+	.hidden	WriteRawRC                      @ -- Begin function WriteRawRC
+	.globl	WriteRawRC
+	.p2align	3
+	.type	WriteRawRC,%function
+	.code	16                              @ @WriteRawRC
+	.thumb_func
+WriteRawRC:
+.Lfunc_begin3:
+	.loc	3 90 0 is_stmt 1                @ applications/RC522/rc522_function.c:90:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	strb.w	r1, [sp, #6]
+.Ltmp23:
+	.loc	3 93 13 prologue_end            @ applications/RC522/rc522_function.c:93:13
+	ldrb.w	r1, [sp, #7]
+	movs	r0, #126
+	.loc	3 93 29 is_stmt 0               @ applications/RC522/rc522_function.c:93:29
+	and.w	r0, r0, r1, lsl #1
+	.loc	3 93 10                         @ applications/RC522/rc522_function.c:93:10
+	strb.w	r0, [sp, #5]
+	movw	r1, #1044
+	movt	r1, #22530
+	.loc	3 94 3 is_stmt 1                @ applications/RC522/rc522_function.c:94:3
+	str	r1, [sp]                        @ 4-byte Spill
+	ldr	r0, [r1]
+	bic	r0, r0, #2
+	str	r0, [r1]
+	.loc	3 96 22                         @ applications/RC522/rc522_function.c:96:22
+	ldrb.w	r0, [sp, #5]
+	.loc	3 96 3 is_stmt 0                @ applications/RC522/rc522_function.c:96:3
+	bl	SPI_RC522_SendByte
+	.loc	3 97 22 is_stmt 1               @ applications/RC522/rc522_function.c:97:22
+	ldrb.w	r0, [sp, #6]
+	.loc	3 97 3 is_stmt 0                @ applications/RC522/rc522_function.c:97:3
+	bl	SPI_RC522_SendByte
+	ldr	r1, [sp]                        @ 4-byte Reload
+	.loc	3 99 3 is_stmt 1                @ applications/RC522/rc522_function.c:99:3
+	ldr	r0, [r1]
+	orr	r0, r0, #2
+	str	r0, [r1]
+	.loc	3 100 1                         @ applications/RC522/rc522_function.c:100:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp24:
+.Lfunc_end3:
+	.size	WriteRawRC, .Lfunc_end3-WriteRawRC
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.SetBitMask,"ax",%progbits
+	.hidden	SetBitMask                      @ -- Begin function SetBitMask
+	.globl	SetBitMask
+	.p2align	3
+	.type	SetBitMask,%function
+	.code	16                              @ @SetBitMask
+	.thumb_func
+SetBitMask:
+.Lfunc_begin4:
+	.loc	3 109 0                         @ applications/RC522/rc522_function.c:109:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	strb.w	r1, [sp, #6]
+.Ltmp25:
+	.loc	3 112 22 prologue_end           @ applications/RC522/rc522_function.c:112:22
+	ldrb.w	r0, [sp, #7]
+	.loc	3 112 12 is_stmt 0              @ applications/RC522/rc522_function.c:112:12
+	bl	ReadRawRC
+	.loc	3 112 10                        @ applications/RC522/rc522_function.c:112:10
+	strb.w	r0, [sp, #5]
+	.loc	3 113 14 is_stmt 1              @ applications/RC522/rc522_function.c:113:14
+	ldrb.w	r0, [sp, #7]
+	.loc	3 113 21 is_stmt 0              @ applications/RC522/rc522_function.c:113:21
+	ldrb.w	r1, [sp, #5]
+	.loc	3 113 30                        @ applications/RC522/rc522_function.c:113:30
+	ldrb.w	r2, [sp, #6]
+	.loc	3 113 28                        @ applications/RC522/rc522_function.c:113:28
+	orrs	r1, r2
+	.loc	3 113 3                         @ applications/RC522/rc522_function.c:113:3
+	bl	WriteRawRC
+	.loc	3 114 1 is_stmt 1               @ applications/RC522/rc522_function.c:114:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp26:
+.Lfunc_end4:
+	.size	SetBitMask, .Lfunc_end4-SetBitMask
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ClearBitMask,"ax",%progbits
+	.hidden	ClearBitMask                    @ -- Begin function ClearBitMask
+	.globl	ClearBitMask
+	.p2align	3
+	.type	ClearBitMask,%function
+	.code	16                              @ @ClearBitMask
+	.thumb_func
+ClearBitMask:
+.Lfunc_begin5:
+	.loc	3 123 0                         @ applications/RC522/rc522_function.c:123:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #7]
+	strb.w	r1, [sp, #6]
+.Ltmp27:
+	.loc	3 126 22 prologue_end           @ applications/RC522/rc522_function.c:126:22
+	ldrb.w	r0, [sp, #7]
+	.loc	3 126 12 is_stmt 0              @ applications/RC522/rc522_function.c:126:12
+	bl	ReadRawRC
+	.loc	3 126 10                        @ applications/RC522/rc522_function.c:126:10
+	strb.w	r0, [sp, #5]
+	.loc	3 127 14 is_stmt 1              @ applications/RC522/rc522_function.c:127:14
+	ldrb.w	r0, [sp, #7]
+	.loc	3 127 21 is_stmt 0              @ applications/RC522/rc522_function.c:127:21
+	ldrb.w	r1, [sp, #5]
+	.loc	3 127 32                        @ applications/RC522/rc522_function.c:127:32
+	ldrb.w	r2, [sp, #6]
+	.loc	3 127 28                        @ applications/RC522/rc522_function.c:127:28
+	bics	r1, r2
+	.loc	3 127 3                         @ applications/RC522/rc522_function.c:127:3
+	bl	WriteRawRC
+	.loc	3 128 1 is_stmt 1               @ applications/RC522/rc522_function.c:128:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp28:
+.Lfunc_end5:
+	.size	ClearBitMask, .Lfunc_end5-ClearBitMask
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdAntennaOn,"ax",%progbits
+	.hidden	PcdAntennaOn                    @ -- Begin function PcdAntennaOn
+	.globl	PcdAntennaOn
+	.p2align	3
+	.type	PcdAntennaOn,%function
+	.code	16                              @ @PcdAntennaOn
+	.thumb_func
+PcdAntennaOn:
+.Lfunc_begin6:
+	.loc	3 136 0                         @ applications/RC522/rc522_function.c:136:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movs	r0, #20
+.Ltmp29:
+	.loc	3 139 8 prologue_end            @ applications/RC522/rc522_function.c:139:8
+	bl	ReadRawRC
+	.loc	3 139 6 is_stmt 0               @ applications/RC522/rc522_function.c:139:6
+	strb.w	r0, [sp, #7]
+.Ltmp30:
+	.loc	3 140 9 is_stmt 1               @ applications/RC522/rc522_function.c:140:9
+	ldrb.w	r0, [sp, #7]
+.Ltmp31:
+	.loc	3 140 7 is_stmt 0               @ applications/RC522/rc522_function.c:140:7
+	lsls	r0, r0, #30
+	cbnz	r0, .LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #20
+	movs	r1, #3
+.Ltmp32:
+	.loc	3 141 5 is_stmt 1               @ applications/RC522/rc522_function.c:141:5
+	bl	SetBitMask
+	b	.LBB6_2
+.Ltmp33:
+.LBB6_2:
+	.loc	3 142 1                         @ applications/RC522/rc522_function.c:142:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp34:
+.Lfunc_end6:
+	.size	PcdAntennaOn, .Lfunc_end6-PcdAntennaOn
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdAntennaOff,"ax",%progbits
+	.hidden	PcdAntennaOff                   @ -- Begin function PcdAntennaOff
+	.globl	PcdAntennaOff
+	.p2align	3
+	.type	PcdAntennaOff,%function
+	.code	16                              @ @PcdAntennaOff
+	.thumb_func
+PcdAntennaOff:
+.Lfunc_begin7:
+	.loc	3 150 0                         @ applications/RC522/rc522_function.c:150:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	movs	r0, #20
+	movs	r1, #3
+.Ltmp35:
+	.loc	3 151 3 prologue_end            @ applications/RC522/rc522_function.c:151:3
+	bl	ClearBitMask
+	.loc	3 152 1                         @ applications/RC522/rc522_function.c:152:1
+	pop	{r7, pc}
+.Ltmp36:
+.Lfunc_end7:
+	.size	PcdAntennaOff, .Lfunc_end7-PcdAntennaOff
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdReset,"ax",%progbits
+	.hidden	PcdReset                        @ -- Begin function PcdReset
+	.globl	PcdReset
+	.p2align	3
+	.type	PcdReset,%function
+	.code	16                              @ @PcdReset
+	.thumb_func
+PcdReset:
+.Lfunc_begin8:
+	.loc	3 160 0                         @ applications/RC522/rc522_function.c:160:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	movw	r1, #7188
+	movt	r1, #22530
+.Ltmp37:
+	.loc	3 161 3 prologue_end            @ applications/RC522/rc522_function.c:161:3
+	str	r1, [sp]                        @ 4-byte Spill
+	ldr	r0, [r1]
+	orr	r0, r0, #4
+	str	r0, [r1]
+	movs	r0, #1
+	.loc	3 162 3                         @ applications/RC522/rc522_function.c:162:3
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	bl	rt_hw_us_delay
+	ldr	r2, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	.loc	3 164 3                         @ applications/RC522/rc522_function.c:164:3
+	ldr	r1, [r2]
+	bic	r1, r1, #4
+	str	r1, [r2]
+	.loc	3 165 3                         @ applications/RC522/rc522_function.c:165:3
+	bl	rt_hw_us_delay
+	ldr	r2, [sp]                        @ 4-byte Reload
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	.loc	3 167 3                         @ applications/RC522/rc522_function.c:167:3
+	ldr	r1, [r2]
+	orr	r1, r1, #4
+	str	r1, [r2]
+	.loc	3 168 3                         @ applications/RC522/rc522_function.c:168:3
+	bl	rt_hw_us_delay
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	movs	r1, #15
+	.loc	3 170 3                         @ applications/RC522/rc522_function.c:170:3
+	bl	WriteRawRC
+	.loc	3 172 3                         @ applications/RC522/rc522_function.c:172:3
+	b	.LBB8_1
+.LBB8_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #1
+	.loc	3 172 10                        @ applications/RC522/rc522_function.c:172:10
+	bl	ReadRawRC
+	.loc	3 172 3                         @ applications/RC522/rc522_function.c:172:3
+	lsls	r0, r0, #27
+	cmp	r0, #0
+	bpl	.LBB8_3
+	b	.LBB8_2
+.LBB8_2:                                @   in Loop: Header=BB8_1 Depth=1
+	b	.LBB8_1
+.LBB8_3:
+	.loc	3 0 3                           @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #1
+	.loc	3 175 3 is_stmt 1               @ applications/RC522/rc522_function.c:175:3
+	bl	rt_hw_us_delay
+	movs	r0, #17
+	movs	r1, #61
+	.loc	3 178 3                         @ applications/RC522/rc522_function.c:178:3
+	bl	WriteRawRC
+	movs	r0, #45
+	movs	r1, #30
+	.loc	3 180 3                         @ applications/RC522/rc522_function.c:180:3
+	bl	WriteRawRC
+	movs	r0, #44
+	movs	r1, #0
+	.loc	3 181 3                         @ applications/RC522/rc522_function.c:181:3
+	bl	WriteRawRC
+	movs	r0, #42
+	movs	r1, #141
+	.loc	3 183 3                         @ applications/RC522/rc522_function.c:183:3
+	bl	WriteRawRC
+	movs	r0, #43
+	movs	r1, #62
+	.loc	3 185 3                         @ applications/RC522/rc522_function.c:185:3
+	bl	WriteRawRC
+	movs	r0, #21
+	movs	r1, #64
+	.loc	3 187 3                         @ applications/RC522/rc522_function.c:187:3
+	bl	WriteRawRC
+	.loc	3 188 1                         @ applications/RC522/rc522_function.c:188:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp38:
+.Lfunc_end8:
+	.size	PcdReset, .Lfunc_end8-PcdReset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.M500PcdConfigISOType,"ax",%progbits
+	.hidden	M500PcdConfigISOType            @ -- Begin function M500PcdConfigISOType
+	.globl	M500PcdConfigISOType
+	.p2align	3
+	.type	M500PcdConfigISOType,%function
+	.code	16                              @ @M500PcdConfigISOType
+	.thumb_func
+M500PcdConfigISOType:
+.Lfunc_begin9:
+	.loc	3 196 0                         @ applications/RC522/rc522_function.c:196:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r1 killed $r0
+	strb.w	r0, [sp, #7]
+.Ltmp39:
+	.loc	3 197 7 prologue_end            @ applications/RC522/rc522_function.c:197:7
+	ldrb.w	r0, [sp, #7]
+.Ltmp40:
+	.loc	3 197 7 is_stmt 0               @ applications/RC522/rc522_function.c:197:7
+	cmp	r0, #65
+	bne	.LBB9_2
+	b	.LBB9_1
+.LBB9_1:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r1, #8
+.Ltmp41:
+	.loc	3 199 5 is_stmt 1               @ applications/RC522/rc522_function.c:199:5
+	mov	r0, r1
+	bl	ClearBitMask
+	movs	r0, #17
+	movs	r1, #61
+	.loc	3 201 5                         @ applications/RC522/rc522_function.c:201:5
+	bl	WriteRawRC
+	movs	r0, #23
+	movs	r1, #134
+	.loc	3 203 5                         @ applications/RC522/rc522_function.c:203:5
+	bl	WriteRawRC
+	movs	r0, #38
+	movs	r1, #127
+	.loc	3 205 5                         @ applications/RC522/rc522_function.c:205:5
+	bl	WriteRawRC
+	movs	r0, #45
+	movs	r1, #30
+	.loc	3 207 5                         @ applications/RC522/rc522_function.c:207:5
+	bl	WriteRawRC
+	movs	r0, #44
+	movs	r1, #0
+	.loc	3 209 5                         @ applications/RC522/rc522_function.c:209:5
+	bl	WriteRawRC
+	movs	r0, #42
+	movs	r1, #141
+	.loc	3 211 5                         @ applications/RC522/rc522_function.c:211:5
+	bl	WriteRawRC
+	movs	r0, #43
+	movs	r1, #62
+	.loc	3 213 5                         @ applications/RC522/rc522_function.c:213:5
+	bl	WriteRawRC
+	movs	r0, #2
+	.loc	3 215 5                         @ applications/RC522/rc522_function.c:215:5
+	bl	rt_hw_us_delay
+	.loc	3 217 5                         @ applications/RC522/rc522_function.c:217:5
+	bl	PcdAntennaOn
+	.loc	3 218 3                         @ applications/RC522/rc522_function.c:218:3
+	b	.LBB9_2
+.Ltmp42:
+.LBB9_2:
+	.loc	3 219 1                         @ applications/RC522/rc522_function.c:219:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp43:
+.Lfunc_end9:
+	.size	M500PcdConfigISOType, .Lfunc_end9-M500PcdConfigISOType
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdComMF522,"ax",%progbits
+	.hidden	PcdComMF522                     @ -- Begin function PcdComMF522
+	.globl	PcdComMF522
+	.p2align	3
+	.type	PcdComMF522,%function
+	.code	16                              @ @PcdComMF522
+	.thumb_func
+PcdComMF522:
+.Lfunc_begin10:
+	.loc	3 235 0                         @ applications/RC522/rc522_function.c:235:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+	ldr.w	r12, [sp, #56]
+                                        @ kill: def $r12 killed $r2
+                                        @ kill: def $r12 killed $r0
+	strb.w	r0, [sp, #47]
+	str	r1, [sp, #40]
+	strb.w	r2, [sp, #39]
+	str	r3, [sp, #32]
+	movs	r0, #187
+.Ltmp44:
+	.loc	3 236 8 prologue_end            @ applications/RC522/rc522_function.c:236:8
+	strb.w	r0, [sp, #31]
+	movs	r0, #0
+	.loc	3 237 11                        @ applications/RC522/rc522_function.c:237:11
+	strb.w	r0, [sp, #30]
+	.loc	3 238 11                        @ applications/RC522/rc522_function.c:238:11
+	strb.w	r0, [sp, #29]
+	.loc	3 243 11                        @ applications/RC522/rc522_function.c:243:11
+	ldrb.w	r0, [sp, #47]
+	.loc	3 243 3 is_stmt 0               @ applications/RC522/rc522_function.c:243:3
+	mov	r1, r0
+	str	r1, [sp, #16]                   @ 4-byte Spill
+	cmp	r0, #12
+	beq	.LBB10_3
+	b	.LBB10_1
+.LBB10_1:
+	ldr	r0, [sp, #16]                   @ 4-byte Reload
+	cmp	r0, #14
+	bne	.LBB10_4
+	b	.LBB10_2
+.LBB10_2:
+	.loc	3 0 3                           @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #18
+.Ltmp45:
+	.loc	3 246 13 is_stmt 1              @ applications/RC522/rc522_function.c:246:13
+	strb.w	r0, [sp, #30]
+	movs	r0, #16
+	.loc	3 247 15                        @ applications/RC522/rc522_function.c:247:15
+	strb.w	r0, [sp, #29]
+	.loc	3 248 5                         @ applications/RC522/rc522_function.c:248:5
+	b	.LBB10_5
+.LBB10_3:
+	.loc	3 0 5 is_stmt 0                 @ applications/RC522/rc522_function.c:0:5
+	movs	r0, #119
+	.loc	3 251 13 is_stmt 1              @ applications/RC522/rc522_function.c:251:13
+	strb.w	r0, [sp, #30]
+	movs	r0, #48
+	.loc	3 252 15                        @ applications/RC522/rc522_function.c:252:15
+	strb.w	r0, [sp, #29]
+	.loc	3 253 5                         @ applications/RC522/rc522_function.c:253:5
+	b	.LBB10_5
+.LBB10_4:
+	.loc	3 256 5                         @ applications/RC522/rc522_function.c:256:5
+	b	.LBB10_5
+.Ltmp46:
+.LBB10_5:
+	.loc	3 259 25                        @ applications/RC522/rc522_function.c:259:25
+	ldrb.w	r0, [sp, #30]
+	.loc	3 259 33 is_stmt 0              @ applications/RC522/rc522_function.c:259:33
+	orr	r1, r0, #128
+	movs	r0, #2
+	.loc	3 259 3                         @ applications/RC522/rc522_function.c:259:3
+	bl	WriteRawRC
+	movs	r0, #4
+	movs	r1, #128
+	.loc	3 261 3 is_stmt 1               @ applications/RC522/rc522_function.c:261:3
+	str	r1, [sp, #8]                    @ 4-byte Spill
+	bl	ClearBitMask
+	movs	r0, #1
+	movs	r1, #0
+	.loc	3 263 3                         @ applications/RC522/rc522_function.c:263:3
+	str	r1, [sp, #12]                   @ 4-byte Spill
+	bl	WriteRawRC
+	ldr	r1, [sp, #8]                    @ 4-byte Reload
+	movs	r0, #10
+	.loc	3 266 3                         @ applications/RC522/rc522_function.c:266:3
+	bl	SetBitMask
+	ldr	r0, [sp, #12]                   @ 4-byte Reload
+.Ltmp47:
+	.loc	3 268 11                        @ applications/RC522/rc522_function.c:268:11
+	str	r0, [sp, #20]
+	.loc	3 268 8 is_stmt 0               @ applications/RC522/rc522_function.c:268:8
+	b	.LBB10_6
+.LBB10_6:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp48:
+	.loc	3 268 16                        @ applications/RC522/rc522_function.c:268:16
+	ldr	r0, [sp, #20]
+	.loc	3 268 21                        @ applications/RC522/rc522_function.c:268:21
+	ldrb.w	r1, [sp, #39]
+.Ltmp49:
+	.loc	3 268 3                         @ applications/RC522/rc522_function.c:268:3
+	cmp	r0, r1
+	bhs	.LBB10_9
+	b	.LBB10_7
+.LBB10_7:                               @   in Loop: Header=BB10_6 Depth=1
+.Ltmp50:
+	.loc	3 269 29 is_stmt 1              @ applications/RC522/rc522_function.c:269:29
+	ldr	r0, [sp, #40]
+	.loc	3 269 37 is_stmt 0              @ applications/RC522/rc522_function.c:269:37
+	ldr	r1, [sp, #20]
+	.loc	3 269 29                        @ applications/RC522/rc522_function.c:269:29
+	ldrb	r1, [r0, r1]
+	movs	r0, #9
+	.loc	3 269 5                         @ applications/RC522/rc522_function.c:269:5
+	bl	WriteRawRC
+	b	.LBB10_8
+.LBB10_8:                               @   in Loop: Header=BB10_6 Depth=1
+	.loc	3 268 36 is_stmt 1              @ applications/RC522/rc522_function.c:268:36
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #20]
+	.loc	3 268 3 is_stmt 0               @ applications/RC522/rc522_function.c:268:3
+	b	.LBB10_6
+.Ltmp51:
+.LBB10_9:
+	.loc	3 271 26 is_stmt 1              @ applications/RC522/rc522_function.c:271:26
+	ldrb.w	r1, [sp, #47]
+	movs	r0, #1
+	.loc	3 271 3 is_stmt 0               @ applications/RC522/rc522_function.c:271:3
+	bl	WriteRawRC
+.Ltmp52:
+	.loc	3 273 7 is_stmt 1               @ applications/RC522/rc522_function.c:273:7
+	ldrb.w	r0, [sp, #47]
+.Ltmp53:
+	.loc	3 273 7 is_stmt 0               @ applications/RC522/rc522_function.c:273:7
+	cmp	r0, #12
+	bne	.LBB10_11
+	b	.LBB10_10
+.LBB10_10:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #13
+	movs	r1, #128
+.Ltmp54:
+	.loc	3 276 5 is_stmt 1               @ applications/RC522/rc522_function.c:276:5
+	bl	SetBitMask
+	b	.LBB10_11
+.Ltmp55:
+.LBB10_11:
+	.loc	3 0 5 is_stmt 0                 @ applications/RC522/rc522_function.c:0:5
+	mov.w	r0, #1000
+	.loc	3 278 6 is_stmt 1               @ applications/RC522/rc522_function.c:278:6
+	str	r0, [sp, #20]
+	.loc	3 280 3                         @ applications/RC522/rc522_function.c:280:3
+	b	.LBB10_12
+.LBB10_12:                              @ =>This Inner Loop Header: Depth=1
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #4
+.Ltmp56:
+	.loc	3 282 11 is_stmt 1              @ applications/RC522/rc522_function.c:282:11
+	bl	ReadRawRC
+	.loc	3 282 9 is_stmt 0               @ applications/RC522/rc522_function.c:282:9
+	strb.w	r0, [sp, #27]
+	.loc	3 283 7 is_stmt 1               @ applications/RC522/rc522_function.c:283:7
+	ldr	r0, [sp, #20]
+	subs	r0, #1
+	str	r0, [sp, #20]
+	.loc	3 284 3                         @ applications/RC522/rc522_function.c:284:3
+	b	.LBB10_13
+.Ltmp57:
+.LBB10_13:                              @   in Loop: Header=BB10_12 Depth=1
+	.loc	3 284 13 is_stmt 0              @ applications/RC522/rc522_function.c:284:13
+	ldr	r1, [sp, #20]
+	movs	r0, #0
+	.loc	3 284 22                        @ applications/RC522/rc522_function.c:284:22
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	cbz	r1, .LBB10_16
+	b	.LBB10_14
+.LBB10_14:                              @   in Loop: Header=BB10_12 Depth=1
+	.loc	3 284 28                        @ applications/RC522/rc522_function.c:284:28
+	ldrb.w	r1, [sp, #27]
+	movs	r0, #0
+	.loc	3 284 41                        @ applications/RC522/rc522_function.c:284:41
+	lsls	r1, r1, #31
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	cbnz	r1, .LBB10_16
+	b	.LBB10_15
+.LBB10_15:                              @   in Loop: Header=BB10_12 Depth=1
+	.loc	3 284 47                        @ applications/RC522/rc522_function.c:284:47
+	ldrb.w	r0, [sp, #27]
+	.loc	3 284 53                        @ applications/RC522/rc522_function.c:284:53
+	ldrb.w	r1, [sp, #29]
+	.loc	3 284 51                        @ applications/RC522/rc522_function.c:284:51
+	ands	r0, r1
+	.loc	3 284 45                        @ applications/RC522/rc522_function.c:284:45
+	clz	r0, r0
+	lsrs	r0, r0, #5
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	b	.LBB10_16
+.LBB10_16:                              @   in Loop: Header=BB10_12 Depth=1
+	.loc	3 0 0                           @ applications/RC522/rc522_function.c:0:0
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+.Ltmp58:
+	.loc	3 284 3                         @ applications/RC522/rc522_function.c:284:3
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB10_12
+	b	.LBB10_17
+.Ltmp59:
+.LBB10_17:
+	.loc	3 0 3                           @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #13
+	movs	r1, #128
+	.loc	3 286 3 is_stmt 1               @ applications/RC522/rc522_function.c:286:3
+	bl	ClearBitMask
+.Ltmp60:
+	.loc	3 288 7                         @ applications/RC522/rc522_function.c:288:7
+	ldr	r0, [sp, #20]
+.Ltmp61:
+	.loc	3 288 7 is_stmt 0               @ applications/RC522/rc522_function.c:288:7
+	cmp	r0, #0
+	beq	.LBB10_37
+	b	.LBB10_18
+.LBB10_18:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #6
+.Ltmp62:
+	.loc	3 291 11 is_stmt 1              @ applications/RC522/rc522_function.c:291:11
+	bl	ReadRawRC
+.Ltmp63:
+	.loc	3 291 9 is_stmt 0               @ applications/RC522/rc522_function.c:291:9
+	tst.w	r0, #27
+	bne	.LBB10_35
+	b	.LBB10_19
+.LBB10_19:
+	.loc	3 0 9                           @ applications/RC522/rc522_function.c:0:9
+	movs	r0, #38
+.Ltmp64:
+	.loc	3 293 15 is_stmt 1              @ applications/RC522/rc522_function.c:293:15
+	strb.w	r0, [sp, #31]
+.Ltmp65:
+	.loc	3 295 11                        @ applications/RC522/rc522_function.c:295:11
+	ldrb.w	r0, [sp, #27]
+	.loc	3 295 17 is_stmt 0              @ applications/RC522/rc522_function.c:295:17
+	ldrb.w	r1, [sp, #30]
+	.loc	3 295 15                        @ applications/RC522/rc522_function.c:295:15
+	ands	r0, r1
+.Ltmp66:
+	.loc	3 295 11                        @ applications/RC522/rc522_function.c:295:11
+	lsls	r0, r0, #31
+	cbz	r0, .LBB10_21
+	b	.LBB10_20
+.LBB10_20:
+	.loc	3 0 11                          @ applications/RC522/rc522_function.c:0:11
+	movs	r0, #204
+.Ltmp67:
+	.loc	3 296 17 is_stmt 1              @ applications/RC522/rc522_function.c:296:17
+	strb.w	r0, [sp, #31]
+	.loc	3 296 9 is_stmt 0               @ applications/RC522/rc522_function.c:296:9
+	b	.LBB10_21
+.Ltmp68:
+.LBB10_21:
+	.loc	3 298 11 is_stmt 1              @ applications/RC522/rc522_function.c:298:11
+	ldrb.w	r0, [sp, #47]
+.Ltmp69:
+	.loc	3 298 11 is_stmt 0              @ applications/RC522/rc522_function.c:298:11
+	cmp	r0, #12
+	bne	.LBB10_34
+	b	.LBB10_22
+.LBB10_22:
+	.loc	3 0 11                          @ applications/RC522/rc522_function.c:0:11
+	movs	r0, #10
+.Ltmp70:
+	.loc	3 301 15 is_stmt 1              @ applications/RC522/rc522_function.c:301:15
+	bl	ReadRawRC
+	.loc	3 301 13 is_stmt 0              @ applications/RC522/rc522_function.c:301:13
+	strb.w	r0, [sp, #27]
+	movs	r0, #12
+	.loc	3 304 22 is_stmt 1              @ applications/RC522/rc522_function.c:304:22
+	bl	ReadRawRC
+	.loc	3 304 44 is_stmt 0              @ applications/RC522/rc522_function.c:304:44
+	and	r0, r0, #7
+	.loc	3 304 20                        @ applications/RC522/rc522_function.c:304:20
+	strb.w	r0, [sp, #28]
+.Ltmp71:
+	.loc	3 306 13 is_stmt 1              @ applications/RC522/rc522_function.c:306:13
+	ldrb.w	r0, [sp, #28]
+.Ltmp72:
+	.loc	3 306 13 is_stmt 0              @ applications/RC522/rc522_function.c:306:13
+	cbz	r0, .LBB10_24
+	b	.LBB10_23
+.LBB10_23:
+.Ltmp73:
+	.loc	3 309 26 is_stmt 1              @ applications/RC522/rc522_function.c:309:26
+	ldrb.w	r1, [sp, #27]
+	.loc	3 309 41 is_stmt 0              @ applications/RC522/rc522_function.c:309:41
+	ldrb.w	r0, [sp, #28]
+	.loc	3 309 35                        @ applications/RC522/rc522_function.c:309:35
+	add.w	r0, r0, r1, lsl #3
+	.loc	3 309 39                        @ applications/RC522/rc522_function.c:309:39
+	subs	r0, #8
+	.loc	3 309 12                        @ applications/RC522/rc522_function.c:309:12
+	ldr	r1, [sp, #56]
+	.loc	3 309 23                        @ applications/RC522/rc522_function.c:309:23
+	str	r0, [r1]
+	.loc	3 309 11                        @ applications/RC522/rc522_function.c:309:11
+	b	.LBB10_25
+.LBB10_24:
+	.loc	3 311 25 is_stmt 1              @ applications/RC522/rc522_function.c:311:25
+	ldrb.w	r0, [sp, #27]
+	.loc	3 311 29 is_stmt 0              @ applications/RC522/rc522_function.c:311:29
+	lsls	r0, r0, #3
+	.loc	3 311 12                        @ applications/RC522/rc522_function.c:311:12
+	ldr	r1, [sp, #56]
+	.loc	3 311 23                        @ applications/RC522/rc522_function.c:311:23
+	str	r0, [r1]
+	b	.LBB10_25
+.Ltmp74:
+.LBB10_25:
+	.loc	3 313 13 is_stmt 1              @ applications/RC522/rc522_function.c:313:13
+	ldrb.w	r0, [sp, #27]
+.Ltmp75:
+	.loc	3 313 13 is_stmt 0              @ applications/RC522/rc522_function.c:313:13
+	cbnz	r0, .LBB10_27
+	b	.LBB10_26
+.LBB10_26:
+	.loc	3 0 13                          @ applications/RC522/rc522_function.c:0:13
+	movs	r0, #1
+.Ltmp76:
+	.loc	3 314 15 is_stmt 1              @ applications/RC522/rc522_function.c:314:15
+	strb.w	r0, [sp, #27]
+	.loc	3 314 11 is_stmt 0              @ applications/RC522/rc522_function.c:314:11
+	b	.LBB10_27
+.Ltmp77:
+.LBB10_27:
+	.loc	3 316 13 is_stmt 1              @ applications/RC522/rc522_function.c:316:13
+	ldrb.w	r0, [sp, #27]
+.Ltmp78:
+	.loc	3 316 13 is_stmt 0              @ applications/RC522/rc522_function.c:316:13
+	cmp	r0, #19
+	blt	.LBB10_29
+	b	.LBB10_28
+.LBB10_28:
+	.loc	3 0 13                          @ applications/RC522/rc522_function.c:0:13
+	movs	r0, #18
+.Ltmp79:
+	.loc	3 317 15 is_stmt 1              @ applications/RC522/rc522_function.c:317:15
+	strb.w	r0, [sp, #27]
+	.loc	3 317 11 is_stmt 0              @ applications/RC522/rc522_function.c:317:11
+	b	.LBB10_29
+.Ltmp80:
+.LBB10_29:
+	.loc	3 0 11                          @ applications/RC522/rc522_function.c:0:11
+	movs	r0, #0
+.Ltmp81:
+	.loc	3 319 17 is_stmt 1              @ applications/RC522/rc522_function.c:319:17
+	str	r0, [sp, #20]
+	.loc	3 319 14 is_stmt 0              @ applications/RC522/rc522_function.c:319:14
+	b	.LBB10_30
+.LBB10_30:                              @ =>This Inner Loop Header: Depth=1
+.Ltmp82:
+	.loc	3 319 22                        @ applications/RC522/rc522_function.c:319:22
+	ldr	r0, [sp, #20]
+	.loc	3 319 27                        @ applications/RC522/rc522_function.c:319:27
+	ldrb.w	r1, [sp, #27]
+.Ltmp83:
+	.loc	3 319 9                         @ applications/RC522/rc522_function.c:319:9
+	cmp	r0, r1
+	bhs	.LBB10_33
+	b	.LBB10_31
+.LBB10_31:                              @   in Loop: Header=BB10_30 Depth=1
+	.loc	3 0 9                           @ applications/RC522/rc522_function.c:0:9
+	movs	r0, #9
+.Ltmp84:
+	.loc	3 320 26 is_stmt 1              @ applications/RC522/rc522_function.c:320:26
+	bl	ReadRawRC
+	.loc	3 320 11 is_stmt 0              @ applications/RC522/rc522_function.c:320:11
+	ldr	r1, [sp, #32]
+	.loc	3 320 20                        @ applications/RC522/rc522_function.c:320:20
+	ldr	r2, [sp, #20]
+	.loc	3 320 24                        @ applications/RC522/rc522_function.c:320:24
+	strb	r0, [r1, r2]
+	.loc	3 320 11                        @ applications/RC522/rc522_function.c:320:11
+	b	.LBB10_32
+.LBB10_32:                              @   in Loop: Header=BB10_30 Depth=1
+	.loc	3 319 34 is_stmt 1              @ applications/RC522/rc522_function.c:319:34
+	ldr	r0, [sp, #20]
+	adds	r0, #1
+	str	r0, [sp, #20]
+	.loc	3 319 9 is_stmt 0               @ applications/RC522/rc522_function.c:319:9
+	b	.LBB10_30
+.Ltmp85:
+.LBB10_33:
+	.loc	3 321 7 is_stmt 1               @ applications/RC522/rc522_function.c:321:7
+	b	.LBB10_34
+.Ltmp86:
+.LBB10_34:
+	.loc	3 322 5                         @ applications/RC522/rc522_function.c:322:5
+	b	.LBB10_36
+.Ltmp87:
+.LBB10_35:
+	.loc	3 0 5 is_stmt 0                 @ applications/RC522/rc522_function.c:0:5
+	movs	r0, #187
+	.loc	3 324 15 is_stmt 1              @ applications/RC522/rc522_function.c:324:15
+	strb.w	r0, [sp, #31]
+	b	.LBB10_36
+.Ltmp88:
+.LBB10_36:
+	.loc	3 325 3                         @ applications/RC522/rc522_function.c:325:3
+	b	.LBB10_37
+.Ltmp89:
+.LBB10_37:
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #12
+	movs	r1, #128
+	.loc	3 327 3 is_stmt 1               @ applications/RC522/rc522_function.c:327:3
+	bl	SetBitMask
+	movs	r0, #1
+	movs	r1, #0
+	.loc	3 328 3                         @ applications/RC522/rc522_function.c:328:3
+	bl	WriteRawRC
+	.loc	3 330 10                        @ applications/RC522/rc522_function.c:330:10
+	ldrsb.w	r0, [sp, #31]
+	.loc	3 330 3 is_stmt 0               @ applications/RC522/rc522_function.c:330:3
+	add	sp, #48
+	pop	{r7, pc}
+.Ltmp90:
+.Lfunc_end10:
+	.size	PcdComMF522, .Lfunc_end10-PcdComMF522
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdRequest,"ax",%progbits
+	.hidden	PcdRequest                      @ -- Begin function PcdRequest
+	.globl	PcdRequest
+	.p2align	3
+	.type	PcdRequest,%function
+	.code	16                              @ @PcdRequest
+	.thumb_func
+PcdRequest:
+.Lfunc_begin11:
+	.loc	3 346 0 is_stmt 1               @ applications/RC522/rc522_function.c:346:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #39]
+	str	r1, [sp, #32]
+	movs	r1, #8
+.Ltmp91:
+	.loc	3 352 3 prologue_end            @ applications/RC522/rc522_function.c:352:3
+	mov	r0, r1
+	bl	ClearBitMask
+	movs	r0, #13
+	movs	r1, #7
+	.loc	3 354 3                         @ applications/RC522/rc522_function.c:354:3
+	bl	WriteRawRC
+	movs	r0, #20
+	movs	r1, #3
+	.loc	3 356 3                         @ applications/RC522/rc522_function.c:356:3
+	bl	SetBitMask
+	.loc	3 358 22                        @ applications/RC522/rc522_function.c:358:22
+	ldrb.w	r0, [sp, #39]
+	.loc	3 358 20 is_stmt 0              @ applications/RC522/rc522_function.c:358:20
+	strb.w	r0, [sp, #13]
+	.loc	3 360 13 is_stmt 1              @ applications/RC522/rc522_function.c:360:13
+	mov	r1, sp
+	add	r0, sp, #8
+	str	r0, [r1]
+	movs	r0, #12
+	movs	r2, #1
+	add.w	r3, sp, #13
+	mov	r1, r3
+	bl	PcdComMF522
+	.loc	3 360 11 is_stmt 0              @ applications/RC522/rc522_function.c:360:11
+	strb.w	r0, [sp, #31]
+.Ltmp92:
+	.loc	3 366 8 is_stmt 1               @ applications/RC522/rc522_function.c:366:8
+	ldrsb.w	r0, [sp, #31]
+	.loc	3 366 26 is_stmt 0              @ applications/RC522/rc522_function.c:366:26
+	cmp	r0, #38
+	bne	.LBB11_3
+	b	.LBB11_1
+.LBB11_1:
+	.loc	3 366 30                        @ applications/RC522/rc522_function.c:366:30
+	ldr	r0, [sp, #8]
+.Ltmp93:
+	.loc	3 366 7                         @ applications/RC522/rc522_function.c:366:7
+	cmp	r0, #16
+	bne	.LBB11_3
+	b	.LBB11_2
+.LBB11_2:
+.Ltmp94:
+	.loc	3 368 17 is_stmt 1              @ applications/RC522/rc522_function.c:368:17
+	ldrb.w	r0, [sp, #13]
+	.loc	3 368 6 is_stmt 0               @ applications/RC522/rc522_function.c:368:6
+	ldr	r1, [sp, #32]
+	.loc	3 368 15                        @ applications/RC522/rc522_function.c:368:15
+	strb	r0, [r1]
+	.loc	3 369 23 is_stmt 1              @ applications/RC522/rc522_function.c:369:23
+	ldrb.w	r0, [sp, #14]
+	.loc	3 369 7 is_stmt 0               @ applications/RC522/rc522_function.c:369:7
+	ldr	r1, [sp, #32]
+	.loc	3 369 21                        @ applications/RC522/rc522_function.c:369:21
+	strb	r0, [r1, #1]
+	.loc	3 370 3 is_stmt 1               @ applications/RC522/rc522_function.c:370:3
+	b	.LBB11_4
+.Ltmp95:
+.LBB11_3:
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #187
+	.loc	3 373 13 is_stmt 1              @ applications/RC522/rc522_function.c:373:13
+	strb.w	r0, [sp, #31]
+	b	.LBB11_4
+.Ltmp96:
+.LBB11_4:
+	.loc	3 375 10                        @ applications/RC522/rc522_function.c:375:10
+	ldrsb.w	r0, [sp, #31]
+	.loc	3 375 3 is_stmt 0               @ applications/RC522/rc522_function.c:375:3
+	add	sp, #40
+	pop	{r7, pc}
+.Ltmp97:
+.Lfunc_end11:
+	.size	PcdRequest, .Lfunc_end11-PcdRequest
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdAnticoll,"ax",%progbits
+	.hidden	PcdAnticoll                     @ -- Begin function PcdAnticoll
+	.globl	PcdAnticoll
+	.p2align	3
+	.type	PcdAnticoll,%function
+	.code	16                              @ @PcdAnticoll
+	.thumb_func
+PcdAnticoll:
+.Lfunc_begin12:
+	.loc	3 384 0 is_stmt 1               @ applications/RC522/rc522_function.c:384:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	str	r0, [sp, #36]
+	movs	r0, #0
+.Ltmp98:
+	.loc	3 386 15 prologue_end           @ applications/RC522/rc522_function.c:386:15
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	strb.w	r0, [sp, #33]
+	movs	r1, #8
+	.loc	3 391 3                         @ applications/RC522/rc522_function.c:391:3
+	mov	r0, r1
+	bl	ClearBitMask
+	ldr	r1, [sp, #4]                    @ 4-byte Reload
+	movs	r0, #13
+	.loc	3 393 3                         @ applications/RC522/rc522_function.c:393:3
+	bl	WriteRawRC
+	movs	r0, #14
+	movs	r1, #128
+	.loc	3 395 3                         @ applications/RC522/rc522_function.c:395:3
+	bl	ClearBitMask
+	movs	r0, #147
+	.loc	3 397 20                        @ applications/RC522/rc522_function.c:397:20
+	strb.w	r0, [sp, #15]
+	movs	r0, #32
+	.loc	3 398 20                        @ applications/RC522/rc522_function.c:398:20
+	strb.w	r0, [sp, #16]
+	.loc	3 400 13                        @ applications/RC522/rc522_function.c:400:13
+	mov	r1, sp
+	add	r0, sp, #8
+	str	r0, [r1]
+	movs	r0, #12
+	movs	r2, #2
+	add.w	r3, sp, #15
+	mov	r1, r3
+	bl	PcdComMF522
+	.loc	3 400 11 is_stmt 0              @ applications/RC522/rc522_function.c:400:11
+	strb.w	r0, [sp, #35]
+.Ltmp99:
+	.loc	3 406 7 is_stmt 1               @ applications/RC522/rc522_function.c:406:7
+	ldrsb.w	r0, [sp, #35]
+.Ltmp100:
+	.loc	3 406 7 is_stmt 0               @ applications/RC522/rc522_function.c:406:7
+	cmp	r0, #38
+	bne	.LBB12_8
+	b	.LBB12_1
+.LBB12_1:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #0
+.Ltmp101:
+	.loc	3 408 13 is_stmt 1              @ applications/RC522/rc522_function.c:408:13
+	strb.w	r0, [sp, #34]
+	.loc	3 408 10 is_stmt 0              @ applications/RC522/rc522_function.c:408:10
+	b	.LBB12_2
+.LBB12_2:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp102:
+	.loc	3 408 18                        @ applications/RC522/rc522_function.c:408:18
+	ldrb.w	r0, [sp, #34]
+.Ltmp103:
+	.loc	3 408 5                         @ applications/RC522/rc522_function.c:408:5
+	cmp	r0, #3
+	bgt	.LBB12_5
+	b	.LBB12_3
+.LBB12_3:                               @   in Loop: Header=BB12_2 Depth=1
+.Ltmp104:
+	.loc	3 410 36 is_stmt 1              @ applications/RC522/rc522_function.c:410:36
+	ldrb.w	r3, [sp, #34]
+	add.w	r0, sp, #15
+	.loc	3 410 22 is_stmt 0              @ applications/RC522/rc522_function.c:410:22
+	ldrb	r1, [r0, r3]
+	.loc	3 410 9                         @ applications/RC522/rc522_function.c:410:9
+	ldr	r2, [sp, #36]
+	.loc	3 410 20                        @ applications/RC522/rc522_function.c:410:20
+	strb	r1, [r2, r3]
+	.loc	3 411 36 is_stmt 1              @ applications/RC522/rc522_function.c:411:36
+	ldrb.w	r1, [sp, #34]
+	.loc	3 411 22 is_stmt 0              @ applications/RC522/rc522_function.c:411:22
+	ldrb	r1, [r0, r1]
+	.loc	3 411 19                        @ applications/RC522/rc522_function.c:411:19
+	ldrb.w	r0, [sp, #33]
+	eors	r0, r1
+	strb.w	r0, [sp, #33]
+	.loc	3 412 5 is_stmt 1               @ applications/RC522/rc522_function.c:412:5
+	b	.LBB12_4
+.Ltmp105:
+.LBB12_4:                               @   in Loop: Header=BB12_2 Depth=1
+	.loc	3 408 28                        @ applications/RC522/rc522_function.c:408:28
+	ldrb.w	r0, [sp, #34]
+	adds	r0, #1
+	strb.w	r0, [sp, #34]
+	.loc	3 408 5 is_stmt 0               @ applications/RC522/rc522_function.c:408:5
+	b	.LBB12_2
+.Ltmp106:
+.LBB12_5:
+	.loc	3 414 9 is_stmt 1               @ applications/RC522/rc522_function.c:414:9
+	ldrb.w	r0, [sp, #33]
+	.loc	3 414 38 is_stmt 0              @ applications/RC522/rc522_function.c:414:38
+	ldrb.w	r2, [sp, #34]
+	add.w	r1, sp, #15
+	.loc	3 414 24                        @ applications/RC522/rc522_function.c:414:24
+	ldrb	r1, [r1, r2]
+.Ltmp107:
+	.loc	3 414 9                         @ applications/RC522/rc522_function.c:414:9
+	cmp	r0, r1
+	beq	.LBB12_7
+	b	.LBB12_6
+.LBB12_6:
+	.loc	3 0 9                           @ applications/RC522/rc522_function.c:0:9
+	movs	r0, #187
+.Ltmp108:
+	.loc	3 415 15 is_stmt 1              @ applications/RC522/rc522_function.c:415:15
+	strb.w	r0, [sp, #35]
+	.loc	3 415 7 is_stmt 0               @ applications/RC522/rc522_function.c:415:7
+	b	.LBB12_7
+.Ltmp109:
+.LBB12_7:
+	.loc	3 416 3 is_stmt 1               @ applications/RC522/rc522_function.c:416:3
+	b	.LBB12_8
+.Ltmp110:
+.LBB12_8:
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #14
+	movs	r1, #128
+	.loc	3 418 3 is_stmt 1               @ applications/RC522/rc522_function.c:418:3
+	bl	SetBitMask
+	.loc	3 420 10                        @ applications/RC522/rc522_function.c:420:10
+	ldrsb.w	r0, [sp, #35]
+	.loc	3 420 3 is_stmt 0               @ applications/RC522/rc522_function.c:420:3
+	add	sp, #40
+	pop	{r7, pc}
+.Ltmp111:
+.Lfunc_end12:
+	.size	PcdAnticoll, .Lfunc_end12-PcdAnticoll
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.CalulateCRC,"ax",%progbits
+	.hidden	CalulateCRC                     @ -- Begin function CalulateCRC
+	.globl	CalulateCRC
+	.p2align	3
+	.type	CalulateCRC,%function
+	.code	16                              @ @CalulateCRC
+	.thumb_func
+CalulateCRC:
+.Lfunc_begin13:
+	.loc	3 433 0 is_stmt 1               @ applications/RC522/rc522_function.c:433:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r3 killed $r1
+	str	r0, [sp, #20]
+	strb.w	r1, [sp, #19]
+	str	r2, [sp, #12]
+	movs	r0, #5
+	movs	r1, #4
+.Ltmp112:
+	.loc	3 436 3 prologue_end            @ applications/RC522/rc522_function.c:436:3
+	bl	ClearBitMask
+	movs	r0, #1
+	movs	r1, #0
+	.loc	3 438 3                         @ applications/RC522/rc522_function.c:438:3
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	WriteRawRC
+	movs	r0, #10
+	movs	r1, #128
+	.loc	3 440 3                         @ applications/RC522/rc522_function.c:440:3
+	bl	SetBitMask
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+.Ltmp113:
+	.loc	3 442 11                        @ applications/RC522/rc522_function.c:442:11
+	strb.w	r0, [sp, #11]
+	.loc	3 442 8 is_stmt 0               @ applications/RC522/rc522_function.c:442:8
+	b	.LBB13_1
+.LBB13_1:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp114:
+	.loc	3 442 16                        @ applications/RC522/rc522_function.c:442:16
+	ldrb.w	r0, [sp, #11]
+	.loc	3 442 21                        @ applications/RC522/rc522_function.c:442:21
+	ldrb.w	r1, [sp, #19]
+.Ltmp115:
+	.loc	3 442 3                         @ applications/RC522/rc522_function.c:442:3
+	cmp	r0, r1
+	bge	.LBB13_4
+	b	.LBB13_2
+.LBB13_2:                               @   in Loop: Header=BB13_1 Depth=1
+.Ltmp116:
+	.loc	3 443 31 is_stmt 1              @ applications/RC522/rc522_function.c:443:31
+	ldr	r0, [sp, #20]
+	.loc	3 443 41 is_stmt 0              @ applications/RC522/rc522_function.c:443:41
+	ldrb.w	r1, [sp, #11]
+	.loc	3 443 29                        @ applications/RC522/rc522_function.c:443:29
+	ldrb	r1, [r0, r1]
+	movs	r0, #9
+	.loc	3 443 5                         @ applications/RC522/rc522_function.c:443:5
+	bl	WriteRawRC
+	b	.LBB13_3
+.LBB13_3:                               @   in Loop: Header=BB13_1 Depth=1
+	.loc	3 442 30 is_stmt 1              @ applications/RC522/rc522_function.c:442:30
+	ldrb.w	r0, [sp, #11]
+	adds	r0, #1
+	strb.w	r0, [sp, #11]
+	.loc	3 442 3 is_stmt 0               @ applications/RC522/rc522_function.c:442:3
+	b	.LBB13_1
+.Ltmp117:
+.LBB13_4:
+	.loc	3 0 3                           @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #1
+	movs	r1, #3
+	.loc	3 445 3 is_stmt 1               @ applications/RC522/rc522_function.c:445:3
+	bl	WriteRawRC
+	movs	r0, #255
+	.loc	3 447 6                         @ applications/RC522/rc522_function.c:447:6
+	strb.w	r0, [sp, #11]
+	.loc	3 449 3                         @ applications/RC522/rc522_function.c:449:3
+	b	.LBB13_5
+.LBB13_5:                               @ =>This Inner Loop Header: Depth=1
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #5
+.Ltmp118:
+	.loc	3 451 11 is_stmt 1              @ applications/RC522/rc522_function.c:451:11
+	bl	ReadRawRC
+	.loc	3 451 9 is_stmt 0               @ applications/RC522/rc522_function.c:451:9
+	strb.w	r0, [sp, #10]
+	.loc	3 452 7 is_stmt 1               @ applications/RC522/rc522_function.c:452:7
+	ldrb.w	r0, [sp, #11]
+	subs	r0, #1
+	strb.w	r0, [sp, #11]
+	.loc	3 453 3                         @ applications/RC522/rc522_function.c:453:3
+	b	.LBB13_6
+.Ltmp119:
+.LBB13_6:                               @   in Loop: Header=BB13_5 Depth=1
+	.loc	3 453 13 is_stmt 0              @ applications/RC522/rc522_function.c:453:13
+	ldrb.w	r1, [sp, #11]
+	movs	r0, #0
+	.loc	3 453 22                        @ applications/RC522/rc522_function.c:453:22
+	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r1, .LBB13_8
+	b	.LBB13_7
+.LBB13_7:                               @   in Loop: Header=BB13_5 Depth=1
+	.loc	3 453 27                        @ applications/RC522/rc522_function.c:453:27
+	ldrb.w	r0, [sp, #10]
+	.loc	3 453 31                        @ applications/RC522/rc522_function.c:453:31
+	and	r1, r0, #4
+	movs	r0, #1
+	.loc	3 453 25                        @ applications/RC522/rc522_function.c:453:25
+	eor.w	r0, r0, r1, lsr #2
+	str	r0, [sp]                        @ 4-byte Spill
+	b	.LBB13_8
+.LBB13_8:                               @   in Loop: Header=BB13_5 Depth=1
+	.loc	3 0 0                           @ applications/RC522/rc522_function.c:0:0
+	ldr	r0, [sp]                        @ 4-byte Reload
+.Ltmp120:
+	.loc	3 453 3                         @ applications/RC522/rc522_function.c:453:3
+	lsls	r0, r0, #31
+	cmp	r0, #0
+	bne	.LBB13_5
+	b	.LBB13_9
+.Ltmp121:
+.LBB13_9:
+	.loc	3 0 3                           @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #34
+	.loc	3 455 17 is_stmt 1              @ applications/RC522/rc522_function.c:455:17
+	bl	ReadRawRC
+	.loc	3 455 3 is_stmt 0               @ applications/RC522/rc522_function.c:455:3
+	ldr	r1, [sp, #12]
+	.loc	3 455 15                        @ applications/RC522/rc522_function.c:455:15
+	strb	r0, [r1]
+	movs	r0, #33
+	.loc	3 456 17 is_stmt 1              @ applications/RC522/rc522_function.c:456:17
+	bl	ReadRawRC
+	.loc	3 456 3 is_stmt 0               @ applications/RC522/rc522_function.c:456:3
+	ldr	r1, [sp, #12]
+	.loc	3 456 15                        @ applications/RC522/rc522_function.c:456:15
+	strb	r0, [r1, #1]
+	.loc	3 457 1 is_stmt 1               @ applications/RC522/rc522_function.c:457:1
+	add	sp, #24
+	pop	{r7, pc}
+.Ltmp122:
+.Lfunc_end13:
+	.size	CalulateCRC, .Lfunc_end13-CalulateCRC
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdSelect,"ax",%progbits
+	.hidden	PcdSelect                       @ -- Begin function PcdSelect
+	.globl	PcdSelect
+	.p2align	3
+	.type	PcdSelect,%function
+	.code	16                              @ @PcdSelect
+	.thumb_func
+PcdSelect:
+.Lfunc_begin14:
+	.loc	3 465 0                         @ applications/RC522/rc522_function.c:465:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+	str	r0, [sp, #36]
+	movs	r0, #147
+.Ltmp123:
+	.loc	3 471 20 prologue_end           @ applications/RC522/rc522_function.c:471:20
+	strb.w	r0, [sp, #16]
+	movs	r0, #112
+	.loc	3 472 20                        @ applications/RC522/rc522_function.c:472:20
+	strb.w	r0, [sp, #17]
+	movs	r0, #0
+	.loc	3 473 20                        @ applications/RC522/rc522_function.c:473:20
+	strb.w	r0, [sp, #22]
+.Ltmp124:
+	.loc	3 475 11                        @ applications/RC522/rc522_function.c:475:11
+	strb.w	r0, [sp, #34]
+	.loc	3 475 8 is_stmt 0               @ applications/RC522/rc522_function.c:475:8
+	b	.LBB14_1
+.LBB14_1:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp125:
+	.loc	3 475 16                        @ applications/RC522/rc522_function.c:475:16
+	ldrb.w	r0, [sp, #34]
+.Ltmp126:
+	.loc	3 475 3                         @ applications/RC522/rc522_function.c:475:3
+	cmp	r0, #3
+	bgt	.LBB14_4
+	b	.LBB14_2
+.LBB14_2:                               @   in Loop: Header=BB14_1 Depth=1
+.Ltmp127:
+	.loc	3 477 31 is_stmt 1              @ applications/RC522/rc522_function.c:477:31
+	ldr	r0, [sp, #36]
+	.loc	3 477 38 is_stmt 0              @ applications/RC522/rc522_function.c:477:38
+	ldrb.w	r1, [sp, #34]
+	.loc	3 477 29                        @ applications/RC522/rc522_function.c:477:29
+	ldrb	r0, [r0, r1]
+	add	r2, sp, #16
+	.loc	3 477 22                        @ applications/RC522/rc522_function.c:477:22
+	add	r1, r2
+	.loc	3 477 27                        @ applications/RC522/rc522_function.c:477:27
+	strb	r0, [r1, #2]
+	.loc	3 478 27 is_stmt 1              @ applications/RC522/rc522_function.c:478:27
+	ldr	r0, [sp, #36]
+	.loc	3 478 34 is_stmt 0              @ applications/RC522/rc522_function.c:478:34
+	ldrb.w	r1, [sp, #34]
+	.loc	3 478 25                        @ applications/RC522/rc522_function.c:478:25
+	ldrb	r1, [r0, r1]
+	.loc	3 478 22                        @ applications/RC522/rc522_function.c:478:22
+	ldrb.w	r0, [sp, #22]
+	eors	r0, r1
+	strb.w	r0, [sp, #22]
+	.loc	3 479 3 is_stmt 1               @ applications/RC522/rc522_function.c:479:3
+	b	.LBB14_3
+.Ltmp128:
+.LBB14_3:                               @   in Loop: Header=BB14_1 Depth=1
+	.loc	3 475 26                        @ applications/RC522/rc522_function.c:475:26
+	ldrb.w	r0, [sp, #34]
+	adds	r0, #1
+	strb.w	r0, [sp, #34]
+	.loc	3 475 3 is_stmt 0               @ applications/RC522/rc522_function.c:475:3
+	b	.LBB14_1
+.Ltmp129:
+.LBB14_4:
+	.loc	3 0 3                           @ applications/RC522/rc522_function.c:0:3
+	add	r0, sp, #16
+	.loc	3 481 34 is_stmt 1              @ applications/RC522/rc522_function.c:481:34
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	adds	r2, r0, #7
+	movs	r1, #7
+	.loc	3 481 3 is_stmt 0               @ applications/RC522/rc522_function.c:481:3
+	bl	CalulateCRC
+	movs	r1, #8
+	.loc	3 483 3 is_stmt 1               @ applications/RC522/rc522_function.c:483:3
+	mov	r0, r1
+	bl	ClearBitMask
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	.loc	3 485 9                         @ applications/RC522/rc522_function.c:485:9
+	mov	r1, sp
+	add	r0, sp, #12
+	str	r0, [r1]
+	movs	r0, #12
+	movs	r2, #9
+	mov	r1, r3
+	bl	PcdComMF522
+	.loc	3 485 7 is_stmt 0               @ applications/RC522/rc522_function.c:485:7
+	strb.w	r0, [sp, #35]
+.Ltmp130:
+	.loc	3 491 8 is_stmt 1               @ applications/RC522/rc522_function.c:491:8
+	ldrsb.w	r0, [sp, #35]
+	.loc	3 491 22 is_stmt 0              @ applications/RC522/rc522_function.c:491:22
+	cmp	r0, #38
+	bne	.LBB14_7
+	b	.LBB14_5
+.LBB14_5:
+	.loc	3 491 26                        @ applications/RC522/rc522_function.c:491:26
+	ldr	r0, [sp, #12]
+.Ltmp131:
+	.loc	3 491 7                         @ applications/RC522/rc522_function.c:491:7
+	cmp	r0, #24
+	bne	.LBB14_7
+	b	.LBB14_6
+.LBB14_6:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #38
+.Ltmp132:
+	.loc	3 492 9 is_stmt 1               @ applications/RC522/rc522_function.c:492:9
+	strb.w	r0, [sp, #35]
+	.loc	3 492 5 is_stmt 0               @ applications/RC522/rc522_function.c:492:5
+	b	.LBB14_8
+.LBB14_7:
+	.loc	3 0 5                           @ applications/RC522/rc522_function.c:0:5
+	movs	r0, #187
+	.loc	3 494 9 is_stmt 1               @ applications/RC522/rc522_function.c:494:9
+	strb.w	r0, [sp, #35]
+	b	.LBB14_8
+.Ltmp133:
+.LBB14_8:
+	.loc	3 496 10                        @ applications/RC522/rc522_function.c:496:10
+	ldrsb.w	r0, [sp, #35]
+	.loc	3 496 3 is_stmt 0               @ applications/RC522/rc522_function.c:496:3
+	add	sp, #40
+	pop	{r7, pc}
+.Ltmp134:
+.Lfunc_end14:
+	.size	PcdSelect, .Lfunc_end14-PcdSelect
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdAuthState,"ax",%progbits
+	.hidden	PcdAuthState                    @ -- Begin function PcdAuthState
+	.globl	PcdAuthState
+	.p2align	3
+	.type	PcdAuthState,%function
+	.code	16                              @ @PcdAuthState
+	.thumb_func
+PcdAuthState:
+.Lfunc_begin15:
+	.loc	3 512 0 is_stmt 1               @ applications/RC522/rc522_function.c:512:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+                                        @ kill: def $r12 killed $r1
+                                        @ kill: def $r12 killed $r0
+	strb.w	r0, [sp, #39]
+	strb.w	r1, [sp, #38]
+	str	r2, [sp, #32]
+	str	r3, [sp, #28]
+.Ltmp135:
+	.loc	3 517 22 prologue_end           @ applications/RC522/rc522_function.c:517:22
+	ldrb.w	r0, [sp, #39]
+	.loc	3 517 20 is_stmt 0              @ applications/RC522/rc522_function.c:517:20
+	strb.w	r0, [sp, #8]
+	.loc	3 518 22 is_stmt 1              @ applications/RC522/rc522_function.c:518:22
+	ldrb.w	r0, [sp, #38]
+	.loc	3 518 20 is_stmt 0              @ applications/RC522/rc522_function.c:518:20
+	strb.w	r0, [sp, #9]
+	movs	r0, #0
+.Ltmp136:
+	.loc	3 520 11 is_stmt 1              @ applications/RC522/rc522_function.c:520:11
+	strb.w	r0, [sp, #26]
+	.loc	3 520 8 is_stmt 0               @ applications/RC522/rc522_function.c:520:8
+	b	.LBB15_1
+.LBB15_1:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp137:
+	.loc	3 520 16                        @ applications/RC522/rc522_function.c:520:16
+	ldrb.w	r0, [sp, #26]
+.Ltmp138:
+	.loc	3 520 3                         @ applications/RC522/rc522_function.c:520:3
+	cmp	r0, #5
+	bgt	.LBB15_4
+	b	.LBB15_2
+.LBB15_2:                               @   in Loop: Header=BB15_1 Depth=1
+.Ltmp139:
+	.loc	3 521 31 is_stmt 1              @ applications/RC522/rc522_function.c:521:31
+	ldr	r0, [sp, #32]
+	.loc	3 521 38 is_stmt 0              @ applications/RC522/rc522_function.c:521:38
+	ldrb.w	r1, [sp, #26]
+	.loc	3 521 29                        @ applications/RC522/rc522_function.c:521:29
+	ldrb	r0, [r0, r1]
+	add	r2, sp, #8
+	.loc	3 521 22                        @ applications/RC522/rc522_function.c:521:22
+	add	r1, r2
+	.loc	3 521 27                        @ applications/RC522/rc522_function.c:521:27
+	strb	r0, [r1, #2]
+	.loc	3 521 5                         @ applications/RC522/rc522_function.c:521:5
+	b	.LBB15_3
+.LBB15_3:                               @   in Loop: Header=BB15_1 Depth=1
+	.loc	3 520 26 is_stmt 1              @ applications/RC522/rc522_function.c:520:26
+	ldrb.w	r0, [sp, #26]
+	adds	r0, #1
+	strb.w	r0, [sp, #26]
+	.loc	3 520 3 is_stmt 0               @ applications/RC522/rc522_function.c:520:3
+	b	.LBB15_1
+.Ltmp140:
+.LBB15_4:
+	.loc	3 0 3                           @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #0
+.Ltmp141:
+	.loc	3 523 11 is_stmt 1              @ applications/RC522/rc522_function.c:523:11
+	strb.w	r0, [sp, #26]
+	.loc	3 523 8 is_stmt 0               @ applications/RC522/rc522_function.c:523:8
+	b	.LBB15_5
+.LBB15_5:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp142:
+	.loc	3 523 16                        @ applications/RC522/rc522_function.c:523:16
+	ldrb.w	r0, [sp, #26]
+.Ltmp143:
+	.loc	3 523 3                         @ applications/RC522/rc522_function.c:523:3
+	cmp	r0, #5
+	bgt	.LBB15_8
+	b	.LBB15_6
+.LBB15_6:                               @   in Loop: Header=BB15_5 Depth=1
+.Ltmp144:
+	.loc	3 524 31 is_stmt 1              @ applications/RC522/rc522_function.c:524:31
+	ldr	r0, [sp, #28]
+	.loc	3 524 38 is_stmt 0              @ applications/RC522/rc522_function.c:524:38
+	ldrb.w	r1, [sp, #26]
+	.loc	3 524 29                        @ applications/RC522/rc522_function.c:524:29
+	ldrb	r0, [r0, r1]
+	add	r2, sp, #8
+	.loc	3 524 22                        @ applications/RC522/rc522_function.c:524:22
+	add	r1, r2
+	.loc	3 524 27                        @ applications/RC522/rc522_function.c:524:27
+	strb	r0, [r1, #8]
+	.loc	3 524 5                         @ applications/RC522/rc522_function.c:524:5
+	b	.LBB15_7
+.LBB15_7:                               @   in Loop: Header=BB15_5 Depth=1
+	.loc	3 523 26 is_stmt 1              @ applications/RC522/rc522_function.c:523:26
+	ldrb.w	r0, [sp, #26]
+	adds	r0, #1
+	strb.w	r0, [sp, #26]
+	.loc	3 523 3 is_stmt 0               @ applications/RC522/rc522_function.c:523:3
+	b	.LBB15_5
+.Ltmp145:
+.LBB15_8:
+	.loc	3 526 13 is_stmt 1              @ applications/RC522/rc522_function.c:526:13
+	mov	r1, sp
+	add	r0, sp, #4
+	str	r0, [r1]
+	movs	r0, #14
+	movs	r2, #12
+	add	r3, sp, #8
+	mov	r1, r3
+	bl	PcdComMF522
+	.loc	3 526 11 is_stmt 0              @ applications/RC522/rc522_function.c:526:11
+	strb.w	r0, [sp, #27]
+.Ltmp146:
+	.loc	3 532 8 is_stmt 1               @ applications/RC522/rc522_function.c:532:8
+	ldrsb.w	r0, [sp, #27]
+	.loc	3 532 26 is_stmt 0              @ applications/RC522/rc522_function.c:532:26
+	cmp	r0, #38
+	bne	.LBB15_10
+	b	.LBB15_9
+.LBB15_9:
+	.loc	3 0 26                          @ applications/RC522/rc522_function.c:0:26
+	movs	r0, #8
+	.loc	3 532 32                        @ applications/RC522/rc522_function.c:532:32
+	bl	ReadRawRC
+.Ltmp147:
+	.loc	3 532 7                         @ applications/RC522/rc522_function.c:532:7
+	lsls	r0, r0, #28
+	cmp	r0, #0
+	bmi	.LBB15_11
+	b	.LBB15_10
+.LBB15_10:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #187
+.Ltmp148:
+	.loc	3 533 13 is_stmt 1              @ applications/RC522/rc522_function.c:533:13
+	strb.w	r0, [sp, #27]
+	.loc	3 533 5 is_stmt 0               @ applications/RC522/rc522_function.c:533:5
+	b	.LBB15_11
+.Ltmp149:
+.LBB15_11:
+	.loc	3 535 10 is_stmt 1              @ applications/RC522/rc522_function.c:535:10
+	ldrsb.w	r0, [sp, #27]
+	.loc	3 535 3 is_stmt 0               @ applications/RC522/rc522_function.c:535:3
+	add	sp, #40
+	pop	{r7, pc}
+.Ltmp150:
+.Lfunc_end15:
+	.size	PcdAuthState, .Lfunc_end15-PcdAuthState
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdWrite,"ax",%progbits
+	.hidden	PcdWrite                        @ -- Begin function PcdWrite
+	.globl	PcdWrite
+	.p2align	3
+	.type	PcdWrite,%function
+	.code	16                              @ @PcdWrite
+	.thumb_func
+PcdWrite:
+.Lfunc_begin16:
+	.loc	3 545 0 is_stmt 1               @ applications/RC522/rc522_function.c:545:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#48
+	sub	sp, #48
+	.cfi_def_cfa_offset 56
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #47]
+	str	r1, [sp, #40]
+	movs	r0, #160
+.Ltmp151:
+	.loc	3 550 20 prologue_end           @ applications/RC522/rc522_function.c:550:20
+	strb.w	r0, [sp, #20]
+	.loc	3 551 22                        @ applications/RC522/rc522_function.c:551:22
+	ldrb.w	r0, [sp, #47]
+	.loc	3 551 20 is_stmt 0              @ applications/RC522/rc522_function.c:551:20
+	strb.w	r0, [sp, #21]
+	add	r0, sp, #20
+	.loc	3 553 34 is_stmt 1              @ applications/RC522/rc522_function.c:553:34
+	str	r0, [sp, #12]                   @ 4-byte Spill
+	adds	r2, r0, #2
+	movs	r1, #2
+	.loc	3 553 3 is_stmt 0               @ applications/RC522/rc522_function.c:553:3
+	bl	CalulateCRC
+	ldr	r3, [sp, #12]                   @ 4-byte Reload
+	.loc	3 555 13 is_stmt 1              @ applications/RC522/rc522_function.c:555:13
+	mov	r1, sp
+	add	r0, sp, #16
+	str	r0, [r1]
+	movs	r0, #12
+	movs	r2, #4
+	mov	r1, r3
+	bl	PcdComMF522
+	.loc	3 555 11 is_stmt 0              @ applications/RC522/rc522_function.c:555:11
+	strb.w	r0, [sp, #39]
+.Ltmp152:
+	.loc	3 561 8 is_stmt 1               @ applications/RC522/rc522_function.c:561:8
+	ldrsb.w	r0, [sp, #39]
+	.loc	3 561 26 is_stmt 0              @ applications/RC522/rc522_function.c:561:26
+	cmp	r0, #38
+	bne	.LBB16_3
+	b	.LBB16_1
+.LBB16_1:
+	.loc	3 561 30                        @ applications/RC522/rc522_function.c:561:30
+	ldr	r0, [sp, #16]
+	.loc	3 561 42                        @ applications/RC522/rc522_function.c:561:42
+	cmp	r0, #4
+	bne	.LBB16_3
+	b	.LBB16_2
+.LBB16_2:
+	.loc	3 562 9 is_stmt 1               @ applications/RC522/rc522_function.c:562:9
+	ldrb.w	r0, [sp, #20]
+	.loc	3 562 26 is_stmt 0              @ applications/RC522/rc522_function.c:562:26
+	and	r0, r0, #15
+.Ltmp153:
+	.loc	3 561 7 is_stmt 1               @ applications/RC522/rc522_function.c:561:7
+	cmp	r0, #10
+	beq	.LBB16_4
+	b	.LBB16_3
+.LBB16_3:
+	.loc	3 0 7 is_stmt 0                 @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #187
+.Ltmp154:
+	.loc	3 563 13 is_stmt 1              @ applications/RC522/rc522_function.c:563:13
+	strb.w	r0, [sp, #39]
+	.loc	3 563 5 is_stmt 0               @ applications/RC522/rc522_function.c:563:5
+	b	.LBB16_4
+.Ltmp155:
+.LBB16_4:
+	.loc	3 565 7 is_stmt 1               @ applications/RC522/rc522_function.c:565:7
+	ldrsb.w	r0, [sp, #39]
+.Ltmp156:
+	.loc	3 565 7 is_stmt 0               @ applications/RC522/rc522_function.c:565:7
+	cmp	r0, #38
+	bne	.LBB16_14
+	b	.LBB16_5
+.LBB16_5:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #0
+.Ltmp157:
+	.loc	3 568 13 is_stmt 1              @ applications/RC522/rc522_function.c:568:13
+	strb.w	r0, [sp, #38]
+	.loc	3 568 10 is_stmt 0              @ applications/RC522/rc522_function.c:568:10
+	b	.LBB16_6
+.LBB16_6:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp158:
+	.loc	3 568 18                        @ applications/RC522/rc522_function.c:568:18
+	ldrb.w	r0, [sp, #38]
+.Ltmp159:
+	.loc	3 568 5                         @ applications/RC522/rc522_function.c:568:5
+	cmp	r0, #15
+	bgt	.LBB16_9
+	b	.LBB16_7
+.LBB16_7:                               @   in Loop: Header=BB16_6 Depth=1
+.Ltmp160:
+	.loc	3 569 29 is_stmt 1              @ applications/RC522/rc522_function.c:569:29
+	ldr	r0, [sp, #40]
+	.loc	3 569 37 is_stmt 0              @ applications/RC522/rc522_function.c:569:37
+	ldrb.w	r2, [sp, #38]
+	.loc	3 569 27                        @ applications/RC522/rc522_function.c:569:27
+	ldrb	r0, [r0, r2]
+	add	r1, sp, #20
+	.loc	3 569 25                        @ applications/RC522/rc522_function.c:569:25
+	strb	r0, [r1, r2]
+	.loc	3 569 7                         @ applications/RC522/rc522_function.c:569:7
+	b	.LBB16_8
+.LBB16_8:                               @   in Loop: Header=BB16_6 Depth=1
+	.loc	3 568 29 is_stmt 1              @ applications/RC522/rc522_function.c:568:29
+	ldrb.w	r0, [sp, #38]
+	adds	r0, #1
+	strb.w	r0, [sp, #38]
+	.loc	3 568 5 is_stmt 0               @ applications/RC522/rc522_function.c:568:5
+	b	.LBB16_6
+.Ltmp161:
+.LBB16_9:
+	.loc	3 0 5                           @ applications/RC522/rc522_function.c:0:5
+	add	r0, sp, #20
+	.loc	3 571 37 is_stmt 1              @ applications/RC522/rc522_function.c:571:37
+	str	r0, [sp, #8]                    @ 4-byte Spill
+	add.w	r2, r0, #16
+	movs	r1, #16
+	.loc	3 571 5 is_stmt 0               @ applications/RC522/rc522_function.c:571:5
+	bl	CalulateCRC
+	ldr	r3, [sp, #8]                    @ 4-byte Reload
+	.loc	3 573 15 is_stmt 1              @ applications/RC522/rc522_function.c:573:15
+	mov	r1, sp
+	add	r0, sp, #16
+	str	r0, [r1]
+	movs	r0, #12
+	movs	r2, #18
+	mov	r1, r3
+	bl	PcdComMF522
+	.loc	3 573 13 is_stmt 0              @ applications/RC522/rc522_function.c:573:13
+	strb.w	r0, [sp, #39]
+.Ltmp162:
+	.loc	3 579 10 is_stmt 1              @ applications/RC522/rc522_function.c:579:10
+	ldrsb.w	r0, [sp, #39]
+	.loc	3 579 28 is_stmt 0              @ applications/RC522/rc522_function.c:579:28
+	cmp	r0, #38
+	bne	.LBB16_12
+	b	.LBB16_10
+.LBB16_10:
+	.loc	3 579 32                        @ applications/RC522/rc522_function.c:579:32
+	ldr	r0, [sp, #16]
+	.loc	3 579 44                        @ applications/RC522/rc522_function.c:579:44
+	cmp	r0, #4
+	bne	.LBB16_12
+	b	.LBB16_11
+.LBB16_11:
+	.loc	3 580 11 is_stmt 1              @ applications/RC522/rc522_function.c:580:11
+	ldrb.w	r0, [sp, #20]
+	.loc	3 580 28 is_stmt 0              @ applications/RC522/rc522_function.c:580:28
+	and	r0, r0, #15
+.Ltmp163:
+	.loc	3 579 9 is_stmt 1               @ applications/RC522/rc522_function.c:579:9
+	cmp	r0, #10
+	beq	.LBB16_13
+	b	.LBB16_12
+.LBB16_12:
+	.loc	3 0 9 is_stmt 0                 @ applications/RC522/rc522_function.c:0:9
+	movs	r0, #187
+.Ltmp164:
+	.loc	3 581 15 is_stmt 1              @ applications/RC522/rc522_function.c:581:15
+	strb.w	r0, [sp, #39]
+	.loc	3 581 7 is_stmt 0               @ applications/RC522/rc522_function.c:581:7
+	b	.LBB16_13
+.Ltmp165:
+.LBB16_13:
+	.loc	3 582 3 is_stmt 1               @ applications/RC522/rc522_function.c:582:3
+	b	.LBB16_14
+.Ltmp166:
+.LBB16_14:
+	.loc	3 583 10                        @ applications/RC522/rc522_function.c:583:10
+	ldrsb.w	r0, [sp, #39]
+	.loc	3 583 3 is_stmt 0               @ applications/RC522/rc522_function.c:583:3
+	add	sp, #48
+	pop	{r7, pc}
+.Ltmp167:
+.Lfunc_end16:
+	.size	PcdWrite, .Lfunc_end16-PcdWrite
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdRead,"ax",%progbits
+	.hidden	PcdRead                         @ -- Begin function PcdRead
+	.globl	PcdRead
+	.p2align	3
+	.type	PcdRead,%function
+	.code	16                              @ @PcdRead
+	.thumb_func
+PcdRead:
+.Lfunc_begin17:
+	.loc	3 593 0 is_stmt 1               @ applications/RC522/rc522_function.c:593:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#40
+	sub	sp, #40
+	.cfi_def_cfa_offset 48
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #39]
+	str	r1, [sp, #32]
+	movs	r0, #48
+.Ltmp168:
+	.loc	3 598 20 prologue_end           @ applications/RC522/rc522_function.c:598:20
+	strb.w	r0, [sp, #12]
+	.loc	3 599 22                        @ applications/RC522/rc522_function.c:599:22
+	ldrb.w	r0, [sp, #39]
+	.loc	3 599 20 is_stmt 0              @ applications/RC522/rc522_function.c:599:20
+	strb.w	r0, [sp, #13]
+	add	r0, sp, #12
+	.loc	3 601 34 is_stmt 1              @ applications/RC522/rc522_function.c:601:34
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	adds	r2, r0, #2
+	movs	r1, #2
+	.loc	3 601 3 is_stmt 0               @ applications/RC522/rc522_function.c:601:3
+	bl	CalulateCRC
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	.loc	3 603 13 is_stmt 1              @ applications/RC522/rc522_function.c:603:13
+	mov	r1, sp
+	add	r0, sp, #8
+	str	r0, [r1]
+	movs	r0, #12
+	movs	r2, #4
+	mov	r1, r3
+	bl	PcdComMF522
+	.loc	3 603 11 is_stmt 0              @ applications/RC522/rc522_function.c:603:11
+	strb.w	r0, [sp, #31]
+.Ltmp169:
+	.loc	3 609 8 is_stmt 1               @ applications/RC522/rc522_function.c:609:8
+	ldrsb.w	r0, [sp, #31]
+	.loc	3 609 26 is_stmt 0              @ applications/RC522/rc522_function.c:609:26
+	cmp	r0, #38
+	bne	.LBB17_7
+	b	.LBB17_1
+.LBB17_1:
+	.loc	3 609 30                        @ applications/RC522/rc522_function.c:609:30
+	ldr	r0, [sp, #8]
+.Ltmp170:
+	.loc	3 609 7                         @ applications/RC522/rc522_function.c:609:7
+	cmp	r0, #144
+	bne	.LBB17_7
+	b	.LBB17_2
+.LBB17_2:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #0
+.Ltmp171:
+	.loc	3 611 13 is_stmt 1              @ applications/RC522/rc522_function.c:611:13
+	strb.w	r0, [sp, #30]
+	.loc	3 611 10 is_stmt 0              @ applications/RC522/rc522_function.c:611:10
+	b	.LBB17_3
+.LBB17_3:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp172:
+	.loc	3 611 18                        @ applications/RC522/rc522_function.c:611:18
+	ldrb.w	r0, [sp, #30]
+.Ltmp173:
+	.loc	3 611 5                         @ applications/RC522/rc522_function.c:611:5
+	cmp	r0, #15
+	bgt	.LBB17_6
+	b	.LBB17_4
+.LBB17_4:                               @   in Loop: Header=BB17_3 Depth=1
+.Ltmp174:
+	.loc	3 612 37 is_stmt 1              @ applications/RC522/rc522_function.c:612:37
+	ldrb.w	r2, [sp, #30]
+	add	r0, sp, #12
+	.loc	3 612 23 is_stmt 0              @ applications/RC522/rc522_function.c:612:23
+	ldrb	r0, [r0, r2]
+	.loc	3 612 9                         @ applications/RC522/rc522_function.c:612:9
+	ldr	r1, [sp, #32]
+	.loc	3 612 21                        @ applications/RC522/rc522_function.c:612:21
+	strb	r0, [r1, r2]
+	.loc	3 612 7                         @ applications/RC522/rc522_function.c:612:7
+	b	.LBB17_5
+.LBB17_5:                               @   in Loop: Header=BB17_3 Depth=1
+	.loc	3 611 29 is_stmt 1              @ applications/RC522/rc522_function.c:611:29
+	ldrb.w	r0, [sp, #30]
+	adds	r0, #1
+	strb.w	r0, [sp, #30]
+	.loc	3 611 5 is_stmt 0               @ applications/RC522/rc522_function.c:611:5
+	b	.LBB17_3
+.Ltmp175:
+.LBB17_6:
+	.loc	3 613 3 is_stmt 1               @ applications/RC522/rc522_function.c:613:3
+	b	.LBB17_8
+.Ltmp176:
+.LBB17_7:
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #187
+	.loc	3 616 13 is_stmt 1              @ applications/RC522/rc522_function.c:616:13
+	strb.w	r0, [sp, #31]
+	b	.LBB17_8
+.Ltmp177:
+.LBB17_8:
+	.loc	3 618 10                        @ applications/RC522/rc522_function.c:618:10
+	ldrsb.w	r0, [sp, #31]
+	.loc	3 618 3 is_stmt 0               @ applications/RC522/rc522_function.c:618:3
+	add	sp, #40
+	pop	{r7, pc}
+.Ltmp178:
+.Lfunc_end17:
+	.size	PcdRead, .Lfunc_end17-PcdRead
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.PcdHalt,"ax",%progbits
+	.hidden	PcdHalt                         @ -- Begin function PcdHalt
+	.globl	PcdHalt
+	.p2align	3
+	.type	PcdHalt,%function
+	.code	16                              @ @PcdHalt
+	.thumb_func
+PcdHalt:
+.Lfunc_begin18:
+	.loc	3 627 0 is_stmt 1               @ applications/RC522/rc522_function.c:627:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	movs	r0, #80
+.Ltmp179:
+	.loc	3 631 20 prologue_end           @ applications/RC522/rc522_function.c:631:20
+	strb.w	r0, [sp, #14]
+	movs	r0, #0
+	.loc	3 632 20                        @ applications/RC522/rc522_function.c:632:20
+	strb.w	r0, [sp, #15]
+	add.w	r0, sp, #14
+	.loc	3 634 34                        @ applications/RC522/rc522_function.c:634:34
+	str	r0, [sp, #4]                    @ 4-byte Spill
+	adds	r2, r0, #2
+	movs	r1, #2
+	.loc	3 634 3 is_stmt 0               @ applications/RC522/rc522_function.c:634:3
+	bl	CalulateCRC
+	ldr	r3, [sp, #4]                    @ 4-byte Reload
+	.loc	3 635 3 is_stmt 1               @ applications/RC522/rc522_function.c:635:3
+	mov	r1, sp
+	add	r0, sp, #8
+	str	r0, [r1]
+	movs	r0, #12
+	movs	r2, #4
+	mov	r1, r3
+	bl	PcdComMF522
+	movs	r0, #38
+	.loc	3 641 3                         @ applications/RC522/rc522_function.c:641:3
+	add	sp, #32
+	pop	{r7, pc}
+.Ltmp180:
+.Lfunc_end18:
+	.size	PcdHalt, .Lfunc_end18-PcdHalt
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.WriteAmount,"ax",%progbits
+	.hidden	WriteAmount                     @ -- Begin function WriteAmount
+	.globl	WriteAmount
+	.p2align	3
+	.type	WriteAmount,%function
+	.code	16                              @ @WriteAmount
+	.thumb_func
+WriteAmount:
+.Lfunc_begin19:
+	.loc	3 651 0                         @ applications/RC522/rc522_function.c:651:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #31]
+	str	r1, [sp, #24]
+.Ltmp181:
+	.loc	3 654 23 prologue_end           @ applications/RC522/rc522_function.c:654:23
+	ldr	r0, [sp, #24]
+	.loc	3 654 20 is_stmt 0              @ applications/RC522/rc522_function.c:654:20
+	strb.w	r0, [sp, #7]
+	.loc	3 655 23 is_stmt 1              @ applications/RC522/rc522_function.c:655:23
+	ldr	r0, [sp, #24]
+	.loc	3 655 55 is_stmt 0              @ applications/RC522/rc522_function.c:655:55
+	lsrs	r0, r0, #8
+	.loc	3 655 20                        @ applications/RC522/rc522_function.c:655:20
+	strb.w	r0, [sp, #8]
+	.loc	3 656 23 is_stmt 1              @ applications/RC522/rc522_function.c:656:23
+	ldrh.w	r0, [sp, #26]
+	.loc	3 656 20 is_stmt 0              @ applications/RC522/rc522_function.c:656:20
+	strb.w	r0, [sp, #9]
+	.loc	3 657 23 is_stmt 1              @ applications/RC522/rc522_function.c:657:23
+	ldrb.w	r0, [sp, #27]
+	.loc	3 657 20 is_stmt 0              @ applications/RC522/rc522_function.c:657:20
+	strb.w	r0, [sp, #10]
+	.loc	3 659 24 is_stmt 1              @ applications/RC522/rc522_function.c:659:24
+	ldr	r0, [sp, #24]
+	.loc	3 659 22 is_stmt 0              @ applications/RC522/rc522_function.c:659:22
+	mvns	r0, r0
+	.loc	3 659 20                        @ applications/RC522/rc522_function.c:659:20
+	strb.w	r0, [sp, #11]
+	.loc	3 660 24 is_stmt 1              @ applications/RC522/rc522_function.c:660:24
+	ldr	r0, [sp, #24]
+	.loc	3 660 22 is_stmt 0              @ applications/RC522/rc522_function.c:660:22
+	mvns	r0, r0
+	.loc	3 660 56                        @ applications/RC522/rc522_function.c:660:56
+	lsrs	r0, r0, #8
+	.loc	3 660 20                        @ applications/RC522/rc522_function.c:660:20
+	strb.w	r0, [sp, #12]
+	.loc	3 661 24 is_stmt 1              @ applications/RC522/rc522_function.c:661:24
+	ldr	r0, [sp, #24]
+	.loc	3 661 22 is_stmt 0              @ applications/RC522/rc522_function.c:661:22
+	mvns	r0, r0
+	.loc	3 661 56                        @ applications/RC522/rc522_function.c:661:56
+	lsrs	r0, r0, #16
+	.loc	3 661 20                        @ applications/RC522/rc522_function.c:661:20
+	strb.w	r0, [sp, #13]
+	.loc	3 662 24 is_stmt 1              @ applications/RC522/rc522_function.c:662:24
+	ldr	r0, [sp, #24]
+	.loc	3 662 22 is_stmt 0              @ applications/RC522/rc522_function.c:662:22
+	mvns	r0, r0
+	.loc	3 662 56                        @ applications/RC522/rc522_function.c:662:56
+	lsrs	r0, r0, #24
+	.loc	3 662 20                        @ applications/RC522/rc522_function.c:662:20
+	strb.w	r0, [sp, #14]
+	.loc	3 664 23 is_stmt 1              @ applications/RC522/rc522_function.c:664:23
+	ldr	r0, [sp, #24]
+	.loc	3 664 20 is_stmt 0              @ applications/RC522/rc522_function.c:664:20
+	strb.w	r0, [sp, #15]
+	.loc	3 665 23 is_stmt 1              @ applications/RC522/rc522_function.c:665:23
+	ldr	r0, [sp, #24]
+	.loc	3 665 55 is_stmt 0              @ applications/RC522/rc522_function.c:665:55
+	lsrs	r0, r0, #8
+	.loc	3 665 20                        @ applications/RC522/rc522_function.c:665:20
+	strb.w	r0, [sp, #16]
+	.loc	3 666 24 is_stmt 1              @ applications/RC522/rc522_function.c:666:24
+	ldrh.w	r0, [sp, #26]
+	.loc	3 666 21 is_stmt 0              @ applications/RC522/rc522_function.c:666:21
+	strb.w	r0, [sp, #17]
+	.loc	3 667 24 is_stmt 1              @ applications/RC522/rc522_function.c:667:24
+	ldrb.w	r0, [sp, #27]
+	.loc	3 667 21 is_stmt 0              @ applications/RC522/rc522_function.c:667:21
+	strb.w	r0, [sp, #18]
+	.loc	3 669 23 is_stmt 1              @ applications/RC522/rc522_function.c:669:23
+	ldrb.w	r0, [sp, #31]
+	.loc	3 669 21 is_stmt 0              @ applications/RC522/rc522_function.c:669:21
+	strb.w	r0, [sp, #19]
+	.loc	3 670 24 is_stmt 1              @ applications/RC522/rc522_function.c:670:24
+	ldrb.w	r0, [sp, #31]
+	.loc	3 670 23 is_stmt 0              @ applications/RC522/rc522_function.c:670:23
+	mvns	r0, r0
+	.loc	3 670 21                        @ applications/RC522/rc522_function.c:670:21
+	strb.w	r0, [sp, #20]
+	.loc	3 671 23 is_stmt 1              @ applications/RC522/rc522_function.c:671:23
+	ldrb.w	r0, [sp, #31]
+	.loc	3 671 21 is_stmt 0              @ applications/RC522/rc522_function.c:671:21
+	strb.w	r0, [sp, #21]
+	.loc	3 672 24 is_stmt 1              @ applications/RC522/rc522_function.c:672:24
+	ldrb.w	r0, [sp, #31]
+	.loc	3 672 23 is_stmt 0              @ applications/RC522/rc522_function.c:672:23
+	mvns	r0, r0
+	.loc	3 672 21                        @ applications/RC522/rc522_function.c:672:21
+	strb.w	r0, [sp, #22]
+	.loc	3 673 21 is_stmt 1              @ applications/RC522/rc522_function.c:673:21
+	ldrb.w	r0, [sp, #31]
+	add.w	r1, sp, #7
+	.loc	3 673 12 is_stmt 0              @ applications/RC522/rc522_function.c:673:12
+	bl	PcdWrite
+	.loc	3 673 10                        @ applications/RC522/rc522_function.c:673:10
+	strb.w	r0, [sp, #23]
+	.loc	3 674 10 is_stmt 1              @ applications/RC522/rc522_function.c:674:10
+	ldrsb.w	r0, [sp, #23]
+	.loc	3 674 3 is_stmt 0               @ applications/RC522/rc522_function.c:674:3
+	add	sp, #32
+	pop	{r7, pc}
+.Ltmp182:
+.Lfunc_end19:
+	.size	WriteAmount, .Lfunc_end19-WriteAmount
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.ReadAmount,"ax",%progbits
+	.hidden	ReadAmount                      @ -- Begin function ReadAmount
+	.globl	ReadAmount
+	.p2align	3
+	.type	ReadAmount,%function
+	.code	16                              @ @ReadAmount
+	.thumb_func
+ReadAmount:
+.Lfunc_begin20:
+	.loc	3 684 0 is_stmt 1               @ applications/RC522/rc522_function.c:684:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+                                        @ kill: def $r2 killed $r0
+	strb.w	r0, [sp, #30]
+	str	r1, [sp, #24]
+	movs	r0, #187
+.Ltmp183:
+	.loc	3 686 8 prologue_end            @ applications/RC522/rc522_function.c:686:8
+	strb.w	r0, [sp, #23]
+	.loc	3 689 20                        @ applications/RC522/rc522_function.c:689:20
+	ldrb.w	r0, [sp, #30]
+	add.w	r1, sp, #6
+	.loc	3 689 12 is_stmt 0              @ applications/RC522/rc522_function.c:689:12
+	bl	PcdRead
+	.loc	3 689 10                        @ applications/RC522/rc522_function.c:689:10
+	strb.w	r0, [sp, #23]
+.Ltmp184:
+	.loc	3 690 7 is_stmt 1               @ applications/RC522/rc522_function.c:690:7
+	ldrsb.w	r0, [sp, #23]
+.Ltmp185:
+	.loc	3 690 7 is_stmt 0               @ applications/RC522/rc522_function.c:690:7
+	cmp	r0, #38
+	beq	.LBB20_2
+	b	.LBB20_1
+.LBB20_1:
+.Ltmp186:
+	.loc	3 691 12 is_stmt 1              @ applications/RC522/rc522_function.c:691:12
+	ldrb.w	r0, [sp, #23]
+	.loc	3 691 5 is_stmt 0               @ applications/RC522/rc522_function.c:691:5
+	strb.w	r0, [sp, #31]
+	b	.LBB20_13
+.Ltmp187:
+.LBB20_2:
+	.loc	3 0 5                           @ applications/RC522/rc522_function.c:0:5
+	movs	r0, #0
+.Ltmp188:
+	.loc	3 692 10 is_stmt 1              @ applications/RC522/rc522_function.c:692:10
+	strb.w	r0, [sp, #22]
+	.loc	3 692 8 is_stmt 0               @ applications/RC522/rc522_function.c:692:8
+	b	.LBB20_3
+.LBB20_3:                               @ =>This Inner Loop Header: Depth=1
+.Ltmp189:
+	.loc	3 692 15                        @ applications/RC522/rc522_function.c:692:15
+	ldrb.w	r0, [sp, #22]
+.Ltmp190:
+	.loc	3 692 3                         @ applications/RC522/rc522_function.c:692:3
+	cmp	r0, #3
+	bgt	.LBB20_9
+	b	.LBB20_4
+.LBB20_4:                               @   in Loop: Header=BB20_3 Depth=1
+.Ltmp191:
+	.loc	3 694 24 is_stmt 1              @ applications/RC522/rc522_function.c:694:24
+	ldrb.w	r2, [sp, #22]
+	add.w	r0, sp, #6
+	.loc	3 694 10 is_stmt 0              @ applications/RC522/rc522_function.c:694:10
+	adds	r1, r0, r2
+	ldrb	r0, [r0, r2]
+	.loc	3 694 30                        @ applications/RC522/rc522_function.c:694:30
+	ldrb	r1, [r1, #8]
+	.loc	3 694 52                        @ applications/RC522/rc522_function.c:694:52
+	cmp	r0, r1
+	beq	.LBB20_7
+	b	.LBB20_5
+.LBB20_5:                               @   in Loop: Header=BB20_3 Depth=1
+	.loc	3 694 70                        @ applications/RC522/rc522_function.c:694:70
+	ldrb.w	r2, [sp, #22]
+	add.w	r0, sp, #6
+	.loc	3 694 56                        @ applications/RC522/rc522_function.c:694:56
+	adds	r1, r0, r2
+	ldrb	r0, [r0, r2]
+	.loc	3 694 77                        @ applications/RC522/rc522_function.c:694:77
+	ldrb	r1, [r1, #4]
+	.loc	3 694 76                        @ applications/RC522/rc522_function.c:694:76
+	mvns	r1, r1
+.Ltmp192:
+	.loc	3 694 9                         @ applications/RC522/rc522_function.c:694:9
+	cmp	r0, r1
+	beq	.LBB20_7
+	b	.LBB20_6
+.LBB20_6:
+.Ltmp193:
+	.loc	3 695 7 is_stmt 1               @ applications/RC522/rc522_function.c:695:7
+	b	.LBB20_9
+.Ltmp194:
+.LBB20_7:                               @   in Loop: Header=BB20_3 Depth=1
+	.loc	3 696 3                         @ applications/RC522/rc522_function.c:696:3
+	b	.LBB20_8
+.Ltmp195:
+.LBB20_8:                               @   in Loop: Header=BB20_3 Depth=1
+	.loc	3 692 23                        @ applications/RC522/rc522_function.c:692:23
+	ldrb.w	r0, [sp, #22]
+	adds	r0, #1
+	strb.w	r0, [sp, #22]
+	.loc	3 692 3 is_stmt 0               @ applications/RC522/rc522_function.c:692:3
+	b	.LBB20_3
+.Ltmp196:
+.LBB20_9:
+	.loc	3 697 7 is_stmt 1               @ applications/RC522/rc522_function.c:697:7
+	ldrb.w	r0, [sp, #22]
+.Ltmp197:
+	.loc	3 697 7 is_stmt 0               @ applications/RC522/rc522_function.c:697:7
+	cmp	r0, #4
+	bne	.LBB20_11
+	b	.LBB20_10
+.LBB20_10:
+	.loc	3 0 7                           @ applications/RC522/rc522_function.c:0:7
+	movs	r0, #38
+.Ltmp198:
+	.loc	3 699 12 is_stmt 1              @ applications/RC522/rc522_function.c:699:12
+	strb.w	r0, [sp, #23]
+	.loc	3 700 84                        @ applications/RC522/rc522_function.c:700:84
+	ldr.w	r0, [sp, #6]
+	.loc	3 700 6 is_stmt 0               @ applications/RC522/rc522_function.c:700:6
+	ldr	r1, [sp, #24]
+	.loc	3 700 12                        @ applications/RC522/rc522_function.c:700:12
+	str	r0, [r1]
+	.loc	3 701 3 is_stmt 1               @ applications/RC522/rc522_function.c:701:3
+	b	.LBB20_12
+.Ltmp199:
+.LBB20_11:
+	.loc	3 0 3 is_stmt 0                 @ applications/RC522/rc522_function.c:0:3
+	movs	r0, #187
+.Ltmp200:
+	.loc	3 704 12 is_stmt 1              @ applications/RC522/rc522_function.c:704:12
+	strb.w	r0, [sp, #23]
+	.loc	3 705 6                         @ applications/RC522/rc522_function.c:705:6
+	ldr	r1, [sp, #24]
+	movs	r0, #0
+	.loc	3 705 12 is_stmt 0              @ applications/RC522/rc522_function.c:705:12
+	str	r0, [r1]
+	b	.LBB20_12
+.Ltmp201:
+.LBB20_12:
+	.loc	3 707 10 is_stmt 1              @ applications/RC522/rc522_function.c:707:10
+	ldrb.w	r0, [sp, #23]
+	.loc	3 707 3 is_stmt 0               @ applications/RC522/rc522_function.c:707:3
+	strb.w	r0, [sp, #31]
+	b	.LBB20_13
+.LBB20_13:
+	.loc	3 708 1 is_stmt 1               @ applications/RC522/rc522_function.c:708:1
+	ldrsb.w	r0, [sp, #31]
+	add	sp, #32
+	pop	{r7, pc}
+.Ltmp202:
+.Lfunc_end20:
+	.size	ReadAmount, .Lfunc_end20-ReadAmount
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	6                               @ DW_FORM_data4
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	19                              @ DW_TAG_structure_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	13                              @ DW_TAG_member
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	56                              @ DW_AT_data_member_location
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	53                              @ DW_TAG_volatile_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	1                               @ DW_TAG_array_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	33                              @ DW_TAG_subrange_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	55                              @ DW_AT_count
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	12                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	13                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	14                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	15                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	17                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	18                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	19                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	20                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	3                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x79d DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0xb DW_TAG_typedef
+	.long	49                              @ DW_AT_type
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	63                              @ DW_AT_decl_line
+	.byte	3                               @ Abbrev [3] 0x31:0x7 DW_TAG_base_type
+	.long	.Linfo_string3                  @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	4                               @ Abbrev [4] 0x38:0x5 DW_TAG_pointer_type
+	.long	61                              @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x3d:0xc DW_TAG_typedef
+	.long	73                              @ DW_AT_type
+	.long	.Linfo_string17                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	1030                            @ DW_AT_decl_line
+	.byte	6                               @ Abbrev [6] 0x49:0x7b DW_TAG_structure_type
+	.byte	40                              @ DW_AT_byte_size
+	.byte	2                               @ DW_AT_decl_file
+	.short	1019                            @ DW_AT_decl_line
+	.byte	7                               @ Abbrev [7] 0x4e:0xd DW_TAG_member
+	.long	.Linfo_string5                  @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1021                            @ DW_AT_decl_line
+	.byte	0                               @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0x5b:0xd DW_TAG_member
+	.long	.Linfo_string8                  @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1022                            @ DW_AT_decl_line
+	.byte	4                               @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0x68:0xd DW_TAG_member
+	.long	.Linfo_string9                  @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1023                            @ DW_AT_decl_line
+	.byte	8                               @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0x75:0xd DW_TAG_member
+	.long	.Linfo_string10                 @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1024                            @ DW_AT_decl_line
+	.byte	12                              @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0x82:0xd DW_TAG_member
+	.long	.Linfo_string11                 @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1025                            @ DW_AT_decl_line
+	.byte	16                              @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0x8f:0xd DW_TAG_member
+	.long	.Linfo_string12                 @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1026                            @ DW_AT_decl_line
+	.byte	20                              @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0x9c:0xd DW_TAG_member
+	.long	.Linfo_string13                 @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1027                            @ DW_AT_decl_line
+	.byte	24                              @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0xa9:0xd DW_TAG_member
+	.long	.Linfo_string14                 @ DW_AT_name
+	.long	196                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1028                            @ DW_AT_decl_line
+	.byte	28                              @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0xb6:0xd DW_TAG_member
+	.long	.Linfo_string15                 @ DW_AT_name
+	.long	219                             @ DW_AT_type
+	.byte	2                               @ DW_AT_decl_file
+	.short	1029                            @ DW_AT_decl_line
+	.byte	32                              @ DW_AT_data_member_location
+	.byte	0                               @ End Of Children Mark
+	.byte	8                               @ Abbrev [8] 0xc4:0x5 DW_TAG_volatile_type
+	.long	201                             @ DW_AT_type
+	.byte	2                               @ Abbrev [2] 0xc9:0xb DW_TAG_typedef
+	.long	212                             @ DW_AT_type
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.byte	3                               @ Abbrev [3] 0xd4:0x7 DW_TAG_base_type
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	9                               @ Abbrev [9] 0xdb:0xc DW_TAG_array_type
+	.long	196                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0xe0:0x6 DW_TAG_subrange_type
+	.long	231                             @ DW_AT_type
+	.byte	2                               @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	11                              @ Abbrev [11] 0xe7:0x7 DW_TAG_base_type
+	.long	.Linfo_string16                 @ DW_AT_name
+	.byte	8                               @ DW_AT_byte_size
+	.byte	7                               @ DW_AT_encoding
+	.byte	12                              @ Abbrev [12] 0xee:0x30 DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string18                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	14                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	13                              @ Abbrev [13] 0x101:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	15
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	14                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x10f:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	16                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	15                              @ Abbrev [15] 0x11e:0x34 DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	41                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1900                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	14                              @ Abbrev [14] 0x135:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	43                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x143:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	44                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	15                              @ Abbrev [15] 0x152:0x42 DW_TAG_subprogram
+	.long	.Lfunc_begin2                   @ DW_AT_low_pc
+	.long	.Lfunc_end2                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string22                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1900                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	13                              @ Abbrev [13] 0x169:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x177:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	70                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x185:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	5
+	.long	.Linfo_string47                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	70                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x194:0x3e DW_TAG_subprogram
+	.long	.Lfunc_begin3                   @ DW_AT_low_pc
+	.long	.Lfunc_end3                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string23                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	89                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	13                              @ Abbrev [13] 0x1a7:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string45                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	89                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x1b5:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	89                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x1c3:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	5
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	91                              @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x1d2:0x3e DW_TAG_subprogram
+	.long	.Lfunc_begin4                   @ DW_AT_low_pc
+	.long	.Lfunc_end4                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string24                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	108                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	13                              @ Abbrev [13] 0x1e5:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	108                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x1f3:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	108                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x201:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	5
+	.long	.Linfo_string51                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	110                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x210:0x3e DW_TAG_subprogram
+	.long	.Lfunc_begin5                   @ DW_AT_low_pc
+	.long	.Lfunc_end5                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string25                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	122                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	13                              @ Abbrev [13] 0x223:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	122                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x231:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string50                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	122                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x23f:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	5
+	.long	.Linfo_string51                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	124                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x24e:0x22 DW_TAG_subprogram
+	.long	.Lfunc_begin6                   @ DW_AT_low_pc
+	.long	.Lfunc_end6                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	135                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	14                              @ Abbrev [14] 0x261:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	137                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	16                              @ Abbrev [16] 0x270:0x13 DW_TAG_subprogram
+	.long	.Lfunc_begin7                   @ DW_AT_low_pc
+	.long	.Lfunc_end7                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	149                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	16                              @ Abbrev [16] 0x283:0x13 DW_TAG_subprogram
+	.long	.Lfunc_begin8                   @ DW_AT_low_pc
+	.long	.Lfunc_end8                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string28                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	159                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	12                              @ Abbrev [12] 0x296:0x22 DW_TAG_subprogram
+	.long	.Lfunc_begin9                   @ DW_AT_low_pc
+	.long	.Lfunc_end9                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	195                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	13                              @ Abbrev [13] 0x2a9:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string53                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	195                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	15                              @ Abbrev [15] 0x2b8:0xb2 DW_TAG_subprogram
+	.long	.Lfunc_begin10                  @ DW_AT_low_pc
+	.long	.Lfunc_end10                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	230                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	13                              @ Abbrev [13] 0x2cf:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	47
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	230                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x2dd:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	40
+	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	231                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x2eb:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	39
+	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	232                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x2f9:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	.Linfo_string57                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	233                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x307:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	56
+	.long	.Linfo_string58                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	234                             @ DW_AT_decl_line
+	.long	1930                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x315:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	31
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	236                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x323:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	30
+	.long	.Linfo_string60                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	237                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x331:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	29
+	.long	.Linfo_string61                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	238                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x33f:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	.Linfo_string62                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	239                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x34d:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	27
+	.long	.Linfo_string63                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	240                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x35b:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string64                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	241                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x36a:0x64 DW_TAG_subprogram
+	.long	.Lfunc_begin11                  @ DW_AT_low_pc
+	.long	.Lfunc_end11                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	345                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x382:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	39
+	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	345                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x391:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	.Linfo_string66                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	345                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3a0:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	31
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	347                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3af:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	13
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	348                             @ DW_AT_decl_line
+	.long	1935                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3be:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	349                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x3ce:0x73 DW_TAG_subprogram
+	.long	.Lfunc_begin12                  @ DW_AT_low_pc
+	.long	.Lfunc_end12                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	383                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x3e6:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	.Linfo_string69                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	383                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3f5:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	35
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	385                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x404:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	34
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	386                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x413:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	33
+	.long	.Linfo_string70                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	386                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x422:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	15
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	387                             @ DW_AT_decl_line
+	.long	1935                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x431:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	388                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	20                              @ Abbrev [20] 0x441:0x60 DW_TAG_subprogram
+	.long	.Lfunc_begin13                  @ DW_AT_low_pc
+	.long	.Lfunc_end13                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string34                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	430                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x455:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string71                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	430                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x464:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	19
+	.long	.Linfo_string72                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	431                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x473:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string57                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	432                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x482:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	11
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	434                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x491:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string63                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	434                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x4a1:0x64 DW_TAG_subprogram
+	.long	.Lfunc_begin14                  @ DW_AT_low_pc
+	.long	.Lfunc_end14                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	464                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x4b9:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	36
+	.long	.Linfo_string69                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	464                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x4c8:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	35
+	.long	.Linfo_string63                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	466                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x4d7:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	34
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	467                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x4e6:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	468                             @ DW_AT_decl_line
+	.long	1935                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x4f5:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	469                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x505:0x91 DW_TAG_subprogram
+	.long	.Lfunc_begin15                  @ DW_AT_low_pc
+	.long	.Lfunc_end15                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string36                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	508                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x51d:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	39
+	.long	.Linfo_string73                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	508                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x52c:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	38
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	509                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x53b:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	.Linfo_string74                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	510                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x54a:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	28
+	.long	.Linfo_string69                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	511                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x559:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	27
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	513                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x568:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	26
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	514                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x577:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	514                             @ DW_AT_decl_line
+	.long	1935                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x586:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	515                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x596:0x73 DW_TAG_subprogram
+	.long	.Lfunc_begin16                  @ DW_AT_low_pc
+	.long	.Lfunc_end16                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	544                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x5ae:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	47
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	544                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x5bd:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	40
+	.long	.Linfo_string75                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	544                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x5cc:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	39
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	546                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x5db:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	38
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	547                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x5ea:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	20
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	547                             @ DW_AT_decl_line
+	.long	1935                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x5f9:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	548                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x609:0x73 DW_TAG_subprogram
+	.long	.Lfunc_begin17                  @ DW_AT_low_pc
+	.long	.Lfunc_end17                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	592                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x621:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	39
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	592                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x630:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	32
+	.long	.Linfo_string75                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	592                             @ DW_AT_decl_line
+	.long	1925                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x63f:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	31
+	.long	.Linfo_string59                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	594                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x64e:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	30
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	595                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x65d:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	595                             @ DW_AT_decl_line
+	.long	1935                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x66c:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	596                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x67c:0x37 DW_TAG_subprogram
+	.long	.Lfunc_begin18                  @ DW_AT_low_pc
+	.long	.Lfunc_end18                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	626                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	19                              @ Abbrev [19] 0x694:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	628                             @ DW_AT_decl_line
+	.long	1935                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x6a3:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string68                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	629                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x6b3:0x55 DW_TAG_subprogram
+	.long	.Lfunc_begin19                  @ DW_AT_low_pc
+	.long	.Lfunc_end19                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string40                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	650                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x6cb:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	31
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	650                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x6da:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string75                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	650                             @ DW_AT_decl_line
+	.long	201                             @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x6e9:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	23
+	.long	.Linfo_string76                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	652                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x6f8:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	653                             @ DW_AT_decl_line
+	.long	1947                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x708:0x64 DW_TAG_subprogram
+	.long	.Lfunc_begin20                  @ DW_AT_low_pc
+	.long	.Lfunc_end20                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	683                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	1918                            @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	18                              @ Abbrev [18] 0x720:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	30
+	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	683                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x72f:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	24
+	.long	.Linfo_string75                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	683                             @ DW_AT_decl_line
+	.long	1930                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x73e:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	23
+	.long	.Linfo_string76                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	686                             @ DW_AT_decl_line
+	.long	1918                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x74d:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	22
+	.long	.Linfo_string77                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	687                             @ DW_AT_decl_line
+	.long	1900                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x75c:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	688                             @ DW_AT_decl_line
+	.long	1947                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	2                               @ Abbrev [2] 0x76c:0xb DW_TAG_typedef
+	.long	1911                            @ DW_AT_type
+	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	62                              @ DW_AT_decl_line
+	.byte	3                               @ Abbrev [3] 0x777:0x7 DW_TAG_base_type
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	3                               @ Abbrev [3] 0x77e:0x7 DW_TAG_base_type
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	6                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	4                               @ Abbrev [4] 0x785:0x5 DW_TAG_pointer_type
+	.long	1900                            @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x78a:0x5 DW_TAG_pointer_type
+	.long	201                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x78f:0xc DW_TAG_array_type
+	.long	1900                            @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x794:0x6 DW_TAG_subrange_type
+	.long	231                             @ DW_AT_type
+	.byte	18                              @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	9                               @ Abbrev [9] 0x79b:0xc DW_TAG_array_type
+	.long	1900                            @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x7a0:0x6 DW_TAG_subrange_type
+	.long	231                             @ DW_AT_type
+	.byte	16                              @ DW_AT_count
+	.byte	0                               @ End Of Children Mark
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	.Lfunc_begin2
+	.long	.Lfunc_end2
+	.long	.Lfunc_begin3
+	.long	.Lfunc_end3
+	.long	.Lfunc_begin4
+	.long	.Lfunc_end4
+	.long	.Lfunc_begin5
+	.long	.Lfunc_end5
+	.long	.Lfunc_begin6
+	.long	.Lfunc_end6
+	.long	.Lfunc_begin7
+	.long	.Lfunc_end7
+	.long	.Lfunc_begin8
+	.long	.Lfunc_end8
+	.long	.Lfunc_begin9
+	.long	.Lfunc_end9
+	.long	.Lfunc_begin10
+	.long	.Lfunc_end10
+	.long	.Lfunc_begin11
+	.long	.Lfunc_end11
+	.long	.Lfunc_begin12
+	.long	.Lfunc_end12
+	.long	.Lfunc_begin13
+	.long	.Lfunc_end13
+	.long	.Lfunc_begin14
+	.long	.Lfunc_end14
+	.long	.Lfunc_begin15
+	.long	.Lfunc_end15
+	.long	.Lfunc_begin16
+	.long	.Lfunc_end16
+	.long	.Lfunc_begin17
+	.long	.Lfunc_end17
+	.long	.Lfunc_begin18
+	.long	.Lfunc_end18
+	.long	.Lfunc_begin19
+	.long	.Lfunc_end19
+	.long	.Lfunc_begin20
+	.long	.Lfunc_end20
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]" @ string offset=0
+.Linfo_string1:
+	.asciz	"applications/RC522\\rc522_function.c" @ string offset=55
+.Linfo_string2:
+	.asciz	"E:\\STM32\\Learning\\STM32H750_ART_PI_RGBLCD" @ string offset=91
+.Linfo_string3:
+	.asciz	"unsigned short"                @ string offset=133
+.Linfo_string4:
+	.asciz	"uint16_t"                      @ string offset=148
+.Linfo_string5:
+	.asciz	"MODER"                         @ string offset=157
+.Linfo_string6:
+	.asciz	"unsigned int"                  @ string offset=163
+.Linfo_string7:
+	.asciz	"uint32_t"                      @ string offset=176
+.Linfo_string8:
+	.asciz	"OTYPER"                        @ string offset=185
+.Linfo_string9:
+	.asciz	"OSPEEDR"                       @ string offset=192
+.Linfo_string10:
+	.asciz	"PUPDR"                         @ string offset=200
+.Linfo_string11:
+	.asciz	"IDR"                           @ string offset=206
+.Linfo_string12:
+	.asciz	"ODR"                           @ string offset=210
+.Linfo_string13:
+	.asciz	"BSRR"                          @ string offset=214
+.Linfo_string14:
+	.asciz	"LCKR"                          @ string offset=219
+.Linfo_string15:
+	.asciz	"AFR"                           @ string offset=224
+.Linfo_string16:
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=228
+.Linfo_string17:
+	.asciz	"GPIO_TypeDef"                  @ string offset=248
+.Linfo_string18:
+	.asciz	"SPI_RC522_SendByte"            @ string offset=261
+.Linfo_string19:
+	.asciz	"SPI_RC522_ReadByte"            @ string offset=280
+.Linfo_string20:
+	.asciz	"unsigned char"                 @ string offset=299
+.Linfo_string21:
+	.asciz	"uint8_t"                       @ string offset=313
+.Linfo_string22:
+	.asciz	"ReadRawRC"                     @ string offset=321
+.Linfo_string23:
+	.asciz	"WriteRawRC"                    @ string offset=331
+.Linfo_string24:
+	.asciz	"SetBitMask"                    @ string offset=342
+.Linfo_string25:
+	.asciz	"ClearBitMask"                  @ string offset=353
+.Linfo_string26:
+	.asciz	"PcdAntennaOn"                  @ string offset=366
+.Linfo_string27:
+	.asciz	"PcdAntennaOff"                 @ string offset=379
+.Linfo_string28:
+	.asciz	"PcdReset"                      @ string offset=393
+.Linfo_string29:
+	.asciz	"M500PcdConfigISOType"          @ string offset=402
+.Linfo_string30:
+	.asciz	"PcdComMF522"                   @ string offset=423
+.Linfo_string31:
+	.asciz	"char"                          @ string offset=435
+.Linfo_string32:
+	.asciz	"PcdRequest"                    @ string offset=440
+.Linfo_string33:
+	.asciz	"PcdAnticoll"                   @ string offset=451
+.Linfo_string34:
+	.asciz	"CalulateCRC"                   @ string offset=463
+.Linfo_string35:
+	.asciz	"PcdSelect"                     @ string offset=475
+.Linfo_string36:
+	.asciz	"PcdAuthState"                  @ string offset=485
+.Linfo_string37:
+	.asciz	"PcdWrite"                      @ string offset=498
+.Linfo_string38:
+	.asciz	"PcdRead"                       @ string offset=507
+.Linfo_string39:
+	.asciz	"PcdHalt"                       @ string offset=515
+.Linfo_string40:
+	.asciz	"WriteAmount"                   @ string offset=523
+.Linfo_string41:
+	.asciz	"ReadAmount"                    @ string offset=535
+.Linfo_string42:
+	.asciz	"byte"                          @ string offset=546
+.Linfo_string43:
+	.asciz	"counter"                       @ string offset=551
+.Linfo_string44:
+	.asciz	"SPI_Data"                      @ string offset=559
+.Linfo_string45:
+	.asciz	"ucAddress"                     @ string offset=568
+.Linfo_string46:
+	.asciz	"ucAddr"                        @ string offset=578
+.Linfo_string47:
+	.asciz	"ucReturn"                      @ string offset=585
+.Linfo_string48:
+	.asciz	"ucValue"                       @ string offset=594
+.Linfo_string49:
+	.asciz	"ucReg"                         @ string offset=602
+.Linfo_string50:
+	.asciz	"ucMask"                        @ string offset=608
+.Linfo_string51:
+	.asciz	"ucTemp"                        @ string offset=615
+.Linfo_string52:
+	.asciz	"uc"                            @ string offset=622
+.Linfo_string53:
+	.asciz	"ucType"                        @ string offset=625
+.Linfo_string54:
+	.asciz	"ucCommand"                     @ string offset=632
+.Linfo_string55:
+	.asciz	"pInData"                       @ string offset=642
+.Linfo_string56:
+	.asciz	"ucInLenByte"                   @ string offset=650
+.Linfo_string57:
+	.asciz	"pOutData"                      @ string offset=662
+.Linfo_string58:
+	.asciz	"pOutLenBit"                    @ string offset=671
+.Linfo_string59:
+	.asciz	"cStatus"                       @ string offset=682
+.Linfo_string60:
+	.asciz	"ucIrqEn"                       @ string offset=690
+.Linfo_string61:
+	.asciz	"ucWaitFor"                     @ string offset=698
+.Linfo_string62:
+	.asciz	"ucLastBits"                    @ string offset=708
+.Linfo_string63:
+	.asciz	"ucN"                           @ string offset=719
+.Linfo_string64:
+	.asciz	"ul"                            @ string offset=723
+.Linfo_string65:
+	.asciz	"ucReq_code"                    @ string offset=726
+.Linfo_string66:
+	.asciz	"pTagType"                      @ string offset=737
+.Linfo_string67:
+	.asciz	"ucComMF522Buf"                 @ string offset=746
+.Linfo_string68:
+	.asciz	"ulLen"                         @ string offset=760
+.Linfo_string69:
+	.asciz	"pSnr"                          @ string offset=766
+.Linfo_string70:
+	.asciz	"ucSnr_check"                   @ string offset=771
+.Linfo_string71:
+	.asciz	"pIndata"                       @ string offset=783
+.Linfo_string72:
+	.asciz	"ucLen"                         @ string offset=791
+.Linfo_string73:
+	.asciz	"ucAuth_mode"                   @ string offset=797
+.Linfo_string74:
+	.asciz	"pKey"                          @ string offset=809
+.Linfo_string75:
+	.asciz	"pData"                         @ string offset=814
+.Linfo_string76:
+	.asciz	"status"                        @ string offset=820
+.Linfo_string77:
+	.asciz	"j"                             @ string offset=827
+	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:

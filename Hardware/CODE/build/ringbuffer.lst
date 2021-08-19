@@ -1,0 +1,2729 @@
+	.text
+	.syntax unified
+	.eabi_attribute	67, "2.09"	@ Tag_conformance
+	.cpu	cortex-m7
+	.eabi_attribute	6, 13	@ Tag_CPU_arch
+	.eabi_attribute	7, 77	@ Tag_CPU_arch_profile
+	.eabi_attribute	8, 0	@ Tag_ARM_ISA_use
+	.eabi_attribute	9, 2	@ Tag_THUMB_ISA_use
+	.fpu	fpv5-d16
+	.eabi_attribute	36, 1	@ Tag_FP_HP_extension
+	.eabi_attribute	34, 1	@ Tag_CPU_unaligned_access
+	.eabi_attribute	17, 1	@ Tag_ABI_PCS_GOT_use
+	.eabi_attribute	20, 2	@ Tag_ABI_FP_denormal
+	.eabi_attribute	21, 0	@ Tag_ABI_FP_exceptions
+	.eabi_attribute	23, 1	@ Tag_ABI_FP_number_model
+	.eabi_attribute	24, 1	@ Tag_ABI_align_needed
+	.eabi_attribute	25, 1	@ Tag_ABI_align_preserved
+	.eabi_attribute	28, 1	@ Tag_ABI_VFP_args
+	.eabi_attribute	38, 1	@ Tag_ABI_FP_16bit_format
+	.eabi_attribute	18, 2	@ Tag_ABI_PCS_wchar_t
+	.eabi_attribute	26, 1	@ Tag_ABI_enum_size
+	.eabi_attribute	14, 0	@ Tag_ABI_PCS_R9_use
+	.file	"ringbuffer.c"
+	.file	1 "E:\\STM32\\Learning\\STM32H750_ART_PI_RGBLCD" "rt-thread/components/drivers/include/ipc/ringbuffer.h"
+	.file	2 "E:\\STM32\\Learning\\STM32H750_ART_PI_RGBLCD" "rt-thread/include\\rtdef.h"
+	.section	.text.rt_ringbuffer_init,"ax",%progbits
+	.hidden	rt_ringbuffer_init              @ -- Begin function rt_ringbuffer_init
+	.globl	rt_ringbuffer_init
+	.p2align	3
+	.type	rt_ringbuffer_init,%function
+	.code	16                              @ @rt_ringbuffer_init
+	.thumb_func
+rt_ringbuffer_init:
+.Lfunc_begin0:
+	.file	3 "E:\\STM32\\Learning\\STM32H750_ART_PI_RGBLCD" "rt-thread/components/drivers/src/ringbuffer.c"
+	.loc	3 32 0                          @ rt-thread/components/drivers/src/ringbuffer.c:32:0
+	.fnstart
+	.cfi_sections .debug_frame
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r3 killed $r2
+	str	r0, [sp, #12]
+	str	r1, [sp, #8]
+	strh.w	r2, [sp, #6]
+.Ltmp0:
+	.loc	3 33 5 prologue_end             @ rt-thread/components/drivers/src/ringbuffer.c:33:5
+	ldr	r0, [sp, #12]
+.Ltmp1:
+	.loc	3 33 5 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:33:5
+	cbnz	r0, .LBB0_2
+	b	.LBB0_1
+.LBB0_1:
+.Ltmp2:
+	.loc	3 33 5                          @ rt-thread/components/drivers/src/ringbuffer.c:33:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_init
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_init
+	movs	r2, #33
+	bl	rt_assert_handler
+	b	.LBB0_2
+.Ltmp3:
+.LBB0_2:
+	.loc	3 34 5 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:34:5
+	ldrsh.w	r0, [sp, #6]
+.Ltmp4:
+	.loc	3 34 5 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:34:5
+	cmp	r0, #0
+	bgt	.LBB0_4
+	b	.LBB0_3
+.LBB0_3:
+.Ltmp5:
+	.loc	3 34 5                          @ rt-thread/components/drivers/src/ringbuffer.c:34:5
+	movw	r0, :lower16:.L.str.1
+	movt	r0, :upper16:.L.str.1
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_init
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_init
+	movs	r2, #34
+	bl	rt_assert_handler
+	b	.LBB0_4
+.Ltmp6:
+.LBB0_4:
+	.loc	3 37 23 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:37:23
+	ldr	r1, [sp, #12]
+	.loc	3 37 38 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:37:38
+	ldrh	r0, [r1, #4]
+	and	r0, r0, #1
+	strh	r0, [r1, #4]
+	.loc	3 37 5                          @ rt-thread/components/drivers/src/ringbuffer.c:37:5
+	ldr	r1, [sp, #12]
+	.loc	3 37 21                         @ rt-thread/components/drivers/src/ringbuffer.c:37:21
+	ldrh	r0, [r1, #4]
+	bic	r0, r0, #1
+	strh	r0, [r1, #4]
+	.loc	3 38 24 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:38:24
+	ldr	r1, [sp, #12]
+	.loc	3 38 40 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:38:40
+	ldrh	r0, [r1, #6]
+	and	r0, r0, #1
+	strh	r0, [r1, #6]
+	.loc	3 38 5                          @ rt-thread/components/drivers/src/ringbuffer.c:38:5
+	ldr	r1, [sp, #12]
+	.loc	3 38 22                         @ rt-thread/components/drivers/src/ringbuffer.c:38:22
+	ldrh	r0, [r1, #6]
+	bic	r0, r0, #1
+	strh	r0, [r1, #6]
+	.loc	3 41 22 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:41:22
+	ldr	r0, [sp, #8]
+	.loc	3 41 5 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:41:5
+	ldr	r1, [sp, #12]
+	.loc	3 41 20                         @ rt-thread/components/drivers/src/ringbuffer.c:41:20
+	str	r0, [r1]
+	.loc	3 42 23 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:42:23
+	ldrh.w	r0, [sp, #6]
+	bic	r0, r0, #3
+	.loc	3 42 5 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:42:5
+	ldr	r1, [sp, #12]
+	.loc	3 42 21                         @ rt-thread/components/drivers/src/ringbuffer.c:42:21
+	strh	r0, [r1, #8]
+	.loc	3 43 1 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:43:1
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp7:
+.Lfunc_end0:
+	.size	rt_ringbuffer_init, .Lfunc_end0-rt_ringbuffer_init
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_put,"ax",%progbits
+	.hidden	rt_ringbuffer_put               @ -- Begin function rt_ringbuffer_put
+	.globl	rt_ringbuffer_put
+	.p2align	3
+	.type	rt_ringbuffer_put,%function
+	.code	16                              @ @rt_ringbuffer_put
+	.thumb_func
+rt_ringbuffer_put:
+.Lfunc_begin1:
+	.loc	3 52 0                          @ rt-thread/components/drivers/src/ringbuffer.c:52:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r3 killed $r2
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	strh.w	r2, [sp, #10]
+.Ltmp8:
+	.loc	3 55 5 prologue_end             @ rt-thread/components/drivers/src/ringbuffer.c:55:5
+	ldr	r0, [sp, #16]
+.Ltmp9:
+	.loc	3 55 5 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:55:5
+	cbnz	r0, .LBB1_2
+	b	.LBB1_1
+.LBB1_1:
+.Ltmp10:
+	.loc	3 55 5                          @ rt-thread/components/drivers/src/ringbuffer.c:55:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_put
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_put
+	movs	r2, #55
+	bl	rt_assert_handler
+	b	.LBB1_2
+.Ltmp11:
+.LBB1_2:
+	.loc	3 58 12 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:58:12
+	ldr	r0, [sp, #16]
+	ldrh	r1, [r0, #8]
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	rt_ringbuffer_data_len
+	mov	r1, r0
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	subs	r0, r0, r1
+	.loc	3 58 10 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:58:10
+	strh.w	r0, [sp, #8]
+.Ltmp12:
+	.loc	3 61 9 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:61:9
+	ldrh.w	r0, [sp, #8]
+.Ltmp13:
+	.loc	3 61 9 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:61:9
+	cbnz	r0, .LBB1_4
+	b	.LBB1_3
+.LBB1_3:
+	.loc	3 0 9                           @ rt-thread/components/drivers/src/ringbuffer.c:0:9
+	movs	r0, #0
+.Ltmp14:
+	.loc	3 62 9 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:62:9
+	str	r0, [sp, #20]
+	b	.LBB1_9
+.Ltmp15:
+.LBB1_4:
+	.loc	3 65 9                          @ rt-thread/components/drivers/src/ringbuffer.c:65:9
+	ldrh.w	r0, [sp, #8]
+	.loc	3 65 16 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:65:16
+	ldrh.w	r1, [sp, #10]
+.Ltmp16:
+	.loc	3 65 9                          @ rt-thread/components/drivers/src/ringbuffer.c:65:9
+	cmp	r0, r1
+	bge	.LBB1_6
+	b	.LBB1_5
+.LBB1_5:
+.Ltmp17:
+	.loc	3 66 18 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:66:18
+	ldrh.w	r0, [sp, #8]
+	.loc	3 66 16 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:66:16
+	strh.w	r0, [sp, #10]
+	.loc	3 66 9                          @ rt-thread/components/drivers/src/ringbuffer.c:66:9
+	b	.LBB1_6
+.Ltmp18:
+.LBB1_6:
+	.loc	3 68 9 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:68:9
+	ldr	r1, [sp, #16]
+	.loc	3 68 13 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:68:13
+	ldrsh.w	r0, [r1, #8]
+	.loc	3 68 31                         @ rt-thread/components/drivers/src/ringbuffer.c:68:31
+	ldrh	r1, [r1, #6]
+	.loc	3 68 25                         @ rt-thread/components/drivers/src/ringbuffer.c:68:25
+	sub.w	r0, r0, r1, lsr #1
+	.loc	3 68 45                         @ rt-thread/components/drivers/src/ringbuffer.c:68:45
+	ldrh.w	r1, [sp, #10]
+.Ltmp19:
+	.loc	3 68 9                          @ rt-thread/components/drivers/src/ringbuffer.c:68:9
+	cmp	r0, r1
+	ble	.LBB1_8
+	b	.LBB1_7
+.LBB1_7:
+.Ltmp20:
+	.loc	3 71 17 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:71:17
+	ldr	r1, [sp, #16]
+	.loc	3 71 21 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:71:21
+	ldr	r0, [r1]
+	.loc	3 71 36                         @ rt-thread/components/drivers/src/ringbuffer.c:71:36
+	ldrh	r1, [r1, #6]
+	.loc	3 71 17                         @ rt-thread/components/drivers/src/ringbuffer.c:71:17
+	add.w	r0, r0, r1, lsr #1
+	.loc	3 71 50                         @ rt-thread/components/drivers/src/ringbuffer.c:71:50
+	ldr	r1, [sp, #12]
+	.loc	3 71 55                         @ rt-thread/components/drivers/src/ringbuffer.c:71:55
+	ldrh.w	r2, [sp, #10]
+	.loc	3 71 9                          @ rt-thread/components/drivers/src/ringbuffer.c:71:9
+	bl	__aeabi_memcpy
+	.loc	3 74 28 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:74:28
+	ldrh.w	r2, [sp, #10]
+	.loc	3 74 9 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:74:9
+	ldr	r1, [sp, #16]
+	.loc	3 74 25                         @ rt-thread/components/drivers/src/ringbuffer.c:74:25
+	ldrh	r0, [r1, #6]
+	add.w	r2, r2, r0, lsr #1
+	and	r0, r0, #1
+	orr.w	r0, r0, r2, lsl #1
+	strh	r0, [r1, #6]
+	.loc	3 75 16 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:75:16
+	ldrh.w	r0, [sp, #10]
+	.loc	3 75 9 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:75:9
+	str	r0, [sp, #20]
+	b	.LBB1_9
+.Ltmp21:
+.LBB1_8:
+	.loc	3 78 13 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:78:13
+	ldr	r2, [sp, #16]
+	.loc	3 78 17 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:78:17
+	ldr	r0, [r2]
+	.loc	3 78 32                         @ rt-thread/components/drivers/src/ringbuffer.c:78:32
+	ldrh	r3, [r2, #6]
+	.loc	3 78 13                         @ rt-thread/components/drivers/src/ringbuffer.c:78:13
+	add.w	r0, r0, r3, lsr #1
+	.loc	3 79 13 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:79:13
+	ldr	r1, [sp, #12]
+	.loc	3 80 16                         @ rt-thread/components/drivers/src/ringbuffer.c:80:16
+	ldrsh.w	r2, [r2, #8]
+	.loc	3 80 28 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:80:28
+	sub.w	r2, r2, r3, lsr #1
+	.loc	3 78 5 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:78:5
+	bl	__aeabi_memcpy
+	.loc	3 81 13                         @ rt-thread/components/drivers/src/ringbuffer.c:81:13
+	ldr	r3, [sp, #16]
+	.loc	3 81 17 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:81:17
+	ldr	r0, [r3]
+	.loc	3 82 13 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:82:13
+	ldr	r1, [sp, #12]
+	.loc	3 82 21 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:82:21
+	ldrsh.w	r2, [r3, #8]
+	.loc	3 82 39                         @ rt-thread/components/drivers/src/ringbuffer.c:82:39
+	ldrh	r3, [r3, #6]
+	.loc	3 82 33                         @ rt-thread/components/drivers/src/ringbuffer.c:82:33
+	sub.w	r3, r2, r3, lsr #1
+	.loc	3 82 13                         @ rt-thread/components/drivers/src/ringbuffer.c:82:13
+	add	r1, r3
+	.loc	3 83 12 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:83:12
+	ldrh.w	r2, [sp, #10]
+	.loc	3 83 19 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:83:19
+	subs	r2, r2, r3
+	.loc	3 81 5 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:81:5
+	bl	__aeabi_memcpy
+	.loc	3 86 25                         @ rt-thread/components/drivers/src/ringbuffer.c:86:25
+	ldr	r1, [sp, #16]
+	.loc	3 86 29 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:86:29
+	ldrh	r0, [r1, #6]
+	.loc	3 86 24                         @ rt-thread/components/drivers/src/ringbuffer.c:86:24
+	mvns	r2, r0
+	.loc	3 86 22                         @ rt-thread/components/drivers/src/ringbuffer.c:86:22
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #6]
+	.loc	3 87 23 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:87:23
+	ldrh.w	r2, [sp, #10]
+	.loc	3 87 33 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:87:33
+	ldr	r1, [sp, #16]
+	ldrh	r3, [r1, #8]
+	.loc	3 87 55                         @ rt-thread/components/drivers/src/ringbuffer.c:87:55
+	ldrh	r0, [r1, #6]
+	.loc	3 87 30                         @ rt-thread/components/drivers/src/ringbuffer.c:87:30
+	rsb	r3, r3, r0, lsr #1
+	add	r2, r3
+	.loc	3 87 21                         @ rt-thread/components/drivers/src/ringbuffer.c:87:21
+	and	r0, r0, #1
+	orr.w	r0, r0, r2, lsl #1
+	strh	r0, [r1, #6]
+	.loc	3 89 12 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:89:12
+	ldrh.w	r0, [sp, #10]
+	.loc	3 89 5 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:89:5
+	str	r0, [sp, #20]
+	b	.LBB1_9
+.LBB1_9:
+	.loc	3 90 1 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:90:1
+	ldr	r0, [sp, #20]
+	add	sp, #24
+	pop	{r7, pc}
+.Ltmp22:
+.Lfunc_end1:
+	.size	rt_ringbuffer_put, .Lfunc_end1-rt_ringbuffer_put
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_data_len,"ax",%progbits
+	.hidden	rt_ringbuffer_data_len          @ -- Begin function rt_ringbuffer_data_len
+	.globl	rt_ringbuffer_data_len
+	.p2align	3
+	.type	rt_ringbuffer_data_len,%function
+	.code	16                              @ @rt_ringbuffer_data_len
+	.thumb_func
+rt_ringbuffer_data_len:
+.Lfunc_begin2:
+	.loc	3 293 0                         @ rt-thread/components/drivers/src/ringbuffer.c:293:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #8]
+.Ltmp23:
+	.loc	3 294 34 prologue_end           @ rt-thread/components/drivers/src/ringbuffer.c:294:34
+	ldr	r0, [sp, #8]
+	.loc	3 294 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:294:13
+	bl	rt_ringbuffer_status
+	.loc	3 294 5                         @ rt-thread/components/drivers/src/ringbuffer.c:294:5
+	mov	r1, r0
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	cbz	r0, .LBB2_3
+	b	.LBB2_1
+.LBB2_1:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	cmp	r0, #1
+	beq	.LBB2_4
+	b	.LBB2_2
+.LBB2_2:
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	cmp	r0, #2
+	beq	.LBB2_5
+	b	.LBB2_6
+.LBB2_3:
+	.loc	3 0 5                           @ rt-thread/components/drivers/src/ringbuffer.c:0:5
+	movs	r0, #0
+.Ltmp24:
+	.loc	3 297 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:297:9
+	str	r0, [sp, #12]
+	b	.LBB2_9
+.LBB2_4:
+	.loc	3 299 16                        @ rt-thread/components/drivers/src/ringbuffer.c:299:16
+	ldr	r0, [sp, #8]
+	.loc	3 299 20 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:299:20
+	ldrsh.w	r0, [r0, #8]
+	.loc	3 299 9                         @ rt-thread/components/drivers/src/ringbuffer.c:299:9
+	str	r0, [sp, #12]
+	b	.LBB2_9
+.LBB2_5:
+	b	.LBB2_6
+.LBB2_6:
+.Ltmp25:
+	.loc	3 302 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:302:13
+	ldr	r1, [sp, #8]
+	.loc	3 302 17 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:302:17
+	ldrh	r0, [r1, #6]
+	lsrs	r0, r0, #1
+	.loc	3 302 35                        @ rt-thread/components/drivers/src/ringbuffer.c:302:35
+	ldrh	r1, [r1, #4]
+.Ltmp26:
+	.loc	3 302 13                        @ rt-thread/components/drivers/src/ringbuffer.c:302:13
+	cmp.w	r0, r1, lsr #1
+	ble	.LBB2_8
+	b	.LBB2_7
+.LBB2_7:
+.Ltmp27:
+	.loc	3 303 20 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:303:20
+	ldr	r1, [sp, #8]
+	.loc	3 303 24 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:303:24
+	ldrh	r0, [r1, #6]
+	lsrs	r0, r0, #1
+	.loc	3 303 42                        @ rt-thread/components/drivers/src/ringbuffer.c:303:42
+	ldrh	r1, [r1, #4]
+	.loc	3 303 36                        @ rt-thread/components/drivers/src/ringbuffer.c:303:36
+	sub.w	r0, r0, r1, lsr #1
+	.loc	3 303 13                        @ rt-thread/components/drivers/src/ringbuffer.c:303:13
+	str	r0, [sp, #12]
+	b	.LBB2_9
+.LBB2_8:
+	.loc	3 305 20 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:305:20
+	ldr	r1, [sp, #8]
+	.loc	3 305 24 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:305:24
+	ldrsh.w	r0, [r1, #8]
+	.loc	3 305 43                        @ rt-thread/components/drivers/src/ringbuffer.c:305:43
+	ldrh	r2, [r1, #4]
+	.loc	3 305 60                        @ rt-thread/components/drivers/src/ringbuffer.c:305:60
+	ldrh	r1, [r1, #6]
+	lsrs	r1, r1, #1
+	.loc	3 305 36                        @ rt-thread/components/drivers/src/ringbuffer.c:305:36
+	sub.w	r1, r1, r2, lsr #1
+	add	r0, r1
+	.loc	3 305 13                        @ rt-thread/components/drivers/src/ringbuffer.c:305:13
+	str	r0, [sp, #12]
+	b	.LBB2_9
+.Ltmp28:
+.LBB2_9:
+	.loc	3 307 1 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:307:1
+	ldr	r0, [sp, #12]
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp29:
+.Lfunc_end2:
+	.size	rt_ringbuffer_data_len, .Lfunc_end2-rt_ringbuffer_data_len
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_put_force,"ax",%progbits
+	.hidden	rt_ringbuffer_put_force         @ -- Begin function rt_ringbuffer_put_force
+	.globl	rt_ringbuffer_put_force
+	.p2align	3
+	.type	rt_ringbuffer_put_force,%function
+	.code	16                              @ @rt_ringbuffer_put_force
+	.thumb_func
+rt_ringbuffer_put_force:
+.Lfunc_begin3:
+	.loc	3 101 0                         @ rt-thread/components/drivers/src/ringbuffer.c:101:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r3 killed $r2
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	strh.w	r2, [sp, #10]
+.Ltmp30:
+	.loc	3 104 5 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:104:5
+	ldr	r0, [sp, #16]
+.Ltmp31:
+	.loc	3 104 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:104:5
+	cbnz	r0, .LBB3_2
+	b	.LBB3_1
+.LBB3_1:
+.Ltmp32:
+	.loc	3 104 5                         @ rt-thread/components/drivers/src/ringbuffer.c:104:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_put_force
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_put_force
+	movs	r2, #104
+	bl	rt_assert_handler
+	b	.LBB3_2
+.Ltmp33:
+.LBB3_2:
+	.loc	3 106 20 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:106:20
+	ldr	r0, [sp, #16]
+	ldrh	r1, [r0, #8]
+	str	r1, [sp, #4]                    @ 4-byte Spill
+	bl	rt_ringbuffer_data_len
+	mov	r1, r0
+	ldr	r0, [sp, #4]                    @ 4-byte Reload
+	subs	r0, r0, r1
+	.loc	3 106 18 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:106:18
+	strh.w	r0, [sp, #8]
+.Ltmp34:
+	.loc	3 108 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:108:9
+	ldrh.w	r0, [sp, #10]
+	.loc	3 108 18 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:108:18
+	ldr	r1, [sp, #16]
+	.loc	3 108 22                        @ rt-thread/components/drivers/src/ringbuffer.c:108:22
+	ldrsh.w	r1, [r1, #8]
+.Ltmp35:
+	.loc	3 108 9                         @ rt-thread/components/drivers/src/ringbuffer.c:108:9
+	cmp	r0, r1
+	ble	.LBB3_4
+	b	.LBB3_3
+.LBB3_3:
+.Ltmp36:
+	.loc	3 110 16 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:110:16
+	ldr	r0, [sp, #12]
+	.loc	3 110 20 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:110:20
+	ldrh.w	r1, [sp, #10]
+	.loc	3 110 29                        @ rt-thread/components/drivers/src/ringbuffer.c:110:29
+	ldr	r2, [sp, #16]
+	.loc	3 110 33                        @ rt-thread/components/drivers/src/ringbuffer.c:110:33
+	ldrsh.w	r2, [r2, #8]
+	.loc	3 110 27                        @ rt-thread/components/drivers/src/ringbuffer.c:110:27
+	subs	r1, r1, r2
+	.loc	3 110 16                        @ rt-thread/components/drivers/src/ringbuffer.c:110:16
+	add	r0, r1
+	.loc	3 110 13                        @ rt-thread/components/drivers/src/ringbuffer.c:110:13
+	str	r0, [sp, #12]
+	.loc	3 111 18 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:111:18
+	ldr	r0, [sp, #16]
+	.loc	3 111 22 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:111:22
+	ldrh	r0, [r0, #8]
+	.loc	3 111 16                        @ rt-thread/components/drivers/src/ringbuffer.c:111:16
+	strh.w	r0, [sp, #10]
+	.loc	3 112 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:112:5
+	b	.LBB3_4
+.Ltmp37:
+.LBB3_4:
+	.loc	3 114 9                         @ rt-thread/components/drivers/src/ringbuffer.c:114:9
+	ldr	r1, [sp, #16]
+	.loc	3 114 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:114:13
+	ldrsh.w	r0, [r1, #8]
+	.loc	3 114 31                        @ rt-thread/components/drivers/src/ringbuffer.c:114:31
+	ldrh	r1, [r1, #6]
+	.loc	3 114 25                        @ rt-thread/components/drivers/src/ringbuffer.c:114:25
+	sub.w	r0, r0, r1, lsr #1
+	.loc	3 114 45                        @ rt-thread/components/drivers/src/ringbuffer.c:114:45
+	ldrh.w	r1, [sp, #10]
+.Ltmp38:
+	.loc	3 114 9                         @ rt-thread/components/drivers/src/ringbuffer.c:114:9
+	cmp	r0, r1
+	ble	.LBB3_8
+	b	.LBB3_5
+.LBB3_5:
+.Ltmp39:
+	.loc	3 117 17 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:117:17
+	ldr	r1, [sp, #16]
+	.loc	3 117 21 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:117:21
+	ldr	r0, [r1]
+	.loc	3 117 36                        @ rt-thread/components/drivers/src/ringbuffer.c:117:36
+	ldrh	r1, [r1, #6]
+	.loc	3 117 17                        @ rt-thread/components/drivers/src/ringbuffer.c:117:17
+	add.w	r0, r0, r1, lsr #1
+	.loc	3 117 50                        @ rt-thread/components/drivers/src/ringbuffer.c:117:50
+	ldr	r1, [sp, #12]
+	.loc	3 117 55                        @ rt-thread/components/drivers/src/ringbuffer.c:117:55
+	ldrh.w	r2, [sp, #10]
+	.loc	3 117 9                         @ rt-thread/components/drivers/src/ringbuffer.c:117:9
+	bl	__aeabi_memcpy
+	.loc	3 120 28 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:120:28
+	ldrh.w	r2, [sp, #10]
+	.loc	3 120 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:120:9
+	ldr	r1, [sp, #16]
+	.loc	3 120 25                        @ rt-thread/components/drivers/src/ringbuffer.c:120:25
+	ldrh	r0, [r1, #6]
+	add.w	r2, r2, r0, lsr #1
+	and	r0, r0, #1
+	orr.w	r0, r0, r2, lsl #1
+	strh	r0, [r1, #6]
+.Ltmp40:
+	.loc	3 122 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:122:13
+	ldrh.w	r0, [sp, #10]
+	.loc	3 122 22 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:122:22
+	ldrh.w	r1, [sp, #8]
+.Ltmp41:
+	.loc	3 122 13                        @ rt-thread/components/drivers/src/ringbuffer.c:122:13
+	cmp	r0, r1
+	ble	.LBB3_7
+	b	.LBB3_6
+.LBB3_6:
+.Ltmp42:
+	.loc	3 123 30 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:123:30
+	ldr	r1, [sp, #16]
+	.loc	3 123 34 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:123:34
+	ldrh	r2, [r1, #6]
+	.loc	3 123 28                        @ rt-thread/components/drivers/src/ringbuffer.c:123:28
+	ldrh	r0, [r1, #4]
+	lsrs	r2, r2, #1
+	bfi	r0, r2, #1, #31
+	strh	r0, [r1, #4]
+	.loc	3 123 13                        @ rt-thread/components/drivers/src/ringbuffer.c:123:13
+	b	.LBB3_7
+.Ltmp43:
+.LBB3_7:
+	.loc	3 125 16 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:125:16
+	ldrh.w	r0, [sp, #10]
+	.loc	3 125 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:125:9
+	str	r0, [sp, #20]
+	b	.LBB3_11
+.Ltmp44:
+.LBB3_8:
+	.loc	3 128 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:128:13
+	ldr	r2, [sp, #16]
+	.loc	3 128 17 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:128:17
+	ldr	r0, [r2]
+	.loc	3 128 32                        @ rt-thread/components/drivers/src/ringbuffer.c:128:32
+	ldrh	r3, [r2, #6]
+	.loc	3 128 13                        @ rt-thread/components/drivers/src/ringbuffer.c:128:13
+	add.w	r0, r0, r3, lsr #1
+	.loc	3 129 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:129:13
+	ldr	r1, [sp, #12]
+	.loc	3 130 16                        @ rt-thread/components/drivers/src/ringbuffer.c:130:16
+	ldrsh.w	r2, [r2, #8]
+	.loc	3 130 28 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:130:28
+	sub.w	r2, r2, r3, lsr #1
+	.loc	3 128 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:128:5
+	bl	__aeabi_memcpy
+	.loc	3 131 13                        @ rt-thread/components/drivers/src/ringbuffer.c:131:13
+	ldr	r3, [sp, #16]
+	.loc	3 131 17 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:131:17
+	ldr	r0, [r3]
+	.loc	3 132 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:132:13
+	ldr	r1, [sp, #12]
+	.loc	3 132 21 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:132:21
+	ldrsh.w	r2, [r3, #8]
+	.loc	3 132 39                        @ rt-thread/components/drivers/src/ringbuffer.c:132:39
+	ldrh	r3, [r3, #6]
+	.loc	3 132 33                        @ rt-thread/components/drivers/src/ringbuffer.c:132:33
+	sub.w	r3, r2, r3, lsr #1
+	.loc	3 132 13                        @ rt-thread/components/drivers/src/ringbuffer.c:132:13
+	add	r1, r3
+	.loc	3 133 12 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:133:12
+	ldrh.w	r2, [sp, #10]
+	.loc	3 133 19 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:133:19
+	subs	r2, r2, r3
+	.loc	3 131 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:131:5
+	bl	__aeabi_memcpy
+	.loc	3 136 25                        @ rt-thread/components/drivers/src/ringbuffer.c:136:25
+	ldr	r1, [sp, #16]
+	.loc	3 136 29 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:136:29
+	ldrh	r0, [r1, #6]
+	.loc	3 136 24                        @ rt-thread/components/drivers/src/ringbuffer.c:136:24
+	mvns	r2, r0
+	.loc	3 136 22                        @ rt-thread/components/drivers/src/ringbuffer.c:136:22
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #6]
+	.loc	3 137 23 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:137:23
+	ldrh.w	r2, [sp, #10]
+	.loc	3 137 33 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:137:33
+	ldr	r1, [sp, #16]
+	ldrh	r3, [r1, #8]
+	.loc	3 137 55                        @ rt-thread/components/drivers/src/ringbuffer.c:137:55
+	ldrh	r0, [r1, #6]
+	.loc	3 137 30                        @ rt-thread/components/drivers/src/ringbuffer.c:137:30
+	rsb	r3, r3, r0, lsr #1
+	add	r2, r3
+	.loc	3 137 21                        @ rt-thread/components/drivers/src/ringbuffer.c:137:21
+	and	r0, r0, #1
+	orr.w	r0, r0, r2, lsl #1
+	strh	r0, [r1, #6]
+.Ltmp45:
+	.loc	3 139 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:139:9
+	ldrh.w	r0, [sp, #10]
+	.loc	3 139 18 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:139:18
+	ldrh.w	r1, [sp, #8]
+.Ltmp46:
+	.loc	3 139 9                         @ rt-thread/components/drivers/src/ringbuffer.c:139:9
+	cmp	r0, r1
+	ble	.LBB3_10
+	b	.LBB3_9
+.LBB3_9:
+.Ltmp47:
+	.loc	3 141 28 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:141:28
+	ldr	r1, [sp, #16]
+	.loc	3 141 32 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:141:32
+	ldrh	r0, [r1, #4]
+	.loc	3 141 27                        @ rt-thread/components/drivers/src/ringbuffer.c:141:27
+	mvns	r2, r0
+	.loc	3 141 25                        @ rt-thread/components/drivers/src/ringbuffer.c:141:25
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #4]
+	.loc	3 142 26 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:142:26
+	ldr	r1, [sp, #16]
+	.loc	3 142 30 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:142:30
+	ldrh	r2, [r1, #6]
+	.loc	3 142 24                        @ rt-thread/components/drivers/src/ringbuffer.c:142:24
+	ldrh	r0, [r1, #4]
+	lsrs	r2, r2, #1
+	bfi	r0, r2, #1, #31
+	strh	r0, [r1, #4]
+	.loc	3 143 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:143:5
+	b	.LBB3_10
+.Ltmp48:
+.LBB3_10:
+	.loc	3 145 12                        @ rt-thread/components/drivers/src/ringbuffer.c:145:12
+	ldrh.w	r0, [sp, #10]
+	.loc	3 145 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:145:5
+	str	r0, [sp, #20]
+	b	.LBB3_11
+.LBB3_11:
+	.loc	3 146 1 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:146:1
+	ldr	r0, [sp, #20]
+	add	sp, #24
+	pop	{r7, pc}
+.Ltmp49:
+.Lfunc_end3:
+	.size	rt_ringbuffer_put_force, .Lfunc_end3-rt_ringbuffer_put_force
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_get,"ax",%progbits
+	.hidden	rt_ringbuffer_get               @ -- Begin function rt_ringbuffer_get
+	.globl	rt_ringbuffer_get
+	.p2align	3
+	.type	rt_ringbuffer_get,%function
+	.code	16                              @ @rt_ringbuffer_get
+	.thumb_func
+rt_ringbuffer_get:
+.Lfunc_begin4:
+	.loc	3 155 0                         @ rt-thread/components/drivers/src/ringbuffer.c:155:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 32
+                                        @ kill: def $r3 killed $r2
+	str	r0, [sp, #16]
+	str	r1, [sp, #12]
+	strh.w	r2, [sp, #10]
+.Ltmp50:
+	.loc	3 158 5 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:158:5
+	ldr	r0, [sp, #16]
+.Ltmp51:
+	.loc	3 158 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:158:5
+	cbnz	r0, .LBB4_2
+	b	.LBB4_1
+.LBB4_1:
+.Ltmp52:
+	.loc	3 158 5                         @ rt-thread/components/drivers/src/ringbuffer.c:158:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_get
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_get
+	movs	r2, #158
+	bl	rt_assert_handler
+	b	.LBB4_2
+.Ltmp53:
+.LBB4_2:
+	.loc	3 161 35 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:161:35
+	ldr	r0, [sp, #16]
+	.loc	3 161 12 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:161:12
+	bl	rt_ringbuffer_data_len
+	.loc	3 161 10                        @ rt-thread/components/drivers/src/ringbuffer.c:161:10
+	str	r0, [sp, #4]
+.Ltmp54:
+	.loc	3 164 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:164:9
+	ldr	r0, [sp, #4]
+.Ltmp55:
+	.loc	3 164 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:164:9
+	cbnz	r0, .LBB4_4
+	b	.LBB4_3
+.LBB4_3:
+	.loc	3 0 9                           @ rt-thread/components/drivers/src/ringbuffer.c:0:9
+	movs	r0, #0
+.Ltmp56:
+	.loc	3 165 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:165:9
+	str	r0, [sp, #20]
+	b	.LBB4_9
+.Ltmp57:
+.LBB4_4:
+	.loc	3 168 9                         @ rt-thread/components/drivers/src/ringbuffer.c:168:9
+	ldr	r0, [sp, #4]
+	.loc	3 168 16 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:168:16
+	ldrh.w	r1, [sp, #10]
+.Ltmp58:
+	.loc	3 168 9                         @ rt-thread/components/drivers/src/ringbuffer.c:168:9
+	cmp	r0, r1
+	bhs	.LBB4_6
+	b	.LBB4_5
+.LBB4_5:
+.Ltmp59:
+	.loc	3 169 18 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:169:18
+	ldr	r0, [sp, #4]
+	.loc	3 169 16 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:169:16
+	strh.w	r0, [sp, #10]
+	.loc	3 169 9                         @ rt-thread/components/drivers/src/ringbuffer.c:169:9
+	b	.LBB4_6
+.Ltmp60:
+.LBB4_6:
+	.loc	3 171 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:171:9
+	ldr	r1, [sp, #16]
+	.loc	3 171 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:171:13
+	ldrsh.w	r0, [r1, #8]
+	.loc	3 171 31                        @ rt-thread/components/drivers/src/ringbuffer.c:171:31
+	ldrh	r1, [r1, #4]
+	.loc	3 171 25                        @ rt-thread/components/drivers/src/ringbuffer.c:171:25
+	sub.w	r0, r0, r1, lsr #1
+	.loc	3 171 44                        @ rt-thread/components/drivers/src/ringbuffer.c:171:44
+	ldrh.w	r1, [sp, #10]
+.Ltmp61:
+	.loc	3 171 9                         @ rt-thread/components/drivers/src/ringbuffer.c:171:9
+	cmp	r0, r1
+	ble	.LBB4_8
+	b	.LBB4_7
+.LBB4_7:
+.Ltmp62:
+	.loc	3 174 16 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:174:16
+	ldr	r0, [sp, #12]
+	.loc	3 174 22 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:174:22
+	ldr	r2, [sp, #16]
+	.loc	3 174 26                        @ rt-thread/components/drivers/src/ringbuffer.c:174:26
+	ldr	r1, [r2]
+	.loc	3 174 41                        @ rt-thread/components/drivers/src/ringbuffer.c:174:41
+	ldrh	r2, [r2, #4]
+	.loc	3 174 22                        @ rt-thread/components/drivers/src/ringbuffer.c:174:22
+	add.w	r1, r1, r2, lsr #1
+	.loc	3 174 54                        @ rt-thread/components/drivers/src/ringbuffer.c:174:54
+	ldrh.w	r2, [sp, #10]
+	.loc	3 174 9                         @ rt-thread/components/drivers/src/ringbuffer.c:174:9
+	bl	__aeabi_memcpy
+	.loc	3 177 27 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:177:27
+	ldrh.w	r2, [sp, #10]
+	.loc	3 177 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:177:9
+	ldr	r1, [sp, #16]
+	.loc	3 177 24                        @ rt-thread/components/drivers/src/ringbuffer.c:177:24
+	ldrh	r0, [r1, #4]
+	add.w	r2, r2, r0, lsr #1
+	and	r0, r0, #1
+	orr.w	r0, r0, r2, lsl #1
+	strh	r0, [r1, #4]
+	.loc	3 178 16 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:178:16
+	ldrh.w	r0, [sp, #10]
+	.loc	3 178 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:178:9
+	str	r0, [sp, #20]
+	b	.LBB4_9
+.Ltmp63:
+.LBB4_8:
+	.loc	3 181 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:181:13
+	ldr	r0, [sp, #12]
+	.loc	3 182 13                        @ rt-thread/components/drivers/src/ringbuffer.c:182:13
+	ldr	r2, [sp, #16]
+	.loc	3 182 17 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:182:17
+	ldr	r1, [r2]
+	.loc	3 182 32                        @ rt-thread/components/drivers/src/ringbuffer.c:182:32
+	ldrh	r3, [r2, #4]
+	.loc	3 182 13                        @ rt-thread/components/drivers/src/ringbuffer.c:182:13
+	add.w	r1, r1, r3, lsr #1
+	.loc	3 183 16 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:183:16
+	ldrsh.w	r2, [r2, #8]
+	.loc	3 183 28 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:183:28
+	sub.w	r2, r2, r3, lsr #1
+	.loc	3 181 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:181:5
+	bl	__aeabi_memcpy
+	.loc	3 184 13                        @ rt-thread/components/drivers/src/ringbuffer.c:184:13
+	ldr	r0, [sp, #12]
+	.loc	3 184 17 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:184:17
+	ldr	r1, [sp, #16]
+	.loc	3 184 21                        @ rt-thread/components/drivers/src/ringbuffer.c:184:21
+	ldrsh.w	r2, [r1, #8]
+	.loc	3 184 39                        @ rt-thread/components/drivers/src/ringbuffer.c:184:39
+	ldrh	r3, [r1, #4]
+	.loc	3 184 33                        @ rt-thread/components/drivers/src/ringbuffer.c:184:33
+	sub.w	r3, r2, r3, lsr #1
+	.loc	3 184 13                        @ rt-thread/components/drivers/src/ringbuffer.c:184:13
+	add	r0, r3
+	.loc	3 185 17 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:185:17
+	ldr	r1, [r1]
+	.loc	3 186 12                        @ rt-thread/components/drivers/src/ringbuffer.c:186:12
+	ldrh.w	r2, [sp, #10]
+	.loc	3 186 19 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:186:19
+	subs	r2, r2, r3
+	.loc	3 184 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:184:5
+	bl	__aeabi_memcpy
+	.loc	3 189 24                        @ rt-thread/components/drivers/src/ringbuffer.c:189:24
+	ldr	r1, [sp, #16]
+	.loc	3 189 28 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:189:28
+	ldrh	r0, [r1, #4]
+	.loc	3 189 23                        @ rt-thread/components/drivers/src/ringbuffer.c:189:23
+	mvns	r2, r0
+	.loc	3 189 21                        @ rt-thread/components/drivers/src/ringbuffer.c:189:21
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #4]
+	.loc	3 190 22 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:190:22
+	ldrh.w	r2, [sp, #10]
+	.loc	3 190 32 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:190:32
+	ldr	r1, [sp, #16]
+	ldrh	r3, [r1, #8]
+	.loc	3 190 54                        @ rt-thread/components/drivers/src/ringbuffer.c:190:54
+	ldrh	r0, [r1, #4]
+	.loc	3 190 29                        @ rt-thread/components/drivers/src/ringbuffer.c:190:29
+	rsb	r3, r3, r0, lsr #1
+	add	r2, r3
+	.loc	3 190 20                        @ rt-thread/components/drivers/src/ringbuffer.c:190:20
+	and	r0, r0, #1
+	orr.w	r0, r0, r2, lsl #1
+	strh	r0, [r1, #4]
+	.loc	3 192 12 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:192:12
+	ldrh.w	r0, [sp, #10]
+	.loc	3 192 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:192:5
+	str	r0, [sp, #20]
+	b	.LBB4_9
+.LBB4_9:
+	.loc	3 193 1 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:193:1
+	ldr	r0, [sp, #20]
+	add	sp, #24
+	pop	{r7, pc}
+.Ltmp64:
+.Lfunc_end4:
+	.size	rt_ringbuffer_get, .Lfunc_end4-rt_ringbuffer_get
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_putchar,"ax",%progbits
+	.hidden	rt_ringbuffer_putchar           @ -- Begin function rt_ringbuffer_putchar
+	.globl	rt_ringbuffer_putchar
+	.p2align	3
+	.type	rt_ringbuffer_putchar,%function
+	.code	16                              @ @rt_ringbuffer_putchar
+	.thumb_func
+rt_ringbuffer_putchar:
+.Lfunc_begin5:
+	.loc	3 200 0                         @ rt-thread/components/drivers/src/ringbuffer.c:200:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #8]
+	strb.w	r1, [sp, #7]
+.Ltmp65:
+	.loc	3 201 5 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:201:5
+	ldr	r0, [sp, #8]
+.Ltmp66:
+	.loc	3 201 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:201:5
+	cbnz	r0, .LBB5_2
+	b	.LBB5_1
+.LBB5_1:
+.Ltmp67:
+	.loc	3 201 5                         @ rt-thread/components/drivers/src/ringbuffer.c:201:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_putchar
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_putchar
+	movs	r2, #201
+	bl	rt_assert_handler
+	b	.LBB5_2
+.Ltmp68:
+.LBB5_2:
+	.loc	3 204 10 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:204:10
+	ldr	r0, [sp, #8]
+	ldrsh.w	r1, [r0, #8]
+	str	r1, [sp]                        @ 4-byte Spill
+	bl	rt_ringbuffer_data_len
+	mov	r1, r0
+	ldr	r0, [sp]                        @ 4-byte Reload
+	subs	r0, r0, r1
+.Ltmp69:
+	.loc	3 204 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:204:9
+	cbnz	r0, .LBB5_4
+	b	.LBB5_3
+.LBB5_3:
+	.loc	3 0 9                           @ rt-thread/components/drivers/src/ringbuffer.c:0:9
+	movs	r0, #0
+.Ltmp70:
+	.loc	3 205 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:205:9
+	str	r0, [sp, #12]
+	b	.LBB5_8
+.Ltmp71:
+.LBB5_4:
+	.loc	3 207 39                        @ rt-thread/components/drivers/src/ringbuffer.c:207:39
+	ldrb.w	r0, [sp, #7]
+	.loc	3 207 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:207:5
+	ldr	r2, [sp, #8]
+	.loc	3 207 9                         @ rt-thread/components/drivers/src/ringbuffer.c:207:9
+	ldr	r1, [r2]
+	.loc	3 207 24                        @ rt-thread/components/drivers/src/ringbuffer.c:207:24
+	ldrh	r2, [r2, #6]
+	lsrs	r2, r2, #1
+	.loc	3 207 37                        @ rt-thread/components/drivers/src/ringbuffer.c:207:37
+	strb	r0, [r1, r2]
+.Ltmp72:
+	.loc	3 210 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:210:9
+	ldr	r0, [sp, #8]
+	.loc	3 210 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:210:13
+	ldrh	r1, [r0, #6]
+	.loc	3 210 32                        @ rt-thread/components/drivers/src/ringbuffer.c:210:32
+	ldrsh.w	r0, [r0, #8]
+	.loc	3 210 43                        @ rt-thread/components/drivers/src/ringbuffer.c:210:43
+	subs	r0, #1
+.Ltmp73:
+	.loc	3 210 9                         @ rt-thread/components/drivers/src/ringbuffer.c:210:9
+	cmp.w	r0, r1, lsr #1
+	bne	.LBB5_6
+	b	.LBB5_5
+.LBB5_5:
+.Ltmp74:
+	.loc	3 212 29 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:212:29
+	ldr	r1, [sp, #8]
+	.loc	3 212 33 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:212:33
+	ldrh	r0, [r1, #6]
+	.loc	3 212 28                        @ rt-thread/components/drivers/src/ringbuffer.c:212:28
+	mvns	r2, r0
+	.loc	3 212 26                        @ rt-thread/components/drivers/src/ringbuffer.c:212:26
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #6]
+	.loc	3 213 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:213:9
+	ldr	r1, [sp, #8]
+	.loc	3 213 25 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:213:25
+	ldrh	r0, [r1, #6]
+	and	r0, r0, #1
+	strh	r0, [r1, #6]
+	.loc	3 214 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:214:5
+	b	.LBB5_7
+.Ltmp75:
+.LBB5_6:
+	.loc	3 217 9                         @ rt-thread/components/drivers/src/ringbuffer.c:217:9
+	ldr	r1, [sp, #8]
+	.loc	3 217 24 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:217:24
+	ldrh	r0, [r1, #6]
+	adds	r0, #2
+	strh	r0, [r1, #6]
+	b	.LBB5_7
+.Ltmp76:
+.LBB5_7:
+	.loc	3 0 24                          @ rt-thread/components/drivers/src/ringbuffer.c:0:24
+	movs	r0, #1
+	.loc	3 220 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:220:5
+	str	r0, [sp, #12]
+	b	.LBB5_8
+.LBB5_8:
+	.loc	3 221 1                         @ rt-thread/components/drivers/src/ringbuffer.c:221:1
+	ldr	r0, [sp, #12]
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp77:
+.Lfunc_end5:
+	.size	rt_ringbuffer_putchar, .Lfunc_end5-rt_ringbuffer_putchar
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_putchar_force,"ax",%progbits
+	.hidden	rt_ringbuffer_putchar_force     @ -- Begin function rt_ringbuffer_putchar_force
+	.globl	rt_ringbuffer_putchar_force
+	.p2align	3
+	.type	rt_ringbuffer_putchar_force,%function
+	.code	16                              @ @rt_ringbuffer_putchar_force
+	.thumb_func
+rt_ringbuffer_putchar_force:
+.Lfunc_begin6:
+	.loc	3 230 0                         @ rt-thread/components/drivers/src/ringbuffer.c:230:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+                                        @ kill: def $r2 killed $r1
+	str	r0, [sp, #4]
+	strb.w	r1, [sp, #3]
+.Ltmp78:
+	.loc	3 233 5 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:233:5
+	ldr	r0, [sp, #4]
+.Ltmp79:
+	.loc	3 233 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:233:5
+	cbnz	r0, .LBB6_2
+	b	.LBB6_1
+.LBB6_1:
+.Ltmp80:
+	.loc	3 233 5                         @ rt-thread/components/drivers/src/ringbuffer.c:233:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_putchar_force
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_putchar_force
+	movs	r2, #233
+	bl	rt_assert_handler
+	b	.LBB6_2
+.Ltmp81:
+.LBB6_2:
+	.loc	3 235 38 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:235:38
+	ldr	r0, [sp, #4]
+	.loc	3 235 17 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:235:17
+	bl	rt_ringbuffer_status
+	.loc	3 235 15                        @ rt-thread/components/drivers/src/ringbuffer.c:235:15
+	strb.w	r0, [sp, #2]
+	.loc	3 237 39 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:237:39
+	ldrb.w	r0, [sp, #3]
+	.loc	3 237 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:237:5
+	ldr	r2, [sp, #4]
+	.loc	3 237 9                         @ rt-thread/components/drivers/src/ringbuffer.c:237:9
+	ldr	r1, [r2]
+	.loc	3 237 24                        @ rt-thread/components/drivers/src/ringbuffer.c:237:24
+	ldrh	r2, [r2, #6]
+	lsrs	r2, r2, #1
+	.loc	3 237 37                        @ rt-thread/components/drivers/src/ringbuffer.c:237:37
+	strb	r0, [r1, r2]
+.Ltmp82:
+	.loc	3 240 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:240:9
+	ldr	r0, [sp, #4]
+	.loc	3 240 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:240:13
+	ldrh	r1, [r0, #6]
+	.loc	3 240 32                        @ rt-thread/components/drivers/src/ringbuffer.c:240:32
+	ldrsh.w	r0, [r0, #8]
+	.loc	3 240 43                        @ rt-thread/components/drivers/src/ringbuffer.c:240:43
+	subs	r0, #1
+.Ltmp83:
+	.loc	3 240 9                         @ rt-thread/components/drivers/src/ringbuffer.c:240:9
+	cmp.w	r0, r1, lsr #1
+	bne	.LBB6_6
+	b	.LBB6_3
+.LBB6_3:
+.Ltmp84:
+	.loc	3 242 29 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:242:29
+	ldr	r1, [sp, #4]
+	.loc	3 242 33 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:242:33
+	ldrh	r0, [r1, #6]
+	.loc	3 242 28                        @ rt-thread/components/drivers/src/ringbuffer.c:242:28
+	mvns	r2, r0
+	.loc	3 242 26                        @ rt-thread/components/drivers/src/ringbuffer.c:242:26
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #6]
+	.loc	3 243 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:243:9
+	ldr	r1, [sp, #4]
+	.loc	3 243 25 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:243:25
+	ldrh	r0, [r1, #6]
+	and	r0, r0, #1
+	strh	r0, [r1, #6]
+.Ltmp85:
+	.loc	3 244 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:244:13
+	ldrb.w	r0, [sp, #2]
+.Ltmp86:
+	.loc	3 244 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:244:13
+	cmp	r0, #1
+	bne	.LBB6_5
+	b	.LBB6_4
+.LBB6_4:
+.Ltmp87:
+	.loc	3 246 32 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:246:32
+	ldr	r1, [sp, #4]
+	.loc	3 246 36 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:246:36
+	ldrh	r0, [r1, #4]
+	.loc	3 246 31                        @ rt-thread/components/drivers/src/ringbuffer.c:246:31
+	mvns	r2, r0
+	.loc	3 246 29                        @ rt-thread/components/drivers/src/ringbuffer.c:246:29
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #4]
+	.loc	3 247 30 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:247:30
+	ldr	r1, [sp, #4]
+	.loc	3 247 34 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:247:34
+	ldrh	r2, [r1, #6]
+	.loc	3 247 28                        @ rt-thread/components/drivers/src/ringbuffer.c:247:28
+	ldrh	r0, [r1, #4]
+	lsrs	r2, r2, #1
+	bfi	r0, r2, #1, #31
+	strh	r0, [r1, #4]
+	.loc	3 248 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:248:9
+	b	.LBB6_5
+.Ltmp88:
+.LBB6_5:
+	.loc	3 249 5                         @ rt-thread/components/drivers/src/ringbuffer.c:249:5
+	b	.LBB6_9
+.Ltmp89:
+.LBB6_6:
+	.loc	3 252 9                         @ rt-thread/components/drivers/src/ringbuffer.c:252:9
+	ldr	r1, [sp, #4]
+	.loc	3 252 24 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:252:24
+	ldrh	r0, [r1, #6]
+	adds	r0, #2
+	strh	r0, [r1, #6]
+.Ltmp90:
+	.loc	3 253 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:253:13
+	ldrb.w	r0, [sp, #2]
+.Ltmp91:
+	.loc	3 253 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:253:13
+	cmp	r0, #1
+	bne	.LBB6_8
+	b	.LBB6_7
+.LBB6_7:
+.Ltmp92:
+	.loc	3 254 30 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:254:30
+	ldr	r1, [sp, #4]
+	.loc	3 254 34 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:254:34
+	ldrh	r2, [r1, #6]
+	.loc	3 254 28                        @ rt-thread/components/drivers/src/ringbuffer.c:254:28
+	ldrh	r0, [r1, #4]
+	lsrs	r2, r2, #1
+	bfi	r0, r2, #1, #31
+	strh	r0, [r1, #4]
+	.loc	3 254 13                        @ rt-thread/components/drivers/src/ringbuffer.c:254:13
+	b	.LBB6_8
+.Ltmp93:
+.LBB6_8:
+	.loc	3 0 13                          @ rt-thread/components/drivers/src/ringbuffer.c:0:13
+	b	.LBB6_9
+.LBB6_9:
+	movs	r0, #1
+	.loc	3 257 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:257:5
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp94:
+.Lfunc_end6:
+	.size	rt_ringbuffer_putchar_force, .Lfunc_end6-rt_ringbuffer_putchar_force
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_status,"ax",%progbits
+	.p2align	3                               @ -- Begin function rt_ringbuffer_status
+	.type	rt_ringbuffer_status,%function
+	.code	16                              @ @rt_ringbuffer_status
+	.thumb_func
+rt_ringbuffer_status:
+.Lfunc_begin7:
+	.loc	3 18 0                          @ rt-thread/components/drivers/src/ringbuffer.c:18:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 8
+	str	r0, [sp]
+.Ltmp95:
+	.loc	3 19 9 prologue_end             @ rt-thread/components/drivers/src/ringbuffer.c:19:9
+	ldr	r1, [sp]
+	.loc	3 19 13 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:19:13
+	ldrh	r0, [r1, #4]
+	lsrs	r0, r0, #1
+	.loc	3 19 31                         @ rt-thread/components/drivers/src/ringbuffer.c:19:31
+	ldrh	r1, [r1, #6]
+.Ltmp96:
+	.loc	3 19 9                          @ rt-thread/components/drivers/src/ringbuffer.c:19:9
+	cmp.w	r0, r1, lsr #1
+	bne	.LBB7_4
+	b	.LBB7_1
+.LBB7_1:
+.Ltmp97:
+	.loc	3 21 13 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:21:13
+	ldr	r1, [sp]
+	.loc	3 21 17 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:21:17
+	ldrh	r0, [r1, #4]
+	.loc	3 21 13                         @ rt-thread/components/drivers/src/ringbuffer.c:21:13
+	and	r0, r0, #1
+	.loc	3 21 36                         @ rt-thread/components/drivers/src/ringbuffer.c:21:36
+	ldrh	r1, [r1, #6]
+	.loc	3 21 32                         @ rt-thread/components/drivers/src/ringbuffer.c:21:32
+	and	r1, r1, #1
+.Ltmp98:
+	.loc	3 21 13                         @ rt-thread/components/drivers/src/ringbuffer.c:21:13
+	cmp	r0, r1
+	bne	.LBB7_3
+	b	.LBB7_2
+.LBB7_2:
+	.loc	3 0 13                          @ rt-thread/components/drivers/src/ringbuffer.c:0:13
+	movs	r0, #0
+.Ltmp99:
+	.loc	3 22 13 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:22:13
+	strb.w	r0, [sp, #7]
+	b	.LBB7_5
+.LBB7_3:
+	.loc	3 0 13 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:0:13
+	movs	r0, #1
+	.loc	3 24 13 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:24:13
+	strb.w	r0, [sp, #7]
+	b	.LBB7_5
+.Ltmp100:
+.LBB7_4:
+	.loc	3 0 13 is_stmt 0                @ rt-thread/components/drivers/src/ringbuffer.c:0:13
+	movs	r0, #2
+	.loc	3 26 5 is_stmt 1                @ rt-thread/components/drivers/src/ringbuffer.c:26:5
+	strb.w	r0, [sp, #7]
+	b	.LBB7_5
+.LBB7_5:
+	.loc	3 27 1                          @ rt-thread/components/drivers/src/ringbuffer.c:27:1
+	ldrb.w	r0, [sp, #7]
+	add	sp, #8
+	bx	lr
+.Ltmp101:
+.Lfunc_end7:
+	.size	rt_ringbuffer_status, .Lfunc_end7-rt_ringbuffer_status
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_getchar,"ax",%progbits
+	.hidden	rt_ringbuffer_getchar           @ -- Begin function rt_ringbuffer_getchar
+	.globl	rt_ringbuffer_getchar
+	.p2align	3
+	.type	rt_ringbuffer_getchar,%function
+	.code	16                              @ @rt_ringbuffer_getchar
+	.thumb_func
+rt_ringbuffer_getchar:
+.Lfunc_begin8:
+	.loc	3 265 0                         @ rt-thread/components/drivers/src/ringbuffer.c:265:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+	str	r0, [sp, #8]
+	str	r1, [sp, #4]
+.Ltmp102:
+	.loc	3 266 5 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:266:5
+	ldr	r0, [sp, #8]
+.Ltmp103:
+	.loc	3 266 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:266:5
+	cbnz	r0, .LBB8_2
+	b	.LBB8_1
+.LBB8_1:
+.Ltmp104:
+	.loc	3 266 5                         @ rt-thread/components/drivers/src/ringbuffer.c:266:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_getchar
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_getchar
+	mov.w	r2, #266
+	bl	rt_assert_handler
+	b	.LBB8_2
+.Ltmp105:
+.LBB8_2:
+	.loc	3 269 33 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:269:33
+	ldr	r0, [sp, #8]
+	.loc	3 269 10 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:269:10
+	bl	rt_ringbuffer_data_len
+.Ltmp106:
+	.loc	3 269 9                         @ rt-thread/components/drivers/src/ringbuffer.c:269:9
+	cbnz	r0, .LBB8_4
+	b	.LBB8_3
+.LBB8_3:
+	.loc	3 0 9                           @ rt-thread/components/drivers/src/ringbuffer.c:0:9
+	movs	r0, #0
+.Ltmp107:
+	.loc	3 270 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:270:9
+	str	r0, [sp, #12]
+	b	.LBB8_8
+.Ltmp108:
+.LBB8_4:
+	.loc	3 273 11                        @ rt-thread/components/drivers/src/ringbuffer.c:273:11
+	ldr	r1, [sp, #8]
+	.loc	3 273 15 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:273:15
+	ldr	r0, [r1]
+	.loc	3 273 30                        @ rt-thread/components/drivers/src/ringbuffer.c:273:30
+	ldrh	r1, [r1, #4]
+	lsrs	r1, r1, #1
+	.loc	3 273 11                        @ rt-thread/components/drivers/src/ringbuffer.c:273:11
+	ldrb	r0, [r0, r1]
+	.loc	3 273 6                         @ rt-thread/components/drivers/src/ringbuffer.c:273:6
+	ldr	r1, [sp, #4]
+	.loc	3 273 9                         @ rt-thread/components/drivers/src/ringbuffer.c:273:9
+	strb	r0, [r1]
+.Ltmp109:
+	.loc	3 275 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:275:9
+	ldr	r0, [sp, #8]
+	.loc	3 275 13 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:275:13
+	ldrh	r1, [r0, #4]
+	.loc	3 275 31                        @ rt-thread/components/drivers/src/ringbuffer.c:275:31
+	ldrsh.w	r0, [r0, #8]
+	.loc	3 275 42                        @ rt-thread/components/drivers/src/ringbuffer.c:275:42
+	subs	r0, #1
+.Ltmp110:
+	.loc	3 275 9                         @ rt-thread/components/drivers/src/ringbuffer.c:275:9
+	cmp.w	r0, r1, lsr #1
+	bne	.LBB8_6
+	b	.LBB8_5
+.LBB8_5:
+.Ltmp111:
+	.loc	3 277 28 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:277:28
+	ldr	r1, [sp, #8]
+	.loc	3 277 32 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:277:32
+	ldrh	r0, [r1, #4]
+	.loc	3 277 27                        @ rt-thread/components/drivers/src/ringbuffer.c:277:27
+	mvns	r2, r0
+	.loc	3 277 25                        @ rt-thread/components/drivers/src/ringbuffer.c:277:25
+	bfi	r0, r2, #0, #1
+	strh	r0, [r1, #4]
+	.loc	3 278 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:278:9
+	ldr	r1, [sp, #8]
+	.loc	3 278 24 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:278:24
+	ldrh	r0, [r1, #4]
+	and	r0, r0, #1
+	strh	r0, [r1, #4]
+	.loc	3 279 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:279:5
+	b	.LBB8_7
+.Ltmp112:
+.LBB8_6:
+	.loc	3 282 9                         @ rt-thread/components/drivers/src/ringbuffer.c:282:9
+	ldr	r1, [sp, #8]
+	.loc	3 282 23 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:282:23
+	ldrh	r0, [r1, #4]
+	adds	r0, #2
+	strh	r0, [r1, #4]
+	b	.LBB8_7
+.Ltmp113:
+.LBB8_7:
+	.loc	3 0 23                          @ rt-thread/components/drivers/src/ringbuffer.c:0:23
+	movs	r0, #1
+	.loc	3 285 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:285:5
+	str	r0, [sp, #12]
+	b	.LBB8_8
+.LBB8_8:
+	.loc	3 286 1                         @ rt-thread/components/drivers/src/ringbuffer.c:286:1
+	ldr	r0, [sp, #12]
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp114:
+.Lfunc_end8:
+	.size	rt_ringbuffer_getchar, .Lfunc_end8-rt_ringbuffer_getchar
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_reset,"ax",%progbits
+	.hidden	rt_ringbuffer_reset             @ -- Begin function rt_ringbuffer_reset
+	.globl	rt_ringbuffer_reset
+	.p2align	3
+	.type	rt_ringbuffer_reset,%function
+	.code	16                              @ @rt_ringbuffer_reset
+	.thumb_func
+rt_ringbuffer_reset:
+.Lfunc_begin9:
+	.loc	3 314 0                         @ rt-thread/components/drivers/src/ringbuffer.c:314:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+.Ltmp115:
+	.loc	3 315 5 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:315:5
+	ldr	r0, [sp, #4]
+.Ltmp116:
+	.loc	3 315 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:315:5
+	cbnz	r0, .LBB9_2
+	b	.LBB9_1
+.LBB9_1:
+.Ltmp117:
+	.loc	3 315 5                         @ rt-thread/components/drivers/src/ringbuffer.c:315:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_reset
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_reset
+	movw	r2, #315
+	bl	rt_assert_handler
+	b	.LBB9_2
+.Ltmp118:
+.LBB9_2:
+	.loc	3 317 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:317:5
+	ldr	r1, [sp, #4]
+	.loc	3 317 21 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:317:21
+	ldrh	r0, [r1, #4]
+	bic	r0, r0, #1
+	strh	r0, [r1, #4]
+	.loc	3 318 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:318:5
+	ldr	r1, [sp, #4]
+	.loc	3 318 20 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:318:20
+	ldrh	r0, [r1, #4]
+	and	r0, r0, #1
+	strh	r0, [r1, #4]
+	.loc	3 319 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:319:5
+	ldr	r1, [sp, #4]
+	.loc	3 319 22 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:319:22
+	ldrh	r0, [r1, #6]
+	bic	r0, r0, #1
+	strh	r0, [r1, #6]
+	.loc	3 320 5 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:320:5
+	ldr	r1, [sp, #4]
+	.loc	3 320 21 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:320:21
+	ldrh	r0, [r1, #6]
+	and	r0, r0, #1
+	strh	r0, [r1, #6]
+	.loc	3 321 1 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:321:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp119:
+.Lfunc_end9:
+	.size	rt_ringbuffer_reset, .Lfunc_end9-rt_ringbuffer_reset
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_create,"ax",%progbits
+	.hidden	rt_ringbuffer_create            @ -- Begin function rt_ringbuffer_create
+	.globl	rt_ringbuffer_create
+	.p2align	3
+	.type	rt_ringbuffer_create,%function
+	.code	16                              @ @rt_ringbuffer_create
+	.thumb_func
+rt_ringbuffer_create:
+.Lfunc_begin10:
+	.loc	3 327 0                         @ rt-thread/components/drivers/src/ringbuffer.c:327:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+                                        @ kill: def $r1 killed $r0
+	strh.w	r0, [sp, #14]
+.Ltmp120:
+	.loc	3 331 2 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:331:2
+	ldrh.w	r0, [sp, #14]
+.Ltmp121:
+	.loc	3 331 2 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:331:2
+	cmp	r0, #0
+	bgt	.LBB10_2
+	b	.LBB10_1
+.LBB10_1:
+.Ltmp122:
+	.loc	3 331 2                         @ rt-thread/components/drivers/src/ringbuffer.c:331:2
+	movw	r0, :lower16:.L.str.1
+	movt	r0, :upper16:.L.str.1
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_create
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_create
+	movw	r2, #331
+	bl	rt_assert_handler
+	b	.LBB10_2
+.Ltmp123:
+.LBB10_2:
+	.loc	3 333 12 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:333:12
+	ldrh.w	r0, [sp, #14]
+	bic	r0, r0, #3
+	.loc	3 333 10 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:333:10
+	strh.w	r0, [sp, #14]
+	movs	r0, #12
+	.loc	3 335 34 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:335:34
+	bl	rt_malloc
+	.loc	3 335 8 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:335:8
+	str	r0, [sp, #8]
+.Ltmp124:
+	.loc	3 336 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:336:9
+	ldr	r0, [sp, #8]
+.Ltmp125:
+	.loc	3 336 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:336:9
+	cbnz	r0, .LBB10_4
+	b	.LBB10_3
+.LBB10_3:
+.Ltmp126:
+	.loc	3 337 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:337:9
+	b	.LBB10_7
+.Ltmp127:
+.LBB10_4:
+	.loc	3 339 36                        @ rt-thread/components/drivers/src/ringbuffer.c:339:36
+	ldrh.w	r0, [sp, #14]
+	.loc	3 339 26 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:339:26
+	bl	rt_malloc
+	.loc	3 339 10                        @ rt-thread/components/drivers/src/ringbuffer.c:339:10
+	str	r0, [sp, #4]
+.Ltmp128:
+	.loc	3 340 9 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:340:9
+	ldr	r0, [sp, #4]
+.Ltmp129:
+	.loc	3 340 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:340:9
+	cbnz	r0, .LBB10_6
+	b	.LBB10_5
+.LBB10_5:
+.Ltmp130:
+	.loc	3 342 17 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:342:17
+	ldr	r0, [sp, #8]
+	.loc	3 342 9 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:342:9
+	bl	rt_free
+	movs	r0, #0
+	.loc	3 343 12 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:343:12
+	str	r0, [sp, #8]
+	.loc	3 344 9                         @ rt-thread/components/drivers/src/ringbuffer.c:344:9
+	b	.LBB10_7
+.Ltmp131:
+.LBB10_6:
+	.loc	3 346 24                        @ rt-thread/components/drivers/src/ringbuffer.c:346:24
+	ldr	r0, [sp, #8]
+	.loc	3 346 28 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:346:28
+	ldr	r1, [sp, #4]
+	.loc	3 346 34                        @ rt-thread/components/drivers/src/ringbuffer.c:346:34
+	ldrsh.w	r2, [sp, #14]
+	.loc	3 346 5                         @ rt-thread/components/drivers/src/ringbuffer.c:346:5
+	bl	rt_ringbuffer_init
+	b	.LBB10_7
+.LBB10_7:
+.Ltmp132:
+	@DEBUG_LABEL: rt_ringbuffer_create:exit
+	.loc	3 349 12 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:349:12
+	ldr	r0, [sp, #8]
+	.loc	3 349 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:349:5
+	add	sp, #16
+	pop	{r7, pc}
+.Ltmp133:
+.Lfunc_end10:
+	.size	rt_ringbuffer_create, .Lfunc_end10-rt_ringbuffer_create
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.section	.text.rt_ringbuffer_destroy,"ax",%progbits
+	.hidden	rt_ringbuffer_destroy           @ -- Begin function rt_ringbuffer_destroy
+	.globl	rt_ringbuffer_destroy
+	.p2align	3
+	.type	rt_ringbuffer_destroy,%function
+	.code	16                              @ @rt_ringbuffer_destroy
+	.thumb_func
+rt_ringbuffer_destroy:
+.Lfunc_begin11:
+	.loc	3 354 0 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:354:0
+	.fnstart
+	.cfi_startproc
+@ %bb.0:
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+	str	r0, [sp, #4]
+.Ltmp134:
+	.loc	3 355 5 prologue_end            @ rt-thread/components/drivers/src/ringbuffer.c:355:5
+	ldr	r0, [sp, #4]
+.Ltmp135:
+	.loc	3 355 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:355:5
+	cbnz	r0, .LBB11_2
+	b	.LBB11_1
+.LBB11_1:
+.Ltmp136:
+	.loc	3 355 5                         @ rt-thread/components/drivers/src/ringbuffer.c:355:5
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	movw	r1, :lower16:.L__FUNCTION__.rt_ringbuffer_destroy
+	movt	r1, :upper16:.L__FUNCTION__.rt_ringbuffer_destroy
+	movw	r2, #355
+	bl	rt_assert_handler
+	b	.LBB11_2
+.Ltmp137:
+.LBB11_2:
+	.loc	3 357 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:357:13
+	ldr	r0, [sp, #4]
+	.loc	3 357 17 is_stmt 0              @ rt-thread/components/drivers/src/ringbuffer.c:357:17
+	ldr	r0, [r0]
+	.loc	3 357 5                         @ rt-thread/components/drivers/src/ringbuffer.c:357:5
+	bl	rt_free
+	.loc	3 358 13 is_stmt 1              @ rt-thread/components/drivers/src/ringbuffer.c:358:13
+	ldr	r0, [sp, #4]
+	.loc	3 358 5 is_stmt 0               @ rt-thread/components/drivers/src/ringbuffer.c:358:5
+	bl	rt_free
+	.loc	3 359 1 is_stmt 1               @ rt-thread/components/drivers/src/ringbuffer.c:359:1
+	add	sp, #8
+	pop	{r7, pc}
+.Ltmp138:
+.Lfunc_end11:
+	.size	rt_ringbuffer_destroy, .Lfunc_end11-rt_ringbuffer_destroy
+	.cfi_endproc
+	.cantunwind
+	.fnend
+                                        @ -- End function
+	.type	.L.str,%object                  @ @.str
+	.section	.rodata.str1.1,"aMS",%progbits,1
+.L.str:
+	.asciz	"rb != RT_NULL"
+	.size	.L.str, 14
+
+	.type	.L__FUNCTION__.rt_ringbuffer_init,%object @ @__FUNCTION__.rt_ringbuffer_init
+.L__FUNCTION__.rt_ringbuffer_init:
+	.asciz	"rt_ringbuffer_init"
+	.size	.L__FUNCTION__.rt_ringbuffer_init, 19
+
+	.type	.L.str.1,%object                @ @.str.1
+.L.str.1:
+	.asciz	"size > 0"
+	.size	.L.str.1, 9
+
+	.type	.L__FUNCTION__.rt_ringbuffer_put,%object @ @__FUNCTION__.rt_ringbuffer_put
+.L__FUNCTION__.rt_ringbuffer_put:
+	.asciz	"rt_ringbuffer_put"
+	.size	.L__FUNCTION__.rt_ringbuffer_put, 18
+
+	.type	.L__FUNCTION__.rt_ringbuffer_put_force,%object @ @__FUNCTION__.rt_ringbuffer_put_force
+.L__FUNCTION__.rt_ringbuffer_put_force:
+	.asciz	"rt_ringbuffer_put_force"
+	.size	.L__FUNCTION__.rt_ringbuffer_put_force, 24
+
+	.type	.L__FUNCTION__.rt_ringbuffer_get,%object @ @__FUNCTION__.rt_ringbuffer_get
+.L__FUNCTION__.rt_ringbuffer_get:
+	.asciz	"rt_ringbuffer_get"
+	.size	.L__FUNCTION__.rt_ringbuffer_get, 18
+
+	.type	.L__FUNCTION__.rt_ringbuffer_putchar,%object @ @__FUNCTION__.rt_ringbuffer_putchar
+.L__FUNCTION__.rt_ringbuffer_putchar:
+	.asciz	"rt_ringbuffer_putchar"
+	.size	.L__FUNCTION__.rt_ringbuffer_putchar, 22
+
+	.type	.L__FUNCTION__.rt_ringbuffer_putchar_force,%object @ @__FUNCTION__.rt_ringbuffer_putchar_force
+.L__FUNCTION__.rt_ringbuffer_putchar_force:
+	.asciz	"rt_ringbuffer_putchar_force"
+	.size	.L__FUNCTION__.rt_ringbuffer_putchar_force, 28
+
+	.type	.L__FUNCTION__.rt_ringbuffer_getchar,%object @ @__FUNCTION__.rt_ringbuffer_getchar
+.L__FUNCTION__.rt_ringbuffer_getchar:
+	.asciz	"rt_ringbuffer_getchar"
+	.size	.L__FUNCTION__.rt_ringbuffer_getchar, 22
+
+	.type	.L__FUNCTION__.rt_ringbuffer_reset,%object @ @__FUNCTION__.rt_ringbuffer_reset
+.L__FUNCTION__.rt_ringbuffer_reset:
+	.asciz	"rt_ringbuffer_reset"
+	.size	.L__FUNCTION__.rt_ringbuffer_reset, 20
+
+	.type	.L__FUNCTION__.rt_ringbuffer_create,%object @ @__FUNCTION__.rt_ringbuffer_create
+.L__FUNCTION__.rt_ringbuffer_create:
+	.asciz	"rt_ringbuffer_create"
+	.size	.L__FUNCTION__.rt_ringbuffer_create, 21
+
+	.type	.L__FUNCTION__.rt_ringbuffer_destroy,%object @ @__FUNCTION__.rt_ringbuffer_destroy
+.L__FUNCTION__.rt_ringbuffer_destroy:
+	.asciz	"rt_ringbuffer_destroy"
+	.size	.L__FUNCTION__.rt_ringbuffer_destroy, 22
+
+	.section	.debug_abbrev,"",%progbits
+	.byte	1                               @ Abbreviation Code
+	.byte	17                              @ DW_TAG_compile_unit
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	37                              @ DW_AT_producer
+	.byte	14                              @ DW_FORM_strp
+	.byte	19                              @ DW_AT_language
+	.byte	5                               @ DW_FORM_data2
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	16                              @ DW_AT_stmt_list
+	.byte	6                               @ DW_FORM_data4
+	.byte	27                              @ DW_AT_comp_dir
+	.byte	14                              @ DW_FORM_strp
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	85                              @ DW_AT_ranges
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	2                               @ Abbreviation Code
+	.byte	4                               @ DW_TAG_enumeration_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	3                               @ Abbreviation Code
+	.byte	40                              @ DW_TAG_enumerator
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	28                              @ DW_AT_const_value
+	.byte	15                              @ DW_FORM_udata
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	4                               @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	5                               @ Abbreviation Code
+	.byte	15                              @ DW_TAG_pointer_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	6                               @ Abbreviation Code
+	.byte	19                              @ DW_TAG_structure_type
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	7                               @ Abbreviation Code
+	.byte	13                              @ DW_TAG_member
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	56                              @ DW_AT_data_member_location
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	13                              @ DW_TAG_member
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	13                              @ DW_AT_bit_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	12                              @ DW_AT_bit_offset
+	.byte	11                              @ DW_FORM_data1
+	.byte	56                              @ DW_AT_data_member_location
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	9                               @ Abbreviation Code
+	.byte	22                              @ DW_TAG_typedef
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	10                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	12                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	13                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	14                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	15                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	17                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	18                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	19                              @ Abbreviation Code
+	.byte	10                              @ DW_TAG_label
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	20                              @ Abbreviation Code
+	.byte	38                              @ DW_TAG_const_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	0                               @ EOM(3)
+	.section	.debug_info,"",%progbits
+.Lcu_begin0:
+	.long	.Ldebug_info_end0-.Ldebug_info_start0 @ Length of Unit
+.Ldebug_info_start0:
+	.short	3                               @ DWARF version number
+	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
+	.byte	4                               @ Address Size (in bytes)
+	.byte	1                               @ Abbrev [1] 0xb:0x3c1 DW_TAG_compile_unit
+	.long	.Linfo_string0                  @ DW_AT_producer
+	.short	12                              @ DW_AT_language
+	.long	.Linfo_string1                  @ DW_AT_name
+	.long	.Lline_table_start0             @ DW_AT_stmt_list
+	.long	.Linfo_string2                  @ DW_AT_comp_dir
+	.long	0                               @ DW_AT_low_pc
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	2                               @ Abbrev [2] 0x26:0x1f DW_TAG_enumeration_type
+	.long	69                              @ DW_AT_type
+	.long	.Linfo_string7                  @ DW_AT_name
+	.byte	1                               @ DW_AT_byte_size
+	.byte	1                               @ DW_AT_decl_file
+	.byte	53                              @ DW_AT_decl_line
+	.byte	3                               @ Abbrev [3] 0x32:0x6 DW_TAG_enumerator
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	0                               @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x38:0x6 DW_TAG_enumerator
+	.long	.Linfo_string5                  @ DW_AT_name
+	.byte	1                               @ DW_AT_const_value
+	.byte	3                               @ Abbrev [3] 0x3e:0x6 DW_TAG_enumerator
+	.long	.Linfo_string6                  @ DW_AT_name
+	.byte	2                               @ DW_AT_const_value
+	.byte	0                               @ End Of Children Mark
+	.byte	4                               @ Abbrev [4] 0x45:0x7 DW_TAG_base_type
+	.long	.Linfo_string3                  @ DW_AT_name
+	.byte	8                               @ DW_AT_encoding
+	.byte	1                               @ DW_AT_byte_size
+	.byte	5                               @ Abbrev [5] 0x4c:0x5 DW_TAG_pointer_type
+	.long	81                              @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x51:0x5d DW_TAG_structure_type
+	.long	.Linfo_string19                 @ DW_AT_name
+	.byte	12                              @ DW_AT_byte_size
+	.byte	1                               @ DW_AT_decl_file
+	.byte	19                              @ DW_AT_decl_line
+	.byte	7                               @ Abbrev [7] 0x59:0xc DW_TAG_member
+	.long	.Linfo_string8                  @ DW_AT_name
+	.long	174                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	21                              @ DW_AT_decl_line
+	.byte	0                               @ DW_AT_data_member_location
+	.byte	8                               @ Abbrev [8] 0x65:0xf DW_TAG_member
+	.long	.Linfo_string10                 @ DW_AT_name
+	.long	190                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	44                              @ DW_AT_decl_line
+	.byte	2                               @ DW_AT_byte_size
+	.byte	1                               @ DW_AT_bit_size
+	.byte	15                              @ DW_AT_bit_offset
+	.byte	4                               @ DW_AT_data_member_location
+	.byte	8                               @ Abbrev [8] 0x74:0xf DW_TAG_member
+	.long	.Linfo_string13                 @ DW_AT_name
+	.long	190                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	45                              @ DW_AT_decl_line
+	.byte	2                               @ DW_AT_byte_size
+	.byte	15                              @ DW_AT_bit_size
+	.byte	0                               @ DW_AT_bit_offset
+	.byte	4                               @ DW_AT_data_member_location
+	.byte	8                               @ Abbrev [8] 0x83:0xf DW_TAG_member
+	.long	.Linfo_string14                 @ DW_AT_name
+	.long	190                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	46                              @ DW_AT_decl_line
+	.byte	2                               @ DW_AT_byte_size
+	.byte	1                               @ DW_AT_bit_size
+	.byte	15                              @ DW_AT_bit_offset
+	.byte	6                               @ DW_AT_data_member_location
+	.byte	8                               @ Abbrev [8] 0x92:0xf DW_TAG_member
+	.long	.Linfo_string15                 @ DW_AT_name
+	.long	190                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	47                              @ DW_AT_decl_line
+	.byte	2                               @ DW_AT_byte_size
+	.byte	15                              @ DW_AT_bit_size
+	.byte	0                               @ DW_AT_bit_offset
+	.byte	6                               @ DW_AT_data_member_location
+	.byte	7                               @ Abbrev [7] 0xa1:0xc DW_TAG_member
+	.long	.Linfo_string16                 @ DW_AT_name
+	.long	208                             @ DW_AT_type
+	.byte	1                               @ DW_AT_decl_file
+	.byte	50                              @ DW_AT_decl_line
+	.byte	8                               @ DW_AT_data_member_location
+	.byte	0                               @ End Of Children Mark
+	.byte	5                               @ Abbrev [5] 0xae:0x5 DW_TAG_pointer_type
+	.long	179                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xb3:0xb DW_TAG_typedef
+	.long	69                              @ DW_AT_type
+	.long	.Linfo_string9                  @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	67                              @ DW_AT_decl_line
+	.byte	9                               @ Abbrev [9] 0xbe:0xb DW_TAG_typedef
+	.long	201                             @ DW_AT_type
+	.long	.Linfo_string12                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	68                              @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0xc9:0x7 DW_TAG_base_type
+	.long	.Linfo_string11                 @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	9                               @ Abbrev [9] 0xd0:0xb DW_TAG_typedef
+	.long	219                             @ DW_AT_type
+	.long	.Linfo_string18                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	65                              @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0xdb:0x7 DW_TAG_base_type
+	.long	.Linfo_string17                 @ DW_AT_name
+	.byte	5                               @ DW_AT_encoding
+	.byte	2                               @ DW_AT_byte_size
+	.byte	10                              @ Abbrev [10] 0xe2:0x3e DW_TAG_subprogram
+	.long	.Lfunc_begin0                   @ DW_AT_low_pc
+	.long	.Lfunc_end0                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string20                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	29                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	11                              @ Abbrev [11] 0xf5:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	29                              @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x103:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string36                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	30                              @ DW_AT_decl_line
+	.long	174                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x111:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	6
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	31                              @ DW_AT_decl_line
+	.long	208                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x120:0x50 DW_TAG_subprogram
+	.long	.Lfunc_begin1                   @ DW_AT_low_pc
+	.long	.Lfunc_end1                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	49                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	932                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	11                              @ Abbrev [11] 0x137:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	49                              @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x145:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	50                              @ DW_AT_decl_line
+	.long	961                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x153:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	51                              @ DW_AT_decl_line
+	.long	190                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x161:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	53                              @ DW_AT_decl_line
+	.long	190                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x170:0x28 DW_TAG_subprogram
+	.long	.Lfunc_begin2                   @ DW_AT_low_pc
+	.long	.Lfunc_end2                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string25                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	292                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	932                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x188:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	292                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x198:0x50 DW_TAG_subprogram
+	.long	.Lfunc_begin3                   @ DW_AT_low_pc
+	.long	.Lfunc_end3                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string26                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	98                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	932                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	11                              @ Abbrev [11] 0x1af:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	98                              @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x1bd:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	99                              @ DW_AT_decl_line
+	.long	961                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x1cb:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	100                             @ DW_AT_decl_line
+	.long	190                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x1d9:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string40                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	102                             @ DW_AT_decl_line
+	.long	190                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x1e8:0x50 DW_TAG_subprogram
+	.long	.Lfunc_begin4                   @ DW_AT_low_pc
+	.long	.Lfunc_end4                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	152                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	932                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	11                              @ Abbrev [11] 0x1ff:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	16
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	152                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x20d:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	12
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	153                             @ DW_AT_decl_line
+	.long	174                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x21b:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	10
+	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	154                             @ DW_AT_decl_line
+	.long	190                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x229:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	156                             @ DW_AT_decl_line
+	.long	932                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x238:0x34 DW_TAG_subprogram
+	.long	.Lfunc_begin5                   @ DW_AT_low_pc
+	.long	.Lfunc_end5                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string28                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	199                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	932                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	11                              @ Abbrev [11] 0x24f:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	199                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x25d:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	7
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	199                             @ DW_AT_decl_line
+	.long	966                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	12                              @ Abbrev [12] 0x26c:0x42 DW_TAG_subprogram
+	.long	.Lfunc_begin6                   @ DW_AT_low_pc
+	.long	.Lfunc_end6                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	229                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	932                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	11                              @ Abbrev [11] 0x283:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	229                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x291:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	3
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	229                             @ DW_AT_decl_line
+	.long	966                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x29f:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	2
+	.long	.Linfo_string42                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	231                             @ DW_AT_decl_line
+	.long	38                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	16                              @ Abbrev [16] 0x2ae:0x25 DW_TAG_subprogram
+	.long	.Lfunc_begin7                   @ DW_AT_low_pc
+	.long	.Lfunc_end7                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	17                              @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	38                              @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x2c4:0xe DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	0
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.byte	17                              @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x2d3:0x37 DW_TAG_subprogram
+	.long	.Lfunc_begin8                   @ DW_AT_low_pc
+	.long	.Lfunc_end8                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	264                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	932                             @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x2eb:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	264                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x2fa:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string41                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	264                             @ DW_AT_decl_line
+	.long	174                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x30a:0x24 DW_TAG_subprogram
+	.long	.Lfunc_begin9                   @ DW_AT_low_pc
+	.long	.Lfunc_end9                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	313                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x31e:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	313                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	14                              @ Abbrev [14] 0x32e:0x52 DW_TAG_subprogram
+	.long	.Lfunc_begin10                  @ DW_AT_low_pc
+	.long	.Lfunc_end10                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	326                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	76                              @ DW_AT_type
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x346:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	14
+	.long	.Linfo_string37                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	326                             @ DW_AT_decl_line
+	.long	190                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x355:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	8
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	328                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x364:0xf DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string36                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	329                             @ DW_AT_decl_line
+	.long	174                             @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x373:0xc DW_TAG_label
+	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	348                             @ DW_AT_decl_line
+	.long	.Ltmp132                        @ DW_AT_low_pc
+	.byte	0                               @ End Of Children Mark
+	.byte	17                              @ Abbrev [17] 0x380:0x24 DW_TAG_subprogram
+	.long	.Lfunc_begin11                  @ DW_AT_low_pc
+	.long	.Lfunc_end11                    @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string34                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	353                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.byte	1                               @ DW_AT_external
+	.byte	15                              @ Abbrev [15] 0x394:0xf DW_TAG_formal_parameter
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string35                 @ DW_AT_name
+	.byte	3                               @ DW_AT_decl_file
+	.short	353                             @ DW_AT_decl_line
+	.long	76                              @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	9                               @ Abbrev [9] 0x3a4:0xb DW_TAG_typedef
+	.long	943                             @ DW_AT_type
+	.long	.Linfo_string24                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	88                              @ DW_AT_decl_line
+	.byte	9                               @ Abbrev [9] 0x3af:0xb DW_TAG_typedef
+	.long	954                             @ DW_AT_type
+	.long	.Linfo_string23                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	82                              @ DW_AT_decl_line
+	.byte	4                               @ Abbrev [4] 0x3ba:0x7 DW_TAG_base_type
+	.long	.Linfo_string22                 @ DW_AT_name
+	.byte	7                               @ DW_AT_encoding
+	.byte	4                               @ DW_AT_byte_size
+	.byte	5                               @ Abbrev [5] 0x3c1:0x5 DW_TAG_pointer_type
+	.long	966                             @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x3c6:0x5 DW_TAG_const_type
+	.long	179                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+.Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Lfunc_begin0
+	.long	.Lfunc_end0
+	.long	.Lfunc_begin1
+	.long	.Lfunc_end1
+	.long	.Lfunc_begin2
+	.long	.Lfunc_end2
+	.long	.Lfunc_begin3
+	.long	.Lfunc_end3
+	.long	.Lfunc_begin4
+	.long	.Lfunc_end4
+	.long	.Lfunc_begin5
+	.long	.Lfunc_end5
+	.long	.Lfunc_begin6
+	.long	.Lfunc_end6
+	.long	.Lfunc_begin7
+	.long	.Lfunc_end7
+	.long	.Lfunc_begin8
+	.long	.Lfunc_end8
+	.long	.Lfunc_begin9
+	.long	.Lfunc_end9
+	.long	.Lfunc_begin10
+	.long	.Lfunc_end10
+	.long	.Lfunc_begin11
+	.long	.Lfunc_end11
+	.long	0
+	.long	0
+	.section	.debug_str,"MS",%progbits,1
+.Linfo_string0:
+	.asciz	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]" @ string offset=0
+.Linfo_string1:
+	.asciz	"rt-thread/components/drivers/src\\ringbuffer.c" @ string offset=55
+.Linfo_string2:
+	.asciz	"E:\\STM32\\Learning\\STM32H750_ART_PI_RGBLCD" @ string offset=101
+.Linfo_string3:
+	.asciz	"unsigned char"                 @ string offset=143
+.Linfo_string4:
+	.asciz	"RT_RINGBUFFER_EMPTY"           @ string offset=157
+.Linfo_string5:
+	.asciz	"RT_RINGBUFFER_FULL"            @ string offset=177
+.Linfo_string6:
+	.asciz	"RT_RINGBUFFER_HALFFULL"        @ string offset=196
+.Linfo_string7:
+	.asciz	"rt_ringbuffer_state"           @ string offset=219
+.Linfo_string8:
+	.asciz	"buffer_ptr"                    @ string offset=239
+.Linfo_string9:
+	.asciz	"rt_uint8_t"                    @ string offset=250
+.Linfo_string10:
+	.asciz	"read_mirror"                   @ string offset=261
+.Linfo_string11:
+	.asciz	"unsigned short"                @ string offset=273
+.Linfo_string12:
+	.asciz	"rt_uint16_t"                   @ string offset=288
+.Linfo_string13:
+	.asciz	"read_index"                    @ string offset=300
+.Linfo_string14:
+	.asciz	"write_mirror"                  @ string offset=311
+.Linfo_string15:
+	.asciz	"write_index"                   @ string offset=324
+.Linfo_string16:
+	.asciz	"buffer_size"                   @ string offset=336
+.Linfo_string17:
+	.asciz	"short"                         @ string offset=348
+.Linfo_string18:
+	.asciz	"rt_int16_t"                    @ string offset=354
+.Linfo_string19:
+	.asciz	"rt_ringbuffer"                 @ string offset=365
+.Linfo_string20:
+	.asciz	"rt_ringbuffer_init"            @ string offset=379
+.Linfo_string21:
+	.asciz	"rt_ringbuffer_put"             @ string offset=398
+.Linfo_string22:
+	.asciz	"long unsigned int"             @ string offset=416
+.Linfo_string23:
+	.asciz	"rt_ubase_t"                    @ string offset=434
+.Linfo_string24:
+	.asciz	"rt_size_t"                     @ string offset=445
+.Linfo_string25:
+	.asciz	"rt_ringbuffer_data_len"        @ string offset=455
+.Linfo_string26:
+	.asciz	"rt_ringbuffer_put_force"       @ string offset=478
+.Linfo_string27:
+	.asciz	"rt_ringbuffer_get"             @ string offset=502
+.Linfo_string28:
+	.asciz	"rt_ringbuffer_putchar"         @ string offset=520
+.Linfo_string29:
+	.asciz	"rt_ringbuffer_putchar_force"   @ string offset=542
+.Linfo_string30:
+	.asciz	"rt_ringbuffer_status"          @ string offset=570
+.Linfo_string31:
+	.asciz	"rt_ringbuffer_getchar"         @ string offset=591
+.Linfo_string32:
+	.asciz	"rt_ringbuffer_reset"           @ string offset=613
+.Linfo_string33:
+	.asciz	"rt_ringbuffer_create"          @ string offset=633
+.Linfo_string34:
+	.asciz	"rt_ringbuffer_destroy"         @ string offset=654
+.Linfo_string35:
+	.asciz	"rb"                            @ string offset=676
+.Linfo_string36:
+	.asciz	"pool"                          @ string offset=679
+.Linfo_string37:
+	.asciz	"size"                          @ string offset=684
+.Linfo_string38:
+	.asciz	"ptr"                           @ string offset=689
+.Linfo_string39:
+	.asciz	"length"                        @ string offset=693
+.Linfo_string40:
+	.asciz	"space_length"                  @ string offset=700
+.Linfo_string41:
+	.asciz	"ch"                            @ string offset=713
+.Linfo_string42:
+	.asciz	"old_state"                     @ string offset=716
+.Linfo_string43:
+	.asciz	"exit"                          @ string offset=726
+	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
+	.section	".note.GNU-stack","",%progbits
+	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.ARM_attribute	16, 1	@ Tag_AV_eba
+	.section	.debug_line,"",%progbits
+.Lline_table_start0:
