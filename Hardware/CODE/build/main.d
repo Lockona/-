@@ -251,4 +251,4 @@
   applications\RC522\rc522_function.h applications\RC522\rc522_config.h \
   applications\RC522\rc522_app.h applications\decode_dma.h \
   applications\umqtt_app.h applications\lv_app\lvgl_app.h \
-  applications\OV2640\ov2640_app.h
+  applications\OV2640\ov2640_app.h applications\LED\led.h

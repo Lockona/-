@@ -686,6 +686,7 @@ void HAL_SPI_MspDeInit(SPI_HandleTypeDef* hspi)
 */
 void HAL_TIM_PWM_MspInit(TIM_HandleTypeDef* htim_pwm)
 {
+
   if(htim_pwm->Instance==TIM5)
   {
   /* USER CODE BEGIN TIM5_MspInit 0 */

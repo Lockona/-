@@ -19,7 +19,7 @@
 #include "umqtt_app.h"
 #include "lvgl_app.h"
 #include "ov2640_app.h"
-
+#include "led.h"
 rt_timer_t lvgl_time = RT_NULL;
 
 rt_mailbox_t rfid_update_mb = RT_NULL;
@@ -256,7 +256,7 @@ int main(void)
 
     }
     rt_exit_critical();
-
+	led_control();
     while (count++)
     {
         rt_thread_mdelay(500);
