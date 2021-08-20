@@ -219,7 +219,7 @@ static void start(void *parameter)
 	
 	
 }
-
+extern void light_sensor_get();
 int main(void)
 {
     rt_uint32_t count = 1;
@@ -256,7 +256,7 @@ int main(void)
 
     }
     rt_exit_critical();
-	led_control();
+	light_sensor_get();
     while (count++)
     {
         rt_thread_mdelay(500);
