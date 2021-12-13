@@ -43,6 +43,7 @@ void light_sensor_Init()
 	ADC_chhandle.Offset = 0;
 	HAL_ADC_ConfigChannel(&ADC_handle, &ADC_chhandle);
 	HAL_ADC_Start(&ADC_handle);
+	
 }
 void light_sensor_get()
 {

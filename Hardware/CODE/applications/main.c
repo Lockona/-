@@ -79,7 +79,16 @@ void moto_driver(int ms)
 static void lvgl_time_inc(void *parameter)
 {
 	rt_enter_critical();
-    lv_tick_inc(LV_DISP_DEF_REFR_PERIOD);
+//    lv_tick_inc(LV_DISP_DEF_REFR_PERIOD);
+	now = time(RT_NULL);
+	n_tm = localtime(&now);
+	lv_label_set_text_fmt(label_time, "%04d-%02d-%02d\n%02d:%02d:%02d", 
+											(n_tm->tm_year + 1900), 
+											n_tm->tm_mon + 1, 
+											n_tm->tm_mday, 
+											n_tm->tm_hour, 
+											n_tm->tm_min,
+											n_tm->tm_sec);
 	rt_exit_critical();
 }
 static void lvgl_gui(void *parameter)
@@ -89,26 +98,27 @@ static void lvgl_gui(void *parameter)
     lv_port_disp_init();
     lv_port_indev_init();
 	lv_destop();
-	lvgl_time = rt_timer_create("lvgl_time", lvgl_time_inc, RT_NULL, LV_DISP_DEF_REFR_PERIOD, RT_TIMER_FLAG_PERIODIC);
-    if (RT_NULL != lvgl_time)
-		rt_timer_start(lvgl_time);
+
 	rt_exit_critical();
 	lv_task_handler();
-	rt_thread_delay(1000);
+	rt_thread_delay(1000);	
+	lvgl_time = rt_timer_create("lvgl_time", lvgl_time_inc, RT_NULL, 500, RT_TIMER_FLAG_PERIODIC);
+    if (RT_NULL != lvgl_time)
+		rt_timer_start(lvgl_time);
     while (1)
     {
 		if(rt_sem_take(ov_sync_sem,20) == RT_EOK)
 		{
 			rt_mutex_take(jpg_decode_mux,0);
-			now = time(RT_NULL);
-			n_tm = localtime(&now);
-			lv_label_set_text_fmt(label_time, "%04d-%02d-%02d\n%02d:%02d:%02d", 
-													(n_tm->tm_year + 1900), 
-													n_tm->tm_mon + 1, 
-													n_tm->tm_mday, 
-													n_tm->tm_hour, 
-													n_tm->tm_min,
-													n_tm->tm_sec);
+//			now = time(RT_NULL);
+//			n_tm = localtime(&now);
+//			lv_label_set_text_fmt(label_time, "%04d-%02d-%02d\n%02d:%02d:%02d", 
+//													(n_tm->tm_year + 1900), 
+//													n_tm->tm_mon + 1, 
+//													n_tm->tm_mday, 
+//													n_tm->tm_hour, 
+//													n_tm->tm_min,
+//													n_tm->tm_sec);
 			lv_task_handler();
 			rt_mutex_release(jpg_decode_mux);
 		}
@@ -128,6 +138,10 @@ static void start(void *parameter)
 	int fd;
 	int timeout;
 
+//	while(rt_wlan_connect("Adbec12","zactionz2018.")!=RT_EOK)
+//	{
+//		
+//	}
 	while(rt_wlan_connect("Adbec12","zactionz2018.")!=RT_EOK)
 	{
 		
@@ -256,7 +270,7 @@ int main(void)
 
     }
     rt_exit_critical();
-	light_sensor_get();
+//	light_sensor_get();
     while (count++)
     {
         rt_thread_mdelay(500);

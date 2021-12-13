@@ -125,7 +125,7 @@ if response:
     client.username_pw_set(username=username, password=password)
     client.on_connect = on_connect
     client.on_message = on_message
-    client.connect(host='192.168.43.80', port=1883, keepalive=60)
+    client.connect(host='106.52.51.28', port=1883, keepalive=60)
     data_process_thread = data_process(client)
     data_process_thread.start()
     rfid_update_thread = rfid_update(client)
