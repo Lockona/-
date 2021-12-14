@@ -78,27 +78,21 @@ WSGI_APPLICATION = 'smart_door.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'smart_door',
+        'USER': 'test',
+        'PASSWORD': '123456',
+        'HOST': '106.52.51.28',
+        'PORT': '3306',
+        'OPTIONS': {
+            'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
+            'charset': 'utf8mb4'
+        }
     }
 }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'gdupt',
-#         'USER': 'test',
-#         'PASSWORD': '123456',
-#         'HOST': '106.52.51.28',
-#         'PORT': '3306',
-#         'OPTIONS': {
-#             'init_command': 'SET sql_mode="STRICT_TRANS_TABLES"',
-#             'charset': 'utf8mb4'
-#         }
-#     }
-# }
 
 
 # Password validation

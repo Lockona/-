@@ -1,9 +1,14 @@
+from django.core import serializers
 from django.shortcuts import render
 import requests
 import base64
+import json
+from app.models import database
+from django.http import HttpResponse, JsonResponse
 
 api_key = 'gO8GyW0haswcHXVisDOngByI'
 secret_key = 'QQzxxlV58VjWfWFELjKGVBU7oktrhSNR'
+
 
 # for file_name in file_names:
 #     with open(file_name, 'rb') as f:
@@ -13,13 +18,13 @@ secret_key = 'QQzxxlV58VjWfWFELjKGVBU7oktrhSNR'
 #         base64_data = base64_p.decode()
 #         self.face_add(access_token, user, info, base64_data)
 #
-# def get_access_token(self):
-#     host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%s' \
-#            '&client_secret=%s' % (api_key, secret_key)
-#     response = requests.get(host)
-#     if response:
-#         access_token = response.json()['access_token']
-#         return access_token
+def get_access_token(self):
+    host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%s' \
+           '&client_secret=%s' % (api_key, secret_key)
+    response = requests.get(host)
+    if response:
+        access_token = response.json()['access_token']
+        return access_token
 #
 #
 # def face_add(self, access_token, user, info, image):
@@ -79,3 +84,26 @@ secret_key = 'QQzxxlV58VjWfWFELjKGVBU7oktrhSNR'
 # Create your views here.
 def index(request):
     return render(request, "index.html")
+
+
+def show_user(request):
+    all = database.obj.all()
+    all = json.loads(serializers.serialize("json", all))
+    data = {'all': all}
+    return JsonResponse(data)
+
+
+def add_user(request):
+    data = json.loads(request.GET.get('data'))
+    database.obj.create(name=data['name'], uid=data['uid'], face_num=0)
+    data = {'msg': "hello world"}
+    return JsonResponse(data)
+
+
+def del_user(request):
+    data = json.loads(request.GET.get('data'))
+    print(data['uid'])
+    obj = database.obj.filter(uid=data['uid'])
+    obj.delete()
+    data = {'error': "success"}
+    return JsonResponse(data)
