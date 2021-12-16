@@ -92,7 +92,7 @@ class gongneng(QWidget, Ui_Dialog):
         self._translate = QtCore.QCoreApplication.translate
 
     def contextMenuEvent(self, event):
-        if self.row != -1 :
+        if self.row != -1:
             menu = QMenu(self.tableWidget)
             if self.stackedWidget.currentIndex() == 1:
                 add_action = menu.addAction('添加用户')
@@ -190,7 +190,6 @@ class gongneng(QWidget, Ui_Dialog):
                 print('add face success')
             else:
                 QMessageBox.warning(self, '', response.json()['error_msg'], QMessageBox.Ok)
-
 
     def user_delete(self, access_token, user):
         """删除用户"""
@@ -397,7 +396,8 @@ class gongneng(QWidget, Ui_Dialog):
             删除表格数据的函数
         """
         print(self.row)
-        conn = pymysql.connect(host='106.52.51.28', port=3306, user=self.user, password=self.password, db="student", charset='utf8')
+        conn = pymysql.connect(host='106.52.51.28', port=3306, user=self.user, password=self.password, db="student",
+                               charset='utf8')
         cur = conn.cursor()
         state = QMessageBox.warning(self, "", "是否需要删除", QMessageBox.Yes | QMessageBox.No, QMessageBox.Yes)
         if state == QMessageBox.Yes:

@@ -5,20 +5,14 @@ import base64
 import json
 from app.models import database
 from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
 
 api_key = 'gO8GyW0haswcHXVisDOngByI'
 secret_key = 'QQzxxlV58VjWfWFELjKGVBU7oktrhSNR'
 
 uid = '\c'
 
-# for file_name in file_names:
-#     with open(file_name, 'rb') as f:
-#         data = f.read()
-#     if data:
-#         base64_p = base64.b64encode(data)
-#         base64_data = base64_p.decode()
-#         self.face_add(access_token, user, info, base64_data)
-#
+
 def get_access_token():
     host = 'https://aip.baidubce.com/oauth/2.0/token?grant_type=client_credentials&client_id=%s' \
            '&client_secret=%s' % (api_key, secret_key)
@@ -28,38 +22,14 @@ def get_access_token():
         return access_token
 
 
-#
-#
-# def face_add(self, access_token, user, info, image):
-#     """人脸注册"""
-#     request_url = "https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/add" + "?access_token=" + access_token
-#     headers = {'content-type': 'application/json'}
-#     print(user)
-#     print(info)
-#     params = "{\"image\":\"" + image + "\",\"image_type\":\"BASE64\",\"group_id\":\"01_test\"," \
-#                                        "\"user_id\":\"%s\",\"user_info\":\"%s\"," \
-#                                        "\"quality_control\":\"LOW\"," \
-#                                        "\"liveness_control\":\"NORMAL\"} " % (user, info)
-#
-#     response = requests.post(request_url, data=params, headers=headers)
-#     if response:
-#         if response.json()['error_msg'] == 'SUCCESS':
-#             self.face_num = self.face_num + 1
-#             print('add face success')
-#         else:
-#             QMessageBox.warning(self, '', response.json()['error_msg'], QMessageBox.Ok)
-#
-#
-# def user_delete(self, access_token, user):
-#     """删除用户"""
-#     request_url = "https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/delete" + "?access_token=" + access_token
-#     headers = {'content-type': 'application/json'}
-#     params = "{\"user_id\":\"%s\",\"group_id\":\"01_test\"}" % user
-#     response = requests.post(request_url, data=params, headers=headers)
-#     if response:
-#         print(response.json())
-#
-#
+def user_delete(self, access_token, user):
+    """删除用户"""
+    request_url = "https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/delete" + "?access_token=" + access_token
+    headers = {'content-type': 'application/json'}
+    params = "{\"user_id\":\"%s\",\"group_id\":\"01_test\"}" % user
+    response = requests.post(request_url, data=params, headers=headers)
+    if response:
+        print(response.json())
 
 
 # Create your views here.
@@ -97,6 +67,37 @@ def show_face_list(request):
     return JsonResponse(data)
 
 
+@csrf_exempt
+def add_face(request):
+    """人脸注册"""
+    data = request.POST
+    uid = data['uid']
+    print(uid)
+    data = str(data['file']).split(',')
+    access_token = get_access_token()
+    request_url = "https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/add" + "?access_token=" + access_token
+    headers = {'content-type': 'application/json'}
+    image = data[1]
+    info = 'abc'
+    params = "{\"image\":\"" + image + "\",\"image_type\":\"BASE64\",\"group_id\":\"01_test\"," \
+                                       "\"user_id\":\"%s\",\"user_info\":\"%s\"," \
+                                       "\"quality_control\":\"LOW\"," \
+                                       "\"liveness_control\":\"NORMAL\"} " % (uid, info)
+
+    response = requests.post(request_url, data=params, headers=headers)
+    data = {'error': "error"}
+    if response:
+        if response.json()['error_msg'] == 'SUCCESS':
+            objects = database.obj.filter(uid=uid)
+            face_num = objects[0].face_num + 1
+            objects.update(face_num=face_num)
+            data = {'error': "success"}
+            print('add face success')
+        else:
+            print('add face error')
+    return JsonResponse(data)
+
+
 def face_delete(request):
     """删除人脸"""
     global uid
@@ -111,6 +112,11 @@ def face_delete(request):
     response = requests.post(request_url, data=params, headers=headers)
     data = {'error': "error"}
     if response:
+        objects = database.obj.filter(uid=uid)
+        face_num = objects[0].face_num - 1
+        if face_num < 0:
+            face_num = 0
+        objects.update(face_num=face_num)
         data = {'error': "success"}
     return JsonResponse(data)
 
@@ -118,7 +124,15 @@ def face_delete(request):
 def del_user(request):
     data = json.loads(request.GET.get('data'))
     print(data['uid'])
-    obj = database.obj.filter(uid=data['uid'])
-    obj.delete()
-    data = {'error': "success"}
+    uid = data['uid']
+    access_token = get_access_token()
+    request_url = "https://aip.baidubce.com/rest/2.0/face/v3/faceset/user/delete" + "?access_token=" + access_token
+    headers = {'content-type': 'application/json'}
+    params = "{\"user_id\":\"%s\",\"group_id\":\"01_test\"}" % uid
+    response = requests.post(request_url, data=params, headers=headers)
+    data = {'error': "error"}
+    if response:
+        obj = database.obj.filter(uid=uid)
+        obj.delete()
+        data = {'error': "success"}
     return JsonResponse(data)

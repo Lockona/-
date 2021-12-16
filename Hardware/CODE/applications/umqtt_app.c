@@ -80,7 +80,7 @@ void mqtt_client(void *parameter)
 	cJSON *root = cJSON_CreateObject();
 	char *data;
 mqtt_start:
-	rt_sprintf(MQTT_URI,"tcp://%s:1883","192.168.43.80");
+	rt_sprintf(MQTT_URI,"tcp://%s:1883","106.52.51.28");
 	struct umqtt_info user_info = {
                         .uri = MQTT_URI,
                         .client_id = "ART-PI",
