@@ -76,11 +76,4 @@
   lvgl\src\lv_core\..\lv_gpu\lv_gpu_stm32_dma2d.h \
   lvgl\src\lv_core\..\lv_gpu\..\lv_misc\lv_area.h \
   lvgl\src\lv_core\..\lv_gpu\..\lv_misc\lv_color.h \
-  lvgl\src\lv_core\..\lv_gpu\..\lv_hal\lv_hal_disp.h \
-  lvgl\src\lv_core\..\lv_widgets\lv_label.h \
-  lvgl\src\lv_core\..\lv_widgets\..\lv_conf_internal.h \
-  lvgl\src\lv_core\..\lv_widgets\..\lv_core\lv_obj.h \
-  lvgl\src\lv_core\..\lv_widgets\..\lv_font\lv_font.h \
-  lvgl\src\lv_core\..\lv_widgets\..\lv_font\lv_symbol_def.h \
-  lvgl\src\lv_core\..\lv_widgets\..\lv_misc\lv_txt.h \
-  lvgl\src\lv_core\..\lv_widgets\..\lv_draw\lv_draw.h
+  lvgl\src\lv_core\..\lv_gpu\..\lv_hal\lv_hal_disp.h

@@ -44,9 +44,9 @@ CT_Delay:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	movs	r0, #2
 .Ltmp0:
 	.loc	4 22 2 prologue_end             @ applications/TOUCH/ctiic.c:22:2
+	movs	r0, #2
 	bl	rt_hw_us_delay
 	.loc	4 23 1                          @ applications/TOUCH/ctiic.c:23:1
 	pop	{r7, pc}
@@ -78,46 +78,36 @@ CT_IIC_Init:
 	.pad	#24
 	sub	sp, #24
 	.cfi_def_cfa_offset 32
-.Ltmp2:
-	.loc	4 28 5 prologue_end             @ applications/TOUCH/ctiic.c:28:5
-	b	.LBB1_1
-.LBB1_1:
-	.loc	4 0 5 is_stmt 0                 @ applications/TOUCH/ctiic.c:0:5
 	movw	r0, #17632
 	movt	r0, #22530
-.Ltmp3:
-	.loc	4 28 5                          @ applications/TOUCH/ctiic.c:28:5
+.Ltmp2:
+	.loc	4 28 5 prologue_end             @ applications/TOUCH/ctiic.c:28:5
 	ldr	r1, [r0]
 	orr	r1, r1, #2
 	str	r1, [r0]
 	ldr	r0, [r0]
+	add	r1, sp, #4
 	and	r0, r0, #2
-	str	r0, [sp]
-	ldr	r0, [sp]
-	b	.LBB1_2
-.Ltmp4:
-.LBB1_2:
-	.loc	4 0 5                           @ applications/TOUCH/ctiic.c:0:5
+	str	r0, [sp, #4]
+	ldr	r0, [sp, #4]
 	movs	r0, #192
-	.loc	4 30 21 is_stmt 1               @ applications/TOUCH/ctiic.c:30:21
+.Ltmp3:
+	.loc	4 30 21                         @ applications/TOUCH/ctiic.c:30:21
 	str	r0, [sp, #4]
 	movs	r0, #1
 	.loc	4 31 22                         @ applications/TOUCH/ctiic.c:31:22
-	str	r0, [sp, #8]
-	.loc	4 32 22                         @ applications/TOUCH/ctiic.c:32:22
-	str	r0, [sp, #12]
+	strd	r0, r0, [sp, #8]
 	movs	r0, #3
 	.loc	4 33 23                         @ applications/TOUCH/ctiic.c:33:23
 	str	r0, [sp, #16]
 	movw	r0, #1024
 	movt	r0, #22530
-	add	r1, sp, #4
 	.loc	4 34 5                          @ applications/TOUCH/ctiic.c:34:5
 	bl	HAL_GPIO_Init
 	.loc	4 35 1                          @ applications/TOUCH/ctiic.c:35:1
 	add	sp, #24
 	pop	{r7, pc}
-.Ltmp5:
+.Ltmp4:
 .Lfunc_end1:
 	.size	CT_IIC_Init, .Lfunc_end1-CT_IIC_Init
 	.cfi_endproc
@@ -137,57 +127,51 @@ CT_IIC_Start:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	movw	r0, #1024
-	movt	r0, #22530
-.Ltmp6:
-	.loc	4 39 2 prologue_end             @ applications/TOUCH/ctiic.c:39:2
-	str	r0, [sp, #12]                   @ 4-byte Spill
-	ldr	r1, [r0]
-	bic	r1, r1, #49152
-	str	r1, [r0]
-	ldr	r1, [r0]
-	orr	r1, r1, #16384
-	str	r1, [r0]
+	.cfi_offset r4, -8
+	movw	r4, #1024
+.Ltmp5:
+	.loc	4 40 2 prologue_end             @ applications/TOUCH/ctiic.c:40:2
 	movs	r1, #128
-	str	r1, [sp, #8]                    @ 4-byte Spill
+	movt	r4, #22530
 	movs	r2, #1
+.Ltmp6:
+	.loc	4 39 2                          @ applications/TOUCH/ctiic.c:39:2
+	ldr	r0, [r4]
+	bic	r0, r0, #49152
+	str	r0, [r4]
+	ldr	r0, [r4]
+	orr	r0, r0, #16384
+	str	r0, [r4]
 .Ltmp7:
 	.loc	4 40 2                          @ applications/TOUCH/ctiic.c:40:2
-	str	r2, [sp, #4]                    @ 4-byte Spill
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	ldr	r2, [sp, #4]                    @ 4-byte Reload
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	movs	r1, #64
 	.loc	4 41 2                          @ applications/TOUCH/ctiic.c:41:2
-	str	r1, [sp, #16]                   @ 4-byte Spill
+	movs	r1, #64
+	movs	r2, #1
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	movs	r0, #30
 	.loc	4 42 2                          @ applications/TOUCH/ctiic.c:42:2
+	movs	r0, #30
 	bl	rt_hw_us_delay
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	movs	r2, #0
 	.loc	4 43 3                          @ applications/TOUCH/ctiic.c:43:3
-	str	r2, [sp, #20]                   @ 4-byte Spill
+	movs	r1, #128
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 44 2                          @ applications/TOUCH/ctiic.c:44:2
 	bl	CT_Delay
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	ldr	r1, [sp, #16]                   @ 4-byte Reload
-	ldr	r2, [sp, #20]                   @ 4-byte Reload
 	.loc	4 45 2                          @ applications/TOUCH/ctiic.c:45:2
+	movs	r1, #64
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 46 1                          @ applications/TOUCH/ctiic.c:46:1
-	add	sp, #24
-	pop	{r7, pc}
+	pop	{r4, pc}
 .Ltmp8:
 .Lfunc_end2:
 	.size	CT_IIC_Start, .Lfunc_end2-CT_IIC_Start
@@ -208,58 +192,52 @@ CT_IIC_Stop:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	movw	r0, #1024
-	movt	r0, #22530
+	.cfi_offset r4, -8
+	movw	r4, #1024
 .Ltmp9:
-	.loc	4 50 2 prologue_end             @ applications/TOUCH/ctiic.c:50:2
-	str	r0, [sp, #12]                   @ 4-byte Spill
-	ldr	r1, [r0]
-	bic	r1, r1, #49152
-	str	r1, [r0]
-	ldr	r1, [r0]
-	orr	r1, r1, #16384
-	str	r1, [r0]
+	.loc	4 51 2 prologue_end             @ applications/TOUCH/ctiic.c:51:2
 	movs	r1, #64
-	str	r1, [sp, #8]                    @ 4-byte Spill
+	movt	r4, #22530
 	movs	r2, #0
 .Ltmp10:
+	.loc	4 50 2                          @ applications/TOUCH/ctiic.c:50:2
+	ldr	r0, [r4]
+	bic	r0, r0, #49152
+	str	r0, [r4]
+	ldr	r0, [r4]
+	orr	r0, r0, #16384
+	str	r0, [r4]
+.Ltmp11:
 	.loc	4 51 2                          @ applications/TOUCH/ctiic.c:51:2
-	str	r2, [sp, #4]                    @ 4-byte Spill
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	ldr	r2, [sp, #4]                    @ 4-byte Reload
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	movs	r1, #128
 	.loc	4 52 2                          @ applications/TOUCH/ctiic.c:52:2
-	str	r1, [sp, #16]                   @ 4-byte Spill
+	movs	r1, #128
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	movs	r0, #30
 	.loc	4 53 2                          @ applications/TOUCH/ctiic.c:53:2
+	movs	r0, #30
 	bl	rt_hw_us_delay
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	movs	r2, #1
 	.loc	4 54 2                          @ applications/TOUCH/ctiic.c:54:2
-	str	r2, [sp, #20]                   @ 4-byte Spill
+	movs	r1, #64
+	movs	r2, #1
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 55 2                          @ applications/TOUCH/ctiic.c:55:2
 	bl	CT_Delay
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	ldr	r1, [sp, #16]                   @ 4-byte Reload
-	ldr	r2, [sp, #20]                   @ 4-byte Reload
 	.loc	4 56 2                          @ applications/TOUCH/ctiic.c:56:2
+	movs	r1, #128
+	movs	r2, #1
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 57 1                          @ applications/TOUCH/ctiic.c:57:1
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp11:
+	pop	{r4, pc}
+.Ltmp12:
 .Lfunc_end3:
 	.size	CT_IIC_Stop, .Lfunc_end3-CT_IIC_Stop
 	.cfi_endproc
@@ -279,101 +257,96 @@ CT_IIC_Wait_Ack:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	movs	r0, #0
-.Ltmp12:
-	.loc	4 63 10 prologue_end            @ applications/TOUCH/ctiic.c:63:10
-	strb.w	r0, [sp, #14]
-	movw	r0, #1024
-	movt	r0, #22530
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	movw	r4, #1024
 .Ltmp13:
-	.loc	4 64 2                          @ applications/TOUCH/ctiic.c:64:2
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	ldr	r1, [r0]
-	bic	r1, r1, #49152
-	str	r1, [r0]
-	ldr	r1, [r0]
-	str	r1, [r0]
+	.loc	4 65 2 prologue_end             @ applications/TOUCH/ctiic.c:65:2
 	movs	r1, #128
-	movs	r2, #1
+	movt	r4, #22530
 .Ltmp14:
+	@DEBUG_VALUE: CT_IIC_Wait_Ack:ucErrTime <- 0
+	movs	r2, #1
+.Ltmp15:
+	.loc	4 64 2                          @ applications/TOUCH/ctiic.c:64:2
+	ldr	r0, [r4]
+	bic	r0, r0, #49152
+	str	r0, [r4]
+	ldr	r0, [r4]
+	str	r0, [r4]
+.Ltmp16:
 	.loc	4 65 2                          @ applications/TOUCH/ctiic.c:65:2
-	str	r2, [sp, #8]                    @ 4-byte Spill
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r2, [sp, #8]                    @ 4-byte Reload
-	movs	r1, #64
 	.loc	4 66 2                          @ applications/TOUCH/ctiic.c:66:2
+	movs	r1, #64
+	movs	r2, #1
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 67 2                          @ applications/TOUCH/ctiic.c:67:2
 	bl	CT_Delay
-	.loc	4 68 2                          @ applications/TOUCH/ctiic.c:68:2
-	b	.LBB4_1
-.LBB4_1:                                @ =>This Inner Loop Header: Depth=1
-	.loc	4 0 2 is_stmt 0                 @ applications/TOUCH/ctiic.c:0:2
-	movw	r0, #1024
-	movt	r0, #22530
-	movs	r1, #128
 	.loc	4 68 8                          @ applications/TOUCH/ctiic.c:68:8
+	movs	r1, #128
+	mov	r0, r4
 	bl	HAL_GPIO_ReadPin
-	.loc	4 68 2                          @ applications/TOUCH/ctiic.c:68:2
-	cbz	r0, .LBB4_5
-	b	.LBB4_2
-.LBB4_2:                                @   in Loop: Header=BB4_1 Depth=1
-.Ltmp15:
-	.loc	4 70 12 is_stmt 1               @ applications/TOUCH/ctiic.c:70:12
-	ldrb.w	r0, [sp, #14]
-	adds	r0, #1
-	strb.w	r0, [sp, #14]
-.Ltmp16:
-	.loc	4 71 6                          @ applications/TOUCH/ctiic.c:71:6
-	ldrb.w	r0, [sp, #14]
+	.loc	4 68 2 is_stmt 0                @ applications/TOUCH/ctiic.c:68:2
+	cbz	r0, .LBB4_4
 .Ltmp17:
-	.loc	4 71 6 is_stmt 0                @ applications/TOUCH/ctiic.c:71:6
-	cmp	r0, #251
-	blt	.LBB4_4
-	b	.LBB4_3
-.LBB4_3:
+@ %bb.1:
+	@DEBUG_VALUE: CT_IIC_Wait_Ack:ucErrTime <- 0
+	.loc	4 0 2                           @ applications/TOUCH/ctiic.c:0:2
+	movs	r5, #0
 .Ltmp18:
-	.loc	4 73 4 is_stmt 1                @ applications/TOUCH/ctiic.c:73:4
-	bl	CT_IIC_Stop
-	movs	r0, #1
-	.loc	4 74 4                          @ applications/TOUCH/ctiic.c:74:4
-	strb.w	r0, [sp, #15]
-	b	.LBB4_6
+	.p2align	2
+.LBB4_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: CT_IIC_Wait_Ack:ucErrTime <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r5
+	.loc	4 71 6 is_stmt 1                @ applications/TOUCH/ctiic.c:71:6
+	cmp	r5, #250
+	bhs	.LBB4_5
 .Ltmp19:
-.LBB4_4:                                @   in Loop: Header=BB4_1 Depth=1
+@ %bb.3:                                @   in Loop: Header=BB4_2 Depth=1
+	@DEBUG_VALUE: CT_IIC_Wait_Ack:ucErrTime <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r5
+	.loc	4 70 12                         @ applications/TOUCH/ctiic.c:70:12
+	adds	r5, #1
+.Ltmp20:
+	@DEBUG_VALUE: CT_IIC_Wait_Ack:ucErrTime <- $r5
 	.loc	4 76 3                          @ applications/TOUCH/ctiic.c:76:3
 	bl	CT_Delay
-.Ltmp20:
-	.loc	4 68 2                          @ applications/TOUCH/ctiic.c:68:2
-	b	.LBB4_1
-.LBB4_5:
-	.loc	4 0 2 is_stmt 0                 @ applications/TOUCH/ctiic.c:0:2
-	movw	r0, #1024
-	movt	r0, #22530
+.Ltmp21:
+	@DEBUG_VALUE: CT_IIC_Wait_Ack:ucErrTime <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r5
+	.loc	4 68 8                          @ applications/TOUCH/ctiic.c:68:8
+	movs	r1, #128
+	mov	r0, r4
+	bl	HAL_GPIO_ReadPin
+	.loc	4 68 2 is_stmt 0                @ applications/TOUCH/ctiic.c:68:2
+	cmp	r0, #0
+	bne	.LBB4_2
+.Ltmp22:
+.LBB4_4:
+	.loc	4 78 2 is_stmt 1                @ applications/TOUCH/ctiic.c:78:2
 	movs	r1, #64
 	movs	r2, #0
-	.loc	4 78 2 is_stmt 1                @ applications/TOUCH/ctiic.c:78:2
-	str	r2, [sp]                        @ 4-byte Spill
+	mov	r0, r4
+	movs	r5, #0
 	bl	HAL_GPIO_WritePin
-	ldr	r0, [sp]                        @ 4-byte Reload
-	.loc	4 79 2                          @ applications/TOUCH/ctiic.c:79:2
-	strb.w	r0, [sp, #15]
-	b	.LBB4_6
-.LBB4_6:
 	.loc	4 80 1                          @ applications/TOUCH/ctiic.c:80:1
-	ldrb.w	r0, [sp, #15]
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp21:
+	mov	r0, r5
+	pop	{r4, r5, r7, pc}
+.LBB4_5:
+.Ltmp23:
+	@DEBUG_VALUE: CT_IIC_Wait_Ack:ucErrTime <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r5
+	.loc	4 73 4                          @ applications/TOUCH/ctiic.c:73:4
+	bl	CT_IIC_Stop
+	movs	r0, #1
+.Ltmp24:
+	.loc	4 80 1                          @ applications/TOUCH/ctiic.c:80:1
+	pop	{r4, r5, r7, pc}
+.Ltmp25:
 .Lfunc_end4:
 	.size	CT_IIC_Wait_Ack, .Lfunc_end4-CT_IIC_Wait_Ack
 	.cfi_endproc
@@ -393,56 +366,58 @@ CT_IIC_Ack:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	movw	r0, #1024
-	movt	r0, #22530
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	movs	r1, #64
-	str	r1, [sp, #8]                    @ 4-byte Spill
-	movs	r2, #0
-.Ltmp22:
+	.cfi_offset r4, -8
+	movw	r4, #1024
+.Ltmp26:
 	.loc	4 84 2 prologue_end             @ applications/TOUCH/ctiic.c:84:2
-	str	r2, [sp, #12]                   @ 4-byte Spill
+	movs	r1, #64
+	movt	r4, #22530
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r2, [sp, #12]                   @ 4-byte Reload
-.Ltmp23:
+.Ltmp27:
 	.loc	4 85 2                          @ applications/TOUCH/ctiic.c:85:2
-	ldr	r1, [r0]
-	bic	r1, r1, #49152
-	str	r1, [r0]
-	ldr	r1, [r0]
-	orr	r1, r1, #16384
-	str	r1, [r0]
-	movs	r1, #128
-.Ltmp24:
+	ldr	r0, [r4]
+.Ltmp28:
 	.loc	4 86 2                          @ applications/TOUCH/ctiic.c:86:2
+	movs	r1, #128
+.Ltmp29:
+	.loc	4 85 2                          @ applications/TOUCH/ctiic.c:85:2
+	bic	r0, r0, #49152
+	str	r0, [r4]
+	ldr	r0, [r4]
+.Ltmp30:
+	.loc	4 86 2                          @ applications/TOUCH/ctiic.c:86:2
+	movs	r2, #0
+.Ltmp31:
+	.loc	4 85 2                          @ applications/TOUCH/ctiic.c:85:2
+	orr	r0, r0, #16384
+	str	r0, [r4]
+.Ltmp32:
+	.loc	4 86 2                          @ applications/TOUCH/ctiic.c:86:2
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 87 2                          @ applications/TOUCH/ctiic.c:87:2
 	bl	CT_Delay
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
-	movs	r2, #1
 	.loc	4 88 2                          @ applications/TOUCH/ctiic.c:88:2
+	movs	r1, #64
+	movs	r2, #1
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 89 2                          @ applications/TOUCH/ctiic.c:89:2
 	bl	CT_Delay
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
-	ldr	r2, [sp, #12]                   @ 4-byte Reload
 	.loc	4 90 2                          @ applications/TOUCH/ctiic.c:90:2
+	movs	r1, #64
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 91 1                          @ applications/TOUCH/ctiic.c:91:1
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp25:
+	pop	{r4, pc}
+.Ltmp33:
 .Lfunc_end5:
 	.size	CT_IIC_Ack, .Lfunc_end5-CT_IIC_Ack
 	.cfi_endproc
@@ -462,57 +437,58 @@ CT_IIC_NAck:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	movw	r0, #1024
-	movt	r0, #22530
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	movs	r1, #64
-	str	r1, [sp, #8]                    @ 4-byte Spill
-	movs	r2, #0
-.Ltmp26:
+	.cfi_offset r4, -8
+	movw	r4, #1024
+.Ltmp34:
 	.loc	4 95 2 prologue_end             @ applications/TOUCH/ctiic.c:95:2
-	str	r2, [sp, #12]                   @ 4-byte Spill
+	movs	r1, #64
+	movt	r4, #22530
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-.Ltmp27:
+.Ltmp35:
 	.loc	4 96 2                          @ applications/TOUCH/ctiic.c:96:2
-	ldr	r1, [r0]
-	bic	r1, r1, #49152
-	str	r1, [r0]
-	ldr	r1, [r0]
-	orr	r1, r1, #16384
-	str	r1, [r0]
-	movs	r1, #128
-	movs	r2, #1
-.Ltmp28:
+	ldr	r0, [r4]
+.Ltmp36:
 	.loc	4 97 2                          @ applications/TOUCH/ctiic.c:97:2
-	str	r2, [sp]                        @ 4-byte Spill
+	movs	r1, #128
+.Ltmp37:
+	.loc	4 96 2                          @ applications/TOUCH/ctiic.c:96:2
+	bic	r0, r0, #49152
+	str	r0, [r4]
+	ldr	r0, [r4]
+.Ltmp38:
+	.loc	4 97 2                          @ applications/TOUCH/ctiic.c:97:2
+	movs	r2, #1
+.Ltmp39:
+	.loc	4 96 2                          @ applications/TOUCH/ctiic.c:96:2
+	orr	r0, r0, #16384
+	str	r0, [r4]
+.Ltmp40:
+	.loc	4 97 2                          @ applications/TOUCH/ctiic.c:97:2
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 98 2                          @ applications/TOUCH/ctiic.c:98:2
 	bl	CT_Delay
-	ldr	r2, [sp]                        @ 4-byte Reload
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
 	.loc	4 99 2                          @ applications/TOUCH/ctiic.c:99:2
+	movs	r1, #64
+	movs	r2, #1
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 100 2                         @ applications/TOUCH/ctiic.c:100:2
 	bl	CT_Delay
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
-	ldr	r2, [sp, #12]                   @ 4-byte Reload
 	.loc	4 101 2                         @ applications/TOUCH/ctiic.c:101:2
+	movs	r1, #64
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 102 1                         @ applications/TOUCH/ctiic.c:102:1
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp29:
+	pop	{r4, pc}
+.Ltmp41:
 .Lfunc_end6:
 	.size	CT_IIC_NAck, .Lfunc_end6-CT_IIC_NAck
 	.cfi_endproc
@@ -532,113 +508,92 @@ CT_IIC_Send_Byte:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: CT_IIC_Send_Byte:txd <- $r0
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-                                        @ kill: def $r1 killed $r0
-	strb.w	r0, [sp, #15]
-	movw	r0, #1024
-	movt	r0, #22530
-.Ltmp30:
-	.loc	4 110 2 prologue_end            @ applications/TOUCH/ctiic.c:110:2
-	ldr	r1, [r0]
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	movw	r4, #1024
+	mov	r5, r0
+.Ltmp42:
+	@DEBUG_VALUE: CT_IIC_Send_Byte:txd <- $r5
+	@DEBUG_VALUE: CT_IIC_Send_Byte:txd <- $r5
+	movt	r4, #22530
+.Ltmp43:
+	.loc	4 111 5 prologue_end            @ applications/TOUCH/ctiic.c:111:5
+	movs	r2, #0
+	movs	r6, #0
+.Ltmp44:
+	.loc	4 110 2                         @ applications/TOUCH/ctiic.c:110:2
+	ldr	r1, [r4]
 	bic	r1, r1, #49152
-	str	r1, [r0]
-	ldr	r1, [r0]
-	orr	r1, r1, #16384
-	str	r1, [r0]
-	movs	r1, #64
-	movs	r2, #0
-.Ltmp31:
+	str	r1, [r4]
+	ldr	r0, [r4]
+.Ltmp45:
 	.loc	4 111 5                         @ applications/TOUCH/ctiic.c:111:5
-	str	r2, [sp, #8]                    @ 4-byte Spill
+	movs	r1, #64
+.Ltmp46:
+	.loc	4 110 2                         @ applications/TOUCH/ctiic.c:110:2
+	orr	r0, r0, #16384
+	str	r0, [r4]
+.Ltmp47:
+	.loc	4 111 5                         @ applications/TOUCH/ctiic.c:111:5
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-.Ltmp32:
-	.loc	4 112 7                         @ applications/TOUCH/ctiic.c:112:7
-	strb.w	r0, [sp, #14]
-	.loc	4 112 6 is_stmt 0               @ applications/TOUCH/ctiic.c:112:6
-	b	.LBB7_1
+.Ltmp48:
+	@DEBUG_VALUE: CT_IIC_Send_Byte:t <- 0
+	@DEBUG_VALUE: CT_IIC_Send_Byte:txd <- undef
+	.p2align	2
 .LBB7_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp33:
-	.loc	4 112 10                        @ applications/TOUCH/ctiic.c:112:10
-	ldrb.w	r0, [sp, #14]
-.Ltmp34:
-	.loc	4 112 2                         @ applications/TOUCH/ctiic.c:112:2
-	cmp	r0, #7
-	bgt	.LBB7_7
-	b	.LBB7_2
-.LBB7_2:                                @   in Loop: Header=BB7_1 Depth=1
-.Ltmp35:
-	.loc	4 114 9 is_stmt 1               @ applications/TOUCH/ctiic.c:114:9
-	ldrb.w	r1, [sp, #15]
-	movs	r0, #0
-	cmp.w	r0, r1, lsr #7
-	beq	.LBB7_4
-	b	.LBB7_3
-.LBB7_3:                                @   in Loop: Header=BB7_1 Depth=1
-	.loc	4 0 9 is_stmt 0                 @ applications/TOUCH/ctiic.c:0:9
-	movw	r0, #1024
-	movt	r0, #22530
-	movs	r1, #128
-	movs	r2, #1
+	@DEBUG_VALUE: CT_IIC_Send_Byte:txd <- $r5
+	@DEBUG_VALUE: CT_IIC_Send_Byte:t <- $r6
 	.loc	4 114 9                         @ applications/TOUCH/ctiic.c:114:9
-	bl	HAL_GPIO_WritePin
-	b	.LBB7_5
-.LBB7_4:                                @   in Loop: Header=BB7_1 Depth=1
-	.loc	4 0 9                           @ applications/TOUCH/ctiic.c:0:9
-	movw	r0, #1024
-	movt	r0, #22530
+	uxtb	r0, r5
 	movs	r1, #128
-	movs	r2, #0
-	.loc	4 114 9                         @ applications/TOUCH/ctiic.c:114:9
+	lsrs	r2, r0, #7
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
-	b	.LBB7_5
-.LBB7_5:                                @   in Loop: Header=BB7_1 Depth=1
-	.loc	4 115 12 is_stmt 1              @ applications/TOUCH/ctiic.c:115:12
-	ldrb.w	r0, [sp, #15]
-	lsls	r0, r0, #1
-	strb.w	r0, [sp, #15]
+	.loc	4 115 12                        @ applications/TOUCH/ctiic.c:115:12
+	lsls	r5, r5, #1
+.Ltmp49:
+	@DEBUG_VALUE: CT_IIC_Send_Byte:txd <- $r5
 	.loc	4 116 3                         @ applications/TOUCH/ctiic.c:116:3
 	bl	CT_Delay
-	movw	r0, #1024
-	movt	r0, #22530
-	str	r0, [sp]                        @ 4-byte Spill
-	movs	r1, #64
-	str	r1, [sp, #4]                    @ 4-byte Spill
-	movs	r2, #1
 	.loc	4 117 3                         @ applications/TOUCH/ctiic.c:117:3
+	movs	r1, #64
+	movs	r2, #1
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 118 3                         @ applications/TOUCH/ctiic.c:118:3
 	bl	CT_Delay
-	ldr	r0, [sp]                        @ 4-byte Reload
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
-	movs	r2, #0
 	.loc	4 119 3                         @ applications/TOUCH/ctiic.c:119:3
+	movs	r1, #64
+	movs	r2, #0
+	mov	r0, r4
 	bl	HAL_GPIO_WritePin
 	.loc	4 120 3                         @ applications/TOUCH/ctiic.c:120:3
 	bl	CT_Delay
-	.loc	4 121 5                         @ applications/TOUCH/ctiic.c:121:5
-	b	.LBB7_6
-.Ltmp36:
-.LBB7_6:                                @   in Loop: Header=BB7_1 Depth=1
-	.loc	4 112 15                        @ applications/TOUCH/ctiic.c:112:15
-	ldrb.w	r0, [sp, #14]
-	adds	r0, #1
-	strb.w	r0, [sp, #14]
-	.loc	4 112 2 is_stmt 0               @ applications/TOUCH/ctiic.c:112:2
-	b	.LBB7_1
-.Ltmp37:
-.LBB7_7:
+.Ltmp50:
+	.loc	4 112 2                         @ applications/TOUCH/ctiic.c:112:2
+	cmp	r6, #7
+.Ltmp51:
+	.loc	4 112 15 is_stmt 0              @ applications/TOUCH/ctiic.c:112:15
+	add.w	r6, r6, #1
+.Ltmp52:
+	@DEBUG_VALUE: CT_IIC_Send_Byte:t <- $r6
+	@DEBUG_VALUE: CT_IIC_Send_Byte:t <- $r6
+	.loc	4 112 2                         @ applications/TOUCH/ctiic.c:112:2
+	blo	.LBB7_1
+.Ltmp53:
+@ %bb.2:
+	@DEBUG_VALUE: CT_IIC_Send_Byte:t <- $r6
+	@DEBUG_VALUE: CT_IIC_Send_Byte:txd <- $r5
 	.loc	4 122 1 is_stmt 1               @ applications/TOUCH/ctiic.c:122:1
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp38:
+	pop	{r4, r5, r6, pc}
+.Ltmp54:
 .Lfunc_end7:
 	.size	CT_IIC_Send_Byte, .Lfunc_end7-CT_IIC_Send_Byte
 	.cfi_endproc
@@ -658,133 +613,203 @@ CT_IIC_Read_Byte:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r0
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
 	.cfi_def_cfa_offset 24
-                                        @ kill: def $r1 killed $r0
-	strb.w	r0, [sp, #15]
-	movs	r0, #0
-.Ltmp39:
-	.loc	4 126 12 prologue_end           @ applications/TOUCH/ctiic.c:126:12
-	str	r0, [sp, #8]                    @ 4-byte Spill
-	strb.w	r0, [sp, #13]
-	movw	r1, #1024
-	movt	r1, #22530
-.Ltmp40:
-	.loc	4 127 3                         @ applications/TOUCH/ctiic.c:127:3
-	ldr	r0, [r1]
+	movw	r5, #1024
+	mov	r4, r0
+.Ltmp55:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r4
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- 0
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r4
+	movt	r5, #22530
+.Ltmp56:
+	.loc	4 127 3 prologue_end            @ applications/TOUCH/ctiic.c:127:3
+	ldr	r0, [r5]
 	bic	r0, r0, #49152
-	str	r0, [r1]
-	ldr	r0, [r1]
-	str	r0, [r1]
-	movs	r0, #30
-.Ltmp41:
+	str	r0, [r5]
+	ldr	r0, [r5]
+	str	r0, [r5]
+.Ltmp57:
 	.loc	4 128 2                         @ applications/TOUCH/ctiic.c:128:2
+	movs	r0, #30
 	bl	rt_hw_us_delay
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-.Ltmp42:
-	.loc	4 129 7                         @ applications/TOUCH/ctiic.c:129:7
-	strb.w	r0, [sp, #14]
-	.loc	4 129 6 is_stmt 0               @ applications/TOUCH/ctiic.c:129:6
-	b	.LBB8_1
+	movs	r6, #0
+.Ltmp58:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- 0
+	.loc	4 0 2 is_stmt 0                 @ applications/TOUCH/ctiic.c:0:2
+	movs	r7, #0
+.Ltmp59:
+	.p2align	2
 .LBB8_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp43:
-	.loc	4 129 10                        @ applications/TOUCH/ctiic.c:129:10
-	ldrb.w	r0, [sp, #14]
-.Ltmp44:
-	.loc	4 129 2                         @ applications/TOUCH/ctiic.c:129:2
-	cmp	r0, #7
-	bgt	.LBB8_6
-	b	.LBB8_2
-.LBB8_2:                                @   in Loop: Header=BB8_1 Depth=1
-	.loc	4 0 2                           @ applications/TOUCH/ctiic.c:0:2
-	movw	r0, #1024
-	movt	r0, #22530
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	movs	r1, #64
-	str	r1, [sp]                        @ 4-byte Spill
-	movs	r2, #0
-.Ltmp45:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r4
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- $r6
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- $r7
 	.loc	4 131 3 is_stmt 1               @ applications/TOUCH/ctiic.c:131:3
+	movs	r1, #64
+	movs	r2, #0
+	mov	r0, r5
 	bl	HAL_GPIO_WritePin
 	.loc	4 132 3                         @ applications/TOUCH/ctiic.c:132:3
 	bl	CT_Delay
-	ldr	r1, [sp]                        @ 4-byte Reload
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	movs	r2, #1
 	.loc	4 133 3                         @ applications/TOUCH/ctiic.c:133:3
+	movs	r1, #64
+	movs	r2, #1
+	mov	r0, r5
 	bl	HAL_GPIO_WritePin
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	.loc	4 134 10                        @ applications/TOUCH/ctiic.c:134:10
-	ldrb.w	r1, [sp, #13]
-	lsls	r1, r1, #1
-	strb.w	r1, [sp, #13]
-	movs	r1, #128
-.Ltmp46:
+.Ltmp60:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- undef
 	.loc	4 135 6                         @ applications/TOUCH/ctiic.c:135:6
+	movs	r1, #128
+	mov	r0, r5
 	bl	HAL_GPIO_ReadPin
-.Ltmp47:
+	cmp	r0, #0
+	it	ne
+	movne	r0, #1
+.Ltmp61:
 	.loc	4 135 6 is_stmt 0               @ applications/TOUCH/ctiic.c:135:6
-	cbz	r0, .LBB8_4
-	b	.LBB8_3
-.LBB8_3:                                @   in Loop: Header=BB8_1 Depth=1
-.Ltmp48:
-	.loc	4 135 25                        @ applications/TOUCH/ctiic.c:135:25
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	4 135 18                        @ applications/TOUCH/ctiic.c:135:18
-	b	.LBB8_4
-.Ltmp49:
-.LBB8_4:                                @   in Loop: Header=BB8_1 Depth=1
+	orr.w	r6, r0, r6, lsl #1
+.Ltmp62:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- $r6
 	.loc	4 136 3 is_stmt 1               @ applications/TOUCH/ctiic.c:136:3
 	bl	CT_Delay
-	.loc	4 137 2                         @ applications/TOUCH/ctiic.c:137:2
+.Ltmp63:
+	.loc	4 129 2                         @ applications/TOUCH/ctiic.c:129:2
+	cmp	r7, #7
+.Ltmp64:
+	.loc	4 129 15 is_stmt 0              @ applications/TOUCH/ctiic.c:129:15
+	add.w	r7, r7, #1
+.Ltmp65:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- $r7
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- $r7
+	.loc	4 129 2                         @ applications/TOUCH/ctiic.c:129:2
+	blo	.LBB8_1
+.Ltmp66:
+@ %bb.2:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- $r7
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- $r6
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r4
+	.loc	4 138 6 is_stmt 1               @ applications/TOUCH/ctiic.c:138:6
+	cbz	r4, .LBB8_4
+.Ltmp67:
+@ %bb.3:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- $r7
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- $r6
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r4
+	.loc	4 139 7                         @ applications/TOUCH/ctiic.c:139:7
+	bl	CT_IIC_Ack
 	b	.LBB8_5
-.Ltmp50:
-.LBB8_5:                                @   in Loop: Header=BB8_1 Depth=1
-	.loc	4 129 15                        @ applications/TOUCH/ctiic.c:129:15
-	ldrb.w	r0, [sp, #14]
-	adds	r0, #1
-	strb.w	r0, [sp, #14]
-	.loc	4 129 2 is_stmt 0               @ applications/TOUCH/ctiic.c:129:2
-	b	.LBB8_1
-.Ltmp51:
-.LBB8_6:
-	.loc	4 138 7 is_stmt 1               @ applications/TOUCH/ctiic.c:138:7
-	ldrb.w	r0, [sp, #15]
-.Ltmp52:
-	.loc	4 138 6 is_stmt 0               @ applications/TOUCH/ctiic.c:138:6
-	cbnz	r0, .LBB8_8
-	b	.LBB8_7
-.LBB8_7:
-.Ltmp53:
+.Ltmp68:
+.LBB8_4:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- $r7
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- $r6
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r4
 	.loc	4 138 11                        @ applications/TOUCH/ctiic.c:138:11
 	bl	CT_IIC_NAck
-	b	.LBB8_9
-.LBB8_8:
-	.loc	4 139 7 is_stmt 1               @ applications/TOUCH/ctiic.c:139:7
-	bl	CT_IIC_Ack
-	b	.LBB8_9
-.Ltmp54:
-.LBB8_9:
-	.loc	4 140 10                        @ applications/TOUCH/ctiic.c:140:10
-	ldrb.w	r0, [sp, #13]
-	.loc	4 140 3 is_stmt 0               @ applications/TOUCH/ctiic.c:140:3
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp55:
+.Ltmp69:
+.LBB8_5:
+	@DEBUG_VALUE: CT_IIC_Read_Byte:i <- $r7
+	@DEBUG_VALUE: CT_IIC_Read_Byte:receive <- $r6
+	@DEBUG_VALUE: CT_IIC_Read_Byte:ack <- $r4
+	.loc	4 140 3                         @ applications/TOUCH/ctiic.c:140:3
+	uxtb	r0, r6
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp70:
 .Lfunc_end8:
 	.size	CT_IIC_Read_Byte, .Lfunc_end8-CT_IIC_Read_Byte
 	.cfi_endproc
 	.cantunwind
 	.fnend
                                         @ -- End function
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp14-.Lfunc_begin4
+	.long	.Ltmp18-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp20-.Lfunc_begin4
+	.long	.Ltmp21-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp42-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp42-.Lfunc_begin7
+	.long	.Ltmp54-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp48-.Lfunc_begin7
+	.long	.Ltmp54-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp55-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp55-.Lfunc_begin8
+	.long	.Ltmp70-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Ltmp55-.Lfunc_begin8
+	.long	.Ltmp59-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp59-.Lfunc_begin8
+	.long	.Ltmp60-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp62-.Lfunc_begin8
+	.long	.Ltmp70-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Ltmp58-.Lfunc_begin8
+	.long	.Ltmp59-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp59-.Lfunc_begin8
+	.long	.Ltmp70-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1047,10 +1072,10 @@ CT_IIC_Read_Byte:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	21                              @ Abbreviation Code
-	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1062,6 +1087,21 @@ CT_IIC_Read_Byte:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	22                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	23                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	11                              @ DW_AT_byte_size
@@ -1072,7 +1112,7 @@ CT_IIC_Read_Byte:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	23                              @ Abbreviation Code
+	.byte	24                              @ Abbreviation Code
 	.byte	13                              @ DW_TAG_member
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -1095,7 +1135,7 @@ CT_IIC_Read_Byte:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x60e DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x614 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1656,14 +1696,14 @@ CT_IIC_Read_Byte:
 	.long	.Linfo_string97                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	27                              @ DW_AT_decl_line
-	.long	1484                            @ DW_AT_type
+	.long	1490                            @ DW_AT_type
 	.byte	19                              @ Abbrev [19] 0x4c4:0x18 DW_TAG_lexical_block
-	.long	.Ltmp3                          @ DW_AT_low_pc
-	.long	.Ltmp4                          @ DW_AT_high_pc
+	.long	.Ltmp2                          @ DW_AT_low_pc
+	.long	.Ltmp3                          @ DW_AT_high_pc
 	.byte	18                              @ Abbrev [18] 0x4cd:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	0
+	.byte	4
 	.long	.Linfo_string104                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	28                              @ DW_AT_decl_line
@@ -1690,7 +1730,7 @@ CT_IIC_Read_Byte:
 	.byte	48                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x503:0x26 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x503:0x27 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1699,18 +1739,16 @@ CT_IIC_Read_Byte:
 	.byte	4                               @ DW_AT_decl_file
 	.byte	61                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1473                            @ DW_AT_type
+	.long	1479                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	18                              @ Abbrev [18] 0x51a:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	14
+	.byte	21                              @ Abbrev [21] 0x51a:0xf DW_TAG_variable
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string105                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	63                              @ DW_AT_decl_line
-	.long	1473                            @ DW_AT_type
+	.long	1479                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x529:0x13 DW_TAG_subprogram
+	.byte	16                              @ Abbrev [16] 0x52a:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1720,7 +1758,7 @@ CT_IIC_Read_Byte:
 	.byte	82                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x53c:0x13 DW_TAG_subprogram
+	.byte	16                              @ Abbrev [16] 0x53d:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1730,7 +1768,7 @@ CT_IIC_Read_Byte:
 	.byte	93                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x54f:0x30 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x550:0x32 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1740,24 +1778,20 @@ CT_IIC_Read_Byte:
 	.byte	107                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	21                              @ Abbrev [21] 0x562:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	15
+	.byte	22                              @ Abbrev [22] 0x563:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string106                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	107                             @ DW_AT_decl_line
-	.long	1473                            @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x570:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	14
+	.long	1479                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x572:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string107                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	109                             @ DW_AT_decl_line
-	.long	1473                            @ DW_AT_type
+	.long	1479                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	20                              @ Abbrev [20] 0x57f:0x42 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x582:0x45 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1766,72 +1800,66 @@ CT_IIC_Read_Byte:
 	.byte	4                               @ DW_AT_decl_file
 	.byte	124                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1473                            @ DW_AT_type
+	.long	1479                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	21                              @ Abbrev [21] 0x596:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	15
+	.byte	22                              @ Abbrev [22] 0x599:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string108                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	124                             @ DW_AT_decl_line
 	.long	59                              @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x5a4:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	14
+	.byte	21                              @ Abbrev [21] 0x5a8:0xf DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string109                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	126                             @ DW_AT_decl_line
-	.long	1473                            @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x5b2:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	13
+	.long	1479                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x5b7:0xf DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string110                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	126                             @ DW_AT_decl_line
-	.long	1473                            @ DW_AT_type
+	.long	1479                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x5c1:0xb DW_TAG_typedef
+	.byte	11                              @ Abbrev [11] 0x5c7:0xb DW_TAG_typedef
 	.long	59                              @ DW_AT_type
 	.long	.Linfo_string92                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.byte	11                              @ Abbrev [11] 0x5cc:0xb DW_TAG_typedef
-	.long	1495                            @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x5d2:0xb DW_TAG_typedef
+	.long	1501                            @ DW_AT_type
 	.long	.Linfo_string103                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	63                              @ DW_AT_decl_line
-	.byte	22                              @ Abbrev [22] 0x5d7:0x41 DW_TAG_structure_type
+	.byte	23                              @ Abbrev [23] 0x5dd:0x41 DW_TAG_structure_type
 	.byte	20                              @ DW_AT_byte_size
 	.byte	1                               @ DW_AT_decl_file
 	.byte	47                              @ DW_AT_decl_line
-	.byte	23                              @ Abbrev [23] 0x5db:0xc DW_TAG_member
+	.byte	24                              @ Abbrev [24] 0x5e1:0xc DW_TAG_member
 	.long	.Linfo_string98                 @ DW_AT_name
 	.long	949                             @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
 	.byte	49                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	23                              @ Abbrev [23] 0x5e7:0xc DW_TAG_member
+	.byte	24                              @ Abbrev [24] 0x5ed:0xc DW_TAG_member
 	.long	.Linfo_string99                 @ DW_AT_name
 	.long	949                             @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
 	.byte	52                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	23                              @ Abbrev [23] 0x5f3:0xc DW_TAG_member
+	.byte	24                              @ Abbrev [24] 0x5f9:0xc DW_TAG_member
 	.long	.Linfo_string100                @ DW_AT_name
 	.long	949                             @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
 	.byte	55                              @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	23                              @ Abbrev [23] 0x5ff:0xc DW_TAG_member
+	.byte	24                              @ Abbrev [24] 0x605:0xc DW_TAG_member
 	.long	.Linfo_string101                @ DW_AT_name
 	.long	949                             @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
 	.byte	58                              @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
-	.byte	23                              @ Abbrev [23] 0x60b:0xc DW_TAG_member
+	.byte	24                              @ Abbrev [24] 0x611:0xc DW_TAG_member
 	.long	.Linfo_string102                @ DW_AT_name
 	.long	949                             @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
@@ -2082,12 +2110,12 @@ CT_IIC_Read_Byte:
 .Linfo_string108:
 	.asciz	"ack"                           @ string offset=1062
 .Linfo_string109:
-	.asciz	"i"                             @ string offset=1066
+	.asciz	"receive"                       @ string offset=1066
 .Linfo_string110:
-	.asciz	"receive"                       @ string offset=1068
+	.asciz	"i"                             @ string offset=1074
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

@@ -38,80 +38,83 @@ rt_i2c_bus_device_register:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus <- $r0
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus_name <- $r1
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-	movs	r2, #0
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	mov	r4, r1
 .Ltmp0:
-	.loc	2 24 14 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:24:14
-	str	r2, [sp, #4]
-	.loc	2 26 20                         @ rt-thread/components/drivers/i2c/i2c_core.c:26:20
-	ldr	r0, [sp, #12]
-	.loc	2 26 25 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:26:25
-	adds	r0, #88
-	.loc	2 26 5                          @ rt-thread/components/drivers/i2c/i2c_core.c:26:5
-	movw	r1, :lower16:.L.str
-	movt	r1, :upper16:.L.str
-	bl	rt_mutex_init
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus_name <- $r4
+	mov	r5, r0
 .Ltmp1:
-	.loc	2 28 9 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:28:9
-	ldr	r0, [sp, #12]
-	.loc	2 28 14 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:28:14
-	ldr	r0, [r0, #124]
+	@DEBUG_VALUE: rt_i2c_bus_device_register:res <- 0
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus_name <- $r4
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus <- $r5
+	.loc	2 26 25 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:26:25
+	adds	r0, #88
+	.loc	2 26 5 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:26:5
+	adr	r1, .LCPI0_0
+	movs	r2, #0
+	bl	rt_mutex_init
 .Ltmp2:
-	.loc	2 28 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:28:9
-	cbnz	r0, .LBB0_2
-	b	.LBB0_1
-.LBB0_1:
+	.loc	2 28 14 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:28:14
+	ldr	r0, [r5, #124]
 .Ltmp3:
-	.loc	2 28 28                         @ rt-thread/components/drivers/i2c/i2c_core.c:28:28
-	ldr	r1, [sp, #12]
-	mov.w	r0, #1000
-	.loc	2 28 41                         @ rt-thread/components/drivers/i2c/i2c_core.c:28:41
-	str	r0, [r1, #124]
-	.loc	2 28 28                         @ rt-thread/components/drivers/i2c/i2c_core.c:28:28
-	b	.LBB0_2
+	.loc	2 28 9 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:28:9
+	cbnz	r0, .LBB0_2
 .Ltmp4:
-.LBB0_2:
-	.loc	2 30 41 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:30:41
-	ldr	r0, [sp, #12]
-	.loc	2 30 46 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:30:46
-	ldr	r1, [sp, #8]
-	.loc	2 30 11                         @ rt-thread/components/drivers/i2c/i2c_core.c:30:11
-	bl	rt_i2c_bus_device_device_init
-	.loc	2 30 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:30:9
-	str	r0, [sp, #4]
-	.loc	2 32 5 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:32:5
-	b	.LBB0_3
-.LBB0_3:
+@ %bb.1:
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus <- $r5
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus_name <- $r4
+	@DEBUG_VALUE: rt_i2c_bus_device_register:res <- 0
+	.loc	2 0 9                           @ rt-thread/components/drivers/i2c/i2c_core.c:0:9
+	mov.w	r0, #1000
 .Ltmp5:
-	.loc	2 32 5 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:32:5
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
+	.loc	2 28 41                         @ rt-thread/components/drivers/i2c/i2c_core.c:28:41
+	str	r0, [r5, #124]
+.Ltmp6:
+.LBB0_2:
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus <- $r5
+	@DEBUG_VALUE: rt_i2c_bus_device_register:bus_name <- $r4
+	@DEBUG_VALUE: rt_i2c_bus_device_register:res <- 0
+	.loc	2 30 11 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:30:11
+	mov	r0, r5
+	mov	r1, r4
+	bl	rt_i2c_bus_device_device_init
+	mov	r5, r0
+.Ltmp7:
+	@DEBUG_VALUE: rt_i2c_bus_device_register:res <- $r5
+	.loc	2 32 5                          @ rt-thread/components/drivers/i2c/i2c_core.c:32:5
+	adr	r0, .LCPI0_1
 	bl	rt_kprintf
-	ldr	r1, [sp, #8]
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
+	adr	r0, .LCPI0_2
+	mov	r1, r4
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.3
 	movt	r0, :upper16:.L.str.3
 	bl	rt_kprintf
-	b	.LBB0_4
-.Ltmp6:
-.LBB0_4:
-	.loc	2 34 12 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:34:12
-	ldr	r0, [sp, #4]
-	.loc	2 34 5 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:34:5
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp7:
+.Ltmp8:
+	.loc	2 34 5                          @ rt-thread/components/drivers/i2c/i2c_core.c:34:5
+	mov	r0, r5
+	pop	{r4, r5, r7, pc}
+.Ltmp9:
+	.p2align	2
+@ %bb.3:
+	.loc	2 0 5 is_stmt 0                 @ rt-thread/components/drivers/i2c/i2c_core.c:0:5
+.LCPI0_0:
+.L.str:
+	.asciz	"i2c_bus_lock\000\000\000"
+.LCPI0_1:
+.L.str.1:
+	.asciz	"[I/I2C] \000\000\000"
+.LCPI0_2:
+.L.str.2:
+	.asciz	"I2C bus [%s] registered"
 .Lfunc_end0:
 	.size	rt_i2c_bus_device_register, .Lfunc_end0-rt_i2c_bus_device_register
 	.cfi_endproc
@@ -131,82 +134,67 @@ rt_i2c_bus_device_find:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	@DEBUG_VALUE: rt_i2c_bus_device_find:bus_name <- $r0
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-.Ltmp8:
-	.loc	2 40 38 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:40:38
-	ldr	r0, [sp, #8]
-	.loc	2 40 23 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:40:23
-	bl	rt_device_find
-	.loc	2 40 17                         @ rt-thread/components/drivers/i2c/i2c_core.c:40:17
-	str	r0, [sp]
-.Ltmp9:
-	.loc	2 41 9 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:41:9
-	ldr	r0, [sp]
-	.loc	2 41 24 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:41:24
-	cbz	r0, .LBB1_2
-	b	.LBB1_1
-.LBB1_1:
-	.loc	2 41 27                         @ rt-thread/components/drivers/i2c/i2c_core.c:41:27
-	ldr	r0, [sp]
-	.loc	2 41 32                         @ rt-thread/components/drivers/i2c/i2c_core.c:41:32
-	ldrb	r0, [r0, #20]
+	.cfi_offset r4, -8
+	mov	r4, r0
 .Ltmp10:
-	.loc	2 41 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:41:9
-	cmp	r0, #8
-	beq	.LBB1_5
-	b	.LBB1_2
-.LBB1_2:
+	@DEBUG_VALUE: rt_i2c_bus_device_find:bus_name <- $r4
+	.loc	2 40 23 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:40:23
+	bl	rt_device_find
 .Ltmp11:
-	.loc	2 43 9 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:43:9
-	b	.LBB1_3
-.LBB1_3:
+	@DEBUG_VALUE: rt_i2c_bus_device_find:dev <- $r0
+	.loc	2 41 24                         @ rt-thread/components/drivers/i2c/i2c_core.c:41:24
+	cbz	r0, .LBB1_3
 .Ltmp12:
-	.loc	2 43 9 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:43:9
+@ %bb.1:
+	@DEBUG_VALUE: rt_i2c_bus_device_find:bus_name <- $r4
+	@DEBUG_VALUE: rt_i2c_bus_device_find:dev <- $r0
+	.loc	2 41 32 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:41:32
+	ldrb	r1, [r0, #20]
+.Ltmp13:
+	.loc	2 41 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:41:9
+	cmp	r1, #8
+	bne	.LBB1_3
+.Ltmp14:
+@ %bb.2:
+	@DEBUG_VALUE: rt_i2c_bus_device_find:bus_name <- $r4
+	@DEBUG_VALUE: rt_i2c_bus_device_find:dev <- $r0
+	.loc	2 48 44 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:48:44
+	ldr	r0, [r0, #76]
+.Ltmp15:
+	@DEBUG_VALUE: rt_i2c_bus_device_find:bus <- $r0
+	.loc	2 51 1                          @ rt-thread/components/drivers/i2c/i2c_core.c:51:1
+	pop	{r4, pc}
+.Ltmp16:
+.LBB1_3:
+	@DEBUG_VALUE: rt_i2c_bus_device_find:bus_name <- $r4
+	@DEBUG_VALUE: rt_i2c_bus_device_find:dev <- $r0
+	.loc	2 43 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:43:9
 	movw	r0, :lower16:.L.str.4
+.Ltmp17:
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
-	ldr	r1, [sp, #8]
-	movw	r0, :lower16:.L.str.5
-	movt	r0, :upper16:.L.str.5
+	adr	r0, .LCPI1_0
+	mov	r1, r4
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.3
 	movt	r0, :upper16:.L.str.3
 	bl	rt_kprintf
-	b	.LBB1_4
-.Ltmp13:
-.LBB1_4:
-	.loc	2 0 9                           @ rt-thread/components/drivers/i2c/i2c_core.c:0:9
 	movs	r0, #0
-	.loc	2 45 9 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:45:9
-	str	r0, [sp, #12]
-	b	.LBB1_6
-.Ltmp14:
-.LBB1_5:
-	.loc	2 48 39                         @ rt-thread/components/drivers/i2c/i2c_core.c:48:39
-	ldr	r0, [sp]
-	.loc	2 48 44 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:48:44
-	ldr	r0, [r0, #76]
-	.loc	2 48 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:48:9
-	str	r0, [sp, #4]
-	.loc	2 50 12 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:50:12
-	ldr	r0, [sp, #4]
-	.loc	2 50 5 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:50:5
-	str	r0, [sp, #12]
-	b	.LBB1_6
-.LBB1_6:
-	.loc	2 51 1 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:51:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp15:
+.Ltmp18:
+	.loc	2 51 1                          @ rt-thread/components/drivers/i2c/i2c_core.c:51:1
+	pop	{r4, pc}
+.Ltmp19:
+	.p2align	2
+@ %bb.4:
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/components/drivers/i2c/i2c_core.c:0:1
+.LCPI1_0:
+.L.str.5:
+	.asciz	"I2C bus %s not exist\000\000\000"
 .Lfunc_end1:
 	.size	rt_i2c_bus_device_find, .Lfunc_end1-rt_i2c_bus_device_find
 	.cfi_endproc
@@ -222,97 +210,107 @@ rt_i2c_bus_device_find:
 	.thumb_func
 rt_i2c_transfer:
 .Lfunc_begin2:
-	.loc	2 56 0                          @ rt-thread/components/drivers/i2c/i2c_core.c:56:0
+	.loc	2 56 0 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:56:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_i2c_transfer:bus <- $r0
+	@DEBUG_VALUE: rt_i2c_transfer:msgs <- $r1
+	@DEBUG_VALUE: rt_i2c_transfer:num <- $r2
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
-.Ltmp16:
-	.loc	2 59 9 prologue_end             @ rt-thread/components/drivers/i2c/i2c_core.c:59:9
-	ldr	r0, [sp, #16]
-	.loc	2 59 14 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:59:14
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
+	mov	r4, r0
+.Ltmp20:
+	@DEBUG_VALUE: rt_i2c_transfer:bus <- $r4
+	.loc	2 59 14 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:59:14
 	ldr	r0, [r0, #80]
-	.loc	2 59 19                         @ rt-thread/components/drivers/i2c/i2c_core.c:59:19
+	.loc	2 59 19 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:59:19
 	ldr	r0, [r0]
-.Ltmp17:
+.Ltmp21:
+	@DEBUG_VALUE: rt_i2c_transfer:num <- $r2
+	@DEBUG_VALUE: rt_i2c_transfer:msgs <- $r1
 	.loc	2 59 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:59:9
 	cbz	r0, .LBB2_2
-	b	.LBB2_1
-.LBB2_1:
-.Ltmp18:
-	.loc	2 70 24 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:70:24
-	ldr	r0, [sp, #16]
-	.loc	2 70 29 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:70:29
-	adds	r0, #88
+.Ltmp22:
+@ %bb.1:
+	@DEBUG_VALUE: rt_i2c_transfer:bus <- $r4
+	@DEBUG_VALUE: rt_i2c_transfer:num <- $r2
+	@DEBUG_VALUE: rt_i2c_transfer:msgs <- $r1
+	.loc	2 70 29 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:70:29
+	add.w	r7, r4, #88
+	mov	r6, r1
+.Ltmp23:
+	@DEBUG_VALUE: rt_i2c_transfer:msgs <- $r6
+	@DEBUG_VALUE: rt_i2c_transfer:msgs <- $r6
+	.loc	2 70 9 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:70:9
 	mov.w	r1, #-1
-	.loc	2 70 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:70:9
+	mov	r0, r7
+	mov	r5, r2
+.Ltmp24:
+	@DEBUG_VALUE: rt_i2c_transfer:num <- $r5
+	@DEBUG_VALUE: rt_i2c_transfer:num <- $r5
 	bl	rt_mutex_take
-	.loc	2 71 15 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:71:15
-	ldr	r0, [sp, #16]
-	.loc	2 71 20 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:71:20
-	ldr	r1, [r0, #80]
+	.loc	2 71 20 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:71:20
+	ldr	r0, [r4, #80]
+	.loc	2 71 15 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:71:15
+	mov	r1, r6
+	mov	r2, r5
 	.loc	2 71 25                         @ rt-thread/components/drivers/i2c/i2c_core.c:71:25
-	ldr	r3, [r1]
-	.loc	2 71 42                         @ rt-thread/components/drivers/i2c/i2c_core.c:71:42
-	ldr	r1, [sp, #12]
-	.loc	2 71 48                         @ rt-thread/components/drivers/i2c/i2c_core.c:71:48
-	ldr	r2, [sp, #8]
+	ldr	r3, [r0]
 	.loc	2 71 15                         @ rt-thread/components/drivers/i2c/i2c_core.c:71:15
+	mov	r0, r4
 	blx	r3
-	.loc	2 71 13                         @ rt-thread/components/drivers/i2c/i2c_core.c:71:13
-	str	r0, [sp, #4]
-	.loc	2 72 27 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:72:27
-	ldr	r0, [sp, #16]
-	.loc	2 72 32 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:72:32
-	adds	r0, #88
-	.loc	2 72 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:72:9
+	mov	r4, r0
+.Ltmp25:
+	@DEBUG_VALUE: rt_i2c_transfer:bus <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: rt_i2c_transfer:ret <- $r4
+	.loc	2 72 9 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:72:9
+	mov	r0, r7
 	bl	rt_mutex_release
-	.loc	2 74 16 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:74:16
-	ldr	r0, [sp, #4]
-	.loc	2 74 9 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:74:9
-	str	r0, [sp, #20]
-	b	.LBB2_5
-.Ltmp19:
-.LBB2_2:
-	.loc	2 78 9 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:78:9
+	.loc	2 74 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:74:9
 	b	.LBB2_3
-.LBB2_3:
-.Ltmp20:
-	.loc	2 78 9 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:78:9
+.Ltmp26:
+.LBB2_2:
+	@DEBUG_VALUE: rt_i2c_transfer:bus <- $r4
+	@DEBUG_VALUE: rt_i2c_transfer:num <- $r2
+	@DEBUG_VALUE: rt_i2c_transfer:msgs <- $r1
+	.loc	2 78 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:78:9
 	movw	r0, :lower16:.L.str.4
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.6
-	movt	r0, :upper16:.L.str.6
+.Ltmp27:
+	@DEBUG_VALUE: rt_i2c_transfer:num <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: rt_i2c_transfer:msgs <- [DW_OP_LLVM_entry_value 1] $r1
+	adr	r0, .LCPI2_0
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.3
 	movt	r0, :upper16:.L.str.3
 	bl	rt_kprintf
-	b	.LBB2_4
-.Ltmp21:
-.LBB2_4:
-	.loc	2 0 9                           @ rt-thread/components/drivers/i2c/i2c_core.c:0:9
-	movs	r0, #0
-	.loc	2 80 9 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:80:9
-	str	r0, [sp, #20]
-	b	.LBB2_5
-.Ltmp22:
-.LBB2_5:
+	movs	r4, #0
+.Ltmp28:
+	@DEBUG_VALUE: rt_i2c_transfer:bus <- [DW_OP_LLVM_entry_value 1] $r0
+.LBB2_3:
+	@DEBUG_VALUE: rt_i2c_transfer:bus <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 82 1                          @ rt-thread/components/drivers/i2c/i2c_core.c:82:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp23:
+	mov	r0, r4
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp29:
+	.p2align	2
+@ %bb.4:
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/components/drivers/i2c/i2c_core.c:0:1
+.LCPI2_0:
+.L.str.6:
+	.asciz	"I2C bus operation not supported"
 .Lfunc_end2:
 	.size	rt_i2c_transfer, .Lfunc_end2-rt_i2c_transfer
 	.cfi_endproc
@@ -328,74 +326,61 @@ rt_i2c_transfer:
 	.thumb_func
 rt_i2c_master_send:
 .Lfunc_begin3:
-	.loc	2 89 0                          @ rt-thread/components/drivers/i2c/i2c_core.c:89:0
+	.loc	2 89 0 is_stmt 1                @ rt-thread/components/drivers/i2c/i2c_core.c:89:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	@DEBUG_VALUE: rt_i2c_master_send:bus <- $r0
+	@DEBUG_VALUE: rt_i2c_master_send:addr <- $r1
+	@DEBUG_VALUE: rt_i2c_master_send:addr <- $r1
+	@DEBUG_VALUE: rt_i2c_master_send:flags <- $r2
+	@DEBUG_VALUE: rt_i2c_master_send:buf <- $r3
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	ldr.w	r12, [sp, #40]
-                                        @ kill: def $r12 killed $r2
-                                        @ kill: def $r12 killed $r1
-	str	r0, [sp, #28]
-	strh.w	r1, [sp, #26]
-	strh.w	r2, [sp, #24]
-	str	r3, [sp, #20]
-.Ltmp24:
-	.loc	2 93 17 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:93:17
-	ldrh.w	r0, [sp, #26]
-	.loc	2 93 15 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:93:15
-	strh.w	r0, [sp, #4]
-	.loc	2 94 17 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:94:17
-	ldrh.w	r0, [sp, #24]
-	.loc	2 94 15 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:94:15
-	strh.w	r0, [sp, #6]
-	.loc	2 95 17 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:95:17
-	ldr	r0, [sp, #40]
-	.loc	2 95 15 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:95:15
-	strh.w	r0, [sp, #8]
-	.loc	2 96 31 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:96:31
-	ldr	r0, [sp, #20]
-	.loc	2 96 15 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:96:15
-	str	r0, [sp, #12]
-	.loc	2 98 27 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:98:27
-	ldr	r0, [sp, #28]
+	.cfi_offset r4, -8
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 24
+.Ltmp30:
+	@DEBUG_VALUE: rt_i2c_master_send:count <- [DW_OP_plus_uconst 24] [$sp+0]
+	.loc	2 93 15 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:93:15
+	strh.w	r1, [sp, #4]
+	@DEBUG_VALUE: rt_i2c_master_send:flags <- $r2
 	add	r1, sp, #4
+.Ltmp31:
+	@DEBUG_VALUE: rt_i2c_master_send:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 94 15                         @ rt-thread/components/drivers/i2c/i2c_core.c:94:15
+	strh.w	r2, [sp, #6]
+	.loc	2 98 11                         @ rt-thread/components/drivers/i2c/i2c_core.c:98:11
 	movs	r2, #1
-	.loc	2 98 11 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:98:11
+.Ltmp32:
+	@DEBUG_VALUE: rt_i2c_master_send:flags <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: rt_i2c_master_send:bus <- $r0
+	.loc	2 0 11 is_stmt 0                @ rt-thread/components/drivers/i2c/i2c_core.c:0:11
+	ldr	r4, [sp, #24]
+	.loc	2 95 15 is_stmt 1               @ rt-thread/components/drivers/i2c/i2c_core.c:95:15
+	strh.w	r4, [sp, #8]
+	@DEBUG_VALUE: rt_i2c_master_send:buf <- $r3
+	@DEBUG_VALUE: rt_i2c_master_send:bus <- $r0
+	.loc	2 96 15                         @ rt-thread/components/drivers/i2c/i2c_core.c:96:15
+	str	r3, [sp, #12]
+	.loc	2 98 11                         @ rt-thread/components/drivers/i2c/i2c_core.c:98:11
 	bl	rt_i2c_transfer
-	.loc	2 98 9                          @ rt-thread/components/drivers/i2c/i2c_core.c:98:9
-	str	r0, [sp, #16]
-	.loc	2 100 13 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:100:13
-	ldr	r0, [sp, #16]
-	.loc	2 100 12 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:100:12
-	cmp	r0, #1
-	blt	.LBB3_2
-	b	.LBB3_1
-.LBB3_1:
-	.loc	2 100 24                        @ rt-thread/components/drivers/i2c/i2c_core.c:100:24
-	ldr	r0, [sp, #40]
+.Ltmp33:
+	@DEBUG_VALUE: rt_i2c_master_send:buf <- [DW_OP_LLVM_entry_value 1] $r3
+	@DEBUG_VALUE: rt_i2c_master_send:bus <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: rt_i2c_master_send:ret <- $r0
 	.loc	2 100 12                        @ rt-thread/components/drivers/i2c/i2c_core.c:100:12
-	str	r0, [sp]                        @ 4-byte Spill
-	b	.LBB3_3
-.LBB3_2:
-	.loc	2 100 32                        @ rt-thread/components/drivers/i2c/i2c_core.c:100:32
-	ldr	r0, [sp, #16]
-	.loc	2 100 12                        @ rt-thread/components/drivers/i2c/i2c_core.c:100:12
-	str	r0, [sp]                        @ 4-byte Spill
-	b	.LBB3_3
-.LBB3_3:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	.loc	2 100 5                         @ rt-thread/components/drivers/i2c/i2c_core.c:100:5
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp25:
+	cmp	r0, #0
+	it	gt
+	movgt	r0, r4
+.Ltmp34:
+	.loc	2 100 5 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:100:5
+	add	sp, #16
+	pop	{r4, pc}
+.Ltmp35:
 .Lfunc_end3:
 	.size	rt_i2c_master_send, .Lfunc_end3-rt_i2c_master_send
 	.cfi_endproc
@@ -415,90 +400,97 @@ rt_i2c_master_recv:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_i2c_master_recv:bus <- $r0
+	@DEBUG_VALUE: rt_i2c_master_recv:addr <- $r1
+	@DEBUG_VALUE: rt_i2c_master_recv:flags <- $r2
+	@DEBUG_VALUE: rt_i2c_master_recv:buf <- $r3
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+	.pad	#16
+	sub	sp, #16
 	.cfi_def_cfa_offset 40
-	ldr.w	r12, [sp, #40]
-                                        @ kill: def $r12 killed $r2
-                                        @ kill: def $r12 killed $r1
-	str	r0, [sp, #28]
-	strh.w	r1, [sp, #26]
-	strh.w	r2, [sp, #24]
-	str	r3, [sp, #20]
-.Ltmp26:
+	mov	r4, r0
+.Ltmp36:
+	@DEBUG_VALUE: rt_i2c_master_recv:count <- [DW_OP_plus_uconst 40] [$sp+0]
+	@DEBUG_VALUE: rt_i2c_master_recv:bus <- $r4
+	mov	r5, r3
+.Ltmp37:
+	@DEBUG_VALUE: rt_i2c_master_recv:buf <- $r5
+	@DEBUG_VALUE: rt_i2c_master_recv:buf <- $r5
+	mov	r6, r2
+.Ltmp38:
+	@DEBUG_VALUE: rt_i2c_master_recv:flags <- $r6
+	@DEBUG_VALUE: rt_i2c_master_recv:flags <- $r6
+	mov	r7, r1
+.Ltmp39:
+	@DEBUG_VALUE: rt_i2c_master_recv:addr <- $r7
+	@DEBUG_VALUE: rt_i2c_master_recv:addr <- $r7
+	ldr.w	r8, [sp, #40]
+.Ltmp40:
 	.loc	2 111 5 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:111:5
-	ldr	r0, [sp, #28]
-.Ltmp27:
-	.loc	2 111 5 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:111:5
 	cbnz	r0, .LBB4_2
-	b	.LBB4_1
-.LBB4_1:
-.Ltmp28:
-	.loc	2 111 5                         @ rt-thread/components/drivers/i2c/i2c_core.c:111:5
-	movw	r0, :lower16:.L.str.7
-	movt	r0, :upper16:.L.str.7
-	movw	r1, :lower16:.L__FUNCTION__.rt_i2c_master_recv
-	movt	r1, :upper16:.L__FUNCTION__.rt_i2c_master_recv
+.Ltmp41:
+@ %bb.1:
+	@DEBUG_VALUE: rt_i2c_master_recv:addr <- $r7
+	@DEBUG_VALUE: rt_i2c_master_recv:flags <- $r6
+	@DEBUG_VALUE: rt_i2c_master_recv:buf <- $r5
+	@DEBUG_VALUE: rt_i2c_master_recv:bus <- $r4
+	@DEBUG_VALUE: rt_i2c_master_recv:count <- [DW_OP_plus_uconst 40] [$sp+0]
+	.loc	2 111 5 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:111:5
+	adr	r0, .LCPI4_0
+	adr	r1, .LCPI4_1
 	movs	r2, #111
 	bl	rt_assert_handler
-	b	.LBB4_2
-.Ltmp29:
+.Ltmp42:
 .LBB4_2:
-	.loc	2 113 18 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:113:18
-	ldrh.w	r0, [sp, #26]
-	.loc	2 113 16 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:113:16
-	strh.w	r0, [sp, #4]
-	.loc	2 114 18 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:114:18
-	ldrh.w	r0, [sp, #24]
-	.loc	2 114 24 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:114:24
-	orr	r0, r0, #1
-	.loc	2 114 16                        @ rt-thread/components/drivers/i2c/i2c_core.c:114:16
+	@DEBUG_VALUE: rt_i2c_master_recv:addr <- $r7
+	@DEBUG_VALUE: rt_i2c_master_recv:flags <- $r6
+	@DEBUG_VALUE: rt_i2c_master_recv:buf <- $r5
+	@DEBUG_VALUE: rt_i2c_master_recv:bus <- $r4
+	@DEBUG_VALUE: rt_i2c_master_recv:count <- [DW_OP_plus_uconst 40] [$sp+0]
+	.loc	2 114 24 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:114:24
+	orr	r0, r6, #1
+	.loc	2 114 16 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:114:16
 	strh.w	r0, [sp, #6]
-	.loc	2 115 18 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:115:18
-	ldr	r0, [sp, #40]
-	.loc	2 115 16 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:115:16
-	strh.w	r0, [sp, #8]
-	.loc	2 116 18 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:116:18
-	ldr	r0, [sp, #20]
-	.loc	2 116 16 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:116:16
-	str	r0, [sp, #12]
-	.loc	2 118 27 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:118:27
-	ldr	r0, [sp, #28]
 	add	r1, sp, #4
+	.loc	2 118 11 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:118:11
 	movs	r2, #1
-	.loc	2 118 11 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:118:11
+	mov	r0, r4
+	.loc	2 113 16                        @ rt-thread/components/drivers/i2c/i2c_core.c:113:16
+	strh.w	r7, [sp, #4]
+	.loc	2 115 16                        @ rt-thread/components/drivers/i2c/i2c_core.c:115:16
+	strh.w	r8, [sp, #8]
+	.loc	2 116 16                        @ rt-thread/components/drivers/i2c/i2c_core.c:116:16
+	str	r5, [sp, #12]
+	.loc	2 118 11                        @ rt-thread/components/drivers/i2c/i2c_core.c:118:11
 	bl	rt_i2c_transfer
-	.loc	2 118 9                         @ rt-thread/components/drivers/i2c/i2c_core.c:118:9
-	str	r0, [sp, #16]
-	.loc	2 120 13 is_stmt 1              @ rt-thread/components/drivers/i2c/i2c_core.c:120:13
-	ldr	r0, [sp, #16]
-	.loc	2 120 12 is_stmt 0              @ rt-thread/components/drivers/i2c/i2c_core.c:120:12
-	cmp	r0, #1
-	blt	.LBB4_4
-	b	.LBB4_3
-.LBB4_3:
-	.loc	2 120 24                        @ rt-thread/components/drivers/i2c/i2c_core.c:120:24
-	ldr	r0, [sp, #40]
+.Ltmp43:
+	@DEBUG_VALUE: rt_i2c_master_recv:ret <- $r0
 	.loc	2 120 12                        @ rt-thread/components/drivers/i2c/i2c_core.c:120:12
-	str	r0, [sp]                        @ 4-byte Spill
-	b	.LBB4_5
-.LBB4_4:
-	.loc	2 120 32                        @ rt-thread/components/drivers/i2c/i2c_core.c:120:32
-	ldr	r0, [sp, #16]
-	.loc	2 120 12                        @ rt-thread/components/drivers/i2c/i2c_core.c:120:12
-	str	r0, [sp]                        @ 4-byte Spill
-	b	.LBB4_5
-.LBB4_5:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	.loc	2 120 5                         @ rt-thread/components/drivers/i2c/i2c_core.c:120:5
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp30:
+	cmp	r0, #0
+	it	gt
+	movgt	r0, r8
+.Ltmp44:
+	.loc	2 120 5 is_stmt 0               @ rt-thread/components/drivers/i2c/i2c_core.c:120:5
+	add	sp, #16
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp45:
+	.p2align	2
+@ %bb.3:
+	.loc	2 0 5                           @ rt-thread/components/drivers/i2c/i2c_core.c:0:5
+.LCPI4_0:
+.L.str.7:
+	.asciz	"bus != RT_NULL\000"
+.LCPI4_1:
+.L__FUNCTION__.rt_i2c_master_recv:
+	.asciz	"rt_i2c_master_recv\000"
 .Lfunc_end4:
 	.size	rt_i2c_master_recv, .Lfunc_end4-rt_i2c_master_recv
 	.cfi_endproc
@@ -518,34 +510,18 @@ rt_i2c_core_init:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	movs	r0, #0
-.Ltmp31:
 	.loc	2 125 5 prologue_end            @ rt-thread/components/drivers/i2c/i2c_core.c:125:5
+	movs	r0, #0
 	bx	lr
-.Ltmp32:
+.Ltmp46:
 .Lfunc_end5:
 	.size	rt_i2c_core_init, .Lfunc_end5-rt_i2c_core_init
 	.cfi_endproc
 	.cantunwind
 	.fnend
                                         @ -- End function
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	"i2c_bus_lock"
-	.size	.L.str, 13
-
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"[I/I2C] "
-	.size	.L.str.1, 9
-
-	.type	.L.str.2,%object                @ @.str.2
-.L.str.2:
-	.asciz	"I2C bus [%s] registered"
-	.size	.L.str.2, 24
-
 	.type	.L.str.3,%object                @ @.str.3
+	.section	.rodata.str1.1,"aMS",%progbits,1
 .L.str.3:
 	.asciz	"\n"
 	.size	.L.str.3, 2
@@ -554,26 +530,6 @@ rt_i2c_core_init:
 .L.str.4:
 	.asciz	"[E/I2C] "
 	.size	.L.str.4, 9
-
-	.type	.L.str.5,%object                @ @.str.5
-.L.str.5:
-	.asciz	"I2C bus %s not exist"
-	.size	.L.str.5, 21
-
-	.type	.L.str.6,%object                @ @.str.6
-.L.str.6:
-	.asciz	"I2C bus operation not supported"
-	.size	.L.str.6, 32
-
-	.type	.L.str.7,%object                @ @.str.7
-.L.str.7:
-	.asciz	"bus != RT_NULL"
-	.size	.L.str.7, 15
-
-	.type	.L__FUNCTION__.rt_i2c_master_recv,%object @ @__FUNCTION__.rt_i2c_master_recv
-.L__FUNCTION__.rt_i2c_master_recv:
-	.asciz	"rt_i2c_master_recv"
-	.size	.L__FUNCTION__.rt_i2c_master_recv, 19
 
 	.hidden	__rt_init_rt_i2c_core_init      @ @__rt_init_rt_i2c_core_init
 	.type	__rt_init_rt_i2c_core_init,%object
@@ -586,6 +542,295 @@ __tagsym$$used.0:
 	.size	__rt_init_rt_i2c_core_init, 4
 
 	.globl	__rt_init_rt_i2c_core_init
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp1-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp7-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp0-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp9-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp7-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp7-.Lfunc_begin0
+	.long	.Ltmp9-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp10-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp10-.Lfunc_begin1
+	.long	.Ltmp19-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp11-.Lfunc_begin1
+	.long	.Ltmp15-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp16-.Lfunc_begin1
+	.long	.Ltmp17-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp15-.Lfunc_begin1
+	.long	.Ltmp16-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp20-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp20-.Lfunc_begin2
+	.long	.Ltmp25-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp25-.Lfunc_begin2
+	.long	.Ltmp26-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp26-.Lfunc_begin2
+	.long	.Ltmp28-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp28-.Lfunc_begin2
+	.long	.Ltmp29-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp23-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp23-.Lfunc_begin2
+	.long	.Ltmp26-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp26-.Lfunc_begin2
+	.long	.Ltmp27-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp27-.Lfunc_begin2
+	.long	.Ltmp28-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp24-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp24-.Lfunc_begin2
+	.long	.Ltmp26-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp26-.Lfunc_begin2
+	.long	.Ltmp27-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp27-.Lfunc_begin2
+	.long	.Ltmp28-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp25-.Lfunc_begin2
+	.long	.Ltmp26-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp33-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp33-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp31-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp31-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp32-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp32-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp33-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp33-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp33-.Lfunc_begin3
+	.long	.Ltmp34-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp36-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp36-.Lfunc_begin4
+	.long	.Ltmp45-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp39-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp39-.Lfunc_begin4
+	.long	.Ltmp45-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp38-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp38-.Lfunc_begin4
+	.long	.Ltmp45-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp37-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp37-.Lfunc_begin4
+	.long	.Ltmp45-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp43-.Lfunc_begin4
+	.long	.Ltmp44-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -859,7 +1104,7 @@ __tagsym$$used.0:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -874,7 +1119,7 @@ __tagsym$$used.0:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -886,6 +1131,36 @@ __tagsym$$used.0:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	27                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	28                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	29                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	17                              @ DW_AT_low_pc
@@ -916,7 +1191,7 @@ __tagsym$$used.0:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x901 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x915 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1776,7 +2051,7 @@ __tagsym$$used.0:
 	.byte	19                              @ Abbrev [19] 0x712:0x5 DW_TAG_formal_parameter
 	.long	1378                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	24                              @ Abbrev [24] 0x718:0x42 DW_TAG_subprogram
+	.byte	24                              @ Abbrev [24] 0x718:0x45 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1787,32 +2062,26 @@ __tagsym$$used.0:
 	.byte	1                               @ DW_AT_prototyped
 	.long	776                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	25                              @ Abbrev [25] 0x72f:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	25                              @ Abbrev [25] 0x72f:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string124                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	21                              @ DW_AT_decl_line
 	.long	243                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x73d:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	25                              @ Abbrev [25] 0x73e:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string125                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	22                              @ DW_AT_decl_line
-	.long	2295                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x74b:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	2315                            @ DW_AT_type
+	.byte	26                              @ Abbrev [26] 0x74d:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string126                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	24                              @ DW_AT_decl_line
 	.long	776                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	24                              @ Abbrev [24] 0x75a:0x42 DW_TAG_subprogram
+	.byte	24                              @ Abbrev [24] 0x75d:0x45 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1823,32 +2092,26 @@ __tagsym$$used.0:
 	.byte	1                               @ DW_AT_prototyped
 	.long	243                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	25                              @ Abbrev [25] 0x771:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	25                              @ Abbrev [25] 0x774:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string125                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	37                              @ DW_AT_decl_line
-	.long	2295                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x77f:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string124                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	39                              @ DW_AT_decl_line
-	.long	243                             @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x78d:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	2315                            @ DW_AT_type
+	.byte	26                              @ Abbrev [26] 0x783:0xf DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string127                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	40                              @ DW_AT_decl_line
 	.long	805                             @ DW_AT_type
+	.byte	26                              @ Abbrev [26] 0x792:0xf DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
+	.long	.Linfo_string124                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	39                              @ DW_AT_decl_line
+	.long	243                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	24                              @ Abbrev [24] 0x79c:0x50 DW_TAG_subprogram
+	.byte	24                              @ Abbrev [24] 0x7a2:0x54 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1859,40 +2122,32 @@ __tagsym$$used.0:
 	.byte	1                               @ DW_AT_prototyped
 	.long	822                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	25                              @ Abbrev [25] 0x7b3:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	25                              @ Abbrev [25] 0x7b9:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc6                    @ DW_AT_location
 	.long	.Linfo_string124                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	53                              @ DW_AT_decl_line
 	.long	243                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x7c1:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	25                              @ Abbrev [25] 0x7c8:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string128                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	54                              @ DW_AT_decl_line
 	.long	1173                            @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x7cf:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	25                              @ Abbrev [25] 0x7d7:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc8                    @ DW_AT_location
 	.long	.Linfo_string129                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	55                              @ DW_AT_decl_line
 	.long	1073                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x7dd:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	26                              @ Abbrev [26] 0x7e6:0xf DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string130                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	57                              @ DW_AT_decl_line
 	.long	822                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	24                              @ Abbrev [24] 0x7ec:0x7a DW_TAG_subprogram
+	.byte	24                              @ Abbrev [24] 0x7f6:0x7f DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1903,64 +2158,54 @@ __tagsym$$used.0:
 	.byte	1                               @ DW_AT_prototyped
 	.long	822                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	25                              @ Abbrev [25] 0x803:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
+	.byte	25                              @ Abbrev [25] 0x80d:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string124                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	84                              @ DW_AT_decl_line
 	.long	243                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x811:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	26
+	.byte	25                              @ Abbrev [25] 0x81c:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string75                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	85                              @ DW_AT_decl_line
 	.long	736                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x81f:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	25                              @ Abbrev [25] 0x82b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc12                   @ DW_AT_location
 	.long	.Linfo_string76                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
 	.long	736                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x82d:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	25                              @ Abbrev [25] 0x83a:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string78                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	87                              @ DW_AT_decl_line
-	.long	2305                            @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x83b:0xe DW_TAG_formal_parameter
+	.long	2325                            @ DW_AT_type
+	.byte	27                              @ Abbrev [27] 0x849:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	40
-	.long	.Linfo_string131                @ DW_AT_name
+	.byte	24
+	.long	.Linfo_string132                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	88                              @ DW_AT_decl_line
 	.long	1073                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x849:0xe DW_TAG_variable
+	.byte	28                              @ Abbrev [28] 0x857:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	16
+	.byte	4
+	.long	.Linfo_string131                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	91                              @ DW_AT_decl_line
+	.long	1178                            @ DW_AT_type
+	.byte	26                              @ Abbrev [26] 0x865:0xf DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
 	.long	.Linfo_string130                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	90                              @ DW_AT_decl_line
 	.long	776                             @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x857:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string132                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	91                              @ DW_AT_decl_line
-	.long	1178                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	24                              @ Abbrev [24] 0x866:0x7a DW_TAG_subprogram
+	.byte	24                              @ Abbrev [24] 0x875:0x7f DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1971,64 +2216,54 @@ __tagsym$$used.0:
 	.byte	1                               @ DW_AT_prototyped
 	.long	822                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	25                              @ Abbrev [25] 0x87d:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
+	.byte	25                              @ Abbrev [25] 0x88c:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string124                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	103                             @ DW_AT_decl_line
 	.long	243                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x88b:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	26
+	.byte	25                              @ Abbrev [25] 0x89b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc16                   @ DW_AT_location
 	.long	.Linfo_string75                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	104                             @ DW_AT_decl_line
 	.long	736                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x899:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	25                              @ Abbrev [25] 0x8aa:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string76                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	105                             @ DW_AT_decl_line
 	.long	736                             @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x8a7:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	25                              @ Abbrev [25] 0x8b9:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string78                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	106                             @ DW_AT_decl_line
 	.long	1235                            @ DW_AT_type
-	.byte	25                              @ Abbrev [25] 0x8b5:0xe DW_TAG_formal_parameter
+	.byte	27                              @ Abbrev [27] 0x8c8:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	40
-	.long	.Linfo_string131                @ DW_AT_name
+	.long	.Linfo_string132                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	107                             @ DW_AT_decl_line
 	.long	1073                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x8c3:0xe DW_TAG_variable
+	.byte	28                              @ Abbrev [28] 0x8d6:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	16
+	.byte	4
+	.long	.Linfo_string131                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	110                             @ DW_AT_decl_line
+	.long	1178                            @ DW_AT_type
+	.byte	26                              @ Abbrev [26] 0x8e4:0xf DW_TAG_variable
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string130                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	109                             @ DW_AT_decl_line
 	.long	776                             @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x8d1:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string132                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	110                             @ DW_AT_decl_line
-	.long	1178                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	27                              @ Abbrev [27] 0x8e0:0x17 DW_TAG_subprogram
+	.byte	29                              @ Abbrev [29] 0x8f4:0x17 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2039,13 +2274,13 @@ __tagsym$$used.0:
 	.byte	1                               @ DW_AT_prototyped
 	.long	83                              @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	5                               @ Abbrev [5] 0x8f7:0x5 DW_TAG_pointer_type
-	.long	2300                            @ DW_AT_type
-	.byte	3                               @ Abbrev [3] 0x8fc:0x5 DW_TAG_const_type
+	.byte	5                               @ Abbrev [5] 0x90b:0x5 DW_TAG_pointer_type
+	.long	2320                            @ DW_AT_type
+	.byte	3                               @ Abbrev [3] 0x910:0x5 DW_TAG_const_type
 	.long	658                             @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x901:0x5 DW_TAG_pointer_type
-	.long	2310                            @ DW_AT_type
-	.byte	3                               @ Abbrev [3] 0x906:0x5 DW_TAG_const_type
+	.byte	5                               @ Abbrev [5] 0x915:0x5 DW_TAG_pointer_type
+	.long	2330                            @ DW_AT_type
+	.byte	3                               @ Abbrev [3] 0x91a:0x5 DW_TAG_const_type
 	.long	672                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
@@ -2329,12 +2564,12 @@ __tagsym$$used.0:
 .Linfo_string130:
 	.asciz	"ret"                           @ string offset=1708
 .Linfo_string131:
-	.asciz	"count"                         @ string offset=1712
+	.asciz	"msg"                           @ string offset=1712
 .Linfo_string132:
-	.asciz	"msg"                           @ string offset=1718
+	.asciz	"count"                         @ string offset=1716
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

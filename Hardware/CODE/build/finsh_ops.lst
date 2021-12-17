@@ -61,26 +61,20 @@ OP_add_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 38 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:38:5
-	b	.LBB1_1
-.LBB1_1:
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	add	r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
 .Ltmp1:
-	.loc	2 38 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:38:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrb	r0, [r2, #-8]
-	ldrb	r3, [r2, #-4]
-	add	r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB1_2
-.Ltmp2:
-.LBB1_2:
-	.loc	2 40 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:40:5
+	.loc	2 40 5                          @ rt-thread/components/finsh/finsh_ops.c:40:5
 	bx	lr
-.Ltmp3:
+.Ltmp2:
 .Lfunc_end1:
 	.size	OP_add_byte, .Lfunc_end1-OP_add_byte
 	.cfi_endproc
@@ -101,26 +95,20 @@ OP_add_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 45 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:45:5
-	b	.LBB2_1
-.LBB2_1:
-.Ltmp4:
-	.loc	2 45 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:45:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrh	r0, [r2, #-8]
-	ldrh	r3, [r2, #-4]
-	add	r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB2_2
-.Ltmp5:
-.LBB2_2:
-	.loc	2 47 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:47:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	add	r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp3:
+	.loc	2 47 5                          @ rt-thread/components/finsh/finsh_ops.c:47:5
 	bx	lr
-.Ltmp6:
+.Ltmp4:
 .Lfunc_end2:
 	.size	OP_add_word, .Lfunc_end2-OP_add_word
 	.cfi_endproc
@@ -141,26 +129,19 @@ OP_add_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 52 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:52:5
-	b	.LBB3_1
-.LBB3_1:
-.Ltmp7:
-	.loc	2 52 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:52:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	add	r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB3_2
-.Ltmp8:
-.LBB3_2:
-	.loc	2 54 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:54:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	add	r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp5:
+	.loc	2 54 5                          @ rt-thread/components/finsh/finsh_ops.c:54:5
 	bx	lr
-.Ltmp9:
+.Ltmp6:
 .Lfunc_end3:
 	.size	OP_add_dword, .Lfunc_end3-OP_add_dword
 	.cfi_endproc
@@ -181,26 +162,20 @@ OP_sub_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 60 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:60:5
-	b	.LBB4_1
-.LBB4_1:
-.Ltmp10:
-	.loc	2 60 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:60:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrb	r0, [r2, #-8]
-	ldrb	r3, [r2, #-4]
-	subs	r0, r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB4_2
-.Ltmp11:
-.LBB4_2:
-	.loc	2 62 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:62:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	subs	r2, r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp7:
+	.loc	2 62 5                          @ rt-thread/components/finsh/finsh_ops.c:62:5
 	bx	lr
-.Ltmp12:
+.Ltmp8:
 .Lfunc_end4:
 	.size	OP_sub_byte, .Lfunc_end4-OP_sub_byte
 	.cfi_endproc
@@ -221,26 +196,20 @@ OP_sub_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 67 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:67:5
-	b	.LBB5_1
-.LBB5_1:
-.Ltmp13:
-	.loc	2 67 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:67:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrh	r0, [r2, #-8]
-	ldrh	r3, [r2, #-4]
-	subs	r0, r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB5_2
-.Ltmp14:
-.LBB5_2:
-	.loc	2 69 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:69:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	subs	r2, r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp9:
+	.loc	2 69 5                          @ rt-thread/components/finsh/finsh_ops.c:69:5
 	bx	lr
-.Ltmp15:
+.Ltmp10:
 .Lfunc_end5:
 	.size	OP_sub_word, .Lfunc_end5-OP_sub_word
 	.cfi_endproc
@@ -261,26 +230,19 @@ OP_sub_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 74 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:74:5
-	b	.LBB6_1
-.LBB6_1:
-.Ltmp16:
-	.loc	2 74 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:74:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	subs	r0, r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB6_2
-.Ltmp17:
-.LBB6_2:
-	.loc	2 76 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:76:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	subs	r2, r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp11:
+	.loc	2 76 5                          @ rt-thread/components/finsh/finsh_ops.c:76:5
 	bx	lr
-.Ltmp18:
+.Ltmp12:
 .Lfunc_end6:
 	.size	OP_sub_dword, .Lfunc_end6-OP_sub_dword
 	.cfi_endproc
@@ -301,26 +263,20 @@ OP_div_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 82 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:82:5
-	b	.LBB7_1
-.LBB7_1:
-.Ltmp19:
-	.loc	2 82 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:82:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsb	r0, [r2, #-8]
-	ldrsb	r3, [r2, #-4]
-	sdiv	r0, r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB7_2
-.Ltmp20:
-.LBB7_2:
-	.loc	2 84 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:84:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrsb	r2, [r1, #-8]
+	ldrsb	r3, [r1, #-4]
+	sdiv	r2, r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp13:
+	.loc	2 84 5                          @ rt-thread/components/finsh/finsh_ops.c:84:5
 	bx	lr
-.Ltmp21:
+.Ltmp14:
 .Lfunc_end7:
 	.size	OP_div_byte, .Lfunc_end7-OP_div_byte
 	.cfi_endproc
@@ -341,26 +297,20 @@ OP_div_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 89 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:89:5
-	b	.LBB8_1
-.LBB8_1:
-.Ltmp22:
-	.loc	2 89 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:89:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsh	r0, [r2, #-8]
-	ldrsh	r3, [r2, #-4]
-	sdiv	r0, r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB8_2
-.Ltmp23:
-.LBB8_2:
-	.loc	2 91 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:91:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrsh	r2, [r1, #-8]
+	ldrsh	r3, [r1, #-4]
+	sdiv	r2, r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp15:
+	.loc	2 91 5                          @ rt-thread/components/finsh/finsh_ops.c:91:5
 	bx	lr
-.Ltmp24:
+.Ltmp16:
 .Lfunc_end8:
 	.size	OP_div_word, .Lfunc_end8-OP_div_word
 	.cfi_endproc
@@ -381,26 +331,19 @@ OP_div_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 96 5 prologue_end             @ rt-thread/components/finsh/finsh_ops.c:96:5
-	b	.LBB9_1
-.LBB9_1:
-.Ltmp25:
-	.loc	2 96 5 is_stmt 0                @ rt-thread/components/finsh/finsh_ops.c:96:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	sdiv	r0, r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB9_2
-.Ltmp26:
-.LBB9_2:
-	.loc	2 98 5 is_stmt 1                @ rt-thread/components/finsh/finsh_ops.c:98:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	sdiv	r2, r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp17:
+	.loc	2 98 5                          @ rt-thread/components/finsh/finsh_ops.c:98:5
 	bx	lr
-.Ltmp27:
+.Ltmp18:
 .Lfunc_end9:
 	.size	OP_div_dword, .Lfunc_end9-OP_div_dword
 	.cfi_endproc
@@ -421,27 +364,21 @@ OP_mod_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 104 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:104:5
-	b	.LBB10_1
-.LBB10_1:
-.Ltmp28:
-	.loc	2 104 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:104:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsb	r12, [r2, #-8]
-	ldrsb	r3, [r2, #-4]
-	sdiv	r0, r12, r3
-	mls	r0, r0, r3, r12
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
+	movw	r12, :lower16:finsh_sp
+	movt	r12, :upper16:finsh_sp
+	ldr.w	r1, [r12]
+	ldrsb	r2, [r1, #-8]
+	ldrsb	r3, [r1, #-4]
+	sdiv	r0, r2, r3
+	mls	r0, r0, r3, r2
+	strb	r0, [r1, #-8]
+	ldr.w	r0, [r12]
 	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB10_2
-.Ltmp29:
-.LBB10_2:
-	.loc	2 106 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:106:5
+	str.w	r0, [r12]
+.Ltmp19:
+	.loc	2 106 5                         @ rt-thread/components/finsh/finsh_ops.c:106:5
 	bx	lr
-.Ltmp30:
+.Ltmp20:
 .Lfunc_end10:
 	.size	OP_mod_byte, .Lfunc_end10-OP_mod_byte
 	.cfi_endproc
@@ -462,27 +399,21 @@ OP_mod_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 111 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:111:5
-	b	.LBB11_1
-.LBB11_1:
-.Ltmp31:
-	.loc	2 111 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:111:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsh	r12, [r2, #-8]
-	ldrsh	r3, [r2, #-4]
-	sdiv	r0, r12, r3
-	mls	r0, r0, r3, r12
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
+	movw	r12, :lower16:finsh_sp
+	movt	r12, :upper16:finsh_sp
+	ldr.w	r1, [r12]
+	ldrsh	r2, [r1, #-8]
+	ldrsh	r3, [r1, #-4]
+	sdiv	r0, r2, r3
+	mls	r0, r0, r3, r2
+	strh	r0, [r1, #-8]
+	ldr.w	r0, [r12]
 	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB11_2
-.Ltmp32:
-.LBB11_2:
-	.loc	2 113 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:113:5
+	str.w	r0, [r12]
+.Ltmp21:
+	.loc	2 113 5                         @ rt-thread/components/finsh/finsh_ops.c:113:5
 	bx	lr
-.Ltmp33:
+.Ltmp22:
 .Lfunc_end11:
 	.size	OP_mod_word, .Lfunc_end11-OP_mod_word
 	.cfi_endproc
@@ -503,27 +434,20 @@ OP_mod_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 118 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:118:5
-	b	.LBB12_1
-.LBB12_1:
-.Ltmp34:
-	.loc	2 118 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:118:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r12, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	sdiv	r0, r12, r3
-	mls	r0, r0, r3, r12
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
+	movw	r12, :lower16:finsh_sp
+	movt	r12, :upper16:finsh_sp
+	ldr.w	r1, [r12]
+	ldrd	r2, r3, [r1, #-8]
+	sdiv	r0, r2, r3
+	mls	r0, r0, r3, r2
+	str	r0, [r1, #-8]
+	ldr.w	r0, [r12]
 	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB12_2
-.Ltmp35:
-.LBB12_2:
-	.loc	2 120 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:120:5
+	str.w	r0, [r12]
+.Ltmp23:
+	.loc	2 120 5                         @ rt-thread/components/finsh/finsh_ops.c:120:5
 	bx	lr
-.Ltmp36:
+.Ltmp24:
 .Lfunc_end12:
 	.size	OP_mod_dword, .Lfunc_end12-OP_mod_dword
 	.cfi_endproc
@@ -544,26 +468,20 @@ OP_mul_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 126 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:126:5
-	b	.LBB13_1
-.LBB13_1:
-.Ltmp37:
-	.loc	2 126 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:126:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrb	r0, [r2, #-8]
-	ldrb	r3, [r2, #-4]
-	muls	r0, r3, r0
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB13_2
-.Ltmp38:
-.LBB13_2:
-	.loc	2 128 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:128:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	muls	r2, r3, r2
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp25:
+	.loc	2 128 5                         @ rt-thread/components/finsh/finsh_ops.c:128:5
 	bx	lr
-.Ltmp39:
+.Ltmp26:
 .Lfunc_end13:
 	.size	OP_mul_byte, .Lfunc_end13-OP_mul_byte
 	.cfi_endproc
@@ -584,26 +502,20 @@ OP_mul_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 133 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:133:5
-	b	.LBB14_1
-.LBB14_1:
-.Ltmp40:
-	.loc	2 133 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:133:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrh	r0, [r2, #-8]
-	ldrh	r3, [r2, #-4]
-	muls	r0, r3, r0
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB14_2
-.Ltmp41:
-.LBB14_2:
-	.loc	2 135 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:135:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	muls	r2, r3, r2
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp27:
+	.loc	2 135 5                         @ rt-thread/components/finsh/finsh_ops.c:135:5
 	bx	lr
-.Ltmp42:
+.Ltmp28:
 .Lfunc_end14:
 	.size	OP_mul_word, .Lfunc_end14-OP_mul_word
 	.cfi_endproc
@@ -624,26 +536,19 @@ OP_mul_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 140 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:140:5
-	b	.LBB15_1
-.LBB15_1:
-.Ltmp43:
-	.loc	2 140 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:140:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	muls	r0, r3, r0
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB15_2
-.Ltmp44:
-.LBB15_2:
-	.loc	2 142 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:142:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	muls	r2, r3, r2
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp29:
+	.loc	2 142 5                         @ rt-thread/components/finsh/finsh_ops.c:142:5
 	bx	lr
-.Ltmp45:
+.Ltmp30:
 .Lfunc_end15:
 	.size	OP_mul_dword, .Lfunc_end15-OP_mul_dword
 	.cfi_endproc
@@ -664,26 +569,20 @@ OP_and_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 148 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:148:5
-	b	.LBB16_1
-.LBB16_1:
-.Ltmp46:
-	.loc	2 148 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:148:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrb	r0, [r2, #-8]
-	ldrb	r3, [r2, #-4]
-	ands	r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB16_2
-.Ltmp47:
-.LBB16_2:
-	.loc	2 150 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:150:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	ands	r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp31:
+	.loc	2 150 5                         @ rt-thread/components/finsh/finsh_ops.c:150:5
 	bx	lr
-.Ltmp48:
+.Ltmp32:
 .Lfunc_end16:
 	.size	OP_and_byte, .Lfunc_end16-OP_and_byte
 	.cfi_endproc
@@ -704,26 +603,20 @@ OP_and_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 155 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:155:5
-	b	.LBB17_1
-.LBB17_1:
-.Ltmp49:
-	.loc	2 155 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:155:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrh	r0, [r2, #-8]
-	ldrh	r3, [r2, #-4]
-	ands	r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB17_2
-.Ltmp50:
-.LBB17_2:
-	.loc	2 157 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:157:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	ands	r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp33:
+	.loc	2 157 5                         @ rt-thread/components/finsh/finsh_ops.c:157:5
 	bx	lr
-.Ltmp51:
+.Ltmp34:
 .Lfunc_end17:
 	.size	OP_and_word, .Lfunc_end17-OP_and_word
 	.cfi_endproc
@@ -744,26 +637,19 @@ OP_and_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 162 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:162:5
-	b	.LBB18_1
-.LBB18_1:
-.Ltmp52:
-	.loc	2 162 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:162:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	ands	r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB18_2
-.Ltmp53:
-.LBB18_2:
-	.loc	2 164 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:164:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	ands	r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp35:
+	.loc	2 164 5                         @ rt-thread/components/finsh/finsh_ops.c:164:5
 	bx	lr
-.Ltmp54:
+.Ltmp36:
 .Lfunc_end18:
 	.size	OP_and_dword, .Lfunc_end18-OP_and_dword
 	.cfi_endproc
@@ -784,26 +670,20 @@ OP_or_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 170 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:170:5
-	b	.LBB19_1
-.LBB19_1:
-.Ltmp55:
-	.loc	2 170 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:170:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrb	r0, [r2, #-8]
-	ldrb	r3, [r2, #-4]
-	orrs	r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB19_2
-.Ltmp56:
-.LBB19_2:
-	.loc	2 172 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:172:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	orrs	r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp37:
+	.loc	2 172 5                         @ rt-thread/components/finsh/finsh_ops.c:172:5
 	bx	lr
-.Ltmp57:
+.Ltmp38:
 .Lfunc_end19:
 	.size	OP_or_byte, .Lfunc_end19-OP_or_byte
 	.cfi_endproc
@@ -824,26 +704,20 @@ OP_or_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 177 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:177:5
-	b	.LBB20_1
-.LBB20_1:
-.Ltmp58:
-	.loc	2 177 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:177:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrh	r0, [r2, #-8]
-	ldrh	r3, [r2, #-4]
-	orrs	r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB20_2
-.Ltmp59:
-.LBB20_2:
-	.loc	2 179 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:179:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	orrs	r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp39:
+	.loc	2 179 5                         @ rt-thread/components/finsh/finsh_ops.c:179:5
 	bx	lr
-.Ltmp60:
+.Ltmp40:
 .Lfunc_end20:
 	.size	OP_or_word, .Lfunc_end20-OP_or_word
 	.cfi_endproc
@@ -864,26 +738,19 @@ OP_or_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 184 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:184:5
-	b	.LBB21_1
-.LBB21_1:
-.Ltmp61:
-	.loc	2 184 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:184:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	orrs	r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB21_2
-.Ltmp62:
-.LBB21_2:
-	.loc	2 186 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:186:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	orrs	r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp41:
+	.loc	2 186 5                         @ rt-thread/components/finsh/finsh_ops.c:186:5
 	bx	lr
-.Ltmp63:
+.Ltmp42:
 .Lfunc_end21:
 	.size	OP_or_dword, .Lfunc_end21-OP_or_dword
 	.cfi_endproc
@@ -904,26 +771,20 @@ OP_xor_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 192 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:192:5
-	b	.LBB22_1
-.LBB22_1:
-.Ltmp64:
-	.loc	2 192 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:192:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrb	r0, [r2, #-8]
-	ldrb	r3, [r2, #-4]
-	eors	r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB22_2
-.Ltmp65:
-.LBB22_2:
-	.loc	2 194 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:194:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	eors	r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp43:
+	.loc	2 194 5                         @ rt-thread/components/finsh/finsh_ops.c:194:5
 	bx	lr
-.Ltmp66:
+.Ltmp44:
 .Lfunc_end22:
 	.size	OP_xor_byte, .Lfunc_end22-OP_xor_byte
 	.cfi_endproc
@@ -944,26 +805,20 @@ OP_xor_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 199 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:199:5
-	b	.LBB23_1
-.LBB23_1:
-.Ltmp67:
-	.loc	2 199 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:199:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrh	r0, [r2, #-8]
-	ldrh	r3, [r2, #-4]
-	eors	r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB23_2
-.Ltmp68:
-.LBB23_2:
-	.loc	2 201 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:201:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	eors	r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp45:
+	.loc	2 201 5                         @ rt-thread/components/finsh/finsh_ops.c:201:5
 	bx	lr
-.Ltmp69:
+.Ltmp46:
 .Lfunc_end23:
 	.size	OP_xor_word, .Lfunc_end23-OP_xor_word
 	.cfi_endproc
@@ -984,26 +839,19 @@ OP_xor_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 206 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:206:5
-	b	.LBB24_1
-.LBB24_1:
-.Ltmp70:
-	.loc	2 206 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:206:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	eors	r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB24_2
-.Ltmp71:
-.LBB24_2:
-	.loc	2 208 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:208:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	eors	r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp47:
+	.loc	2 208 5                         @ rt-thread/components/finsh/finsh_ops.c:208:5
 	bx	lr
-.Ltmp72:
+.Ltmp48:
 .Lfunc_end24:
 	.size	OP_xor_dword, .Lfunc_end24-OP_xor_dword
 	.cfi_endproc
@@ -1026,16 +874,16 @@ OP_bw_byte:
 	.loc	2 214 38 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:214:38
 	movw	r0, :lower16:finsh_sp
 	movt	r0, :upper16:finsh_sp
-	ldr	r1, [r0]
-	.loc	2 214 36 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:214:36
-	ldrb	r0, [r1, #-4]
+	ldr	r0, [r0]
+	.loc	2 214 53 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:214:53
+	ldrb	r1, [r0, #-4]
 	.loc	2 214 34                        @ rt-thread/components/finsh/finsh_ops.c:214:34
-	mvns	r0, r0
+	mvns	r1, r1
 	.loc	2 214 32                        @ rt-thread/components/finsh/finsh_ops.c:214:32
-	strb	r0, [r1, #-4]
+	strb	r1, [r0, #-4]
 	.loc	2 216 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:216:5
 	bx	lr
-.Ltmp73:
+.Ltmp49:
 .Lfunc_end25:
 	.size	OP_bw_byte, .Lfunc_end25-OP_bw_byte
 	.cfi_endproc
@@ -1058,16 +906,16 @@ OP_bw_word:
 	.loc	2 221 39 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:221:39
 	movw	r0, :lower16:finsh_sp
 	movt	r0, :upper16:finsh_sp
-	ldr	r1, [r0]
-	.loc	2 221 37 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:221:37
-	ldrh	r0, [r1, #-4]
+	ldr	r0, [r0]
+	.loc	2 221 54 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:221:54
+	ldrh	r1, [r0, #-4]
 	.loc	2 221 35                        @ rt-thread/components/finsh/finsh_ops.c:221:35
-	mvns	r0, r0
+	mvns	r1, r1
 	.loc	2 221 33                        @ rt-thread/components/finsh/finsh_ops.c:221:33
-	strh	r0, [r1, #-4]
+	strh	r1, [r0, #-4]
 	.loc	2 223 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:223:5
 	bx	lr
-.Ltmp74:
+.Ltmp50:
 .Lfunc_end26:
 	.size	OP_bw_word, .Lfunc_end26-OP_bw_word
 	.cfi_endproc
@@ -1090,16 +938,16 @@ OP_bw_dword:
 	.loc	2 228 38 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:228:38
 	movw	r0, :lower16:finsh_sp
 	movt	r0, :upper16:finsh_sp
-	ldr	r1, [r0]
+	ldr	r0, [r0]
 	.loc	2 228 53 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:228:53
-	ldr	r0, [r1, #-4]
+	ldr	r1, [r0, #-4]
 	.loc	2 228 34                        @ rt-thread/components/finsh/finsh_ops.c:228:34
-	mvns	r0, r0
+	mvns	r1, r1
 	.loc	2 228 32                        @ rt-thread/components/finsh/finsh_ops.c:228:32
-	str	r0, [r1, #-4]
+	str	r1, [r0, #-4]
 	.loc	2 230 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:230:5
 	bx	lr
-.Ltmp75:
+.Ltmp51:
 .Lfunc_end27:
 	.size	OP_bw_dword, .Lfunc_end27-OP_bw_dword
 	.cfi_endproc
@@ -1120,26 +968,20 @@ OP_shl_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 236 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:236:5
-	b	.LBB28_1
-.LBB28_1:
-.Ltmp76:
-	.loc	2 236 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:236:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsb	r0, [r2, #-8]
-	ldrsb	r3, [r2, #-4]
-	lsls	r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB28_2
-.Ltmp77:
-.LBB28_2:
-	.loc	2 238 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:238:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrsb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	lsls	r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp52:
+	.loc	2 238 5                         @ rt-thread/components/finsh/finsh_ops.c:238:5
 	bx	lr
-.Ltmp78:
+.Ltmp53:
 .Lfunc_end28:
 	.size	OP_shl_byte, .Lfunc_end28-OP_shl_byte
 	.cfi_endproc
@@ -1160,26 +1002,20 @@ OP_shl_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 243 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:243:5
-	b	.LBB29_1
-.LBB29_1:
-.Ltmp79:
-	.loc	2 243 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:243:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsh	r0, [r2, #-8]
-	ldrsh	r3, [r2, #-4]
-	lsls	r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB29_2
-.Ltmp80:
-.LBB29_2:
-	.loc	2 245 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:245:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrsh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	lsls	r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp54:
+	.loc	2 245 5                         @ rt-thread/components/finsh/finsh_ops.c:245:5
 	bx	lr
-.Ltmp81:
+.Ltmp55:
 .Lfunc_end29:
 	.size	OP_shl_word, .Lfunc_end29-OP_shl_word
 	.cfi_endproc
@@ -1200,26 +1036,19 @@ OP_shl_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 250 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:250:5
-	b	.LBB30_1
-.LBB30_1:
-.Ltmp82:
-	.loc	2 250 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:250:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	lsls	r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB30_2
-.Ltmp83:
-.LBB30_2:
-	.loc	2 252 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:252:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	lsls	r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp56:
+	.loc	2 252 5                         @ rt-thread/components/finsh/finsh_ops.c:252:5
 	bx	lr
-.Ltmp84:
+.Ltmp57:
 .Lfunc_end30:
 	.size	OP_shl_dword, .Lfunc_end30-OP_shl_dword
 	.cfi_endproc
@@ -1240,26 +1069,20 @@ OP_shr_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 258 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:258:5
-	b	.LBB31_1
-.LBB31_1:
-.Ltmp85:
-	.loc	2 258 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:258:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsb	r0, [r2, #-8]
-	ldrsb	r3, [r2, #-4]
-	asrs	r0, r3
-	strb	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB31_2
-.Ltmp86:
-.LBB31_2:
-	.loc	2 260 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:260:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrsb	r2, [r1, #-8]
+	ldrb	r3, [r1, #-4]
+	asrs	r2, r3
+	strb	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp58:
+	.loc	2 260 5                         @ rt-thread/components/finsh/finsh_ops.c:260:5
 	bx	lr
-.Ltmp87:
+.Ltmp59:
 .Lfunc_end31:
 	.size	OP_shr_byte, .Lfunc_end31-OP_shr_byte
 	.cfi_endproc
@@ -1280,26 +1103,20 @@ OP_shr_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 265 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:265:5
-	b	.LBB32_1
-.LBB32_1:
-.Ltmp88:
-	.loc	2 265 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:265:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldrsh	r0, [r2, #-8]
-	ldrsh	r3, [r2, #-4]
-	asrs	r0, r3
-	strh	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB32_2
-.Ltmp89:
-.LBB32_2:
-	.loc	2 267 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:267:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrsh	r2, [r1, #-8]
+	ldrh	r3, [r1, #-4]
+	asrs	r2, r3
+	strh	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp60:
+	.loc	2 267 5                         @ rt-thread/components/finsh/finsh_ops.c:267:5
 	bx	lr
-.Ltmp90:
+.Ltmp61:
 .Lfunc_end32:
 	.size	OP_shr_word, .Lfunc_end32-OP_shr_word
 	.cfi_endproc
@@ -1320,26 +1137,19 @@ OP_shr_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 272 5 prologue_end            @ rt-thread/components/finsh/finsh_ops.c:272:5
-	b	.LBB33_1
-.LBB33_1:
-.Ltmp91:
-	.loc	2 272 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:272:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	ldr	r0, [r2, #-8]
-	ldr	r3, [r2, #-4]
-	asrs	r0, r3
-	str	r0, [r2, #-8]
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	b	.LBB33_2
-.Ltmp92:
-.LBB33_2:
-	.loc	2 274 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:274:5
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	ldrd	r2, r3, [r1, #-8]
+	asrs	r2, r3
+	str	r2, [r1, #-8]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
+.Ltmp62:
+	.loc	2 274 5                         @ rt-thread/components/finsh/finsh_ops.c:274:5
 	bx	lr
-.Ltmp93:
+.Ltmp63:
 .Lfunc_end33:
 	.size	OP_shr_dword, .Lfunc_end33-OP_shr_dword
 	.cfi_endproc
@@ -1360,28 +1170,32 @@ OP_ld_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 280 29 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:280:29
-	movw	r1, :lower16:finsh_pc
-	movt	r1, :upper16:finsh_pc
-	ldr	r0, [r1]
-	.loc	2 280 28 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:280:28
-	ldrb	r0, [r0]
-	.loc	2 280 5                         @ rt-thread/components/finsh/finsh_ops.c:280:5
+	movw	r0, :lower16:finsh_pc
+	.loc	2 280 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:280:5
 	movw	r2, :lower16:finsh_sp
+	.loc	2 280 29                        @ rt-thread/components/finsh/finsh_ops.c:280:29
+	movt	r0, :upper16:finsh_pc
+	.loc	2 280 5                         @ rt-thread/components/finsh/finsh_ops.c:280:5
 	movt	r2, :upper16:finsh_sp
+	.loc	2 280 29                        @ rt-thread/components/finsh/finsh_ops.c:280:29
+	ldr	r1, [r0]
+	.loc	2 280 5                         @ rt-thread/components/finsh/finsh_ops.c:280:5
 	ldr	r3, [r2]
+	.loc	2 280 28                        @ rt-thread/components/finsh/finsh_ops.c:280:28
+	ldrb	r1, [r1]
 	.loc	2 280 26                        @ rt-thread/components/finsh/finsh_ops.c:280:26
-	strb	r0, [r3]
+	strb	r1, [r3]
 	.loc	2 282 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:282:13
-	ldr	r0, [r2]
-	adds	r0, #4
-	str	r0, [r2]
+	ldr	r1, [r2]
+	adds	r1, #4
+	str	r1, [r2]
 	.loc	2 283 13                        @ rt-thread/components/finsh/finsh_ops.c:283:13
-	ldr	r0, [r1]
-	adds	r0, #1
-	str	r0, [r1]
+	ldr	r1, [r0]
+	adds	r1, #1
+	str	r1, [r0]
 	.loc	2 285 5                         @ rt-thread/components/finsh/finsh_ops.c:285:5
 	bx	lr
-.Ltmp94:
+.Ltmp64:
 .Lfunc_end34:
 	.size	OP_ld_byte, .Lfunc_end34-OP_ld_byte
 	.cfi_endproc
@@ -1402,29 +1216,32 @@ OP_ld_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 290 29 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:290:29
-	movw	r1, :lower16:finsh_pc
-	movt	r1, :upper16:finsh_pc
-	ldr	r2, [r1]
-	ldrb	r0, [r2]
-	ldrb	r2, [r2, #1]
-	orr.w	r0, r0, r2, lsl #8
+	movw	r0, :lower16:finsh_pc
 	.loc	2 290 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:290:5
 	movw	r2, :lower16:finsh_sp
+	.loc	2 290 29                        @ rt-thread/components/finsh/finsh_ops.c:290:29
+	movt	r0, :upper16:finsh_pc
+	.loc	2 290 5                         @ rt-thread/components/finsh/finsh_ops.c:290:5
 	movt	r2, :upper16:finsh_sp
+	.loc	2 290 29                        @ rt-thread/components/finsh/finsh_ops.c:290:29
+	ldr	r1, [r0]
+	.loc	2 290 5                         @ rt-thread/components/finsh/finsh_ops.c:290:5
 	ldr	r3, [r2]
+	.loc	2 290 29                        @ rt-thread/components/finsh/finsh_ops.c:290:29
+	ldrh	r1, [r1]
 	.loc	2 290 27                        @ rt-thread/components/finsh/finsh_ops.c:290:27
-	strh	r0, [r3]
+	strh	r1, [r3]
 	.loc	2 292 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:292:14
-	ldr	r0, [r2]
-	adds	r0, #4
-	str	r0, [r2]
+	ldr	r1, [r2]
+	adds	r1, #4
+	str	r1, [r2]
 	.loc	2 293 14                        @ rt-thread/components/finsh/finsh_ops.c:293:14
-	ldr	r0, [r1]
-	adds	r0, #2
-	str	r0, [r1]
+	ldr	r1, [r0]
+	adds	r1, #2
+	str	r1, [r0]
 	.loc	2 295 5                         @ rt-thread/components/finsh/finsh_ops.c:295:5
 	bx	lr
-.Ltmp95:
+.Ltmp65:
 .Lfunc_end35:
 	.size	OP_ld_word, .Lfunc_end35-OP_ld_word
 	.cfi_endproc
@@ -1445,27 +1262,32 @@ OP_ld_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 300 28 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:300:28
-	movw	r1, :lower16:finsh_pc
-	movt	r1, :upper16:finsh_pc
-	ldr	r0, [r1]
-	ldr	r0, [r0]
+	movw	r0, :lower16:finsh_pc
 	.loc	2 300 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:300:5
-	movw	r2, :lower16:finsh_sp
-	movt	r2, :upper16:finsh_sp
-	ldr	r3, [r2]
+	movw	r1, :lower16:finsh_sp
+	.loc	2 300 28                        @ rt-thread/components/finsh/finsh_ops.c:300:28
+	movt	r0, :upper16:finsh_pc
+	.loc	2 300 5                         @ rt-thread/components/finsh/finsh_ops.c:300:5
+	movt	r1, :upper16:finsh_sp
+	.loc	2 300 28                        @ rt-thread/components/finsh/finsh_ops.c:300:28
+	ldr	r2, [r0]
+	.loc	2 300 5                         @ rt-thread/components/finsh/finsh_ops.c:300:5
+	ldr	r3, [r1]
+	.loc	2 300 28                        @ rt-thread/components/finsh/finsh_ops.c:300:28
+	ldr	r2, [r2]
 	.loc	2 300 26                        @ rt-thread/components/finsh/finsh_ops.c:300:26
-	str	r0, [r3]
+	str	r2, [r3]
 	.loc	2 302 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:302:14
-	ldr	r0, [r2]
-	adds	r0, #4
-	str	r0, [r2]
+	ldr	r2, [r1]
+	adds	r2, #4
+	str	r2, [r1]
 	.loc	2 303 14                        @ rt-thread/components/finsh/finsh_ops.c:303:14
-	ldr	r0, [r1]
-	adds	r0, #4
-	str	r0, [r1]
+	ldr	r1, [r0]
+	adds	r1, #4
+	str	r1, [r0]
 	.loc	2 305 5                         @ rt-thread/components/finsh/finsh_ops.c:305:5
 	bx	lr
-.Ltmp96:
+.Ltmp66:
 .Lfunc_end36:
 	.size	OP_ld_dword, .Lfunc_end36-OP_ld_dword
 	.cfi_endproc
@@ -1485,39 +1307,38 @@ OP_ld_value_byte:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-.Ltmp97:
 	.loc	2 312 18 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:312:18
-	movw	r1, :lower16:finsh_pc
-	movt	r1, :upper16:finsh_pc
-	ldr	r0, [r1]
-	ldr	r0, [r0]
-	.loc	2 312 7 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:312:7
-	str	r0, [sp]
-	.loc	2 314 29 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:314:29
-	ldr	r0, [sp]
-	.loc	2 314 28 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:314:28
-	ldrb	r0, [r0]
+	movw	r0, :lower16:finsh_pc
 	.loc	2 314 5                         @ rt-thread/components/finsh/finsh_ops.c:314:5
 	movw	r2, :lower16:finsh_sp
+	.loc	2 312 18                        @ rt-thread/components/finsh/finsh_ops.c:312:18
+	movt	r0, :upper16:finsh_pc
+	.loc	2 314 5                         @ rt-thread/components/finsh/finsh_ops.c:314:5
 	movt	r2, :upper16:finsh_sp
+	.loc	2 312 18                        @ rt-thread/components/finsh/finsh_ops.c:312:18
+	ldr	r1, [r0]
+	.loc	2 314 5                         @ rt-thread/components/finsh/finsh_ops.c:314:5
 	ldr	r3, [r2]
-	.loc	2 314 26                        @ rt-thread/components/finsh/finsh_ops.c:314:26
-	strb	r0, [r3]
+	.loc	2 312 18                        @ rt-thread/components/finsh/finsh_ops.c:312:18
+	ldr	r1, [r1]
+.Ltmp67:
+	@DEBUG_VALUE: OP_ld_value_byte:c <- $r1
+	.loc	2 314 28                        @ rt-thread/components/finsh/finsh_ops.c:314:28
+	ldrb	r1, [r1]
+.Ltmp68:
+	.loc	2 314 26 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:314:26
+	strb	r1, [r3]
 	.loc	2 316 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:316:14
-	ldr	r0, [r2]
-	adds	r0, #4
-	str	r0, [r2]
+	ldr	r1, [r2]
+	adds	r1, #4
+	str	r1, [r2]
 	.loc	2 317 14                        @ rt-thread/components/finsh/finsh_ops.c:317:14
-	ldr	r0, [r1]
-	adds	r0, #4
-	str	r0, [r1]
-	.loc	2 319 5                         @ rt-thread/components/finsh/finsh_ops.c:319:5
-	add	sp, #4
+	ldr	r1, [r0]
+	adds	r1, #4
+	str	r1, [r0]
+	.loc	2 320 1                         @ rt-thread/components/finsh/finsh_ops.c:320:1
 	bx	lr
-.Ltmp98:
+.Ltmp69:
 .Lfunc_end37:
 	.size	OP_ld_value_byte, .Lfunc_end37-OP_ld_value_byte
 	.cfi_endproc
@@ -1537,30 +1358,22 @@ OP_ld_value_byte_stack:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-.Ltmp99:
 	.loc	2 326 18 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:326:18
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r0, [r1]
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r0, [r0]
 	.loc	2 326 33 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:326:33
-	ldr	r0, [r0, #-4]
-	.loc	2 326 7                         @ rt-thread/components/finsh/finsh_ops.c:326:7
-	str	r0, [sp]
-	.loc	2 327 35 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:327:35
-	ldr	r0, [sp]
-	.loc	2 327 34 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:327:34
-	ldrb	r0, [r0]
-	.loc	2 327 6                         @ rt-thread/components/finsh/finsh_ops.c:327:6
-	ldr	r1, [r1]
-	.loc	2 327 32                        @ rt-thread/components/finsh/finsh_ops.c:327:32
-	strb	r0, [r1, #-4]
-	.loc	2 329 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:329:5
-	add	sp, #4
+	ldr	r1, [r0, #-4]
+.Ltmp70:
+	@DEBUG_VALUE: OP_ld_value_byte_stack:c <- $r1
+	.loc	2 327 34 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:327:34
+	ldrb	r1, [r1]
+.Ltmp71:
+	.loc	2 327 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:327:32
+	strb	r1, [r0, #-4]
+	.loc	2 330 1 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:330:1
 	bx	lr
-.Ltmp100:
+.Ltmp72:
 .Lfunc_end38:
 	.size	OP_ld_value_byte_stack, .Lfunc_end38-OP_ld_value_byte_stack
 	.cfi_endproc
@@ -1580,39 +1393,38 @@ OP_ld_value_word:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-.Ltmp101:
 	.loc	2 336 19 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:336:19
-	movw	r1, :lower16:finsh_pc
-	movt	r1, :upper16:finsh_pc
-	ldr	r0, [r1]
-	ldr	r0, [r0]
-	.loc	2 336 7 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:336:7
-	str	r0, [sp]
-	.loc	2 338 30 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:338:30
-	ldr	r0, [sp]
-	.loc	2 338 29 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:338:29
-	ldrh	r0, [r0]
+	movw	r0, :lower16:finsh_pc
 	.loc	2 338 5                         @ rt-thread/components/finsh/finsh_ops.c:338:5
 	movw	r2, :lower16:finsh_sp
+	.loc	2 336 19                        @ rt-thread/components/finsh/finsh_ops.c:336:19
+	movt	r0, :upper16:finsh_pc
+	.loc	2 338 5                         @ rt-thread/components/finsh/finsh_ops.c:338:5
 	movt	r2, :upper16:finsh_sp
+	.loc	2 336 19                        @ rt-thread/components/finsh/finsh_ops.c:336:19
+	ldr	r1, [r0]
+	.loc	2 338 5                         @ rt-thread/components/finsh/finsh_ops.c:338:5
 	ldr	r3, [r2]
-	.loc	2 338 27                        @ rt-thread/components/finsh/finsh_ops.c:338:27
-	strh	r0, [r3]
+	.loc	2 336 19                        @ rt-thread/components/finsh/finsh_ops.c:336:19
+	ldr	r1, [r1]
+.Ltmp73:
+	@DEBUG_VALUE: OP_ld_value_word:s <- $r1
+	.loc	2 338 29                        @ rt-thread/components/finsh/finsh_ops.c:338:29
+	ldrh	r1, [r1]
+.Ltmp74:
+	.loc	2 338 27 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:338:27
+	strh	r1, [r3]
 	.loc	2 340 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:340:14
-	ldr	r0, [r2]
-	adds	r0, #4
-	str	r0, [r2]
+	ldr	r1, [r2]
+	adds	r1, #4
+	str	r1, [r2]
 	.loc	2 341 14                        @ rt-thread/components/finsh/finsh_ops.c:341:14
-	ldr	r0, [r1]
-	adds	r0, #4
-	str	r0, [r1]
-	.loc	2 343 5                         @ rt-thread/components/finsh/finsh_ops.c:343:5
-	add	sp, #4
+	ldr	r1, [r0]
+	adds	r1, #4
+	str	r1, [r0]
+	.loc	2 344 1                         @ rt-thread/components/finsh/finsh_ops.c:344:1
 	bx	lr
-.Ltmp102:
+.Ltmp75:
 .Lfunc_end39:
 	.size	OP_ld_value_word, .Lfunc_end39-OP_ld_value_word
 	.cfi_endproc
@@ -1632,30 +1444,22 @@ OP_ld_value_word_stack:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-.Ltmp103:
 	.loc	2 350 19 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:350:19
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r0, [r1]
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r0, [r0]
 	.loc	2 350 34 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:350:34
-	ldr	r0, [r0, #-4]
-	.loc	2 350 7                         @ rt-thread/components/finsh/finsh_ops.c:350:7
-	str	r0, [sp]
-	.loc	2 351 36 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:351:36
-	ldr	r0, [sp]
-	.loc	2 351 35 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:351:35
-	ldrh	r0, [r0]
-	.loc	2 351 6                         @ rt-thread/components/finsh/finsh_ops.c:351:6
-	ldr	r1, [r1]
-	.loc	2 351 33                        @ rt-thread/components/finsh/finsh_ops.c:351:33
-	strh	r0, [r1, #-4]
-	.loc	2 353 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:353:5
-	add	sp, #4
+	ldr	r1, [r0, #-4]
+.Ltmp76:
+	@DEBUG_VALUE: OP_ld_value_word_stack:s <- $r1
+	.loc	2 351 35 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:351:35
+	ldrh	r1, [r1]
+.Ltmp77:
+	.loc	2 351 33 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:351:33
+	strh	r1, [r0, #-4]
+	.loc	2 354 1 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:354:1
 	bx	lr
-.Ltmp104:
+.Ltmp78:
 .Lfunc_end40:
 	.size	OP_ld_value_word_stack, .Lfunc_end40-OP_ld_value_word_stack
 	.cfi_endproc
@@ -1675,39 +1479,38 @@ OP_ld_value_dword:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-.Ltmp105:
 	.loc	2 360 18 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:360:18
-	movw	r1, :lower16:finsh_pc
-	movt	r1, :upper16:finsh_pc
-	ldr	r0, [r1]
-	ldr	r0, [r0]
-	.loc	2 360 7 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:360:7
-	str	r0, [sp]
-	.loc	2 362 29 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:362:29
-	ldr	r0, [sp]
-	.loc	2 362 28 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:362:28
-	ldr	r0, [r0]
+	movw	r0, :lower16:finsh_pc
 	.loc	2 362 5                         @ rt-thread/components/finsh/finsh_ops.c:362:5
 	movw	r2, :lower16:finsh_sp
+	.loc	2 360 18                        @ rt-thread/components/finsh/finsh_ops.c:360:18
+	movt	r0, :upper16:finsh_pc
+	.loc	2 362 5                         @ rt-thread/components/finsh/finsh_ops.c:362:5
 	movt	r2, :upper16:finsh_sp
+	.loc	2 360 18                        @ rt-thread/components/finsh/finsh_ops.c:360:18
+	ldr	r1, [r0]
+	.loc	2 362 5                         @ rt-thread/components/finsh/finsh_ops.c:362:5
 	ldr	r3, [r2]
-	.loc	2 362 26                        @ rt-thread/components/finsh/finsh_ops.c:362:26
-	str	r0, [r3]
+	.loc	2 360 18                        @ rt-thread/components/finsh/finsh_ops.c:360:18
+	ldr	r1, [r1]
+.Ltmp79:
+	@DEBUG_VALUE: OP_ld_value_dword:l <- $r1
+	.loc	2 362 28                        @ rt-thread/components/finsh/finsh_ops.c:362:28
+	ldr	r1, [r1]
+.Ltmp80:
+	.loc	2 362 26 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:362:26
+	str	r1, [r3]
 	.loc	2 364 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:364:14
-	ldr	r0, [r2]
-	adds	r0, #4
-	str	r0, [r2]
+	ldr	r1, [r2]
+	adds	r1, #4
+	str	r1, [r2]
 	.loc	2 365 14                        @ rt-thread/components/finsh/finsh_ops.c:365:14
-	ldr	r0, [r1]
-	adds	r0, #4
-	str	r0, [r1]
-	.loc	2 367 5                         @ rt-thread/components/finsh/finsh_ops.c:367:5
-	add	sp, #4
+	ldr	r1, [r0]
+	adds	r1, #4
+	str	r1, [r0]
+	.loc	2 368 1                         @ rt-thread/components/finsh/finsh_ops.c:368:1
 	bx	lr
-.Ltmp106:
+.Ltmp81:
 .Lfunc_end41:
 	.size	OP_ld_value_dword, .Lfunc_end41-OP_ld_value_dword
 	.cfi_endproc
@@ -1727,30 +1530,22 @@ OP_ld_value_dword_stack:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-.Ltmp107:
 	.loc	2 374 18 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:374:18
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r0, [r1]
-	.loc	2 374 33 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:374:33
-	ldr	r0, [r0, #-4]
-	.loc	2 374 7                         @ rt-thread/components/finsh/finsh_ops.c:374:7
-	str	r0, [sp]
-	.loc	2 375 35 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:375:35
-	ldr	r0, [sp]
-	.loc	2 375 34 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:375:34
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
 	ldr	r0, [r0]
-	.loc	2 375 6                         @ rt-thread/components/finsh/finsh_ops.c:375:6
+	.loc	2 374 33 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:374:33
+	ldr	r1, [r0, #-4]
+.Ltmp82:
+	@DEBUG_VALUE: OP_ld_value_dword_stack:l <- $r1
+	.loc	2 375 34 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:375:34
 	ldr	r1, [r1]
-	.loc	2 375 32                        @ rt-thread/components/finsh/finsh_ops.c:375:32
-	str	r0, [r1, #-4]
-	.loc	2 377 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:377:5
-	add	sp, #4
+.Ltmp83:
+	.loc	2 375 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:375:32
+	str	r1, [r0, #-4]
+	.loc	2 378 1 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:378:1
 	bx	lr
-.Ltmp108:
+.Ltmp84:
 .Lfunc_end42:
 	.size	OP_ld_value_dword_stack, .Lfunc_end42-OP_ld_value_dword_stack
 	.cfi_endproc
@@ -1771,22 +1566,22 @@ OP_st_byte:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 387 45 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:387:45
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	.loc	2 387 60 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:387:60
-	ldrb	r0, [r2, #-4]
-	.loc	2 387 30                        @ rt-thread/components/finsh/finsh_ops.c:387:30
-	ldr	r2, [r2, #-8]
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	.loc	2 387 30 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:387:30
+	ldr	r2, [r1, #-8]
+	.loc	2 387 60                        @ rt-thread/components/finsh/finsh_ops.c:387:60
+	ldrb	r1, [r1, #-4]
 	.loc	2 387 42                        @ rt-thread/components/finsh/finsh_ops.c:387:42
-	strb	r0, [r2]
+	strb	r1, [r2]
 	.loc	2 388 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:388:14
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
 	.loc	2 390 5                         @ rt-thread/components/finsh/finsh_ops.c:390:5
 	bx	lr
-.Ltmp109:
+.Ltmp85:
 .Lfunc_end43:
 	.size	OP_st_byte, .Lfunc_end43-OP_st_byte
 	.cfi_endproc
@@ -1807,22 +1602,20 @@ OP_st_word:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 399 46 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:399:46
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
 	.loc	2 399 61 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:399:61
-	ldrh	r0, [r2, #-4]
+	ldrh	r2, [r1, #-4]!
 	.loc	2 399 31                        @ rt-thread/components/finsh/finsh_ops.c:399:31
-	ldr	r2, [r2, #-8]
-	.loc	2 399 43                        @ rt-thread/components/finsh/finsh_ops.c:399:43
-	strh	r0, [r2]
+	ldr	r3, [r1, #-4]
 	.loc	2 400 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:400:14
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
+	str	r1, [r0]
+	.loc	2 399 43                        @ rt-thread/components/finsh/finsh_ops.c:399:43
+	strh	r2, [r3]
 	.loc	2 402 5                         @ rt-thread/components/finsh/finsh_ops.c:402:5
 	bx	lr
-.Ltmp110:
+.Ltmp86:
 .Lfunc_end44:
 	.size	OP_st_word, .Lfunc_end44-OP_st_word
 	.cfi_endproc
@@ -1843,22 +1636,20 @@ OP_st_dword:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 411 45 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:411:45
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r0, [r1]
-	.loc	2 411 30 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:411:30
-	ldr	r2, [r0, #-8]
-	.loc	2 411 60                        @ rt-thread/components/finsh/finsh_ops.c:411:60
-	ldr	r0, [r0, #-4]
-	.loc	2 411 42                        @ rt-thread/components/finsh/finsh_ops.c:411:42
-	str	r0, [r2]
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	.loc	2 411 60 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:411:60
+	ldr	r2, [r1, #-4]!
+	.loc	2 411 30                        @ rt-thread/components/finsh/finsh_ops.c:411:30
+	ldr	r3, [r1, #-4]
 	.loc	2 412 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:412:14
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
+	str	r1, [r0]
+	.loc	2 411 42                        @ rt-thread/components/finsh/finsh_ops.c:411:42
+	str	r2, [r3]
 	.loc	2 414 5                         @ rt-thread/components/finsh/finsh_ops.c:414:5
 	bx	lr
-.Ltmp111:
+.Ltmp87:
 .Lfunc_end45:
 	.size	OP_st_dword, .Lfunc_end45-OP_st_dword
 	.cfi_endproc
@@ -1879,14 +1670,14 @@ OP_pop:
 	.cfi_startproc
 @ %bb.0:
 	.loc	2 420 14 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:420:14
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
+	movw	r0, :lower16:finsh_sp
+	movt	r0, :upper16:finsh_sp
+	ldr	r1, [r0]
+	subs	r1, #4
+	str	r1, [r0]
 	.loc	2 421 5                         @ rt-thread/components/finsh/finsh_ops.c:421:5
 	bx	lr
-.Ltmp112:
+.Ltmp88:
 .Lfunc_end46:
 	.size	OP_pop, .Lfunc_end46-OP_pop
 	.cfi_endproc
@@ -1918,686 +1709,527 @@ OP_call:
 	.cfi_offset r6, -28
 	.cfi_offset r5, -32
 	.cfi_offset r4, -36
-	.pad	#196
-	sub	sp, #196
-	.cfi_def_cfa_offset 232
-.Ltmp113:
+	.pad	#132
+	sub	sp, #132
+	.cfi_def_cfa_offset 168
+.Ltmp89:
 	.loc	2 436 28 prologue_end           @ rt-thread/components/finsh/finsh_ops.c:436:28
-	movw	r2, :lower16:finsh_pc
-	movt	r2, :upper16:finsh_pc
-	ldr	r0, [r2]
-	adds	r1, r0, #1
-	str	r1, [r2]
+	movw	r0, :lower16:finsh_pc
+	.loc	2 438 21                        @ rt-thread/components/finsh/finsh_ops.c:438:21
+	movw	r5, :lower16:finsh_sp
+	.loc	2 436 28                        @ rt-thread/components/finsh/finsh_ops.c:436:28
+	movt	r0, :upper16:finsh_pc
+	.loc	2 438 21                        @ rt-thread/components/finsh/finsh_ops.c:438:21
+	movt	r5, :upper16:finsh_sp
+	.loc	2 436 28                        @ rt-thread/components/finsh/finsh_ops.c:436:28
+	ldr	r1, [r0]
+	adds	r2, r1, #1
+	str	r2, [r0]
 	.loc	2 436 18 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:436:18
-	ldrb	r0, [r0]
-	.loc	2 436 16                        @ rt-thread/components/finsh/finsh_ops.c:436:16
-	str	r0, [sp, #128]
-	movs	r0, #0
-	.loc	2 438 7 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:438:7
-	str	r0, [sp, #124]
-	.loc	2 438 21 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:438:21
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	.loc	2 439 5 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:439:5
-	b	.LBB47_1
-.LBB47_1:                               @ =>This Inner Loop Header: Depth=1
-	.loc	2 439 12 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:439:12
-	ldr	r0, [sp, #124]
-	.loc	2 439 16                        @ rt-thread/components/finsh/finsh_ops.c:439:16
-	ldr	r1, [sp, #128]
+	ldrb	r0, [r1]
+.Ltmp90:
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	@DEBUG_VALUE: OP_call:i <- 0
+	.loc	2 438 21 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:438:21
+	ldr	r1, [r5]
+	subs	r1, #4
+	str	r1, [r5]
 	.loc	2 439 5                         @ rt-thread/components/finsh/finsh_ops.c:439:5
-	cmp	r0, r1
-	bhs	.LBB47_3
-	b	.LBB47_2
-.LBB47_2:                               @   in Loop: Header=BB47_1 Depth=1
-.Ltmp114:
+	cbz	r0, .LBB47_3
+.Ltmp91:
+@ %bb.1:
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	@DEBUG_VALUE: OP_call:i <- 0
+	.loc	2 0 5 is_stmt 0                 @ rt-thread/components/finsh/finsh_ops.c:0:5
+	add	r1, sp, #68
+	mov	r2, r0
+	.loc	2 439 5                         @ rt-thread/components/finsh/finsh_ops.c:439:5
+	subs	r1, #4
+.Ltmp92:
+	.p2align	2
+.LBB47_2:                               @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	@DEBUG_VALUE: OP_call:i <- undef
 	.loc	2 441 42 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:441:42
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r0, [r1]
+	ldr	r3, [r5]
 	.loc	2 441 52 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:441:52
-	ldr	r0, [r0]
-	.loc	2 441 20                        @ rt-thread/components/finsh/finsh_ops.c:441:20
-	ldr	r2, [sp, #128]
-	.loc	2 441 37                        @ rt-thread/components/finsh/finsh_ops.c:441:37
-	ldr	r3, [sp, #124]
-	.loc	2 441 35                        @ rt-thread/components/finsh/finsh_ops.c:441:35
-	subs	r3, r2, r3
-	add	r2, sp, #132
-	.loc	2 441 9                         @ rt-thread/components/finsh/finsh_ops.c:441:9
-	add.w	r2, r2, r3, lsl #2
+	ldr	r4, [r3], #-4
 	.loc	2 441 40                        @ rt-thread/components/finsh/finsh_ops.c:441:40
-	str	r0, [r2, #-4]
-	.loc	2 442 18 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:442:18
-	ldr	r0, [r1]
-	subs	r0, #4
-	str	r0, [r1]
-	.loc	2 443 10                        @ rt-thread/components/finsh/finsh_ops.c:443:10
-	ldr	r0, [sp, #124]
-	adds	r0, #1
-	str	r0, [sp, #124]
-.Ltmp115:
+	str.w	r4, [r1, r2, lsl #2]
+.Ltmp93:
+	.loc	2 439 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:439:14
+	subs	r2, #1
+.Ltmp94:
+	.loc	2 442 18                        @ rt-thread/components/finsh/finsh_ops.c:442:18
+	str	r3, [r5]
+.Ltmp95:
+	@DEBUG_VALUE: OP_call:i <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
 	.loc	2 439 5                         @ rt-thread/components/finsh/finsh_ops.c:439:5
-	b	.LBB47_1
+	bne	.LBB47_2
+.Ltmp96:
 .LBB47_3:
-	.loc	2 446 19                        @ rt-thread/components/finsh/finsh_ops.c:446:19
-	movw	r0, :lower16:finsh_sp
-	movt	r0, :upper16:finsh_sp
-	ldr	r0, [r0]
-	.loc	2 446 29 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:446:29
-	ldr	r0, [r0]
-	.loc	2 446 7                         @ rt-thread/components/finsh/finsh_ops.c:446:7
-	str	r0, [sp, #120]
-	.loc	2 447 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:447:13
-	ldr	r0, [sp, #128]
-	.loc	2 447 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:447:5
-	str	r0, [sp, #112]                  @ 4-byte Spill
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	@DEBUG_VALUE: OP_call:f <- undef
+	.loc	2 447 5                         @ rt-thread/components/finsh/finsh_ops.c:447:5
 	cmp	r0, #16
-	bhi.w	.LBB47_23
+	bhi	.LBB47_7
+.Ltmp97:
 @ %bb.4:
-	.loc	2 0 5                           @ rt-thread/components/finsh/finsh_ops.c:0:5
-	ldr	r1, [sp, #112]                  @ 4-byte Reload
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 0 5 is_stmt 0                 @ rt-thread/components/finsh/finsh_ops.c:0:5
+	ldr	r1, [r5]
+	ldr.w	r12, [r1]
+.Ltmp98:
+	@DEBUG_VALUE: OP_call:f <- $r12
 .LCPI47_0:
-	tbh	[pc, r1, lsl #1]
+	tbb	[pc, r0]
+.Ltmp99:
 @ %bb.5:
 .LJTI47_0:
-	.short	(.LBB47_6-(.LCPI47_0+4))/2
-	.short	(.LBB47_7-(.LCPI47_0+4))/2
-	.short	(.LBB47_8-(.LCPI47_0+4))/2
-	.short	(.LBB47_9-(.LCPI47_0+4))/2
-	.short	(.LBB47_10-(.LCPI47_0+4))/2
-	.short	(.LBB47_11-(.LCPI47_0+4))/2
-	.short	(.LBB47_12-(.LCPI47_0+4))/2
-	.short	(.LBB47_13-(.LCPI47_0+4))/2
-	.short	(.LBB47_14-(.LCPI47_0+4))/2
-	.short	(.LBB47_15-(.LCPI47_0+4))/2
-	.short	(.LBB47_16-(.LCPI47_0+4))/2
-	.short	(.LBB47_17-(.LCPI47_0+4))/2
-	.short	(.LBB47_18-(.LCPI47_0+4))/2
-	.short	(.LBB47_19-(.LCPI47_0+4))/2
-	.short	(.LBB47_20-(.LCPI47_0+4))/2
-	.short	(.LBB47_21-(.LCPI47_0+4))/2
-	.short	(.LBB47_22-(.LCPI47_0+4))/2
+	.byte	(.LBB47_6-(.LCPI47_0+4))/2
+	.byte	(.LBB47_8-(.LCPI47_0+4))/2
+	.byte	(.LBB47_9-(.LCPI47_0+4))/2
+	.byte	(.LBB47_10-(.LCPI47_0+4))/2
+	.byte	(.LBB47_11-(.LCPI47_0+4))/2
+	.byte	(.LBB47_12-(.LCPI47_0+4))/2
+	.byte	(.LBB47_13-(.LCPI47_0+4))/2
+	.byte	(.LBB47_14-(.LCPI47_0+4))/2
+	.byte	(.LBB47_15-(.LCPI47_0+4))/2
+	.byte	(.LBB47_16-(.LCPI47_0+4))/2
+	.byte	(.LBB47_17-(.LCPI47_0+4))/2
+	.byte	(.LBB47_18-(.LCPI47_0+4))/2
+	.byte	(.LBB47_19-(.LCPI47_0+4))/2
+	.byte	(.LBB47_20-(.LCPI47_0+4))/2
+	.byte	(.LBB47_21-(.LCPI47_0+4))/2
+	.byte	(.LBB47_22-(.LCPI47_0+4))/2
+	.byte	(.LBB47_23-(.LCPI47_0+4))/2
 	.p2align	1
 .LBB47_6:
-.Ltmp116:
+.Ltmp100:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
 	.loc	2 450 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:450:13
-	ldr	r1, [sp, #120]
 	movs	r0, #0
-	blx	r1
-	.loc	2 450 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:450:11
-	str	r0, [sp, #116]
-	.loc	2 451 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:451:9
+.Ltmp101:
+	blx	r12
+.Ltmp102:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 451 9                         @ rt-thread/components/finsh/finsh_ops.c:451:9
 	b	.LBB47_24
+.Ltmp103:
 .LBB47_7:
-	.loc	2 454 13                        @ rt-thread/components/finsh/finsh_ops.c:454:13
-	ldr	r1, [sp, #120]
-	.loc	2 454 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:454:15
-	ldr	r0, [sp, #132]
-	.loc	2 454 13                        @ rt-thread/components/finsh/finsh_ops.c:454:13
-	blx	r1
-	.loc	2 454 11                        @ rt-thread/components/finsh/finsh_ops.c:454:11
-	str	r0, [sp, #116]
-	.loc	2 455 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:455:9
-	b	.LBB47_24
-.LBB47_8:
-	.loc	2 458 13                        @ rt-thread/components/finsh/finsh_ops.c:458:13
-	ldr	r2, [sp, #120]
-	.loc	2 458 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:458:15
-	ldr	r0, [sp, #132]
-	.loc	2 458 30                        @ rt-thread/components/finsh/finsh_ops.c:458:30
-	ldr	r1, [sp, #136]
-	.loc	2 458 13                        @ rt-thread/components/finsh/finsh_ops.c:458:13
-	blx	r2
-	.loc	2 458 11                        @ rt-thread/components/finsh/finsh_ops.c:458:11
-	str	r0, [sp, #116]
-	.loc	2 459 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:459:9
-	b	.LBB47_24
-.LBB47_9:
-	.loc	2 462 13                        @ rt-thread/components/finsh/finsh_ops.c:462:13
-	ldr	r3, [sp, #120]
-	.loc	2 462 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:462:15
-	ldr	r0, [sp, #132]
-	.loc	2 462 30                        @ rt-thread/components/finsh/finsh_ops.c:462:30
-	ldr	r1, [sp, #136]
-	.loc	2 462 45                        @ rt-thread/components/finsh/finsh_ops.c:462:45
-	ldr	r2, [sp, #140]
-	.loc	2 462 13                        @ rt-thread/components/finsh/finsh_ops.c:462:13
-	blx	r3
-	.loc	2 462 11                        @ rt-thread/components/finsh/finsh_ops.c:462:11
-	str	r0, [sp, #116]
-	.loc	2 463 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:463:9
-	b	.LBB47_24
-.LBB47_10:
-	.loc	2 466 13                        @ rt-thread/components/finsh/finsh_ops.c:466:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 466 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:466:15
-	ldr	r0, [sp, #132]
-	.loc	2 466 30                        @ rt-thread/components/finsh/finsh_ops.c:466:30
-	ldr	r1, [sp, #136]
-	.loc	2 466 45                        @ rt-thread/components/finsh/finsh_ops.c:466:45
-	ldr	r2, [sp, #140]
-	.loc	2 466 60                        @ rt-thread/components/finsh/finsh_ops.c:466:60
-	ldr	r3, [sp, #144]
-	.loc	2 466 13                        @ rt-thread/components/finsh/finsh_ops.c:466:13
-	blx	r12
-	.loc	2 466 11                        @ rt-thread/components/finsh/finsh_ops.c:466:11
-	str	r0, [sp, #116]
-	.loc	2 467 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:467:9
-	b	.LBB47_24
-.LBB47_11:
-	.loc	2 470 13                        @ rt-thread/components/finsh/finsh_ops.c:470:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 470 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:470:15
-	ldr	r0, [sp, #132]
-	.loc	2 470 30                        @ rt-thread/components/finsh/finsh_ops.c:470:30
-	ldr	r1, [sp, #136]
-	.loc	2 470 45                        @ rt-thread/components/finsh/finsh_ops.c:470:45
-	ldr	r2, [sp, #140]
-	.loc	2 470 60                        @ rt-thread/components/finsh/finsh_ops.c:470:60
-	ldr	r3, [sp, #144]
-	.loc	2 471 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:471:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 470 13                        @ rt-thread/components/finsh/finsh_ops.c:470:13
-	mov	r4, sp
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 470 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:470:11
-	str	r0, [sp, #116]
-	.loc	2 472 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:472:9
-	b	.LBB47_24
-.LBB47_12:
-	.loc	2 475 13                        @ rt-thread/components/finsh/finsh_ops.c:475:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 475 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:475:15
-	ldr	r0, [sp, #132]
-	.loc	2 475 30                        @ rt-thread/components/finsh/finsh_ops.c:475:30
-	ldr	r1, [sp, #136]
-	.loc	2 475 45                        @ rt-thread/components/finsh/finsh_ops.c:475:45
-	ldr	r2, [sp, #140]
-	.loc	2 475 60                        @ rt-thread/components/finsh/finsh_ops.c:475:60
-	ldr	r3, [sp, #144]
-	.loc	2 476 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:476:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 476 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:476:32
-	ldr	r5, [sp, #152]
-	.loc	2 475 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:475:13
-	mov	r4, sp
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 475 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:475:11
-	str	r0, [sp, #116]
-	.loc	2 477 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:477:9
-	b	.LBB47_24
-.LBB47_13:
-	.loc	2 480 13                        @ rt-thread/components/finsh/finsh_ops.c:480:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 480 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:480:15
-	ldr	r0, [sp, #132]
-	.loc	2 480 30                        @ rt-thread/components/finsh/finsh_ops.c:480:30
-	ldr	r1, [sp, #136]
-	.loc	2 480 45                        @ rt-thread/components/finsh/finsh_ops.c:480:45
-	ldr	r2, [sp, #140]
-	.loc	2 480 60                        @ rt-thread/components/finsh/finsh_ops.c:480:60
-	ldr	r3, [sp, #144]
-	.loc	2 481 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:481:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 481 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:481:32
-	ldr	r5, [sp, #152]
-	.loc	2 481 47                        @ rt-thread/components/finsh/finsh_ops.c:481:47
-	ldr	r6, [sp, #156]
-	.loc	2 480 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:480:13
-	mov	r4, sp
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 480 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:480:11
-	str	r0, [sp, #116]
-	.loc	2 482 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:482:9
-	b	.LBB47_24
-.LBB47_14:
-	.loc	2 485 13                        @ rt-thread/components/finsh/finsh_ops.c:485:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 485 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:485:15
-	ldr	r0, [sp, #132]
-	.loc	2 485 30                        @ rt-thread/components/finsh/finsh_ops.c:485:30
-	ldr	r1, [sp, #136]
-	.loc	2 485 45                        @ rt-thread/components/finsh/finsh_ops.c:485:45
-	ldr	r2, [sp, #140]
-	.loc	2 485 60                        @ rt-thread/components/finsh/finsh_ops.c:485:60
-	ldr	r3, [sp, #144]
-	.loc	2 486 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:486:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 486 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:486:32
-	ldr	r5, [sp, #152]
-	.loc	2 486 47                        @ rt-thread/components/finsh/finsh_ops.c:486:47
-	ldr	r6, [sp, #156]
-	.loc	2 486 62                        @ rt-thread/components/finsh/finsh_ops.c:486:62
-	ldr	r7, [sp, #160]
-	.loc	2 485 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:485:13
-	mov	r4, sp
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 485 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:485:11
-	str	r0, [sp, #116]
-	.loc	2 487 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:487:9
-	b	.LBB47_24
-.LBB47_15:
-	.loc	2 490 13                        @ rt-thread/components/finsh/finsh_ops.c:490:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 490 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:490:15
-	ldr	r0, [sp, #132]
-	.loc	2 490 30                        @ rt-thread/components/finsh/finsh_ops.c:490:30
-	ldr	r1, [sp, #136]
-	.loc	2 490 45                        @ rt-thread/components/finsh/finsh_ops.c:490:45
-	ldr	r2, [sp, #140]
-	.loc	2 490 60                        @ rt-thread/components/finsh/finsh_ops.c:490:60
-	ldr	r3, [sp, #144]
-	.loc	2 491 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:491:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 491 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:491:32
-	ldr	r5, [sp, #152]
-	.loc	2 491 47                        @ rt-thread/components/finsh/finsh_ops.c:491:47
-	ldr	r6, [sp, #156]
-	.loc	2 491 62                        @ rt-thread/components/finsh/finsh_ops.c:491:62
-	ldr	r7, [sp, #160]
-	.loc	2 492 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:492:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 490 13                        @ rt-thread/components/finsh/finsh_ops.c:490:13
-	mov	r4, sp
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 490 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:490:11
-	str	r0, [sp, #116]
-	.loc	2 493 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:493:9
-	b	.LBB47_24
-.LBB47_16:
-	.loc	2 496 13                        @ rt-thread/components/finsh/finsh_ops.c:496:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 496 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:496:15
-	ldr	r0, [sp, #132]
-	.loc	2 496 30                        @ rt-thread/components/finsh/finsh_ops.c:496:30
-	ldr	r1, [sp, #136]
-	.loc	2 496 45                        @ rt-thread/components/finsh/finsh_ops.c:496:45
-	ldr	r2, [sp, #140]
-	.loc	2 496 60                        @ rt-thread/components/finsh/finsh_ops.c:496:60
-	ldr	r3, [sp, #144]
-	.loc	2 497 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:497:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 497 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:497:32
-	ldr	r5, [sp, #152]
-	.loc	2 497 47                        @ rt-thread/components/finsh/finsh_ops.c:497:47
-	ldr	r6, [sp, #156]
-	.loc	2 497 62                        @ rt-thread/components/finsh/finsh_ops.c:497:62
-	ldr	r7, [sp, #160]
-	.loc	2 498 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:498:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 498 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:498:32
-	ldr.w	r9, [sp, #168]
-	.loc	2 496 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:496:13
-	mov	r4, sp
-	str.w	r9, [r4, #20]
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 496 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:496:11
-	str	r0, [sp, #116]
-	.loc	2 499 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:499:9
-	b	.LBB47_24
-.LBB47_17:
-	.loc	2 502 13                        @ rt-thread/components/finsh/finsh_ops.c:502:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 502 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:502:15
-	ldr	r0, [sp, #132]
-	.loc	2 502 30                        @ rt-thread/components/finsh/finsh_ops.c:502:30
-	ldr	r1, [sp, #136]
-	.loc	2 502 45                        @ rt-thread/components/finsh/finsh_ops.c:502:45
-	ldr	r2, [sp, #140]
-	.loc	2 502 60                        @ rt-thread/components/finsh/finsh_ops.c:502:60
-	ldr	r3, [sp, #144]
-	.loc	2 503 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:503:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 503 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:503:32
-	ldr	r5, [sp, #152]
-	.loc	2 503 47                        @ rt-thread/components/finsh/finsh_ops.c:503:47
-	ldr	r6, [sp, #156]
-	.loc	2 503 62                        @ rt-thread/components/finsh/finsh_ops.c:503:62
-	ldr	r7, [sp, #160]
-	.loc	2 504 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:504:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 504 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:504:32
-	ldr.w	r9, [sp, #168]
-	.loc	2 504 47                        @ rt-thread/components/finsh/finsh_ops.c:504:47
-	ldr.w	r10, [sp, #172]
-	.loc	2 502 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:502:13
-	mov	r4, sp
-	str.w	r10, [r4, #24]
-	str.w	r9, [r4, #20]
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 502 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:502:11
-	str	r0, [sp, #116]
-	.loc	2 505 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:505:9
-	b	.LBB47_24
-.LBB47_18:
-	.loc	2 508 13                        @ rt-thread/components/finsh/finsh_ops.c:508:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 508 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:508:15
-	ldr	r0, [sp, #132]
-	.loc	2 508 30                        @ rt-thread/components/finsh/finsh_ops.c:508:30
-	ldr	r1, [sp, #136]
-	.loc	2 508 45                        @ rt-thread/components/finsh/finsh_ops.c:508:45
-	ldr	r2, [sp, #140]
-	.loc	2 508 60                        @ rt-thread/components/finsh/finsh_ops.c:508:60
-	ldr	r3, [sp, #144]
-	.loc	2 509 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:509:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 509 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:509:32
-	ldr	r5, [sp, #152]
-	.loc	2 509 47                        @ rt-thread/components/finsh/finsh_ops.c:509:47
-	ldr	r6, [sp, #156]
-	.loc	2 509 62                        @ rt-thread/components/finsh/finsh_ops.c:509:62
-	ldr	r7, [sp, #160]
-	.loc	2 510 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:510:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 510 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:510:32
-	ldr.w	r9, [sp, #168]
-	.loc	2 510 47                        @ rt-thread/components/finsh/finsh_ops.c:510:47
-	ldr.w	r10, [sp, #172]
-	.loc	2 510 63                        @ rt-thread/components/finsh/finsh_ops.c:510:63
-	ldr.w	r11, [sp, #176]
-	.loc	2 508 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:508:13
-	mov	r4, sp
-	str	r4, [sp, #108]                  @ 4-byte Spill
-	str.w	r11, [r4, #28]
-	str.w	r10, [r4, #24]
-	str.w	r9, [r4, #20]
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 508 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:508:11
-	str	r0, [sp, #116]
-	.loc	2 511 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:511:9
-	b	.LBB47_24
-.LBB47_19:
-	.loc	2 514 13                        @ rt-thread/components/finsh/finsh_ops.c:514:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 514 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:514:15
-	ldr	r0, [sp, #132]
-	.loc	2 514 30                        @ rt-thread/components/finsh/finsh_ops.c:514:30
-	str	r0, [sp, #100]                  @ 4-byte Spill
-	ldr	r1, [sp, #136]
-	.loc	2 514 45                        @ rt-thread/components/finsh/finsh_ops.c:514:45
-	ldr	r2, [sp, #140]
-	.loc	2 514 60                        @ rt-thread/components/finsh/finsh_ops.c:514:60
-	ldr	r3, [sp, #144]
-	.loc	2 515 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:515:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 515 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:515:32
-	ldr	r5, [sp, #152]
-	.loc	2 515 47                        @ rt-thread/components/finsh/finsh_ops.c:515:47
-	ldr	r6, [sp, #156]
-	.loc	2 515 62                        @ rt-thread/components/finsh/finsh_ops.c:515:62
-	ldr	r7, [sp, #160]
-	.loc	2 516 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:516:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 516 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:516:32
-	ldr.w	r9, [sp, #168]
-	.loc	2 516 47                        @ rt-thread/components/finsh/finsh_ops.c:516:47
-	ldr.w	r10, [sp, #172]
-	.loc	2 516 63                        @ rt-thread/components/finsh/finsh_ops.c:516:63
-	ldr.w	r11, [sp, #176]
-	.loc	2 517 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:517:17
-	ldr	r4, [sp, #180]
-	.loc	2 514 13                        @ rt-thread/components/finsh/finsh_ops.c:514:13
-	mov	r0, sp
-	str	r0, [sp, #104]                  @ 4-byte Spill
-	str	r4, [r0, #32]
-	ldr	r0, [sp, #100]                  @ 4-byte Reload
-	ldr	r4, [sp, #104]                  @ 4-byte Reload
-	str.w	r11, [r4, #28]
-	str.w	r10, [r4, #24]
-	str.w	r9, [r4, #20]
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 514 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:514:11
-	str	r0, [sp, #116]
-	.loc	2 518 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:518:9
-	b	.LBB47_24
-.LBB47_20:
-	.loc	2 521 13                        @ rt-thread/components/finsh/finsh_ops.c:521:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 521 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:521:15
-	ldr	r0, [sp, #132]
-	.loc	2 521 30                        @ rt-thread/components/finsh/finsh_ops.c:521:30
-	str	r0, [sp, #92]                   @ 4-byte Spill
-	ldr	r0, [sp, #136]
-	.loc	2 521 45                        @ rt-thread/components/finsh/finsh_ops.c:521:45
-	str	r0, [sp, #88]                   @ 4-byte Spill
-	ldr	r2, [sp, #140]
-	.loc	2 521 60                        @ rt-thread/components/finsh/finsh_ops.c:521:60
-	ldr	r3, [sp, #144]
-	.loc	2 522 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:522:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 522 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:522:32
-	ldr	r5, [sp, #152]
-	.loc	2 522 47                        @ rt-thread/components/finsh/finsh_ops.c:522:47
-	ldr	r6, [sp, #156]
-	.loc	2 522 62                        @ rt-thread/components/finsh/finsh_ops.c:522:62
-	ldr	r7, [sp, #160]
-	.loc	2 523 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:523:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 523 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:523:32
-	ldr.w	r9, [sp, #168]
-	.loc	2 523 47                        @ rt-thread/components/finsh/finsh_ops.c:523:47
-	ldr.w	r10, [sp, #172]
-	.loc	2 523 63                        @ rt-thread/components/finsh/finsh_ops.c:523:63
-	ldr.w	r11, [sp, #176]
-	.loc	2 524 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:524:17
-	ldr	r4, [sp, #180]
-	.loc	2 524 33 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:524:33
-	ldr	r0, [sp, #184]
-	.loc	2 521 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:521:13
-	mov	r1, sp
-	str	r1, [sp, #96]                   @ 4-byte Spill
-	str	r0, [r1, #36]
-	ldr	r1, [sp, #88]                   @ 4-byte Reload
-	ldr	r0, [sp, #96]                   @ 4-byte Reload
-	str	r4, [r0, #32]
-	ldr	r0, [sp, #92]                   @ 4-byte Reload
-	ldr	r4, [sp, #96]                   @ 4-byte Reload
-	str.w	r11, [r4, #28]
-	str.w	r10, [r4, #24]
-	str.w	r9, [r4, #20]
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 521 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:521:11
-	str	r0, [sp, #116]
-	.loc	2 525 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:525:9
-	b	.LBB47_24
-.LBB47_21:
-	.loc	2 528 13                        @ rt-thread/components/finsh/finsh_ops.c:528:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 528 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:528:15
-	ldr	r0, [sp, #132]
-	.loc	2 528 30                        @ rt-thread/components/finsh/finsh_ops.c:528:30
-	str	r0, [sp, #80]                   @ 4-byte Spill
-	ldr	r0, [sp, #136]
-	.loc	2 528 45                        @ rt-thread/components/finsh/finsh_ops.c:528:45
-	str	r0, [sp, #76]                   @ 4-byte Spill
-	ldr	r2, [sp, #140]
-	.loc	2 528 60                        @ rt-thread/components/finsh/finsh_ops.c:528:60
-	ldr	r3, [sp, #144]
-	.loc	2 529 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:529:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 529 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:529:32
-	ldr	r5, [sp, #152]
-	.loc	2 529 47                        @ rt-thread/components/finsh/finsh_ops.c:529:47
-	ldr	r6, [sp, #156]
-	.loc	2 529 62                        @ rt-thread/components/finsh/finsh_ops.c:529:62
-	ldr	r7, [sp, #160]
-	.loc	2 530 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:530:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 530 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:530:32
-	ldr.w	r9, [sp, #168]
-	.loc	2 530 47                        @ rt-thread/components/finsh/finsh_ops.c:530:47
-	ldr.w	r10, [sp, #172]
-	.loc	2 530 63                        @ rt-thread/components/finsh/finsh_ops.c:530:63
-	ldr.w	r11, [sp, #176]
-	.loc	2 531 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:531:17
-	ldr	r4, [sp, #180]
-	.loc	2 531 33 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:531:33
-	ldr	r0, [sp, #184]
-	.loc	2 531 49                        @ rt-thread/components/finsh/finsh_ops.c:531:49
-	str	r0, [sp, #72]                   @ 4-byte Spill
-	ldr	r1, [sp, #188]
-	.loc	2 528 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:528:13
-	mov	r0, sp
-	str	r0, [sp, #84]                   @ 4-byte Spill
-	str	r1, [r0, #40]
-	ldr	r0, [sp, #72]                   @ 4-byte Reload
-	ldr	r1, [sp, #84]                   @ 4-byte Reload
-	str	r0, [r1, #36]
-	ldr	r1, [sp, #76]                   @ 4-byte Reload
-	ldr	r0, [sp, #84]                   @ 4-byte Reload
-	str	r4, [r0, #32]
-	ldr	r0, [sp, #80]                   @ 4-byte Reload
-	ldr	r4, [sp, #84]                   @ 4-byte Reload
-	str.w	r11, [r4, #28]
-	str.w	r10, [r4, #24]
-	str.w	r9, [r4, #20]
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 528 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:528:11
-	str	r0, [sp, #116]
-	.loc	2 532 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:532:9
-	b	.LBB47_24
-.LBB47_22:
-	.loc	2 535 13                        @ rt-thread/components/finsh/finsh_ops.c:535:13
-	ldr.w	r12, [sp, #120]
-	.loc	2 535 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:535:15
-	ldr	r0, [sp, #132]
-	.loc	2 535 30                        @ rt-thread/components/finsh/finsh_ops.c:535:30
-	str	r0, [sp, #64]                   @ 4-byte Spill
-	ldr	r0, [sp, #136]
-	.loc	2 535 45                        @ rt-thread/components/finsh/finsh_ops.c:535:45
-	str	r0, [sp, #60]                   @ 4-byte Spill
-	ldr	r2, [sp, #140]
-	.loc	2 535 60                        @ rt-thread/components/finsh/finsh_ops.c:535:60
-	ldr	r3, [sp, #144]
-	.loc	2 536 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:536:17
-	ldr.w	lr, [sp, #148]
-	.loc	2 536 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:536:32
-	ldr	r5, [sp, #152]
-	.loc	2 536 47                        @ rt-thread/components/finsh/finsh_ops.c:536:47
-	ldr	r6, [sp, #156]
-	.loc	2 536 62                        @ rt-thread/components/finsh/finsh_ops.c:536:62
-	ldr	r7, [sp, #160]
-	.loc	2 537 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:537:17
-	ldr.w	r8, [sp, #164]
-	.loc	2 537 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:537:32
-	ldr.w	r9, [sp, #168]
-	.loc	2 537 47                        @ rt-thread/components/finsh/finsh_ops.c:537:47
-	ldr.w	r10, [sp, #172]
-	.loc	2 537 63                        @ rt-thread/components/finsh/finsh_ops.c:537:63
-	ldr.w	r11, [sp, #176]
-	.loc	2 538 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:538:17
-	ldr	r4, [sp, #180]
-	.loc	2 538 33 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:538:33
-	ldr	r0, [sp, #184]
-	.loc	2 538 49                        @ rt-thread/components/finsh/finsh_ops.c:538:49
-	str	r0, [sp, #56]                   @ 4-byte Spill
-	ldr	r0, [sp, #188]
-	.loc	2 538 65                        @ rt-thread/components/finsh/finsh_ops.c:538:65
-	str	r0, [sp, #52]                   @ 4-byte Spill
-	ldr	r0, [sp, #192]
-	.loc	2 535 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:535:13
-	mov	r1, sp
-	str	r1, [sp, #68]                   @ 4-byte Spill
-	str	r0, [r1, #44]
-	ldr	r1, [sp, #52]                   @ 4-byte Reload
-	ldr	r0, [sp, #68]                   @ 4-byte Reload
-	str	r1, [r0, #40]
-	ldr	r0, [sp, #56]                   @ 4-byte Reload
-	ldr	r1, [sp, #68]                   @ 4-byte Reload
-	str	r0, [r1, #36]
-	ldr	r1, [sp, #60]                   @ 4-byte Reload
-	ldr	r0, [sp, #68]                   @ 4-byte Reload
-	str	r4, [r0, #32]
-	ldr	r0, [sp, #64]                   @ 4-byte Reload
-	ldr	r4, [sp, #68]                   @ 4-byte Reload
-	str.w	r11, [r4, #28]
-	str.w	r10, [r4, #24]
-	str.w	r9, [r4, #20]
-	str.w	r8, [r4, #16]
-	str	r7, [r4, #12]
-	str	r6, [r4, #8]
-	str	r5, [r4, #4]
-	str.w	lr, [r4]
-	blx	r12
-	.loc	2 535 11 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:535:11
-	str	r0, [sp, #116]
-	.loc	2 539 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:539:9
-	b	.LBB47_24
-.LBB47_23:
+	@DEBUG_VALUE: OP_call:parameters <- $r0
 	.loc	2 0 9 is_stmt 0                 @ rt-thread/components/finsh/finsh_ops.c:0:9
 	movs	r0, #0
-	.loc	2 542 11 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:542:11
-	str	r0, [sp, #116]
-	.loc	2 543 9                         @ rt-thread/components/finsh/finsh_ops.c:543:9
+.Ltmp104:
+	b	.LBB47_24
+.LBB47_8:
+.Ltmp105:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 454 15 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:454:15
+	ldr	r0, [sp, #68]
+.Ltmp106:
+	.loc	2 454 13 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:454:13
+	blx	r12
+.Ltmp107:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 455 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:455:9
+	b	.LBB47_24
+.Ltmp108:
+.LBB47_9:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 458 15                        @ rt-thread/components/finsh/finsh_ops.c:458:15
+	ldrd	r0, r1, [sp, #68]
+.Ltmp109:
+	.loc	2 458 13 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:458:13
+	blx	r12
+.Ltmp110:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 459 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:459:9
+	b	.LBB47_24
+.Ltmp111:
+.LBB47_10:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 462 15                        @ rt-thread/components/finsh/finsh_ops.c:462:15
+	add	r2, sp, #68
+	ldm	r2, {r0, r1, r2}
+.Ltmp112:
+	.loc	2 462 13 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:462:13
+	blx	r12
+.Ltmp113:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 463 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:463:9
+	b	.LBB47_24
+.Ltmp114:
+.LBB47_11:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 466 15                        @ rt-thread/components/finsh/finsh_ops.c:466:15
+	add	r3, sp, #68
+	ldm	r3, {r0, r1, r2, r3}
+.Ltmp115:
+	.loc	2 466 13 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:466:13
+	blx	r12
+.Ltmp116:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 467 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:467:9
 	b	.LBB47_24
 .Ltmp117:
-.LBB47_24:
-	.loc	2 546 28                        @ rt-thread/components/finsh/finsh_ops.c:546:28
-	ldr	r0, [sp, #116]
-	.loc	2 546 5 is_stmt 0               @ rt-thread/components/finsh/finsh_ops.c:546:5
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	ldr	r2, [r1]
-	.loc	2 546 26                        @ rt-thread/components/finsh/finsh_ops.c:546:26
-	str	r0, [r2]
-	.loc	2 547 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:547:14
-	ldr	r0, [r1]
-	adds	r0, #4
-	str	r0, [r1]
-	.loc	2 549 5                         @ rt-thread/components/finsh/finsh_ops.c:549:5
-	add	sp, #196
-	pop.w	{r4, r5, r6, r7, r8, r9, r10, r11, pc}
+.LBB47_12:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 470 15                        @ rt-thread/components/finsh/finsh_ops.c:470:15
+	add	r4, sp, #68
+	ldm	r4, {r0, r1, r2, r3, r4}
 .Ltmp118:
+	.loc	2 470 13 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:470:13
+	str	r4, [sp]
+	blx	r12
+.Ltmp119:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 472 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:472:9
+	b	.LBB47_24
+.Ltmp120:
+.LBB47_13:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 475 15                        @ rt-thread/components/finsh/finsh_ops.c:475:15
+	add.w	lr, sp, #68
+	ldm.w	lr, {r0, r1, r2, r3, r4, lr}
+.Ltmp121:
+	.loc	2 475 13 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:475:13
+	strd	r4, lr, [sp]
+	blx	r12
+.Ltmp122:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 477 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:477:9
+	b	.LBB47_24
+.Ltmp123:
+.LBB47_14:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 480 15                        @ rt-thread/components/finsh/finsh_ops.c:480:15
+	add.w	lr, sp, #68
+	.loc	2 481 47                        @ rt-thread/components/finsh/finsh_ops.c:481:47
+	ldr	r6, [sp, #92]
+	.loc	2 480 13                        @ rt-thread/components/finsh/finsh_ops.c:480:13
+	str	r6, [sp, #8]
+	.loc	2 480 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:480:15
+	ldm.w	lr, {r0, r1, r2, r3, r4, lr}
+.Ltmp124:
+	.loc	2 480 13                        @ rt-thread/components/finsh/finsh_ops.c:480:13
+	strd	r4, lr, [sp]
+	blx	r12
+.Ltmp125:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 482 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:482:9
+	b	.LBB47_24
+.Ltmp126:
+.LBB47_15:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 485 15                        @ rt-thread/components/finsh/finsh_ops.c:485:15
+	add	r6, sp, #68
+	.loc	2 486 62                        @ rt-thread/components/finsh/finsh_ops.c:486:62
+	ldr	r7, [sp, #96]
+	.loc	2 486 32 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:486:32
+	ldrd	r4, lr, [sp, #88]
+	.loc	2 485 15 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:485:15
+	ldm	r6, {r0, r1, r2, r3, r6}
+.Ltmp127:
+	.loc	2 485 13 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:485:13
+	strd	r6, r4, [sp]
+	strd	lr, r7, [sp, #8]
+	blx	r12
+.Ltmp128:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 487 9 is_stmt 1               @ rt-thread/components/finsh/finsh_ops.c:487:9
+	b	.LBB47_24
+.Ltmp129:
+.LBB47_16:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 490 15                        @ rt-thread/components/finsh/finsh_ops.c:490:15
+	add	r7, sp, #68
+	.loc	2 491 32                        @ rt-thread/components/finsh/finsh_ops.c:491:32
+	ldrd	r6, r4, [sp, #88]
+	.loc	2 490 15                        @ rt-thread/components/finsh/finsh_ops.c:490:15
+	ldm	r7, {r0, r1, r2, r3, r7}
+.Ltmp130:
+	.loc	2 491 62                        @ rt-thread/components/finsh/finsh_ops.c:491:62
+	ldrd	lr, r8, [sp, #96]
+	.loc	2 490 13                        @ rt-thread/components/finsh/finsh_ops.c:490:13
+	strd	r7, r6, [sp]
+	strd	r4, lr, [sp, #8]
+	str.w	r8, [sp, #16]
+	blx	r12
+.Ltmp131:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 493 9                         @ rt-thread/components/finsh/finsh_ops.c:493:9
+	b	.LBB47_24
+.Ltmp132:
+.LBB47_17:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 496 15                        @ rt-thread/components/finsh/finsh_ops.c:496:15
+	add	r7, sp, #68
+	.loc	2 498 32                        @ rt-thread/components/finsh/finsh_ops.c:498:32
+	ldr.w	r9, [sp, #104]
+	.loc	2 497 32                        @ rt-thread/components/finsh/finsh_ops.c:497:32
+	ldrd	r6, r4, [sp, #88]
+	.loc	2 496 15                        @ rt-thread/components/finsh/finsh_ops.c:496:15
+	ldm	r7, {r0, r1, r2, r3, r7}
+.Ltmp133:
+	.loc	2 497 62                        @ rt-thread/components/finsh/finsh_ops.c:497:62
+	ldrd	lr, r8, [sp, #96]
+	.loc	2 496 13                        @ rt-thread/components/finsh/finsh_ops.c:496:13
+	strd	r7, r6, [sp]
+	strd	r4, lr, [sp, #8]
+	strd	r8, r9, [sp, #16]
+	blx	r12
+.Ltmp134:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 499 9                         @ rt-thread/components/finsh/finsh_ops.c:499:9
+	b	.LBB47_24
+.Ltmp135:
+.LBB47_18:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 502 15                        @ rt-thread/components/finsh/finsh_ops.c:502:15
+	add	r7, sp, #68
+	.loc	2 503 32                        @ rt-thread/components/finsh/finsh_ops.c:503:32
+	ldrd	r6, r4, [sp, #88]
+	.loc	2 503 62 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:503:62
+	ldrd	lr, r8, [sp, #96]
+	.loc	2 502 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:502:13
+	strd	r4, lr, [sp, #8]
+	add.w	lr, sp, #16
+	.loc	2 502 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:502:15
+	ldm	r7, {r0, r1, r2, r3, r7}
+.Ltmp136:
+	.loc	2 504 32 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:504:32
+	ldrd	r9, r10, [sp, #104]
+	.loc	2 502 13                        @ rt-thread/components/finsh/finsh_ops.c:502:13
+	strd	r7, r6, [sp]
+	stm.w	lr, {r8, r9, r10}
+	blx	r12
+.Ltmp137:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 505 9                         @ rt-thread/components/finsh/finsh_ops.c:505:9
+	b	.LBB47_24
+.Ltmp138:
+.LBB47_19:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 508 15                        @ rt-thread/components/finsh/finsh_ops.c:508:15
+	add	r7, sp, #68
+	.loc	2 510 32                        @ rt-thread/components/finsh/finsh_ops.c:510:32
+	add.w	r11, sp, #104
+	.loc	2 509 32                        @ rt-thread/components/finsh/finsh_ops.c:509:32
+	ldrd	r6, r4, [sp, #88]
+	.loc	2 509 62 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:509:62
+	ldrd	lr, r8, [sp, #96]
+	.loc	2 508 13 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:508:13
+	strd	r4, lr, [sp, #8]
+	add.w	lr, sp, #16
+	.loc	2 508 15 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:508:15
+	ldm	r7, {r0, r1, r2, r3, r7}
+.Ltmp139:
+	.loc	2 510 32 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:510:32
+	ldm.w	r11, {r9, r10, r11}
+	.loc	2 508 13                        @ rt-thread/components/finsh/finsh_ops.c:508:13
+	strd	r7, r6, [sp]
+	stm.w	lr, {r8, r9, r10, r11}
+	blx	r12
+.Ltmp140:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 511 9                         @ rt-thread/components/finsh/finsh_ops.c:511:9
+	b	.LBB47_24
+.Ltmp141:
+.LBB47_20:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 514 15                        @ rt-thread/components/finsh/finsh_ops.c:514:15
+	ldr	r0, [sp, #68]
+.Ltmp142:
+	.loc	2 514 30 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:514:30
+	str	r0, [sp, #64]                   @ 4-byte Spill
+	add	r7, sp, #72
+	.loc	2 516 32 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:516:32
+	add.w	r11, sp, #104
+	.loc	2 517 17                        @ rt-thread/components/finsh/finsh_ops.c:517:17
+	ldr	r0, [sp, #116]
+	.loc	2 514 13                        @ rt-thread/components/finsh/finsh_ops.c:514:13
+	str	r0, [sp, #32]
+	add	r0, sp, #16
+	.loc	2 515 62                        @ rt-thread/components/finsh/finsh_ops.c:515:62
+	ldrd	lr, r8, [sp, #96]
+	.loc	2 514 30                        @ rt-thread/components/finsh/finsh_ops.c:514:30
+	ldm	r7, {r1, r2, r3, r7}
+	.loc	2 516 32                        @ rt-thread/components/finsh/finsh_ops.c:516:32
+	ldm.w	r11, {r9, r10, r11}
+	.loc	2 514 13                        @ rt-thread/components/finsh/finsh_ops.c:514:13
+	stm.w	r0, {r8, r9, r10, r11}
+	ldr	r0, [sp, #64]                   @ 4-byte Reload
+	.loc	2 515 32                        @ rt-thread/components/finsh/finsh_ops.c:515:32
+	ldrd	r6, r4, [sp, #88]
+	.loc	2 514 13                        @ rt-thread/components/finsh/finsh_ops.c:514:13
+	strd	r7, r6, [sp]
+	strd	r4, lr, [sp, #8]
+	blx	r12
+.Ltmp143:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 518 9                         @ rt-thread/components/finsh/finsh_ops.c:518:9
+	b	.LBB47_24
+.Ltmp144:
+.LBB47_21:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 521 15                        @ rt-thread/components/finsh/finsh_ops.c:521:15
+	ldr	r0, [sp, #68]
+.Ltmp145:
+	.loc	2 521 30 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:521:30
+	str	r0, [sp, #64]                   @ 4-byte Spill
+	ldr	r0, [sp, #72]
+	.loc	2 521 45                        @ rt-thread/components/finsh/finsh_ops.c:521:45
+	str	r0, [sp, #60]                   @ 4-byte Spill
+	add	r7, sp, #76
+	.loc	2 523 32 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:523:32
+	add.w	r11, sp, #104
+	.loc	2 524 17                        @ rt-thread/components/finsh/finsh_ops.c:524:17
+	ldrd	r0, r1, [sp, #116]
+	.loc	2 521 13                        @ rt-thread/components/finsh/finsh_ops.c:521:13
+	strd	r0, r1, [sp, #32]
+	add	r0, sp, #16
+	.loc	2 522 62                        @ rt-thread/components/finsh/finsh_ops.c:522:62
+	ldrd	lr, r8, [sp, #96]
+	.loc	2 521 45                        @ rt-thread/components/finsh/finsh_ops.c:521:45
+	ldm	r7, {r2, r3, r7}
+	.loc	2 523 32                        @ rt-thread/components/finsh/finsh_ops.c:523:32
+	ldm.w	r11, {r9, r10, r11}
+	.loc	2 521 13                        @ rt-thread/components/finsh/finsh_ops.c:521:13
+	stm.w	r0, {r8, r9, r10, r11}
+	ldrd	r1, r0, [sp, #60]               @ 8-byte Folded Reload
+	.loc	2 522 32                        @ rt-thread/components/finsh/finsh_ops.c:522:32
+	ldrd	r6, r4, [sp, #88]
+	.loc	2 521 13                        @ rt-thread/components/finsh/finsh_ops.c:521:13
+	strd	r7, r6, [sp]
+	strd	r4, lr, [sp, #8]
+	blx	r12
+.Ltmp146:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 525 9                         @ rt-thread/components/finsh/finsh_ops.c:525:9
+	b	.LBB47_24
+.Ltmp147:
+.LBB47_22:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 528 15                        @ rt-thread/components/finsh/finsh_ops.c:528:15
+	ldr	r0, [sp, #68]
+.Ltmp148:
+	.loc	2 528 30 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:528:30
+	str	r0, [sp, #64]                   @ 4-byte Spill
+	ldr	r0, [sp, #72]
+	.loc	2 528 45                        @ rt-thread/components/finsh/finsh_ops.c:528:45
+	str	r0, [sp, #60]                   @ 4-byte Spill
+	ldr	r0, [sp, #76]
+	.loc	2 528 60                        @ rt-thread/components/finsh/finsh_ops.c:528:60
+	str	r0, [sp, #56]                   @ 4-byte Spill
+	.loc	2 531 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:531:17
+	add	r2, sp, #116
+	.loc	2 530 32                        @ rt-thread/components/finsh/finsh_ops.c:530:32
+	add.w	r11, sp, #104
+	.loc	2 529 62                        @ rt-thread/components/finsh/finsh_ops.c:529:62
+	ldrd	lr, r8, [sp, #96]
+	.loc	2 531 17                        @ rt-thread/components/finsh/finsh_ops.c:531:17
+	ldm	r2, {r0, r1, r2}
+	.loc	2 528 13                        @ rt-thread/components/finsh/finsh_ops.c:528:13
+	str	r0, [sp, #32]
+	add	r0, sp, #16
+	.loc	2 528 60 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:528:60
+	ldrd	r3, r7, [sp, #80]
+	.loc	2 530 32 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:530:32
+	ldm.w	r11, {r9, r10, r11}
+	.loc	2 528 13                        @ rt-thread/components/finsh/finsh_ops.c:528:13
+	str	r1, [sp, #36]
+	str	r2, [sp, #40]
+	stm.w	r0, {r8, r9, r10, r11}
+	ldr	r0, [sp, #64]                   @ 4-byte Reload
+	ldrd	r2, r1, [sp, #56]               @ 8-byte Folded Reload
+	.loc	2 529 32                        @ rt-thread/components/finsh/finsh_ops.c:529:32
+	ldrd	r6, r4, [sp, #88]
+	.loc	2 528 13                        @ rt-thread/components/finsh/finsh_ops.c:528:13
+	strd	r7, r6, [sp]
+	strd	r4, lr, [sp, #8]
+	blx	r12
+.Ltmp149:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 532 9                         @ rt-thread/components/finsh/finsh_ops.c:532:9
+	b	.LBB47_24
+.Ltmp150:
+.LBB47_23:
+	@DEBUG_VALUE: OP_call:f <- $r12
+	@DEBUG_VALUE: OP_call:parameters <- $r0
+	.loc	2 535 15                        @ rt-thread/components/finsh/finsh_ops.c:535:15
+	ldr	r0, [sp, #68]
+.Ltmp151:
+	.loc	2 535 30 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:535:30
+	str	r0, [sp, #64]                   @ 4-byte Spill
+	ldr	r0, [sp, #72]
+	.loc	2 535 45                        @ rt-thread/components/finsh/finsh_ops.c:535:45
+	str	r0, [sp, #60]                   @ 4-byte Spill
+	ldr	r0, [sp, #76]
+	.loc	2 535 60                        @ rt-thread/components/finsh/finsh_ops.c:535:60
+	str	r0, [sp, #56]                   @ 4-byte Spill
+	ldr	r0, [sp, #80]
+	.loc	2 536 17 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:536:17
+	str	r0, [sp, #52]                   @ 4-byte Spill
+	.loc	2 538 17                        @ rt-thread/components/finsh/finsh_ops.c:538:17
+	add	r3, sp, #116
+	.loc	2 537 17                        @ rt-thread/components/finsh/finsh_ops.c:537:17
+	add.w	r11, sp, #100
+	.loc	2 536 17                        @ rt-thread/components/finsh/finsh_ops.c:536:17
+	ldrd	r7, r6, [sp, #84]
+	.loc	2 538 17                        @ rt-thread/components/finsh/finsh_ops.c:538:17
+	ldm	r3, {r0, r1, r2, r3}
+	.loc	2 535 13                        @ rt-thread/components/finsh/finsh_ops.c:535:13
+	str	r0, [sp, #32]
+	add	r0, sp, #16
+	.loc	2 537 17                        @ rt-thread/components/finsh/finsh_ops.c:537:17
+	ldm.w	r11, {r8, r9, r10, r11}
+	.loc	2 535 13                        @ rt-thread/components/finsh/finsh_ops.c:535:13
+	str	r1, [sp, #36]
+	str	r2, [sp, #40]
+	str	r3, [sp, #44]
+	stm.w	r0, {r8, r9, r10, r11}
+	ldrd	r1, r0, [sp, #60]               @ 8-byte Folded Reload
+	ldrd	r3, r2, [sp, #52]               @ 8-byte Folded Reload
+	.loc	2 536 47                        @ rt-thread/components/finsh/finsh_ops.c:536:47
+	ldrd	r4, lr, [sp, #92]
+	.loc	2 535 13                        @ rt-thread/components/finsh/finsh_ops.c:535:13
+	strd	r7, r6, [sp]
+	strd	r4, lr, [sp, #8]
+	blx	r12
+.Ltmp152:
+	@DEBUG_VALUE: OP_call:r <- $r0
+.LBB47_24:
+	@DEBUG_VALUE: OP_call:r <- $r0
+	.loc	2 546 5                         @ rt-thread/components/finsh/finsh_ops.c:546:5
+	ldr	r1, [r5]
+	.loc	2 546 26 is_stmt 0              @ rt-thread/components/finsh/finsh_ops.c:546:26
+	str	r0, [r1]
+	.loc	2 547 14 is_stmt 1              @ rt-thread/components/finsh/finsh_ops.c:547:14
+	ldr	r0, [r5]
+.Ltmp153:
+	adds	r0, #4
+	str	r0, [r5]
+	.loc	2 550 1                         @ rt-thread/components/finsh/finsh_ops.c:550:1
+	add	sp, #132
+	pop.w	{r4, r5, r6, r7, r8, r9, r10, r11, pc}
+.Ltmp154:
 .Lfunc_end47:
 	.size	OP_call, .Lfunc_end47-OP_call
 	.cfi_endproc
@@ -2661,6 +2293,301 @@ op_table:
 	.long	0
 	.size	op_table, 196
 
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin37                  @   base address
+	.long	.Ltmp67-.Lfunc_begin37
+	.long	.Ltmp68-.Lfunc_begin37
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin38                  @   base address
+	.long	.Ltmp70-.Lfunc_begin38
+	.long	.Ltmp71-.Lfunc_begin38
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin39                  @   base address
+	.long	.Ltmp73-.Lfunc_begin39
+	.long	.Ltmp74-.Lfunc_begin39
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin40                  @   base address
+	.long	.Ltmp76-.Lfunc_begin40
+	.long	.Ltmp77-.Lfunc_begin40
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin41                  @   base address
+	.long	.Ltmp79-.Lfunc_begin41
+	.long	.Ltmp80-.Lfunc_begin41
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin42                  @   base address
+	.long	.Ltmp82-.Lfunc_begin42
+	.long	.Ltmp83-.Lfunc_begin42
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin47                  @   base address
+	.long	.Ltmp90-.Lfunc_begin47
+	.long	.Ltmp99-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp100-.Lfunc_begin47
+	.long	.Ltmp101-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp103-.Lfunc_begin47
+	.long	.Ltmp104-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp105-.Lfunc_begin47
+	.long	.Ltmp106-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp108-.Lfunc_begin47
+	.long	.Ltmp109-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp111-.Lfunc_begin47
+	.long	.Ltmp112-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp114-.Lfunc_begin47
+	.long	.Ltmp115-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp117-.Lfunc_begin47
+	.long	.Ltmp118-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp120-.Lfunc_begin47
+	.long	.Ltmp121-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp123-.Lfunc_begin47
+	.long	.Ltmp124-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp126-.Lfunc_begin47
+	.long	.Ltmp127-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp129-.Lfunc_begin47
+	.long	.Ltmp130-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp132-.Lfunc_begin47
+	.long	.Ltmp133-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp135-.Lfunc_begin47
+	.long	.Ltmp136-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp138-.Lfunc_begin47
+	.long	.Ltmp139-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp141-.Lfunc_begin47
+	.long	.Ltmp142-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp144-.Lfunc_begin47
+	.long	.Ltmp145-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp147-.Lfunc_begin47
+	.long	.Ltmp148-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp150-.Lfunc_begin47
+	.long	.Ltmp151-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin47                  @   base address
+	.long	.Ltmp90-.Lfunc_begin47
+	.long	.Ltmp92-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin47                  @   base address
+	.long	.Ltmp98-.Lfunc_begin47
+	.long	.Ltmp99-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp100-.Lfunc_begin47
+	.long	.Ltmp102-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp105-.Lfunc_begin47
+	.long	.Ltmp107-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp108-.Lfunc_begin47
+	.long	.Ltmp110-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp111-.Lfunc_begin47
+	.long	.Ltmp113-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp114-.Lfunc_begin47
+	.long	.Ltmp116-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp117-.Lfunc_begin47
+	.long	.Ltmp119-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp120-.Lfunc_begin47
+	.long	.Ltmp122-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp123-.Lfunc_begin47
+	.long	.Ltmp125-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp126-.Lfunc_begin47
+	.long	.Ltmp128-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp129-.Lfunc_begin47
+	.long	.Ltmp131-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp132-.Lfunc_begin47
+	.long	.Ltmp134-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp135-.Lfunc_begin47
+	.long	.Ltmp137-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp138-.Lfunc_begin47
+	.long	.Ltmp140-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp141-.Lfunc_begin47
+	.long	.Ltmp143-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp144-.Lfunc_begin47
+	.long	.Ltmp146-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp147-.Lfunc_begin47
+	.long	.Ltmp149-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp150-.Lfunc_begin47
+	.long	.Ltmp152-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin47                  @   base address
+	.long	.Ltmp102-.Lfunc_begin47
+	.long	.Ltmp103-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp107-.Lfunc_begin47
+	.long	.Ltmp108-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp110-.Lfunc_begin47
+	.long	.Ltmp111-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp113-.Lfunc_begin47
+	.long	.Ltmp114-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp116-.Lfunc_begin47
+	.long	.Ltmp117-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp119-.Lfunc_begin47
+	.long	.Ltmp120-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp122-.Lfunc_begin47
+	.long	.Ltmp123-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp125-.Lfunc_begin47
+	.long	.Ltmp126-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp128-.Lfunc_begin47
+	.long	.Ltmp129-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp131-.Lfunc_begin47
+	.long	.Ltmp132-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp134-.Lfunc_begin47
+	.long	.Ltmp135-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp137-.Lfunc_begin47
+	.long	.Ltmp138-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp140-.Lfunc_begin47
+	.long	.Ltmp141-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp143-.Lfunc_begin47
+	.long	.Ltmp144-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp146-.Lfunc_begin47
+	.long	.Ltmp147-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp149-.Lfunc_begin47
+	.long	.Ltmp150-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp152-.Lfunc_begin47
+	.long	.Ltmp153-.Lfunc_begin47
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -2821,13 +2748,28 @@ op_table:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	15                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
 	.byte	21                              @ DW_TAG_subroutine_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	16                              @ Abbreviation Code
+	.byte	17                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	17                              @ DW_AT_low_pc
@@ -2846,7 +2788,7 @@ op_table:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	17                              @ Abbreviation Code
+	.byte	18                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	17                              @ DW_AT_low_pc
@@ -2873,7 +2815,7 @@ op_table:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x4e9 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x4ef DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -2961,39 +2903,31 @@ op_table:
 	.byte	14                              @ Abbrev [14] 0xc5:0x10 DW_TAG_variable
 	.byte	3                               @ DW_AT_location
 	.byte	145
-	.ascii	"\204\001"
+	.asciz	"\304"
 	.long	.Linfo_string63                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	428                             @ DW_AT_decl_line
-	.long	1248                            @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0xd5:0x10 DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\200\001"
+	.long	1254                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0xd5:0x10 DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
 	.long	.Linfo_string64                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	429                             @ DW_AT_decl_line
-	.long	1260                            @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0xe5:0x10 DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\374"
+	.long	1266                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0xe5:0x10 DW_TAG_variable
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string66                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	429                             @ DW_AT_decl_line
-	.long	1260                            @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0xf5:0x10 DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\370"
+	.long	1266                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0xf5:0x10 DW_TAG_variable
+	.long	.Ldebug_loc8                    @ DW_AT_location
 	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	433                             @ DW_AT_decl_line
 	.long	173                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x105:0x10 DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\364"
+	.byte	15                              @ Abbrev [15] 0x105:0x10 DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	434                             @ DW_AT_decl_line
@@ -3001,11 +2935,11 @@ op_table:
 	.byte	0                               @ End Of Children Mark
 	.byte	7                               @ Abbrev [7] 0x116:0x5 DW_TAG_pointer_type
 	.long	283                             @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x11b:0x7 DW_TAG_subroutine_type
+	.byte	16                              @ Abbrev [16] 0x11b:0x7 DW_TAG_subroutine_type
 	.long	185                             @ DW_AT_type
 	.byte	9                               @ Abbrev [9] 0x120:0x1 DW_TAG_unspecified_parameters
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x122:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x122:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3014,7 +2948,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	29                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x134:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x134:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3023,7 +2957,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	36                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x146:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x146:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3032,7 +2966,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	43                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x158:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x158:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3041,7 +2975,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	50                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x16a:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x16a:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3050,7 +2984,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	58                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x17c:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x17c:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3059,7 +2993,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	65                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x18e:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x18e:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3068,7 +3002,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	72                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x1a0:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x1a0:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3077,7 +3011,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	80                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x1b2:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x1b2:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3086,7 +3020,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	87                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x1c4:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x1c4:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin9                   @ DW_AT_low_pc
 	.long	.Lfunc_end9                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3095,7 +3029,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	94                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x1d6:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x1d6:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin10                  @ DW_AT_low_pc
 	.long	.Lfunc_end10                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3104,7 +3038,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	102                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x1e8:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x1e8:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin11                  @ DW_AT_low_pc
 	.long	.Lfunc_end11                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3113,7 +3047,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	109                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x1fa:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x1fa:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin12                  @ DW_AT_low_pc
 	.long	.Lfunc_end12                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3122,7 +3056,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	116                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x20c:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x20c:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin13                  @ DW_AT_low_pc
 	.long	.Lfunc_end13                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3131,7 +3065,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	124                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x21e:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x21e:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin14                  @ DW_AT_low_pc
 	.long	.Lfunc_end14                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3140,7 +3074,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	131                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x230:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x230:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin15                  @ DW_AT_low_pc
 	.long	.Lfunc_end15                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3149,7 +3083,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	138                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x242:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x242:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin16                  @ DW_AT_low_pc
 	.long	.Lfunc_end16                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3158,7 +3092,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	146                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x254:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x254:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin17                  @ DW_AT_low_pc
 	.long	.Lfunc_end17                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3167,7 +3101,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	153                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x266:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x266:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin18                  @ DW_AT_low_pc
 	.long	.Lfunc_end18                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3176,7 +3110,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	160                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x278:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x278:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin19                  @ DW_AT_low_pc
 	.long	.Lfunc_end19                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3185,7 +3119,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	168                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x28a:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x28a:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin20                  @ DW_AT_low_pc
 	.long	.Lfunc_end20                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3194,7 +3128,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	175                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x29c:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x29c:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin21                  @ DW_AT_low_pc
 	.long	.Lfunc_end21                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3203,7 +3137,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	182                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x2ae:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x2ae:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin22                  @ DW_AT_low_pc
 	.long	.Lfunc_end22                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3212,7 +3146,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	190                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x2c0:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x2c0:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin23                  @ DW_AT_low_pc
 	.long	.Lfunc_end23                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3221,7 +3155,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	197                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x2d2:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x2d2:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin24                  @ DW_AT_low_pc
 	.long	.Lfunc_end24                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3230,7 +3164,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	204                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x2e4:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x2e4:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin25                  @ DW_AT_low_pc
 	.long	.Lfunc_end25                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3239,7 +3173,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	212                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x2f6:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x2f6:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin26                  @ DW_AT_low_pc
 	.long	.Lfunc_end26                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3248,7 +3182,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	219                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x308:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x308:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin27                  @ DW_AT_low_pc
 	.long	.Lfunc_end27                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3257,7 +3191,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	226                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x31a:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x31a:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin28                  @ DW_AT_low_pc
 	.long	.Lfunc_end28                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3266,7 +3200,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	234                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x32c:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x32c:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin29                  @ DW_AT_low_pc
 	.long	.Lfunc_end29                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3275,7 +3209,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	241                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x33e:0x12 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x33e:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin30                  @ DW_AT_low_pc
 	.long	.Lfunc_end30                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3284,7 +3218,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	248                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x350:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x350:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin31                  @ DW_AT_low_pc
 	.long	.Lfunc_end31                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3293,7 +3227,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	256                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x363:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x363:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin32                  @ DW_AT_low_pc
 	.long	.Lfunc_end32                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3302,7 +3236,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	263                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x376:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x376:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin33                  @ DW_AT_low_pc
 	.long	.Lfunc_end33                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3311,7 +3245,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	270                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x389:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x389:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin34                  @ DW_AT_low_pc
 	.long	.Lfunc_end34                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3320,7 +3254,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	278                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x39c:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x39c:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin35                  @ DW_AT_low_pc
 	.long	.Lfunc_end35                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3329,7 +3263,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	288                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x3af:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x3af:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin36                  @ DW_AT_low_pc
 	.long	.Lfunc_end36                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3338,7 +3272,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	298                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	12                              @ Abbrev [12] 0x3c2:0x23 DW_TAG_subprogram
+	.byte	12                              @ Abbrev [12] 0x3c2:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin37                  @ DW_AT_low_pc
 	.long	.Lfunc_end37                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3347,16 +3281,14 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	308                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	14                              @ Abbrev [14] 0x3d5:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	15                              @ Abbrev [15] 0x3d5:0x10 DW_TAG_variable
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string60                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	310                             @ DW_AT_decl_line
 	.long	118                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	12                              @ Abbrev [12] 0x3e5:0x23 DW_TAG_subprogram
+	.byte	12                              @ Abbrev [12] 0x3e6:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin38                  @ DW_AT_low_pc
 	.long	.Lfunc_end38                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3365,16 +3297,14 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	322                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	14                              @ Abbrev [14] 0x3f8:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	15                              @ Abbrev [15] 0x3f9:0x10 DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string60                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	324                             @ DW_AT_decl_line
 	.long	118                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	12                              @ Abbrev [12] 0x408:0x23 DW_TAG_subprogram
+	.byte	12                              @ Abbrev [12] 0x40a:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin39                  @ DW_AT_low_pc
 	.long	.Lfunc_end39                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3383,16 +3313,14 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	332                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	14                              @ Abbrev [14] 0x41b:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	15                              @ Abbrev [15] 0x41d:0x10 DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string61                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	334                             @ DW_AT_decl_line
 	.long	130                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	12                              @ Abbrev [12] 0x42b:0x23 DW_TAG_subprogram
+	.byte	12                              @ Abbrev [12] 0x42e:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin40                  @ DW_AT_low_pc
 	.long	.Lfunc_end40                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3401,16 +3329,14 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	346                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	14                              @ Abbrev [14] 0x43e:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	15                              @ Abbrev [15] 0x441:0x10 DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string61                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	348                             @ DW_AT_decl_line
 	.long	130                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	12                              @ Abbrev [12] 0x44e:0x23 DW_TAG_subprogram
+	.byte	12                              @ Abbrev [12] 0x452:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin41                  @ DW_AT_low_pc
 	.long	.Lfunc_end41                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3419,16 +3345,14 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	356                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	14                              @ Abbrev [14] 0x461:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	15                              @ Abbrev [15] 0x465:0x10 DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string62                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	358                             @ DW_AT_decl_line
 	.long	142                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	12                              @ Abbrev [12] 0x471:0x23 DW_TAG_subprogram
+	.byte	12                              @ Abbrev [12] 0x476:0x24 DW_TAG_subprogram
 	.long	.Lfunc_begin42                  @ DW_AT_low_pc
 	.long	.Lfunc_end42                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3437,16 +3361,14 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	370                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	14                              @ Abbrev [14] 0x484:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	15                              @ Abbrev [15] 0x489:0x10 DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string62                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	372                             @ DW_AT_decl_line
 	.long	142                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	17                              @ Abbrev [17] 0x494:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x49a:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin43                  @ DW_AT_low_pc
 	.long	.Lfunc_end43                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3455,7 +3377,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	385                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x4a7:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x4ad:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin44                  @ DW_AT_low_pc
 	.long	.Lfunc_end44                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3464,7 +3386,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	397                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x4ba:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x4c0:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin45                  @ DW_AT_low_pc
 	.long	.Lfunc_end45                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3473,7 +3395,7 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	409                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x4cd:0x13 DW_TAG_subprogram
+	.byte	18                              @ Abbrev [18] 0x4d3:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin46                  @ DW_AT_low_pc
 	.long	.Lfunc_end46                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3482,13 +3404,13 @@ op_table:
 	.byte	2                               @ DW_AT_decl_file
 	.short	418                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_external
-	.byte	3                               @ Abbrev [3] 0x4e0:0xc DW_TAG_array_type
+	.byte	3                               @ Abbrev [3] 0x4e6:0xc DW_TAG_array_type
 	.long	111                             @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0x4e5:0x6 DW_TAG_subrange_type
+	.byte	4                               @ Abbrev [4] 0x4eb:0x6 DW_TAG_subrange_type
 	.long	93                              @ DW_AT_type
 	.byte	16                              @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x4ec:0x7 DW_TAG_base_type
+	.byte	11                              @ Abbrev [11] 0x4f2:0x7 DW_TAG_base_type
 	.long	.Linfo_string65                 @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
@@ -3735,7 +3657,7 @@ op_table:
 	.asciz	"r"                             @ string offset=884
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

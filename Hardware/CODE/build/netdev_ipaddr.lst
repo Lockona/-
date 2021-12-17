@@ -38,618 +38,715 @@ netdev_ip4addr_aton:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r1
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#56
-	sub	sp, #56
-	.cfi_def_cfa_offset 64
-	str	r0, [sp, #48]
-	str	r1, [sp, #44]
-	add	r0, sp, #20
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+	.pad	#16
+	sub	sp, #16
+	.cfi_def_cfa_offset 40
 .Ltmp0:
-	.loc	1 44 15 prologue_end            @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:44:15
-	str	r0, [sp, #16]
-	.loc	1 46 10                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:46:10
-	ldr	r0, [sp, #48]
-	.loc	1 46 9 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:46:9
-	ldrb	r0, [r0]
-	.loc	1 46 7                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:46:7
-	strb.w	r0, [sp, #38]
-	.loc	1 47 5 is_stmt 1                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:47:5
-	b	.LBB0_1
-.LBB0_1:                                @ =>This Loop Header: Depth=1
-                                        @     Child Loop BB0_11 Depth 2
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $sp
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	.loc	1 0 0 prologue_end              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
+	ldrb	r6, [r0]
 .Ltmp1:
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
 	.loc	1 54 14                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:54:14
-	ldrb.w	r0, [sp, #38]
-	cmp	r0, #48
-	blt	.LBB0_3
-	b	.LBB0_2
-.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
-	ldrb.w	r0, [sp, #38]
+	sub.w	r2, r6, #48
+	uxtb	r2, r2
+	cmp	r2, #9
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r1
+	bhi.w	.LBB0_18
 .Ltmp2:
-	.loc	1 54 13 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:54:13
-	cmp	r0, #58
-	blt	.LBB0_4
-	b	.LBB0_3
-.LBB0_3:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
+@ %bb.1:
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r1
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $sp
+	.loc	1 0 14 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:14
+	mov	r12, sp
+	mov	r8, r1
 .Ltmp3:
-	.loc	1 56 13 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:56:13
-	str	r0, [sp, #52]
-	b	.LBB0_68
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	add.w	lr, r12, #12
+	mov	r3, r12
 .Ltmp4:
-.LBB0_4:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 0 13 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
-	.loc	1 58 13 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:58:13
-	str	r0, [sp, #40]
-	movs	r0, #10
-	.loc	1 59 14                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:59:14
-	strb.w	r0, [sp, #39]
+.LBB0_2:                                @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB0_9 Depth 2
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- 0
+	@DEBUG_VALUE: netdev_ip4addr_aton:base <- 10
+	.loc	1 60 15 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:60:15
+	uxtb	r1, r6
 .Ltmp5:
-	.loc	1 60 13                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:60:13
-	ldrsb.w	r0, [sp, #38]
-.Ltmp6:
 	.loc	1 60 13 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:60:13
-	cmp	r0, #48
-	bne	.LBB0_10
-	b	.LBB0_5
-.LBB0_5:                                @   in Loop: Header=BB0_1 Depth=1
+	cmp	r1, #48
+	bne	.LBB0_5
+.Ltmp6:
+@ %bb.3:                                @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:base <- 10
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- 0
+	.loc	1 62 17 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:62:17
+	mov	r5, r0
+	ldrb	r6, [r5, #1]!
 .Ltmp7:
-	.loc	1 62 18 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:62:18
-	ldr	r0, [sp, #48]
-	adds	r1, r0, #1
-	str	r1, [sp, #48]
-	.loc	1 62 17 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:62:17
-	ldrb	r0, [r0, #1]
-	.loc	1 62 15                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:62:15
-	strb.w	r0, [sp, #38]
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r5
+	.loc	1 63 26                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:63:26
+	orr	r1, r6, #32
+	cmp	r1, #120
+	bne	.LBB0_6
 .Ltmp8:
-	.loc	1 63 17 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:63:17
-	ldrsb.w	r0, [sp, #38]
-	.loc	1 63 26 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:63:26
-	cmp	r0, #120
-	beq	.LBB0_7
-	b	.LBB0_6
-.LBB0_6:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 63 29                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:63:29
-	ldrsb.w	r0, [sp, #38]
+@ %bb.4:                                @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:base <- 10
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- 0
+	@DEBUG_VALUE: netdev_ip4addr_aton:base <- 16
+	.loc	1 66 21                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:66:21
+	ldrb	r6, [r0, #2]!
 .Ltmp9:
-	.loc	1 63 17                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:63:17
-	cmp	r0, #88
-	bne	.LBB0_8
-	b	.LBB0_7
-.LBB0_7:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 0 17                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:17
-	movs	r0, #16
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	.loc	1 0 21 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:21
+	movs	r1, #16
+	movs	r7, #1
 .Ltmp10:
-	.loc	1 65 22 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:65:22
-	strb.w	r0, [sp, #39]
-	.loc	1 66 22                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:66:22
-	ldr	r0, [sp, #48]
-	adds	r1, r0, #1
-	str	r1, [sp, #48]
-	.loc	1 66 21 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:66:21
-	ldrb	r0, [r0, #1]
-	.loc	1 66 19                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:66:19
-	strb.w	r0, [sp, #38]
-	.loc	1 67 13 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:67:13
-	b	.LBB0_9
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	b	.LBB0_7
 .Ltmp11:
-.LBB0_8:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 0 13 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #8
+	.p2align	2
+.LBB0_5:                                @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:base <- 10
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- 0
+	movs	r1, #10
+	movs	r7, #0
+	b	.LBB0_7
 .Ltmp12:
-	.loc	1 70 22 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:70:22
-	strb.w	r0, [sp, #39]
-	b	.LBB0_9
+.LBB0_6:                                @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:base <- 10
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- 0
+	movs	r1, #8
+	movs	r7, #0
+	mov	r0, r5
 .Ltmp13:
-.LBB0_9:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 72 9                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:72:9
-	b	.LBB0_10
-.Ltmp14:
-.LBB0_10:                               @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 73 9                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:73:9
-	b	.LBB0_11
-.LBB0_11:                               @   Parent Loop BB0_1 Depth=1
-                                        @ =>  This Inner Loop Header: Depth=2
-.Ltmp15:
-	.loc	1 75 17                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:75:17
-	ldrb.w	r0, [sp, #38]
-	cmp	r0, #48
-	blt	.LBB0_14
-	b	.LBB0_12
-.LBB0_12:                               @   in Loop: Header=BB0_11 Depth=2
-	ldrb.w	r0, [sp, #38]
-.Ltmp16:
-	.loc	1 75 17 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:75:17
-	cmp	r0, #57
-	bgt	.LBB0_14
-	b	.LBB0_13
-.LBB0_13:                               @   in Loop: Header=BB0_11 Depth=2
-.Ltmp17:
-	.loc	1 77 24 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:24
-	ldr	r0, [sp, #40]
-	.loc	1 77 30 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:30
-	ldrb.w	r1, [sp, #39]
-	.loc	1 77 50                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:50
-	ldrsb.w	r2, [sp, #38]
-	.loc	1 77 36                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:36
-	mla	r0, r0, r1, r2
-	subs	r0, #48
-	.loc	1 77 21                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:21
-	str	r0, [sp, #40]
-	.loc	1 78 22 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:78:22
-	ldr	r0, [sp, #48]
-	adds	r1, r0, #1
-	str	r1, [sp, #48]
-	.loc	1 78 21 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:78:21
-	ldrb	r0, [r0, #1]
-	.loc	1 78 19                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:78:19
-	strb.w	r0, [sp, #38]
-	.loc	1 79 13 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:79:13
-	b	.LBB0_26
-.Ltmp18:
-.LBB0_14:                               @   in Loop: Header=BB0_11 Depth=2
-	.loc	1 80 22                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:80:22
-	ldrb.w	r0, [sp, #39]
-	.loc	1 80 33 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:80:33
-	cmp	r0, #16
-	bne	.LBB0_24
-	b	.LBB0_15
-.LBB0_15:                               @   in Loop: Header=BB0_11 Depth=2
-	.loc	1 80 36                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:80:36
-	ldrb.w	r0, [sp, #38]
-	cmp	r0, #48
-	blt	.LBB0_17
-	b	.LBB0_16
-.LBB0_16:                               @   in Loop: Header=BB0_11 Depth=2
-	ldrb.w	r0, [sp, #38]
-	cmp	r0, #58
-	blt	.LBB0_21
-	b	.LBB0_17
-.LBB0_17:                               @   in Loop: Header=BB0_11 Depth=2
-	ldrb.w	r0, [sp, #38]
-	cmp	r0, #97
-	blt	.LBB0_19
-	b	.LBB0_18
-.LBB0_18:                               @   in Loop: Header=BB0_11 Depth=2
-	ldrb.w	r0, [sp, #38]
-	cmp	r0, #103
-	blt	.LBB0_21
-	b	.LBB0_19
-.LBB0_19:                               @   in Loop: Header=BB0_11 Depth=2
-	ldrb.w	r0, [sp, #38]
-	cmp	r0, #65
-	blt	.LBB0_24
-	b	.LBB0_20
-.LBB0_20:                               @   in Loop: Header=BB0_11 Depth=2
-	ldrb.w	r0, [sp, #38]
-.Ltmp19:
-	.loc	1 80 22                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:80:22
-	cmp	r0, #70
-	bgt	.LBB0_24
-	b	.LBB0_21
-.LBB0_21:                               @   in Loop: Header=BB0_11 Depth=2
-.Ltmp20:
-	.loc	1 82 24 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:24
-	ldr	r0, [sp, #40]
-	.loc	1 82 28 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:28
-	lsls	r0, r0, #4
-	.loc	1 82 48                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:48
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	ldrb.w	r1, [sp, #38]
-	sxtb	r0, r1
-	.loc	1 82 50                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:50
-	adds	r0, #10
-	str	r0, [sp, #8]                    @ 4-byte Spill
-	movs	r0, #0
-	.loc	1 82 58                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:58
-	cmp	r1, #97
-	str	r0, [sp, #12]                   @ 4-byte Spill
-	blt	.LBB0_23
-	b	.LBB0_22
-.LBB0_22:                               @   in Loop: Header=BB0_11 Depth=2
-	ldrb.w	r1, [sp, #38]
-	movs	r0, #0
-	cmp	r1, #123
-	it	lt
-	movlt	r0, #1
-	str	r0, [sp, #12]                   @ 4-byte Spill
-	b	.LBB0_23
-.LBB0_23:                               @   in Loop: Header=BB0_11 Depth=2
-	.loc	1 0 0                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
-	ldr	r2, [sp, #12]                   @ 4-byte Reload
-	.loc	1 82 58                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:58
-	lsls	r3, r2, #31
-	movs	r2, #65
-	cmp	r3, #0
-	it	ne
-	movne	r2, #97
-	.loc	1 82 55                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:55
-	subs	r1, r1, r2
-	.loc	1 82 34                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:34
-	orrs	r0, r1
-	.loc	1 82 21                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:21
-	str	r0, [sp, #40]
-	.loc	1 83 22 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:83:22
-	ldr	r0, [sp, #48]
-	adds	r1, r0, #1
-	str	r1, [sp, #48]
-	.loc	1 83 21 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:83:21
-	ldrb	r0, [r0, #1]
-	.loc	1 83 19                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:83:19
-	strb.w	r0, [sp, #38]
-	.loc	1 84 13 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:84:13
-	b	.LBB0_25
-.Ltmp21:
-.LBB0_24:                               @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 87 17                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:87:17
-	b	.LBB0_27
-.Ltmp22:
-.LBB0_25:                               @   in Loop: Header=BB0_11 Depth=2
-	.loc	1 0 17 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:17
-	b	.LBB0_26
-.LBB0_26:                               @   in Loop: Header=BB0_11 Depth=2
+	.p2align	2
+.LBB0_7:                                @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- 0
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:base <- undef
 	.loc	1 73 9 is_stmt 1                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:73:9
-	b	.LBB0_11
-.Ltmp23:
-.LBB0_27:                               @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 90 13                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:90:13
-	ldrsb.w	r0, [sp, #38]
-.Ltmp24:
-	.loc	1 90 13 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:90:13
-	cmp	r0, #46
-	bne	.LBB0_31
-	b	.LBB0_28
-.LBB0_28:                               @   in Loop: Header=BB0_1 Depth=1
-.Ltmp25:
-	.loc	1 98 17 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:98:17
-	ldr	r0, [sp, #16]
-	add	r1, sp, #20
-	.loc	1 98 29 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:98:29
-	adds	r1, #12
-.Ltmp26:
-	.loc	1 98 17                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:98:17
-	cmp	r0, r1
-	blo	.LBB0_30
-	b	.LBB0_29
-.LBB0_29:
-	.loc	1 0 17                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:17
-	movs	r0, #0
-.Ltmp27:
-	.loc	1 100 17 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:100:17
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.Ltmp28:
-.LBB0_30:                               @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 102 21                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:102:21
-	ldr	r0, [sp, #40]
-	.loc	1 102 16 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:102:16
-	ldr	r1, [sp, #16]
-	adds	r2, r1, #4
-	str	r2, [sp, #16]
-	.loc	1 102 19                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:102:19
-	str	r0, [r1]
-	.loc	1 103 18 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:103:18
-	ldr	r0, [sp, #48]
-	adds	r1, r0, #1
-	str	r1, [sp, #48]
-	.loc	1 103 17 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:103:17
-	ldrb	r0, [r0, #1]
-	.loc	1 103 15                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:103:15
-	strb.w	r0, [sp, #38]
-	.loc	1 104 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:104:9
-	b	.LBB0_32
-.Ltmp29:
-.LBB0_31:
-	.loc	1 107 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:107:13
-	b	.LBB0_33
-.Ltmp30:
-.LBB0_32:                               @   in Loop: Header=BB0_1 Depth=1
-	.loc	1 47 5                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:47:5
-	b	.LBB0_1
-.Ltmp31:
-.LBB0_33:
-	.loc	1 113 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:113:9
-	ldrsb.w	r0, [sp, #38]
-	.loc	1 113 19 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:113:19
-	cbz	r0, .LBB0_41
-	b	.LBB0_34
-.LBB0_34:
-	.loc	1 113 23                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:113:23
-	ldrsb.w	r0, [sp, #38]
-	cmp	r0, #32
-	beq	.LBB0_41
-	b	.LBB0_35
-.LBB0_35:
-	ldrsb.w	r0, [sp, #38]
-	cmp	r0, #12
-	beq	.LBB0_41
-	b	.LBB0_36
-.LBB0_36:
-	ldrsb.w	r0, [sp, #38]
-	cmp	r0, #10
-	beq	.LBB0_41
-	b	.LBB0_37
-.LBB0_37:
-	ldrsb.w	r0, [sp, #38]
-	cmp	r0, #13
-	beq	.LBB0_41
-	b	.LBB0_38
-.LBB0_38:
-	ldrsb.w	r0, [sp, #38]
-	cmp	r0, #9
-	beq	.LBB0_41
-	b	.LBB0_39
-.LBB0_39:
-	ldrsb.w	r0, [sp, #38]
-.Ltmp32:
-	.loc	1 113 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:113:9
-	cmp	r0, #11
-	beq	.LBB0_41
-	b	.LBB0_40
-.LBB0_40:
-	.loc	1 0 9                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:9
-	movs	r0, #0
-.Ltmp33:
-	.loc	1 115 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:115:9
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.Ltmp34:
-.LBB0_41:
-	.loc	1 121 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:121:13
-	ldr	r0, [sp, #16]
-	add	r1, sp, #20
-	.loc	1 121 16 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:121:16
-	subs	r1, r0, r1
-	movs	r0, #1
-	.loc	1 121 24                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:121:24
-	add.w	r0, r0, r1, asr #2
-	.loc	1 121 5                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:121:5
-	mov	r1, r0
-	str	r1, [sp]                        @ 4-byte Spill
-	cmp	r0, #4
-	bhi	.LBB0_64
-@ %bb.42:
-	.loc	1 0 5                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:5
-	ldr	r1, [sp]                        @ 4-byte Reload
-.LCPI0_0:
-	tbb	[pc, r1]
-@ %bb.43:
+	adds	r0, #1
+.Ltmp14:
+	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:9
+	movs	r5, #0
+	b	.LBB0_9
+.Ltmp15:
+	.p2align	2
+.LBB0_8:                                @   in Loop: Header=BB0_9 Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 77 50 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:50
+	sxtb	r2, r6
+	.loc	1 77 52 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:52
+	mla	r2, r5, r1, r2
+.Ltmp16:
+	.loc	1 0 0                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
+	ldrb	r6, [r0], #1
+.Ltmp17:
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- undef
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	.loc	1 77 36                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:77:36
+	sub.w	r5, r2, #48
+.Ltmp18:
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+.LBB0_9:                                @   Parent Loop BB0_2 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	.loc	1 75 17 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:75:17
+	sub.w	r2, r6, #48
+	uxtb	r2, r2
+	cmp	r2, #9
+	bls	.LBB0_8
+.Ltmp19:
+@ %bb.10:                               @   in Loop: Header=BB0_9 Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 80 33                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:80:33
+	cmp	r7, #0
+	beq.w	.LBB0_15
+.Ltmp20:
+@ %bb.11:                               @   in Loop: Header=BB0_9 Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 80 36 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:80:36
+	uxtb	r2, r6
+	cmp	r2, #102
+	bhi.w	.LBB0_40
+.Ltmp21:
+@ %bb.12:                               @   in Loop: Header=BB0_9 Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 0 36                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:36
+.LCPI0_2:
+	tbh	[pc, r2, lsl #1]
+.Ltmp22:
+@ %bb.13:
 .LJTI0_0:
-	.byte	(.LBB0_44-(.LCPI0_0+4))/2
-	.byte	(.LBB0_45-(.LCPI0_0+4))/2
-	.byte	(.LBB0_46-(.LCPI0_0+4))/2
-	.byte	(.LBB0_51-(.LCPI0_0+4))/2
-	.byte	(.LBB0_57-(.LCPI0_0+4))/2
+	.short	(.LBB0_22-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_22-(.LCPI0_2+4))/2
+	.short	(.LBB0_22-(.LCPI0_2+4))/2
+	.short	(.LBB0_22-(.LCPI0_2+4))/2
+	.short	(.LBB0_22-(.LCPI0_2+4))/2
+	.short	(.LBB0_22-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_22-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_16-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_40-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
+	.short	(.LBB0_14-(.LCPI0_2+4))/2
 	.p2align	1
-.LBB0_44:
-	movs	r0, #0
+.LBB0_14:                               @   in Loop: Header=BB0_9 Depth=2
+.Ltmp23:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 82 58 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:58
+	sub.w	r2, r6, #97
+	uxtb	r2, r2
+	cmp	r2, #26
+	mvn	r2, #64
+	it	lo
+	mvnlo	r2, #96
+	.loc	1 82 50 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:50
+	sxtab	r2, r2, r6
+.Ltmp24:
+	.loc	1 0 0                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
+	ldrb	r6, [r0], #1
+.Ltmp25:
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	.loc	1 82 55                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:55
+	adds	r2, #10
+	.loc	1 82 34                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:82:34
+	orr.w	r5, r2, r5, lsl #4
+.Ltmp26:
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	.loc	1 0 34                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:34
+	b	.LBB0_9
+.Ltmp27:
+	.p2align	2
+.LBB0_15:                               @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 90 13 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:90:13
+	uxtb	r1, r6
+	cmp	r1, #46
+	bne	.LBB0_20
+.Ltmp28:
+.LBB0_16:                               @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 98 17                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:98:17
+	cmp	r3, lr
+	bhs	.LBB0_47
+.Ltmp29:
+@ %bb.17:                               @   in Loop: Header=BB0_2 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 102 19                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:102:19
+	str	r5, [r3], #4
+.Ltmp30:
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- undef
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
+	ldrb	r6, [r0]
+.Ltmp31:
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	.loc	1 54 14 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:54:14
+	sub.w	r1, r6, #48
+	uxtb	r1, r1
+	cmp	r1, #10
+	mov.w	r1, #0
+	blo.w	.LBB0_2
+	b	.LBB0_19
+.Ltmp32:
+.LBB0_18:
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r1
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $sp
+	.loc	1 0 14 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:14
+	movs	r1, #0
+.Ltmp33:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- [DW_OP_LLVM_entry_value 1] $r1
+.LBB0_19:
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	.loc	1 174 1 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:174:1
+	mov	r0, r1
+	add	sp, #16
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp34:
+.LBB0_20:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:1
+	sub.w	r0, r1, #9
 .Ltmp35:
-	.loc	1 125 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:125:9
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.LBB0_45:
-	.loc	1 128 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:128:9
-	b	.LBB0_65
-.LBB0_46:
+	cmp	r0, #23
+	bhi	.LBB0_42
 .Ltmp36:
-	.loc	1 131 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:131:13
-	ldr	r0, [sp, #40]
+@ %bb.21:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	movs	r2, #1
+	lsl.w	r0, r2, r0
+	movs	r2, #31
+	movt	r2, #128
+	tst	r0, r2
+	beq	.LBB0_42
 .Ltmp37:
-	.loc	1 131 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:131:13
-	cmp.w	r0, #16777216
-	blo	.LBB0_48
-	b	.LBB0_47
-.LBB0_47:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
+.LBB0_22:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 121 16 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:121:16
+	sub.w	r0, r3, r12
+	movs	r1, #1
+	.loc	1 121 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:121:5
+	add.w	r0, r1, r0, asr #2
+	cmp	r0, #4
+	bhi	.LBB0_29
 .Ltmp38:
-	.loc	1 133 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:133:13
-	str	r0, [sp, #52]
-	b	.LBB0_68
+@ %bb.23:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 0 5                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:5
+	movs	r1, #0
+.LCPI0_3:
+	tbb	[pc, r0]
 .Ltmp39:
-.LBB0_48:
-	.loc	1 135 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:135:13
-	ldr	r0, [sp, #20]
+@ %bb.24:
+.LJTI0_1:
+	.byte	(.LBB0_25-(.LCPI0_3+4))/2
+	.byte	(.LBB0_30-(.LCPI0_3+4))/2
+	.byte	(.LBB0_26-(.LCPI0_3+4))/2
+	.byte	(.LBB0_33-(.LCPI0_3+4))/2
+	.byte	(.LBB0_37-(.LCPI0_3+4))/2
+	.p2align	1
+.LBB0_25:
+	b	.LBB0_19
+.LBB0_26:
 .Ltmp40:
-	.loc	1 135 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:135:13
-	cmp.w	r0, #256
-	blo	.LBB0_50
-	b	.LBB0_49
-.LBB0_49:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	movs	r1, #0
 .Ltmp41:
-	.loc	1 137 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:137:13
-	str	r0, [sp, #52]
-	b	.LBB0_68
+	.loc	1 131 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:131:13
+	cmp.w	r1, r5, lsr #24
+	bne	.LBB0_19
 .Ltmp42:
-.LBB0_50:
-	.loc	1 139 16                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:139:16
-	ldr	r1, [sp, #20]
-	.loc	1 139 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:139:13
-	ldr	r0, [sp, #40]
-	orr.w	r0, r0, r1, lsl #24
-	str	r0, [sp, #40]
-	.loc	1 140 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:140:9
-	b	.LBB0_65
-.LBB0_51:
+@ %bb.27:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 0 13 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	ldr	r0, [sp]
+	.loc	1 131 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:131:13
+	cmp	r0, #255
+	bhi	.LBB0_19
 .Ltmp43:
-	.loc	1 143 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:143:13
-	ldr	r0, [sp, #40]
+@ %bb.28:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 139 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:139:13
+	orr.w	r5, r5, r0, lsl #24
 .Ltmp44:
-	.loc	1 143 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:143:13
-	cmp.w	r0, #65536
-	blo	.LBB0_53
-	b	.LBB0_52
-.LBB0_52:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	.loc	1 0 13 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	b	.LBB0_30
 .Ltmp45:
-	.loc	1 145 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:145:13
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.Ltmp46:
-.LBB0_53:
-	.loc	1 147 14                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:147:14
-	ldr	r0, [sp, #20]
-	.loc	1 147 31 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:147:31
-	cmp	r0, #255
-	bhi	.LBB0_55
-	b	.LBB0_54
-.LBB0_54:
-	.loc	1 147 35                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:147:35
-	ldr	r0, [sp, #24]
-.Ltmp47:
-	.loc	1 147 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:147:13
-	cmp.w	r0, #256
-	blo	.LBB0_56
-	b	.LBB0_55
-.LBB0_55:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
-.Ltmp48:
-	.loc	1 149 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:149:13
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.Ltmp49:
-.LBB0_56:
-	.loc	1 151 17                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:151:17
-	ldr	r0, [sp, #20]
-	.loc	1 151 36 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:151:36
-	ldr	r1, [sp, #24]
-	.loc	1 151 26                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:151:26
-	lsls	r0, r0, #24
-	.loc	1 151 33                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:151:33
-	orr.w	r1, r0, r1, lsl #16
-	.loc	1 151 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:151:13
-	ldr	r0, [sp, #40]
-	orrs	r0, r1
-	str	r0, [sp, #40]
-	.loc	1 152 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:152:9
-	b	.LBB0_65
-.LBB0_57:
-.Ltmp50:
-	.loc	1 155 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:155:13
-	ldr	r0, [sp, #40]
-.Ltmp51:
-	.loc	1 155 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:155:13
-	cmp.w	r0, #256
-	blo	.LBB0_59
-	b	.LBB0_58
-.LBB0_58:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
-.Ltmp52:
-	.loc	1 157 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:157:13
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.Ltmp53:
-.LBB0_59:
-	.loc	1 159 14                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:14
-	ldr	r0, [sp, #20]
-	.loc	1 159 31 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:31
-	cmp	r0, #255
-	bhi	.LBB0_62
-	b	.LBB0_60
-.LBB0_60:
-	.loc	1 159 35                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:35
-	ldr	r0, [sp, #24]
-	.loc	1 159 52                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:52
-	cmp	r0, #255
-	bhi	.LBB0_62
-	b	.LBB0_61
-.LBB0_61:
-	.loc	1 159 56                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:56
-	ldr	r0, [sp, #28]
-.Ltmp54:
-	.loc	1 159 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:13
-	cmp.w	r0, #256
-	blo	.LBB0_63
-	b	.LBB0_62
-.LBB0_62:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
-.Ltmp55:
-	.loc	1 161 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:161:13
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.Ltmp56:
-.LBB0_63:
-	.loc	1 163 17                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:17
-	ldr	r0, [sp, #20]
-	.loc	1 163 36 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:36
-	ldr	r2, [sp, #24]
-	.loc	1 163 55                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:55
-	ldr	r1, [sp, #28]
-	.loc	1 163 26                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:26
-	lsls	r0, r0, #24
-	.loc	1 163 33                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:33
-	orr.w	r0, r0, r2, lsl #16
-	.loc	1 163 52                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:52
-	orr.w	r1, r0, r1, lsl #8
-	.loc	1 163 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:13
-	ldr	r0, [sp, #40]
-	orrs	r0, r1
-	str	r0, [sp, #40]
-	.loc	1 164 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:164:9
-	b	.LBB0_65
-.LBB0_64:
-.Ltmp57:
-	.loc	1 166 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:166:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.netdev_ip4addr_aton
-	movt	r1, :upper16:.L__FUNCTION__.netdev_ip4addr_aton
+.LBB0_29:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 166 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:166:9
+	adr	r0, .LCPI0_0
+	adr	r1, .LCPI0_1
 	movs	r2, #166
 	bl	rt_assert_handler
-.Ltmp58:
-	.loc	1 167 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:167:9
-	b	.LBB0_65
-.Ltmp59:
-.LBB0_65:
+.Ltmp46:
+.LBB0_30:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
 	.loc	1 169 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:169:9
-	ldr	r0, [sp, #44]
-.Ltmp60:
-	.loc	1 169 9 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:169:9
-	cbz	r0, .LBB0_67
-	b	.LBB0_66
-.LBB0_66:
-.Ltmp61:
-	.loc	1 171 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:171:9
-	ldr	r1, [sp, #40]
-	lsls	r0, r1, #24
-	and	r2, r1, #65280
-	orr.w	r0, r0, r2, lsl #8
-	and	r2, r1, #16711680
-	orr.w	r0, r0, r2, lsr #8
-	orr.w	r0, r0, r1, lsr #24
-	ldr	r1, [sp, #44]
-	str	r0, [r1]
+	cmp.w	r8, #0
+	beq	.LBB0_32
+.Ltmp47:
+@ %bb.31:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	.loc	1 171 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:171:9
+	rev	r0, r5
+	str.w	r0, [r8]
+	movs	r1, #1
 	.loc	1 172 5                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:172:5
-	b	.LBB0_67
-.Ltmp62:
-.LBB0_67:
+	b	.LBB0_19
+.Ltmp48:
+.LBB0_32:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
 	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:5
-	movs	r0, #1
-	.loc	1 173 5 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:173:5
-	str	r0, [sp, #52]
-	b	.LBB0_68
-.LBB0_68:
-	.loc	1 174 1                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:174:1
-	ldr	r0, [sp, #52]
-	add	sp, #56
-	pop	{r7, pc}
+	movs	r1, #1
+	b	.LBB0_19
+.Ltmp49:
+.LBB0_33:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	movs	r1, #0
+.Ltmp50:
+	.loc	1 143 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:143:13
+	cmp.w	r1, r5, lsr #16
+	bne	.LBB0_19
+.Ltmp51:
+@ %bb.34:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 0 13 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	ldr	r0, [sp]
+	.loc	1 143 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:143:13
+	cmp	r0, #255
+	bhi	.LBB0_19
+.Ltmp52:
+@ %bb.35:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 147 35 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:147:35
+	ldr	r1, [sp, #4]
+.Ltmp53:
+	.loc	1 147 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:147:13
+	cmp	r1, #255
+	bls	.LBB0_46
+.Ltmp54:
+@ %bb.36:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	movs	r1, #0
+	b	.LBB0_19
+.Ltmp55:
+.LBB0_37:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	ldr	r0, [sp]
+	.loc	1 155 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:155:13
+	orr.w	r1, r0, r5
+	cmp	r1, #255
+	bhi	.LBB0_41
+.Ltmp56:
+@ %bb.38:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 159 35                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:35
+	ldr	r1, [sp, #4]
+	.loc	1 159 52 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:52
+	cmp	r1, #255
+	bls	.LBB0_44
+.Ltmp57:
+@ %bb.39:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 0 52                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:52
+	movs	r1, #0
+	b	.LBB0_19
+.Ltmp58:
+.LBB0_40:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	movs	r1, #0
+	b	.LBB0_19
+.Ltmp59:
+.LBB0_41:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	movs	r1, #0
+	b	.LBB0_19
+.Ltmp60:
+.LBB0_42:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 90 13 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:90:13
+	cmp	r1, #0
+	beq	.LBB0_22
+.Ltmp61:
+@ %bb.43:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 0 13 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	movs	r1, #0
+	b	.LBB0_19
+.Ltmp62:
+.LBB0_44:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 159 56 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:56
+	ldr	r2, [sp, #8]
 .Ltmp63:
+	.loc	1 159 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:159:13
+	cmp	r2, #255
+	bls	.LBB0_48
+.Ltmp64:
+@ %bb.45:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	movs	r1, #0
+	b	.LBB0_19
+.Ltmp65:
+.LBB0_46:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 151 33 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:151:33
+	orr.w	r0, r5, r0, lsl #24
+	.loc	1 151 13 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:151:13
+	orr.w	r5, r0, r1, lsl #16
+.Ltmp66:
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	b	.LBB0_30
+.Ltmp67:
+.LBB0_47:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	@DEBUG_VALUE: netdev_ip4addr_aton:cp <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r0
+	movs	r1, #0
+	b	.LBB0_19
+.Ltmp68:
+.LBB0_48:
+	@DEBUG_VALUE: netdev_ip4addr_aton:addr <- $r8
+	@DEBUG_VALUE: netdev_ip4addr_aton:c <- $r6
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_aton:pp <- $r3
+	.loc	1 163 33 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:33
+	orr.w	r0, r5, r0, lsl #24
+	.loc	1 163 52 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:52
+	orr.w	r0, r0, r1, lsl #16
+	.loc	1 163 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:163:13
+	orr.w	r5, r0, r2, lsl #8
+.Ltmp69:
+	@DEBUG_VALUE: netdev_ip4addr_aton:val <- $r5
+	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
+	b	.LBB0_30
+.Ltmp70:
+	.p2align	2
+@ %bb.49:
+.LCPI0_0:
+.L.str:
+	.asciz	"0\000\000"
+.LCPI0_1:
+.L__FUNCTION__.netdev_ip4addr_aton:
+	.asciz	"netdev_ip4addr_aton"
 .Lfunc_end0:
 	.size	netdev_ip4addr_aton, .Lfunc_end0-netdev_ip4addr_aton
 	.cfi_endproc
@@ -665,215 +762,298 @@ netdev_ip4addr_aton:
 	.thumb_func
 netdev_ip4addr_ntoa_r:
 .Lfunc_begin1:
-	.loc	1 186 0                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:186:0
+	.loc	1 186 0 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:186:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#40
-	sub	sp, #40
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #32]
-	str	r1, [sp, #28]
-	str	r2, [sp, #24]
-	movs	r0, #0
-.Ltmp64:
-	.loc	1 194 9 prologue_end            @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:194:9
-	str	r0, [sp]
-	.loc	1 196 14                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:196:14
-	ldr	r1, [sp, #32]
-	ldr	r1, [r1]
-	.loc	1 196 12 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:196:12
-	str	r1, [sp, #20]
-	.loc	1 198 10 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:198:10
-	ldr	r1, [sp, #28]
-	.loc	1 198 8 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:198:8
-	str	r1, [sp, #12]
-	add	r1, sp, #20
-	.loc	1 199 8 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:199:8
-	str	r1, [sp, #8]
-.Ltmp65:
-	.loc	1 200 12                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:12
-	strb.w	r0, [sp, #6]
-	.loc	1 200 10 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:10
-	b	.LBB1_1
-.LBB1_1:                                @ =>This Loop Header: Depth=1
-                                        @     Child Loop BB1_3 Depth 2
-                                        @     Child Loop BB1_6 Depth 2
-.Ltmp66:
-	.loc	1 200 17                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:17
-	ldrb.w	r0, [sp, #6]
-.Ltmp67:
-	.loc	1 200 5                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:5
-	cmp	r0, #3
-	bgt	.LBB1_14
-	b	.LBB1_2
-.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 0 5                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:5
-	movs	r0, #0
-.Ltmp68:
-	.loc	1 202 11 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:202:11
-	strb.w	r0, [sp, #5]
-	.loc	1 203 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:203:9
-	b	.LBB1_3
-.LBB1_3:                                @   Parent Loop BB1_1 Depth=1
-                                        @ =>  This Inner Loop Header: Depth=2
-.Ltmp69:
-	.loc	1 205 20                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:205:20
-	ldr	r0, [sp, #8]
-	.loc	1 205 19 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:205:19
-	ldrb	r0, [r0]
-	movw	r2, #52429
-	movt	r2, #52428
-	.loc	1 205 23                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:205:23
-	umull	r3, r1, r0, r2
-	lsrs	r1, r1, #3
-	add.w	r1, r1, r1, lsl #2
-	sub.w	r0, r0, r1, lsl #1
-	.loc	1 205 17                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:205:17
-	strb.w	r0, [sp, #7]
-	.loc	1 206 14 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:206:14
-	ldr	r1, [sp, #8]
-	.loc	1 206 17 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:206:17
-	ldrb	r0, [r1]
-	umull	r2, r0, r0, r2
-	lsrs	r0, r0, #3
-	strb	r0, [r1]
-	.loc	1 207 38 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:38
-	ldrb.w	r0, [sp, #7]
-	.loc	1 207 36 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:36
-	adds	r0, #48
-	.loc	1 207 18                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:18
-	ldrb.w	r2, [sp, #5]
-	adds	r1, r2, #1
-	strb.w	r1, [sp, #5]
-	add.w	r1, sp, #17
-	.loc	1 207 22                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:22
-	strb	r0, [r1, r2]
-	.loc	1 208 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:208:9
-	b	.LBB1_4
-.Ltmp70:
-.LBB1_4:                                @   in Loop: Header=BB1_3 Depth=2
-	.loc	1 208 19 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:208:19
-	ldr	r0, [sp, #8]
-	.loc	1 208 18                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:208:18
-	ldrb	r0, [r0]
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buf <- $r1
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	.save	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+	.cfi_def_cfa_offset 36
+	.cfi_offset lr, -4
+	.cfi_offset r11, -8
+	.cfi_offset r10, -12
+	.cfi_offset r9, -16
+	.cfi_offset r8, -20
+	.cfi_offset r7, -24
+	.cfi_offset r6, -28
+	.cfi_offset r5, -32
+	.cfi_offset r4, -36
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 48
+	add.w	r9, sp, #8
 .Ltmp71:
-	.loc	1 208 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:208:9
-	cmp	r0, #0
-	bne	.LBB1_3
-	b	.LBB1_5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- 0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- [DW_OP_plus_uconst 8, DW_OP_stack_value] $sp
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buf <- $lr
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- $r0
+	movw	r11, #52429
+	mov	lr, r1
 .Ltmp72:
-.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 209 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:9
-	b	.LBB1_6
-.LBB1_6:                                @   Parent Loop BB1_1 Depth=1
-                                        @ =>  This Inner Loop Header: Depth=2
-	.loc	1 209 17 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:17
-	ldrb.w	r0, [sp, #5]
-	subs	r1, r0, #1
-	strb.w	r1, [sp, #5]
-	.loc	1 209 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:9
-	cbz	r0, .LBB1_10
-	b	.LBB1_7
-.LBB1_7:                                @   in Loop: Header=BB1_6 Depth=2
+	.loc	1 196 14 prologue_end           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:196:14
+	ldr	r0, [r0]
 .Ltmp73:
-	.loc	1 211 20 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:211:20
-	ldr	r0, [sp]
-	adds	r1, r0, #1
-	str	r1, [sp]
-	.loc	1 211 26 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:211:26
-	ldr	r1, [sp, #24]
-.Ltmp74:
-	.loc	1 211 17                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:211:17
-	cmp	r0, r1
-	blt	.LBB1_9
-	b	.LBB1_8
-.LBB1_8:
-	.loc	1 0 17                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:17
-	movs	r0, #0
-.Ltmp75:
-	.loc	1 213 17 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:213:17
-	str	r0, [sp, #36]
-	b	.LBB1_15
-.Ltmp76:
-.LBB1_9:                                @   in Loop: Header=BB1_6 Depth=2
-	.loc	1 215 25                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:215:25
-	ldrb.w	r1, [sp, #5]
-	add.w	r0, sp, #17
-	.loc	1 215 21 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:215:21
-	ldrb	r0, [r0, r1]
-	.loc	1 215 16                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:215:16
-	ldr	r1, [sp, #12]
-	adds	r2, r1, #1
-	str	r2, [sp, #12]
-	.loc	1 215 19                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:215:19
-	strb	r0, [r1]
-.Ltmp77:
-	.loc	1 209 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:9
-	b	.LBB1_6
-.LBB1_10:                               @   in Loop: Header=BB1_1 Depth=1
-.Ltmp78:
-	.loc	1 217 16                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:217:16
-	ldr	r0, [sp]
-	adds	r1, r0, #1
-	str	r1, [sp]
-	.loc	1 217 22 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:217:22
-	ldr	r1, [sp, #24]
-.Ltmp79:
-	.loc	1 217 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:217:13
-	cmp	r0, r1
-	blt	.LBB1_12
-	b	.LBB1_11
-.LBB1_11:
-	.loc	1 0 13                          @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:13
-	movs	r0, #0
-.Ltmp80:
-	.loc	1 219 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:219:13
-	str	r0, [sp, #36]
-	b	.LBB1_15
-.Ltmp81:
-.LBB1_12:                               @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 221 12                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:221:12
-	ldr	r1, [sp, #12]
-	adds	r0, r1, #1
-	str	r0, [sp, #12]
-	movs	r0, #46
-	.loc	1 221 15 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:221:15
-	strb	r0, [r1]
-	.loc	1 222 11 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:222:11
-	ldr	r0, [sp, #8]
-	adds	r0, #1
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:s_addr <- $r0
+	.loc	1 196 12 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:196:12
 	str	r0, [sp, #8]
-	.loc	1 223 5                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:223:5
-	b	.LBB1_13
-.Ltmp82:
-.LBB1_13:                               @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 200 25                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:25
-	ldrb.w	r0, [sp, #6]
-	adds	r0, #1
-	strb.w	r0, [sp, #6]
-	.loc	1 200 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:5
-	b	.LBB1_1
-.Ltmp83:
-.LBB1_14:
-	.loc	1 224 6 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:224:6
-	ldr	r1, [sp, #12]
-	subs	r0, r1, #1
-	str	r0, [sp, #12]
+.Ltmp74:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:n <- 0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- undef
+	.loc	1 200 5 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:5
+	add.w	r0, r9, #3
+.Ltmp75:
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:5
+	str	r0, [sp]                        @ 4-byte Spill
 	movs	r0, #0
-	.loc	1 224 11 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:224:11
-	strb	r0, [r1, #-1]
-	.loc	1 225 12 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:225:12
-	ldr	r0, [sp, #28]
-	.loc	1 225 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:225:5
-	str	r0, [sp, #36]
-	b	.LBB1_15
-.LBB1_15:
-	.loc	1 226 1 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:226:1
-	ldr	r0, [sp, #36]
-	add	sp, #40
-	bx	lr
+	movt	r11, #52428
+	add.w	r12, sp, #5
+	mov	r10, r1
+.Ltmp76:
+.LBB1_1:                                @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB1_2 Depth 2
+                                        @     Child Loop BB1_5 Depth 2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:n <- undef
+	ldrb.w	r3, [r9]
+	movs	r7, #0
+.Ltmp77:
+	.p2align	2
+.LBB1_2:                                @   Parent Loop BB1_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	uxtb	r1, r3
+	mov	r6, r3
+.Ltmp78:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- undef
+	.loc	1 207 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:13
+	uxtb	r4, r7
+	.loc	1 206 17                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:206:17
+	umull	r3, r5, r1, r11
+	.loc	1 208 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:208:9
+	cmp	r1, #9
+	.loc	1 206 17                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:206:17
+	lsr.w	r3, r5, #3
+.Ltmp79:
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
+	mov	r5, r7
+.Ltmp80:
+	.loc	1 207 18 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:18
+	add.w	r7, r7, #1
+.Ltmp81:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r7
+	.loc	1 0 18 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:18
+	add.w	r8, r3, r3, lsl #2
+	sub.w	r6, r6, r8, lsl #1
+.Ltmp82:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rem <- $r6
+	.loc	1 207 36                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:36
+	orr	r6, r6, #48
+.Ltmp83:
+	.loc	1 207 22                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:207:22
+	strb.w	r6, [r12, r4]
+	.loc	1 208 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:208:9
+	bhi	.LBB1_2
 .Ltmp84:
+@ %bb.3:                                @   in Loop: Header=BB1_1 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 209 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:9
+	lsls	r1, r7, #24
+.Ltmp85:
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
+	strb.w	r3, [r9]
+.Ltmp86:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	.loc	1 209 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:9
+	beq	.LBB1_8
+.Ltmp87:
+@ %bb.4:                                @   in Loop: Header=BB1_1 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	mov	r3, r2
+	mov	r7, r10
+.Ltmp88:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	cmp	r0, r2
+	it	gt
+	movgt	r3, r0
+.Ltmp89:
+	.p2align	2
+.LBB1_5:                                @   Parent Loop BB1_1 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	.loc	1 211 17 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:211:17
+	cmp	r3, r0
+	beq	.LBB1_11
+.Ltmp90:
+@ %bb.6:                                @   in Loop: Header=BB1_5 Depth=2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 215 21                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:215:21
+	uxtb	r1, r5
+.Ltmp91:
+	.loc	1 211 20                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:211:20
+	adds	r0, #1
+.Ltmp92:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	.loc	1 209 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:9
+	cmp	r1, #0
+	.loc	1 209 17 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:17
+	sub.w	r5, r5, #1
+.Ltmp93:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	.loc	1 215 21 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:215:21
+	ldrb.w	r4, [r12, r1]
+	.loc	1 215 19 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:215:19
+	strb	r4, [r7], #1
+.Ltmp94:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	.loc	1 209 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:209:9
+	bne	.LBB1_5
+.Ltmp95:
+@ %bb.7:                                @   in Loop: Header=BB1_1 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	.loc	1 217 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:217:13
+	cmp	r0, r2
+	blt	.LBB1_9
+	b	.LBB1_13
+.Ltmp96:
+	.p2align	2
+.LBB1_8:                                @   in Loop: Header=BB1_1 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:0
+	mov	r7, r10
+.Ltmp97:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	.loc	1 217 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:217:13
+	cmp	r0, r2
+	bge	.LBB1_13
+.Ltmp98:
+.LBB1_9:                                @   in Loop: Header=BB1_1 Depth=1
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 221 15 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:221:15
+	mov	r10, r7
+	movs	r1, #46
+.Ltmp99:
+	.loc	1 217 16                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:217:16
+	adds	r0, #1
+.Ltmp100:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	.loc	1 221 15                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:221:15
+	strb	r1, [r10], #1
+.Ltmp101:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	.loc	1 200 5                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:5
+	ldr	r1, [sp]                        @ 4-byte Reload
+	cmp	r9, r1
+.Ltmp102:
+	.loc	1 222 11                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:222:11
+	add.w	r9, r9, #1
+.Ltmp103:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:n <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	.loc	1 200 5                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:200:5
+	bne	.LBB1_1
+.Ltmp104:
+@ %bb.10:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r10
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:5
+	movs	r0, #0
+.Ltmp105:
+	.loc	1 224 11 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:224:11
+	strb	r0, [r7]
+	b	.LBB1_12
+.Ltmp106:
+.LBB1_11:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 11 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:11
+	mov.w	lr, #0
+.Ltmp107:
+.LBB1_12:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 226 1 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:226:1
+	mov	r0, lr
+	add	sp, #12
+	pop.w	{r4, r5, r6, r7, r8, r9, r10, r11, pc}
+.Ltmp108:
+.LBB1_13:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:ap <- $r9
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:rp <- $r7
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:i <- $r5
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:buflen <- $r2
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:len <- [DW_OP_plus_uconst 1, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa_r:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:1
+	mov.w	lr, #0
+	b	.LBB1_12
 .Lfunc_end1:
 	.size	netdev_ip4addr_ntoa_r, .Lfunc_end1-netdev_ip4addr_ntoa_r
 	.cfi_endproc
@@ -889,31 +1069,29 @@ netdev_ip4addr_ntoa_r:
 	.thumb_func
 netdev_ip4addr_ntoa:
 .Lfunc_begin2:
-	.loc	1 238 0                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:238:0
+	.loc	1 238 0 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:238:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa:addr <- $r0
+	@DEBUG_VALUE: netdev_ip4addr_ntoa:addr <- $r0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-.Ltmp85:
-	.loc	1 240 34 prologue_end           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:240:34
-	ldr	r0, [sp, #4]
-	.loc	1 240 12 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:240:12
+.Ltmp109:
+	.loc	1 240 12 prologue_end           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:240:12
 	movw	r1, :lower16:netdev_ip4addr_ntoa.str
-	movt	r1, :upper16:netdev_ip4addr_ntoa.str
 	movs	r2, #16
+	@DEBUG_VALUE: netdev_ip4addr_ntoa:addr <- $r0
+	movt	r1, :upper16:netdev_ip4addr_ntoa.str
 	bl	netdev_ip4addr_ntoa_r
-	.loc	1 240 5                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:240:5
-	add	sp, #8
+.Ltmp110:
+	@DEBUG_VALUE: netdev_ip4addr_ntoa:addr <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 240 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:240:5
 	pop	{r7, pc}
-.Ltmp86:
+.Ltmp111:
 .Lfunc_end2:
 	.size	netdev_ip4addr_ntoa, .Lfunc_end2-netdev_ip4addr_ntoa
 	.cfi_endproc
@@ -933,45 +1111,33 @@ netdev_ipaddr_addr:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: netdev_ipaddr_addr:cp <- $r0
+	@DEBUG_VALUE: netdev_ipaddr_addr:cp <- $r0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-.Ltmp87:
-	.loc	1 255 29 prologue_end           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:255:29
-	ldr	r0, [sp, #8]
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
 	add	r1, sp, #4
-	.loc	1 255 9 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:255:9
+	@DEBUG_VALUE: netdev_ipaddr_addr:cp <- $r0
+.Ltmp112:
+	.loc	1 255 9 prologue_end            @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:255:9
 	bl	netdev_ip4addr_aton
-.Ltmp88:
-	.loc	1 255 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:255:9
-	cbz	r0, .LBB3_2
-	b	.LBB3_1
-.LBB3_1:
-.Ltmp89:
-	.loc	1 256 16 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:256:16
-	ldr	r0, [sp, #4]
-	.loc	1 256 9 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:256:9
-	str	r0, [sp, #12]
-	b	.LBB3_3
-.Ltmp90:
-.LBB3_2:
-	.loc	1 0 9                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:9
-	mov.w	r0, #-1
-	.loc	1 258 5 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:258:5
-	str	r0, [sp, #12]
-	b	.LBB3_3
-.LBB3_3:
-	.loc	1 259 1                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:259:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
+.Ltmp113:
+	@DEBUG_VALUE: netdev_ipaddr_addr:cp <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 255 9 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:255:9
+	ldr	r1, [sp, #4]
+	cmp	r0, #0
+	it	eq
+	moveq.w	r1, #-1
+	.loc	1 259 1 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:259:1
+	mov	r0, r1
+	add	sp, #8
 	pop	{r7, pc}
-.Ltmp91:
+.Ltmp114:
 .Lfunc_end3:
 	.size	netdev_ipaddr_addr, .Lfunc_end3-netdev_ipaddr_addr
 	.cfi_endproc
@@ -991,78 +1157,69 @@ netdev_inet_ntop:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: netdev_inet_ntop:af <- $r0
+	@DEBUG_VALUE: netdev_inet_ntop:af <- $r0
+	@DEBUG_VALUE: netdev_inet_ntop:src <- $r1
+	@DEBUG_VALUE: netdev_inet_ntop:dst <- $r2
+	@DEBUG_VALUE: netdev_inet_ntop:size <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:size_int <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:ret <- 0
+	.loc	1 561 9 prologue_end            @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:561:9
+	cmp	r0, #2
+	@DEBUG_VALUE: netdev_inet_ntop:size_int <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:size <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:dst <- $r2
+	@DEBUG_VALUE: netdev_inet_ntop:src <- $r1
+	mov.w	r0, #0
+.Ltmp115:
+	@DEBUG_VALUE: netdev_inet_ntop:af <- [DW_OP_LLVM_entry_value 1] $r0
+	bne	.LBB4_3
+.Ltmp116:
+@ %bb.1:
+	@DEBUG_VALUE: netdev_inet_ntop:size_int <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:size <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:dst <- $r2
+	@DEBUG_VALUE: netdev_inet_ntop:src <- $r1
+	@DEBUG_VALUE: netdev_inet_ntop:af <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_inet_ntop:ret <- 0
+	cmp	r3, #0
+	.loc	1 579 1                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:579:1
+	it	mi
+	bxmi	lr
+.Ltmp117:
+.LBB4_2:
+	@DEBUG_VALUE: netdev_inet_ntop:size_int <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:size <- $r3
+	@DEBUG_VALUE: netdev_inet_ntop:dst <- $r2
+	@DEBUG_VALUE: netdev_inet_ntop:src <- $r1
+	@DEBUG_VALUE: netdev_inet_ntop:af <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_inet_ntop:ret <- 0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #24]
-	str	r1, [sp, #20]
-	str	r2, [sp, #16]
-	str	r3, [sp, #12]
-	movs	r0, #0
-.Ltmp92:
-	.loc	1 559 17 prologue_end           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:559:17
-	str	r0, [sp, #8]
-	.loc	1 560 25                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:560:25
-	ldr	r0, [sp, #12]
-	.loc	1 560 9 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:560:9
-	str	r0, [sp, #4]
-.Ltmp93:
-	.loc	1 561 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:561:9
-	ldr	r0, [sp, #4]
-.Ltmp94:
-	.loc	1 561 9 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:561:9
-	cmp.w	r0, #-1
-	bgt	.LBB4_2
-	b	.LBB4_1
-.LBB4_1:
-	.loc	1 0 9                           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:9
-	movs	r0, #0
-.Ltmp95:
-	.loc	1 563 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:563:9
-	str	r0, [sp, #28]
-	b	.LBB4_6
-.Ltmp96:
-.LBB4_2:
-	.loc	1 565 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:565:13
-	ldr	r0, [sp, #24]
-	.loc	1 565 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:565:5
-	cmp	r0, #2
-	bne	.LBB4_4
-	b	.LBB4_3
-.LBB4_3:
-.Ltmp97:
-	.loc	1 569 58 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:569:58
-	ldr	r0, [sp, #20]
-	.loc	1 569 63 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:569:63
-	ldr	r1, [sp, #16]
-	.loc	1 569 68                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:569:68
-	ldr	r2, [sp, #4]
+.Ltmp118:
 	.loc	1 569 16                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:569:16
+	mov	r0, r1
+	mov	r1, r2
+.Ltmp119:
+	@DEBUG_VALUE: netdev_inet_ntop:src <- [DW_OP_LLVM_entry_value 1] $r1
+	mov	r2, r3
+.Ltmp120:
+	@DEBUG_VALUE: netdev_inet_ntop:dst <- [DW_OP_LLVM_entry_value 1] $r2
 	bl	netdev_ip4addr_ntoa_r
-	.loc	1 569 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:569:9
-	str	r0, [sp, #28]
-	b	.LBB4_6
-.LBB4_4:
-	.loc	1 576 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:576:9
-	b	.LBB4_5
-.Ltmp98:
-.LBB4_5:
-	.loc	1 578 12                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:578:12
-	ldr	r0, [sp, #8]
-	.loc	1 578 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:578:5
-	str	r0, [sp, #28]
-	b	.LBB4_6
-.LBB4_6:
+.Ltmp121:
+	@DEBUG_VALUE: netdev_inet_ntop:size <- [DW_OP_LLVM_entry_value 1] $r3
+	.loc	1 0 16 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:16
+	pop.w	{r7, lr}
+.Ltmp122:
+.LBB4_3:
+	@DEBUG_VALUE: netdev_inet_ntop:af <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_inet_ntop:ret <- 0
 	.loc	1 579 1 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:579:1
-	ldr	r0, [sp, #28]
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp99:
+	bx	lr
+.Ltmp123:
 .Lfunc_end4:
 	.size	netdev_inet_ntop, .Lfunc_end4-netdev_inet_ntop
 	.cfi_endproc
@@ -1082,74 +1239,553 @@ netdev_inet_pton:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: netdev_inet_pton:af <- $r0
+	@DEBUG_VALUE: netdev_inet_pton:af <- $r0
+	@DEBUG_VALUE: netdev_inet_pton:src <- $r1
+	@DEBUG_VALUE: netdev_inet_pton:dst <- $r2
+	.loc	1 588 5 prologue_end            @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:588:5
+	cmp	r0, #2
+	@DEBUG_VALUE: netdev_inet_pton:dst <- $r2
+	@DEBUG_VALUE: netdev_inet_pton:src <- $r1
+	bne	.LBB5_2
+.Ltmp124:
+@ %bb.1:
+	@DEBUG_VALUE: netdev_inet_pton:dst <- $r2
+	@DEBUG_VALUE: netdev_inet_pton:src <- $r1
+	@DEBUG_VALUE: netdev_inet_pton:af <- $r0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-	str	r2, [sp, #4]
-.Ltmp100:
-	.loc	1 588 13 prologue_end           @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:588:13
-	ldr	r0, [sp, #12]
-	.loc	1 588 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:588:5
-	cmp	r0, #2
-	bne	.LBB5_2
-	b	.LBB5_1
-.LBB5_1:
-.Ltmp101:
-	.loc	1 592 35 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:592:35
-	ldr	r0, [sp, #8]
-	.loc	1 592 54 is_stmt 0              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:592:54
-	ldr	r1, [sp, #4]
+.Ltmp125:
 	.loc	1 592 15                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:592:15
+	mov	r0, r1
+.Ltmp126:
+	@DEBUG_VALUE: netdev_inet_pton:af <- [DW_OP_LLVM_entry_value 1] $r0
+	mov	r1, r2
+.Ltmp127:
+	@DEBUG_VALUE: netdev_inet_pton:src <- [DW_OP_LLVM_entry_value 1] $r1
 	bl	netdev_ip4addr_aton
-	.loc	1 592 13                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:592:13
-	str	r0, [sp]
-	.loc	1 593 9 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:593:9
-	b	.LBB5_3
-.LBB5_2:
-	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:9
-	mov.w	r0, #-1
-	.loc	1 610 13 is_stmt 1              @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:610:13
-	str	r0, [sp]
-	.loc	1 611 9                         @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:611:9
-	b	.LBB5_3
-.Ltmp102:
-.LBB5_3:
-	.loc	1 613 12                        @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:613:12
-	ldr	r0, [sp]
-	.loc	1 613 5 is_stmt 0               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:613:5
-	add	sp, #16
+.Ltmp128:
+	@DEBUG_VALUE: netdev_inet_pton:dst <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: netdev_inet_pton:err <- $r0
+	.loc	1 0 15 is_stmt 0                @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:0:15
 	pop	{r7, pc}
-.Ltmp103:
+.Ltmp129:
+.LBB5_2:
+	@DEBUG_VALUE: netdev_inet_pton:dst <- $r2
+	@DEBUG_VALUE: netdev_inet_pton:src <- $r1
+	@DEBUG_VALUE: netdev_inet_pton:af <- $r0
+	mov.w	r0, #-1
+.Ltmp130:
+	@DEBUG_VALUE: netdev_inet_pton:af <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: netdev_inet_pton:err <- $r0
+	.loc	1 613 5 is_stmt 1               @ rt-thread/components/net/netdev/src/netdev_ipaddr.c:613:5
+	bx	lr
+.Ltmp131:
 .Lfunc_end5:
 	.size	netdev_inet_pton, .Lfunc_end5-netdev_inet_pton
 	.cfi_endproc
 	.cantunwind
 	.fnend
                                         @ -- End function
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	"0"
-	.size	.L.str, 2
-
-	.type	.L__FUNCTION__.netdev_ip4addr_aton,%object @ @__FUNCTION__.netdev_ip4addr_aton
-.L__FUNCTION__.netdev_ip4addr_aton:
-	.asciz	"netdev_ip4addr_aton"
-	.size	.L__FUNCTION__.netdev_ip4addr_aton, 20
-
 	.type	netdev_ip4addr_ntoa.str,%object @ @netdev_ip4addr_ntoa.str
 	.section	.bss.netdev_ip4addr_ntoa.str,"aw",%nobits
 netdev_ip4addr_ntoa.str:
 	.zero	16
 	.size	netdev_ip4addr_ntoa.str, 16
 
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp7-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp7-.Lfunc_begin0
+	.long	.Ltmp9-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp9-.Lfunc_begin0
+	.long	.Ltmp12-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp12-.Lfunc_begin0
+	.long	.Ltmp13-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp13-.Lfunc_begin0
+	.long	.Ltmp14-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp17-.Lfunc_begin0
+	.long	.Ltmp18-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp25-.Lfunc_begin0
+	.long	.Ltmp26-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp32-.Lfunc_begin0
+	.long	.Ltmp33-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp22-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	.Ltmp23-.Lfunc_begin0
+	.long	.Ltmp32-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	.Ltmp32-.Lfunc_begin0
+	.long	.Ltmp33-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp34-.Lfunc_begin0
+	.long	.Ltmp39-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	.Ltmp40-.Lfunc_begin0
+	.long	.Ltmp70-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	93                              @ DW_OP_reg13
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp22-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp23-.Lfunc_begin0
+	.long	.Ltmp32-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp32-.Lfunc_begin0
+	.long	.Ltmp33-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	93                              @ DW_OP_reg13
+	.long	.Ltmp34-.Lfunc_begin0
+	.long	.Ltmp39-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp40-.Lfunc_begin0
+	.long	.Ltmp46-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp49-.Lfunc_begin0
+	.long	.Ltmp70-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp7-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp11-.Lfunc_begin0
+	.long	.Ltmp12-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp13-.Lfunc_begin0
+	.long	.Ltmp17-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp18-.Lfunc_begin0
+	.long	.Ltmp22-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp23-.Lfunc_begin0
+	.long	.Ltmp25-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp27-.Lfunc_begin0
+	.long	.Ltmp30-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp31-.Lfunc_begin0
+	.long	.Ltmp39-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp40-.Lfunc_begin0
+	.long	.Ltmp70-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp15-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp15-.Lfunc_begin0
+	.long	.Ltmp17-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp18-.Lfunc_begin0
+	.long	.Ltmp22-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp23-.Lfunc_begin0
+	.long	.Ltmp32-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp34-.Lfunc_begin0
+	.long	.Ltmp39-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp40-.Lfunc_begin0
+	.long	.Ltmp70-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp8-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	58                              @ DW_OP_lit10
+	.long	.Ltmp8-.Lfunc_begin0
+	.long	.Ltmp11-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	64                              @ DW_OP_lit16
+	.long	.Ltmp11-.Lfunc_begin0
+	.long	.Ltmp13-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	58                              @ DW_OP_lit10
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp73-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp73-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp71-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp71-.Lfunc_begin1
+	.long	.Ltmp72-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	94                              @ DW_OP_reg14
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp71-.Lfunc_begin1
+	.long	.Ltmp76-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp76-.Lfunc_begin1
+	.long	.Ltmp89-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp92-.Lfunc_begin1
+	.long	.Ltmp95-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp96-.Lfunc_begin1
+	.long	.Ltmp97-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp100-.Lfunc_begin1
+	.long	.Ltmp105-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp76-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	89                              @ DW_OP_reg9
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp73-.Lfunc_begin1
+	.long	.Ltmp75-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp74-.Lfunc_begin1
+	.long	.Ltmp76-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp76-.Lfunc_begin1
+	.long	.Ltmp88-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	90                              @ DW_OP_reg10
+	.long	.Ltmp88-.Lfunc_begin1
+	.long	.Ltmp96-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp96-.Lfunc_begin1
+	.long	.Ltmp97-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	90                              @ DW_OP_reg10
+	.long	.Ltmp97-.Lfunc_begin1
+	.long	.Ltmp101-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp101-.Lfunc_begin1
+	.long	.Ltmp104-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	90                              @ DW_OP_reg10
+	.long	.Ltmp104-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp81-.Lfunc_begin1
+	.long	.Ltmp86-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp86-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp82-.Lfunc_begin1
+	.long	.Ltmp83-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp110-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp110-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp113-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp113-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp115-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp115-.Lfunc_begin4
+	.long	.Lfunc_end4-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp119-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp119-.Lfunc_begin4
+	.long	.Ltmp122-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp120-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp120-.Lfunc_begin4
+	.long	.Ltmp122-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp121-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp121-.Lfunc_begin4
+	.long	.Ltmp122-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp121-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp126-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp126-.Lfunc_begin5
+	.long	.Ltmp129-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp129-.Lfunc_begin5
+	.long	.Ltmp130-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp130-.Lfunc_begin5
+	.long	.Lfunc_end5-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp127-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp127-.Lfunc_begin5
+	.long	.Ltmp129-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp129-.Lfunc_begin5
+	.long	.Lfunc_end5-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp128-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp128-.Lfunc_begin5
+	.long	.Ltmp129-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp129-.Lfunc_begin5
+	.long	.Lfunc_end5-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp128-.Lfunc_begin5
+	.long	.Ltmp129-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp130-.Lfunc_begin5
+	.long	.Lfunc_end5-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1212,7 +1848,7 @@ netdev_ip4addr_ntoa.str:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1332,6 +1968,36 @@ netdev_ip4addr_ntoa.str:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	15                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	16                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	17                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1354,11 +2020,11 @@ netdev_ip4addr_ntoa.str:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	16                              @ Abbreviation Code
+	.byte	18                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1369,11 +2035,11 @@ netdev_ip4addr_ntoa.str:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	17                              @ Abbreviation Code
+	.byte	19                              @ Abbreviation Code
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1384,12 +2050,27 @@ netdev_ip4addr_ntoa.str:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	18                              @ Abbreviation Code
+	.byte	20                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	28                              @ DW_AT_const_value
+	.byte	15                              @ DW_FORM_udata
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	21                              @ Abbreviation Code
 	.byte	38                              @ DW_TAG_const_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	19                              @ Abbreviation Code
+	.byte	22                              @ Abbreviation Code
 	.byte	15                              @ DW_TAG_pointer_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	0                               @ EOM(1)
@@ -1402,7 +2083,7 @@ netdev_ip4addr_ntoa.str:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x33d DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x354 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1410,7 +2091,7 @@ netdev_ip4addr_ntoa.str:
 	.long	.Linfo_string2                  @ DW_AT_comp_dir
 	.long	0                               @ DW_AT_low_pc
 	.long	.Ldebug_ranges0                 @ DW_AT_ranges
-	.byte	2                               @ Abbrev [2] 0x26:0x37 DW_TAG_subprogram
+	.byte	2                               @ Abbrev [2] 0x26:0x38 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1419,87 +2100,85 @@ netdev_ip4addr_ntoa.str:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	237                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	766                             @ DW_AT_type
+	.long	789                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
 	.byte	3                               @ Abbrev [3] 0x3d:0x11 DW_TAG_variable
 	.long	.Linfo_string3                  @ DW_AT_name
-	.long	93                              @ DW_AT_type
+	.long	94                              @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
 	.byte	239                             @ DW_AT_decl_line
 	.byte	5                               @ DW_AT_location
 	.byte	3
 	.long	netdev_ip4addr_ntoa.str
-	.byte	4                               @ Abbrev [4] 0x4e:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	4                               @ Abbrev [4] 0x4e:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string11                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	237                             @ DW_AT_decl_line
-	.long	167                             @ DW_AT_type
+	.long	168                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	5                               @ Abbrev [5] 0x5d:0xc DW_TAG_array_type
-	.long	105                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x62:0x6 DW_TAG_subrange_type
-	.long	112                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x5e:0xc DW_TAG_array_type
+	.long	106                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x63:0x6 DW_TAG_subrange_type
+	.long	113                             @ DW_AT_type
 	.byte	16                              @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0x69:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x6a:0x7 DW_TAG_base_type
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	6                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	8                               @ Abbrev [8] 0x70:0x7 DW_TAG_base_type
+	.byte	8                               @ Abbrev [8] 0x71:0x7 DW_TAG_base_type
 	.long	.Linfo_string5                  @ DW_AT_name
 	.byte	8                               @ DW_AT_byte_size
 	.byte	7                               @ DW_AT_encoding
-	.byte	9                               @ Abbrev [9] 0x77:0xb DW_TAG_typedef
-	.long	130                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x78:0xb DW_TAG_typedef
+	.long	131                             @ DW_AT_type
 	.long	.Linfo_string7                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x82:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x83:0x7 DW_TAG_base_type
 	.long	.Linfo_string6                  @ DW_AT_name
 	.byte	8                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	9                               @ Abbrev [9] 0x89:0xb DW_TAG_typedef
-	.long	148                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x8a:0xb DW_TAG_typedef
+	.long	149                             @ DW_AT_type
 	.long	.Linfo_string9                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	64                              @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x94:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x95:0x7 DW_TAG_base_type
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	10                              @ Abbrev [10] 0x9b:0x5 DW_TAG_pointer_type
-	.long	119                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0xa0:0x7 DW_TAG_base_type
+	.byte	10                              @ Abbrev [10] 0x9c:0x5 DW_TAG_pointer_type
+	.long	120                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0xa1:0x7 DW_TAG_base_type
 	.long	.Linfo_string10                 @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	10                              @ Abbrev [10] 0xa7:0x5 DW_TAG_pointer_type
-	.long	172                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0xac:0x5 DW_TAG_const_type
-	.long	177                             @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0xb1:0xb DW_TAG_typedef
-	.long	188                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0xa8:0x5 DW_TAG_pointer_type
+	.long	173                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0xad:0x5 DW_TAG_const_type
+	.long	178                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xb2:0xb DW_TAG_typedef
+	.long	189                             @ DW_AT_type
 	.long	.Linfo_string13                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	101                             @ DW_AT_decl_line
-	.byte	12                              @ Abbrev [12] 0xbc:0x15 DW_TAG_structure_type
+	.byte	12                              @ Abbrev [12] 0xbd:0x15 DW_TAG_structure_type
 	.long	.Linfo_string12                 @ DW_AT_name
 	.byte	4                               @ DW_AT_byte_size
 	.byte	3                               @ DW_AT_decl_file
 	.byte	98                              @ DW_AT_decl_line
-	.byte	13                              @ Abbrev [13] 0xc4:0xc DW_TAG_member
+	.byte	13                              @ Abbrev [13] 0xc5:0xc DW_TAG_member
 	.long	.Linfo_string11                 @ DW_AT_name
-	.long	137                             @ DW_AT_type
+	.long	138                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	100                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	10                              @ Abbrev [10] 0xd1:0x5 DW_TAG_pointer_type
-	.long	177                             @ DW_AT_type
-	.byte	2                               @ Abbrev [2] 0xd6:0x7a DW_TAG_subprogram
+	.byte	10                              @ Abbrev [10] 0xd2:0x5 DW_TAG_pointer_type
+	.long	178                             @ DW_AT_type
+	.byte	2                               @ Abbrev [2] 0xd7:0x80 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1508,66 +2187,54 @@ netdev_ip4addr_ntoa.str:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	38                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	160                             @ DW_AT_type
+	.long	161                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	4                               @ Abbrev [4] 0xed:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	48
-	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	4                               @ Abbrev [4] 0xee:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
+	.long	.Linfo_string22                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	38                              @ DW_AT_decl_line
-	.long	782                             @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0xfb:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	44
+	.long	805                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0xfd:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string11                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	38                              @ DW_AT_decl_line
-	.long	209                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x109:0xe DW_TAG_variable
+	.long	210                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x10c:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	40
-	.long	.Linfo_string22                 @ DW_AT_name
+	.byte	0
+	.long	.Linfo_string21                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.byte	40                              @ DW_AT_decl_line
-	.long	137                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x117:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	39
+	.byte	43                              @ DW_AT_decl_line
+	.long	815                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x11a:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string23                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.byte	41                              @ DW_AT_decl_line
-	.long	119                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x125:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	38
+	.byte	44                              @ DW_AT_decl_line
+	.long	827                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x129:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string24                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	42                              @ DW_AT_decl_line
-	.long	105                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x133:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.long	106                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x138:0xf DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string25                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.byte	43                              @ DW_AT_decl_line
-	.long	792                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x141:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	40                              @ DW_AT_decl_line
+	.long	138                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x147:0xf DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string26                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.byte	44                              @ DW_AT_decl_line
-	.long	804                             @ DW_AT_type
+	.byte	41                              @ DW_AT_decl_line
+	.long	120                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	2                               @ Abbrev [2] 0x150:0xb2 DW_TAG_subprogram
+	.byte	2                               @ Abbrev [2] 0x157:0xba DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1576,98 +2243,79 @@ netdev_ip4addr_ntoa.str:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	185                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	766                             @ DW_AT_type
+	.long	789                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	4                               @ Abbrev [4] 0x167:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
+	.byte	4                               @ Abbrev [4] 0x16e:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc6                    @ DW_AT_location
 	.long	.Linfo_string11                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	185                             @ DW_AT_decl_line
-	.long	167                             @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0x175:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
-	.long	.Linfo_string27                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	185                             @ DW_AT_decl_line
-	.long	766                             @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0x183:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.long	168                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x17d:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string28                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	185                             @ DW_AT_decl_line
-	.long	160                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x191:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.long	789                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x18c:0xd DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	82
 	.long	.Linfo_string29                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.byte	187                             @ DW_AT_decl_line
-	.long	137                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x19f:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	17
-	.long	.Linfo_string30                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	188                             @ DW_AT_decl_line
-	.long	809                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x1ad:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
-	.long	.Linfo_string31                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	189                             @ DW_AT_decl_line
-	.long	766                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x1bb:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string32                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	190                             @ DW_AT_decl_line
-	.long	155                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x1c9:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	7
-	.long	.Linfo_string33                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	191                             @ DW_AT_decl_line
-	.long	119                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x1d7:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	6
-	.long	.Linfo_string34                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	192                             @ DW_AT_decl_line
-	.long	119                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x1e5:0xe DW_TAG_variable
+	.byte	185                             @ DW_AT_decl_line
+	.long	161                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x199:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	5
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	188                             @ DW_AT_decl_line
+	.long	832                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1a7:0xf DW_TAG_variable
+	.long	.Ldebug_loc8                    @ DW_AT_location
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	194                             @ DW_AT_decl_line
+	.long	161                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1b6:0xf DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
+	.long	.Linfo_string31                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	190                             @ DW_AT_decl_line
+	.long	156                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1c5:0xf DW_TAG_variable
+	.long	.Ldebug_loc10                   @ DW_AT_location
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	187                             @ DW_AT_decl_line
+	.long	138                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1d4:0xf DW_TAG_variable
+	.long	.Ldebug_loc11                   @ DW_AT_location
+	.long	.Linfo_string33                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	192                             @ DW_AT_decl_line
+	.long	120                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1e3:0xf DW_TAG_variable
+	.long	.Ldebug_loc12                   @ DW_AT_location
+	.long	.Linfo_string34                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	189                             @ DW_AT_decl_line
+	.long	789                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x1f2:0xf DW_TAG_variable
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string35                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	193                             @ DW_AT_decl_line
-	.long	119                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x1f3:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	120                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x201:0xf DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
 	.long	.Linfo_string36                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.byte	194                             @ DW_AT_decl_line
-	.long	160                             @ DW_AT_type
+	.byte	191                             @ DW_AT_decl_line
+	.long	120                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	2                               @ Abbrev [2] 0x202:0x34 DW_TAG_subprogram
+	.byte	2                               @ Abbrev [2] 0x211:0x35 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1676,26 +2324,24 @@ netdev_ip4addr_ntoa.str:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	251                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	771                             @ DW_AT_type
+	.long	794                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	4                               @ Abbrev [4] 0x219:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string21                 @ DW_AT_name
+	.byte	4                               @ Abbrev [4] 0x228:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc16                   @ DW_AT_location
+	.long	.Linfo_string22                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	251                             @ DW_AT_decl_line
-	.long	782                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x227:0xe DW_TAG_variable
+	.long	805                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x237:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	4
-	.long	.Linfo_string22                 @ DW_AT_name
+	.long	.Linfo_string25                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	253                             @ DW_AT_decl_line
-	.long	177                             @ DW_AT_type
+	.long	178                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	15                              @ Abbrev [15] 0x236:0x73 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x246:0x76 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1704,58 +2350,46 @@ netdev_ip4addr_ntoa.str:
 	.byte	1                               @ DW_AT_decl_file
 	.short	554                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	782                             @ DW_AT_type
+	.long	805                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x24e:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	18                              @ Abbrev [18] 0x25e:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	554                             @ DW_AT_decl_line
-	.long	160                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x25d:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.long	161                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x26e:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string38                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	554                             @ DW_AT_decl_line
-	.long	821                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x26c:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.long	844                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x27e:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string39                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	554                             @ DW_AT_decl_line
-	.long	766                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x27b:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	789                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x28e:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string40                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	554                             @ DW_AT_decl_line
-	.long	827                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x28a:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	850                             @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x29e:0x10 DW_TAG_variable
+	.long	.Ldebug_loc21                   @ DW_AT_location
 	.long	.Linfo_string42                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.short	559                             @ DW_AT_decl_line
-	.long	782                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x299:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.short	560                             @ DW_AT_decl_line
+	.long	161                             @ DW_AT_type
+	.byte	20                              @ Abbrev [20] 0x2ae:0xd DW_TAG_variable
+	.byte	0                               @ DW_AT_const_value
 	.long	.Linfo_string43                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.short	560                             @ DW_AT_decl_line
-	.long	160                             @ DW_AT_type
+	.short	559                             @ DW_AT_decl_line
+	.long	805                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	15                              @ Abbrev [15] 0x2a9:0x55 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x2bc:0x59 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1764,75 +2398,67 @@ netdev_ip4addr_ntoa.str:
 	.byte	1                               @ DW_AT_decl_file
 	.short	582                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	160                             @ DW_AT_type
+	.long	161                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x2c1:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	18                              @ Abbrev [18] 0x2d4:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc22                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	582                             @ DW_AT_decl_line
-	.long	160                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x2d0:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	161                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x2e4:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc23                   @ DW_AT_location
 	.long	.Linfo_string38                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	582                             @ DW_AT_decl_line
-	.long	782                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x2df:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	805                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x2f4:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc24                   @ DW_AT_location
 	.long	.Linfo_string39                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	582                             @ DW_AT_decl_line
-	.long	838                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x2ee:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	861                             @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x304:0x10 DW_TAG_variable
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string44                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	587                             @ DW_AT_decl_line
-	.long	160                             @ DW_AT_type
+	.long	161                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	10                              @ Abbrev [10] 0x2fe:0x5 DW_TAG_pointer_type
-	.long	105                             @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0x303:0xb DW_TAG_typedef
-	.long	137                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x315:0x5 DW_TAG_pointer_type
+	.long	106                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x31a:0xb DW_TAG_typedef
+	.long	138                             @ DW_AT_type
 	.long	.Linfo_string18                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	89                              @ DW_AT_decl_line
-	.byte	10                              @ Abbrev [10] 0x30e:0x5 DW_TAG_pointer_type
-	.long	787                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x313:0x5 DW_TAG_const_type
-	.long	105                             @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x318:0xc DW_TAG_array_type
-	.long	137                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x31d:0x6 DW_TAG_subrange_type
-	.long	112                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x325:0x5 DW_TAG_pointer_type
+	.long	810                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x32a:0x5 DW_TAG_const_type
+	.long	106                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x32f:0xc DW_TAG_array_type
+	.long	138                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x334:0x6 DW_TAG_subrange_type
+	.long	113                             @ DW_AT_type
 	.byte	4                               @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	10                              @ Abbrev [10] 0x324:0x5 DW_TAG_pointer_type
-	.long	137                             @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x329:0xc DW_TAG_array_type
-	.long	105                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x32e:0x6 DW_TAG_subrange_type
-	.long	112                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x33b:0x5 DW_TAG_pointer_type
+	.long	138                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x340:0xc DW_TAG_array_type
+	.long	106                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x345:0x6 DW_TAG_subrange_type
+	.long	113                             @ DW_AT_type
 	.byte	3                               @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	10                              @ Abbrev [10] 0x335:0x5 DW_TAG_pointer_type
-	.long	826                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x33a:0x1 DW_TAG_const_type
-	.byte	9                               @ Abbrev [9] 0x33b:0xb DW_TAG_typedef
-	.long	160                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x34c:0x5 DW_TAG_pointer_type
+	.long	849                             @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x351:0x1 DW_TAG_const_type
+	.byte	9                               @ Abbrev [9] 0x352:0xb DW_TAG_typedef
+	.long	161                             @ DW_AT_type
 	.long	.Linfo_string41                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	58                              @ DW_AT_decl_line
-	.byte	19                              @ Abbrev [19] 0x346:0x1 DW_TAG_pointer_type
+	.byte	22                              @ Abbrev [22] 0x35d:0x1 DW_TAG_pointer_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
 	.section	.debug_ranges,"",%progbits
@@ -1895,37 +2521,37 @@ netdev_ip4addr_ntoa.str:
 .Linfo_string20:
 	.asciz	"netdev_inet_pton"              @ string offset=355
 .Linfo_string21:
-	.asciz	"cp"                            @ string offset=372
+	.asciz	"parts"                         @ string offset=372
 .Linfo_string22:
-	.asciz	"val"                           @ string offset=375
+	.asciz	"cp"                            @ string offset=378
 .Linfo_string23:
-	.asciz	"base"                          @ string offset=379
+	.asciz	"pp"                            @ string offset=381
 .Linfo_string24:
 	.asciz	"c"                             @ string offset=384
 .Linfo_string25:
-	.asciz	"parts"                         @ string offset=386
+	.asciz	"val"                           @ string offset=386
 .Linfo_string26:
-	.asciz	"pp"                            @ string offset=392
+	.asciz	"base"                          @ string offset=390
 .Linfo_string27:
-	.asciz	"buf"                           @ string offset=395
+	.asciz	"inv"                           @ string offset=395
 .Linfo_string28:
-	.asciz	"buflen"                        @ string offset=399
+	.asciz	"buf"                           @ string offset=399
 .Linfo_string29:
-	.asciz	"s_addr"                        @ string offset=406
+	.asciz	"buflen"                        @ string offset=403
 .Linfo_string30:
-	.asciz	"inv"                           @ string offset=413
+	.asciz	"len"                           @ string offset=410
 .Linfo_string31:
-	.asciz	"rp"                            @ string offset=417
+	.asciz	"ap"                            @ string offset=414
 .Linfo_string32:
-	.asciz	"ap"                            @ string offset=420
+	.asciz	"s_addr"                        @ string offset=417
 .Linfo_string33:
-	.asciz	"rem"                           @ string offset=423
+	.asciz	"n"                             @ string offset=424
 .Linfo_string34:
-	.asciz	"n"                             @ string offset=427
+	.asciz	"rp"                            @ string offset=426
 .Linfo_string35:
 	.asciz	"i"                             @ string offset=429
 .Linfo_string36:
-	.asciz	"len"                           @ string offset=431
+	.asciz	"rem"                           @ string offset=431
 .Linfo_string37:
 	.asciz	"af"                            @ string offset=435
 .Linfo_string38:
@@ -1937,14 +2563,14 @@ netdev_ip4addr_ntoa.str:
 .Linfo_string41:
 	.asciz	"int32_t"                       @ string offset=451
 .Linfo_string42:
-	.asciz	"ret"                           @ string offset=459
+	.asciz	"size_int"                      @ string offset=459
 .Linfo_string43:
-	.asciz	"size_int"                      @ string offset=463
+	.asciz	"ret"                           @ string offset=468
 .Linfo_string44:
 	.asciz	"err"                           @ string offset=472
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

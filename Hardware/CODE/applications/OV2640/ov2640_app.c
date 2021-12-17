@@ -102,7 +102,7 @@ void ov_data_process(void *parameter)
         {
 			image_len = jpg_len;
             p += jpg_start;
-			image_p=p;
+			image_p=(unsigned char *)p;
 			JPEG_Decode_DMA(&JPEG_Handle, (uint32_t)p, jpg_len ,(uint32_t)rgb_frame_buf );
 			while(Jpeg_HWDecodingEnd == 0)
 				;

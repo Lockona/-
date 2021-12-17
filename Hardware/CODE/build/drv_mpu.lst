@@ -39,124 +39,92 @@ mpu_init:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#40
-	sub	sp, #40
-	.cfi_def_cfa_offset 48
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 40
 .Ltmp0:
 	.loc	2 19 5 prologue_end             @ board/drv_mpu.c:19:5
 	bl	HAL_MPU_Disable
-	movs	r1, #1
+	add	r4, sp, #4
+	movs	r0, #1
 	.loc	2 22 38                         @ board/drv_mpu.c:22:38
-	str	r1, [sp, #8]                    @ 4-byte Spill
-	strb.w	r1, [sp, #24]
+	strh.w	r0, [sp, #4]
 	mov.w	r0, #603979776
 	.loc	2 23 38                         @ board/drv_mpu.c:23:38
-	str	r0, [sp, #28]
+	str	r0, [sp, #8]
 	movs	r0, #18
 	.loc	2 24 38                         @ board/drv_mpu.c:24:38
-	strb.w	r0, [sp, #32]
-	movs	r0, #3
-	.loc	2 25 38                         @ board/drv_mpu.c:25:38
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	strb.w	r0, [sp, #35]
-	movs	r0, #0
-	.loc	2 26 38                         @ board/drv_mpu.c:26:38
-	str	r0, [sp, #20]                   @ 4-byte Spill
-	strb.w	r0, [sp, #39]
-	.loc	2 27 38                         @ board/drv_mpu.c:27:38
-	strb.w	r1, [sp, #38]
-	.loc	2 28 38                         @ board/drv_mpu.c:28:38
-	strb.w	r0, [sp, #37]
-	.loc	2 29 38                         @ board/drv_mpu.c:29:38
-	strb.w	r0, [sp, #25]
-	.loc	2 30 38                         @ board/drv_mpu.c:30:38
-	strb.w	r0, [sp, #34]
-	.loc	2 31 38                         @ board/drv_mpu.c:31:38
-	strb.w	r0, [sp, #33]
-	.loc	2 32 38                         @ board/drv_mpu.c:32:38
-	strb.w	r0, [sp, #36]
-	add	r0, sp, #24
+	strb.w	r0, [sp, #12]
 	.loc	2 34 5                          @ board/drv_mpu.c:34:5
-	str	r0, [sp, #12]                   @ 4-byte Spill
+	mov	r0, r4
+	movs	r5, #3
+	.loc	2 25 38                         @ board/drv_mpu.c:25:38
+	strb.w	r5, [sp, #15]
+	movs	r6, #0
+	.loc	2 31 38                         @ board/drv_mpu.c:31:38
+	strh.w	r6, [sp, #13]
+	mov.w	r7, #65536
+	.loc	2 32 38                         @ board/drv_mpu.c:32:38
+	str	r7, [sp, #16]
+	.loc	2 34 5                          @ board/drv_mpu.c:34:5
 	bl	HAL_MPU_ConfigRegion
-	ldr	r3, [sp, #4]                    @ 4-byte Reload
-	ldr	r2, [sp, #8]                    @ 4-byte Reload
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	movw	r0, #257
 	.loc	2 38 38                         @ board/drv_mpu.c:38:38
-	strb.w	r2, [sp, #24]
-	mov.w	r12, #-1073741824
+	strh.w	r0, [sp, #4]
+	mov.w	r0, #-1073741824
 	.loc	2 39 38                         @ board/drv_mpu.c:39:38
-	str.w	r12, [sp, #28]
-	mov.w	r12, #24
+	str	r0, [sp, #8]
+	movs	r0, #24
 	.loc	2 40 38                         @ board/drv_mpu.c:40:38
-	strb.w	r12, [sp, #32]
+	strb.w	r0, [sp, #12]
+	.loc	2 50 5                          @ board/drv_mpu.c:50:5
+	mov	r0, r4
 	.loc	2 41 38                         @ board/drv_mpu.c:41:38
-	strb.w	r3, [sp, #35]
-	.loc	2 42 38                         @ board/drv_mpu.c:42:38
-	strb.w	r1, [sp, #39]
-	.loc	2 43 38                         @ board/drv_mpu.c:43:38
-	strb.w	r2, [sp, #38]
-	.loc	2 44 38                         @ board/drv_mpu.c:44:38
-	strb.w	r1, [sp, #37]
-	.loc	2 45 38                         @ board/drv_mpu.c:45:38
-	strb.w	r2, [sp, #25]
-	.loc	2 46 38                         @ board/drv_mpu.c:46:38
-	strb.w	r1, [sp, #34]
+	strb.w	r5, [sp, #15]
 	.loc	2 47 38                         @ board/drv_mpu.c:47:38
-	strb.w	r1, [sp, #33]
+	strh.w	r6, [sp, #13]
 	.loc	2 48 38                         @ board/drv_mpu.c:48:38
-	strb.w	r1, [sp, #36]
+	str	r7, [sp, #16]
 	.loc	2 50 5                          @ board/drv_mpu.c:50:5
 	bl	HAL_MPU_ConfigRegion
-	ldr	r3, [sp, #4]                    @ 4-byte Reload
-	ldr	r2, [sp, #8]                    @ 4-byte Reload
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	ldr	r1, [sp, #20]                   @ 4-byte Reload
+	movw	r0, #1025
 	.loc	2 88 38                         @ board/drv_mpu.c:88:38
-	strb.w	r2, [sp, #24]
-	mov.w	r12, #-1879048192
+	strh.w	r0, [sp, #4]
+	mov.w	r0, #-1879048192
 	.loc	2 89 38                         @ board/drv_mpu.c:89:38
-	str.w	r12, [sp, #28]
-	mov.w	r12, #22
+	str	r0, [sp, #8]
+	movs	r0, #22
 	.loc	2 90 38                         @ board/drv_mpu.c:90:38
-	strb.w	r12, [sp, #32]
+	strb.w	r0, [sp, #12]
+	.loc	2 100 5                         @ board/drv_mpu.c:100:5
+	mov	r0, r4
 	.loc	2 91 38                         @ board/drv_mpu.c:91:38
-	strb.w	r3, [sp, #35]
-	.loc	2 92 38                         @ board/drv_mpu.c:92:38
-	strb.w	r1, [sp, #39]
-	.loc	2 93 38                         @ board/drv_mpu.c:93:38
-	strb.w	r2, [sp, #38]
-	.loc	2 94 38                         @ board/drv_mpu.c:94:38
-	strb.w	r1, [sp, #37]
-	movs	r2, #4
-	.loc	2 95 38                         @ board/drv_mpu.c:95:38
-	str	r2, [sp, #16]                   @ 4-byte Spill
-	strb.w	r2, [sp, #25]
-	.loc	2 96 38                         @ board/drv_mpu.c:96:38
-	strb.w	r1, [sp, #34]
+	strb.w	r5, [sp, #15]
 	.loc	2 97 38                         @ board/drv_mpu.c:97:38
-	strb.w	r1, [sp, #33]
+	strh.w	r6, [sp, #13]
 	.loc	2 98 38                         @ board/drv_mpu.c:98:38
-	strb.w	r1, [sp, #36]
+	str	r7, [sp, #16]
 	.loc	2 100 5                         @ board/drv_mpu.c:100:5
 	bl	HAL_MPU_ConfigRegion
-	ldr	r0, [sp, #16]                   @ 4-byte Reload
 	.loc	2 103 5                         @ board/drv_mpu.c:103:5
+	movs	r0, #4
 	bl	HAL_MPU_Enable
 	.loc	2 106 5                         @ board/drv_mpu.c:106:5
 	bl	SCB_EnableICache
 	.loc	2 107 5                         @ board/drv_mpu.c:107:5
 	bl	SCB_EnableDCache
-	ldr	r0, [sp, #20]                   @ 4-byte Reload
 	.loc	2 109 5                         @ board/drv_mpu.c:109:5
-	add	sp, #40
-	pop	{r7, pc}
+	movs	r0, #0
+	add	sp, #20
+	pop	{r4, r5, r6, r7, pc}
 .Ltmp1:
 .Lfunc_end0:
 	.size	mpu_init, .Lfunc_end0-mpu_init
@@ -175,32 +143,31 @@ SCB_EnableICache:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	movw	r0, #60692
+	movs	r1, #0
+	movt	r0, #57344
+.Ltmp2:
 	.loc	4 2232 5 prologue_end           @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2232:5
 	dsb	sy
 	.loc	4 2233 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2233:5
 	isb	sy
-	movw	r1, #61264
-	movt	r1, #57344
-	movs	r0, #0
 	.loc	4 2234 18                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2234:18
-	str	r0, [r1]
+	str.w	r1, [r0, #572]
 	.loc	4 2235 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2235:5
 	dsb	sy
 	.loc	4 2236 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2236:5
 	isb	sy
-	movw	r1, #60692
-	movt	r1, #57344
 	.loc	4 2237 14                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2237:14
-	ldr	r0, [r1]
-	orr	r0, r0, #131072
-	str	r0, [r1]
+	ldr	r1, [r0]
+	orr	r1, r1, #131072
+	str	r1, [r0]
 	.loc	4 2238 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2238:5
 	dsb	sy
 	.loc	4 2239 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2239:5
 	isb	sy
 	.loc	4 2241 1                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2241:1
 	bx	lr
-.Ltmp2:
+.Ltmp3:
 .Lfunc_end1:
 	.size	SCB_EnableICache, .Lfunc_end1-SCB_EnableICache
 	.cfi_endproc
@@ -218,101 +185,98 @@ SCB_EnableDCache:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#12
-	sub	sp, #12
-	.cfi_def_cfa_offset 12
-	movw	r1, #60804
-	movt	r1, #57344
-	movs	r0, #0
-.Ltmp3:
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
+	.cfi_offset lr, -4
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	movw	r0, #60692
+	movs	r1, #0
+	movt	r0, #57344
+	movw	r12, #16352
+.Ltmp4:
 	.loc	4 2288 17 prologue_end          @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2288:17
-	str	r0, [r1]
+	str	r1, [r0, #112]
 	.loc	4 2289 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2289:5
 	dsb	sy
-	movw	r0, #60800
-	movt	r0, #57344
 	.loc	4 2291 19                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2291:19
-	ldr	r0, [r0]
-	.loc	4 2291 12 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2291:12
-	str	r0, [sp, #8]
+	ldr	r1, [r0, #108]
+.Ltmp5:
+	@DEBUG_VALUE: SCB_EnableDCache:ccsidr <- $r1
+	.loc	4 0 19 is_stmt 0                @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:0:19
+	ubfx	r3, r1, #3, #10
 	.loc	4 2294 23 is_stmt 1             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2294:23
-	ldr	r0, [sp, #8]
-	ubfx	r0, r0, #13, #15
-	.loc	4 2294 10 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2294:10
-	str	r0, [sp, #4]
-	.loc	4 2295 5 is_stmt 1              @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2295:5
-	b	.LBB2_1
+	ubfx	r2, r1, #13, #15
+.Ltmp6:
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
+	.loc	4 2295 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2295:5
+	add.w	lr, r3, #1
+	lsls	r3, r3, #30
+.Ltmp7:
+	.p2align	2
 .LBB2_1:                                @ =>This Loop Header: Depth=1
                                         @     Child Loop BB2_2 Depth 2
-.Ltmp4:
-	.loc	4 2296 25                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2296:25
-	ldr	r0, [sp, #8]
-	ubfx	r0, r0, #3, #10
-	.loc	4 2296 12 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2296:12
-	str	r0, [sp]
-	.loc	4 2297 7 is_stmt 1              @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2297:7
-	b	.LBB2_2
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
+	.loc	4 0 5 is_stmt 0                 @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:0:5
+	and.w	r1, r12, r2, lsl #5
+.Ltmp8:
+	@DEBUG_VALUE: SCB_EnableDCache:ways <- [DW_OP_constu 3, DW_OP_shr, DW_OP_constu 1023, DW_OP_and, DW_OP_stack_value] undef
+	mov	r4, r3
+	mov	r5, lr
+.Ltmp9:
+	.p2align	2
 .LBB2_2:                                @   Parent Loop BB2_1 Depth=1
                                         @ =>  This Inner Loop Header: Depth=2
-.Ltmp5:
-	.loc	4 2298 25                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2298:25
-	ldr	r1, [sp, #4]
-	.loc	4 2299 25                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2299:25
-	ldr	r0, [sp]
-	.loc	4 2299 30 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2299:30
-	lsls	r0, r0, #30
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
+	@DEBUG_VALUE: SCB_EnableDCache:ways <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r5
 	.loc	4 2298 73 is_stmt 1             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2298:73
-	bfi	r0, r1, #5, #9
-	movw	r1, #61280
-	movt	r1, #57344
-	.loc	4 2298 20 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2298:20
-	str	r0, [r1]
-	.loc	4 2303 7 is_stmt 1              @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2303:7
-	b	.LBB2_3
-.Ltmp6:
-.LBB2_3:                                @   in Loop: Header=BB2_2 Depth=2
-	.loc	4 2303 20 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2303:20
-	ldr	r0, [sp]
-	subs	r1, r0, #1
-	str	r1, [sp]
-.Ltmp7:
-	.loc	4 2303 7                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2303:7
-	cmp	r0, #0
-	bne	.LBB2_2
-	b	.LBB2_4
-.Ltmp8:
-.LBB2_4:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	4 2304 5 is_stmt 1              @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2304:5
-	b	.LBB2_5
-.Ltmp9:
-.LBB2_5:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	4 2304 17 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2304:17
-	ldr	r0, [sp, #4]
-	subs	r1, r0, #1
-	str	r1, [sp, #4]
+	orr.w	r6, r4, r1
 .Ltmp10:
-	.loc	4 2304 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2304:5
-	cmp	r0, #0
-	bne	.LBB2_1
-	b	.LBB2_6
+	.loc	4 2303 23                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2303:23
+	subs	r5, #1
 .Ltmp11:
-.LBB2_6:
+	add.w	r4, r4, #-1073741824
+.Ltmp12:
+	.loc	4 2298 20                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2298:20
+	str.w	r6, [r0, #588]
+.Ltmp13:
+	@DEBUG_VALUE: SCB_EnableDCache:ways <- [DW_OP_constu 2, DW_OP_minus, DW_OP_stack_value] $r5
+	.loc	4 2303 7                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2303:7
+	bne	.LBB2_2
+.Ltmp14:
+@ %bb.3:                                @   in Loop: Header=BB2_1 Depth=1
+	@DEBUG_VALUE: SCB_EnableDCache:ways <- [DW_OP_constu 2, DW_OP_minus, DW_OP_stack_value] $r5
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
+	.loc	4 2304 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2304:5
+	cmp	r2, #0
+.Ltmp15:
+	.loc	4 2304 17 is_stmt 0             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2304:17
+	sub.w	r2, r2, #1
+.Ltmp16:
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
+	.loc	4 2304 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2304:5
+	bne	.LBB2_1
+.Ltmp17:
+@ %bb.4:
+	@DEBUG_VALUE: SCB_EnableDCache:ways <- [DW_OP_constu 2, DW_OP_minus, DW_OP_stack_value] $r5
+	@DEBUG_VALUE: SCB_EnableDCache:sets <- $r2
 	.loc	4 2305 5 is_stmt 1              @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2305:5
 	dsb	sy
-	movw	r1, #60692
-	movt	r1, #57344
 	.loc	4 2307 14                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2307:14
-	ldr	r0, [r1]
-	orr	r0, r0, #65536
-	str	r0, [r1]
+	ldr	r1, [r0]
+	orr	r1, r1, #65536
+	str	r1, [r0]
 	.loc	4 2309 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2309:5
 	dsb	sy
 	.loc	4 2310 5                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2310:5
 	isb	sy
 	.loc	4 2312 1                        @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2312:1
-	add	sp, #12
-	bx	lr
-.Ltmp12:
+	pop	{r4, r5, r6, pc}
+.Ltmp18:
 .Lfunc_end2:
 	.size	SCB_EnableDCache, .Lfunc_end2-SCB_EnableDCache
 	.cfi_endproc
@@ -331,6 +295,25 @@ __tagsym$$used.0:
 
 	.globl	__rt_init_mpu_init
 	.file	5 "E:\\Smart-access-control\\Hardware\\CODE" "libraries/STM32H7xx_HAL/STM32H7xx_HAL_Driver/Inc\\stm32h7xx_hal_cortex.h"
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp5-.Lfunc_begin2
+	.long	.Ltmp7-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp6-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -583,7 +566,7 @@ __tagsym$$used.0:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -595,6 +578,19 @@ __tagsym$$used.0:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	21                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	22                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	11                              @ DW_AT_byte_size
@@ -605,7 +601,7 @@ __tagsym$$used.0:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	22                              @ Abbreviation Code
+	.byte	23                              @ Abbreviation Code
 	.byte	13                              @ DW_TAG_member
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -628,7 +624,7 @@ __tagsym$$used.0:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x4b2 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x4b1 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1063,11 +1059,11 @@ __tagsym$$used.0:
 	.byte	17                              @ Abbrev [17] 0x3c5:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	24
+	.byte	4
 	.long	.Linfo_string65                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	16                              @ DW_AT_decl_line
-	.long	1064                            @ DW_AT_type
+	.long	1063                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	18                              @ Abbrev [18] 0x3d4:0x13 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
@@ -1078,7 +1074,7 @@ __tagsym$$used.0:
 	.byte	4                               @ DW_AT_decl_file
 	.short	2229                            @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	19                              @ Abbrev [19] 0x3e7:0x41 DW_TAG_subprogram
+	.byte	19                              @ Abbrev [19] 0x3e7:0x40 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1087,101 +1083,94 @@ __tagsym$$used.0:
 	.byte	4                               @ DW_AT_decl_file
 	.short	2281                            @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	20                              @ Abbrev [20] 0x3fa:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	20                              @ Abbrev [20] 0x3fa:0x10 DW_TAG_variable
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string78                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	2284                            @ DW_AT_decl_line
 	.long	108                             @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x409:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	20                              @ Abbrev [20] 0x40a:0x10 DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string79                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	2285                            @ DW_AT_decl_line
 	.long	108                             @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x418:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	21                              @ Abbrev [21] 0x41a:0xc DW_TAG_variable
 	.long	.Linfo_string80                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	2286                            @ DW_AT_decl_line
 	.long	108                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	4                               @ Abbrev [4] 0x428:0xb DW_TAG_typedef
-	.long	1075                            @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x427:0xb DW_TAG_typedef
+	.long	1074                            @ DW_AT_type
 	.long	.Linfo_string77                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	71                              @ DW_AT_decl_line
-	.byte	21                              @ Abbrev [21] 0x433:0x89 DW_TAG_structure_type
+	.byte	22                              @ Abbrev [22] 0x432:0x89 DW_TAG_structure_type
 	.byte	16                              @ DW_AT_byte_size
 	.byte	5                               @ DW_AT_decl_file
 	.byte	48                              @ DW_AT_decl_line
-	.byte	22                              @ Abbrev [22] 0x437:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x436:0xc DW_TAG_member
 	.long	.Linfo_string66                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	50                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x443:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x442:0xc DW_TAG_member
 	.long	.Linfo_string67                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	52                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x44f:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x44e:0xc DW_TAG_member
 	.long	.Linfo_string68                 @ DW_AT_name
 	.long	108                             @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	54                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x45b:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x45a:0xc DW_TAG_member
 	.long	.Linfo_string69                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	55                              @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x467:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x466:0xc DW_TAG_member
 	.long	.Linfo_string70                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	57                              @ DW_AT_decl_line
 	.byte	9                               @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x473:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x472:0xc DW_TAG_member
 	.long	.Linfo_string71                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
 	.byte	10                              @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x47f:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x47e:0xc DW_TAG_member
 	.long	.Linfo_string72                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	61                              @ DW_AT_decl_line
 	.byte	11                              @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x48b:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x48a:0xc DW_TAG_member
 	.long	.Linfo_string73                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	63                              @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x497:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x496:0xc DW_TAG_member
 	.long	.Linfo_string74                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	65                              @ DW_AT_decl_line
 	.byte	13                              @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x4a3:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x4a2:0xc DW_TAG_member
 	.long	.Linfo_string75                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	67                              @ DW_AT_decl_line
 	.byte	14                              @ DW_AT_data_member_location
-	.byte	22                              @ Abbrev [22] 0x4af:0xc DW_TAG_member
+	.byte	23                              @ Abbrev [23] 0x4ae:0xc DW_TAG_member
 	.long	.Linfo_string76                 @ DW_AT_name
 	.long	90                              @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
@@ -1365,7 +1354,7 @@ __tagsym$$used.0:
 	.asciz	"ways"                          @ string offset=773
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

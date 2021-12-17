@@ -47,44 +47,40 @@ SDRAM_Init:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#40
-	sub	sp, #40
-	.cfi_def_cfa_offset 48
-	movs	r1, #0
+	.pad	#32
+	sub	sp, #32
+	.cfi_def_cfa_offset 40
+	movs	r0, #6
+	movw	r3, #16704
 .Ltmp0:
-	.loc	2 106 9 prologue_end            @ libraries/drivers/drv_sdram.c:106:9
-	str	r1, [sp, #36]
+	.loc	2 113 39 prologue_end           @ libraries/drivers/drv_sdram.c:113:39
+	strd	r0, r0, [sp, #12]
 	.loc	2 110 22                        @ libraries/drivers/drv_sdram.c:110:22
 	movw	r0, :lower16:hsdram1
+	movs	r1, #2
+.Ltmp1:
+	@DEBUG_VALUE: SDRAM_Init:result <- 0
 	movt	r0, :upper16:hsdram1
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	movw	r2, #16704
-	movt	r2, #20992
-	str	r2, [r0]
-	movs	r3, #2
 	.loc	2 111 39                        @ libraries/drivers/drv_sdram.c:111:39
-	str	r3, [sp, #8]
+	str	r1, [sp, #4]
 	movs	r2, #8
 	.loc	2 112 39                        @ libraries/drivers/drv_sdram.c:112:39
-	str	r2, [sp, #12]
-	mov.w	r12, #6
-	.loc	2 113 39                        @ libraries/drivers/drv_sdram.c:113:39
-	str.w	r12, [sp, #16]
-	.loc	2 114 39                        @ libraries/drivers/drv_sdram.c:114:39
-	str.w	r12, [sp, #20]
+	str	r2, [sp, #8]
 	.loc	2 115 39                        @ libraries/drivers/drv_sdram.c:115:39
-	str	r3, [sp, #24]
+	str	r1, [sp, #20]
+	movt	r3, #20992
 	.loc	2 116 39                        @ libraries/drivers/drv_sdram.c:116:39
-	str	r3, [sp, #28]
+	str	r1, [sp, #24]
 	.loc	2 117 39                        @ libraries/drivers/drv_sdram.c:117:39
-	str	r3, [sp, #32]
+	str	r1, [sp, #28]
+	movs	r1, #0
+	.loc	2 110 22                        @ libraries/drivers/drv_sdram.c:110:22
+	str	r3, [r0]
+	movs	r3, #1
 	.loc	2 120 37                        @ libraries/drivers/drv_sdram.c:120:37
 	str	r1, [r0, #4]
-	movs	r3, #1
 	.loc	2 127 37                        @ libraries/drivers/drv_sdram.c:127:37
-	str	r3, [r0, #8]
-	.loc	2 138 37                        @ libraries/drivers/drv_sdram.c:138:37
-	str	r2, [r0, #12]
+	strd	r3, r2, [r0, #8]
 	movs	r2, #16
 	.loc	2 144 37                        @ libraries/drivers/drv_sdram.c:144:37
 	str	r2, [r0, #16]
@@ -93,95 +89,82 @@ SDRAM_Init:
 	str	r2, [r0, #20]
 	mov.w	r2, #256
 	.loc	2 152 37                        @ libraries/drivers/drv_sdram.c:152:37
-	str	r2, [r0, #24]
-	.loc	2 156 37                        @ libraries/drivers/drv_sdram.c:156:37
-	str	r1, [r0, #28]
+	strd	r2, r1, [r0, #24]
 	mov.w	r2, #2048
 	.loc	2 158 37                        @ libraries/drivers/drv_sdram.c:158:37
 	str	r2, [r0, #32]
 	mov.w	r2, #4096
 	.loc	2 162 37                        @ libraries/drivers/drv_sdram.c:162:37
-	str	r2, [r0, #36]
-	.loc	2 164 37                        @ libraries/drivers/drv_sdram.c:164:37
-	str	r1, [r0, #40]
-	add	r1, sp, #8
-.Ltmp1:
+	strd	r2, r1, [r0, #36]
+	add	r1, sp, #4
+.Ltmp2:
 	.loc	2 172 9                         @ libraries/drivers/drv_sdram.c:172:9
 	bl	HAL_SDRAM_Init
-.Ltmp2:
-	.loc	2 172 9 is_stmt 0               @ libraries/drivers/drv_sdram.c:172:9
-	cbz	r0, .LBB0_4
-	b	.LBB0_1
-.LBB0_1:
 .Ltmp3:
-	.loc	2 174 9 is_stmt 1               @ libraries/drivers/drv_sdram.c:174:9
-	b	.LBB0_2
-.LBB0_2:
+	.loc	2 172 9 is_stmt 0               @ libraries/drivers/drv_sdram.c:172:9
+	cbz	r0, .LBB0_2
 .Ltmp4:
-	.loc	2 174 9 is_stmt 0               @ libraries/drivers/drv_sdram.c:174:9
+@ %bb.1:
+	@DEBUG_VALUE: SDRAM_Init:result <- 0
+	.loc	2 174 9 is_stmt 1               @ libraries/drivers/drv_sdram.c:174:9
 	movw	r0, :lower16:.L.str.5
 	movt	r0, :upper16:.L.str.5
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.8
-	movt	r0, :upper16:.L.str.8
+	adr	r0, .LCPI0_0
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB0_3
-.Ltmp5:
-.LBB0_3:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdram.c:0:9
 	mov.w	r0, #-1
-	.loc	2 175 16 is_stmt 1              @ libraries/drivers/drv_sdram.c:175:16
-	str	r0, [sp, #36]
-	.loc	2 176 5                         @ libraries/drivers/drv_sdram.c:176:5
-	b	.LBB0_7
+.Ltmp5:
+	@DEBUG_VALUE: SDRAM_Init:result <- -1
+	@DEBUG_VALUE: SDRAM_Init:result <- $r0
+	.loc	2 188 5                         @ libraries/drivers/drv_sdram.c:188:5
+	add	sp, #32
+	pop	{r7, pc}
 .Ltmp6:
-.LBB0_4:
+.LBB0_2:
+	@DEBUG_VALUE: SDRAM_Init:result <- 0
 	.loc	2 180 9                         @ libraries/drivers/drv_sdram.c:180:9
-	movw	r0, :lower16:hsdram1
-	movt	r0, :upper16:hsdram1
-	movw	r1, :lower16:command
-	movt	r1, :upper16:command
 	bl	SDRAM_Initialization_Sequence
-	.loc	2 181 9                         @ libraries/drivers/drv_sdram.c:181:9
-	b	.LBB0_5
-.LBB0_5:
 .Ltmp7:
-	.loc	2 181 9 is_stmt 0               @ libraries/drivers/drv_sdram.c:181:9
+	.loc	2 181 9                         @ libraries/drivers/drv_sdram.c:181:9
 	movw	r0, :lower16:.L.str
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.9
-	movt	r0, :upper16:.L.str.9
 	mov.w	r1, #-1073741824
+	movt	r0, :upper16:.L.str.9
 	mov.w	r2, #33554432
 	movs	r3, #16
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB0_6
 .Ltmp8:
-.LBB0_6:
-	.loc	2 184 9 is_stmt 1               @ libraries/drivers/drv_sdram.c:184:9
+	.loc	2 184 9                         @ libraries/drivers/drv_sdram.c:184:9
 	movw	r0, :lower16:system_heap
+	adr	r1, .LCPI0_1
 	movt	r0, :upper16:system_heap
-	movw	r1, :lower16:.L.str.10
-	movt	r1, :upper16:.L.str.10
 	mov.w	r2, #-1073741824
 	mov.w	r3, #33554432
 	bl	rt_memheap_init
-	b	.LBB0_7
+	movs	r0, #0
 .Ltmp9:
-.LBB0_7:
-	.loc	2 188 12                        @ libraries/drivers/drv_sdram.c:188:12
-	ldr	r0, [sp, #36]
-	.loc	2 188 5 is_stmt 0               @ libraries/drivers/drv_sdram.c:188:5
-	add	sp, #40
+	@DEBUG_VALUE: SDRAM_Init:result <- $r0
+	.loc	2 188 5                         @ libraries/drivers/drv_sdram.c:188:5
+	add	sp, #32
 	pop	{r7, pc}
 .Ltmp10:
+	.p2align	2
+@ %bb.3:
+	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdram.c:0:5
+.LCPI0_0:
+.L.str.8:
+	.asciz	"SDRAM init failed!\000"
+.LCPI0_1:
+.L.str.10:
+	.asciz	"sdram\000\000"
 .Lfunc_end0:
 	.size	SDRAM_Init, .Lfunc_end0-SDRAM_Init
 	.cfi_endproc
@@ -201,239 +184,161 @@ sdram_test:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	movs	r0, #0
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
 .Ltmp11:
-	.loc	2 196 9 prologue_end            @ libraries/drivers/drv_sdram.c:196:9
-	str	r0, [sp, #12]
-	.loc	2 197 14                        @ libraries/drivers/drv_sdram.c:197:14
-	str	r0, [sp, #8]
-	.loc	2 197 30 is_stmt 0              @ libraries/drivers/drv_sdram.c:197:30
-	str	r0, [sp, #4]
-	movs	r1, #2
-	.loc	2 202 10 is_stmt 1              @ libraries/drivers/drv_sdram.c:202:10
-	strb.w	r1, [sp, #3]
-	.loc	2 203 14                        @ libraries/drivers/drv_sdram.c:203:14
-	strh.w	r0, [sp]
-	.loc	2 210 5                         @ libraries/drivers/drv_sdram.c:210:5
-	b	.LBB1_1
-.LBB1_1:
-.Ltmp12:
-	.loc	2 210 5 is_stmt 0               @ libraries/drivers/drv_sdram.c:210:5
+	@DEBUG_VALUE: sdram_test:i <- 0
+	@DEBUG_VALUE: sdram_test:start_time <- 0
+	@DEBUG_VALUE: sdram_test:time_cast <- 0
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	@DEBUG_VALUE: sdram_test:data <- 0
+	.loc	2 210 5 prologue_end            @ libraries/drivers/drv_sdram.c:210:5
 	movw	r0, :lower16:.L.str
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
+	adr	r0, .LCPI1_0
 	mov.w	r1, #33554432
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB1_2
+	mov.w	r5, #-1073741824
+.Ltmp12:
+	.loc	2 211 18                        @ libraries/drivers/drv_sdram.c:211:18
+	bl	rt_tick_get
+	mov	r4, r0
 .Ltmp13:
-.LBB1_2:
-	.loc	2 211 18 is_stmt 1              @ libraries/drivers/drv_sdram.c:211:18
-	bl	rt_tick_get
-	.loc	2 211 16 is_stmt 0              @ libraries/drivers/drv_sdram.c:211:16
-	str	r0, [sp, #8]
-	movs	r0, #0
-.Ltmp14:
-	.loc	2 212 12 is_stmt 1              @ libraries/drivers/drv_sdram.c:212:12
-	str	r0, [sp, #12]
-	.loc	2 212 10 is_stmt 0              @ libraries/drivers/drv_sdram.c:212:10
-	b	.LBB1_3
-.LBB1_3:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp15:
-	.loc	2 212 17                        @ libraries/drivers/drv_sdram.c:212:17
-	ldr	r0, [sp, #12]
-	.loc	2 212 34                        @ libraries/drivers/drv_sdram.c:212:34
-	ldrsb.w	r2, [sp, #3]
-	mov.w	r1, #33554432
-	.loc	2 212 32                        @ libraries/drivers/drv_sdram.c:212:32
-	udiv	r1, r1, r2
-.Ltmp16:
-	.loc	2 212 5                         @ libraries/drivers/drv_sdram.c:212:5
-	cmp	r0, r1
-	bhs	.LBB1_6
-	b	.LBB1_4
-.LBB1_4:                                @   in Loop: Header=BB1_3 Depth=1
-.Ltmp17:
-	.loc	2 217 46 is_stmt 1              @ libraries/drivers/drv_sdram.c:217:46
-	ldr	r0, [sp, #12]
-	.loc	2 217 50 is_stmt 0              @ libraries/drivers/drv_sdram.c:217:50
-	ldrsb.w	r1, [sp, #3]
-	.loc	2 217 48                        @ libraries/drivers/drv_sdram.c:217:48
-	muls	r1, r0, r1
-	mov.w	r2, #-1073741824
+	@DEBUG_VALUE: sdram_test:start_time <- $r4
+	.loc	2 0 18 is_stmt 0                @ libraries/drivers/drv_sdram.c:0:18
 	movw	r0, #21845
-	.loc	2 217 62                        @ libraries/drivers/drv_sdram.c:217:62
-	strh	r0, [r1, r2]
-	.loc	2 221 5 is_stmt 1               @ libraries/drivers/drv_sdram.c:221:5
-	b	.LBB1_5
-.Ltmp18:
-.LBB1_5:                                @   in Loop: Header=BB1_3 Depth=1
-	.loc	2 212 47                        @ libraries/drivers/drv_sdram.c:212:47
-	ldr	r0, [sp, #12]
-	adds	r0, #1
-	str	r0, [sp, #12]
-	.loc	2 212 5 is_stmt 0               @ libraries/drivers/drv_sdram.c:212:5
-	b	.LBB1_3
-.Ltmp19:
-.LBB1_6:
-	.loc	2 222 17 is_stmt 1              @ libraries/drivers/drv_sdram.c:222:17
+.Ltmp14:
+	.p2align	2
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: sdram_test:start_time <- $r4
+	@DEBUG_VALUE: sdram_test:data <- 0
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	@DEBUG_VALUE: sdram_test:time_cast <- 0
+	@DEBUG_VALUE: sdram_test:i <- undef
+	.loc	2 217 62 is_stmt 1              @ libraries/drivers/drv_sdram.c:217:62
+	strh	r0, [r5], #2
+.Ltmp15:
+	@DEBUG_VALUE: sdram_test:i <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	.loc	2 212 5                         @ libraries/drivers/drv_sdram.c:212:5
+	cmp.w	r5, #-1040187392
+	bne	.LBB1_1
+.Ltmp16:
+@ %bb.2:
+	@DEBUG_VALUE: sdram_test:start_time <- $r4
+	@DEBUG_VALUE: sdram_test:data <- 0
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	@DEBUG_VALUE: sdram_test:time_cast <- 0
+	.loc	2 222 17                        @ libraries/drivers/drv_sdram.c:222:17
 	bl	rt_tick_get
-	.loc	2 222 33 is_stmt 0              @ libraries/drivers/drv_sdram.c:222:33
-	ldr	r1, [sp, #8]
-	.loc	2 222 31                        @ libraries/drivers/drv_sdram.c:222:31
-	subs	r0, r0, r1
-	.loc	2 222 15                        @ libraries/drivers/drv_sdram.c:222:15
-	str	r0, [sp, #4]
+	.loc	2 222 31 is_stmt 0              @ libraries/drivers/drv_sdram.c:222:31
+	subs	r5, r0, r4
+.Ltmp17:
+	@DEBUG_VALUE: sdram_test:time_cast <- $r5
 	.loc	2 223 5 is_stmt 1               @ libraries/drivers/drv_sdram.c:223:5
-	b	.LBB1_7
-.LBB1_7:
-.Ltmp20:
-	.loc	2 223 5 is_stmt 0               @ libraries/drivers/drv_sdram.c:223:5
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
+	movw	r4, :lower16:.L.str
+.Ltmp18:
+	movt	r4, :upper16:.L.str
+	mov	r0, r4
 	bl	rt_kprintf
-	ldr	r2, [sp, #4]
 	movw	r0, #19923
 	movt	r0, #4194
-	umull	r1, r0, r2, r0
-	lsrs	r1, r0, #6
+	umull	r0, r1, r5, r0
 	mov.w	r0, #1000
-	mls	r2, r1, r0, r2
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
+	lsrs	r1, r1, #6
+	mls	r2, r1, r0, r5
+	adr	r0, .LCPI1_1
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
+	movw	r5, :lower16:.L.str.2
+.Ltmp19:
+	movt	r5, :upper16:.L.str.2
+	mov	r0, r5
 	bl	rt_kprintf
-	b	.LBB1_8
+.Ltmp20:
+	.loc	2 227 5                         @ libraries/drivers/drv_sdram.c:227:5
+	mov	r0, r4
+	bl	rt_kprintf
+	adr	r0, .LCPI1_2
+	bl	rt_kprintf
+	mov	r0, r5
+	bl	rt_kprintf
+	movs	r4, #0
+	mov.w	r0, #-1073741824
 .Ltmp21:
-.LBB1_8:
-	.loc	2 227 5 is_stmt 1               @ libraries/drivers/drv_sdram.c:227:5
-	b	.LBB1_9
-.LBB1_9:
+	@DEBUG_VALUE: sdram_test:i <- 0
+	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdram.c:0:5
+	movw	r1, #21845
 .Ltmp22:
-	.loc	2 227 5 is_stmt 0               @ libraries/drivers/drv_sdram.c:227:5
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	bl	rt_kprintf
-	b	.LBB1_10
+	.p2align	2
+.LBB1_3:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	@DEBUG_VALUE: sdram_test:i <- $r4
+	.loc	2 238 16 is_stmt 1              @ libraries/drivers/drv_sdram.c:238:16
+	ldrh	r2, [r0]
 .Ltmp23:
-.LBB1_10:
-	.loc	2 0 5                           @ libraries/drivers/drv_sdram.c:0:5
-	movs	r0, #0
+	@DEBUG_VALUE: sdram_test:data <- $r2
+	.loc	2 239 13                        @ libraries/drivers/drv_sdram.c:239:13
+	cmp	r2, r1
+	bne	.LBB1_6
 .Ltmp24:
-	.loc	2 228 12 is_stmt 1              @ libraries/drivers/drv_sdram.c:228:12
-	str	r0, [sp, #12]
-	.loc	2 228 10 is_stmt 0              @ libraries/drivers/drv_sdram.c:228:10
-	b	.LBB1_11
-.LBB1_11:                               @ =>This Inner Loop Header: Depth=1
+@ %bb.4:                                @   in Loop: Header=BB1_3 Depth=1
+	@DEBUG_VALUE: sdram_test:i <- $r4
+	@DEBUG_VALUE: sdram_test:data <- $r2
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	.loc	2 228 47                        @ libraries/drivers/drv_sdram.c:228:47
+	adds	r4, #1
 .Ltmp25:
-	.loc	2 228 17                        @ libraries/drivers/drv_sdram.c:228:17
-	ldr	r0, [sp, #12]
-	.loc	2 228 34                        @ libraries/drivers/drv_sdram.c:228:34
-	ldrsb.w	r2, [sp, #3]
-	mov.w	r1, #33554432
-	.loc	2 228 32                        @ libraries/drivers/drv_sdram.c:228:32
-	udiv	r1, r1, r2
+	@DEBUG_VALUE: sdram_test:i <- $r4
+	.loc	2 228 19 is_stmt 0              @ libraries/drivers/drv_sdram.c:228:19
+	adds	r0, #2
 .Ltmp26:
 	.loc	2 228 5                         @ libraries/drivers/drv_sdram.c:228:5
-	cmp	r0, r1
-	bhs	.LBB1_18
-	b	.LBB1_12
-.LBB1_12:                               @   in Loop: Header=BB1_11 Depth=1
+	cmp.w	r4, #16777216
+	bne	.LBB1_3
 .Ltmp27:
-	.loc	2 238 53 is_stmt 1              @ libraries/drivers/drv_sdram.c:238:53
-	ldr	r0, [sp, #12]
-	.loc	2 238 57 is_stmt 0              @ libraries/drivers/drv_sdram.c:238:57
-	ldrsb.w	r1, [sp, #3]
-	.loc	2 238 55                        @ libraries/drivers/drv_sdram.c:238:55
-	muls	r0, r1, r0
-	mov.w	r1, #-1073741824
-	.loc	2 238 16                        @ libraries/drivers/drv_sdram.c:238:16
-	ldrh	r0, [r0, r1]
-	.loc	2 238 14                        @ libraries/drivers/drv_sdram.c:238:14
-	strh.w	r0, [sp]
+@ %bb.5:
+	@DEBUG_VALUE: sdram_test:i <- $r4
+	@DEBUG_VALUE: sdram_test:data <- $r2
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	.loc	2 0 5                           @ libraries/drivers/drv_sdram.c:0:5
+	mov.w	r4, #16777216
 .Ltmp28:
-	.loc	2 239 13 is_stmt 1              @ libraries/drivers/drv_sdram.c:239:13
-	ldrh.w	r0, [sp]
-	movw	r1, #21845
+	.loc	2 254 9 is_stmt 1               @ libraries/drivers/drv_sdram.c:254:9
+	cmp.w	r4, #16777216
+	blo	.LBB1_8
+	b	.LBB1_7
 .Ltmp29:
-	.loc	2 239 13 is_stmt 0              @ libraries/drivers/drv_sdram.c:239:13
-	cmp	r0, r1
-	beq	.LBB1_16
-	b	.LBB1_13
-.LBB1_13:
-.Ltmp30:
-	.loc	2 241 13 is_stmt 1              @ libraries/drivers/drv_sdram.c:241:13
-	b	.LBB1_14
-.LBB1_14:
-.Ltmp31:
-	.loc	2 241 13 is_stmt 0              @ libraries/drivers/drv_sdram.c:241:13
+.LBB1_6:
+	@DEBUG_VALUE: sdram_test:i <- $r4
+	@DEBUG_VALUE: sdram_test:data <- $r2
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	.loc	2 241 13                        @ libraries/drivers/drv_sdram.c:241:13
 	movw	r0, :lower16:.L.str.5
 	movt	r0, :upper16:.L.str.5
 	bl	rt_kprintf
+.Ltmp30:
 	movw	r0, :lower16:.L.str.6
 	movt	r0, :upper16:.L.str.6
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB1_15
-.Ltmp32:
-.LBB1_15:
-	.loc	2 242 13 is_stmt 1              @ libraries/drivers/drv_sdram.c:242:13
-	b	.LBB1_18
-.Ltmp33:
-.LBB1_16:                               @   in Loop: Header=BB1_11 Depth=1
-	.loc	2 252 5                         @ libraries/drivers/drv_sdram.c:252:5
-	b	.LBB1_17
-.Ltmp34:
-.LBB1_17:                               @   in Loop: Header=BB1_11 Depth=1
-	.loc	2 228 47                        @ libraries/drivers/drv_sdram.c:228:47
-	ldr	r0, [sp, #12]
-	adds	r0, #1
-	str	r0, [sp, #12]
-	.loc	2 228 5 is_stmt 0               @ libraries/drivers/drv_sdram.c:228:5
-	b	.LBB1_11
-.Ltmp35:
-.LBB1_18:
-	.loc	2 254 9 is_stmt 1               @ libraries/drivers/drv_sdram.c:254:9
-	ldr	r0, [sp, #12]
-	.loc	2 254 27 is_stmt 0              @ libraries/drivers/drv_sdram.c:254:27
-	ldrsb.w	r2, [sp, #3]
-	mov.w	r1, #33554432
-	.loc	2 254 25                        @ libraries/drivers/drv_sdram.c:254:25
-	udiv	r1, r1, r2
-.Ltmp36:
+.Ltmp31:
 	.loc	2 254 9                         @ libraries/drivers/drv_sdram.c:254:9
-	cmp	r0, r1
-	blo	.LBB1_22
-	b	.LBB1_19
-.LBB1_19:
-.Ltmp37:
-	.loc	2 256 9 is_stmt 1               @ libraries/drivers/drv_sdram.c:256:9
-	b	.LBB1_20
-.LBB1_20:
-.Ltmp38:
-	.loc	2 256 9 is_stmt 0               @ libraries/drivers/drv_sdram.c:256:9
+	cmp.w	r4, #16777216
+	blo	.LBB1_8
+.Ltmp32:
+.LBB1_7:
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	.loc	2 256 9                         @ libraries/drivers/drv_sdram.c:256:9
 	movw	r0, :lower16:.L.str
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
@@ -443,19 +348,25 @@ sdram_test:
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB1_21
-.Ltmp39:
-.LBB1_21:
-	.loc	2 257 5 is_stmt 1               @ libraries/drivers/drv_sdram.c:257:5
-	b	.LBB1_22
-.Ltmp40:
-.LBB1_22:
-	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdram.c:0:5
+.Ltmp33:
+.LBB1_8:
+	@DEBUG_VALUE: sdram_test:data_width <- 2
+	.loc	2 259 5                         @ libraries/drivers/drv_sdram.c:259:5
 	movs	r0, #0
-	.loc	2 259 5 is_stmt 1               @ libraries/drivers/drv_sdram.c:259:5
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp41:
+	pop	{r4, r5, r7, pc}
+.Ltmp34:
+	.p2align	2
+@ %bb.9:
+	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdram.c:0:5
+.LCPI1_0:
+.L.str.1:
+	.asciz	"Writing the %ld bytes data, waiting...."
+.LCPI1_1:
+.L.str.3:
+	.asciz	"Write data success, total time: %d.%03dS.\000\000"
+.LCPI1_2:
+.L.str.4:
+	.asciz	"start Reading and verifying data, waiting....\000\000"
 .Lfunc_end1:
 	.size	sdram_test, .Lfunc_end1-sdram_test
 	.cfi_endproc
@@ -469,187 +380,139 @@ sdram_test:
 	.thumb_func
 SDRAM_Initialization_Sequence:
 .Lfunc_begin2:
-	.loc	2 33 0                          @ libraries/drivers/drv_sdram.c:33:0
+	.loc	2 33 0 is_stmt 1                @ libraries/drivers/drv_sdram.c:33:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #28]
-	str	r1, [sp, #24]
-	movs	r0, #0
-.Ltmp42:
-	.loc	2 34 19 prologue_end            @ libraries/drivers/drv_sdram.c:34:19
-	str	r0, [sp, #12]                   @ 4-byte Spill
-	str	r0, [sp, #20]
-	.loc	2 35 14                         @ libraries/drivers/drv_sdram.c:35:14
-	str	r0, [sp, #16]
-	movs	r1, #16
-	.loc	2 38 17                         @ libraries/drivers/drv_sdram.c:38:17
-	str	r1, [sp, #16]
-	.loc	2 44 5                          @ libraries/drivers/drv_sdram.c:44:5
-	ldr	r2, [sp, #24]
-	movs	r1, #1
-	.loc	2 44 36 is_stmt 0               @ libraries/drivers/drv_sdram.c:44:36
-	str	r1, [r2]
-	.loc	2 45 38 is_stmt 1               @ libraries/drivers/drv_sdram.c:45:38
-	ldr	r2, [sp, #16]
-	.loc	2 45 5 is_stmt 0                @ libraries/drivers/drv_sdram.c:45:5
-	ldr	r3, [sp, #24]
-	.loc	2 45 36                         @ libraries/drivers/drv_sdram.c:45:36
-	str	r2, [r3, #4]
-	.loc	2 46 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:46:5
-	ldr	r2, [sp, #24]
-	.loc	2 46 36 is_stmt 0               @ libraries/drivers/drv_sdram.c:46:36
-	str	r1, [r2, #8]
-	.loc	2 47 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:47:5
-	ldr	r1, [sp, #24]
-	.loc	2 47 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:47:37
-	str	r0, [r1, #12]
-	.loc	2 50 27 is_stmt 1               @ libraries/drivers/drv_sdram.c:50:27
-	ldr	r0, [sp, #28]
-	.loc	2 50 35 is_stmt 0               @ libraries/drivers/drv_sdram.c:50:35
-	ldr	r1, [sp, #24]
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 32
+.Ltmp35:
+	.loc	2 44 36 prologue_end            @ libraries/drivers/drv_sdram.c:44:36
+	movw	r4, :lower16:command
+	.loc	2 50 5                          @ libraries/drivers/drv_sdram.c:50:5
+	movw	r0, :lower16:hsdram1
+	.loc	2 44 36                         @ libraries/drivers/drv_sdram.c:44:36
+	movt	r4, :upper16:command
+.Ltmp36:
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:Command <- $r4
+	.loc	2 50 5                          @ libraries/drivers/drv_sdram.c:50:5
+	movt	r0, :upper16:hsdram1
+.Ltmp37:
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:hsdram <- $r0
 	mov.w	r2, #4096
+	mov	r1, r4
+	movs	r6, #0
+	.loc	2 34 19                         @ libraries/drivers/drv_sdram.c:34:19
+	str	r6, [sp, #4]
+.Ltmp38:
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:target_bank <- 16
+	.loc	2 0 19 is_stmt 0                @ libraries/drivers/drv_sdram.c:0:19
+	mov.w	r8, #1
+	.loc	2 44 36 is_stmt 1               @ libraries/drivers/drv_sdram.c:44:36
+	str.w	r8, [r4]
+	movs	r7, #16
+	.loc	2 47 37                         @ libraries/drivers/drv_sdram.c:47:37
+	str	r6, [r4, #12]
+	.loc	2 45 36                         @ libraries/drivers/drv_sdram.c:45:36
+	strd	r7, r8, [r4, #4]
 	.loc	2 50 5                          @ libraries/drivers/drv_sdram.c:50:5
 	bl	HAL_SDRAM_SendCommand
-                                        @ kill: def $r1 killed $r0
-.Ltmp43:
-	.loc	2 54 17 is_stmt 1               @ libraries/drivers/drv_sdram.c:54:17
-	ldr	r0, [sp, #12]                   @ 4-byte Reload
-	str	r0, [sp, #20]
-	.loc	2 54 10 is_stmt 0               @ libraries/drivers/drv_sdram.c:54:10
-	b	.LBB2_1
-.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp44:
-	.loc	2 54 22                         @ libraries/drivers/drv_sdram.c:54:22
-	ldr	r0, [sp, #20]
+.Ltmp39:
+	.loc	2 54 17                         @ libraries/drivers/drv_sdram.c:54:17
+	str	r6, [sp, #4]
 	movw	r1, #65534
-.Ltmp45:
+.Ltmp40:
+	.loc	2 54 22 is_stmt 0               @ libraries/drivers/drv_sdram.c:54:22
+	ldr	r0, [sp, #4]
+.Ltmp41:
 	.loc	2 54 5                          @ libraries/drivers/drv_sdram.c:54:5
 	cmp	r0, r1
-	bhi	.LBB2_4
-	b	.LBB2_2
-.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
-	b	.LBB2_3
-.LBB2_3:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp46:
+	bhi	.LBB2_3
+.Ltmp42:
+@ %bb.1:
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:Command <- $r4
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:target_bank <- 16
+	.loc	2 0 5                           @ libraries/drivers/drv_sdram.c:0:5
+	movw	r0, #65535
+.Ltmp43:
+	.p2align	2
+.LBB2_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:Command <- $r4
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:target_bank <- 16
 	.loc	2 54 46                         @ libraries/drivers/drv_sdram.c:54:46
-	ldr	r0, [sp, #20]
-	adds	r0, #1
-	str	r0, [sp, #20]
+	ldr	r1, [sp, #4]
+	adds	r1, #1
+	str	r1, [sp, #4]
+	.loc	2 54 22                         @ libraries/drivers/drv_sdram.c:54:22
+	ldr	r1, [sp, #4]
+.Ltmp44:
 	.loc	2 54 5                          @ libraries/drivers/drv_sdram.c:54:5
-	b	.LBB2_1
-.Ltmp47:
-.LBB2_4:
-	.loc	2 58 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:58:5
-	ldr	r1, [sp, #24]
+	cmp	r1, r0
+	blo	.LBB2_2
+.Ltmp45:
+.LBB2_3:
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:Command <- $r4
+	@DEBUG_VALUE: SDRAM_Initialization_Sequence:target_bank <- 16
+	.loc	2 64 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:64:5
+	movw	r5, :lower16:hsdram1
 	movs	r0, #2
-	.loc	2 58 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:58:37
-	str	r0, [r1]
-	.loc	2 59 39 is_stmt 1               @ libraries/drivers/drv_sdram.c:59:39
-	ldr	r0, [sp, #16]
-	.loc	2 59 5 is_stmt 0                @ libraries/drivers/drv_sdram.c:59:5
-	ldr	r1, [sp, #24]
-	.loc	2 59 37                         @ libraries/drivers/drv_sdram.c:59:37
-	str	r0, [r1, #4]
-	.loc	2 60 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:60:5
-	ldr	r1, [sp, #24]
-	movs	r0, #1
-	.loc	2 60 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:60:37
-	str	r0, [sp, #8]                    @ 4-byte Spill
-	str	r0, [r1, #8]
-	.loc	2 61 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:61:5
-	ldr	r1, [sp, #24]
-	movs	r0, #0
-	.loc	2 61 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:61:37
-	str	r0, [sp]                        @ 4-byte Spill
-	str	r0, [r1, #12]
-	.loc	2 64 27 is_stmt 1               @ libraries/drivers/drv_sdram.c:64:27
-	ldr	r0, [sp, #28]
-	.loc	2 64 35 is_stmt 0               @ libraries/drivers/drv_sdram.c:64:35
-	ldr	r1, [sp, #24]
+	movt	r5, :upper16:hsdram1
 	mov.w	r2, #4096
+	.loc	2 58 37                         @ libraries/drivers/drv_sdram.c:58:37
+	stm.w	r4, {r0, r7, r8}
 	.loc	2 64 5                          @ libraries/drivers/drv_sdram.c:64:5
-	str	r2, [sp, #4]                    @ 4-byte Spill
+	mov	r0, r5
+	mov	r1, r4
+	.loc	2 61 37                         @ libraries/drivers/drv_sdram.c:61:37
+	str	r6, [r4, #12]
+	.loc	2 64 5                          @ libraries/drivers/drv_sdram.c:64:5
 	bl	HAL_SDRAM_SendCommand
-	ldr	r2, [sp, #4]                    @ 4-byte Reload
-                                        @ kill: def $r1 killed $r0
-	.loc	2 67 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:67:5
-	ldr	r0, [sp]                        @ 4-byte Reload
-	ldr	r3, [sp, #24]
-	movs	r1, #3
-	.loc	2 67 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:67:37
-	str	r1, [r3]
-	.loc	2 68 39 is_stmt 1               @ libraries/drivers/drv_sdram.c:68:39
-	ldr	r1, [sp, #16]
-	.loc	2 68 5 is_stmt 0                @ libraries/drivers/drv_sdram.c:68:5
-	ldr	r3, [sp, #24]
-	.loc	2 68 37                         @ libraries/drivers/drv_sdram.c:68:37
-	str	r1, [r3, #4]
-	.loc	2 69 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:69:5
-	ldr	r3, [sp, #24]
-	movs	r1, #8
-	.loc	2 69 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:69:37
-	str	r1, [r3, #8]
-	.loc	2 70 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:70:5
-	ldr	r1, [sp, #24]
-	.loc	2 70 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:70:37
-	str	r0, [r1, #12]
-	.loc	2 73 27 is_stmt 1               @ libraries/drivers/drv_sdram.c:73:27
-	ldr	r0, [sp, #28]
-	.loc	2 73 35 is_stmt 0               @ libraries/drivers/drv_sdram.c:73:35
-	ldr	r1, [sp, #24]
+	movs	r0, #3
 	.loc	2 73 5                          @ libraries/drivers/drv_sdram.c:73:5
+	mov.w	r2, #4096
+	.loc	2 67 37                         @ libraries/drivers/drv_sdram.c:67:37
+	strd	r0, r7, [r4]
+	movs	r0, #8
+	.loc	2 73 5                          @ libraries/drivers/drv_sdram.c:73:5
+	mov	r1, r4
+	.loc	2 69 37                         @ libraries/drivers/drv_sdram.c:69:37
+	strd	r0, r6, [r4, #8]
+	.loc	2 73 5                          @ libraries/drivers/drv_sdram.c:73:5
+	mov	r0, r5
 	bl	HAL_SDRAM_SendCommand
-	ldr	r2, [sp, #4]                    @ 4-byte Reload
-                                        @ kill: def $r1 killed $r0
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	movw	r1, #545
-	.loc	2 79 12 is_stmt 1               @ libraries/drivers/drv_sdram.c:79:12
-	str	r1, [sp, #20]
-	.loc	2 92 5                          @ libraries/drivers/drv_sdram.c:92:5
-	ldr	r3, [sp, #24]
-	movs	r1, #4
-	.loc	2 92 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:92:37
-	str	r1, [r3]
-	.loc	2 93 39 is_stmt 1               @ libraries/drivers/drv_sdram.c:93:39
-	ldr	r1, [sp, #16]
-	.loc	2 93 5 is_stmt 0                @ libraries/drivers/drv_sdram.c:93:5
-	ldr	r3, [sp, #24]
-	.loc	2 93 37                         @ libraries/drivers/drv_sdram.c:93:37
-	str	r1, [r3, #4]
-	.loc	2 94 5 is_stmt 1                @ libraries/drivers/drv_sdram.c:94:5
-	ldr	r1, [sp, #24]
-	.loc	2 94 37 is_stmt 0               @ libraries/drivers/drv_sdram.c:94:37
-	str	r0, [r1, #8]
-	.loc	2 95 39 is_stmt 1               @ libraries/drivers/drv_sdram.c:95:39
-	ldr	r0, [sp, #20]
-	.loc	2 95 5 is_stmt 0                @ libraries/drivers/drv_sdram.c:95:5
-	ldr	r1, [sp, #24]
+	movw	r0, #545
+	.loc	2 79 12                         @ libraries/drivers/drv_sdram.c:79:12
+	str	r0, [sp, #4]
+	movs	r0, #4
+	.loc	2 95 39                         @ libraries/drivers/drv_sdram.c:95:39
+	ldr	r1, [sp, #4]
+	.loc	2 92 37                         @ libraries/drivers/drv_sdram.c:92:37
+	stm.w	r4, {r0, r7, r8}
 	.loc	2 95 37                         @ libraries/drivers/drv_sdram.c:95:37
-	str	r0, [r1, #12]
-	.loc	2 98 27 is_stmt 1               @ libraries/drivers/drv_sdram.c:98:27
-	ldr	r0, [sp, #28]
-	.loc	2 98 35 is_stmt 0               @ libraries/drivers/drv_sdram.c:98:35
-	ldr	r1, [sp, #24]
+	str	r1, [r4, #12]
 	.loc	2 98 5                          @ libraries/drivers/drv_sdram.c:98:5
+	mov.w	r2, #4096
+	mov	r0, r5
+	mov	r1, r4
 	bl	HAL_SDRAM_SendCommand
-	.loc	2 101 34 is_stmt 1              @ libraries/drivers/drv_sdram.c:101:34
-	ldr	r0, [sp, #28]
+	.loc	2 101 5                         @ libraries/drivers/drv_sdram.c:101:5
 	movw	r1, #677
-	.loc	2 101 5 is_stmt 0               @ libraries/drivers/drv_sdram.c:101:5
+	mov	r0, r5
 	bl	HAL_SDRAM_ProgramRefreshRate
-	.loc	2 102 1 is_stmt 1               @ libraries/drivers/drv_sdram.c:102:1
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp48:
+	.loc	2 102 1                         @ libraries/drivers/drv_sdram.c:102:1
+	add	sp, #8
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp46:
 .Lfunc_end2:
 	.size	SDRAM_Initialization_Sequence, .Lfunc_end2-SDRAM_Initialization_Sequence
 	.cfi_endproc
@@ -672,25 +535,10 @@ __tagsym$$used.0:
 	.asciz	"[D/drv.sdram] "
 	.size	.L.str, 15
 
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"Writing the %ld bytes data, waiting...."
-	.size	.L.str.1, 40
-
 	.type	.L.str.2,%object                @ @.str.2
 .L.str.2:
 	.asciz	"\n"
 	.size	.L.str.2, 2
-
-	.type	.L.str.3,%object                @ @.str.3
-.L.str.3:
-	.asciz	"Write data success, total time: %d.%03dS."
-	.size	.L.str.3, 42
-
-	.type	.L.str.4,%object                @ @.str.4
-.L.str.4:
-	.asciz	"start Reading and verifying data, waiting...."
-	.size	.L.str.4, 46
 
 	.type	.L.str.5,%object                @ @.str.5
 .L.str.5:
@@ -741,12 +589,6 @@ hsdram1:
 	.zero	52
 	.size	hsdram1, 52
 
-	.type	.L.str.8,%object                @ @.str.8
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.8:
-	.asciz	"SDRAM init failed!"
-	.size	.L.str.8, 19
-
 	.type	command,%object                 @ @command
 	.section	.bss.command,"aw",%nobits
 	.p2align	2
@@ -767,14 +609,121 @@ system_heap:
 	.zero	100
 	.size	system_heap, 100
 
-	.type	.L.str.10,%object               @ @.str.10
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.10:
-	.asciz	"sdram"
-	.size	.L.str.10, 6
-
-	.globl	__rt_init_SDRAM_Init
 	.globl	__fsym___cmd_sdram_test
+	.globl	__rt_init_SDRAM_Init
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp5-.Lfunc_begin0
+	.long	.Ltmp6-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp6-.Lfunc_begin0
+	.long	.Ltmp9-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp9-.Lfunc_begin0
+	.long	.Ltmp10-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp11-.Lfunc_begin1
+	.long	.Ltmp14-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp21-.Lfunc_begin1
+	.long	.Ltmp22-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp22-.Lfunc_begin1
+	.long	.Ltmp28-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp29-.Lfunc_begin1
+	.long	.Ltmp32-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp11-.Lfunc_begin1
+	.long	.Ltmp13-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp13-.Lfunc_begin1
+	.long	.Ltmp18-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp11-.Lfunc_begin1
+	.long	.Ltmp17-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp17-.Lfunc_begin1
+	.long	.Ltmp19-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp11-.Lfunc_begin1
+	.long	.Ltmp22-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp23-.Lfunc_begin1
+	.long	.Ltmp30-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp36-.Lfunc_begin2
+	.long	.Ltmp46-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp37-.Lfunc_begin2
+	.long	.Ltmp39-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp38-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	64                              @ DW_OP_lit16
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1094,6 +1043,21 @@ system_heap:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	28                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	29                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1116,7 +1080,22 @@ system_heap:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	29                              @ Abbreviation Code
+	.byte	30                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	28                              @ DW_AT_const_value
+	.byte	13                              @ DW_FORM_sdata
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	31                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1135,11 +1114,11 @@ system_heap:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	30                              @ Abbreviation Code
+	.byte	32                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1158,7 +1137,7 @@ system_heap:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x9da DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x9e0 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -2224,7 +2203,7 @@ system_heap:
 	.long	2188                            @ DW_AT_type
 	.byte	19                              @ Abbrev [19] 0x88c:0x5 DW_TAG_volatile_type
 	.long	2172                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x891:0x33 DW_TAG_subprogram
+	.byte	26                              @ Abbrev [26] 0x891:0x34 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2237,21 +2216,19 @@ system_heap:
 	.byte	27                              @ Abbrev [27] 0x8a7:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	36
+	.byte	4
 	.long	.Linfo_string153                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	107                             @ DW_AT_decl_line
+	.long	2419                            @ DW_AT_type
+	.byte	28                              @ Abbrev [28] 0x8b5:0xf DW_TAG_variable
+	.long	.Ldebug_loc0                    @ DW_AT_location
+	.long	.Linfo_string162                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	106                             @ DW_AT_decl_line
 	.long	83                              @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x8b5:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string154                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	107                             @ DW_AT_decl_line
-	.long	2413                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	28                              @ Abbrev [28] 0x8c4:0x5e DW_TAG_subprogram
+	.byte	29                              @ Abbrev [29] 0x8c5:0x60 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2262,48 +2239,38 @@ system_heap:
 	.byte	1                               @ DW_AT_prototyped
 	.long	83                              @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	27                              @ Abbrev [27] 0x8db:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	28                              @ Abbrev [28] 0x8dc:0xf DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string163                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	196                             @ DW_AT_decl_line
 	.long	83                              @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x8e9:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	28                              @ Abbrev [28] 0x8eb:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string164                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	197                             @ DW_AT_decl_line
 	.long	472                             @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x8f7:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	28                              @ Abbrev [28] 0x8fa:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string165                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	197                             @ DW_AT_decl_line
 	.long	472                             @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x905:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	3
+	.byte	30                              @ Abbrev [30] 0x909:0xc DW_TAG_variable
+	.byte	2                               @ DW_AT_const_value
 	.long	.Linfo_string166                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	202                             @ DW_AT_decl_line
 	.long	126                             @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x913:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	28                              @ Abbrev [28] 0x915:0xf DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string167                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	203                             @ DW_AT_decl_line
 	.long	2172                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	29                              @ Abbrev [29] 0x922:0x4b DW_TAG_subprogram
+	.byte	31                              @ Abbrev [31] 0x925:0x4e DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2312,95 +2279,89 @@ system_heap:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	32                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	30                              @ Abbrev [30] 0x934:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
-	.long	.Linfo_string168                @ DW_AT_name
+	.byte	32                              @ Abbrev [32] 0x937:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc6                    @ DW_AT_location
+	.long	.Linfo_string170                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	32                              @ DW_AT_decl_line
-	.long	2522                            @ DW_AT_type
-	.byte	30                              @ Abbrev [30] 0x942:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.long	2533                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x946:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string169                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	32                              @ DW_AT_decl_line
-	.long	2527                            @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x950:0xe DW_TAG_variable
+	.long	2528                            @ DW_AT_type
+	.byte	27                              @ Abbrev [27] 0x955:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	20
-	.long	.Linfo_string170                @ DW_AT_name
+	.byte	4
+	.long	.Linfo_string168                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	34                              @ DW_AT_decl_line
 	.long	467                             @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x95e:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	28                              @ Abbrev [28] 0x963:0xf DW_TAG_variable
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string171                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	35                              @ DW_AT_decl_line
 	.long	472                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x96d:0xc DW_TAG_typedef
-	.long	2425                            @ DW_AT_type
-	.long	.Linfo_string162                @ DW_AT_name
+	.byte	16                              @ Abbrev [16] 0x973:0xc DW_TAG_typedef
+	.long	2431                            @ DW_AT_type
+	.long	.Linfo_string161                @ DW_AT_name
 	.byte	7                               @ DW_AT_decl_file
 	.short	428                             @ DW_AT_decl_line
-	.byte	17                              @ Abbrev [17] 0x979:0x61 DW_TAG_structure_type
+	.byte	17                              @ Abbrev [17] 0x97f:0x61 DW_TAG_structure_type
 	.byte	28                              @ DW_AT_byte_size
 	.byte	7                               @ DW_AT_decl_file
 	.short	399                             @ DW_AT_decl_line
-	.byte	18                              @ Abbrev [18] 0x97e:0xd DW_TAG_member
-	.long	.Linfo_string155                @ DW_AT_name
+	.byte	18                              @ Abbrev [18] 0x984:0xd DW_TAG_member
+	.long	.Linfo_string154                @ DW_AT_name
 	.long	472                             @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.short	401                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	18                              @ Abbrev [18] 0x98b:0xd DW_TAG_member
-	.long	.Linfo_string156                @ DW_AT_name
+	.byte	18                              @ Abbrev [18] 0x991:0xd DW_TAG_member
+	.long	.Linfo_string155                @ DW_AT_name
 	.long	472                             @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.short	405                             @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	18                              @ Abbrev [18] 0x998:0xd DW_TAG_member
-	.long	.Linfo_string157                @ DW_AT_name
+	.byte	18                              @ Abbrev [18] 0x99e:0xd DW_TAG_member
+	.long	.Linfo_string156                @ DW_AT_name
 	.long	472                             @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.short	409                             @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	18                              @ Abbrev [18] 0x9a5:0xd DW_TAG_member
-	.long	.Linfo_string158                @ DW_AT_name
+	.byte	18                              @ Abbrev [18] 0x9ab:0xd DW_TAG_member
+	.long	.Linfo_string157                @ DW_AT_name
 	.long	472                             @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.short	413                             @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
-	.byte	18                              @ Abbrev [18] 0x9b2:0xd DW_TAG_member
-	.long	.Linfo_string159                @ DW_AT_name
+	.byte	18                              @ Abbrev [18] 0x9b8:0xd DW_TAG_member
+	.long	.Linfo_string158                @ DW_AT_name
 	.long	472                             @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.short	418                             @ DW_AT_decl_line
 	.byte	16                              @ DW_AT_data_member_location
-	.byte	18                              @ Abbrev [18] 0x9bf:0xd DW_TAG_member
-	.long	.Linfo_string160                @ DW_AT_name
+	.byte	18                              @ Abbrev [18] 0x9c5:0xd DW_TAG_member
+	.long	.Linfo_string159                @ DW_AT_name
 	.long	472                             @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.short	421                             @ DW_AT_decl_line
 	.byte	20                              @ DW_AT_data_member_location
-	.byte	18                              @ Abbrev [18] 0x9cc:0xd DW_TAG_member
-	.long	.Linfo_string161                @ DW_AT_name
+	.byte	18                              @ Abbrev [18] 0x9d2:0xd DW_TAG_member
+	.long	.Linfo_string160                @ DW_AT_name
 	.long	472                             @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.short	425                             @ DW_AT_decl_line
 	.byte	24                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	5                               @ Abbrev [5] 0x9da:0x5 DW_TAG_pointer_type
-	.long	291                             @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x9df:0x5 DW_TAG_pointer_type
+	.byte	5                               @ Abbrev [5] 0x9e0:0x5 DW_TAG_pointer_type
 	.long	1575                            @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x9e5:0x5 DW_TAG_pointer_type
+	.long	291                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
 	.section	.debug_ranges,"",%progbits
@@ -2721,25 +2682,25 @@ system_heap:
 .Linfo_string152:
 	.asciz	"SDRAM_Initialization_Sequence" @ string offset=2074
 .Linfo_string153:
-	.asciz	"result"                        @ string offset=2104
+	.asciz	"SDRAM_Timing"                  @ string offset=2104
 .Linfo_string154:
-	.asciz	"SDRAM_Timing"                  @ string offset=2111
+	.asciz	"LoadToActiveDelay"             @ string offset=2117
 .Linfo_string155:
-	.asciz	"LoadToActiveDelay"             @ string offset=2124
+	.asciz	"ExitSelfRefreshDelay"          @ string offset=2135
 .Linfo_string156:
-	.asciz	"ExitSelfRefreshDelay"          @ string offset=2142
+	.asciz	"SelfRefreshTime"               @ string offset=2156
 .Linfo_string157:
-	.asciz	"SelfRefreshTime"               @ string offset=2163
+	.asciz	"RowCycleDelay"                 @ string offset=2172
 .Linfo_string158:
-	.asciz	"RowCycleDelay"                 @ string offset=2179
+	.asciz	"WriteRecoveryTime"             @ string offset=2186
 .Linfo_string159:
-	.asciz	"WriteRecoveryTime"             @ string offset=2193
+	.asciz	"RPDelay"                       @ string offset=2204
 .Linfo_string160:
-	.asciz	"RPDelay"                       @ string offset=2211
+	.asciz	"RCDDelay"                      @ string offset=2212
 .Linfo_string161:
-	.asciz	"RCDDelay"                      @ string offset=2219
+	.asciz	"FMC_SDRAM_TimingTypeDef"       @ string offset=2221
 .Linfo_string162:
-	.asciz	"FMC_SDRAM_TimingTypeDef"       @ string offset=2228
+	.asciz	"result"                        @ string offset=2245
 .Linfo_string163:
 	.asciz	"i"                             @ string offset=2252
 .Linfo_string164:
@@ -2751,16 +2712,16 @@ system_heap:
 .Linfo_string167:
 	.asciz	"data"                          @ string offset=2286
 .Linfo_string168:
-	.asciz	"hsdram"                        @ string offset=2291
+	.asciz	"tmpmrd"                        @ string offset=2291
 .Linfo_string169:
 	.asciz	"Command"                       @ string offset=2298
 .Linfo_string170:
-	.asciz	"tmpmrd"                        @ string offset=2306
+	.asciz	"hsdram"                        @ string offset=2306
 .Linfo_string171:
 	.asciz	"target_bank"                   @ string offset=2313
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

@@ -37,92 +37,90 @@ lfs_crc:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.pad	#20
-	sub	sp, #20
-	.cfi_def_cfa_offset 20
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	@DEBUG_VALUE: lfs_crc:buffer <- $r1
+	@DEBUG_VALUE: lfs_crc:size <- $r2
+	@DEBUG_VALUE: lfs_crc:size <- $r2
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
 .Ltmp0:
-	.loc	2 12 27 prologue_end            @ packages/littlefs-v2.0.5/lfs_crc.c:12:27
-	ldr	r0, [sp, #12]
-	.loc	2 12 20 is_stmt 0               @ packages/littlefs-v2.0.5/lfs_crc.c:12:20
-	str	r0, [sp, #4]
-	movs	r0, #0
+	@DEBUG_VALUE: lfs_crc:data <- $r1
+	.loc	2 14 5 prologue_end             @ packages/littlefs-v2.0.5/lfs_crc.c:14:5
+	cmp	r2, #0
 .Ltmp1:
-	.loc	2 14 17 is_stmt 1               @ packages/littlefs-v2.0.5/lfs_crc.c:14:17
-	str	r0, [sp]
-	.loc	2 14 10 is_stmt 0               @ packages/littlefs-v2.0.5/lfs_crc.c:14:10
-	b	.LBB0_1
-.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: i <- 0
+	@DEBUG_VALUE: lfs_crc:data <- $r1
+	@DEBUG_VALUE: lfs_crc:buffer <- $r1
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	.loc	2 19 5                          @ packages/littlefs-v2.0.5/lfs_crc.c:19:5
+	it	eq
+	popeq	{r7, pc}
 .Ltmp2:
-	.loc	2 14 24                         @ packages/littlefs-v2.0.5/lfs_crc.c:14:24
-	ldr	r0, [sp]
-	.loc	2 14 28                         @ packages/littlefs-v2.0.5/lfs_crc.c:14:28
-	ldr	r1, [sp, #8]
+.LBB0_1:
+	@DEBUG_VALUE: lfs_crc:size <- $r2
+	@DEBUG_VALUE: lfs_crc:data <- $r1
+	@DEBUG_VALUE: lfs_crc:buffer <- $r1
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	@DEBUG_VALUE: i <- 0
+	.loc	2 0 5 is_stmt 0                 @ packages/littlefs-v2.0.5/lfs_crc.c:0:5
+	movw	r12, :lower16:lfs_crc.rtable
 .Ltmp3:
-	.loc	2 14 5                          @ packages/littlefs-v2.0.5/lfs_crc.c:14:5
-	cmp	r0, r1
-	bhs	.LBB0_4
-	b	.LBB0_2
-.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
+	.loc	2 14 5 is_stmt 1                @ packages/littlefs-v2.0.5/lfs_crc.c:14:5
+	subs	r1, #1
 .Ltmp4:
-	.loc	2 15 16 is_stmt 1               @ packages/littlefs-v2.0.5/lfs_crc.c:15:16
-	ldr	r2, [sp, #16]
-	.loc	2 15 43 is_stmt 0               @ packages/littlefs-v2.0.5/lfs_crc.c:15:43
-	ldr	r0, [sp, #4]
-	.loc	2 15 48                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:48
-	ldr	r1, [sp]
-	.loc	2 15 43                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:43
-	ldrb	r0, [r0, r1]
-	.loc	2 15 40                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:40
-	eors	r0, r2
-	.loc	2 15 58                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:58
-	and	r1, r0, #15
-	.loc	2 15 28                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:28
-	movw	r0, :lower16:lfs_crc.rtable
-	movt	r0, :upper16:lfs_crc.rtable
-	ldr.w	r1, [r0, r1, lsl #2]
-	.loc	2 15 26                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:26
-	eor.w	r1, r1, r2, lsr #4
-	.loc	2 15 13                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:13
-	str	r1, [sp, #16]
-	.loc	2 16 16 is_stmt 1               @ packages/littlefs-v2.0.5/lfs_crc.c:16:16
-	ldr	r1, [sp, #16]
-	.loc	2 16 43 is_stmt 0               @ packages/littlefs-v2.0.5/lfs_crc.c:16:43
-	ldr	r2, [sp, #4]
-	.loc	2 16 48                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:48
-	ldr	r3, [sp]
-	.loc	2 16 43                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:43
-	ldrb	r2, [r2, r3]
-	.loc	2 16 40                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:40
-	eor.w	r2, r1, r2, lsr #4
-	.loc	2 16 58                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:58
-	and	r2, r2, #15
-	.loc	2 16 28                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:28
-	ldr.w	r0, [r0, r2, lsl #2]
-	.loc	2 16 26                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:26
-	eor.w	r0, r0, r1, lsr #4
-	.loc	2 16 13                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:13
-	str	r0, [sp, #16]
-	.loc	2 17 5 is_stmt 1                @ packages/littlefs-v2.0.5/lfs_crc.c:17:5
-	b	.LBB0_3
+	@DEBUG_VALUE: lfs_crc:buffer <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 0 5 is_stmt 0                 @ packages/littlefs-v2.0.5/lfs_crc.c:0:5
+	movt	r12, :upper16:lfs_crc.rtable
 .Ltmp5:
-.LBB0_3:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	2 14 35                         @ packages/littlefs-v2.0.5/lfs_crc.c:14:35
-	ldr	r0, [sp]
-	adds	r0, #1
-	str	r0, [sp]
-	.loc	2 14 5 is_stmt 0                @ packages/littlefs-v2.0.5/lfs_crc.c:14:5
-	b	.LBB0_1
+	.p2align	2
+.LBB0_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	@DEBUG_VALUE: lfs_crc:buffer <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	@DEBUG_VALUE: i <- undef
+	.loc	2 15 43 is_stmt 1               @ packages/littlefs-v2.0.5/lfs_crc.c:15:43
+	ldrb	lr, [r1, #1]!
 .Ltmp6:
-.LBB0_4:
-	.loc	2 19 12 is_stmt 1               @ packages/littlefs-v2.0.5/lfs_crc.c:19:12
-	ldr	r0, [sp, #16]
-	.loc	2 19 5 is_stmt 0                @ packages/littlefs-v2.0.5/lfs_crc.c:19:5
-	add	sp, #20
-	bx	lr
+	.loc	2 14 26                         @ packages/littlefs-v2.0.5/lfs_crc.c:14:26
+	subs	r2, #1
 .Ltmp7:
+	@DEBUG_VALUE: lfs_crc:size <- [DW_OP_LLVM_entry_value 1] $r2
+	.loc	2 15 40                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:40
+	eor.w	r3, r0, lr
+	.loc	2 15 58 is_stmt 0               @ packages/littlefs-v2.0.5/lfs_crc.c:15:58
+	and	r3, r3, #15
+	.loc	2 15 28                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:28
+	ldr.w	r3, [r12, r3, lsl #2]
+	.loc	2 15 26                         @ packages/littlefs-v2.0.5/lfs_crc.c:15:26
+	eor.w	r0, r3, r0, lsr #4
+.Ltmp8:
+	@DEBUG_VALUE: lfs_crc:crc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: lfs_crc:crc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	.loc	2 16 58 is_stmt 1               @ packages/littlefs-v2.0.5/lfs_crc.c:16:58
+	and	r3, r0, #15
+	eor.w	r3, r3, lr, lsr #4
+	.loc	2 16 28 is_stmt 0               @ packages/littlefs-v2.0.5/lfs_crc.c:16:28
+	ldr.w	r3, [r12, r3, lsl #2]
+	.loc	2 16 26                         @ packages/littlefs-v2.0.5/lfs_crc.c:16:26
+	eor.w	r0, r3, r0, lsr #4
+.Ltmp9:
+	@DEBUG_VALUE: lfs_crc:crc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: lfs_crc:crc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: i <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	.loc	2 14 5 is_stmt 1                @ packages/littlefs-v2.0.5/lfs_crc.c:14:5
+	bne	.LBB0_2
+.Ltmp10:
+@ %bb.3:
+	@DEBUG_VALUE: lfs_crc:crc <- $r0
+	@DEBUG_VALUE: lfs_crc:buffer <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 19 5                          @ packages/littlefs-v2.0.5/lfs_crc.c:19:5
+	pop	{r7, pc}
+.Ltmp11:
 .Lfunc_end0:
 	.size	lfs_crc, .Lfunc_end0-lfs_crc
 	.cfi_endproc
@@ -152,6 +150,47 @@ lfs_crc.rtable:
 	.size	lfs_crc.rtable, 64
 
 	.file	3 "D:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "time.h"
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Lfunc_end0-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp7-.Lfunc_begin0
+	.long	.Ltmp10-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -226,10 +265,10 @@ lfs_crc.rtable:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	5                               @ Abbreviation Code
-	.byte	52                              @ DW_TAG_variable
+	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -241,22 +280,35 @@ lfs_crc.rtable:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	6                               @ Abbreviation Code
-	.byte	11                              @ DW_TAG_lexical_block
-	.byte	1                               @ DW_CHILDREN_yes
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	1                               @ DW_FORM_addr
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	7                               @ Abbreviation Code
+	.byte	11                              @ DW_TAG_lexical_block
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	85                              @ DW_AT_ranges
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
 	.byte	1                               @ DW_TAG_array_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	8                               @ Abbreviation Code
+	.byte	9                               @ Abbreviation Code
 	.byte	33                              @ DW_TAG_subrange_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
@@ -265,14 +317,14 @@ lfs_crc.rtable:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	9                               @ Abbreviation Code
+	.byte	10                              @ Abbreviation Code
 	.byte	38                              @ DW_TAG_const_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	10                              @ Abbreviation Code
+	.byte	11                              @ Abbreviation Code
 	.byte	22                              @ DW_TAG_typedef
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
@@ -285,36 +337,36 @@ lfs_crc.rtable:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	11                              @ Abbreviation Code
-	.byte	36                              @ DW_TAG_base_type
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	62                              @ DW_AT_encoding
-	.byte	11                              @ DW_FORM_data1
-	.byte	11                              @ DW_AT_byte_size
-	.byte	11                              @ DW_FORM_data1
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
 	.byte	12                              @ Abbreviation Code
 	.byte	36                              @ DW_TAG_base_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
+	.byte	62                              @ DW_AT_encoding
+	.byte	11                              @ DW_FORM_data1
+	.byte	11                              @ DW_AT_byte_size
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	13                              @ Abbreviation Code
+	.byte	36                              @ DW_TAG_base_type
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
 	.byte	11                              @ DW_AT_byte_size
 	.byte	11                              @ DW_FORM_data1
 	.byte	62                              @ DW_AT_encoding
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	13                              @ Abbreviation Code
+	.byte	14                              @ Abbreviation Code
 	.byte	15                              @ DW_TAG_pointer_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	14                              @ Abbreviation Code
+	.byte	15                              @ Abbreviation Code
 	.byte	38                              @ DW_TAG_const_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	0                               @ EOM(1)
@@ -327,7 +379,7 @@ lfs_crc.rtable:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0xec DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0xeb DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -335,7 +387,7 @@ lfs_crc.rtable:
 	.long	.Linfo_string2                  @ DW_AT_comp_dir
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
-	.byte	2                               @ Abbrev [2] 0x26:0x79 DW_TAG_subprogram
+	.byte	2                               @ Abbrev [2] 0x26:0x78 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -344,105 +396,103 @@ lfs_crc.rtable:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	4                               @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	176                             @ DW_AT_type
+	.long	175                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
 	.byte	3                               @ Abbrev [3] 0x3d:0x11 DW_TAG_variable
 	.long	.Linfo_string3                  @ DW_AT_name
-	.long	159                             @ DW_AT_type
+	.long	158                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	5                               @ DW_AT_decl_line
 	.byte	5                               @ DW_AT_location
 	.byte	3
 	.long	lfs_crc.rtable
-	.byte	4                               @ Abbrev [4] 0x4e:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	4                               @ Abbrev [4] 0x4e:0xd DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	80
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	4                               @ DW_AT_decl_line
-	.long	176                             @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0x5c:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	175                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x5b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string9                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	4                               @ DW_AT_decl_line
-	.long	201                             @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0x6a:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	200                             @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x6a:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string10                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	4                               @ DW_AT_decl_line
-	.long	207                             @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x78:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	206                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x79:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string12                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	12                              @ DW_AT_decl_line
-	.long	218                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x86:0x18 DW_TAG_lexical_block
-	.long	.Ltmp1                          @ DW_AT_low_pc
-	.long	.Ltmp6                          @ DW_AT_high_pc
-	.byte	5                               @ Abbrev [5] 0x8f:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	217                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x88:0x15 DW_TAG_lexical_block
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	6                               @ Abbrev [6] 0x8d:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string15                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	14                              @ DW_AT_decl_line
-	.long	207                             @ DW_AT_type
+	.long	206                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0x9f:0xc DW_TAG_array_type
-	.long	171                             @ DW_AT_type
-	.byte	8                               @ Abbrev [8] 0xa4:0x6 DW_TAG_subrange_type
-	.long	194                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x9e:0xc DW_TAG_array_type
+	.long	170                             @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0xa3:0x6 DW_TAG_subrange_type
+	.long	193                             @ DW_AT_type
 	.byte	16                              @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0xab:0x5 DW_TAG_const_type
-	.long	176                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0xb0:0xb DW_TAG_typedef
-	.long	187                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0xaa:0x5 DW_TAG_const_type
+	.long	175                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0xaf:0xb DW_TAG_typedef
+	.long	186                             @ DW_AT_type
 	.long	.Linfo_string5                  @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	64                              @ DW_AT_decl_line
-	.byte	11                              @ Abbrev [11] 0xbb:0x7 DW_TAG_base_type
+	.byte	12                              @ Abbrev [12] 0xba:0x7 DW_TAG_base_type
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	12                              @ Abbrev [12] 0xc2:0x7 DW_TAG_base_type
+	.byte	13                              @ Abbrev [13] 0xc1:0x7 DW_TAG_base_type
 	.long	.Linfo_string6                  @ DW_AT_name
 	.byte	8                               @ DW_AT_byte_size
 	.byte	7                               @ DW_AT_encoding
-	.byte	13                              @ Abbrev [13] 0xc9:0x5 DW_TAG_pointer_type
-	.long	206                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0xce:0x1 DW_TAG_const_type
-	.byte	10                              @ Abbrev [10] 0xcf:0xb DW_TAG_typedef
-	.long	187                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0xc8:0x5 DW_TAG_pointer_type
+	.long	205                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0xcd:0x1 DW_TAG_const_type
+	.byte	11                              @ Abbrev [11] 0xce:0xb DW_TAG_typedef
+	.long	186                             @ DW_AT_type
 	.long	.Linfo_string11                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	58                              @ DW_AT_decl_line
-	.byte	13                              @ Abbrev [13] 0xda:0x5 DW_TAG_pointer_type
-	.long	223                             @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0xdf:0x5 DW_TAG_const_type
-	.long	228                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0xe4:0xb DW_TAG_typedef
-	.long	239                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0xd9:0x5 DW_TAG_pointer_type
+	.long	222                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0xde:0x5 DW_TAG_const_type
+	.long	227                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0xe3:0xb DW_TAG_typedef
+	.long	238                             @ DW_AT_type
 	.long	.Linfo_string14                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.byte	11                              @ Abbrev [11] 0xef:0x7 DW_TAG_base_type
+	.byte	12                              @ Abbrev [12] 0xee:0x7 DW_TAG_base_type
 	.long	.Linfo_string13                 @ DW_AT_name
 	.byte	8                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
+	.section	.debug_ranges,"",%progbits
+.Ldebug_ranges0:
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp10-.Lfunc_begin0
+	.long	0
+	.long	0
 	.section	.debug_str,"MS",%progbits,1
 .Linfo_string0:
 	.asciz	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]" @ string offset=0
@@ -478,7 +528,7 @@ lfs_crc.rtable:
 	.asciz	"i"                             @ string offset=235
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

@@ -39,66 +39,68 @@ rt_device_pin_register:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: rt_device_pin_register:name <- $r0
+	@DEBUG_VALUE: rt_device_pin_register:ops <- $r1
+	@DEBUG_VALUE: rt_device_pin_register:user_data <- $r2
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-	str	r2, [sp, #4]
 .Ltmp0:
 	.loc	1 79 33 prologue_end            @ rt-thread/components/drivers/misc/pin.c:79:33
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	movs	r1, #18
-	strb	r1, [r0, #20]
-	movs	r1, #0
-	.loc	1 80 33                         @ rt-thread/components/drivers/misc/pin.c:80:33
-	str	r1, [sp]                        @ 4-byte Spill
-	str	r1, [r0, #28]
-	.loc	1 81 33                         @ rt-thread/components/drivers/misc/pin.c:81:33
-	str	r1, [r0, #32]
-	.loc	1 86 33                         @ rt-thread/components/drivers/misc/pin.c:86:33
-	str	r1, [r0, #36]
-	.loc	1 87 33                         @ rt-thread/components/drivers/misc/pin.c:87:33
-	str	r1, [r0, #40]
-	.loc	1 88 33                         @ rt-thread/components/drivers/misc/pin.c:88:33
-	str	r1, [r0, #44]
-	.loc	1 89 33                         @ rt-thread/components/drivers/misc/pin.c:89:33
-	movw	r1, :lower16:_pin_read
-	movt	r1, :upper16:_pin_read
-	str	r1, [r0, #48]
-	.loc	1 90 33                         @ rt-thread/components/drivers/misc/pin.c:90:33
-	movw	r1, :lower16:_pin_write
-	movt	r1, :upper16:_pin_write
-	str	r1, [r0, #52]
-	.loc	1 91 33                         @ rt-thread/components/drivers/misc/pin.c:91:33
-	movw	r1, :lower16:_pin_control
-	movt	r1, :upper16:_pin_control
-	str	r1, [r0, #56]
-	.loc	1 94 35                         @ rt-thread/components/drivers/misc/pin.c:94:35
-	ldr	r1, [sp, #8]
-	.loc	1 94 33 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:94:33
-	str	r1, [r0, #80]
-	.loc	1 95 35 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:95:35
-	ldr	r1, [sp, #4]
-	.loc	1 95 33 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:95:33
-	str	r1, [r0, #76]
-	.loc	1 98 41 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:98:41
-	ldr	r1, [sp, #12]
-	movs	r2, #3
-	.loc	1 98 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:98:5
-	bl	rt_device_register
-                                        @ kill: def $r1 killed $r0
-	.loc	1 100 5 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:100:5
-	ldr	r0, [sp]                        @ 4-byte Reload
-	add	sp, #16
-	pop	{r7, pc}
+	movw	lr, :lower16:_hw_pin
+	movs	r3, #18
+	movt	lr, :upper16:_hw_pin
+	mov	r12, r0
 .Ltmp1:
+	@DEBUG_VALUE: rt_device_pin_register:name <- $r12
+	.loc	1 98 5                          @ rt-thread/components/drivers/misc/pin.c:98:5
+	mov	r0, lr
+	.loc	1 79 33                         @ rt-thread/components/drivers/misc/pin.c:79:33
+	strb.w	r3, [lr, #20]
+	movs	r3, #0
+	.loc	1 81 33                         @ rt-thread/components/drivers/misc/pin.c:81:33
+	strd	r3, r3, [lr, #28]
+	strd	r3, r3, [lr, #36]
+	str.w	r3, [lr, #44]
+	.loc	1 89 33                         @ rt-thread/components/drivers/misc/pin.c:89:33
+	movw	r3, :lower16:_pin_read
+	movt	r3, :upper16:_pin_read
+	str.w	r3, [lr, #48]
+	.loc	1 90 33                         @ rt-thread/components/drivers/misc/pin.c:90:33
+	movw	r3, :lower16:_pin_write
+	.loc	1 95 33                         @ rt-thread/components/drivers/misc/pin.c:95:33
+	str.w	r2, [lr, #76]
+	@DEBUG_VALUE: rt_device_pin_register:ops <- $r1
+	.loc	1 90 33                         @ rt-thread/components/drivers/misc/pin.c:90:33
+	movt	r3, :upper16:_pin_write
+	str.w	r3, [lr, #52]
+	.loc	1 91 33                         @ rt-thread/components/drivers/misc/pin.c:91:33
+	movw	r3, :lower16:_pin_control
+	.loc	1 94 33                         @ rt-thread/components/drivers/misc/pin.c:94:33
+	str.w	r1, [lr, #80]
+	.loc	1 98 5                          @ rt-thread/components/drivers/misc/pin.c:98:5
+	movs	r2, #3
+.Ltmp2:
+	@DEBUG_VALUE: rt_device_pin_register:user_data <- [DW_OP_LLVM_entry_value 1] $r2
+	mov	r1, r12
+.Ltmp3:
+	@DEBUG_VALUE: rt_device_pin_register:ops <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: rt_device_pin_register:name <- $r1
+	.loc	1 91 33                         @ rt-thread/components/drivers/misc/pin.c:91:33
+	movt	r3, :upper16:_pin_control
+	str.w	r3, [lr, #56]
+.Ltmp4:
+	@DEBUG_VALUE: rt_device_pin_register:user_data <- $r2
+	.loc	1 98 5                          @ rt-thread/components/drivers/misc/pin.c:98:5
+	bl	rt_device_register
+.Ltmp5:
+	@DEBUG_VALUE: rt_device_pin_register:user_data <- [DW_OP_LLVM_entry_value 1] $r2
+	.loc	1 100 5                         @ rt-thread/components/drivers/misc/pin.c:100:5
+	movs	r0, #0
+	pop	{r7, pc}
+.Ltmp6:
 .Lfunc_end0:
 	.size	rt_device_pin_register, .Lfunc_end0-rt_device_pin_register
 	.cfi_endproc
@@ -116,98 +118,99 @@ _pin_read:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: _pin_read:dev <- $r0
+	@DEBUG_VALUE: _pin_read:pos <- $r1
+	@DEBUG_VALUE: _pin_read:buffer <- $r2
+	@DEBUG_VALUE: _pin_read:size <- $r3
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #24]
-	str	r1, [sp, #20]
-	str	r2, [sp, #16]
-	str	r3, [sp, #12]
-.Ltmp2:
-	.loc	1 21 57 prologue_end            @ rt-thread/components/drivers/misc/pin.c:21:57
-	ldr	r0, [sp, #24]
-	.loc	1 21 27 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:21:27
-	str	r0, [sp, #4]
-.Ltmp3:
-	.loc	1 24 5 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:24:5
-	ldr	r0, [sp, #4]
-.Ltmp4:
-	.loc	1 24 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:24:5
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp7:
+	@DEBUG_VALUE: _pin_read:pin <- $r0
+	mov	r5, r0
+.Ltmp8:
+	@DEBUG_VALUE: _pin_read:pin <- $r5
+	@DEBUG_VALUE: _pin_read:dev <- $r5
+	mov	r6, r3
+.Ltmp9:
+	@DEBUG_VALUE: _pin_read:size <- $r6
+	@DEBUG_VALUE: _pin_read:size <- $r6
+	mov	r4, r2
+.Ltmp10:
+	@DEBUG_VALUE: _pin_read:buffer <- $r4
+	@DEBUG_VALUE: _pin_read:buffer <- $r4
+	.loc	1 24 5 prologue_end             @ rt-thread/components/drivers/misc/pin.c:24:5
 	cbnz	r0, .LBB1_2
-	b	.LBB1_1
-.LBB1_1:
-.Ltmp5:
-	.loc	1 24 5                          @ rt-thread/components/drivers/misc/pin.c:24:5
+.Ltmp11:
+@ %bb.1:
+	@DEBUG_VALUE: _pin_read:size <- $r6
+	@DEBUG_VALUE: _pin_read:dev <- $r5
+	@DEBUG_VALUE: _pin_read:pin <- $r5
+	@DEBUG_VALUE: _pin_read:buffer <- $r4
+	@DEBUG_VALUE: _pin_read:pos <- $r1
+	.loc	1 24 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:24:5
 	movw	r0, :lower16:.L.str.2
+	adr	r1, .LCPI1_0
+.Ltmp12:
+	@DEBUG_VALUE: _pin_read:pos <- [DW_OP_LLVM_entry_value 1] $r1
 	movt	r0, :upper16:.L.str.2
-	movw	r1, :lower16:.L__FUNCTION__._pin_read
-	movt	r1, :upper16:.L__FUNCTION__._pin_read
 	movs	r2, #24
 	bl	rt_assert_handler
-	b	.LBB1_2
-.Ltmp6:
+.Ltmp13:
 .LBB1_2:
-	.loc	1 26 46 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:26:46
-	ldr	r0, [sp, #16]
-	.loc	1 26 12 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:26:12
-	str	r0, [sp, #8]
-.Ltmp7:
-	.loc	1 27 9 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:27:9
-	ldr	r0, [sp, #8]
-	.loc	1 27 27 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:27:27
-	cbz	r0, .LBB1_4
-	b	.LBB1_3
-.LBB1_3:
-	.loc	1 27 30                         @ rt-thread/components/drivers/misc/pin.c:27:30
-	ldr	r0, [sp, #12]
-.Ltmp8:
-	.loc	1 27 9                          @ rt-thread/components/drivers/misc/pin.c:27:9
-	cmp	r0, #4
-	beq	.LBB1_5
-	b	.LBB1_4
+	@DEBUG_VALUE: _pin_read:size <- $r6
+	@DEBUG_VALUE: _pin_read:dev <- $r5
+	@DEBUG_VALUE: _pin_read:pin <- $r5
+	@DEBUG_VALUE: _pin_read:buffer <- $r4
+	@DEBUG_VALUE: _pin_read:status <- $r4
+	.loc	1 0 5                           @ rt-thread/components/drivers/misc/pin.c:0:5
+	mov.w	r0, #0
+.Ltmp14:
+	.loc	1 27 27 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:27:27
+	cbz	r4, .LBB1_5
+.Ltmp15:
+@ %bb.3:
+	@DEBUG_VALUE: _pin_read:size <- $r6
+	@DEBUG_VALUE: _pin_read:dev <- $r5
+	@DEBUG_VALUE: _pin_read:pin <- $r5
+	@DEBUG_VALUE: _pin_read:status <- $r4
+	@DEBUG_VALUE: _pin_read:buffer <- $r4
+	cmp	r6, #4
+.Ltmp16:
+	.loc	1 31 1                          @ rt-thread/components/drivers/misc/pin.c:31:1
+	it	ne
+	popne	{r4, r5, r6, pc}
+.Ltmp17:
 .LBB1_4:
-	.loc	1 0 9                           @ rt-thread/components/drivers/misc/pin.c:0:9
-	movs	r0, #0
-.Ltmp9:
-	.loc	1 27 55                         @ rt-thread/components/drivers/misc/pin.c:27:55
-	str	r0, [sp, #28]
-	b	.LBB1_6
-.Ltmp10:
-.LBB1_5:
-	.loc	1 29 22 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:29:22
-	ldr	r0, [sp, #4]
-	.loc	1 29 27 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:29:27
-	ldr	r0, [r0, #80]
+	@DEBUG_VALUE: _pin_read:status <- $r4
+	.loc	1 29 27                         @ rt-thread/components/drivers/misc/pin.c:29:27
+	ldr	r0, [r5, #80]
+	.loc	1 29 54 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:29:54
+	ldrh	r1, [r4]
 	.loc	1 29 32                         @ rt-thread/components/drivers/misc/pin.c:29:32
 	ldr	r2, [r0, #8]
-	.loc	1 29 41                         @ rt-thread/components/drivers/misc/pin.c:29:41
-	ldr	r0, [sp, #24]
-	.loc	1 29 46                         @ rt-thread/components/drivers/misc/pin.c:29:46
-	ldr	r1, [sp, #8]
-	.loc	1 29 54                         @ rt-thread/components/drivers/misc/pin.c:29:54
-	ldrh	r1, [r1]
 	.loc	1 29 22                         @ rt-thread/components/drivers/misc/pin.c:29:22
+	mov	r0, r5
 	blx	r2
-	.loc	1 29 5                          @ rt-thread/components/drivers/misc/pin.c:29:5
-	ldr	r1, [sp, #8]
 	.loc	1 29 20                         @ rt-thread/components/drivers/misc/pin.c:29:20
-	strh	r0, [r1, #2]
-	.loc	1 30 12 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:30:12
-	ldr	r0, [sp, #12]
-	.loc	1 30 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:30:5
-	str	r0, [sp, #28]
-	b	.LBB1_6
-.LBB1_6:
+	strh	r0, [r4, #2]
+	movs	r0, #4
+.Ltmp18:
+.LBB1_5:
+	@DEBUG_VALUE: _pin_read:status <- $r4
 	.loc	1 31 1 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:31:1
-	ldr	r0, [sp, #28]
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp11:
+	pop	{r4, r5, r6, pc}
+.Ltmp19:
+	.p2align	2
+@ %bb.6:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI1_0:
+.L__FUNCTION__._pin_read:
+	.asciz	"_pin_read\000\000"
 .Lfunc_end1:
 	.size	_pin_read, .Lfunc_end1-_pin_read
 	.cfi_endproc
@@ -221,100 +224,103 @@ _pin_read:
 	.thumb_func
 _pin_write:
 .Lfunc_begin2:
-	.loc	1 34 0                          @ rt-thread/components/drivers/misc/pin.c:34:0
+	.loc	1 34 0 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:34:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: _pin_write:dev <- $r0
+	@DEBUG_VALUE: _pin_write:pos <- $r1
+	@DEBUG_VALUE: _pin_write:buffer <- $r2
+	@DEBUG_VALUE: _pin_write:size <- $r3
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #24]
-	str	r1, [sp, #20]
-	str	r2, [sp, #16]
-	str	r3, [sp, #12]
-.Ltmp12:
-	.loc	1 36 57 prologue_end            @ rt-thread/components/drivers/misc/pin.c:36:57
-	ldr	r0, [sp, #24]
-	.loc	1 36 27 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:36:27
-	str	r0, [sp, #4]
-.Ltmp13:
-	.loc	1 39 5 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:39:5
-	ldr	r0, [sp, #4]
-.Ltmp14:
-	.loc	1 39 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:39:5
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp20:
+	@DEBUG_VALUE: _pin_write:pin <- $r0
+	mov	r4, r0
+.Ltmp21:
+	@DEBUG_VALUE: _pin_write:pin <- $r4
+	@DEBUG_VALUE: _pin_write:dev <- $r4
+	mov	r6, r3
+.Ltmp22:
+	@DEBUG_VALUE: _pin_write:size <- $r6
+	@DEBUG_VALUE: _pin_write:size <- $r6
+	mov	r5, r2
+.Ltmp23:
+	@DEBUG_VALUE: _pin_write:buffer <- $r5
+	@DEBUG_VALUE: _pin_write:buffer <- $r5
+	.loc	1 39 5 prologue_end             @ rt-thread/components/drivers/misc/pin.c:39:5
 	cbnz	r0, .LBB2_2
-	b	.LBB2_1
-.LBB2_1:
-.Ltmp15:
-	.loc	1 39 5                          @ rt-thread/components/drivers/misc/pin.c:39:5
+.Ltmp24:
+@ %bb.1:
+	@DEBUG_VALUE: _pin_write:size <- $r6
+	@DEBUG_VALUE: _pin_write:buffer <- $r5
+	@DEBUG_VALUE: _pin_write:dev <- $r4
+	@DEBUG_VALUE: _pin_write:pin <- $r4
+	@DEBUG_VALUE: _pin_write:pos <- $r1
+	.loc	1 39 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:39:5
 	movw	r0, :lower16:.L.str.2
+	adr	r1, .LCPI2_0
+.Ltmp25:
+	@DEBUG_VALUE: _pin_write:pos <- [DW_OP_LLVM_entry_value 1] $r1
 	movt	r0, :upper16:.L.str.2
-	movw	r1, :lower16:.L__FUNCTION__._pin_write
-	movt	r1, :upper16:.L__FUNCTION__._pin_write
 	movs	r2, #39
 	bl	rt_assert_handler
-	b	.LBB2_2
-.Ltmp16:
+.Ltmp26:
 .LBB2_2:
-	.loc	1 41 46 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:41:46
-	ldr	r0, [sp, #16]
-	.loc	1 41 12 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:41:12
-	str	r0, [sp, #8]
-.Ltmp17:
-	.loc	1 42 9 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:42:9
-	ldr	r0, [sp, #8]
-	.loc	1 42 27 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:42:27
-	cbz	r0, .LBB2_4
-	b	.LBB2_3
-.LBB2_3:
-	.loc	1 42 30                         @ rt-thread/components/drivers/misc/pin.c:42:30
-	ldr	r0, [sp, #12]
-.Ltmp18:
-	.loc	1 42 9                          @ rt-thread/components/drivers/misc/pin.c:42:9
-	cmp	r0, #4
-	beq	.LBB2_5
-	b	.LBB2_4
+	@DEBUG_VALUE: _pin_write:size <- $r6
+	@DEBUG_VALUE: _pin_write:buffer <- $r5
+	@DEBUG_VALUE: _pin_write:dev <- $r4
+	@DEBUG_VALUE: _pin_write:pin <- $r4
+	@DEBUG_VALUE: _pin_write:status <- $r5
+	.loc	1 0 5                           @ rt-thread/components/drivers/misc/pin.c:0:5
+	mov.w	r0, #0
+.Ltmp27:
+	.loc	1 42 27 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:42:27
+	cbz	r5, .LBB2_5
+.Ltmp28:
+@ %bb.3:
+	@DEBUG_VALUE: _pin_write:size <- $r6
+	@DEBUG_VALUE: _pin_write:status <- $r5
+	@DEBUG_VALUE: _pin_write:buffer <- $r5
+	@DEBUG_VALUE: _pin_write:dev <- $r4
+	@DEBUG_VALUE: _pin_write:pin <- $r4
+	cmp	r6, #4
+.Ltmp29:
+	.loc	1 47 1                          @ rt-thread/components/drivers/misc/pin.c:47:1
+	it	ne
+	popne	{r4, r5, r6, pc}
+.Ltmp30:
 .LBB2_4:
-	.loc	1 0 9                           @ rt-thread/components/drivers/misc/pin.c:0:9
-	movs	r0, #0
-.Ltmp19:
-	.loc	1 42 55                         @ rt-thread/components/drivers/misc/pin.c:42:55
-	str	r0, [sp, #28]
-	b	.LBB2_6
-.Ltmp20:
-.LBB2_5:
-	.loc	1 44 5 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:44:5
-	ldr	r0, [sp, #4]
-	.loc	1 44 10 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:44:10
-	ldr	r0, [r0, #80]
+	@DEBUG_VALUE: _pin_write:status <- $r5
+	.loc	1 44 10                         @ rt-thread/components/drivers/misc/pin.c:44:10
+	ldr	r0, [r4, #80]
+	.loc	1 44 49 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:44:49
+	ldrh	r1, [r5]
+	.loc	1 44 73                         @ rt-thread/components/drivers/misc/pin.c:44:73
+	ldrh	r2, [r5, #2]
 	.loc	1 44 15                         @ rt-thread/components/drivers/misc/pin.c:44:15
 	ldr	r3, [r0, #4]
-	.loc	1 44 25                         @ rt-thread/components/drivers/misc/pin.c:44:25
-	ldr	r0, [sp, #24]
-	.loc	1 44 41                         @ rt-thread/components/drivers/misc/pin.c:44:41
-	ldr	r2, [sp, #8]
-	.loc	1 44 49                         @ rt-thread/components/drivers/misc/pin.c:44:49
-	ldrh	r1, [r2]
-	.loc	1 44 73                         @ rt-thread/components/drivers/misc/pin.c:44:73
-	ldrh	r2, [r2, #2]
 	.loc	1 44 5                          @ rt-thread/components/drivers/misc/pin.c:44:5
+	mov	r0, r4
 	blx	r3
-	.loc	1 46 12 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:46:12
-	ldr	r0, [sp, #12]
-	.loc	1 46 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:46:5
-	str	r0, [sp, #28]
-	b	.LBB2_6
-.LBB2_6:
+	movs	r0, #4
+.Ltmp31:
+.LBB2_5:
+	@DEBUG_VALUE: _pin_write:status <- $r5
 	.loc	1 47 1 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:47:1
-	ldr	r0, [sp, #28]
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp21:
+	pop	{r4, r5, r6, pc}
+.Ltmp32:
+	.p2align	2
+@ %bb.6:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI2_0:
+.L__FUNCTION__._pin_write:
+	.asciz	"_pin_write\000"
 .Lfunc_end2:
 	.size	_pin_write, .Lfunc_end2-_pin_write
 	.cfi_endproc
@@ -328,91 +334,98 @@ _pin_write:
 	.thumb_func
 _pin_control:
 .Lfunc_begin3:
-	.loc	1 50 0                          @ rt-thread/components/drivers/misc/pin.c:50:0
+	.loc	1 50 0 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:50:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: _pin_control:dev <- $r0
+	@DEBUG_VALUE: _pin_control:cmd <- $r1
+	@DEBUG_VALUE: _pin_control:args <- $r2
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
-.Ltmp22:
-	.loc	1 52 57 prologue_end            @ rt-thread/components/drivers/misc/pin.c:52:57
-	ldr	r0, [sp, #16]
-	.loc	1 52 27 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:52:27
-	str	r0, [sp]
-.Ltmp23:
-	.loc	1 55 5 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:55:5
-	ldr	r0, [sp]
-.Ltmp24:
-	.loc	1 55 5 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:55:5
-	cbnz	r0, .LBB3_2
-	b	.LBB3_1
-.LBB3_1:
-.Ltmp25:
-	.loc	1 55 5                          @ rt-thread/components/drivers/misc/pin.c:55:5
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	movw	r1, :lower16:.L__FUNCTION__._pin_control
-	movt	r1, :upper16:.L__FUNCTION__._pin_control
-	movs	r2, #55
-	bl	rt_assert_handler
-	b	.LBB3_2
-.Ltmp26:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp33:
+	@DEBUG_VALUE: _pin_control:pin <- $r0
+	mov	r4, r0
+.Ltmp34:
+	@DEBUG_VALUE: _pin_control:pin <- $r4
+	@DEBUG_VALUE: _pin_control:dev <- $r4
+	mov	r5, r2
+.Ltmp35:
+	@DEBUG_VALUE: _pin_control:args <- $r5
+	@DEBUG_VALUE: _pin_control:args <- $r5
+	.loc	1 55 5 prologue_end             @ rt-thread/components/drivers/misc/pin.c:55:5
+	cbz	r0, .LBB3_3
+.Ltmp36:
+@ %bb.1:
+	@DEBUG_VALUE: _pin_control:args <- $r5
+	@DEBUG_VALUE: _pin_control:dev <- $r4
+	@DEBUG_VALUE: _pin_control:pin <- $r4
+	@DEBUG_VALUE: _pin_control:cmd <- $r1
+	@DEBUG_VALUE: _pin_control:mode <- $r5
+	.loc	1 58 9                          @ rt-thread/components/drivers/misc/pin.c:58:9
+	cbz	r5, .LBB3_4
+.Ltmp37:
 .LBB3_2:
-	.loc	1 57 42 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:57:42
-	ldr	r0, [sp, #8]
-	.loc	1 57 10 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:57:10
-	str	r0, [sp, #4]
-.Ltmp27:
-	.loc	1 58 9 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:58:9
-	ldr	r0, [sp, #4]
-.Ltmp28:
-	.loc	1 58 9 is_stmt 0                @ rt-thread/components/drivers/misc/pin.c:58:9
-	cbnz	r0, .LBB3_4
-	b	.LBB3_3
-.LBB3_3:
-	.loc	1 0 9                           @ rt-thread/components/drivers/misc/pin.c:0:9
-	mov.w	r0, #-1
-.Ltmp29:
-	.loc	1 58 26                         @ rt-thread/components/drivers/misc/pin.c:58:26
-	str	r0, [sp, #20]
-	b	.LBB3_5
-.Ltmp30:
-.LBB3_4:
-	.loc	1 60 5 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:60:5
-	ldr	r0, [sp]
-	.loc	1 60 10 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:60:10
-	ldr	r0, [r0, #80]
+	@DEBUG_VALUE: _pin_control:mode <- $r5
+	@DEBUG_VALUE: _pin_control:args <- $r5
+	@DEBUG_VALUE: _pin_control:dev <- $r4
+	@DEBUG_VALUE: _pin_control:pin <- $r4
+	@DEBUG_VALUE: _pin_control:mode <- $r5
+	.loc	1 60 10                         @ rt-thread/components/drivers/misc/pin.c:60:10
+	ldr	r0, [r4, #80]
+	.loc	1 60 46 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:60:46
+	ldrh	r1, [r5]
+	.loc	1 60 68                         @ rt-thread/components/drivers/misc/pin.c:60:68
+	ldrh	r2, [r5, #2]
 	.loc	1 60 15                         @ rt-thread/components/drivers/misc/pin.c:60:15
 	ldr	r3, [r0]
-	.loc	1 60 24                         @ rt-thread/components/drivers/misc/pin.c:60:24
-	ldr	r0, [sp, #16]
-	.loc	1 60 40                         @ rt-thread/components/drivers/misc/pin.c:60:40
-	ldr	r2, [sp, #4]
-	.loc	1 60 46                         @ rt-thread/components/drivers/misc/pin.c:60:46
-	ldrh	r1, [r2]
-	.loc	1 60 68                         @ rt-thread/components/drivers/misc/pin.c:60:68
-	ldrh	r2, [r2, #2]
 	.loc	1 60 5                          @ rt-thread/components/drivers/misc/pin.c:60:5
+	mov	r0, r4
 	blx	r3
 	movs	r0, #0
-	.loc	1 62 5 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:62:5
-	str	r0, [sp, #20]
-	b	.LBB3_5
-.LBB3_5:
-	.loc	1 63 1                          @ rt-thread/components/drivers/misc/pin.c:63:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp31:
+	.loc	1 63 1 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:63:1
+	pop	{r4, r5, r7, pc}
+.Ltmp38:
+.LBB3_3:
+	@DEBUG_VALUE: _pin_control:args <- $r5
+	@DEBUG_VALUE: _pin_control:dev <- $r4
+	@DEBUG_VALUE: _pin_control:pin <- $r4
+	@DEBUG_VALUE: _pin_control:cmd <- $r1
+	.loc	1 55 5                          @ rt-thread/components/drivers/misc/pin.c:55:5
+	movw	r0, :lower16:.L.str.2
+	adr	r1, .LCPI3_0
+.Ltmp39:
+	@DEBUG_VALUE: _pin_control:cmd <- [DW_OP_LLVM_entry_value 1] $r1
+	movt	r0, :upper16:.L.str.2
+	movs	r2, #55
+	bl	rt_assert_handler
+.Ltmp40:
+	@DEBUG_VALUE: _pin_control:mode <- $r5
+	.loc	1 58 9                          @ rt-thread/components/drivers/misc/pin.c:58:9
+	cmp	r5, #0
+	bne	.LBB3_2
+.Ltmp41:
+.LBB3_4:
+	@DEBUG_VALUE: _pin_control:mode <- $r5
+	@DEBUG_VALUE: _pin_control:args <- $r5
+	@DEBUG_VALUE: _pin_control:dev <- $r4
+	@DEBUG_VALUE: _pin_control:pin <- $r4
+	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:9
+	mov.w	r0, #-1
+	.loc	1 63 1 is_stmt 1                @ rt-thread/components/drivers/misc/pin.c:63:1
+	pop	{r4, r5, r7, pc}
+.Ltmp42:
+	.p2align	2
+@ %bb.5:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI3_0:
+.L__FUNCTION__._pin_control:
+	.asciz	"_pin_control\000\000\000"
 .Lfunc_end3:
 	.size	_pin_control, .Lfunc_end3-_pin_control
 	.cfi_endproc
@@ -428,89 +441,114 @@ _pin_control:
 	.thumb_func
 rt_pin_attach_irq:
 .Lfunc_begin4:
-	.loc	1 105 0                         @ rt-thread/components/drivers/misc/pin.c:105:0
+	.loc	1 105 0 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:105:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r4, lr}
-	push	{r4, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_pin_attach_irq:pin <- $r0
+	@DEBUG_VALUE: rt_pin_attach_irq:mode <- $r1
+	@DEBUG_VALUE: rt_pin_attach_irq:hdr <- $r2
+	@DEBUG_VALUE: rt_pin_attach_irq:args <- $r3
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r4, -8
-	.pad	#24
-	sub	sp, #24
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+	.pad	#8
+	sub	sp, #8
 	.cfi_def_cfa_offset 32
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
-	str	r3, [sp, #4]
-.Ltmp32:
+.Ltmp43:
 	.loc	1 106 5 prologue_end            @ rt-thread/components/drivers/misc/pin.c:106:5
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-.Ltmp33:
-	.loc	1 106 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:106:5
-	cbnz	r0, .LBB4_2
-	b	.LBB4_1
-.LBB4_1:
-.Ltmp34:
+	movw	r4, :lower16:_hw_pin
+	mov	r8, r2
+.Ltmp44:
+	@DEBUG_VALUE: rt_pin_attach_irq:hdr <- $r8
+	@DEBUG_VALUE: rt_pin_attach_irq:hdr <- $r8
+	movt	r4, :upper16:_hw_pin
+	mov	r5, r1
+.Ltmp45:
+	@DEBUG_VALUE: rt_pin_attach_irq:mode <- $r5
+	@DEBUG_VALUE: rt_pin_attach_irq:mode <- $r5
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:5
+	mov	r6, r0
+.Ltmp46:
+	@DEBUG_VALUE: rt_pin_attach_irq:pin <- $r6
+	@DEBUG_VALUE: rt_pin_attach_irq:pin <- $r6
+	.loc	1 106 5                         @ rt-thread/components/drivers/misc/pin.c:106:5
+	ldr	r7, [r4, #80]
+.Ltmp47:
+	.loc	1 106 5                         @ rt-thread/components/drivers/misc/pin.c:106:5
+	cmp	r7, #0
+	mov	r7, r3
+.Ltmp48:
+	@DEBUG_VALUE: rt_pin_attach_irq:args <- $r7
+	@DEBUG_VALUE: rt_pin_attach_irq:args <- $r7
+	bne	.LBB4_2
+.Ltmp49:
+@ %bb.1:
+	@DEBUG_VALUE: rt_pin_attach_irq:hdr <- $r8
+	@DEBUG_VALUE: rt_pin_attach_irq:args <- $r7
+	@DEBUG_VALUE: rt_pin_attach_irq:pin <- $r6
+	@DEBUG_VALUE: rt_pin_attach_irq:mode <- $r5
 	.loc	1 106 5                         @ rt-thread/components/drivers/misc/pin.c:106:5
 	movw	r0, :lower16:.L.str
+	adr	r1, .LCPI4_0
 	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.rt_pin_attach_irq
-	movt	r1, :upper16:.L__FUNCTION__.rt_pin_attach_irq
 	movs	r2, #106
 	bl	rt_assert_handler
-	b	.LBB4_2
-.Ltmp35:
+.Ltmp50:
 .LBB4_2:
+	@DEBUG_VALUE: rt_pin_attach_irq:hdr <- $r8
+	@DEBUG_VALUE: rt_pin_attach_irq:args <- $r7
+	@DEBUG_VALUE: rt_pin_attach_irq:pin <- $r6
+	@DEBUG_VALUE: rt_pin_attach_irq:mode <- $r5
 	.loc	1 107 16 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:107:16
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
+	ldr	r0, [r4, #80]
 	.loc	1 107 21 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:107:21
-	ldr	r0, [r0, #12]
-.Ltmp36:
+	ldr	r4, [r0, #12]
+.Ltmp51:
 	.loc	1 107 8                         @ rt-thread/components/drivers/misc/pin.c:107:8
-	cbz	r0, .LBB4_4
-	b	.LBB4_3
-.LBB4_3:
-.Ltmp37:
-	.loc	1 109 24 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:109:24
+	cbz	r4, .LBB4_4
+.Ltmp52:
+@ %bb.3:
+	@DEBUG_VALUE: rt_pin_attach_irq:hdr <- $r8
+	@DEBUG_VALUE: rt_pin_attach_irq:args <- $r7
+	@DEBUG_VALUE: rt_pin_attach_irq:pin <- $r6
+	@DEBUG_VALUE: rt_pin_attach_irq:mode <- $r5
+	.loc	1 109 16 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:109:16
 	movw	r0, :lower16:_hw_pin
+	mov	r1, r6
 	movt	r0, :upper16:_hw_pin
-	ldr	r1, [r0, #80]
-	.loc	1 109 29 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:109:29
-	ldr.w	r12, [r1, #12]
-	.loc	1 109 61                        @ rt-thread/components/drivers/misc/pin.c:109:61
-	ldr	r1, [sp, #16]
-	.loc	1 109 66                        @ rt-thread/components/drivers/misc/pin.c:109:66
-	ldr	r2, [sp, #12]
-	.loc	1 109 72                        @ rt-thread/components/drivers/misc/pin.c:109:72
-	ldr	r3, [sp, #8]
-	.loc	1 109 77                        @ rt-thread/components/drivers/misc/pin.c:109:77
-	ldr.w	lr, [sp, #4]
-	.loc	1 109 16                        @ rt-thread/components/drivers/misc/pin.c:109:16
-	mov	r4, sp
-	str.w	lr, [r4]
-	blx	r12
-	.loc	1 109 9                         @ rt-thread/components/drivers/misc/pin.c:109:9
-	str	r0, [sp, #20]
-	b	.LBB4_5
-.Ltmp38:
-.LBB4_4:
-	.loc	1 0 9                           @ rt-thread/components/drivers/misc/pin.c:0:9
-	movs	r0, #6
-	.loc	1 111 5 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:111:5
-	str	r0, [sp, #20]
-	b	.LBB4_5
-.LBB4_5:
+	mov	r2, r5
+	mov	r3, r8
+	str	r7, [sp]
+	blx	r4
+.Ltmp53:
 	.loc	1 112 1                         @ rt-thread/components/drivers/misc/pin.c:112:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r4, pc}
-.Ltmp39:
+	add	sp, #8
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp54:
+.LBB4_4:
+	@DEBUG_VALUE: rt_pin_attach_irq:hdr <- $r8
+	@DEBUG_VALUE: rt_pin_attach_irq:args <- $r7
+	@DEBUG_VALUE: rt_pin_attach_irq:pin <- $r6
+	@DEBUG_VALUE: rt_pin_attach_irq:mode <- $r5
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+	movs	r0, #6
+	.loc	1 112 1                         @ rt-thread/components/drivers/misc/pin.c:112:1
+	add	sp, #8
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp55:
+	.p2align	2
+@ %bb.5:
+	.loc	1 0 1                           @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI4_0:
+.L__FUNCTION__.rt_pin_attach_irq:
+	.asciz	"rt_pin_attach_irq\000\000"
 .Lfunc_end4:
 	.size	rt_pin_attach_irq, .Lfunc_end4-rt_pin_attach_irq
 	.cfi_endproc
@@ -526,78 +564,74 @@ rt_pin_attach_irq:
 	.thumb_func
 rt_pin_detach_irq:
 .Lfunc_begin5:
-	.loc	1 114 0                         @ rt-thread/components/drivers/misc/pin.c:114:0
+	.loc	1 114 0 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:114:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_pin_detach_irq:pin <- $r0
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp]
-.Ltmp40:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp56:
 	.loc	1 115 5 prologue_end            @ rt-thread/components/drivers/misc/pin.c:115:5
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-.Ltmp41:
+	movw	r5, :lower16:_hw_pin
+	mov	r4, r0
+.Ltmp57:
+	@DEBUG_VALUE: rt_pin_detach_irq:pin <- $r4
+	@DEBUG_VALUE: rt_pin_detach_irq:pin <- $r4
+	movt	r5, :upper16:_hw_pin
+	ldr	r1, [r5, #80]
+.Ltmp58:
 	.loc	1 115 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:115:5
-	cbnz	r0, .LBB5_2
-	b	.LBB5_1
-.LBB5_1:
-.Ltmp42:
+	cbnz	r1, .LBB5_2
+.Ltmp59:
+@ %bb.1:
+	@DEBUG_VALUE: rt_pin_detach_irq:pin <- $r4
 	.loc	1 115 5                         @ rt-thread/components/drivers/misc/pin.c:115:5
 	movw	r0, :lower16:.L.str
+	adr	r1, .LCPI5_0
 	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.rt_pin_detach_irq
-	movt	r1, :upper16:.L__FUNCTION__.rt_pin_detach_irq
 	movs	r2, #115
 	bl	rt_assert_handler
-	b	.LBB5_2
-.Ltmp43:
+.Ltmp60:
 .LBB5_2:
+	@DEBUG_VALUE: rt_pin_detach_irq:pin <- $r4
 	.loc	1 116 16 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:116:16
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
+	ldr	r0, [r5, #80]
 	.loc	1 116 21 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:116:21
-	ldr	r0, [r0, #16]
-.Ltmp44:
+	ldr	r2, [r0, #16]
+.Ltmp61:
 	.loc	1 116 8                         @ rt-thread/components/drivers/misc/pin.c:116:8
-	cbz	r0, .LBB5_4
-	b	.LBB5_3
-.LBB5_3:
-.Ltmp45:
-	.loc	1 118 24 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:118:24
+	cbz	r2, .LBB5_4
+.Ltmp62:
+@ %bb.3:
+	@DEBUG_VALUE: rt_pin_detach_irq:pin <- $r4
+	.loc	1 118 16 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:118:16
 	movw	r0, :lower16:_hw_pin
+	mov	r1, r4
 	movt	r0, :upper16:_hw_pin
-	ldr	r1, [r0, #80]
-	.loc	1 118 29 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:118:29
-	ldr	r2, [r1, #16]
-	.loc	1 118 61                        @ rt-thread/components/drivers/misc/pin.c:118:61
-	ldr	r1, [sp]
-	.loc	1 118 16                        @ rt-thread/components/drivers/misc/pin.c:118:16
 	blx	r2
-	.loc	1 118 9                         @ rt-thread/components/drivers/misc/pin.c:118:9
-	str	r0, [sp, #4]
-	b	.LBB5_5
-.Ltmp46:
-.LBB5_4:
-	.loc	1 0 9                           @ rt-thread/components/drivers/misc/pin.c:0:9
-	movs	r0, #6
-	.loc	1 120 5 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:120:5
-	str	r0, [sp, #4]
-	b	.LBB5_5
-.LBB5_5:
+.Ltmp63:
 	.loc	1 121 1                         @ rt-thread/components/drivers/misc/pin.c:121:1
-	ldr	r0, [sp, #4]
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp47:
+	pop	{r4, r5, r7, pc}
+.Ltmp64:
+.LBB5_4:
+	@DEBUG_VALUE: rt_pin_detach_irq:pin <- $r4
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+	movs	r0, #6
+	.loc	1 121 1                         @ rt-thread/components/drivers/misc/pin.c:121:1
+	pop	{r4, r5, r7, pc}
+.Ltmp65:
+	.p2align	2
+@ %bb.5:
+	.loc	1 0 1                           @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI5_0:
+.L__FUNCTION__.rt_pin_detach_irq:
+	.asciz	"rt_pin_detach_irq\000\000"
 .Lfunc_end5:
 	.size	rt_pin_detach_irq, .Lfunc_end5-rt_pin_detach_irq
 	.cfi_endproc
@@ -613,81 +647,84 @@ rt_pin_detach_irq:
 	.thumb_func
 rt_pin_irq_enable:
 .Lfunc_begin6:
-	.loc	1 124 0                         @ rt-thread/components/drivers/misc/pin.c:124:0
+	.loc	1 124 0 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:124:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_pin_irq_enable:pin <- $r0
+	@DEBUG_VALUE: rt_pin_irq_enable:enabled <- $r1
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-	str	r1, [sp, #4]
-.Ltmp48:
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp66:
 	.loc	1 125 5 prologue_end            @ rt-thread/components/drivers/misc/pin.c:125:5
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-.Ltmp49:
+	movw	r6, :lower16:_hw_pin
+	mov	r4, r1
+.Ltmp67:
+	@DEBUG_VALUE: rt_pin_irq_enable:enabled <- $r4
+	@DEBUG_VALUE: rt_pin_irq_enable:enabled <- $r4
+	movt	r6, :upper16:_hw_pin
+	mov	r5, r0
+.Ltmp68:
+	@DEBUG_VALUE: rt_pin_irq_enable:pin <- $r5
+	@DEBUG_VALUE: rt_pin_irq_enable:pin <- $r5
+	ldr	r2, [r6, #80]
+.Ltmp69:
 	.loc	1 125 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:125:5
-	cbnz	r0, .LBB6_2
-	b	.LBB6_1
-.LBB6_1:
-.Ltmp50:
+	cbnz	r2, .LBB6_2
+.Ltmp70:
+@ %bb.1:
+	@DEBUG_VALUE: rt_pin_irq_enable:pin <- $r5
+	@DEBUG_VALUE: rt_pin_irq_enable:enabled <- $r4
 	.loc	1 125 5                         @ rt-thread/components/drivers/misc/pin.c:125:5
 	movw	r0, :lower16:.L.str
+	adr	r1, .LCPI6_0
 	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.rt_pin_irq_enable
-	movt	r1, :upper16:.L__FUNCTION__.rt_pin_irq_enable
 	movs	r2, #125
 	bl	rt_assert_handler
-	b	.LBB6_2
-.Ltmp51:
+.Ltmp71:
 .LBB6_2:
+	@DEBUG_VALUE: rt_pin_irq_enable:pin <- $r5
+	@DEBUG_VALUE: rt_pin_irq_enable:enabled <- $r4
 	.loc	1 126 16 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:126:16
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
+	ldr	r0, [r6, #80]
 	.loc	1 126 21 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:126:21
-	ldr	r0, [r0, #20]
-.Ltmp52:
+	ldr	r3, [r0, #20]
+.Ltmp72:
 	.loc	1 126 8                         @ rt-thread/components/drivers/misc/pin.c:126:8
-	cbz	r0, .LBB6_4
-	b	.LBB6_3
-.LBB6_3:
-.Ltmp53:
-	.loc	1 128 24 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:128:24
+	cbz	r3, .LBB6_4
+.Ltmp73:
+@ %bb.3:
+	@DEBUG_VALUE: rt_pin_irq_enable:pin <- $r5
+	@DEBUG_VALUE: rt_pin_irq_enable:enabled <- $r4
+	.loc	1 128 16 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:128:16
 	movw	r0, :lower16:_hw_pin
+	mov	r1, r5
 	movt	r0, :upper16:_hw_pin
-	ldr	r1, [r0, #80]
-	.loc	1 128 29 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:128:29
-	ldr	r3, [r1, #20]
-	.loc	1 128 61                        @ rt-thread/components/drivers/misc/pin.c:128:61
-	ldr	r1, [sp, #8]
-	.loc	1 128 66                        @ rt-thread/components/drivers/misc/pin.c:128:66
-	ldr	r2, [sp, #4]
-	.loc	1 128 16                        @ rt-thread/components/drivers/misc/pin.c:128:16
+	mov	r2, r4
 	blx	r3
-	.loc	1 128 9                         @ rt-thread/components/drivers/misc/pin.c:128:9
-	str	r0, [sp, #12]
-	b	.LBB6_5
-.Ltmp54:
-.LBB6_4:
-	.loc	1 0 9                           @ rt-thread/components/drivers/misc/pin.c:0:9
-	movs	r0, #6
-	.loc	1 130 5 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:130:5
-	str	r0, [sp, #12]
-	b	.LBB6_5
-.LBB6_5:
+.Ltmp74:
 	.loc	1 131 1                         @ rt-thread/components/drivers/misc/pin.c:131:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp55:
+	pop	{r4, r5, r6, pc}
+.Ltmp75:
+.LBB6_4:
+	@DEBUG_VALUE: rt_pin_irq_enable:pin <- $r5
+	@DEBUG_VALUE: rt_pin_irq_enable:enabled <- $r4
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+	movs	r0, #6
+	.loc	1 131 1                         @ rt-thread/components/drivers/misc/pin.c:131:1
+	pop	{r4, r5, r6, pc}
+.Ltmp76:
+	.p2align	2
+@ %bb.5:
+	.loc	1 0 1                           @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI6_0:
+.L__FUNCTION__.rt_pin_irq_enable:
+	.asciz	"rt_pin_irq_enable\000\000"
 .Lfunc_end6:
 	.size	rt_pin_irq_enable, .Lfunc_end6-rt_pin_irq_enable
 	.cfi_endproc
@@ -703,57 +740,68 @@ rt_pin_irq_enable:
 	.thumb_func
 rt_pin_mode:
 .Lfunc_begin7:
-	.loc	1 135 0                         @ rt-thread/components/drivers/misc/pin.c:135:0
+	.loc	1 135 0 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:135:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
-	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
+	@DEBUG_VALUE: rt_pin_mode:pin <- $r0
+	@DEBUG_VALUE: rt_pin_mode:mode <- $r1
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
 	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp56:
+	.cfi_offset lr, -4
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp77:
 	.loc	1 136 5 prologue_end            @ rt-thread/components/drivers/misc/pin.c:136:5
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-.Ltmp57:
+	movw	r4, :lower16:_hw_pin
+	mov	r5, r1
+.Ltmp78:
+	@DEBUG_VALUE: rt_pin_mode:mode <- $r5
+	@DEBUG_VALUE: rt_pin_mode:mode <- $r5
+	movt	r4, :upper16:_hw_pin
+	mov	r6, r0
+.Ltmp79:
+	@DEBUG_VALUE: rt_pin_mode:pin <- $r6
+	@DEBUG_VALUE: rt_pin_mode:pin <- $r6
+	ldr	r2, [r4, #80]
+.Ltmp80:
 	.loc	1 136 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:136:5
-	cbnz	r0, .LBB7_2
-	b	.LBB7_1
-.LBB7_1:
-.Ltmp58:
+	cbnz	r2, .LBB7_2
+.Ltmp81:
+@ %bb.1:
+	@DEBUG_VALUE: rt_pin_mode:pin <- $r6
+	@DEBUG_VALUE: rt_pin_mode:mode <- $r5
 	.loc	1 136 5                         @ rt-thread/components/drivers/misc/pin.c:136:5
 	movw	r0, :lower16:.L.str
+	adr	r1, .LCPI7_0
 	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.rt_pin_mode
-	movt	r1, :upper16:.L__FUNCTION__.rt_pin_mode
 	movs	r2, #136
 	bl	rt_assert_handler
-	b	.LBB7_2
-.Ltmp59:
+.Ltmp82:
 .LBB7_2:
+	@DEBUG_VALUE: rt_pin_mode:pin <- $r6
+	@DEBUG_VALUE: rt_pin_mode:mode <- $r5
 	.loc	1 137 13 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:137:13
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r1, [r0, #80]
-	.loc	1 137 18 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:137:18
-	ldr	r3, [r1]
-	.loc	1 137 44                        @ rt-thread/components/drivers/misc/pin.c:137:44
-	ldr	r1, [sp, #4]
-	.loc	1 137 49                        @ rt-thread/components/drivers/misc/pin.c:137:49
-	ldr	r2, [sp]
+	ldr	r0, [r4, #80]
+	.loc	1 137 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:137:5
+	mov	r1, r6
+	mov	r2, r5
+	.loc	1 137 18                        @ rt-thread/components/drivers/misc/pin.c:137:18
+	ldr	r3, [r0]
 	.loc	1 137 5                         @ rt-thread/components/drivers/misc/pin.c:137:5
+	mov	r0, r4
 	blx	r3
 	.loc	1 138 1 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:138:1
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp60:
+	pop	{r4, r5, r6, pc}
+.Ltmp83:
+	.p2align	2
+@ %bb.3:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI7_0:
+.L__FUNCTION__.rt_pin_mode:
+	.asciz	"rt_pin_mode"
 .Lfunc_end7:
 	.size	rt_pin_mode, .Lfunc_end7-rt_pin_mode
 	.cfi_endproc
@@ -769,57 +817,68 @@ rt_pin_mode:
 	.thumb_func
 rt_pin_write:
 .Lfunc_begin8:
-	.loc	1 142 0                         @ rt-thread/components/drivers/misc/pin.c:142:0
+	.loc	1 142 0 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:142:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
-	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
+	@DEBUG_VALUE: rt_pin_write:pin <- $r0
+	@DEBUG_VALUE: rt_pin_write:value <- $r1
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
 	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp61:
+	.cfi_offset lr, -4
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp84:
 	.loc	1 143 5 prologue_end            @ rt-thread/components/drivers/misc/pin.c:143:5
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-.Ltmp62:
+	movw	r4, :lower16:_hw_pin
+	mov	r5, r1
+.Ltmp85:
+	@DEBUG_VALUE: rt_pin_write:value <- $r5
+	@DEBUG_VALUE: rt_pin_write:value <- $r5
+	movt	r4, :upper16:_hw_pin
+	mov	r6, r0
+.Ltmp86:
+	@DEBUG_VALUE: rt_pin_write:pin <- $r6
+	@DEBUG_VALUE: rt_pin_write:pin <- $r6
+	ldr	r2, [r4, #80]
+.Ltmp87:
 	.loc	1 143 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:143:5
-	cbnz	r0, .LBB8_2
-	b	.LBB8_1
-.LBB8_1:
-.Ltmp63:
+	cbnz	r2, .LBB8_2
+.Ltmp88:
+@ %bb.1:
+	@DEBUG_VALUE: rt_pin_write:pin <- $r6
+	@DEBUG_VALUE: rt_pin_write:value <- $r5
 	.loc	1 143 5                         @ rt-thread/components/drivers/misc/pin.c:143:5
 	movw	r0, :lower16:.L.str
+	adr	r1, .LCPI8_0
 	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.rt_pin_write
-	movt	r1, :upper16:.L__FUNCTION__.rt_pin_write
 	movs	r2, #143
 	bl	rt_assert_handler
-	b	.LBB8_2
-.Ltmp64:
+.Ltmp89:
 .LBB8_2:
+	@DEBUG_VALUE: rt_pin_write:pin <- $r6
+	@DEBUG_VALUE: rt_pin_write:value <- $r5
 	.loc	1 144 13 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:144:13
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r1, [r0, #80]
-	.loc	1 144 18 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:144:18
-	ldr	r3, [r1, #4]
-	.loc	1 144 45                        @ rt-thread/components/drivers/misc/pin.c:144:45
-	ldr	r1, [sp, #4]
-	.loc	1 144 50                        @ rt-thread/components/drivers/misc/pin.c:144:50
-	ldr	r2, [sp]
+	ldr	r0, [r4, #80]
+	.loc	1 144 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:144:5
+	mov	r1, r6
+	mov	r2, r5
+	.loc	1 144 18                        @ rt-thread/components/drivers/misc/pin.c:144:18
+	ldr	r3, [r0, #4]
 	.loc	1 144 5                         @ rt-thread/components/drivers/misc/pin.c:144:5
+	mov	r0, r4
 	blx	r3
 	.loc	1 145 1 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:145:1
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp65:
+	pop	{r4, r5, r6, pc}
+.Ltmp90:
+	.p2align	2
+@ %bb.3:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI8_0:
+.L__FUNCTION__.rt_pin_write:
+	.asciz	"rt_pin_write\000\000\000"
 .Lfunc_end8:
 	.size	rt_pin_write, .Lfunc_end8-rt_pin_write
 	.cfi_endproc
@@ -835,54 +894,60 @@ rt_pin_write:
 	.thumb_func
 rt_pin_read:
 .Lfunc_begin9:
-	.loc	1 149 0                         @ rt-thread/components/drivers/misc/pin.c:149:0
+	.loc	1 149 0 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:149:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_pin_read:pin <- $r0
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-.Ltmp66:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp91:
 	.loc	1 150 5 prologue_end            @ rt-thread/components/drivers/misc/pin.c:150:5
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-.Ltmp67:
+	movw	r4, :lower16:_hw_pin
+	mov	r5, r0
+.Ltmp92:
+	@DEBUG_VALUE: rt_pin_read:pin <- $r5
+	@DEBUG_VALUE: rt_pin_read:pin <- $r5
+	movt	r4, :upper16:_hw_pin
+	ldr	r1, [r4, #80]
+.Ltmp93:
 	.loc	1 150 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:150:5
-	cbnz	r0, .LBB9_2
-	b	.LBB9_1
-.LBB9_1:
-.Ltmp68:
+	cbnz	r1, .LBB9_2
+.Ltmp94:
+@ %bb.1:
+	@DEBUG_VALUE: rt_pin_read:pin <- $r5
 	.loc	1 150 5                         @ rt-thread/components/drivers/misc/pin.c:150:5
 	movw	r0, :lower16:.L.str
+	adr	r1, .LCPI9_0
 	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.rt_pin_read
-	movt	r1, :upper16:.L__FUNCTION__.rt_pin_read
 	movs	r2, #150
 	bl	rt_assert_handler
-	b	.LBB9_2
-.Ltmp69:
+.Ltmp95:
 .LBB9_2:
+	@DEBUG_VALUE: rt_pin_read:pin <- $r5
 	.loc	1 151 20 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:151:20
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r1, [r0, #80]
-	.loc	1 151 25 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:151:25
-	ldr	r2, [r1, #8]
-	.loc	1 151 51                        @ rt-thread/components/drivers/misc/pin.c:151:51
-	ldr	r1, [sp, #4]
+	ldr	r0, [r4, #80]
+	.loc	1 151 12 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:151:12
+	mov	r1, r5
+	.loc	1 151 25                        @ rt-thread/components/drivers/misc/pin.c:151:25
+	ldr	r2, [r0, #8]
 	.loc	1 151 12                        @ rt-thread/components/drivers/misc/pin.c:151:12
+	mov	r0, r4
 	blx	r2
 	.loc	1 151 5                         @ rt-thread/components/drivers/misc/pin.c:151:5
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp70:
+	pop	{r4, r5, r7, pc}
+.Ltmp96:
+	.p2align	2
+@ %bb.3:
+	.loc	1 0 5                           @ rt-thread/components/drivers/misc/pin.c:0:5
+.LCPI9_0:
+.L__FUNCTION__.rt_pin_read:
+	.asciz	"rt_pin_read"
 .Lfunc_end9:
 	.size	rt_pin_read, .Lfunc_end9-rt_pin_read
 	.cfi_endproc
@@ -902,94 +967,86 @@ rt_pin_get:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_pin_get:name <- $r0
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp]
-.Ltmp71:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp97:
 	.loc	1 157 5 prologue_end            @ rt-thread/components/drivers/misc/pin.c:157:5
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-.Ltmp72:
+	movw	r5, :lower16:_hw_pin
+	mov	r4, r0
+.Ltmp98:
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
+	movt	r5, :upper16:_hw_pin
+	ldr	r1, [r5, #80]
+.Ltmp99:
 	.loc	1 157 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:157:5
-	cbnz	r0, .LBB10_2
-	b	.LBB10_1
-.LBB10_1:
-.Ltmp73:
+	cbnz	r1, .LBB10_2
+.Ltmp100:
+@ %bb.1:
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
 	.loc	1 157 5                         @ rt-thread/components/drivers/misc/pin.c:157:5
 	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
 	movw	r1, :lower16:.L__FUNCTION__.rt_pin_get
+	movt	r0, :upper16:.L.str
 	movt	r1, :upper16:.L__FUNCTION__.rt_pin_get
 	movs	r2, #157
 	bl	rt_assert_handler
-	b	.LBB10_2
-.Ltmp74:
+.Ltmp101:
 .LBB10_2:
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
 	.loc	1 158 5 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:158:5
-	ldr	r0, [sp]
-	ldrsb.w	r0, [r0]
-.Ltmp75:
+	ldrb	r0, [r4]
+.Ltmp102:
 	.loc	1 158 5 is_stmt 0               @ rt-thread/components/drivers/misc/pin.c:158:5
 	cmp	r0, #80
 	beq	.LBB10_4
-	b	.LBB10_3
-.LBB10_3:
-.Ltmp76:
+.Ltmp103:
+@ %bb.3:
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
 	.loc	1 158 5                         @ rt-thread/components/drivers/misc/pin.c:158:5
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
 	movw	r1, :lower16:.L__FUNCTION__.rt_pin_get
+	adr	r0, .LCPI10_0
 	movt	r1, :upper16:.L__FUNCTION__.rt_pin_get
 	movs	r2, #158
 	bl	rt_assert_handler
-	b	.LBB10_4
-.Ltmp77:
+.Ltmp104:
 .LBB10_4:
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
 	.loc	1 160 16 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:160:16
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
+	ldr	r0, [r5, #80]
 	.loc	1 160 21 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:160:21
-	ldr	r0, [r0, #24]
-.Ltmp78:
-	.loc	1 160 8                         @ rt-thread/components/drivers/misc/pin.c:160:8
-	cbnz	r0, .LBB10_6
-	b	.LBB10_5
-.LBB10_5:
-	.loc	1 0 8                           @ rt-thread/components/drivers/misc/pin.c:0:8
-	mvn	r0, #5
-.Ltmp79:
-	.loc	1 162 9 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:162:9
-	str	r0, [sp, #4]
-	b	.LBB10_7
-.Ltmp80:
-.LBB10_6:
-	.loc	1 165 20                        @ rt-thread/components/drivers/misc/pin.c:165:20
-	movw	r0, :lower16:_hw_pin
-	movt	r0, :upper16:_hw_pin
-	ldr	r0, [r0, #80]
-	.loc	1 165 25 is_stmt 0              @ rt-thread/components/drivers/misc/pin.c:165:25
 	ldr	r1, [r0, #24]
-	.loc	1 165 33                        @ rt-thread/components/drivers/misc/pin.c:165:33
-	ldr	r0, [sp]
-	.loc	1 165 12                        @ rt-thread/components/drivers/misc/pin.c:165:12
+.Ltmp105:
+	.loc	1 160 8                         @ rt-thread/components/drivers/misc/pin.c:160:8
+	cbz	r1, .LBB10_6
+.Ltmp106:
+@ %bb.5:
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
+	.loc	1 165 12 is_stmt 1              @ rt-thread/components/drivers/misc/pin.c:165:12
+	mov	r0, r4
 	blx	r1
-	.loc	1 165 5                         @ rt-thread/components/drivers/misc/pin.c:165:5
-	str	r0, [sp, #4]
-	b	.LBB10_7
-.LBB10_7:
-	.loc	1 166 1 is_stmt 1               @ rt-thread/components/drivers/misc/pin.c:166:1
-	ldr	r0, [sp, #4]
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp81:
+	.loc	1 166 1                         @ rt-thread/components/drivers/misc/pin.c:166:1
+	pop	{r4, r5, r7, pc}
+.Ltmp107:
+.LBB10_6:
+	@DEBUG_VALUE: rt_pin_get:name <- $r4
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/drivers/misc/pin.c:0:1
+	mvn	r0, #5
+	.loc	1 166 1                         @ rt-thread/components/drivers/misc/pin.c:166:1
+	pop	{r4, r5, r7, pc}
+.Ltmp108:
+	.p2align	2
+@ %bb.7:
+	.loc	1 0 1                           @ rt-thread/components/drivers/misc/pin.c:0:1
+.LCPI10_0:
+.L.str.1:
+	.asciz	"name[0] == 'P'\000"
 .Lfunc_end10:
 	.size	rt_pin_get, .Lfunc_end10-rt_pin_get
 	.cfi_endproc
@@ -1008,26 +1065,6 @@ _hw_pin:
 .L.str:
 	.asciz	"_hw_pin.ops != RT_NULL"
 	.size	.L.str, 23
-
-	.type	.L__FUNCTION__.rt_pin_attach_irq,%object @ @__FUNCTION__.rt_pin_attach_irq
-.L__FUNCTION__.rt_pin_attach_irq:
-	.asciz	"rt_pin_attach_irq"
-	.size	.L__FUNCTION__.rt_pin_attach_irq, 18
-
-	.type	.L__FUNCTION__.rt_pin_detach_irq,%object @ @__FUNCTION__.rt_pin_detach_irq
-.L__FUNCTION__.rt_pin_detach_irq:
-	.asciz	"rt_pin_detach_irq"
-	.size	.L__FUNCTION__.rt_pin_detach_irq, 18
-
-	.type	.L__FUNCTION__.rt_pin_irq_enable,%object @ @__FUNCTION__.rt_pin_irq_enable
-.L__FUNCTION__.rt_pin_irq_enable:
-	.asciz	"rt_pin_irq_enable"
-	.size	.L__FUNCTION__.rt_pin_irq_enable, 18
-
-	.type	.L__FUNCTION__.rt_pin_mode,%object @ @__FUNCTION__.rt_pin_mode
-.L__FUNCTION__.rt_pin_mode:
-	.asciz	"rt_pin_mode"
-	.size	.L__FUNCTION__.rt_pin_mode, 12
 
 	.hidden	__fsym_pinMode_name             @ @__fsym_pinMode_name
 	.type	__fsym_pinMode_name,%object
@@ -1056,12 +1093,6 @@ __tagsym$$used.0:
 	.long	rt_pin_mode
 	.size	__fsym_pinMode, 12
 
-	.type	.L__FUNCTION__.rt_pin_write,%object @ @__FUNCTION__.rt_pin_write
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L__FUNCTION__.rt_pin_write:
-	.asciz	"rt_pin_write"
-	.size	.L__FUNCTION__.rt_pin_write, 13
-
 	.hidden	__fsym_pinWrite_name            @ @__fsym_pinWrite_name
 	.type	__fsym_pinWrite_name,%object
 	.section	.rodata.name,"a",%progbits
@@ -1088,12 +1119,6 @@ __tagsym$$used.1:
 	.long	__fsym_pinWrite_desc
 	.long	rt_pin_write
 	.size	__fsym_pinWrite, 12
-
-	.type	.L__FUNCTION__.rt_pin_read,%object @ @__FUNCTION__.rt_pin_read
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L__FUNCTION__.rt_pin_read:
-	.asciz	"rt_pin_read"
-	.size	.L__FUNCTION__.rt_pin_read, 12
 
 	.hidden	__fsym_pinRead_name             @ @__fsym_pinRead_name
 	.type	__fsym_pinRead_name,%object
@@ -1128,11 +1153,6 @@ __tagsym$$used.2:
 	.asciz	"rt_pin_get"
 	.size	.L__FUNCTION__.rt_pin_get, 11
 
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"name[0] == 'P'"
-	.size	.L.str.1, 15
-
 	.hidden	__fsym_pinGet_name              @ @__fsym_pinGet_name
 	.type	__fsym_pinGet_name,%object
 	.section	.rodata.name,"a",%progbits
@@ -1166,25 +1186,460 @@ __tagsym$$used.3:
 	.asciz	"pin != RT_NULL"
 	.size	.L.str.2, 15
 
-	.type	.L__FUNCTION__._pin_read,%object @ @__FUNCTION__._pin_read
-.L__FUNCTION__._pin_read:
-	.asciz	"_pin_read"
-	.size	.L__FUNCTION__._pin_read, 10
-
-	.type	.L__FUNCTION__._pin_write,%object @ @__FUNCTION__._pin_write
-.L__FUNCTION__._pin_write:
-	.asciz	"_pin_write"
-	.size	.L__FUNCTION__._pin_write, 11
-
-	.type	.L__FUNCTION__._pin_control,%object @ @__FUNCTION__._pin_control
-.L__FUNCTION__._pin_control:
-	.asciz	"_pin_control"
-	.size	.L__FUNCTION__._pin_control, 13
-
-	.globl	__fsym_pinMode
-	.globl	__fsym_pinWrite
-	.globl	__fsym_pinRead
 	.globl	__fsym_pinGet
+	.globl	__fsym_pinMode
+	.globl	__fsym_pinRead
+	.globl	__fsym_pinWrite
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp1-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Lfunc_end0-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp2-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp5-.Lfunc_begin0
+	.long	.Lfunc_end0-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp8-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp8-.Lfunc_begin1
+	.long	.Ltmp17-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp12-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp12-.Lfunc_begin1
+	.long	.Ltmp13-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp10-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp10-.Lfunc_begin1
+	.long	.Ltmp17-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp9-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp9-.Lfunc_begin1
+	.long	.Ltmp17-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp7-.Lfunc_begin1
+	.long	.Ltmp8-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp8-.Lfunc_begin1
+	.long	.Ltmp17-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp13-.Lfunc_begin1
+	.long	.Ltmp19-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp21-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp21-.Lfunc_begin2
+	.long	.Ltmp30-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp25-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp25-.Lfunc_begin2
+	.long	.Ltmp26-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp23-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp23-.Lfunc_begin2
+	.long	.Ltmp30-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp22-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp22-.Lfunc_begin2
+	.long	.Ltmp30-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp20-.Lfunc_begin2
+	.long	.Ltmp21-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp21-.Lfunc_begin2
+	.long	.Ltmp30-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp26-.Lfunc_begin2
+	.long	.Ltmp32-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp34-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp34-.Lfunc_begin3
+	.long	.Ltmp42-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp37-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp38-.Lfunc_begin3
+	.long	.Ltmp39-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp39-.Lfunc_begin3
+	.long	.Ltmp41-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp35-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp35-.Lfunc_begin3
+	.long	.Ltmp42-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp33-.Lfunc_begin3
+	.long	.Ltmp34-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp34-.Lfunc_begin3
+	.long	.Ltmp42-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp36-.Lfunc_begin3
+	.long	.Ltmp38-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp40-.Lfunc_begin3
+	.long	.Ltmp42-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp46-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp46-.Lfunc_begin4
+	.long	.Ltmp55-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp45-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp45-.Lfunc_begin4
+	.long	.Ltmp55-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp44-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp44-.Lfunc_begin4
+	.long	.Ltmp55-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp48-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp48-.Lfunc_begin4
+	.long	.Ltmp55-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp57-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp57-.Lfunc_begin5
+	.long	.Ltmp65-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp68-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp68-.Lfunc_begin6
+	.long	.Ltmp76-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc26:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp67-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp67-.Lfunc_begin6
+	.long	.Ltmp76-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc27:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp79-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp79-.Lfunc_begin7
+	.long	.Ltmp83-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc28:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp78-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp78-.Lfunc_begin7
+	.long	.Ltmp83-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc29:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp86-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp86-.Lfunc_begin8
+	.long	.Ltmp90-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc30:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp85-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp85-.Lfunc_begin8
+	.long	.Ltmp90-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc31:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Lfunc_begin9-.Lfunc_begin9
+	.long	.Ltmp92-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp92-.Lfunc_begin9
+	.long	.Ltmp96-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc32:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Lfunc_begin10-.Lfunc_begin10
+	.long	.Ltmp98-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp98-.Lfunc_begin10
+	.long	.Ltmp108-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1473,7 +1928,7 @@ __tagsym$$used.3:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1509,7 +1964,7 @@ __tagsym$$used.3:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1549,7 +2004,7 @@ __tagsym$$used.3:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x97d DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x99e DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -2374,7 +2829,7 @@ __tagsym$$used.3:
 	.byte	52                              @ DW_AT_decl_line
 	.byte	2                               @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x6bc:0x42 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x6bc:0x45 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2385,32 +2840,26 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1291                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x6d3:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	26                              @ Abbrev [26] 0x6d3:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	77                              @ DW_AT_decl_line
 	.long	185                             @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x6e1:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	26                              @ Abbrev [26] 0x6e2:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string88                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	77                              @ DW_AT_decl_line
 	.long	1368                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x6ef:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	26                              @ Abbrev [26] 0x6f1:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string86                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	77                              @ DW_AT_decl_line
 	.long	1143                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	27                              @ Abbrev [27] 0x6fe:0x6b DW_TAG_subprogram
+	.byte	27                              @ Abbrev [27] 0x701:0x71 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2420,56 +2869,44 @@ __tagsym$$used.3:
 	.byte	18                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	1092                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x714:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	26                              @ Abbrev [26] 0x717:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string115                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	18                              @ DW_AT_decl_line
 	.long	1075                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x722:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	26                              @ Abbrev [26] 0x726:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string116                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	18                              @ DW_AT_decl_line
 	.long	1215                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x730:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	26                              @ Abbrev [26] 0x735:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string117                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	18                              @ DW_AT_decl_line
 	.long	1143                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x73e:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	26                              @ Abbrev [26] 0x744:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc6                    @ DW_AT_location
 	.long	.Linfo_string118                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	18                              @ DW_AT_decl_line
 	.long	1092                            @ DW_AT_type
-	.byte	28                              @ Abbrev [28] 0x74c:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string100                @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	20                              @ DW_AT_decl_line
-	.long	1648                            @ DW_AT_type
-	.byte	28                              @ Abbrev [28] 0x75a:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	28                              @ Abbrev [28] 0x753:0xf DW_TAG_variable
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	21                              @ DW_AT_decl_line
 	.long	1643                            @ DW_AT_type
+	.byte	28                              @ Abbrev [28] 0x762:0xf DW_TAG_variable
+	.long	.Ldebug_loc8                    @ DW_AT_location
+	.long	.Linfo_string100                @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	20                              @ DW_AT_decl_line
+	.long	1648                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	27                              @ Abbrev [27] 0x769:0x6b DW_TAG_subprogram
+	.byte	27                              @ Abbrev [27] 0x772:0x71 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2479,56 +2916,44 @@ __tagsym$$used.3:
 	.byte	33                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	1092                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x77f:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	26                              @ Abbrev [26] 0x788:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string115                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	33                              @ DW_AT_decl_line
 	.long	1075                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x78d:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	26                              @ Abbrev [26] 0x797:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string116                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	33                              @ DW_AT_decl_line
 	.long	1215                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x79b:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	26                              @ Abbrev [26] 0x7a6:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string117                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	33                              @ DW_AT_decl_line
 	.long	1258                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x7a9:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	26                              @ Abbrev [26] 0x7b5:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc12                   @ DW_AT_location
 	.long	.Linfo_string118                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	33                              @ DW_AT_decl_line
 	.long	1092                            @ DW_AT_type
-	.byte	28                              @ Abbrev [28] 0x7b7:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string100                @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	35                              @ DW_AT_decl_line
-	.long	1648                            @ DW_AT_type
-	.byte	28                              @ Abbrev [28] 0x7c5:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	28                              @ Abbrev [28] 0x7c4:0xf DW_TAG_variable
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	36                              @ DW_AT_decl_line
 	.long	1643                            @ DW_AT_type
+	.byte	28                              @ Abbrev [28] 0x7d3:0xf DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
+	.long	.Linfo_string100                @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	35                              @ DW_AT_decl_line
+	.long	1648                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	27                              @ Abbrev [27] 0x7d4:0x5d DW_TAG_subprogram
+	.byte	27                              @ Abbrev [27] 0x7e3:0x62 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2538,48 +2963,38 @@ __tagsym$$used.3:
 	.byte	49                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	1053                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x7ea:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	26                              @ Abbrev [26] 0x7f9:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string115                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	49                              @ DW_AT_decl_line
 	.long	1075                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x7f8:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	26                              @ Abbrev [26] 0x808:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc16                   @ DW_AT_location
 	.long	.Linfo_string119                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	49                              @ DW_AT_decl_line
 	.long	1291                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x806:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	26                              @ Abbrev [26] 0x817:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string120                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	49                              @ DW_AT_decl_line
 	.long	1143                            @ DW_AT_type
-	.byte	28                              @ Abbrev [28] 0x814:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string102                @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	51                              @ DW_AT_decl_line
-	.long	1686                            @ DW_AT_type
-	.byte	28                              @ Abbrev [28] 0x822:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	28                              @ Abbrev [28] 0x826:0xf DW_TAG_variable
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	52                              @ DW_AT_decl_line
 	.long	1643                            @ DW_AT_type
+	.byte	28                              @ Abbrev [28] 0x835:0xf DW_TAG_variable
+	.long	.Ldebug_loc19                   @ DW_AT_location
+	.long	.Linfo_string102                @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	51                              @ DW_AT_decl_line
+	.long	1686                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x831:0x50 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x845:0x54 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2590,40 +3005,32 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1053                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x848:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	26                              @ Abbrev [26] 0x85c:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	103                             @ DW_AT_decl_line
 	.long	1553                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x856:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	26                              @ Abbrev [26] 0x86b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc21                   @ DW_AT_location
 	.long	.Linfo_string102                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	103                             @ DW_AT_decl_line
 	.long	1350                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x864:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	26                              @ Abbrev [26] 0x87a:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc22                   @ DW_AT_location
 	.long	.Linfo_string121                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	104                             @ DW_AT_decl_line
 	.long	1564                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x872:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	26                              @ Abbrev [26] 0x889:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc23                   @ DW_AT_location
 	.long	.Linfo_string120                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	104                             @ DW_AT_decl_line
 	.long	1143                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x881:0x26 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x899:0x27 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2634,16 +3041,14 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1053                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x898:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	26                              @ Abbrev [26] 0x8b0:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc24                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	113                             @ DW_AT_decl_line
 	.long	1553                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x8a7:0x34 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x8c0:0x36 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2654,24 +3059,20 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1053                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x8be:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	26                              @ Abbrev [26] 0x8d7:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	123                             @ DW_AT_decl_line
 	.long	1064                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x8cc:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	26                              @ Abbrev [26] 0x8e6:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc26                   @ DW_AT_location
 	.long	.Linfo_string122                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	123                             @ DW_AT_decl_line
 	.long	1350                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	29                              @ Abbrev [29] 0x8db:0x30 DW_TAG_subprogram
+	.byte	29                              @ Abbrev [29] 0x8f6:0x32 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2681,24 +3082,20 @@ __tagsym$$used.3:
 	.byte	134                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x8ee:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	26                              @ Abbrev [26] 0x909:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc27                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	134                             @ DW_AT_decl_line
 	.long	1064                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x8fc:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	26                              @ Abbrev [26] 0x918:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc28                   @ DW_AT_location
 	.long	.Linfo_string102                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	134                             @ DW_AT_decl_line
 	.long	1064                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	29                              @ Abbrev [29] 0x90b:0x30 DW_TAG_subprogram
+	.byte	29                              @ Abbrev [29] 0x928:0x32 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2708,24 +3105,20 @@ __tagsym$$used.3:
 	.byte	141                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x91e:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	26                              @ Abbrev [26] 0x93b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc29                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	141                             @ DW_AT_decl_line
 	.long	1064                            @ DW_AT_type
-	.byte	26                              @ Abbrev [26] 0x92c:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	26                              @ Abbrev [26] 0x94a:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc30                   @ DW_AT_location
 	.long	.Linfo_string123                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	141                             @ DW_AT_decl_line
 	.long	1064                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x93b:0x26 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x95a:0x27 DW_TAG_subprogram
 	.long	.Lfunc_begin9                   @ DW_AT_low_pc
 	.long	.Lfunc_end9                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2736,16 +3129,14 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1291                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x952:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	26                              @ Abbrev [26] 0x971:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc31                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	148                             @ DW_AT_decl_line
 	.long	1064                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x961:0x26 DW_TAG_subprogram
+	.byte	25                              @ Abbrev [25] 0x981:0x27 DW_TAG_subprogram
 	.long	.Lfunc_begin10                  @ DW_AT_low_pc
 	.long	.Lfunc_end10                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2756,10 +3147,8 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1064                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	26                              @ Abbrev [26] 0x978:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	26                              @ Abbrev [26] 0x998:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc32                   @ DW_AT_location
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	155                             @ DW_AT_decl_line
@@ -3044,7 +3433,7 @@ __tagsym$$used.3:
 	.asciz	"value"                         @ string offset=1719
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

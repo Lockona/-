@@ -40,94 +40,61 @@ finsh_vm_run:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
-	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
 	.cfi_def_cfa_offset 16
+	.cfi_offset lr, -4
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
 .Ltmp0:
 	.loc	3 39 14 prologue_end            @ rt-thread/components/finsh/finsh_vm.c:39:14
-	movw	r1, :lower16:finsh_sp
-	movt	r1, :upper16:finsh_sp
-	movw	r0, :lower16:finsh_vm_stack
-	movt	r0, :upper16:finsh_vm_stack
-	str	r0, [r1]
+	movw	r0, :lower16:finsh_sp
 	.loc	3 42 14                         @ rt-thread/components/finsh/finsh_vm.c:42:14
-	movw	r1, :lower16:finsh_pc
-	movt	r1, :upper16:finsh_pc
-	movw	r0, :lower16:text_segment
-	movt	r0, :upper16:text_segment
-	str	r0, [r1]
-	.loc	3 44 5                          @ rt-thread/components/finsh/finsh_vm.c:44:5
-	b	.LBB0_1
+	movw	r4, :lower16:finsh_pc
+	.loc	3 39 14                         @ rt-thread/components/finsh/finsh_vm.c:39:14
+	movt	r0, :upper16:finsh_sp
+	.loc	3 42 14                         @ rt-thread/components/finsh/finsh_vm.c:42:14
+	movw	r5, :lower16:text_segment
+	.loc	3 39 14                         @ rt-thread/components/finsh/finsh_vm.c:39:14
+	movw	r1, :lower16:finsh_vm_stack
+	.loc	3 42 14                         @ rt-thread/components/finsh/finsh_vm.c:42:14
+	movt	r4, :upper16:finsh_pc
+	movt	r5, :upper16:text_segment
+	movw	r6, :lower16:op_table
+	.loc	3 39 14                         @ rt-thread/components/finsh/finsh_vm.c:39:14
+	movt	r1, :upper16:finsh_vm_stack
+	str	r1, [r0]
+	movt	r6, :upper16:op_table
+	mov	r0, r5
+	.loc	3 42 14                         @ rt-thread/components/finsh/finsh_vm.c:42:14
+	str	r5, [r4]
+	.p2align	2
 .LBB0_1:                                @ =>This Inner Loop Header: Depth=1
-	.loc	3 44 13 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:44:13
-	movw	r0, :lower16:finsh_pc
-	movt	r0, :upper16:finsh_pc
-	ldr	r0, [r0]
-	.loc	3 44 22                         @ rt-thread/components/finsh/finsh_vm.c:44:22
-	movw	r1, :lower16:text_segment
-	movt	r1, :upper16:text_segment
-	subs	r1, r0, r1
-	movs	r0, #0
-	.loc	3 44 47                         @ rt-thread/components/finsh/finsh_vm.c:44:47
-	cmp	r1, #0
-	str	r0, [sp]                        @ 4-byte Spill
-	bmi	.LBB0_3
-	b	.LBB0_2
-.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	3 45 10 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:45:10
-	movw	r0, :lower16:finsh_pc
-	movt	r0, :upper16:finsh_pc
-	ldr	r0, [r0]
-	.loc	3 45 19 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:45:19
-	movw	r1, :lower16:text_segment
-	movt	r1, :upper16:text_segment
-	subs	r1, r0, r1
-	movs	r0, #0
-	.loc	3 45 38                         @ rt-thread/components/finsh/finsh_vm.c:45:38
-	cmp	r1, #128
-	it	lt
-	movlt	r0, #1
-	str	r0, [sp]                        @ 4-byte Spill
-	b	.LBB0_3
-.LBB0_3:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	3 0 0                           @ rt-thread/components/finsh/finsh_vm.c:0:0
-	ldr	r0, [sp]                        @ 4-byte Reload
-	.loc	3 44 5 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:44:5
-	lsls	r0, r0, #31
-	cbz	r0, .LBB0_5
-	b	.LBB0_4
-.LBB0_4:                                @   in Loop: Header=BB0_1 Depth=1
 .Ltmp1:
 	.loc	3 48 23                         @ rt-thread/components/finsh/finsh_vm.c:48:23
-	movw	r2, :lower16:finsh_pc
-	movt	r2, :upper16:finsh_pc
-	ldr	r0, [r2]
 	adds	r1, r0, #1
-	str	r1, [r2]
+	str	r1, [r4]
 	.loc	3 48 14 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:48:14
 	ldrb	r0, [r0]
-	.loc	3 48 12                         @ rt-thread/components/finsh/finsh_vm.c:48:12
-	strb.w	r0, [sp, #7]
-	.loc	3 51 18 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:51:18
-	ldrb.w	r1, [sp, #7]
-	.loc	3 51 9 is_stmt 0                @ rt-thread/components/finsh/finsh_vm.c:51:9
-	movw	r0, :lower16:op_table
-	movt	r0, :upper16:op_table
-	ldr.w	r0, [r0, r1, lsl #2]
-	blx	r0
 .Ltmp2:
-	.loc	3 44 5 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:44:5
-	b	.LBB0_1
-.LBB0_5:
-	.loc	3 53 1                          @ rt-thread/components/finsh/finsh_vm.c:53:1
-	add	sp, #8
-	pop	{r7, pc}
+	@DEBUG_VALUE: finsh_vm_run:op <- undef
+	.loc	3 51 9 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:51:9
+	ldr.w	r0, [r6, r0, lsl #2]
+	blx	r0
 .Ltmp3:
+	.loc	3 44 13                         @ rt-thread/components/finsh/finsh_vm.c:44:13
+	ldr	r0, [r4]
+	.loc	3 44 22 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:44:22
+	subs	r1, r0, r5
+	.loc	3 44 5                          @ rt-thread/components/finsh/finsh_vm.c:44:5
+	cmp	r1, #128
+	blo	.LBB0_1
+.Ltmp4:
+@ %bb.2:
+	.loc	3 53 1 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:53:1
+	pop	{r4, r5, r6, pc}
+.Ltmp5:
 .Lfunc_end0:
 	.size	finsh_vm_run, .Lfunc_end0-finsh_vm_run
 	.cfi_endproc
@@ -147,94 +114,76 @@ finsh_syscall_append:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: finsh_syscall_append:name <- $r0
+	@DEBUG_VALUE: finsh_syscall_append:func <- $r1
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-	movs	r0, #16
-.Ltmp4:
-	.loc	3 61 40 prologue_end            @ rt-thread/components/finsh/finsh_vm.c:61:40
-	bl	rt_malloc
-	.loc	3 61 10 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:61:10
-	str	r0, [sp, #4]
-.Ltmp5:
-	.loc	3 62 9 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:62:9
-	ldr	r0, [sp, #4]
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	mov	r6, r0
 .Ltmp6:
-	.loc	3 62 9 is_stmt 0                @ rt-thread/components/finsh/finsh_vm.c:62:9
-	cbz	r0, .LBB1_5
-	b	.LBB1_1
-.LBB1_1:
+	@DEBUG_VALUE: finsh_syscall_append:name <- $r6
+	@DEBUG_VALUE: finsh_syscall_append:func <- $r4
+	@DEBUG_VALUE: finsh_syscall_append:name <- $r6
+	.loc	3 61 40 prologue_end            @ rt-thread/components/finsh/finsh_vm.c:61:40
+	movs	r0, #16
+	mov	r4, r1
 .Ltmp7:
-	.loc	3 64 9 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:64:9
-	ldr	r1, [sp, #4]
-	movs	r0, #0
-	.loc	3 64 20 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:64:20
-	str	r0, [r1]
-	.loc	3 65 40 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:65:40
-	ldr	r0, [sp, #12]
-	.loc	3 65 30 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:65:30
-	bl	rt_strdup
-	.loc	3 65 9                          @ rt-thread/components/finsh/finsh_vm.c:65:9
-	ldr	r1, [sp, #4]
-	.loc	3 65 28                         @ rt-thread/components/finsh/finsh_vm.c:65:28
-	str	r0, [r1, #4]
-	.loc	3 66 30 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:66:30
-	ldr	r0, [sp, #8]
-	.loc	3 66 9 is_stmt 0                @ rt-thread/components/finsh/finsh_vm.c:66:9
-	ldr	r1, [sp, #4]
-	.loc	3 66 28                         @ rt-thread/components/finsh/finsh_vm.c:66:28
-	str	r0, [r1, #12]
+	bl	rt_malloc
 .Ltmp8:
-	.loc	3 68 13 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:68:13
-	movw	r0, :lower16:global_syscall_list
-	movt	r0, :upper16:global_syscall_list
-	ldr	r0, [r0]
-.Ltmp9:
-	.loc	3 68 13 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:68:13
-	cbnz	r0, .LBB1_3
-	b	.LBB1_2
-.LBB1_2:
-.Ltmp10:
-	.loc	3 70 35 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:70:35
-	ldr	r0, [sp, #4]
-	.loc	3 70 33 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:70:33
-	movw	r1, :lower16:global_syscall_list
-	movt	r1, :upper16:global_syscall_list
-	str	r0, [r1]
-	.loc	3 71 9 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:71:9
-	b	.LBB1_4
-.Ltmp11:
-.LBB1_3:
-	.loc	3 74 26                         @ rt-thread/components/finsh/finsh_vm.c:74:26
-	movw	r1, :lower16:global_syscall_list
-	movt	r1, :upper16:global_syscall_list
-	ldr	r0, [r1]
-	.loc	3 74 13 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:74:13
-	ldr	r2, [sp, #4]
-	.loc	3 74 24                         @ rt-thread/components/finsh/finsh_vm.c:74:24
-	str	r0, [r2]
-	.loc	3 75 35 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:75:35
-	ldr	r0, [sp, #4]
-	.loc	3 75 33 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:75:33
-	str	r0, [r1]
-	b	.LBB1_4
-.Ltmp12:
-.LBB1_4:
-	.loc	3 77 5 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:77:5
-	b	.LBB1_5
-.Ltmp13:
-.LBB1_5:
+	@DEBUG_VALUE: finsh_syscall_append:item <- $r0
+	.loc	3 62 9                          @ rt-thread/components/finsh/finsh_vm.c:62:9
+	cmp	r0, #0
 	.loc	3 78 1                          @ rt-thread/components/finsh/finsh_vm.c:78:1
-	add	sp, #16
-	pop	{r7, pc}
+	it	eq
+	popeq	{r4, r5, r6, pc}
+.Ltmp9:
+.LBB1_1:
+	@DEBUG_VALUE: finsh_syscall_append:item <- $r0
+	.loc	3 0 1 is_stmt 0                 @ rt-thread/components/finsh/finsh_vm.c:0:1
+	mov	r5, r0
+.Ltmp10:
+	@DEBUG_VALUE: finsh_syscall_append:item <- $r5
+	@DEBUG_VALUE: finsh_syscall_append:item <- $r5
+	movs	r0, #0
+.Ltmp11:
+	.loc	3 64 20 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:64:20
+	str	r0, [r5]
+	.loc	3 65 30                         @ rt-thread/components/finsh/finsh_vm.c:65:30
+	mov	r0, r6
+	bl	rt_strdup
+.Ltmp12:
+	.loc	3 68 13                         @ rt-thread/components/finsh/finsh_vm.c:68:13
+	movw	r1, :lower16:global_syscall_list
+.Ltmp13:
+	.loc	3 65 28                         @ rt-thread/components/finsh/finsh_vm.c:65:28
+	str	r0, [r5, #4]
 .Ltmp14:
+	.loc	3 68 13                         @ rt-thread/components/finsh/finsh_vm.c:68:13
+	movt	r1, :upper16:global_syscall_list
+.Ltmp15:
+	.loc	3 66 28                         @ rt-thread/components/finsh/finsh_vm.c:66:28
+	str	r4, [r5, #12]
+.Ltmp16:
+	.loc	3 68 13                         @ rt-thread/components/finsh/finsh_vm.c:68:13
+	ldr	r2, [r1]
+.Ltmp17:
+	.loc	3 68 13 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:68:13
+	cmp	r2, #0
+.Ltmp18:
+	.loc	3 74 24 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:74:24
+	it	ne
+	strne	r2, [r5]
+.Ltmp19:
+	.loc	3 0 0 is_stmt 0                 @ rt-thread/components/finsh/finsh_vm.c:0:0
+	str	r5, [r1]
+.Ltmp20:
+	.loc	3 78 1 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:78:1
+	pop	{r4, r5, r6, pc}
+.Ltmp21:
 .Lfunc_end1:
 	.size	finsh_syscall_append, .Lfunc_end1-finsh_syscall_append
 	.cfi_endproc
@@ -254,139 +203,143 @@ finsh_syscall_lookup:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r0
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #16]
-.Ltmp15:
-	.loc	3 86 18 prologue_end            @ rt-thread/components/finsh/finsh_vm.c:86:18
-	movw	r0, :lower16:_syscall_table_begin
-	movt	r0, :upper16:_syscall_table_begin
-	ldr	r0, [r0]
-	.loc	3 86 16 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:86:16
-	str	r0, [sp, #12]
-	.loc	3 86 10                         @ rt-thread/components/finsh/finsh_vm.c:86:10
-	b	.LBB2_1
-.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp16:
-	.loc	3 86 40                         @ rt-thread/components/finsh/finsh_vm.c:86:40
-	ldr	r0, [sp, #12]
-	.loc	3 86 48                         @ rt-thread/components/finsh/finsh_vm.c:86:48
-	movw	r1, :lower16:_syscall_table_end
-	movt	r1, :upper16:_syscall_table_end
-	ldr	r1, [r1]
-.Ltmp17:
-	.loc	3 86 5                          @ rt-thread/components/finsh/finsh_vm.c:86:5
-	cmp	r0, r1
-	bhs	.LBB2_6
-	b	.LBB2_2
-.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp18:
-	.loc	3 88 20 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:88:20
-	ldr	r0, [sp, #12]
-	.loc	3 88 27 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:88:27
-	ldr	r0, [r0]
-	.loc	3 88 33                         @ rt-thread/components/finsh/finsh_vm.c:88:33
-	ldr	r1, [sp, #16]
-	.loc	3 88 13                         @ rt-thread/components/finsh/finsh_vm.c:88:13
-	bl	strcmp
-.Ltmp19:
-	.loc	3 88 13                         @ rt-thread/components/finsh/finsh_vm.c:88:13
-	cbnz	r0, .LBB2_4
-	b	.LBB2_3
-.LBB2_3:
-.Ltmp20:
-	.loc	3 89 20 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:89:20
-	ldr	r0, [sp, #12]
-	.loc	3 89 13 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:89:13
-	str	r0, [sp, #20]
-	b	.LBB2_12
-.Ltmp21:
-.LBB2_4:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	3 90 5 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:90:5
-	b	.LBB2_5
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
 .Ltmp22:
-.LBB2_5:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	3 86 68                         @ rt-thread/components/finsh/finsh_vm.c:86:68
-	ldr	r0, [sp, #12]
-	adds	r0, #12
-	str	r0, [sp, #12]
-	.loc	3 86 5 is_stmt 0                @ rt-thread/components/finsh/finsh_vm.c:86:5
-	b	.LBB2_1
+	.loc	3 86 18 prologue_end            @ rt-thread/components/finsh/finsh_vm.c:86:18
+	movw	r2, :lower16:_syscall_table_begin
 .Ltmp23:
-.LBB2_6:
-	.loc	3 93 12 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:93:12
+	.loc	3 86 48 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:86:48
+	movw	r1, :lower16:_syscall_table_end
+.Ltmp24:
+	.loc	3 86 18                         @ rt-thread/components/finsh/finsh_vm.c:86:18
+	movt	r2, :upper16:_syscall_table_begin
+.Ltmp25:
+	.loc	3 86 48                         @ rt-thread/components/finsh/finsh_vm.c:86:48
+	movt	r1, :upper16:_syscall_table_end
+	mov	r4, r0
+.Ltmp26:
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 86 18                         @ rt-thread/components/finsh/finsh_vm.c:86:18
+	ldr	r5, [r2]
+.Ltmp27:
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	.loc	3 86 48                         @ rt-thread/components/finsh/finsh_vm.c:86:48
+	ldr	r2, [r1]
+.Ltmp28:
+	.loc	3 86 5                          @ rt-thread/components/finsh/finsh_vm.c:86:5
+	cmp	r5, r2
+	bhs	.LBB2_4
+.Ltmp29:
+@ %bb.1:
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 0 5                           @ rt-thread/components/finsh/finsh_vm.c:0:5
+	ldr	r6, [r1]
+.Ltmp30:
+	.p2align	2
+.LBB2_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	.loc	3 88 27 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:88:27
+	ldr	r0, [r5]
+	.loc	3 88 13 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:88:13
+	mov	r1, r4
+	bl	strcmp
+	cbz	r0, .LBB2_10
+.Ltmp31:
+@ %bb.3:                                @   in Loop: Header=BB2_2 Depth=1
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 86 68 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:86:68
+	adds	r5, #12
+.Ltmp32:
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	.loc	3 86 5 is_stmt 0                @ rt-thread/components/finsh/finsh_vm.c:86:5
+	cmp	r5, r6
+	blo	.LBB2_2
+.Ltmp33:
+.LBB2_4:
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 0 0                           @ rt-thread/components/finsh/finsh_vm.c:0:0
 	movw	r0, :lower16:global_syscall_list
 	movt	r0, :upper16:global_syscall_list
-	ldr	r0, [r0]
-	.loc	3 93 10 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:93:10
-	str	r0, [sp, #8]
+	ldr	r7, [r0]
+.Ltmp34:
+	@DEBUG_VALUE: finsh_syscall_lookup:item <- $r7
 	.loc	3 94 5 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:94:5
-	b	.LBB2_7
-.LBB2_7:                                @ =>This Inner Loop Header: Depth=1
-	.loc	3 94 12 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:94:12
-	ldr	r0, [sp, #8]
-	.loc	3 94 5                          @ rt-thread/components/finsh/finsh_vm.c:94:5
-	cbz	r0, .LBB2_11
-	b	.LBB2_8
-.LBB2_8:                                @   in Loop: Header=BB2_7 Depth=1
-.Ltmp24:
-	.loc	3 96 21 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:96:21
-	ldr	r0, [sp, #8]
-	.loc	3 96 35 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:96:35
-	ldr	r0, [r0, #4]
-	.loc	3 96 41                         @ rt-thread/components/finsh/finsh_vm.c:96:41
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	ldr	r0, [sp, #16]
-	.loc	3 96 47                         @ rt-thread/components/finsh/finsh_vm.c:96:47
-	str	r0, [sp]                        @ 4-byte Spill
+	cbz	r7, .LBB2_9
+.Ltmp35:
+@ %bb.5:
+	@DEBUG_VALUE: finsh_syscall_lookup:item <- $r7
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 0 0 is_stmt 0                 @ rt-thread/components/finsh/finsh_vm.c:0:0
+	mov	r0, r4
 	bl	strlen
-	ldr	r1, [sp]                        @ 4-byte Reload
-	mov	r2, r0
+	mov	r6, r0
+.Ltmp36:
+	.p2align	2
+.LBB2_6:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: finsh_syscall_lookup:item <- $r7
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 96 35 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:96:35
+	mov	r5, r7
+	.loc	3 96 13 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:96:13
+	mov	r1, r4
+	mov	r2, r6
+	.loc	3 96 35                         @ rt-thread/components/finsh/finsh_vm.c:96:35
+	ldr	r0, [r5, #4]!
 	.loc	3 96 13                         @ rt-thread/components/finsh/finsh_vm.c:96:13
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
 	bl	strncmp
-.Ltmp25:
+.Ltmp37:
+	@DEBUG_VALUE: finsh_syscall_lookup:item <- undef
 	.loc	3 96 13                         @ rt-thread/components/finsh/finsh_vm.c:96:13
-	cbnz	r0, .LBB2_10
-	b	.LBB2_9
-.LBB2_9:
-.Ltmp26:
-	.loc	3 98 22 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:98:22
-	ldr	r0, [sp, #8]
-	.loc	3 98 28 is_stmt 0               @ rt-thread/components/finsh/finsh_vm.c:98:28
-	adds	r0, #4
-	.loc	3 98 13                         @ rt-thread/components/finsh/finsh_vm.c:98:13
-	str	r0, [sp, #20]
-	b	.LBB2_12
-.Ltmp27:
-.LBB2_10:                               @   in Loop: Header=BB2_7 Depth=1
-	.loc	3 101 16 is_stmt 1              @ rt-thread/components/finsh/finsh_vm.c:101:16
-	ldr	r0, [sp, #8]
-	.loc	3 101 22 is_stmt 0              @ rt-thread/components/finsh/finsh_vm.c:101:22
-	ldr	r0, [r0]
-	.loc	3 101 14                        @ rt-thread/components/finsh/finsh_vm.c:101:14
-	str	r0, [sp, #8]
-.Ltmp28:
+	cbz	r0, .LBB2_10
+.Ltmp38:
+@ %bb.7:                                @   in Loop: Header=BB2_6 Depth=1
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 0 0                           @ rt-thread/components/finsh/finsh_vm.c:0:0
+	ldr	r7, [r7]
+.Ltmp39:
+	@DEBUG_VALUE: finsh_syscall_lookup:item <- $r7
 	.loc	3 94 5 is_stmt 1                @ rt-thread/components/finsh/finsh_vm.c:94:5
-	b	.LBB2_7
-.LBB2_11:
+	cmp	r7, #0
+	bne	.LBB2_6
+.Ltmp40:
+@ %bb.8:
+	@DEBUG_VALUE: finsh_syscall_lookup:item <- $r7
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
 	.loc	3 0 5 is_stmt 0                 @ rt-thread/components/finsh/finsh_vm.c:0:5
-	movs	r0, #0
-	.loc	3 104 5 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:104:5
-	str	r0, [sp, #20]
-	b	.LBB2_12
-.LBB2_12:
-	.loc	3 105 1                         @ rt-thread/components/finsh/finsh_vm.c:105:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp29:
+	movs	r5, #0
+	b	.LBB2_10
+.Ltmp41:
+.LBB2_9:
+	@DEBUG_VALUE: finsh_syscall_lookup:item <- $r7
+	@DEBUG_VALUE: finsh_syscall_lookup:index <- $r5
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	movs	r5, #0
+.Ltmp42:
+.LBB2_10:
+	@DEBUG_VALUE: finsh_syscall_lookup:name <- $r4
+	.loc	3 105 1 is_stmt 1               @ rt-thread/components/finsh/finsh_vm.c:105:1
+	mov	r0, r5
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp43:
 .Lfunc_end2:
 	.size	finsh_syscall_lookup, .Lfunc_end2-finsh_syscall_lookup
 	.cfi_endproc
@@ -437,6 +390,85 @@ finsh_pc:
 	.long	0
 	.size	finsh_pc, 4
 
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp6-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp6-.Lfunc_begin1
+	.long	.Ltmp9-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp6-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp6-.Lfunc_begin1
+	.long	.Ltmp7-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp8-.Lfunc_begin1
+	.long	.Ltmp10-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp10-.Lfunc_begin1
+	.long	.Ltmp21-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp26-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp26-.Lfunc_begin2
+	.long	.Ltmp43-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp27-.Lfunc_begin2
+	.long	.Ltmp36-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp41-.Lfunc_begin2
+	.long	.Ltmp42-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp34-.Lfunc_begin2
+	.long	.Ltmp37-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp39-.Lfunc_begin2
+	.long	.Ltmp42-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -618,8 +650,6 @@ finsh_pc:
 	.byte	16                              @ Abbreviation Code
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
-	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -634,7 +664,7 @@ finsh_pc:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -646,6 +676,21 @@ finsh_pc:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	18                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	19                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -676,7 +721,7 @@ finsh_pc:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x21a DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x21d DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -859,7 +904,7 @@ finsh_pc:
 	.long	finsh_pc
 	.byte	3                               @ Abbrev [3] 0x178:0x5 DW_TAG_pointer_type
 	.long	317                             @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x17d:0x22 DW_TAG_subprogram
+	.byte	15                              @ Abbrev [15] 0x17d:0x1f DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -869,16 +914,13 @@ finsh_pc:
 	.byte	28                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	16                              @ Abbrev [16] 0x190:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	7
+	.byte	16                              @ Abbrev [16] 0x190:0xb DW_TAG_variable
 	.long	.Linfo_string30                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	30                              @ DW_AT_decl_line
 	.long	317                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	15                              @ Abbrev [15] 0x19f:0x3e DW_TAG_subprogram
+	.byte	15                              @ Abbrev [15] 0x19c:0x41 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -888,32 +930,26 @@ finsh_pc:
 	.byte	56                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x1b2:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	17                              @ Abbrev [17] 0x1af:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string6                  @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	56                              @ DW_AT_decl_line
 	.long	139                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x1c0:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	17                              @ Abbrev [17] 0x1be:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string9                  @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	56                              @ DW_AT_decl_line
 	.long	156                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x1ce:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	18                              @ Abbrev [18] 0x1cd:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string31                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
 	.long	56                              @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	18                              @ Abbrev [18] 0x1dd:0x42 DW_TAG_subprogram
+	.byte	19                              @ Abbrev [19] 0x1dd:0x45 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -922,34 +958,28 @@ finsh_pc:
 	.byte	3                               @ DW_AT_decl_file
 	.byte	81                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	543                             @ DW_AT_type
+	.long	546                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x1f4:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	17                              @ Abbrev [17] 0x1f4:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string6                  @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	81                              @ DW_AT_decl_line
 	.long	139                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x202:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	18                              @ Abbrev [18] 0x203:0xf DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string32                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	83                              @ DW_AT_decl_line
-	.long	543                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x210:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	546                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x212:0xf DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string31                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	84                              @ DW_AT_decl_line
 	.long	56                              @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	3                               @ Abbrev [3] 0x21f:0x5 DW_TAG_pointer_type
+	.byte	3                               @ Abbrev [3] 0x222:0x5 DW_TAG_pointer_type
 	.long	94                              @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
@@ -1032,7 +1062,7 @@ finsh_pc:
 	.asciz	"index"                         @ string offset=446
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

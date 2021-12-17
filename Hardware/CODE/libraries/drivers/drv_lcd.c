@@ -283,9 +283,9 @@ int drv_lcd_hw_init(void)
     _lcd.lcd_info.pixel_format = LCD_PIXEL_FORMAT;
 
     /* malloc memory for Triple Buffering */
-    _lcd.lcd_info.framebuffer = rt_malloc(LCD_BUF_SIZE);
-    _lcd.back_buf = rt_malloc(LCD_BUF_SIZE);
-    _lcd.front_buf = rt_malloc(LCD_BUF_SIZE);
+    _lcd.lcd_info.framebuffer = (rt_uint8_t *)rt_malloc(LCD_BUF_SIZE);
+//    _lcd.back_buf = rt_malloc(LCD_BUF_SIZE);
+//    _lcd.front_buf = rt_malloc(LCD_BUF_SIZE);
     if (_lcd.lcd_info.framebuffer == RT_NULL )//|| _lcd.back_buf == RT_NULL || _lcd.front_buf == RT_NULL)
     {
         LOG_E("init frame buffer failed!\n");
@@ -295,8 +295,8 @@ int drv_lcd_hw_init(void)
 
     /* memset buff to 0xFF */
     memset(_lcd.lcd_info.framebuffer, 0xFF, LCD_BUF_SIZE);
-    memset(_lcd.back_buf, 0xFF, LCD_BUF_SIZE);
-    memset(_lcd.front_buf, 0xFF, LCD_BUF_SIZE);
+//    memset(_lcd.back_buf, 0xFF, LCD_BUF_SIZE);
+//    memset(_lcd.front_buf, 0xFF, LCD_BUF_SIZE);
 
     device->type = RT_Device_Class_Graphic;
 #ifdef RT_USING_DEVICE_OPS

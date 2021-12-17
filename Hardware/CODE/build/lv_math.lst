@@ -37,168 +37,104 @@ _lv_trigo_sin:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-                                        @ kill: def $r1 killed $r0
-	strh.w	r0, [sp, #2]
-	movs	r0, #0
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- $r0
+	movw	r1, #24759
+	movt	r1, #46603
 .Ltmp0:
-	.loc	2 53 13 prologue_end            @ lvgl/src/lv_misc/lv_math.c:53:13
-	strh.w	r0, [sp]
-	.loc	2 54 19                         @ lvgl/src/lv_misc/lv_math.c:54:19
-	ldrsh.w	r2, [sp, #2]
-	movw	r0, #24759
-	movt	r0, #46603
-	.loc	2 54 25 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:54:25
-	smmla	r1, r0, r2, r2
-	lsrs	r0, r1, #8
-	add.w	r0, r0, r1, lsr #31
-	mov.w	r1, #360
-	mls	r0, r0, r1, r2
-	.loc	2 54 17                         @ lvgl/src/lv_misc/lv_math.c:54:17
-	strh.w	r0, [sp, #2]
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- $r0
+	.loc	2 54 25 prologue_end            @ lvgl/src/lv_misc/lv_math.c:54:25
+	smmla	r1, r1, r0, r0
+	asrs	r2, r1, #8
+	add.w	r1, r2, r1, lsr #31
+	mov.w	r2, #360
+	mls	r0, r1, r2, r0
 .Ltmp1:
-	.loc	2 56 8 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:56:8
-	ldrsh.w	r0, [sp, #2]
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_convert 32 7, DW_OP_LLVM_convert 16 7, DW_OP_stack_value] $r0
+	.loc	2 56 8                          @ lvgl/src/lv_misc/lv_math.c:56:8
+	cmp	r0, #0
+	it	mi
+	addmi.w	r0, r0, #360
 .Ltmp2:
-	.loc	2 56 8 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:56:8
-	cmp.w	r0, #-1
-	bgt	.LBB0_2
-	b	.LBB0_1
-.LBB0_1:
-.Ltmp3:
-	.loc	2 56 33                         @ lvgl/src/lv_misc/lv_math.c:56:33
-	ldrh.w	r0, [sp, #2]
-	.loc	2 56 31                         @ lvgl/src/lv_misc/lv_math.c:56:31
-	add.w	r0, r0, #360
-	.loc	2 56 25                         @ lvgl/src/lv_misc/lv_math.c:56:25
-	strh.w	r0, [sp, #2]
-	.loc	2 56 19                         @ lvgl/src/lv_misc/lv_math.c:56:19
-	b	.LBB0_2
-.Ltmp4:
-.LBB0_2:
-	.loc	2 58 8 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:58:8
-	ldrsh.w	r0, [sp, #2]
-.Ltmp5:
-	.loc	2 58 8 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:58:8
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_convert 32 7, DW_OP_LLVM_convert 16 7, DW_OP_stack_value] $r0
+	.loc	2 58 8                          @ lvgl/src/lv_misc/lv_math.c:58:8
 	cmp	r0, #89
-	bgt	.LBB0_4
-	b	.LBB0_3
-.LBB0_3:
-.Ltmp6:
-	.loc	2 59 29 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:59:29
-	ldrsh.w	r1, [sp, #2]
-	.loc	2 59 15 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:59:15
-	movw	r0, :lower16:sin0_90_table
-	movt	r0, :upper16:sin0_90_table
-	ldrh.w	r0, [r0, r1, lsl #1]
-	.loc	2 59 13                         @ lvgl/src/lv_misc/lv_math.c:59:13
-	strh.w	r0, [sp]
-	.loc	2 60 5 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:60:5
-	b	.LBB0_13
-.Ltmp7:
-.LBB0_4:
-	.loc	2 61 13                         @ lvgl/src/lv_misc/lv_math.c:61:13
-	ldrsh.w	r0, [sp, #2]
-	.loc	2 61 25 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:61:25
-	cmp	r0, #90
-	blt	.LBB0_7
-	b	.LBB0_5
-.LBB0_5:
-	.loc	2 61 28                         @ lvgl/src/lv_misc/lv_math.c:61:28
-	ldrsh.w	r0, [sp, #2]
-.Ltmp8:
+	ble	.LBB0_3
+.Ltmp3:
+@ %bb.1:
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_convert 32 7, DW_OP_LLVM_convert 16 7, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
 	.loc	2 61 13                         @ lvgl/src/lv_misc/lv_math.c:61:13
 	cmp	r0, #179
-	bgt	.LBB0_7
-	b	.LBB0_6
-.LBB0_6:
-.Ltmp9:
-	.loc	2 62 23 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:62:23
-	ldrh.w	r0, [sp, #2]
-	.loc	2 62 21 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:62:21
+	bgt	.LBB0_4
+.Ltmp4:
+@ %bb.2:
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_convert 32 7, DW_OP_LLVM_convert 16 7, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
+	.loc	2 62 17                         @ lvgl/src/lv_misc/lv_math.c:62:17
 	rsb.w	r0, r0, #180
-	.loc	2 62 15                         @ lvgl/src/lv_misc/lv_math.c:62:15
-	strh.w	r0, [sp, #2]
-	.loc	2 63 31 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:63:31
-	ldrsh.w	r1, [sp, #2]
-	.loc	2 63 17 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:63:17
-	movw	r0, :lower16:sin0_90_table
-	movt	r0, :upper16:sin0_90_table
-	ldrh.w	r0, [r0, r1, lsl #1]
-	.loc	2 63 15                         @ lvgl/src/lv_misc/lv_math.c:63:15
-	strh.w	r0, [sp]
-	.loc	2 64 5 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:64:5
-	b	.LBB0_12
-.Ltmp10:
-.LBB0_7:
-	.loc	2 65 13                         @ lvgl/src/lv_misc/lv_math.c:65:13
-	ldrsh.w	r0, [sp, #2]
-	.loc	2 65 26 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:65:26
-	cmp	r0, #180
-	blt	.LBB0_10
-	b	.LBB0_8
-.LBB0_8:
-	.loc	2 65 29                         @ lvgl/src/lv_misc/lv_math.c:65:29
-	ldrsh.w	r0, [sp, #2]
-.Ltmp11:
+.Ltmp5:
+	.loc	2 0 17 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:17
+	uxth	r0, r0
+.Ltmp6:
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- undef
+.LBB0_3:
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
+	movw	r1, :lower16:sin0_90_table
+	movt	r1, :upper16:sin0_90_table
+	ldrh.w	r0, [r1, r0, lsl #1]
+.Ltmp7:
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- undef
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- $r0
+	.loc	2 74 5 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:74:5
+	sxth	r0, r0
+.Ltmp8:
+	bx	lr
+.LBB0_4:
+.Ltmp9:
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_convert 32 7, DW_OP_LLVM_convert 16 7, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
 	.loc	2 65 13                         @ lvgl/src/lv_misc/lv_math.c:65:13
 	cmp.w	r0, #270
-	bge	.LBB0_10
-	b	.LBB0_9
-.LBB0_9:
-.Ltmp12:
+	bge	.LBB0_6
+.Ltmp10:
+@ %bb.5:
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_convert 32 7, DW_OP_LLVM_convert 16 7, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
+	.loc	2 0 13 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:13
+	movw	r1, #65356
+.Ltmp11:
 	.loc	2 66 17 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:66:17
-	ldrh.w	r0, [sp, #2]
-	.loc	2 66 23 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:66:23
-	subs	r0, #180
-	.loc	2 66 15                         @ lvgl/src/lv_misc/lv_math.c:66:15
-	strh.w	r0, [sp, #2]
-	.loc	2 67 32 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:67:32
-	ldrsh.w	r1, [sp, #2]
-	.loc	2 67 18 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:67:18
-	movw	r0, :lower16:sin0_90_table
-	movt	r0, :upper16:sin0_90_table
-	ldrh.w	r0, [r0, r1, lsl #1]
-	.loc	2 67 17                         @ lvgl/src/lv_misc/lv_math.c:67:17
-	rsbs	r0, r0, #0
-	.loc	2 67 15                         @ lvgl/src/lv_misc/lv_math.c:67:15
-	strh.w	r0, [sp]
-	.loc	2 68 5 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:68:5
-	b	.LBB0_11
+	add	r0, r1
+.Ltmp12:
+	.loc	2 0 17 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:17
+	b	.LBB0_7
 .Ltmp13:
-.LBB0_10:
-	.loc	2 70 23                         @ lvgl/src/lv_misc/lv_math.c:70:23
-	ldrh.w	r0, [sp, #2]
-	.loc	2 70 21 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:70:21
+.LBB0_6:
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- [DW_OP_LLVM_convert 32 7, DW_OP_LLVM_convert 16 7, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
+	.loc	2 70 17 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:70:17
 	rsb.w	r0, r0, #360
-	.loc	2 70 15                         @ lvgl/src/lv_misc/lv_math.c:70:15
-	strh.w	r0, [sp, #2]
-	.loc	2 71 32 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:71:32
-	ldrsh.w	r1, [sp, #2]
-	.loc	2 71 18 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:71:18
-	movw	r0, :lower16:sin0_90_table
-	movt	r0, :upper16:sin0_90_table
-	ldrh.w	r0, [r0, r1, lsl #1]
-	.loc	2 71 17                         @ lvgl/src/lv_misc/lv_math.c:71:17
-	rsbs	r0, r0, #0
-	.loc	2 71 15                         @ lvgl/src/lv_misc/lv_math.c:71:15
-	strh.w	r0, [sp]
-	b	.LBB0_11
 .Ltmp14:
-.LBB0_11:
-	.loc	2 0 15                          @ lvgl/src/lv_misc/lv_math.c:0:15
-	b	.LBB0_12
-.LBB0_12:
-	b	.LBB0_13
-.LBB0_13:
-	.loc	2 74 12 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:74:12
-	ldrsh.w	r0, [sp]
-	.loc	2 74 5 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:74:5
-	add	sp, #4
-	bx	lr
+.LBB0_7:
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- 0
+	.loc	2 0 17 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:17
+	uxth	r0, r0
 .Ltmp15:
+	@DEBUG_VALUE: _lv_trigo_sin:angle <- undef
+	movw	r1, :lower16:sin0_90_table
+	movt	r1, :upper16:sin0_90_table
+	ldrh.w	r0, [r1, r0, lsl #1]
+	rsbs	r0, r0, #0
+.Ltmp16:
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- $r0
+	@DEBUG_VALUE: _lv_trigo_sin:ret <- $r0
+	.loc	2 74 5 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:74:5
+	sxth	r0, r0
+.Ltmp17:
+	bx	lr
+.Ltmp18:
 .Lfunc_end0:
 	.size	_lv_trigo_sin, .Lfunc_end0-_lv_trigo_sin
 	.cfi_endproc
@@ -214,131 +150,100 @@ _lv_trigo_sin:
 	.thumb_func
 _lv_bezier3:
 .Lfunc_begin1:
-	.loc	2 87 0 is_stmt 1                @ lvgl/src/lv_misc/lv_math.c:87:0
+	.loc	2 87 0                          @ lvgl/src/lv_misc/lv_math.c:87:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#52
-	sub	sp, #52
-	.cfi_def_cfa_offset 52
-	ldr.w	r12, [sp, #52]
-	str	r0, [sp, #48]
-	str	r1, [sp, #44]
-	str	r2, [sp, #40]
-	str	r3, [sp, #36]
-.Ltmp16:
-	.loc	2 88 30 prologue_end            @ lvgl/src/lv_misc/lv_math.c:88:30
-	ldr	r0, [sp, #48]
-	.loc	2 88 28 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:88:28
-	rsb.w	r0, r0, #1024
-	.loc	2 88 14                         @ lvgl/src/lv_misc/lv_math.c:88:14
-	str	r0, [sp, #32]
-	.loc	2 89 24 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:89:24
-	ldr	r0, [sp, #32]
-	.loc	2 89 30 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:89:30
-	muls	r0, r0, r0
-	.loc	2 89 39                         @ lvgl/src/lv_misc/lv_math.c:89:39
-	lsrs	r0, r0, #10
-	.loc	2 89 14                         @ lvgl/src/lv_misc/lv_math.c:89:14
-	str	r0, [sp, #28]
-	.loc	2 90 24 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:90:24
-	ldr	r0, [sp, #28]
-	.loc	2 90 33 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:90:33
-	ldr	r1, [sp, #32]
-	.loc	2 90 31                         @ lvgl/src/lv_misc/lv_math.c:90:31
-	muls	r0, r1, r0
-	.loc	2 90 40                         @ lvgl/src/lv_misc/lv_math.c:90:40
-	lsrs	r0, r0, #10
-	.loc	2 90 14                         @ lvgl/src/lv_misc/lv_math.c:90:14
-	str	r0, [sp, #24]
-	.loc	2 91 24 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:91:24
-	ldr	r0, [sp, #48]
-	.loc	2 91 26 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:91:26
-	muls	r0, r0, r0
+	@DEBUG_VALUE: _lv_bezier3:t <- $r0
+	@DEBUG_VALUE: _lv_bezier3:t <- $r0
+	@DEBUG_VALUE: _lv_bezier3:u0 <- $r1
+	@DEBUG_VALUE: _lv_bezier3:u1 <- $r2
+	@DEBUG_VALUE: _lv_bezier3:u2 <- $r3
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
+	.cfi_offset lr, -4
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp19:
+	@DEBUG_VALUE: _lv_bezier3:u3 <- [DW_OP_plus_uconst 16] [$sp+0]
+	.loc	2 91 26 prologue_end            @ lvgl/src/lv_misc/lv_math.c:91:26
+	mul	r5, r0, r0
+	.loc	2 88 28                         @ lvgl/src/lv_misc/lv_math.c:88:28
+	rsb.w	r12, r0, #1024
+.Ltmp20:
+	@DEBUG_VALUE: _lv_bezier3:t_rem <- $r12
+	.loc	2 89 30                         @ lvgl/src/lv_misc/lv_math.c:89:30
+	mul	lr, r12, r12
 	.loc	2 91 31                         @ lvgl/src/lv_misc/lv_math.c:91:31
-	lsrs	r0, r0, #10
-	.loc	2 91 14                         @ lvgl/src/lv_misc/lv_math.c:91:14
-	str	r0, [sp, #20]
-	.loc	2 92 24 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:92:24
-	ldr	r0, [sp, #20]
-	.loc	2 92 29 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:92:29
-	ldr	r1, [sp, #48]
+	lsrs	r5, r5, #10
+.Ltmp21:
+	@DEBUG_VALUE: _lv_bezier3:t2 <- $r5
 	.loc	2 92 27                         @ lvgl/src/lv_misc/lv_math.c:92:27
-	muls	r0, r1, r0
-	.loc	2 92 32                         @ lvgl/src/lv_misc/lv_math.c:92:32
-	lsrs	r0, r0, #10
-	.loc	2 92 14                         @ lvgl/src/lv_misc/lv_math.c:92:14
-	str	r0, [sp, #16]
-	.loc	2 94 20 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:94:20
-	ldr	r0, [sp, #24]
-	.loc	2 94 29 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:94:29
-	ldr	r1, [sp, #44]
-	.loc	2 94 27                         @ lvgl/src/lv_misc/lv_math.c:94:27
-	muls	r0, r1, r0
-	.loc	2 94 33                         @ lvgl/src/lv_misc/lv_math.c:94:33
-	lsrs	r0, r0, #10
-	.loc	2 94 14                         @ lvgl/src/lv_misc/lv_math.c:94:14
-	str	r0, [sp, #12]
-	.loc	2 95 24 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:95:24
-	ldr	r0, [sp, #28]
-	.loc	2 95 33 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:95:33
-	ldr	r1, [sp, #48]
+	mul	r6, r5, r0
+	@DEBUG_VALUE: _lv_bezier3:u1 <- $r2
+	.loc	2 89 39                         @ lvgl/src/lv_misc/lv_math.c:89:39
+	lsr.w	r4, lr, #10
+.Ltmp22:
+	@DEBUG_VALUE: _lv_bezier3:t_rem2 <- $r4
 	.loc	2 95 22                         @ lvgl/src/lv_misc/lv_math.c:95:22
-	muls	r0, r1, r0
-	.loc	2 95 37                         @ lvgl/src/lv_misc/lv_math.c:95:37
-	ldr	r1, [sp, #40]
+	muls	r0, r2, r0
+.Ltmp23:
+	@DEBUG_VALUE: _lv_bezier3:t <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: _lv_bezier3:u2 <- $r3
+	.loc	2 96 22                         @ lvgl/src/lv_misc/lv_math.c:96:22
+	mul	r2, r12, r5
+.Ltmp24:
+	@DEBUG_VALUE: _lv_bezier3:u1 <- [DW_OP_LLVM_entry_value 1] $r2
+	.loc	2 0 22 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:22
+	ldr	r5, [sp, #16]
+.Ltmp25:
+	.loc	2 90 31 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:90:31
+	mul	lr, r4, r12
+	.loc	2 96 30                         @ lvgl/src/lv_misc/lv_math.c:96:30
+	muls	r2, r3, r2
+	.loc	2 92 32                         @ lvgl/src/lv_misc/lv_math.c:92:32
+	lsrs	r3, r6, #10
+.Ltmp26:
+	@DEBUG_VALUE: _lv_bezier3:u2 <- [DW_OP_LLVM_entry_value 1] $r3
+	@DEBUG_VALUE: _lv_bezier3:t3 <- $r3
 	.loc	2 95 31                         @ lvgl/src/lv_misc/lv_math.c:95:31
-	muls	r0, r1, r0
+	muls	r0, r4, r0
+	.loc	2 90 40                         @ lvgl/src/lv_misc/lv_math.c:90:40
+	lsr.w	r4, lr, #10
+.Ltmp27:
+	@DEBUG_VALUE: _lv_bezier3:t_rem3 <- $r4
+	.loc	2 97 23                         @ lvgl/src/lv_misc/lv_math.c:97:23
+	muls	r3, r5, r3
+.Ltmp28:
+	@DEBUG_VALUE: _lv_bezier3:u0 <- $r1
+	.loc	2 96 35                         @ lvgl/src/lv_misc/lv_math.c:96:35
+	add.w	r2, r2, r2, lsl #1
+.Ltmp29:
+	@DEBUG_VALUE: _lv_bezier3:v3 <- undef
+	.loc	2 94 27                         @ lvgl/src/lv_misc/lv_math.c:94:27
+	muls	r1, r4, r1
+.Ltmp30:
+	@DEBUG_VALUE: _lv_bezier3:u0 <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: _lv_bezier3:v1 <- undef
 	.loc	2 95 35                         @ lvgl/src/lv_misc/lv_math.c:95:35
 	add.w	r0, r0, r0, lsl #1
-	.loc	2 95 41                         @ lvgl/src/lv_misc/lv_math.c:95:41
-	lsrs	r0, r0, #20
-	.loc	2 95 14                         @ lvgl/src/lv_misc/lv_math.c:95:14
-	str	r0, [sp, #8]
-	.loc	2 96 24 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:96:24
-	ldr	r0, [sp, #32]
-	.loc	2 96 32 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:96:32
-	ldr	r1, [sp, #20]
-	.loc	2 96 22                         @ lvgl/src/lv_misc/lv_math.c:96:22
-	muls	r0, r1, r0
-	.loc	2 96 37                         @ lvgl/src/lv_misc/lv_math.c:96:37
-	ldr	r1, [sp, #36]
-	.loc	2 96 30                         @ lvgl/src/lv_misc/lv_math.c:96:30
-	muls	r0, r1, r0
-	.loc	2 96 35                         @ lvgl/src/lv_misc/lv_math.c:96:35
-	add.w	r0, r0, r0, lsl #1
-	.loc	2 96 41                         @ lvgl/src/lv_misc/lv_math.c:96:41
-	lsrs	r0, r0, #20
-	.loc	2 96 14                         @ lvgl/src/lv_misc/lv_math.c:96:14
-	str	r0, [sp, #4]
-	.loc	2 97 20 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:97:20
-	ldr	r0, [sp, #16]
-	.loc	2 97 25 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:97:25
-	ldr	r1, [sp, #52]
-	.loc	2 97 23                         @ lvgl/src/lv_misc/lv_math.c:97:23
-	muls	r0, r1, r0
+.Ltmp31:
+	@DEBUG_VALUE: _lv_bezier3:v2 <- undef
 	.loc	2 97 29                         @ lvgl/src/lv_misc/lv_math.c:97:29
-	lsrs	r0, r0, #10
-	.loc	2 97 14                         @ lvgl/src/lv_misc/lv_math.c:97:14
-	str	r0, [sp]
-	.loc	2 99 12 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:99:12
-	ldr	r0, [sp, #12]
-	.loc	2 99 17 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:99:17
-	ldr	r1, [sp, #8]
+	lsrs	r3, r3, #10
+.Ltmp32:
+	@DEBUG_VALUE: _lv_bezier3:v4 <- $r3
 	.loc	2 99 15                         @ lvgl/src/lv_misc/lv_math.c:99:15
-	add	r0, r1
-	.loc	2 99 22                         @ lvgl/src/lv_misc/lv_math.c:99:22
-	ldr	r1, [sp, #4]
-	.loc	2 99 20                         @ lvgl/src/lv_misc/lv_math.c:99:20
-	add	r0, r1
-	.loc	2 99 27                         @ lvgl/src/lv_misc/lv_math.c:99:27
-	ldr	r1, [sp]
+	add.w	r2, r3, r2, lsr #20
+	.loc	2 99 20 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:99:20
+	add.w	r0, r2, r0, lsr #20
 	.loc	2 99 25                         @ lvgl/src/lv_misc/lv_math.c:99:25
-	add	r0, r1
+	add.w	r0, r0, r1, lsr #10
 	.loc	2 99 5                          @ lvgl/src/lv_misc/lv_math.c:99:5
-	add	sp, #52
-	bx	lr
-.Ltmp17:
+	pop	{r4, r5, r6, pc}
+.Ltmp33:
 .Lfunc_end1:
 	.size	_lv_bezier3, .Lfunc_end1-_lv_bezier3
 	.cfi_endproc
@@ -358,97 +263,77 @@ _lv_sqrt:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#20
-	sub	sp, #20
-	.cfi_def_cfa_offset 20
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
-.Ltmp18:
-	.loc	2 114 9 prologue_end            @ lvgl/src/lv_misc/lv_math.c:114:9
-	ldr	r0, [sp, #16]
-	.loc	2 114 11 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:114:11
-	lsls	r0, r0, #8
-	.loc	2 114 7                         @ lvgl/src/lv_misc/lv_math.c:114:7
-	str	r0, [sp, #16]
-	movs	r0, #0
-	.loc	2 116 14 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:116:14
-	str	r0, [sp, #4]
-	.loc	2 119 5                         @ lvgl/src/lv_misc/lv_math.c:119:5
-	b	.LBB2_1
+	@DEBUG_VALUE: _lv_sqrt:x <- $r0
+	@DEBUG_VALUE: _lv_sqrt:x <- $r0
+	@DEBUG_VALUE: _lv_sqrt:q <- $r1
+	@DEBUG_VALUE: _lv_sqrt:q <- $r1
+	@DEBUG_VALUE: _lv_sqrt:mask <- $r2
+	@DEBUG_VALUE: _lv_sqrt:mask <- $r2
+	.save	{r4, lr}
+	push	{r4, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r4, -8
+.Ltmp34:
+	.loc	2 114 11 prologue_end           @ lvgl/src/lv_misc/lv_math.c:114:11
+	lsl.w	lr, r0, #8
+.Ltmp35:
+	@DEBUG_VALUE: _lv_sqrt:x <- $lr
+	.loc	2 0 11 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:11
+	mov.w	r12, #0
+.Ltmp36:
+	@DEBUG_VALUE: _lv_sqrt:root <- 0
+	movs	r3, #0
+.Ltmp37:
+	.p2align	2
 .LBB2_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp19:
-	.loc	2 120 17                        @ lvgl/src/lv_misc/lv_math.c:120:17
-	ldr	r0, [sp, #4]
-	.loc	2 120 24 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:120:24
-	ldr	r1, [sp, #8]
-	.loc	2 120 22                        @ lvgl/src/lv_misc/lv_math.c:120:22
-	add	r0, r1
-	.loc	2 120 15                        @ lvgl/src/lv_misc/lv_math.c:120:15
-	str	r0, [sp]
-.Ltmp20:
-	.loc	2 121 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:121:12
-	ldr	r0, [sp]
-	.loc	2 121 18 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:121:18
-	muls	r0, r0, r0
-	.loc	2 121 29                        @ lvgl/src/lv_misc/lv_math.c:121:29
-	ldr	r1, [sp, #16]
-.Ltmp21:
-	.loc	2 121 12                        @ lvgl/src/lv_misc/lv_math.c:121:12
-	cmp	r0, r1
-	bhi	.LBB2_3
-	b	.LBB2_2
-.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp22:
-	.loc	2 121 39                        @ lvgl/src/lv_misc/lv_math.c:121:39
-	ldr	r0, [sp]
-	.loc	2 121 37                        @ lvgl/src/lv_misc/lv_math.c:121:37
-	str	r0, [sp, #4]
-	.loc	2 121 32                        @ lvgl/src/lv_misc/lv_math.c:121:32
-	b	.LBB2_3
-.Ltmp23:
-.LBB2_3:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	2 122 16 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:122:16
-	ldr	r0, [sp, #8]
-	.loc	2 122 21 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:122:21
-	lsrs	r0, r0, #1
-	.loc	2 122 14                        @ lvgl/src/lv_misc/lv_math.c:122:14
-	str	r0, [sp, #8]
+	@DEBUG_VALUE: _lv_sqrt:mask <- $r2
+	@DEBUG_VALUE: _lv_sqrt:q <- $r1
+	@DEBUG_VALUE: _lv_sqrt:x <- $lr
+	@DEBUG_VALUE: _lv_sqrt:mask <- $r2
+	@DEBUG_VALUE: _lv_sqrt:root <- $r3
+	.loc	2 120 22 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:120:22
+	adds	r0, r3, r2
+.Ltmp38:
+	@DEBUG_VALUE: _lv_sqrt:trial <- $r3
+	.loc	2 121 18                        @ lvgl/src/lv_misc/lv_math.c:121:18
+	mul	r4, r0, r0
+.Ltmp39:
+	.loc	2 121 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:121:12
+	cmp	r4, lr
+	it	ls
+	movls	r3, r0
+.Ltmp40:
+	@DEBUG_VALUE: _lv_sqrt:root <- $r3
 	.loc	2 123 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:123:5
-	b	.LBB2_4
-.Ltmp24:
-.LBB2_4:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	2 123 13 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:123:13
-	ldr	r0, [sp, #8]
-.Ltmp25:
+	cmp.w	r12, r2, lsr #1
+	.loc	2 122 21                        @ lvgl/src/lv_misc/lv_math.c:122:21
+	lsr.w	r2, r2, #1
+.Ltmp41:
+	@DEBUG_VALUE: _lv_sqrt:mask <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: _lv_sqrt:mask <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: _lv_sqrt:mask <- $r2
+	@DEBUG_VALUE: _lv_sqrt:mask <- $r2
 	.loc	2 123 5                         @ lvgl/src/lv_misc/lv_math.c:123:5
-	cmp	r0, #0
 	bne	.LBB2_1
-	b	.LBB2_5
-.Ltmp26:
-.LBB2_5:
-	.loc	2 125 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:125:12
-	ldr	r0, [sp, #4]
-	.loc	2 125 17 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:125:17
-	lsrs	r0, r0, #4
-	.loc	2 125 5                         @ lvgl/src/lv_misc/lv_math.c:125:5
-	ldr	r1, [sp, #12]
-	.loc	2 125 10                        @ lvgl/src/lv_misc/lv_math.c:125:10
+.Ltmp42:
+@ %bb.2:
+	@DEBUG_VALUE: _lv_sqrt:root <- $r3
+	@DEBUG_VALUE: _lv_sqrt:mask <- $r2
+	@DEBUG_VALUE: _lv_sqrt:q <- $r1
+	@DEBUG_VALUE: _lv_sqrt:x <- $lr
+	.loc	2 125 17                        @ lvgl/src/lv_misc/lv_math.c:125:17
+	lsrs	r0, r3, #4
+	.loc	2 125 10 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:125:10
 	strh	r0, [r1]
-	.loc	2 126 13 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:126:13
-	ldr	r0, [sp, #4]
-	.loc	2 126 18 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:126:18
-	and	r0, r0, #15
-	.loc	2 126 25                        @ lvgl/src/lv_misc/lv_math.c:126:25
-	lsls	r0, r0, #4
-	.loc	2 126 5                         @ lvgl/src/lv_misc/lv_math.c:126:5
-	ldr	r1, [sp, #12]
-	.loc	2 126 10                        @ lvgl/src/lv_misc/lv_math.c:126:10
+	.loc	2 126 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:126:12
+	lsls	r0, r3, #4
+	uxtb	r0, r0
+	.loc	2 126 10 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:126:10
 	strh	r0, [r1, #2]
 	.loc	2 127 1 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:127:1
-	add	sp, #20
-	bx	lr
-.Ltmp27:
+	pop	{r4, pc}
+.Ltmp43:
 .Lfunc_end2:
 	.size	_lv_sqrt, .Lfunc_end2-_lv_sqrt
 	.cfi_endproc
@@ -468,373 +353,228 @@ _lv_atan2:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #20]
-	str	r1, [sp, #16]
-	movs	r0, #0
-.Ltmp28:
-	.loc	2 157 13 prologue_end           @ lvgl/src/lv_misc/lv_math.c:157:13
-	strb.w	r0, [sp, #15]
-.Ltmp29:
-	.loc	2 158 8                         @ lvgl/src/lv_misc/lv_math.c:158:8
-	ldr	r0, [sp, #20]
-.Ltmp30:
-	.loc	2 158 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:158:8
-	cmp.w	r0, #-1
-	bgt	.LBB3_2
-	b	.LBB3_1
-.LBB3_1:
-.Ltmp31:
-	.loc	2 159 17 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:159:17
-	ldrb.w	r0, [sp, #15]
-	adds	r0, #1
-	strb.w	r0, [sp, #15]
-	.loc	2 160 18                        @ lvgl/src/lv_misc/lv_math.c:160:18
-	ldr	r0, [sp, #20]
-	.loc	2 160 16 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:160:16
-	rsbs	r0, r0, #0
-	.loc	2 160 11                        @ lvgl/src/lv_misc/lv_math.c:160:11
-	str	r0, [sp, #20]
-	.loc	2 161 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:161:5
-	b	.LBB3_2
-.Ltmp32:
-.LBB3_2:
-	.loc	2 162 10                        @ lvgl/src/lv_misc/lv_math.c:162:10
-	ldr	r0, [sp, #20]
-	.loc	2 162 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:162:8
-	str	r0, [sp, #4]
-.Ltmp33:
-	.loc	2 163 8 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:163:8
-	ldr	r0, [sp, #16]
-.Ltmp34:
-	.loc	2 163 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:163:8
-	cmp.w	r0, #-1
-	bgt	.LBB3_4
-	b	.LBB3_3
-.LBB3_3:
-.Ltmp35:
-	.loc	2 164 17 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:164:17
-	ldrb.w	r0, [sp, #15]
-	adds	r0, #2
-	strb.w	r0, [sp, #15]
-	.loc	2 165 18                        @ lvgl/src/lv_misc/lv_math.c:165:18
-	ldr	r0, [sp, #16]
-	.loc	2 165 16 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:165:16
-	rsbs	r0, r0, #0
-	.loc	2 165 11                        @ lvgl/src/lv_misc/lv_math.c:165:11
-	str	r0, [sp, #16]
-	.loc	2 166 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:166:5
-	b	.LBB3_4
-.Ltmp36:
-.LBB3_4:
-	.loc	2 167 10                        @ lvgl/src/lv_misc/lv_math.c:167:10
-	ldr	r0, [sp, #16]
-	.loc	2 167 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:167:8
-	str	r0, [sp]
-.Ltmp37:
-	.loc	2 170 8 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:170:8
-	ldr	r0, [sp, #4]
-	.loc	2 170 13 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:170:13
-	ldr	r1, [sp]
-.Ltmp38:
+	@DEBUG_VALUE: _lv_atan2:x <- $r0
+	@DEBUG_VALUE: _lv_atan2:x <- $r0
+	@DEBUG_VALUE: _lv_atan2:y <- $r1
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+.Ltmp44:
+	@DEBUG_VALUE: _lv_atan2:negflag <- 0
+	.loc	2 158 8 prologue_end            @ lvgl/src/lv_misc/lv_math.c:158:8
+	lsr.w	lr, r0, #31
+	cmp	r0, #0
+	@DEBUG_VALUE: _lv_atan2:y <- $r1
+	it	mi
+	rsbmi	r0, r0, #0
+.Ltmp45:
+	@DEBUG_VALUE: _lv_atan2:x <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: _lv_atan2:x <- $r0
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	@DEBUG_VALUE: _lv_atan2:ux <- $r0
+	.loc	2 163 8                         @ lvgl/src/lv_misc/lv_math.c:163:8
+	cmp	r1, #0
+	mov.w	r2, #45
+	itt	mi
+	addmi.w	lr, lr, #2
+.Ltmp46:
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	rsbmi	r1, r1, #0
+.Ltmp47:
+	@DEBUG_VALUE: _lv_atan2:y <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: _lv_atan2:y <- $r1
+	@DEBUG_VALUE: _lv_atan2:uy <- $r1
 	.loc	2 170 8                         @ lvgl/src/lv_misc/lv_math.c:170:8
 	cmp	r0, r1
-	bls	.LBB3_6
-	b	.LBB3_5
-.LBB3_5:
-.Ltmp39:
-	.loc	2 171 19 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:171:19
-	ldr	r0, [sp]
-	movs	r1, #45
-	.loc	2 171 22 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:171:22
-	muls	r0, r1, r0
-	.loc	2 171 30                        @ lvgl/src/lv_misc/lv_math.c:171:30
-	ldr	r1, [sp, #4]
-	.loc	2 171 28                        @ lvgl/src/lv_misc/lv_math.c:171:28
-	udiv	r0, r0, r1
-	.loc	2 171 16                        @ lvgl/src/lv_misc/lv_math.c:171:16
-	str	r0, [sp, #8]
-	.loc	2 172 17 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:172:17
-	ldrb.w	r0, [sp, #15]
-	adds	r0, #16
-	strb.w	r0, [sp, #15]
-	.loc	2 173 5                         @ lvgl/src/lv_misc/lv_math.c:173:5
-	b	.LBB3_7
-.Ltmp40:
-.LBB3_6:
-	.loc	2 175 19                        @ lvgl/src/lv_misc/lv_math.c:175:19
-	ldr	r0, [sp, #4]
-	movs	r1, #45
-	.loc	2 175 22 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:175:22
-	muls	r0, r1, r0
-	.loc	2 175 30                        @ lvgl/src/lv_misc/lv_math.c:175:30
-	ldr	r1, [sp]
-	.loc	2 175 28                        @ lvgl/src/lv_misc/lv_math.c:175:28
-	udiv	r0, r0, r1
-	.loc	2 175 16                        @ lvgl/src/lv_misc/lv_math.c:175:16
-	str	r0, [sp, #8]
-	b	.LBB3_7
-.Ltmp41:
-.LBB3_7:
-	.loc	2 0 16                          @ lvgl/src/lv_misc/lv_math.c:0:16
-	movs	r0, #0
-	.loc	2 179 10 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:179:10
-	strb.w	r0, [sp, #13]
-	.loc	2 180 18                        @ lvgl/src/lv_misc/lv_math.c:180:18
-	ldr	r0, [sp, #8]
-	.loc	2 180 16 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:180:16
-	strb.w	r0, [sp, #14]
-.Ltmp42:
-	.loc	2 181 8 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:181:8
-	ldrb.w	r0, [sp, #14]
-.Ltmp43:
-	.loc	2 181 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:181:8
-	cmp	r0, #23
-	blt	.LBB3_17
-	b	.LBB3_8
-.LBB3_8:
-.Ltmp44:
-	.loc	2 182 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:182:12
-	ldrb.w	r0, [sp, #14]
-.Ltmp45:
-	.loc	2 182 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:182:12
-	cmp	r0, #44
-	bgt	.LBB3_10
-	b	.LBB3_9
-.LBB3_9:
-.Ltmp46:
-	.loc	2 182 34                        @ lvgl/src/lv_misc/lv_math.c:182:34
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 182 30                        @ lvgl/src/lv_misc/lv_math.c:182:30
-	b	.LBB3_10
-.Ltmp47:
-.LBB3_10:
-	.loc	2 183 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:183:12
-	ldrb.w	r0, [sp, #14]
+	bls	.LBB3_2
 .Ltmp48:
-	.loc	2 183 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:183:12
-	cmp	r0, #41
-	bgt	.LBB3_12
-	b	.LBB3_11
-.LBB3_11:
+@ %bb.1:
+	@DEBUG_VALUE: _lv_atan2:uy <- $r1
+	@DEBUG_VALUE: _lv_atan2:y <- $r1
+	@DEBUG_VALUE: _lv_atan2:ux <- $r0
+	@DEBUG_VALUE: _lv_atan2:x <- $r0
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	.loc	2 171 22                        @ lvgl/src/lv_misc/lv_math.c:171:22
+	muls	r1, r2, r1
 .Ltmp49:
-	.loc	2 183 34                        @ lvgl/src/lv_misc/lv_math.c:183:34
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 183 30                        @ lvgl/src/lv_misc/lv_math.c:183:30
-	b	.LBB3_12
+	@DEBUG_VALUE: _lv_atan2:y <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 172 17                        @ lvgl/src/lv_misc/lv_math.c:172:17
+	add.w	lr, lr, #16
 .Ltmp50:
-.LBB3_12:
-	.loc	2 184 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:184:12
-	ldrb.w	r0, [sp, #14]
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	.loc	2 171 28                        @ lvgl/src/lv_misc/lv_math.c:171:28
+	udiv	r12, r1, r0
 .Ltmp51:
-	.loc	2 184 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:184:12
-	cmp	r0, #37
-	bgt	.LBB3_14
-	b	.LBB3_13
-.LBB3_13:
+	@DEBUG_VALUE: _lv_atan2:degree <- $r12
+	.loc	2 0 28 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:28
+	b	.LBB3_3
 .Ltmp52:
-	.loc	2 184 34                        @ lvgl/src/lv_misc/lv_math.c:184:34
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 184 30                        @ lvgl/src/lv_misc/lv_math.c:184:30
-	b	.LBB3_14
+.LBB3_2:
+	@DEBUG_VALUE: _lv_atan2:uy <- $r1
+	@DEBUG_VALUE: _lv_atan2:y <- $r1
+	@DEBUG_VALUE: _lv_atan2:ux <- $r0
+	@DEBUG_VALUE: _lv_atan2:x <- $r0
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	.loc	2 175 22 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:175:22
+	muls	r0, r2, r0
 .Ltmp53:
-.LBB3_14:
-	.loc	2 185 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:185:12
-	ldrb.w	r0, [sp, #14]
+	@DEBUG_VALUE: _lv_atan2:x <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 175 28 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:175:28
+	udiv	r12, r0, r1
 .Ltmp54:
-	.loc	2 185 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:185:12
-	cmp	r0, #32
-	bgt	.LBB3_16
-	b	.LBB3_15
-.LBB3_15:
+	@DEBUG_VALUE: _lv_atan2:degree <- $r12
+.LBB3_3:
+	@DEBUG_VALUE: _lv_atan2:degree <- $r12
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	@DEBUG_VALUE: _lv_atan2:degree <- $r12
+	@DEBUG_VALUE: _lv_atan2:comp <- 0
+	.loc	2 181 8 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:181:8
+	uxtb.w	r3, r12
 .Ltmp55:
-	.loc	2 185 34                        @ lvgl/src/lv_misc/lv_math.c:185:34
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 185 30                        @ lvgl/src/lv_misc/lv_math.c:185:30
-	b	.LBB3_16
+	@DEBUG_VALUE: _lv_atan2:tempdegree <- $r12
+	.loc	2 181 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:181:8
+	cmp	r3, #23
+	blo	.LBB3_5
 .Ltmp56:
-.LBB3_16:
-	.loc	2 186 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:186:5
-	b	.LBB3_26
+@ %bb.4:
+	@DEBUG_VALUE: _lv_atan2:tempdegree <- $r12
+	@DEBUG_VALUE: _lv_atan2:degree <- $r12
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	@DEBUG_VALUE: _lv_atan2:comp <- 0
+	.loc	2 182 23 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:182:23
+	movs	r2, #0
+	movs	r1, #1
+	cmp	r3, #45
+	mov.w	r0, #0
+	it	lo
+	movlo	r2, #1
 .Ltmp57:
-.LBB3_17:
-	.loc	2 188 12                        @ lvgl/src/lv_misc/lv_math.c:188:12
-	ldrb.w	r0, [sp, #14]
+	@DEBUG_VALUE: _lv_atan2:comp <- [DW_OP_LLVM_convert 1 7, DW_OP_LLVM_convert 8 7, DW_OP_stack_value] $r2
+	.loc	2 183 12                        @ lvgl/src/lv_misc/lv_math.c:183:12
+	it	lo
+	movlo	r1, #2
+	cmp	r3, #42
+	it	hs
+	movhs	r1, r2
 .Ltmp58:
-	.loc	2 188 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:188:12
-	cmp	r0, #2
-	blt	.LBB3_19
-	b	.LBB3_18
-.LBB3_18:
+	@DEBUG_VALUE: _lv_atan2:comp <- undef
+	.loc	2 184 23                        @ lvgl/src/lv_misc/lv_math.c:184:23
+	movs	r2, #0
+	cmp	r3, #38
+	it	lo
+	movlo	r2, #1
 .Ltmp59:
-	.loc	2 188 33                        @ lvgl/src/lv_misc/lv_math.c:188:33
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 188 29                        @ lvgl/src/lv_misc/lv_math.c:188:29
-	b	.LBB3_19
+	@DEBUG_VALUE: _lv_atan2:comp <- undef
+	.loc	2 185 23                        @ lvgl/src/lv_misc/lv_math.c:185:23
+	cmp	r3, #33
+	it	lo
+	movlo	r0, #1
+	b	.LBB3_6
 .Ltmp60:
-.LBB3_19:
-	.loc	2 189 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:189:12
-	ldrb.w	r0, [sp, #14]
+.LBB3_5:
+	@DEBUG_VALUE: _lv_atan2:tempdegree <- $r12
+	@DEBUG_VALUE: _lv_atan2:degree <- $r12
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	@DEBUG_VALUE: _lv_atan2:comp <- 0
+	.loc	2 188 23                        @ lvgl/src/lv_misc/lv_math.c:188:23
+	movs	r2, #0
+	movs	r1, #1
+	cmp	r3, #1
+	mov.w	r0, #0
+	it	hi
+	movhi	r2, #1
 .Ltmp61:
-	.loc	2 189 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:189:12
-	cmp	r0, #6
-	blt	.LBB3_21
-	b	.LBB3_20
-.LBB3_20:
+	@DEBUG_VALUE: _lv_atan2:comp <- [DW_OP_LLVM_convert 1 7, DW_OP_LLVM_convert 8 7, DW_OP_stack_value] $r2
+	.loc	2 189 12                        @ lvgl/src/lv_misc/lv_math.c:189:12
+	it	hi
+	movhi	r1, #2
+	cmp	r3, #5
+	it	ls
+	movls	r1, r2
 .Ltmp62:
-	.loc	2 189 33                        @ lvgl/src/lv_misc/lv_math.c:189:33
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 189 29                        @ lvgl/src/lv_misc/lv_math.c:189:29
-	b	.LBB3_21
+	@DEBUG_VALUE: _lv_atan2:comp <- undef
+	.loc	2 190 23                        @ lvgl/src/lv_misc/lv_math.c:190:23
+	movs	r2, #0
+	cmp	r3, #9
+	it	hi
+	movhi	r2, #1
 .Ltmp63:
-.LBB3_21:
-	.loc	2 190 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:190:12
-	ldrb.w	r0, [sp, #14]
+	@DEBUG_VALUE: _lv_atan2:comp <- undef
+	.loc	2 191 23                        @ lvgl/src/lv_misc/lv_math.c:191:23
+	cmp	r3, #14
+	it	hi
+	movhi	r0, #1
 .Ltmp64:
-	.loc	2 190 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:190:12
-	cmp	r0, #10
-	blt	.LBB3_23
-	b	.LBB3_22
-.LBB3_22:
-.Ltmp65:
-	.loc	2 190 34                        @ lvgl/src/lv_misc/lv_math.c:190:34
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 190 30                        @ lvgl/src/lv_misc/lv_math.c:190:30
-	b	.LBB3_23
-.Ltmp66:
-.LBB3_23:
-	.loc	2 191 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:191:12
-	ldrb.w	r0, [sp, #14]
-.Ltmp67:
-	.loc	2 191 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:191:12
-	cmp	r0, #15
-	blt	.LBB3_25
-	b	.LBB3_24
-.LBB3_24:
-.Ltmp68:
-	.loc	2 191 34                        @ lvgl/src/lv_misc/lv_math.c:191:34
-	ldrb.w	r0, [sp, #13]
-	adds	r0, #1
-	strb.w	r0, [sp, #13]
-	.loc	2 191 30                        @ lvgl/src/lv_misc/lv_math.c:191:30
-	b	.LBB3_25
-.Ltmp69:
-.LBB3_25:
-	.loc	2 0 30                          @ lvgl/src/lv_misc/lv_math.c:0:30
-	b	.LBB3_26
-.LBB3_26:
-	.loc	2 193 15 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:193:15
-	ldrb.w	r1, [sp, #13]
-	.loc	2 193 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:193:12
-	ldr	r0, [sp, #8]
+.LBB3_6:
+	@DEBUG_VALUE: _lv_atan2:tempdegree <- $r12
+	@DEBUG_VALUE: _lv_atan2:degree <- $r12
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	.loc	2 0 0 is_stmt 0                 @ lvgl/src/lv_misc/lv_math.c:0:0
+	add	r0, r2
 	add	r0, r1
-	str	r0, [sp, #8]
-.Ltmp70:
+.Ltmp65:
+	@DEBUG_VALUE: _lv_atan2:comp <- $r0
 	.loc	2 196 8 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:196:8
-	ldrb.w	r0, [sp, #15]
+	lsls.w	r1, lr, #27
+	.loc	2 193 12                        @ lvgl/src/lv_misc/lv_math.c:193:12
+	add	r0, r12
+.Ltmp66:
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	.loc	2 196 8                         @ lvgl/src/lv_misc/lv_math.c:196:8
+	it	mi
+	rsbmi.w	r0, r0, #90
+.Ltmp67:
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	.loc	2 200 8                         @ lvgl/src/lv_misc/lv_math.c:200:8
+	lsls.w	r1, lr, #30
+.Ltmp68:
+	.loc	2 0 0 is_stmt 0                 @ lvgl/src/lv_misc/lv_math.c:0:0
+	and	r1, lr, #1
+.Ltmp69:
+	.loc	2 200 8                         @ lvgl/src/lv_misc/lv_math.c:200:8
+	bmi	.LBB3_8
+.Ltmp70:
+@ %bb.7:
+	@DEBUG_VALUE: _lv_atan2:tempdegree <- $r12
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	.loc	2 207 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:207:12
+	cmp	r1, #0
+	it	ne
+	rsbne.w	r0, r0, #360
 .Ltmp71:
-	.loc	2 196 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:196:8
-	lsls	r0, r0, #27
-	cmp	r0, #0
-	bpl	.LBB3_28
-	b	.LBB3_27
-.LBB3_27:
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	.loc	2 210 5                         @ lvgl/src/lv_misc/lv_math.c:210:5
+	uxth	r0, r0
 .Ltmp72:
-	.loc	2 196 39                        @ lvgl/src/lv_misc/lv_math.c:196:39
-	ldr	r0, [sp, #8]
-	.loc	2 196 37                        @ lvgl/src/lv_misc/lv_math.c:196:37
-	rsb.w	r0, r0, #90
-	.loc	2 196 31                        @ lvgl/src/lv_misc/lv_math.c:196:31
-	str	r0, [sp, #8]
-	.loc	2 196 24                        @ lvgl/src/lv_misc/lv_math.c:196:24
-	b	.LBB3_28
+	pop	{r7, pc}
 .Ltmp73:
-.LBB3_28:
-	.loc	2 200 8 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:200:8
-	ldrb.w	r0, [sp, #15]
+.LBB3_8:
+	@DEBUG_VALUE: _lv_atan2:tempdegree <- $r12
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	@DEBUG_VALUE: _lv_atan2:negflag <- $lr
+	.loc	2 201 12                        @ lvgl/src/lv_misc/lv_math.c:201:12
+	cmp	r1, #0
 .Ltmp74:
-	.loc	2 200 8 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:200:8
-	lsls	r0, r0, #30
-	cmp	r0, #0
-	bpl	.LBB3_33
-	b	.LBB3_29
-.LBB3_29:
+	.loc	2 202 27                        @ lvgl/src/lv_misc/lv_math.c:202:27
+	ite	ne
+	addne	r0, #180
 .Ltmp75:
-	.loc	2 201 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:201:12
-	ldrb.w	r0, [sp, #15]
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	.loc	2 204 27                        @ lvgl/src/lv_misc/lv_math.c:204:27
+	rsbeq.w	r0, r0, #180
 .Ltmp76:
-	.loc	2 201 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:201:12
-	lsls	r0, r0, #31
-	cbz	r0, .LBB3_31
-	b	.LBB3_30
-.LBB3_30:
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	@DEBUG_VALUE: _lv_atan2:degree <- $r0
+	.loc	2 210 5                         @ lvgl/src/lv_misc/lv_math.c:210:5
+	uxth	r0, r0
 .Ltmp77:
-	.loc	2 202 29 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:202:29
-	ldr	r0, [sp, #8]
-	.loc	2 202 27 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:202:27
-	adds	r0, #180
-	.loc	2 202 20                        @ lvgl/src/lv_misc/lv_math.c:202:20
-	str	r0, [sp, #8]
-	.loc	2 202 13                        @ lvgl/src/lv_misc/lv_math.c:202:13
-	b	.LBB3_32
-.LBB3_31:
-	.loc	2 204 29 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:204:29
-	ldr	r0, [sp, #8]
-	.loc	2 204 27 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:204:27
-	rsb.w	r0, r0, #180
-	.loc	2 204 20                        @ lvgl/src/lv_misc/lv_math.c:204:20
-	str	r0, [sp, #8]
-	b	.LBB3_32
+	pop	{r7, pc}
 .Ltmp78:
-.LBB3_32:
-	.loc	2 205 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:205:5
-	b	.LBB3_36
-.Ltmp79:
-.LBB3_33:
-	.loc	2 207 12                        @ lvgl/src/lv_misc/lv_math.c:207:12
-	ldrb.w	r0, [sp, #15]
-.Ltmp80:
-	.loc	2 207 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:207:12
-	lsls	r0, r0, #31
-	cbz	r0, .LBB3_35
-	b	.LBB3_34
-.LBB3_34:
-.Ltmp81:
-	.loc	2 208 29 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:208:29
-	ldr	r0, [sp, #8]
-	.loc	2 208 27 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:208:27
-	rsb.w	r0, r0, #360
-	.loc	2 208 20                        @ lvgl/src/lv_misc/lv_math.c:208:20
-	str	r0, [sp, #8]
-	.loc	2 208 13                        @ lvgl/src/lv_misc/lv_math.c:208:13
-	b	.LBB3_35
-.Ltmp82:
-.LBB3_35:
-	.loc	2 0 13                          @ lvgl/src/lv_misc/lv_math.c:0:13
-	b	.LBB3_36
-.LBB3_36:
-	.loc	2 210 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:210:12
-	ldrh.w	r0, [sp, #8]
-	.loc	2 210 5 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:210:5
-	add	sp, #24
-	bx	lr
-.Ltmp83:
 .Lfunc_end3:
 	.size	_lv_atan2, .Lfunc_end3-_lv_atan2
 	.cfi_endproc
@@ -850,88 +590,124 @@ _lv_atan2:
 	.thumb_func
 _lv_pow:
 .Lfunc_begin4:
-	.loc	2 220 0 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:220:0
+	.loc	2 220 0                         @ lvgl/src/lv_misc/lv_math.c:220:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-                                        @ kill: def $r3 killed $r1
-                                        @ kill: def $r3 killed $r0
-                                        @ kill: def $r3 killed $r2
-	str	r1, [sp, #20]
-	str	r0, [sp, #16]
-	strb.w	r2, [sp, #15]
-	movs	r0, #0
-.Ltmp84:
-	.loc	2 221 13 prologue_end           @ lvgl/src/lv_misc/lv_math.c:221:13
-	str	r0, [sp, #4]
-	movs	r0, #1
-	str	r0, [sp]
-	.loc	2 222 5                         @ lvgl/src/lv_misc/lv_math.c:222:5
-	b	.LBB4_1
-.LBB4_1:                                @ =>This Inner Loop Header: Depth=1
-	.loc	2 222 11 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:222:11
-	ldrb.w	r0, [sp, #15]
-	.loc	2 222 5                         @ lvgl/src/lv_misc/lv_math.c:222:5
-	cbz	r0, .LBB4_5
-	b	.LBB4_2
-.LBB4_2:                                @   in Loop: Header=BB4_1 Depth=1
-.Ltmp85:
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+.Ltmp79:
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	mov.w	lr, #0
+.Ltmp80:
+	@DEBUG_VALUE: _lv_pow:result <- 1
+	.loc	2 222 5 prologue_end            @ lvgl/src/lv_misc/lv_math.c:222:5
+	cbz	r2, .LBB4_3
+.Ltmp81:
+@ %bb.1:
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	@DEBUG_VALUE: _lv_pow:result <- 1
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	.loc	2 0 5 is_stmt 0                 @ lvgl/src/lv_misc/lv_math.c:0:5
+	movs	r4, #1
+	mov.w	r12, #0
+.Ltmp82:
+	.p2align	2
+.LBB4_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	@DEBUG_VALUE: _lv_pow:result <- [DW_OP_LLVM_fragment 0 32] $r4
+	@DEBUG_VALUE: _lv_pow:result <- [DW_OP_LLVM_fragment 32 32] $r12
 	.loc	2 223 12 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:223:12
-	ldrb.w	r0, [sp, #15]
+	mov	r7, r0
+.Ltmp83:
+	.loc	2 223 16 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:223:16
+	ands	r3, r2, #1
+.Ltmp84:
+	.loc	2 226 14 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:226:14
+	umull	r8, r6, r0, r0
+.Ltmp85:
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r8
+	.loc	2 223 16                        @ lvgl/src/lv_misc/lv_math.c:223:16
+	rsb.w	r3, r3, #0
 .Ltmp86:
 	.loc	2 223 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:223:12
-	lsls	r0, r0, #31
-	cbz	r0, .LBB4_4
-	b	.LBB4_3
-.LBB4_3:                                @   in Loop: Header=BB4_1 Depth=1
+	it	eq
+	moveq	r7, #1
+	.loc	2 226 14 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:226:14
+	mla	r6, r0, r1, r6
+	.loc	2 223 12                        @ lvgl/src/lv_misc/lv_math.c:223:12
+	and.w	r5, r3, r1
+	.loc	2 226 14                        @ lvgl/src/lv_misc/lv_math.c:226:14
+	mla	r1, r0, r1, r6
 .Ltmp87:
-	.loc	2 224 23 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:224:23
-	ldr	r2, [sp, #16]
-	ldr.w	r12, [sp, #20]
-	.loc	2 224 20 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:224:20
-	ldr	r3, [sp]
-	ldr	r0, [sp, #4]
-	umull	r1, lr, r3, r2
-	mla	r3, r3, r12, lr
-	mla	r0, r0, r2, r3
-	str	r1, [sp]
-	str	r0, [sp, #4]
-	.loc	2 224 13                        @ lvgl/src/lv_misc/lv_math.c:224:13
-	b	.LBB4_4
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	.loc	2 223 16                        @ lvgl/src/lv_misc/lv_math.c:223:16
+	sxtb	r0, r2
 .Ltmp88:
-.LBB4_4:                                @   in Loop: Header=BB4_1 Depth=1
-	.loc	2 225 13 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:225:13
-	ldrsb.w	r0, [sp, #15]
-	lsrs	r0, r0, #1
-	strb.w	r0, [sp, #15]
-	.loc	2 226 17                        @ lvgl/src/lv_misc/lv_math.c:226:17
-	ldr	r0, [sp, #16]
-	ldr	r2, [sp, #20]
-	.loc	2 226 14 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:226:14
-	umull	r1, r3, r0, r0
-	mla	r3, r0, r2, r3
-	mla	r0, r0, r2, r3
-	str	r1, [sp, #16]
-	str	r0, [sp, #20]
+	.loc	2 223 12 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:223:12
+	umull	r3, r2, r7, r4
 .Ltmp89:
-	.loc	2 222 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:222:5
-	b	.LBB4_1
-.LBB4_5:
-	.loc	2 229 12                        @ lvgl/src/lv_misc/lv_math.c:229:12
-	ldr	r0, [sp]
-	ldr	r1, [sp, #4]
-	.loc	2 229 5 is_stmt 0               @ lvgl/src/lv_misc/lv_math.c:229:5
-	add	sp, #24
-	pop	{r7, pc}
+	@DEBUG_VALUE: _lv_pow:exp <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: _lv_pow:exp <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: _lv_pow:result <- [DW_OP_LLVM_fragment 0 32] $r3
+	mla	r2, r7, r12, r2
+	mla	r12, r5, r4, r2
 .Ltmp90:
+	@DEBUG_VALUE: _lv_pow:result <- [DW_OP_LLVM_fragment 32 32] $r12
+	.loc	2 222 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:222:5
+	cmp.w	lr, r0, asr #1
+.Ltmp91:
+	.loc	2 225 13                        @ lvgl/src/lv_misc/lv_math.c:225:13
+	asr.w	r2, r0, #1
+.Ltmp92:
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	.loc	2 0 13 is_stmt 0                @ lvgl/src/lv_misc/lv_math.c:0:13
+	mov	r4, r3
+	mov	r0, r8
+.Ltmp93:
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	.loc	2 222 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:222:5
+	bne	.LBB4_2
+	b	.LBB4_4
+.Ltmp94:
+.LBB4_3:
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	@DEBUG_VALUE: _lv_pow:result <- 1
+	.loc	2 0 5 is_stmt 0                 @ lvgl/src/lv_misc/lv_math.c:0:5
+	movs	r3, #1
+	mov.w	r12, #0
+.Ltmp95:
+.LBB4_4:
+	@DEBUG_VALUE: _lv_pow:exp <- $r2
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 32 32] $r1
+	@DEBUG_VALUE: _lv_pow:base <- [DW_OP_LLVM_fragment 0 32] $r0
+	.loc	2 229 5 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:229:5
+	mov	r0, r3
+.Ltmp96:
+	mov	r1, r12
+.Ltmp97:
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp98:
 .Lfunc_end4:
 	.size	_lv_pow, .Lfunc_end4-_lv_pow
 	.cfi_endproc
@@ -947,98 +723,80 @@ _lv_pow:
 	.thumb_func
 _lv_map:
 .Lfunc_begin5:
-	.loc	2 242 0 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:242:0
+	.loc	2 242 0                         @ lvgl/src/lv_misc/lv_math.c:242:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#28
-	sub	sp, #28
-	.cfi_def_cfa_offset 28
-	ldr.w	r12, [sp, #28]
-	str	r0, [sp, #20]
-	str	r1, [sp, #16]
-	str	r2, [sp, #12]
-	str	r3, [sp, #8]
-.Ltmp91:
+	@DEBUG_VALUE: _lv_map:x <- $r0
+	@DEBUG_VALUE: _lv_map:min_in <- $r1
+	@DEBUG_VALUE: _lv_map:max_in <- $r2
+	@DEBUG_VALUE: _lv_map:min_out <- $r3
+	.save	{r7, lr}
+	push	{r7, lr}
+	.cfi_def_cfa_offset 8
+	.cfi_offset lr, -4
+	.cfi_offset r7, -8
+	mov	r12, r0
+.Ltmp99:
+	@DEBUG_VALUE: _lv_map:max_out <- [DW_OP_plus_uconst 8] [$sp+0]
+	@DEBUG_VALUE: _lv_map:max_in <- $r2
+	@DEBUG_VALUE: _lv_map:x <- $r12
 	.loc	2 243 8 prologue_end            @ lvgl/src/lv_misc/lv_math.c:243:8
-	ldr	r0, [sp, #20]
-	.loc	2 243 13 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:243:13
-	ldr	r1, [sp, #12]
-.Ltmp92:
-	.loc	2 243 8                         @ lvgl/src/lv_misc/lv_math.c:243:8
-	cmp	r0, r1
-	blt	.LBB5_2
-	b	.LBB5_1
-.LBB5_1:
-.Ltmp93:
-	.loc	2 243 28                        @ lvgl/src/lv_misc/lv_math.c:243:28
-	ldr	r0, [sp, #28]
-	.loc	2 243 21                        @ lvgl/src/lv_misc/lv_math.c:243:21
-	str	r0, [sp, #24]
-	b	.LBB5_5
-.Ltmp94:
-.LBB5_2:
-	.loc	2 244 8 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:244:8
-	ldr	r0, [sp, #20]
-	.loc	2 244 13 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:244:13
-	ldr	r1, [sp, #16]
-.Ltmp95:
-	.loc	2 244 8                         @ lvgl/src/lv_misc/lv_math.c:244:8
-	cmp	r0, r1
-	bgt	.LBB5_4
-	b	.LBB5_3
-.LBB5_3:
-.Ltmp96:
-	.loc	2 244 28                        @ lvgl/src/lv_misc/lv_math.c:244:28
+	cmp	r0, r2
+	@DEBUG_VALUE: _lv_map:min_out <- $r3
+	@DEBUG_VALUE: _lv_map:min_in <- $r1
 	ldr	r0, [sp, #8]
-	.loc	2 244 21                        @ lvgl/src/lv_misc/lv_math.c:244:21
-	str	r0, [sp, #24]
-	b	.LBB5_5
-.Ltmp97:
-.LBB5_4:
-	.loc	2 252 24 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:252:24
-	ldr	r0, [sp, #12]
-	.loc	2 252 33 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:252:33
-	ldr	r1, [sp, #16]
-	.loc	2 252 31                        @ lvgl/src/lv_misc/lv_math.c:252:31
-	subs	r0, r0, r1
-	.loc	2 252 13                        @ lvgl/src/lv_misc/lv_math.c:252:13
-	str	r0, [sp, #4]
-	.loc	2 253 25 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:253:25
-	ldr	r0, [sp, #28]
-	.loc	2 253 35 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:253:35
-	ldr	r1, [sp, #8]
+	.loc	2 256 1                         @ lvgl/src/lv_misc/lv_math.c:256:1
+	it	ge
+	popge	{r7, pc}
+.Ltmp100:
+.LBB5_1:
+	@DEBUG_VALUE: _lv_map:x <- $r12
+	@DEBUG_VALUE: _lv_map:min_out <- $r3
+	@DEBUG_VALUE: _lv_map:max_in <- $r2
+	@DEBUG_VALUE: _lv_map:min_in <- $r1
+	@DEBUG_VALUE: _lv_map:max_out <- [DW_OP_plus_uconst 8] [$sp+0]
+	.loc	2 244 8                         @ lvgl/src/lv_misc/lv_math.c:244:8
+	cmp	r12, r1
+	ble	.LBB5_3
+.Ltmp101:
+@ %bb.2:
+	@DEBUG_VALUE: _lv_map:x <- $r12
+	@DEBUG_VALUE: _lv_map:min_out <- $r3
+	@DEBUG_VALUE: _lv_map:max_in <- $r2
+	@DEBUG_VALUE: _lv_map:min_in <- $r1
+	@DEBUG_VALUE: _lv_map:max_out <- [DW_OP_plus_uconst 8] [$sp+0]
 	.loc	2 253 33                        @ lvgl/src/lv_misc/lv_math.c:253:33
-	subs	r0, r0, r1
-	.loc	2 253 13                        @ lvgl/src/lv_misc/lv_math.c:253:13
-	str	r0, [sp]
-	.loc	2 255 14 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:255:14
-	ldr	r0, [sp, #20]
-	.loc	2 255 18 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:255:18
-	ldr	r1, [sp, #16]
+	sub.w	lr, r0, r3
+.Ltmp102:
+	@DEBUG_VALUE: _lv_map:delta_out <- $lr
 	.loc	2 255 16                        @ lvgl/src/lv_misc/lv_math.c:255:16
-	subs	r0, r0, r1
-	.loc	2 255 28                        @ lvgl/src/lv_misc/lv_math.c:255:28
-	ldr	r1, [sp]
-	.loc	2 255 26                        @ lvgl/src/lv_misc/lv_math.c:255:26
-	muls	r0, r1, r0
-	.loc	2 255 41                        @ lvgl/src/lv_misc/lv_math.c:255:41
-	ldr	r1, [sp, #4]
+	sub.w	r0, r12, r1
+	.loc	2 255 26 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:255:26
+	mul	r0, lr, r0
+	.loc	2 252 31 is_stmt 1              @ lvgl/src/lv_misc/lv_math.c:252:31
+	subs	r1, r2, r1
+.Ltmp103:
+	@DEBUG_VALUE: _lv_map:min_in <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: _lv_map:delta_in <- $r1
 	.loc	2 255 39                        @ lvgl/src/lv_misc/lv_math.c:255:39
 	sdiv	r0, r0, r1
-	.loc	2 255 52                        @ lvgl/src/lv_misc/lv_math.c:255:52
-	ldr	r1, [sp, #8]
-	.loc	2 255 50                        @ lvgl/src/lv_misc/lv_math.c:255:50
-	add	r0, r1
-	.loc	2 255 5                         @ lvgl/src/lv_misc/lv_math.c:255:5
-	str	r0, [sp, #24]
-	b	.LBB5_5
-.LBB5_5:
+	.loc	2 255 50 is_stmt 0              @ lvgl/src/lv_misc/lv_math.c:255:50
+	add	r0, r3
 	.loc	2 256 1 is_stmt 1               @ lvgl/src/lv_misc/lv_math.c:256:1
-	ldr	r0, [sp, #24]
-	add	sp, #28
-	bx	lr
-.Ltmp98:
+	pop	{r7, pc}
+.Ltmp104:
+.LBB5_3:
+	@DEBUG_VALUE: _lv_map:x <- $r12
+	@DEBUG_VALUE: _lv_map:min_out <- $r3
+	@DEBUG_VALUE: _lv_map:max_in <- $r2
+	@DEBUG_VALUE: _lv_map:min_in <- $r1
+	@DEBUG_VALUE: _lv_map:max_out <- [DW_OP_plus_uconst 8] [$sp+0]
+	.loc	2 0 0 is_stmt 0                 @ lvgl/src/lv_misc/lv_math.c:0:0
+	mov	r0, r3
+	.loc	2 256 1                         @ lvgl/src/lv_misc/lv_math.c:256:1
+	pop	{r7, pc}
+.Ltmp105:
 .Lfunc_end5:
 	.size	_lv_map, .Lfunc_end5-_lv_map
 	.cfi_endproc
@@ -1143,6 +901,442 @@ sin0_90_table:
 	.size	sin0_90_table, 182
 
 	.file	3 "E:\\Smart-access-control\\Hardware\\CODE" "lvgl/src/lv_misc/lv_math.h"
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp1-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp7-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp7-.Lfunc_begin0
+	.long	.Ltmp8-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp9-.Lfunc_begin0
+	.long	.Ltmp16-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp16-.Lfunc_begin0
+	.long	.Ltmp17-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp23-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp23-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp30-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp30-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp24-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp24-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp26-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp26-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp20-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp21-.Lfunc_begin1
+	.long	.Ltmp25-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp22-.Lfunc_begin1
+	.long	.Ltmp27-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp26-.Lfunc_begin1
+	.long	.Ltmp28-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp27-.Lfunc_begin1
+	.long	.Ltmp33-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp32-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp35-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp35-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	94                              @ DW_OP_reg14
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp36-.Lfunc_begin2
+	.long	.Ltmp37-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp37-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp38-.Lfunc_begin2
+	.long	.Ltmp40-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp53-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp53-.Lfunc_begin3
+	.long	.Ltmp54-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp49-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp49-.Lfunc_begin3
+	.long	.Ltmp52-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp52-.Lfunc_begin3
+	.long	.Ltmp54-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp44-.Lfunc_begin3
+	.long	.Ltmp45-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp45-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	94                              @ DW_OP_reg14
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp45-.Lfunc_begin3
+	.long	.Ltmp53-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp47-.Lfunc_begin3
+	.long	.Ltmp49-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp52-.Lfunc_begin3
+	.long	.Ltmp54-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp51-.Lfunc_begin3
+	.long	.Ltmp52-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp54-.Lfunc_begin3
+	.long	.Ltmp66-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	.Ltmp66-.Lfunc_begin3
+	.long	.Ltmp72-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp73-.Lfunc_begin3
+	.long	.Ltmp77-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp54-.Lfunc_begin3
+	.long	.Ltmp57-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp60-.Lfunc_begin3
+	.long	.Ltmp61-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp65-.Lfunc_begin3
+	.long	.Ltmp66-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp55-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp89-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp89-.Lfunc_begin4
+	.long	.Ltmp92-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp92-.Lfunc_begin4
+	.long	.Lfunc_end4-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp79-.Lfunc_begin4
+	.long	.Ltmp85-.Lfunc_begin4
+	.short	6                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.byte	81                              @ DW_OP_reg1
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.long	.Ltmp85-.Lfunc_begin4
+	.long	.Ltmp93-.Lfunc_begin4
+	.short	6                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.byte	81                              @ DW_OP_reg1
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.long	.Ltmp93-.Lfunc_begin4
+	.long	.Ltmp96-.Lfunc_begin4
+	.short	6                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.byte	81                              @ DW_OP_reg1
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.long	.Ltmp96-.Lfunc_begin4
+	.long	.Ltmp97-.Lfunc_begin4
+	.short	5                               @ Loc expr size
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.byte	81                              @ DW_OP_reg1
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp80-.Lfunc_begin4
+	.long	.Ltmp82-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	49                              @ DW_OP_lit1
+	.long	.Ltmp82-.Lfunc_begin4
+	.long	.Ltmp89-.Lfunc_begin4
+	.short	6                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.byte	92                              @ DW_OP_reg12
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.long	.Ltmp89-.Lfunc_begin4
+	.long	.Ltmp94-.Lfunc_begin4
+	.short	6                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.byte	92                              @ DW_OP_reg12
+	.byte	147                             @ DW_OP_piece
+	.byte	4                               @ 4
+	.long	.Ltmp94-.Lfunc_begin4
+	.long	.Ltmp95-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	49                              @ DW_OP_lit1
+	.long	0
+	.long	0
+.Ldebug_loc26:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp99-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp99-.Lfunc_begin5
+	.long	.Lfunc_end5-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	0
+	.long	0
+.Ldebug_loc27:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp103-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp103-.Lfunc_begin5
+	.long	.Ltmp104-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp104-.Lfunc_begin5
+	.long	.Lfunc_end5-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc28:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp102-.Lfunc_begin5
+	.long	.Ltmp104-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	94                              @ DW_OP_reg14
+	.long	0
+	.long	0
+.Ldebug_loc29:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp103-.Lfunc_begin5
+	.long	.Ltmp104-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1263,7 +1457,7 @@ sin0_90_table:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1278,7 +1472,7 @@ sin0_90_table:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1290,6 +1484,34 @@ sin0_90_table:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	12                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	13                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	14                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1310,14 +1532,14 @@ sin0_90_table:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	13                              @ Abbreviation Code
+	.byte	15                              @ Abbreviation Code
 	.byte	15                              @ DW_TAG_pointer_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	14                              @ Abbreviation Code
+	.byte	16                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	11                              @ DW_AT_byte_size
@@ -1328,7 +1550,7 @@ sin0_90_table:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	15                              @ Abbreviation Code
+	.byte	17                              @ Abbreviation Code
 	.byte	13                              @ DW_TAG_member
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -1351,7 +1573,7 @@ sin0_90_table:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x393 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x3a4 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1388,7 +1610,7 @@ sin0_90_table:
 	.long	.Linfo_string6                  @ DW_AT_name
 	.byte	8                               @ DW_AT_byte_size
 	.byte	7                               @ DW_AT_encoding
-	.byte	9                               @ Abbrev [9] 0x61:0x34 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x61:0x36 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1399,24 +1621,20 @@ sin0_90_table:
 	.byte	1                               @ DW_AT_prototyped
 	.long	72                              @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0x78:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	2
+	.byte	10                              @ Abbrev [10] 0x78:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string21                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	51                              @ DW_AT_decl_line
 	.long	72                              @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x86:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	11                              @ Abbrev [11] 0x87:0xf DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string22                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	53                              @ DW_AT_decl_line
 	.long	72                              @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x95:0xdc DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x97:0xdd DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1425,122 +1643,93 @@ sin0_90_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	783                             @ DW_AT_type
+	.long	800                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0xac:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	48
+	.byte	10                              @ Abbrev [10] 0xae:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string23                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0xba:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	44
+	.long	800                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0xbd:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string24                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0xc8:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	40
+	.long	800                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0xcc:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string25                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0xd6:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	36
+	.long	800                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0xdb:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string26                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0xe4:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	52
-	.long	.Linfo_string27                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	86                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0xf2:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
-	.long	.Linfo_string28                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	88                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x100:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
-	.long	.Linfo_string29                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	89                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x10e:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
-	.long	.Linfo_string30                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	90                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x11c:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
-	.long	.Linfo_string31                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	91                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x12a:0xe DW_TAG_variable
+	.long	800                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0xea:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	16
-	.long	.Linfo_string32                 @ DW_AT_name
+	.long	.Linfo_string27                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	86                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0xf8:0xf DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
+	.long	.Linfo_string28                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	88                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x107:0xf DW_TAG_variable
+	.long	.Ldebug_loc7                    @ DW_AT_location
+	.long	.Linfo_string29                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	91                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x116:0xf DW_TAG_variable
+	.long	.Ldebug_loc8                    @ DW_AT_location
+	.long	.Linfo_string30                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	89                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x125:0xf DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
+	.long	.Linfo_string31                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	92                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x138:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x134:0xf DW_TAG_variable
+	.long	.Ldebug_loc10                   @ DW_AT_location
+	.long	.Linfo_string32                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	90                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x143:0xb DW_TAG_variable
 	.long	.Linfo_string33                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	94                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x146:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	96                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x14e:0xb DW_TAG_variable
 	.long	.Linfo_string34                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	95                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x154:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	94                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x159:0xb DW_TAG_variable
 	.long	.Linfo_string35                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	96                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x162:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	95                              @ DW_AT_decl_line
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x164:0xf DW_TAG_variable
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string36                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	97                              @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
+	.long	800                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	12                              @ Abbrev [12] 0x171:0x5a DW_TAG_subprogram
+	.byte	14                              @ Abbrev [14] 0x174:0x5b DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1550,48 +1739,40 @@ sin0_90_table:
 	.byte	112                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0x184:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	10                              @ Abbrev [10] 0x187:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc12                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	112                             @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x192:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	800                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x196:0xd DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	81
 	.long	.Linfo_string38                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	112                             @ DW_AT_decl_line
-	.long	855                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x1a0:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	872                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x1a3:0xd DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	82
 	.long	.Linfo_string42                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	112                             @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x1ae:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x1b0:0xf DW_TAG_variable
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string43                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	116                             @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x1bc:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	800                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x1bf:0xf DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
 	.long	.Linfo_string44                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	117                             @ DW_AT_decl_line
-	.long	783                             @ DW_AT_type
+	.long	800                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x1cb:0x88 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x1cf:0x90 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1600,74 +1781,58 @@ sin0_90_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	135                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	801                             @ DW_AT_type
+	.long	818                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0x1e2:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	10                              @ Abbrev [10] 0x1e6:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	135                             @ DW_AT_decl_line
-	.long	848                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x1f0:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.long	865                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x1f5:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc16                   @ DW_AT_location
 	.long	.Linfo_string45                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	135                             @ DW_AT_decl_line
-	.long	848                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x1fe:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	15
+	.long	865                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x204:0xf DW_TAG_variable
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string46                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	147                             @ DW_AT_decl_line
-	.long	900                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x20c:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	14
+	.long	917                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x213:0xf DW_TAG_variable
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string48                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	148                             @ DW_AT_decl_line
-	.long	900                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x21a:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	13
+	.byte	153                             @ DW_AT_decl_line
+	.long	811                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x222:0xf DW_TAG_variable
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string49                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	149                             @ DW_AT_decl_line
-	.long	900                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x228:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	154                             @ DW_AT_decl_line
+	.long	811                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x231:0xf DW_TAG_variable
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string50                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	150                             @ DW_AT_decl_line
-	.long	794                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x236:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	811                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x240:0xf DW_TAG_variable
+	.long	.Ldebug_loc21                   @ DW_AT_location
 	.long	.Linfo_string51                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	153                             @ DW_AT_decl_line
-	.long	794                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x244:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	149                             @ DW_AT_decl_line
+	.long	917                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x24f:0xf DW_TAG_variable
+	.long	.Ldebug_loc22                   @ DW_AT_location
 	.long	.Linfo_string52                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	154                             @ DW_AT_decl_line
-	.long	794                             @ DW_AT_type
+	.byte	148                             @ DW_AT_decl_line
+	.long	917                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x253:0x42 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x25f:0x45 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1676,34 +1841,28 @@ sin0_90_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	219                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	819                             @ DW_AT_type
+	.long	836                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0x26a:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	10                              @ Abbrev [10] 0x276:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc24                   @ DW_AT_location
+	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	219                             @ DW_AT_decl_line
+	.long	836                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x285:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc23                   @ DW_AT_location
 	.long	.Linfo_string53                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	219                             @ DW_AT_decl_line
-	.long	819                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x278:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	15
-	.long	.Linfo_string54                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	219                             @ DW_AT_decl_line
-	.long	907                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x286:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	924                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x294:0xf DW_TAG_variable
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string57                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	221                             @ DW_AT_decl_line
-	.long	819                             @ DW_AT_type
+	.long	836                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x295:0x7a DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x2a4:0x7c DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1712,136 +1871,126 @@ sin0_90_table:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	241                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	837                             @ DW_AT_type
+	.long	854                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0x2ac:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	10                              @ Abbrev [10] 0x2bb:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc26                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	241                             @ DW_AT_decl_line
-	.long	837                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x2ba:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.long	854                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x2ca:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc27                   @ DW_AT_location
 	.long	.Linfo_string58                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	241                             @ DW_AT_decl_line
-	.long	837                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x2c8:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	854                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x2d9:0xd DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	82
 	.long	.Linfo_string59                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	241                             @ DW_AT_decl_line
-	.long	837                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x2d6:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	854                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x2e6:0xd DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	83
 	.long	.Linfo_string60                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	241                             @ DW_AT_decl_line
-	.long	837                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x2e4:0xe DW_TAG_formal_parameter
+	.long	854                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x2f3:0xe DW_TAG_formal_parameter
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	28
+	.byte	8
 	.long	.Linfo_string61                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	241                             @ DW_AT_decl_line
-	.long	837                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x2f2:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	854                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x301:0xf DW_TAG_variable
+	.long	.Ldebug_loc28                   @ DW_AT_location
 	.long	.Linfo_string62                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	252                             @ DW_AT_decl_line
-	.long	837                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x300:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	253                             @ DW_AT_decl_line
+	.long	854                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x310:0xf DW_TAG_variable
+	.long	.Ldebug_loc29                   @ DW_AT_location
 	.long	.Linfo_string63                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	253                             @ DW_AT_decl_line
-	.long	837                             @ DW_AT_type
+	.byte	252                             @ DW_AT_decl_line
+	.long	854                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	6                               @ Abbrev [6] 0x30f:0xb DW_TAG_typedef
-	.long	794                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x320:0xb DW_TAG_typedef
+	.long	811                             @ DW_AT_type
 	.long	.Linfo_string10                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	64                              @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x31a:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x32b:0x7 DW_TAG_base_type
 	.long	.Linfo_string9                  @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	6                               @ Abbrev [6] 0x321:0xb DW_TAG_typedef
-	.long	812                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x332:0xb DW_TAG_typedef
+	.long	829                             @ DW_AT_type
 	.long	.Linfo_string14                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	63                              @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x32c:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x33d:0x7 DW_TAG_base_type
 	.long	.Linfo_string13                 @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	2                               @ DW_AT_byte_size
-	.byte	6                               @ Abbrev [6] 0x333:0xb DW_TAG_typedef
-	.long	830                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x344:0xb DW_TAG_typedef
+	.long	847                             @ DW_AT_type
 	.long	.Linfo_string17                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x33e:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x34f:0x7 DW_TAG_base_type
 	.long	.Linfo_string16                 @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	8                               @ DW_AT_byte_size
-	.byte	6                               @ Abbrev [6] 0x345:0xb DW_TAG_typedef
-	.long	848                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x356:0xb DW_TAG_typedef
+	.long	865                             @ DW_AT_type
 	.long	.Linfo_string20                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	58                              @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x350:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x361:0x7 DW_TAG_base_type
 	.long	.Linfo_string19                 @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	13                              @ Abbrev [13] 0x357:0x5 DW_TAG_pointer_type
-	.long	860                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x35c:0xb DW_TAG_typedef
-	.long	871                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x368:0x5 DW_TAG_pointer_type
+	.long	877                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x36d:0xb DW_TAG_typedef
+	.long	888                             @ DW_AT_type
 	.long	.Linfo_string41                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	52                              @ DW_AT_decl_line
-	.byte	14                              @ Abbrev [14] 0x367:0x1d DW_TAG_structure_type
+	.byte	16                              @ Abbrev [16] 0x378:0x1d DW_TAG_structure_type
 	.byte	4                               @ DW_AT_byte_size
 	.byte	3                               @ DW_AT_decl_file
 	.byte	49                              @ DW_AT_decl_line
-	.byte	15                              @ Abbrev [15] 0x36b:0xc DW_TAG_member
+	.byte	17                              @ Abbrev [17] 0x37c:0xc DW_TAG_member
 	.long	.Linfo_string39                 @ DW_AT_name
-	.long	801                             @ DW_AT_type
+	.long	818                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	50                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x377:0xc DW_TAG_member
+	.byte	17                              @ Abbrev [17] 0x388:0xc DW_TAG_member
 	.long	.Linfo_string40                 @ DW_AT_name
-	.long	801                             @ DW_AT_type
+	.long	818                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	51                              @ DW_AT_decl_line
 	.byte	2                               @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0x384:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x395:0x7 DW_TAG_base_type
 	.long	.Linfo_string47                 @ DW_AT_name
 	.byte	8                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	6                               @ Abbrev [6] 0x38b:0xb DW_TAG_typedef
-	.long	918                             @ DW_AT_type
-	.long	.Linfo_string56                 @ DW_AT_name
+	.byte	6                               @ Abbrev [6] 0x39c:0xb DW_TAG_typedef
+	.long	935                             @ DW_AT_type
+	.long	.Linfo_string55                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	56                              @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x396:0x7 DW_TAG_base_type
-	.long	.Linfo_string55                 @ DW_AT_name
+	.byte	7                               @ Abbrev [7] 0x3a7:0x7 DW_TAG_base_type
+	.long	.Linfo_string54                 @ DW_AT_name
 	.byte	6                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
 	.byte	0                               @ End Of Children Mark
@@ -1922,19 +2071,19 @@ sin0_90_table:
 .Linfo_string28:
 	.asciz	"t_rem"                         @ string offset=333
 .Linfo_string29:
-	.asciz	"t_rem2"                        @ string offset=339
+	.asciz	"t2"                            @ string offset=339
 .Linfo_string30:
-	.asciz	"t_rem3"                        @ string offset=346
+	.asciz	"t_rem2"                        @ string offset=342
 .Linfo_string31:
-	.asciz	"t2"                            @ string offset=353
+	.asciz	"t3"                            @ string offset=349
 .Linfo_string32:
-	.asciz	"t3"                            @ string offset=356
+	.asciz	"t_rem3"                        @ string offset=352
 .Linfo_string33:
-	.asciz	"v1"                            @ string offset=359
+	.asciz	"v3"                            @ string offset=359
 .Linfo_string34:
-	.asciz	"v2"                            @ string offset=362
+	.asciz	"v1"                            @ string offset=362
 .Linfo_string35:
-	.asciz	"v3"                            @ string offset=365
+	.asciz	"v2"                            @ string offset=365
 .Linfo_string36:
 	.asciz	"v4"                            @ string offset=368
 .Linfo_string37:
@@ -1960,23 +2109,23 @@ sin0_90_table:
 .Linfo_string47:
 	.asciz	"unsigned char"                 @ string offset=419
 .Linfo_string48:
-	.asciz	"tempdegree"                    @ string offset=433
+	.asciz	"ux"                            @ string offset=433
 .Linfo_string49:
-	.asciz	"comp"                          @ string offset=444
+	.asciz	"uy"                            @ string offset=436
 .Linfo_string50:
-	.asciz	"degree"                        @ string offset=449
+	.asciz	"degree"                        @ string offset=439
 .Linfo_string51:
-	.asciz	"ux"                            @ string offset=456
+	.asciz	"comp"                          @ string offset=446
 .Linfo_string52:
-	.asciz	"uy"                            @ string offset=459
+	.asciz	"tempdegree"                    @ string offset=451
 .Linfo_string53:
-	.asciz	"base"                          @ string offset=462
+	.asciz	"exp"                           @ string offset=462
 .Linfo_string54:
-	.asciz	"exp"                           @ string offset=467
+	.asciz	"signed char"                   @ string offset=466
 .Linfo_string55:
-	.asciz	"signed char"                   @ string offset=471
+	.asciz	"int8_t"                        @ string offset=478
 .Linfo_string56:
-	.asciz	"int8_t"                        @ string offset=483
+	.asciz	"base"                          @ string offset=485
 .Linfo_string57:
 	.asciz	"result"                        @ string offset=490
 .Linfo_string58:
@@ -1988,12 +2137,12 @@ sin0_90_table:
 .Linfo_string61:
 	.asciz	"max_out"                       @ string offset=519
 .Linfo_string62:
-	.asciz	"delta_in"                      @ string offset=527
+	.asciz	"delta_out"                     @ string offset=527
 .Linfo_string63:
-	.asciz	"delta_out"                     @ string offset=536
+	.asciz	"delta_in"                      @ string offset=537
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

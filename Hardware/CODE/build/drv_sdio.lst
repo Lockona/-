@@ -46,52 +46,38 @@ rthw_sdio_irq_process:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: rthw_sdio_irq_process:host <- $r0
+	@DEBUG_VALUE: rthw_sdio_irq_process:host <- $r0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
 .Ltmp0:
-	.loc	2 307 30 prologue_end           @ libraries/drivers/drv_sdio.c:307:30
-	ldr	r0, [sp, #12]
-	.loc	2 307 36 is_stmt 0              @ libraries/drivers/drv_sdio.c:307:36
+	.loc	2 307 36 prologue_end           @ libraries/drivers/drv_sdio.c:307:36
 	ldr.w	r0, [r0, #136]
-	.loc	2 307 23                        @ libraries/drivers/drv_sdio.c:307:23
-	str	r0, [sp, #8]
-	.loc	2 308 34 is_stmt 1              @ libraries/drivers/drv_sdio.c:308:34
-	ldr	r0, [sp, #8]
-	.loc	2 308 49 is_stmt 0              @ libraries/drivers/drv_sdio.c:308:49
-	ldr	r0, [r0, #4]
-	.loc	2 308 24                        @ libraries/drivers/drv_sdio.c:308:24
-	str	r0, [sp, #4]
-	.loc	2 309 29 is_stmt 1              @ libraries/drivers/drv_sdio.c:309:29
-	ldr	r0, [sp, #4]
-	.loc	2 309 38 is_stmt 0              @ libraries/drivers/drv_sdio.c:309:38
-	ldr	r0, [r0, #52]
-	.loc	2 309 17                        @ libraries/drivers/drv_sdio.c:309:17
-	str	r0, [sp]
-	.loc	2 312 20 is_stmt 1              @ libraries/drivers/drv_sdio.c:312:20
-	ldr	r0, [sp]
-	.loc	2 312 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:312:5
-	ldr	r1, [sp, #4]
-	.loc	2 312 18                        @ libraries/drivers/drv_sdio.c:312:18
-	str	r0, [r1, #56]
-	.loc	2 314 20 is_stmt 1              @ libraries/drivers/drv_sdio.c:314:20
-	ldr	r0, [sp, #8]
-	.loc	2 314 26 is_stmt 0              @ libraries/drivers/drv_sdio.c:314:26
+.Ltmp1:
+	@DEBUG_VALUE: rthw_sdio_irq_process:host <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: rthw_sdio_irq_process:sdio <- $r0
+	.loc	2 308 49                        @ libraries/drivers/drv_sdio.c:308:49
+	ldr	r2, [r0, #4]
+.Ltmp2:
+	@DEBUG_VALUE: rthw_sdio_irq_process:hw_sdio <- $r2
+	.loc	2 314 26                        @ libraries/drivers/drv_sdio.c:314:26
 	adds	r0, #136
-	.loc	2 314 33                        @ libraries/drivers/drv_sdio.c:314:33
-	ldr	r1, [sp]
+.Ltmp3:
+	.loc	2 309 38                        @ libraries/drivers/drv_sdio.c:309:38
+	ldr	r1, [r2, #52]
+.Ltmp4:
+	@DEBUG_VALUE: rthw_sdio_irq_process:intstatus <- $r1
+	.loc	2 312 18                        @ libraries/drivers/drv_sdio.c:312:18
+	str	r1, [r2, #56]
 	.loc	2 314 5                         @ libraries/drivers/drv_sdio.c:314:5
 	bl	rt_event_send
-	.loc	2 315 1 is_stmt 1               @ libraries/drivers/drv_sdio.c:315:1
-	add	sp, #16
+.Ltmp5:
+	.loc	2 315 1                         @ libraries/drivers/drv_sdio.c:315:1
 	pop	{r7, pc}
-.Ltmp1:
+.Ltmp6:
 .Lfunc_end0:
 	.size	rthw_sdio_irq_process, .Lfunc_end0-rthw_sdio_irq_process
 	.cfi_endproc
@@ -111,285 +97,234 @@ sdio_host_create:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r0
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r0
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
 	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-	movs	r0, #0
-.Ltmp2:
-	.loc	2 378 23 prologue_end           @ libraries/drivers/drv_sdio.c:378:23
-	str	r0, [sp]
-.Ltmp3:
-	.loc	2 380 9                         @ libraries/drivers/drv_sdio.c:380:9
-	ldr	r0, [sp, #8]
-.Ltmp4:
-	.loc	2 380 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:380:9
-	cbnz	r0, .LBB1_2
-	b	.LBB1_1
-.LBB1_1:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #0
-.Ltmp5:
-	.loc	2 382 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:382:9
-	str	r0, [sp, #12]
-	b	.LBB1_18
-.Ltmp6:
-.LBB1_2:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #172
-	.loc	2 385 12 is_stmt 1              @ libraries/drivers/drv_sdio.c:385:12
-	bl	rt_malloc
-	.loc	2 385 10 is_stmt 0              @ libraries/drivers/drv_sdio.c:385:10
-	str	r0, [sp]
 .Ltmp7:
-	.loc	2 386 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:386:9
-	ldr	r0, [sp]
+	@DEBUG_VALUE: sdio_host_create:sdio <- 0
+	.loc	2 380 9 prologue_end            @ libraries/drivers/drv_sdio.c:380:9
+	cmp	r0, #0
+	beq	.LBB1_8
 .Ltmp8:
-	.loc	2 386 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:386:9
-	cbnz	r0, .LBB1_6
-	b	.LBB1_3
-.LBB1_3:
+@ %bb.1:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r0
+	@DEBUG_VALUE: sdio_host_create:sdio <- 0
+	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
+	mov	r6, r0
 .Ltmp9:
-	.loc	2 388 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:388:9
-	b	.LBB1_4
-.LBB1_4:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	.loc	2 385 12 is_stmt 1              @ libraries/drivers/drv_sdio.c:385:12
+	movs	r0, #172
+	bl	rt_malloc
 .Ltmp10:
-	.loc	2 388 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:388:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	bl	rt_kprintf
-	b	.LBB1_5
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r0
+	.loc	2 386 9                         @ libraries/drivers/drv_sdio.c:386:9
+	cmp	r0, #0
+	beq	.LBB1_9
 .Ltmp11:
-.LBB1_5:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #0
-	.loc	2 389 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:389:9
-	str	r0, [sp, #12]
-	b	.LBB1_18
-.Ltmp12:
-.LBB1_6:
-	.loc	2 391 15                        @ libraries/drivers/drv_sdio.c:391:15
-	ldr	r0, [sp]
+@ %bb.2:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r0
+	.loc	2 391 5                         @ libraries/drivers/drv_sdio.c:391:5
 	movs	r1, #0
 	movs	r2, #172
-	.loc	2 391 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:391:5
+	.loc	2 0 0 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:0
+	mov	r4, r0
+.Ltmp12:
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r4
+	.loc	2 391 5                         @ libraries/drivers/drv_sdio.c:391:5
 	bl	rt_memset
 	.loc	2 393 12 is_stmt 1              @ libraries/drivers/drv_sdio.c:393:12
 	bl	mmcsd_alloc_host
-	.loc	2 393 10 is_stmt 0              @ libraries/drivers/drv_sdio.c:393:10
-	str	r0, [sp, #4]
 .Ltmp13:
-	.loc	2 394 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:394:9
-	ldr	r0, [sp, #4]
+	@DEBUG_VALUE: sdio_host_create:host <- $r0
+	.loc	2 394 9                         @ libraries/drivers/drv_sdio.c:394:9
+	cmp	r0, #0
+	beq	.LBB1_10
 .Ltmp14:
-	.loc	2 394 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:394:9
-	cbnz	r0, .LBB1_10
-	b	.LBB1_7
-.LBB1_7:
+@ %bb.3:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r4
+	@DEBUG_VALUE: sdio_host_create:host <- $r0
+	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
+	mov	r5, r0
 .Ltmp15:
-	.loc	2 396 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:396:9
-	b	.LBB1_8
-.LBB1_8:
+	@DEBUG_VALUE: sdio_host_create:host <- $r5
+	@DEBUG_VALUE: sdio_host_create:host <- $r5
+	movw	r7, #28672
+	.loc	2 400 22 is_stmt 1              @ libraries/drivers/drv_sdio.c:400:22
+	adds	r0, r4, #4
+	.loc	2 400 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:400:5
+	movs	r2, #132
+	mov	r1, r6
+	movt	r7, #20992
+	bl	rt_memcpy
 .Ltmp16:
-	.loc	2 396 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:396:9
+	.loc	2 402 22 is_stmt 1              @ libraries/drivers/drv_sdio.c:402:22
+	ldr	r0, [r6, #8]
+.Ltmp17:
+	.loc	2 402 8 is_stmt 0               @ libraries/drivers/drv_sdio.c:402:8
+	cmp	r0, r7
+	bne	.LBB1_5
+.Ltmp18:
+@ %bb.4:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:host <- $r5
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r4
+	.loc	2 404 30 is_stmt 1              @ libraries/drivers/drv_sdio.c:404:30
+	add.w	r0, r4, #136
+	.loc	2 404 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:404:9
+	adr	r1, .LCPI1_0
+	movs	r2, #0
+	.loc	2 403 32 is_stmt 1              @ libraries/drivers/drv_sdio.c:403:32
+	str	r7, [r4, #4]
+	.loc	2 404 9                         @ libraries/drivers/drv_sdio.c:404:9
+	bl	rt_event_init
+.Ltmp19:
+.LBB1_5:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:host <- $r5
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r4
+	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
+	movw	r0, #9216
+.Ltmp20:
+	.loc	2 407 22 is_stmt 1              @ libraries/drivers/drv_sdio.c:407:22
+	ldr	r1, [r6, #8]
+	movt	r0, #18434
+.Ltmp21:
+	.loc	2 407 8 is_stmt 0               @ libraries/drivers/drv_sdio.c:407:8
+	cmp	r1, r0
+	bne	.LBB1_7
+.Ltmp22:
+@ %bb.6:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:host <- $r5
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r4
+	.loc	2 408 32 is_stmt 1              @ libraries/drivers/drv_sdio.c:408:32
+	str	r0, [r4, #4]
+	.loc	2 409 30                        @ libraries/drivers/drv_sdio.c:409:30
+	add.w	r0, r4, #136
+	.loc	2 409 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:409:9
+	adr	r1, .LCPI1_1
+	movs	r2, #0
+	bl	rt_event_init
+.Ltmp23:
+.LBB1_7:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:host <- $r5
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r4
+	.loc	2 413 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:413:15
+	movw	r0, :lower16:ops
+	movw	r1, #6784
+	movt	r0, :upper16:ops
+	str	r0, [r5, #4]
+	movw	r0, #30784
+	movt	r1, #6
+	movt	r0, #381
+	.loc	2 429 16                        @ libraries/drivers/drv_sdio.c:429:16
+	str	r5, [r4]
+	.loc	2 414 20                        @ libraries/drivers/drv_sdio.c:414:20
+	strd	r1, r0, [r5, #8]
+	mov.w	r0, #3145728
+	.loc	2 416 21                        @ libraries/drivers/drv_sdio.c:416:21
+	str	r0, [r5, #28]
+	movs	r0, #37
+	.loc	2 418 17                        @ libraries/drivers/drv_sdio.c:418:17
+	str	r0, [r5, #32]
+	mov.w	r0, #4096
+	.loc	2 423 24                        @ libraries/drivers/drv_sdio.c:423:24
+	str	r0, [r5, #36]
+	movs	r0, #1
+	.loc	2 424 24                        @ libraries/drivers/drv_sdio.c:424:24
+	str	r0, [r5, #40]
+	mov.w	r0, #512
+	.loc	2 430 24                        @ libraries/drivers/drv_sdio.c:430:24
+	str.w	r4, [r5, #136]
+	.loc	2 425 24                        @ libraries/drivers/drv_sdio.c:425:24
+	strd	r0, r0, [r5, #44]
+	.loc	2 433 5                         @ libraries/drivers/drv_sdio.c:433:5
+	mov	r0, r5
+	bl	mmcsd_change
+	b	.LBB1_11
+.Ltmp24:
+.LBB1_8:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r0
+	@DEBUG_VALUE: sdio_host_create:sdio <- 0
+	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:5
+	movs	r5, #0
+	b	.LBB1_11
+.Ltmp25:
+.LBB1_9:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r0
+	.loc	2 388 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:388:9
 	movw	r0, :lower16:.L.str
+.Ltmp26:
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
+	adr	r0, .LCPI1_3
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB1_9
-.Ltmp17:
-.LBB1_9:
-	.loc	2 397 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:397:9
-	b	.LBB1_15
-.Ltmp18:
-.LBB1_10:
-	.loc	2 400 16                        @ libraries/drivers/drv_sdio.c:400:16
-	ldr	r0, [sp]
-	.loc	2 400 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:400:22
-	adds	r0, #4
-	.loc	2 400 32                        @ libraries/drivers/drv_sdio.c:400:32
-	ldr	r1, [sp, #8]
-	movs	r2, #132
-	.loc	2 400 5                         @ libraries/drivers/drv_sdio.c:400:5
-	bl	rt_memcpy
-.Ltmp19:
-	.loc	2 402 8 is_stmt 1               @ libraries/drivers/drv_sdio.c:402:8
-	ldr	r0, [sp, #8]
-	.loc	2 402 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:402:22
-	ldr	r0, [r0, #8]
-	movw	r1, #28672
-	movt	r1, #20992
-.Ltmp20:
-	.loc	2 402 8                         @ libraries/drivers/drv_sdio.c:402:8
-	cmp	r0, r1
-	bne	.LBB1_12
-	b	.LBB1_11
-.LBB1_11:
-.Ltmp21:
-	.loc	2 403 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:403:9
-	ldr	r1, [sp]
-	movw	r0, #28672
-	movt	r0, #20992
-	.loc	2 403 32 is_stmt 0              @ libraries/drivers/drv_sdio.c:403:32
-	str	r0, [r1, #4]
-	.loc	2 404 24 is_stmt 1              @ libraries/drivers/drv_sdio.c:404:24
-	ldr	r0, [sp]
-	.loc	2 404 30 is_stmt 0              @ libraries/drivers/drv_sdio.c:404:30
-	adds	r0, #136
-	.loc	2 404 9                         @ libraries/drivers/drv_sdio.c:404:9
-	movw	r1, :lower16:.L.str.4
-	movt	r1, :upper16:.L.str.4
-	movs	r2, #0
-	bl	rt_event_init
-	.loc	2 405 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:405:5
-	b	.LBB1_12
-.Ltmp22:
-.LBB1_12:
-	.loc	2 407 8                         @ libraries/drivers/drv_sdio.c:407:8
-	ldr	r0, [sp, #8]
-	.loc	2 407 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:407:22
-	ldr	r0, [r0, #8]
-	movw	r1, #9216
-	movt	r1, #18434
-.Ltmp23:
-	.loc	2 407 8                         @ libraries/drivers/drv_sdio.c:407:8
-	cmp	r0, r1
-	bne	.LBB1_14
-	b	.LBB1_13
-.LBB1_13:
-.Ltmp24:
-	.loc	2 408 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:408:9
-	ldr	r1, [sp]
-	movw	r0, #9216
-	movt	r0, #18434
-	.loc	2 408 32 is_stmt 0              @ libraries/drivers/drv_sdio.c:408:32
-	str	r0, [r1, #4]
-	.loc	2 409 24 is_stmt 1              @ libraries/drivers/drv_sdio.c:409:24
-	ldr	r0, [sp]
-	.loc	2 409 30 is_stmt 0              @ libraries/drivers/drv_sdio.c:409:30
-	adds	r0, #136
-	.loc	2 409 9                         @ libraries/drivers/drv_sdio.c:409:9
-	movw	r1, :lower16:.L.str.5
-	movt	r1, :upper16:.L.str.5
-	movs	r2, #0
-	bl	rt_event_init
-	.loc	2 410 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:410:5
-	b	.LBB1_14
-.Ltmp25:
-.LBB1_14:
-	.loc	2 413 5                         @ libraries/drivers/drv_sdio.c:413:5
-	ldr	r1, [sp, #4]
-	.loc	2 413 15 is_stmt 0              @ libraries/drivers/drv_sdio.c:413:15
-	movw	r0, :lower16:ops
-	movt	r0, :upper16:ops
-	str	r0, [r1, #4]
-	.loc	2 414 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:414:5
-	ldr	r1, [sp, #4]
-	movw	r0, #6784
-	movt	r0, #6
-	.loc	2 414 20 is_stmt 0              @ libraries/drivers/drv_sdio.c:414:20
-	str	r0, [r1, #8]
-	.loc	2 415 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:415:5
-	ldr	r1, [sp, #4]
-	movw	r0, #30784
-	movt	r0, #381
-	.loc	2 415 20 is_stmt 0              @ libraries/drivers/drv_sdio.c:415:20
-	str	r0, [r1, #12]
-	.loc	2 416 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:416:5
-	ldr	r1, [sp, #4]
-	mov.w	r0, #3145728
-	.loc	2 416 21 is_stmt 0              @ libraries/drivers/drv_sdio.c:416:21
-	str	r0, [r1, #28]
-	.loc	2 418 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:418:5
-	ldr	r1, [sp, #4]
-	movs	r0, #37
-	.loc	2 418 17 is_stmt 0              @ libraries/drivers/drv_sdio.c:418:17
-	str	r0, [r1, #32]
-	.loc	2 423 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:423:5
-	ldr	r1, [sp, #4]
-	mov.w	r0, #4096
-	.loc	2 423 24 is_stmt 0              @ libraries/drivers/drv_sdio.c:423:24
-	str	r0, [r1, #36]
-	.loc	2 424 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:424:5
-	ldr	r1, [sp, #4]
-	movs	r0, #1
-	.loc	2 424 24 is_stmt 0              @ libraries/drivers/drv_sdio.c:424:24
-	str	r0, [r1, #40]
-	.loc	2 425 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:425:5
-	ldr	r1, [sp, #4]
-	mov.w	r0, #512
-	.loc	2 425 24 is_stmt 0              @ libraries/drivers/drv_sdio.c:425:24
-	str	r0, [r1, #44]
-	.loc	2 426 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:426:5
-	ldr	r1, [sp, #4]
-	.loc	2 426 25 is_stmt 0              @ libraries/drivers/drv_sdio.c:426:25
-	str	r0, [r1, #48]
-	.loc	2 429 18 is_stmt 1              @ libraries/drivers/drv_sdio.c:429:18
-	ldr	r0, [sp, #4]
-	.loc	2 429 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:429:5
-	ldr	r1, [sp]
-	.loc	2 429 16                        @ libraries/drivers/drv_sdio.c:429:16
-	str	r0, [r1]
-	.loc	2 430 26 is_stmt 1              @ libraries/drivers/drv_sdio.c:430:26
-	ldr	r0, [sp]
-	.loc	2 430 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:430:5
-	ldr	r1, [sp, #4]
-	.loc	2 430 24                        @ libraries/drivers/drv_sdio.c:430:24
-	str.w	r0, [r1, #136]
-	.loc	2 433 18 is_stmt 1              @ libraries/drivers/drv_sdio.c:433:18
-	ldr	r0, [sp, #4]
-	.loc	2 433 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:433:5
-	bl	mmcsd_change
-	.loc	2 435 12 is_stmt 1              @ libraries/drivers/drv_sdio.c:435:12
-	ldr	r0, [sp, #4]
-	.loc	2 435 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:435:5
-	str	r0, [sp, #12]
-	b	.LBB1_18
-.LBB1_15:
-.Ltmp26:
-	@DEBUG_LABEL: sdio_host_create:err
-	.loc	2 438 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:438:9
-	ldr	r0, [sp]
+	movs	r5, #0
 .Ltmp27:
-	.loc	2 438 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:438:9
-	cbz	r0, .LBB1_17
-	b	.LBB1_16
-.LBB1_16:
+	.loc	2 389 9                         @ libraries/drivers/drv_sdio.c:389:9
+	b	.LBB1_11
 .Ltmp28:
-	.loc	2 438 23                        @ libraries/drivers/drv_sdio.c:438:23
-	ldr	r0, [sp]
-	.loc	2 438 15                        @ libraries/drivers/drv_sdio.c:438:15
-	bl	rt_free
-	b	.LBB1_17
+.LBB1_10:
+	@DEBUG_VALUE: sdio_host_create:sdio_des <- $r6
+	@DEBUG_VALUE: sdio_host_create:sdio <- $r4
+	@DEBUG_VALUE: sdio_host_create:host <- $r0
+	.loc	2 396 9                         @ libraries/drivers/drv_sdio.c:396:9
+	movw	r0, :lower16:.L.str
 .Ltmp29:
-.LBB1_17:
-	.loc	2 0 15                          @ libraries/drivers/drv_sdio.c:0:15
-	movs	r0, #0
-	.loc	2 440 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:440:5
-	str	r0, [sp, #12]
-	b	.LBB1_18
-.LBB1_18:
-	.loc	2 441 1                         @ libraries/drivers/drv_sdio.c:441:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
+	movt	r0, :upper16:.L.str
+	bl	rt_kprintf
+	adr	r0, .LCPI1_2
+	bl	rt_kprintf
+	movw	r0, :lower16:.L.str.2
+	movt	r0, :upper16:.L.str.2
+	bl	rt_kprintf
 .Ltmp30:
+	@DEBUG_LABEL: sdio_host_create:err
+	.loc	2 438 15                        @ libraries/drivers/drv_sdio.c:438:15
+	mov	r0, r4
+	bl	rt_free
+	movs	r5, #0
+.Ltmp31:
+.LBB1_11:
+	.loc	2 441 1                         @ libraries/drivers/drv_sdio.c:441:1
+	mov	r0, r5
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp32:
+	.p2align	2
+@ %bb.12:
+	.loc	2 0 1 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:1
+.LCPI1_0:
+.L.str.4:
+	.asciz	"sdio\000\000\000"
+.LCPI1_1:
+.L.str.5:
+	.asciz	"sdio2\000\000"
+.LCPI1_2:
+.L.str.3:
+	.asciz	"alloc host fail"
+.LCPI1_3:
+.L.str.1:
+	.asciz	"malloc rthw_sdio fail\000\000"
 .Lfunc_end1:
 	.size	sdio_host_create, .Lfunc_end1-sdio_host_create
 	.cfi_endproc
@@ -405,7 +340,7 @@ sdio_host_create:
 	.thumb_func
 SDMMC1_IRQHandler:
 .Lfunc_begin2:
-	.loc	2 444 0                         @ libraries/drivers/drv_sdio.c:444:0
+	.loc	2 444 0 is_stmt 1               @ libraries/drivers/drv_sdio.c:444:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -414,7 +349,7 @@ SDMMC1_IRQHandler:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-.Ltmp31:
+.Ltmp33:
 	.loc	2 446 5 prologue_end            @ libraries/drivers/drv_sdio.c:446:5
 	bl	rt_interrupt_enter
 	.loc	2 448 27                        @ libraries/drivers/drv_sdio.c:448:27
@@ -427,7 +362,7 @@ SDMMC1_IRQHandler:
 	bl	rt_interrupt_leave
 	.loc	2 451 1                         @ libraries/drivers/drv_sdio.c:451:1
 	pop	{r7, pc}
-.Ltmp32:
+.Ltmp34:
 .Lfunc_end2:
 	.size	SDMMC1_IRQHandler, .Lfunc_end2-SDMMC1_IRQHandler
 	.cfi_endproc
@@ -452,7 +387,7 @@ SDMMC2_IRQHandler:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-.Ltmp33:
+.Ltmp35:
 	.loc	2 456 5 prologue_end            @ libraries/drivers/drv_sdio.c:456:5
 	bl	rt_interrupt_enter
 	.loc	2 458 27                        @ libraries/drivers/drv_sdio.c:458:27
@@ -465,7 +400,7 @@ SDMMC2_IRQHandler:
 	bl	rt_interrupt_leave
 	.loc	2 461 1                         @ libraries/drivers/drv_sdio.c:461:1
 	pop	{r7, pc}
-.Ltmp34:
+.Ltmp36:
 .Lfunc_end3:
 	.size	SDMMC2_IRQHandler, .Lfunc_end3-SDMMC2_IRQHandler
 	.cfi_endproc
@@ -485,129 +420,92 @@ rt_hw_sdio_init:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#280
-	sub	sp, #280
-	.cfi_def_cfa_offset 288
-	add	r0, sp, #144
-.Ltmp35:
-	.loc	2 467 15 prologue_end           @ libraries/drivers/drv_sdio.c:467:15
-	str	r0, [sp, #8]                    @ 4-byte Spill
-	adds	r0, #8
+	.cfi_offset r4, -8
+	.pad	#264
+	sub	sp, #264
+	.cfi_def_cfa_offset 272
+	add	r4, sp, #132
 	movw	r1, #28672
+.Ltmp37:
+	.loc	2 467 15 prologue_end           @ libraries/drivers/drv_sdio.c:467:15
+	add.w	r0, r4, #8
 	movt	r1, #20992
 	.loc	2 467 28 is_stmt 0              @ libraries/drivers/drv_sdio.c:467:28
-	str	r1, [sp, #152]
+	str	r1, [sp, #140]
 	.loc	2 468 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:468:5
 	bl	HAL_SD_MspInit
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
 	.loc	2 470 13                        @ libraries/drivers/drv_sdio.c:470:13
+	mov	r0, r4
 	bl	sdio_host_create
-	mov	r1, r0
 	.loc	2 470 11 is_stmt 0              @ libraries/drivers/drv_sdio.c:470:11
-	movw	r0, :lower16:host1
-	movt	r0, :upper16:host1
-	str	r1, [r0]
-.Ltmp36:
+	movw	r1, :lower16:host1
+	movt	r1, :upper16:host1
+	str	r0, [r1]
 	.loc	2 471 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:471:9
-	ldr	r0, [r0]
-.Ltmp37:
-	.loc	2 471 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:471:9
-	cbnz	r0, .LBB4_4
-	b	.LBB4_1
-.LBB4_1:
-.Ltmp38:
-	.loc	2 473 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:473:9
-	b	.LBB4_2
-.LBB4_2:
-.Ltmp39:
-	.loc	2 473 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:473:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.6
-	movt	r0, :upper16:.L.str.6
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	bl	rt_kprintf
-	b	.LBB4_3
-.Ltmp40:
-.LBB4_3:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #0
-	.loc	2 474 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:474:9
-	str	r0, [sp, #276]
-	b	.LBB4_9
-.Ltmp41:
-.LBB4_4:
+	cbz	r0, .LBB4_3
+@ %bb.1:
 	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	add	r0, sp, #12
-	.loc	2 481 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:481:15
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	adds	r0, #8
+	mov	r4, sp
 	movw	r1, #9216
+	.loc	2 481 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:481:15
+	add.w	r0, r4, #8
 	movt	r1, #18434
 	.loc	2 481 28 is_stmt 0              @ libraries/drivers/drv_sdio.c:481:28
-	str	r1, [sp, #20]
+	str	r1, [sp, #8]
 	.loc	2 482 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:482:5
 	bl	HAL_SD_MspInit
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
 	.loc	2 484 13                        @ libraries/drivers/drv_sdio.c:484:13
+	mov	r0, r4
 	bl	sdio_host_create
-	mov	r1, r0
 	.loc	2 484 11 is_stmt 0              @ libraries/drivers/drv_sdio.c:484:11
-	movw	r0, :lower16:host2
-	movt	r0, :upper16:host2
-	str	r1, [r0]
-.Ltmp42:
+	movw	r1, :lower16:host2
+	movt	r1, :upper16:host2
+	str	r0, [r1]
 	.loc	2 485 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:485:9
-	ldr	r0, [r0]
-.Ltmp43:
-	.loc	2 485 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:485:9
-	cbnz	r0, .LBB4_8
-	b	.LBB4_5
-.LBB4_5:
-.Ltmp44:
-	.loc	2 487 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:487:9
-	b	.LBB4_6
-.LBB4_6:
-.Ltmp45:
-	.loc	2 487 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:487:9
+	cbnz	r0, .LBB4_4
+@ %bb.2:
+.Ltmp38:
+	.loc	2 487 9                         @ libraries/drivers/drv_sdio.c:487:9
 	movw	r0, :lower16:.L.str
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.7
-	movt	r0, :upper16:.L.str.7
+	adr	r0, .LCPI4_0
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB4_7
-.Ltmp46:
-.LBB4_7:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #0
-	.loc	2 488 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:488:9
-	str	r0, [sp, #276]
-	b	.LBB4_9
-.Ltmp47:
-.LBB4_8:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #0
-	.loc	2 492 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:492:5
-	str	r0, [sp, #276]
-	b	.LBB4_9
-.LBB4_9:
+	b	.LBB4_4
+.Ltmp39:
+.LBB4_3:
+	.loc	2 473 9                         @ libraries/drivers/drv_sdio.c:473:9
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	bl	rt_kprintf
+	adr	r0, .LCPI4_1
+	bl	rt_kprintf
+	movw	r0, :lower16:.L.str.2
+	movt	r0, :upper16:.L.str.2
+	bl	rt_kprintf
+.Ltmp40:
+.LBB4_4:
 	.loc	2 493 1                         @ libraries/drivers/drv_sdio.c:493:1
-	ldr	r0, [sp, #276]
-	add	sp, #280
-	pop	{r7, pc}
-.Ltmp48:
+	movs	r0, #0
+	add	sp, #264
+	pop	{r4, pc}
+.Ltmp41:
+	.p2align	2
+@ %bb.5:
+	.loc	2 0 1 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:1
+.LCPI4_0:
+.L.str.7:
+	.asciz	"host2 create fail\000\000"
+.LCPI4_1:
+.L.str.6:
+	.asciz	"host create fail\000\000\000"
 .Lfunc_end4:
 	.size	rt_hw_sdio_init, .Lfunc_end4-rt_hw_sdio_init
 	.cfi_endproc
@@ -623,7 +521,7 @@ rt_hw_sdio_init:
 	.thumb_func
 sdcard_change:
 .Lfunc_begin5:
-	.loc	2 497 0                         @ libraries/drivers/drv_sdio.c:497:0
+	.loc	2 497 0 is_stmt 1               @ libraries/drivers/drv_sdio.c:497:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
@@ -632,7 +530,7 @@ sdcard_change:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-.Ltmp49:
+.Ltmp42:
 	.loc	2 498 18 prologue_end           @ libraries/drivers/drv_sdio.c:498:18
 	movw	r0, :lower16:host1
 	movt	r0, :upper16:host1
@@ -641,7 +539,7 @@ sdcard_change:
 	bl	mmcsd_change
 	.loc	2 499 1 is_stmt 1               @ libraries/drivers/drv_sdio.c:499:1
 	pop	{r7, pc}
-.Ltmp50:
+.Ltmp43:
 .Lfunc_end5:
 	.size	sdcard_change, .Lfunc_end5-sdcard_change
 	.cfi_endproc
@@ -659,172 +557,169 @@ rthw_sdio_request:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rthw_sdio_request:host <- $r0
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r1
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#40
-	sub	sp, #40
-	.cfi_def_cfa_offset 48
-	str	r0, [sp, #36]
-	str	r1, [sp, #32]
-.Ltmp51:
-	.loc	2 265 30 prologue_end           @ libraries/drivers/drv_sdio.c:265:30
-	ldr	r0, [sp, #36]
-	.loc	2 265 36 is_stmt 0              @ libraries/drivers/drv_sdio.c:265:36
-	ldr.w	r0, [r0, #136]
-	.loc	2 265 23                        @ libraries/drivers/drv_sdio.c:265:23
-	str	r0, [sp, #16]
-.Ltmp52:
-	.loc	2 268 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:268:9
-	ldr	r0, [sp, #32]
-	.loc	2 268 14 is_stmt 0              @ libraries/drivers/drv_sdio.c:268:14
-	ldr	r0, [r0, #4]
-.Ltmp53:
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#12
+	sub	sp, #12
+	.cfi_def_cfa_offset 32
+	mov	r5, r1
+.Ltmp44:
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	.loc	2 268 14 prologue_end           @ libraries/drivers/drv_sdio.c:268:14
+	ldr	r1, [r1, #4]
+.Ltmp45:
+	@DEBUG_VALUE: rthw_sdio_request:host <- $r0
+	.loc	2 265 36                        @ libraries/drivers/drv_sdio.c:265:36
+	ldr.w	r4, [r0, #136]
+.Ltmp46:
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
 	.loc	2 268 9                         @ libraries/drivers/drv_sdio.c:268:9
-	cbz	r0, .LBB6_8
-	b	.LBB6_1
-.LBB6_1:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	add	r0, sp, #20
+	cbz	r1, .LBB6_7
+.Ltmp47:
+@ %bb.1:
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_request:host <- $r0
+	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
+	mov	r0, sp
+.Ltmp48:
+	@DEBUG_VALUE: rthw_sdio_request:host <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 270 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:270:9
 	movs	r1, #0
 	movs	r2, #12
-.Ltmp54:
-	.loc	2 270 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:270:9
 	bl	rt_memset
-	.loc	2 271 16                        @ libraries/drivers/drv_sdio.c:271:16
-	ldr	r0, [sp, #32]
-	.loc	2 271 21 is_stmt 0              @ libraries/drivers/drv_sdio.c:271:21
-	ldr	r0, [r0, #4]
-	.loc	2 271 26                        @ libraries/drivers/drv_sdio.c:271:26
-	ldr	r0, [r0, #36]
-	.loc	2 271 14                        @ libraries/drivers/drv_sdio.c:271:14
-	str	r0, [sp, #12]
-	.loc	2 272 19 is_stmt 1              @ libraries/drivers/drv_sdio.c:272:19
-	ldr	r0, [sp, #32]
-	.loc	2 272 24 is_stmt 0              @ libraries/drivers/drv_sdio.c:272:24
-	ldr	r0, [r0, #4]
+	.loc	2 271 21                        @ libraries/drivers/drv_sdio.c:271:21
+	ldr	r0, [r5, #4]
 	.loc	2 272 17                        @ libraries/drivers/drv_sdio.c:272:17
-	str	r0, [sp, #20]
-.Ltmp55:
-	.loc	2 274 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:274:13
-	ldr	r0, [sp, #12]
-.Ltmp56:
-	.loc	2 274 13 is_stmt 0              @ libraries/drivers/drv_sdio.c:274:13
-	cbz	r0, .LBB6_7
-	b	.LBB6_2
-.LBB6_2:
-.Ltmp57:
-	.loc	2 276 32 is_stmt 1              @ libraries/drivers/drv_sdio.c:276:32
-	ldr	r0, [sp, #12]
-	.loc	2 276 51 is_stmt 0              @ libraries/drivers/drv_sdio.c:276:51
-	ldr	r1, [r0]
-	.loc	2 276 38                        @ libraries/drivers/drv_sdio.c:276:38
-	ldr	r0, [r0, #4]
-	.loc	2 276 43                        @ libraries/drivers/drv_sdio.c:276:43
-	muls	r0, r1, r0
-	.loc	2 276 25                        @ libraries/drivers/drv_sdio.c:276:25
-	str	r0, [sp, #8]
-.Ltmp58:
+	str	r0, [sp]
+	.loc	2 271 26                        @ libraries/drivers/drv_sdio.c:271:26
+	ldr	r7, [r0, #36]
+.Ltmp49:
+	@DEBUG_VALUE: rthw_sdio_request:data <- $r7
+	.loc	2 274 13                        @ libraries/drivers/drv_sdio.c:274:13
+	cbz	r7, .LBB6_6
+.Ltmp50:
+@ %bb.2:
+	@DEBUG_VALUE: rthw_sdio_request:data <- $r7
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_request:host <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 276 51                        @ libraries/drivers/drv_sdio.c:276:51
+	ldrd	r0, r1, [r7]
+	.loc	2 276 43 is_stmt 0              @ libraries/drivers/drv_sdio.c:276:43
+	mul	r6, r0, r1
+.Ltmp51:
+	@DEBUG_VALUE: size <- $r6
 	.loc	2 278 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:278:13
-	ldr	r0, [sp, #8]
-.Ltmp59:
-	.loc	2 278 13 is_stmt 0              @ libraries/drivers/drv_sdio.c:278:13
-	cmp.w	r0, #4096
+	cmp.w	r6, #4096
 	bls	.LBB6_4
-	b	.LBB6_3
-.LBB6_3:
-.Ltmp60:
-	.loc	2 278 13                        @ libraries/drivers/drv_sdio.c:278:13
-	movw	r0, :lower16:.L.str.8
-	movt	r0, :upper16:.L.str.8
-	movw	r1, :lower16:.L__FUNCTION__.rthw_sdio_request
-	movt	r1, :upper16:.L__FUNCTION__.rthw_sdio_request
+.Ltmp52:
+@ %bb.3:
+	@DEBUG_VALUE: rthw_sdio_request:data <- $r7
+	@DEBUG_VALUE: size <- $r6
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_request:host <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 278 13 is_stmt 0              @ libraries/drivers/drv_sdio.c:278:13
+	adr	r0, .LCPI6_0
+	adr	r1, .LCPI6_1
 	mov.w	r2, #278
 	bl	rt_assert_handler
-	b	.LBB6_4
-.Ltmp61:
+.Ltmp53:
 .LBB6_4:
+	@DEBUG_VALUE: rthw_sdio_request:data <- $r7
+	@DEBUG_VALUE: size <- $r6
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_request:host <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 280 17 is_stmt 1              @ libraries/drivers/drv_sdio.c:280:17
-	ldr	r0, [sp, #12]
-.Ltmp62:
-	.loc	2 280 17 is_stmt 0              @ libraries/drivers/drv_sdio.c:280:17
-	ldrb	r0, [r0, #16]
+	ldrb	r0, [r7, #16]
 	lsls	r0, r0, #31
-	cbz	r0, .LBB6_6
-	b	.LBB6_5
-.LBB6_5:
-.Ltmp63:
-	.loc	2 282 38 is_stmt 1              @ libraries/drivers/drv_sdio.c:282:38
-	ldr	r0, [sp, #12]
-	.loc	2 282 44 is_stmt 0              @ libraries/drivers/drv_sdio.c:282:44
-	ldr	r1, [r0, #8]
-	.loc	2 282 49                        @ libraries/drivers/drv_sdio.c:282:49
-	ldr	r2, [sp, #8]
+	beq	.LBB6_6
+.Ltmp54:
+@ %bb.5:
+	@DEBUG_VALUE: rthw_sdio_request:data <- $r7
+	@DEBUG_VALUE: size <- $r6
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_request:host <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 282 17                        @ libraries/drivers/drv_sdio.c:282:17
 	movw	r0, :lower16:cache_buf
+	.loc	2 282 44 is_stmt 0              @ libraries/drivers/drv_sdio.c:282:44
+	ldr	r1, [r7, #8]
+	.loc	2 282 17                        @ libraries/drivers/drv_sdio.c:282:17
 	movt	r0, :upper16:cache_buf
+	mov	r2, r6
 	bl	rt_memcpy
-	.loc	2 283 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:283:13
-	b	.LBB6_6
-.Ltmp64:
+.Ltmp55:
 .LBB6_6:
-	.loc	2 284 9                         @ libraries/drivers/drv_sdio.c:284:9
-	b	.LBB6_7
-.Ltmp65:
-.LBB6_7:
-	.loc	2 286 32                        @ libraries/drivers/drv_sdio.c:286:32
-	ldr	r0, [sp, #16]
-	add	r1, sp, #20
-	.loc	2 286 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:286:9
+	@DEBUG_VALUE: rthw_sdio_request:data <- $r7
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_request:host <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 0 17                          @ libraries/drivers/drv_sdio.c:0:17
+	mov	r1, sp
+	.loc	2 286 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:286:9
+	mov	r0, r4
 	bl	rthw_sdio_send_command
-	.loc	2 287 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:287:5
-	b	.LBB6_8
-.Ltmp66:
-.LBB6_8:
-	.loc	2 289 9                         @ libraries/drivers/drv_sdio.c:289:9
-	ldr	r0, [sp, #32]
-	.loc	2 289 14 is_stmt 0              @ libraries/drivers/drv_sdio.c:289:14
-	ldr	r0, [r0, #8]
-.Ltmp67:
-	.loc	2 289 9                         @ libraries/drivers/drv_sdio.c:289:9
-	cbz	r0, .LBB6_10
-	b	.LBB6_9
-.LBB6_9:
+.Ltmp56:
+.LBB6_7:
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	.loc	2 289 14                        @ libraries/drivers/drv_sdio.c:289:14
+	ldr	r0, [r5, #8]
+.Ltmp57:
+	.loc	2 289 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:289:9
+	cbz	r0, .LBB6_9
+.Ltmp58:
+@ %bb.8:
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
 	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	add	r0, sp, #20
-	str	r0, [sp, #4]                    @ 4-byte Spill
+	mov	r6, sp
+.Ltmp59:
+	.loc	2 291 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:291:9
 	movs	r1, #0
 	movs	r2, #12
-.Ltmp68:
-	.loc	2 291 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:291:9
+	mov	r0, r6
 	bl	rt_memset
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
-	.loc	2 292 19                        @ libraries/drivers/drv_sdio.c:292:19
-	ldr	r0, [sp, #32]
-	.loc	2 292 24 is_stmt 0              @ libraries/drivers/drv_sdio.c:292:24
-	ldr	r0, [r0, #8]
-	.loc	2 292 17                        @ libraries/drivers/drv_sdio.c:292:17
-	str	r0, [sp, #20]
-	.loc	2 293 32 is_stmt 1              @ libraries/drivers/drv_sdio.c:293:32
-	ldr	r0, [sp, #16]
-	.loc	2 293 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:293:9
+	.loc	2 292 24                        @ libraries/drivers/drv_sdio.c:292:24
+	ldr	r0, [r5, #8]
+	.loc	2 292 17 is_stmt 0              @ libraries/drivers/drv_sdio.c:292:17
+	str	r0, [sp]
+	.loc	2 293 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:293:9
+	mov	r0, r4
+	mov	r1, r6
 	bl	rthw_sdio_send_command
-	.loc	2 294 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:294:5
-	b	.LBB6_10
-.Ltmp69:
-.LBB6_10:
-	.loc	2 296 24                        @ libraries/drivers/drv_sdio.c:296:24
-	ldr	r0, [sp, #16]
-	.loc	2 296 30 is_stmt 0              @ libraries/drivers/drv_sdio.c:296:30
-	ldr	r0, [r0]
-	.loc	2 296 5                         @ libraries/drivers/drv_sdio.c:296:5
+.Ltmp60:
+.LBB6_9:
+	@DEBUG_VALUE: rthw_sdio_request:req <- $r5
+	@DEBUG_VALUE: rthw_sdio_request:sdio <- $r4
+	.loc	2 296 30                        @ libraries/drivers/drv_sdio.c:296:30
+	ldr	r0, [r4]
+	.loc	2 296 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:296:5
 	bl	mmcsd_req_complete
 	.loc	2 297 1 is_stmt 1               @ libraries/drivers/drv_sdio.c:297:1
-	add	sp, #40
-	pop	{r7, pc}
-.Ltmp70:
+	add	sp, #12
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp61:
+	.p2align	2
+@ %bb.10:
+	.loc	2 0 1 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:1
+.LCPI6_0:
+.L.str.8:
+	.asciz	"size <= SDIO_BUFF_SIZE\000"
+.LCPI6_1:
+.L__FUNCTION__.rthw_sdio_request:
+	.asciz	"rthw_sdio_request\000\000"
 .Lfunc_end6:
 	.size	rthw_sdio_request, .Lfunc_end6-rthw_sdio_request
 	.cfi_endproc
@@ -838,174 +733,152 @@ rthw_sdio_request:
 	.thumb_func
 rthw_sdio_iocfg:
 .Lfunc_begin7:
-	.loc	2 324 0                         @ libraries/drivers/drv_sdio.c:324:0
+	.loc	2 324 0 is_stmt 1               @ libraries/drivers/drv_sdio.c:324:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#28
-	sub	sp, #28
-	.cfi_def_cfa_offset 28
-	str	r0, [sp, #24]
-	str	r1, [sp, #20]
-.Ltmp71:
-	.loc	2 326 23 prologue_end           @ libraries/drivers/drv_sdio.c:326:23
-	ldr	r0, [sp, #20]
-	.loc	2 326 31 is_stmt 0              @ libraries/drivers/drv_sdio.c:326:31
-	ldr	r0, [r0]
-	.loc	2 326 17                        @ libraries/drivers/drv_sdio.c:326:17
-	str	r0, [sp, #8]
-	.loc	2 327 30 is_stmt 1              @ libraries/drivers/drv_sdio.c:327:30
-	ldr	r0, [sp, #24]
-	.loc	2 327 36 is_stmt 0              @ libraries/drivers/drv_sdio.c:327:36
-	ldr.w	r0, [r0, #136]
-	.loc	2 327 23                        @ libraries/drivers/drv_sdio.c:327:23
-	str	r0, [sp, #4]
-	.loc	2 328 34 is_stmt 1              @ libraries/drivers/drv_sdio.c:328:34
-	ldr	r0, [sp, #4]
-	.loc	2 328 49 is_stmt 0              @ libraries/drivers/drv_sdio.c:328:49
-	ldr	r0, [r0, #4]
-	.loc	2 328 24                        @ libraries/drivers/drv_sdio.c:328:24
-	str	r0, [sp]
-	movw	r0, #49664
-	movt	r0, #3051
-	.loc	2 340 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:340:13
-	str	r0, [sp, #12]
-.Ltmp72:
+	@DEBUG_VALUE: rthw_sdio_iocfg:host <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	.loc	2 326 31 prologue_end           @ libraries/drivers/drv_sdio.c:326:31
+	ldr	r3, [r1]
+.Ltmp62:
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk <- $r3
+	.loc	2 327 36                        @ libraries/drivers/drv_sdio.c:327:36
+	ldr.w	r12, [r0, #136]
+.Ltmp63:
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
+	@DEBUG_VALUE: rthw_sdio_iocfg:hw_sdio <- undef
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:host <- $r0
 	.loc	2 342 9                         @ libraries/drivers/drv_sdio.c:342:9
-	ldr	r0, [sp, #8]
-.Ltmp73:
-	.loc	2 342 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:342:9
-	cbz	r0, .LBB7_6
-	b	.LBB7_1
-.LBB7_1:
-.Ltmp74:
-	.loc	2 344 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:344:13
-	ldr	r0, [sp, #8]
-	.loc	2 344 19 is_stmt 0              @ libraries/drivers/drv_sdio.c:344:19
-	ldr	r1, [sp, #24]
+	cbz	r3, .LBB7_2
+.Ltmp64:
+@ %bb.1:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk <- $r3
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:host <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
 	.loc	2 344 25                        @ libraries/drivers/drv_sdio.c:344:25
-	ldr	r1, [r1, #12]
-.Ltmp75:
-	.loc	2 344 13                        @ libraries/drivers/drv_sdio.c:344:13
-	cmp	r0, r1
-	bls	.LBB7_3
-	b	.LBB7_2
-.LBB7_2:
-.Ltmp76:
-	.loc	2 345 19 is_stmt 1              @ libraries/drivers/drv_sdio.c:345:19
-	ldr	r0, [sp, #24]
-	.loc	2 345 25 is_stmt 0              @ libraries/drivers/drv_sdio.c:345:25
 	ldr	r0, [r0, #12]
-	.loc	2 345 17                        @ libraries/drivers/drv_sdio.c:345:17
-	str	r0, [sp, #8]
-	.loc	2 345 13                        @ libraries/drivers/drv_sdio.c:345:13
-	b	.LBB7_3
-.Ltmp77:
-.LBB7_3:
+.Ltmp65:
+	@DEBUG_VALUE: rthw_sdio_iocfg:host <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 0 25 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:25
+	movw	r2, #49663
+.Ltmp66:
+	.loc	2 344 13                        @ libraries/drivers/drv_sdio.c:344:13
+	cmp	r3, r0
+	movt	r2, #3051
+	it	hi
+	movhi	r3, r0
+.Ltmp67:
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk <- $r3
 	.loc	2 346 16 is_stmt 1              @ libraries/drivers/drv_sdio.c:346:16
-	ldr	r0, [sp, #12]
-	ldr	r2, [sp, #8]
-	lsls	r1, r2, #1
-	add.w	r0, r0, r2, lsl #1
-	subs	r0, #1
-	udiv	r0, r0, r1
-	.loc	2 346 14 is_stmt 0              @ libraries/drivers/drv_sdio.c:346:14
-	str	r0, [sp, #16]
-.Ltmp78:
-	.loc	2 347 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:347:13
-	ldr	r0, [sp, #16]
-.Ltmp79:
-	.loc	2 347 13 is_stmt 0              @ libraries/drivers/drv_sdio.c:347:13
-	cmp.w	r0, #1024
-	blo	.LBB7_5
-	b	.LBB7_4
-.LBB7_4:
-	.loc	2 0 13                          @ libraries/drivers/drv_sdio.c:0:13
+	lsls	r0, r3, #1
+	add.w	r2, r2, r3, lsl #1
+	udiv	r2, r2, r0
+.Ltmp68:
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r2
+	.loc	2 0 16 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:16
 	movw	r0, #1023
-.Ltmp80:
-	.loc	2 348 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:348:15
-	str	r0, [sp, #16]
-	.loc	2 348 10 is_stmt 0              @ libraries/drivers/drv_sdio.c:348:10
-	b	.LBB7_5
-.Ltmp81:
-.LBB7_5:
-	.loc	2 349 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:349:5
-	b	.LBB7_6
-.Ltmp82:
-.LBB7_6:
+	.loc	2 347 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:347:13
+	cmp	r2, r0
+	it	lo
+	movlo	r0, r2
+.Ltmp69:
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+	.loc	2 0 13 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:13
+	b	.LBB7_3
+.Ltmp70:
+.LBB7_2:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk <- $r3
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:host <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
+                                        @ implicit-def: $r0
+.LBB7_3:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk <- $r3
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
+	.loc	2 351 17 is_stmt 1              @ libraries/drivers/drv_sdio.c:351:17
+	ldrb	r3, [r1, #9]
+.Ltmp71:
+	.loc	2 0 0 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:0
+	ldr.w	r2, [r12, #4]
+.Ltmp72:
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:hw_sdio <- $r2
 	.loc	2 351 9                         @ libraries/drivers/drv_sdio.c:351:9
-	ldr	r0, [sp, #20]
-	.loc	2 351 17 is_stmt 0              @ libraries/drivers/drv_sdio.c:351:17
-	ldrb	r0, [r0, #9]
-.Ltmp83:
-	.loc	2 351 9                         @ libraries/drivers/drv_sdio.c:351:9
-	cmp	r0, #2
-	bne	.LBB7_8
-	b	.LBB7_7
-.LBB7_7:
-.Ltmp84:
+	cmp	r3, #3
+	beq	.LBB7_6
+.Ltmp73:
+@ %bb.4:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:hw_sdio <- $r2
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
+	cmp	r3, #2
+	bne	.LBB7_7
+.Ltmp74:
+@ %bb.5:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:hw_sdio <- $r2
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
 	.loc	2 352 14 is_stmt 1              @ libraries/drivers/drv_sdio.c:352:14
-	ldr	r0, [sp, #16]
 	orr	r0, r0, #16384
-	str	r0, [sp, #16]
-	.loc	2 352 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:352:9
-	b	.LBB7_11
-.LBB7_8:
-.Ltmp85:
-	.loc	2 353 14 is_stmt 1              @ libraries/drivers/drv_sdio.c:353:14
-	ldr	r0, [sp, #20]
-	.loc	2 353 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:353:22
-	ldrb	r0, [r0, #9]
-.Ltmp86:
-	.loc	2 353 14                        @ libraries/drivers/drv_sdio.c:353:14
-	cmp	r0, #3
-	bne	.LBB7_10
-	b	.LBB7_9
-.LBB7_9:
-.Ltmp87:
+.Ltmp75:
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+	.loc	2 0 14 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:14
+	b	.LBB7_7
+.Ltmp76:
+.LBB7_6:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:hw_sdio <- $r2
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
 	.loc	2 354 14 is_stmt 1              @ libraries/drivers/drv_sdio.c:354:14
-	ldr	r0, [sp, #16]
 	orr	r0, r0, #32768
-	str	r0, [sp, #16]
-	.loc	2 354 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:354:9
-	b	.LBB7_10
-.Ltmp88:
-.LBB7_10:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	b	.LBB7_11
-.LBB7_11:
-	.loc	2 356 22 is_stmt 1              @ libraries/drivers/drv_sdio.c:356:22
-	ldr	r0, [sp, #16]
-	.loc	2 356 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:356:5
-	ldr	r1, [sp]
+.Ltmp77:
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+.LBB7_7:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:hw_sdio <- $r2
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
+	@DEBUG_VALUE: rthw_sdio_iocfg:temp <- $r0
 	.loc	2 356 20                        @ libraries/drivers/drv_sdio.c:356:20
-	str	r0, [r1, #4]
-.Ltmp89:
-	.loc	2 358 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:358:9
-	ldr	r0, [sp, #20]
-	.loc	2 358 17 is_stmt 0              @ libraries/drivers/drv_sdio.c:358:17
-	ldrb	r0, [r0, #8]
-.Ltmp90:
-	.loc	2 358 9                         @ libraries/drivers/drv_sdio.c:358:9
+	str	r0, [r2, #4]
+.Ltmp78:
+	.loc	2 358 17                        @ libraries/drivers/drv_sdio.c:358:17
+	ldrb	r0, [r1, #8]
+.Ltmp79:
+	.loc	2 358 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:358:9
 	cmp	r0, #2
-	bne	.LBB7_13
-	b	.LBB7_12
-.LBB7_12:
-.Ltmp91:
-	.loc	2 359 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:359:9
-	ldr	r1, [sp]
-	.loc	2 359 24 is_stmt 0              @ libraries/drivers/drv_sdio.c:359:24
-	ldr	r0, [r1]
-	orr	r0, r0, #3
-	str	r0, [r1]
-	.loc	2 359 9                         @ libraries/drivers/drv_sdio.c:359:9
-	b	.LBB7_13
-.Ltmp92:
-.LBB7_13:
 	.loc	2 360 1 is_stmt 1               @ libraries/drivers/drv_sdio.c:360:1
-	add	sp, #28
+	it	ne
+	bxne	lr
+.Ltmp80:
+.LBB7_8:
+	@DEBUG_VALUE: rthw_sdio_iocfg:sdio <- $r12
+	@DEBUG_VALUE: rthw_sdio_iocfg:hw_sdio <- $r2
+	@DEBUG_VALUE: rthw_sdio_iocfg:io_cfg <- $r1
+	@DEBUG_VALUE: rthw_sdio_iocfg:clk_src <- 200000000
+	.loc	2 359 24                        @ libraries/drivers/drv_sdio.c:359:24
+	ldr	r0, [r2]
+	orr	r0, r0, #3
+	str	r0, [r2]
+.Ltmp81:
+	.loc	2 360 1                         @ libraries/drivers/drv_sdio.c:360:1
 	bx	lr
-.Ltmp93:
+.Ltmp82:
 .Lfunc_end7:
 	.size	rthw_sdio_iocfg, .Lfunc_end7-rthw_sdio_iocfg
 	.cfi_endproc
@@ -1023,324 +896,327 @@ rthw_sdio_send_command:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r0
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- $r1
+	.save	{r4, r5, r6, r7, r8, r9, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, lr}
+	.cfi_def_cfa_offset 28
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #28]
-	str	r1, [sp, #24]
-.Ltmp94:
-	.loc	2 177 32 prologue_end           @ libraries/drivers/drv_sdio.c:177:32
-	ldr	r0, [sp, #24]
-	.loc	2 177 37 is_stmt 0              @ libraries/drivers/drv_sdio.c:177:37
-	ldr	r0, [r0]
-	.loc	2 177 26                        @ libraries/drivers/drv_sdio.c:177:26
-	str	r0, [sp, #20]
-	.loc	2 178 34 is_stmt 1              @ libraries/drivers/drv_sdio.c:178:34
-	ldr	r0, [sp, #20]
-	.loc	2 178 39 is_stmt 0              @ libraries/drivers/drv_sdio.c:178:39
-	ldr	r0, [r0, #36]
-	.loc	2 178 27                        @ libraries/drivers/drv_sdio.c:178:27
-	str	r0, [sp, #16]
-	.loc	2 179 34 is_stmt 1              @ libraries/drivers/drv_sdio.c:179:34
-	ldr	r0, [sp, #28]
-	.loc	2 179 49 is_stmt 0              @ libraries/drivers/drv_sdio.c:179:49
-	ldr	r0, [r0, #4]
-	.loc	2 179 24                        @ libraries/drivers/drv_sdio.c:179:24
-	str	r0, [sp, #12]
-	.loc	2 182 23 is_stmt 1              @ libraries/drivers/drv_sdio.c:182:23
-	ldr	r0, [sp, #28]
-	.loc	2 182 29 is_stmt 0              @ libraries/drivers/drv_sdio.c:182:29
+	.cfi_offset r9, -8
+	.cfi_offset r8, -12
+	.cfi_offset r7, -16
+	.cfi_offset r6, -20
+	.cfi_offset r5, -24
+	.cfi_offset r4, -28
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 32
+.Ltmp83:
+	.loc	2 177 37 prologue_end           @ libraries/drivers/drv_sdio.c:177:37
+	ldr.w	r8, [r1]
+.Ltmp84:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	.loc	2 0 37 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:37
+	mov	r5, r1
+.Ltmp85:
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- $r5
+	mov	r4, r0
+.Ltmp86:
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	.loc	2 179 49 is_stmt 1              @ libraries/drivers/drv_sdio.c:179:49
+	ldr	r7, [r0, #4]
+.Ltmp87:
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	.loc	2 182 29                        @ libraries/drivers/drv_sdio.c:182:29
 	adds	r0, #136
+	.loc	2 182 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:182:5
 	movs	r1, #1
 	movs	r2, #0
-	.loc	2 182 5                         @ libraries/drivers/drv_sdio.c:182:5
+	.loc	2 178 39 is_stmt 1              @ libraries/drivers/drv_sdio.c:178:39
+	ldr.w	r6, [r8, #36]
+.Ltmp88:
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	.loc	2 0 39 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:39
+	mov.w	r9, #1
+	.loc	2 182 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:182:5
 	bl	rt_event_control
-	.loc	2 184 17 is_stmt 1              @ libraries/drivers/drv_sdio.c:184:17
-	ldr	r0, [sp, #24]
-	.loc	2 184 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:184:5
-	ldr	r1, [sp, #28]
 	.loc	2 184 15                        @ libraries/drivers/drv_sdio.c:184:15
-	str.w	r0, [r1, #168]
-	.loc	2 203 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:203:5
-	ldr	r1, [sp, #12]
-	.loc	2 203 19 is_stmt 0              @ libraries/drivers/drv_sdio.c:203:19
-	ldr	r0, [r1, #60]
-	movw	r2, #503
-	movt	r2, #256
-	orrs	r0, r2
-	str	r0, [r1, #60]
-	.loc	2 204 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:204:15
-	ldr	r0, [sp, #20]
-	.loc	2 204 20 is_stmt 0              @ libraries/drivers/drv_sdio.c:204:20
-	ldr	r0, [r0]
-	.loc	2 204 29                        @ libraries/drivers/drv_sdio.c:204:29
-	orr	r0, r0, #4096
-	.loc	2 204 13                        @ libraries/drivers/drv_sdio.c:204:13
-	str	r0, [sp, #8]
-.Ltmp95:
-	.loc	2 207 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:207:9
-	ldr	r0, [sp, #16]
-.Ltmp96:
-	.loc	2 207 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:207:9
-	cbz	r0, .LBB8_2
-	b	.LBB8_1
-.LBB8_1:
-.Ltmp97:
-	.loc	2 209 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:209:9
+	str.w	r5, [r4, #168]
+	.loc	2 203 19                        @ libraries/drivers/drv_sdio.c:203:19
+	ldr	r0, [r7, #60]
+	orr	r0, r0, #16777472
+	orr	r0, r0, #247
+	str	r0, [r7, #60]
+	.loc	2 204 20                        @ libraries/drivers/drv_sdio.c:204:20
+	ldr.w	r5, [r8]
+.Ltmp89:
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- undef
+	.loc	2 207 9                         @ libraries/drivers/drv_sdio.c:207:9
+	cbz	r6, .LBB8_2
+.Ltmp90:
+@ %bb.1:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 209 9                         @ libraries/drivers/drv_sdio.c:209:9
 	bl	SCB_CleanInvalidateDCache
+	.loc	2 212 23                        @ libraries/drivers/drv_sdio.c:212:23
+	ldr	r0, [r7, #60]
 	.loc	2 211 17                        @ libraries/drivers/drv_sdio.c:211:17
-	ldr	r0, [sp, #8]
-	orr	r0, r0, #64
-	str	r0, [sp, #8]
-	.loc	2 212 9                         @ libraries/drivers/drv_sdio.c:212:9
-	ldr	r1, [sp, #12]
-	.loc	2 212 23 is_stmt 0              @ libraries/drivers/drv_sdio.c:212:23
-	ldr	r0, [r1, #60]
+	orr	r5, r5, #4160
+.Ltmp91:
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	.loc	2 212 23                        @ libraries/drivers/drv_sdio.c:212:23
 	bic	r0, r0, #192
-	str	r0, [r1, #60]
-	.loc	2 213 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:213:9
-	ldr	r1, [sp, #12]
+	str	r0, [r7, #60]
 	mov.w	r0, #-1
-	.loc	2 213 25 is_stmt 0              @ libraries/drivers/drv_sdio.c:213:25
-	str	r0, [r1, #36]
-	.loc	2 214 25 is_stmt 1              @ libraries/drivers/drv_sdio.c:214:25
-	ldr	r0, [sp, #16]
-	.loc	2 214 44 is_stmt 0              @ libraries/drivers/drv_sdio.c:214:44
-	ldr	r1, [r0]
-	.loc	2 214 31                        @ libraries/drivers/drv_sdio.c:214:31
-	ldr	r0, [r0, #4]
-	.loc	2 214 36                        @ libraries/drivers/drv_sdio.c:214:36
-	muls	r0, r1, r0
-	.loc	2 214 9                         @ libraries/drivers/drv_sdio.c:214:9
-	ldr	r1, [sp, #12]
+	.loc	2 213 25                        @ libraries/drivers/drv_sdio.c:213:25
+	str	r0, [r7, #36]
+	.loc	2 214 44                        @ libraries/drivers/drv_sdio.c:214:44
+	ldrd	r0, r1, [r6]
+	.loc	2 214 36 is_stmt 0              @ libraries/drivers/drv_sdio.c:214:36
+	muls	r1, r0, r1
 	.loc	2 214 23                        @ libraries/drivers/drv_sdio.c:214:23
-	str	r0, [r1, #40]
-	.loc	2 215 37 is_stmt 1              @ libraries/drivers/drv_sdio.c:215:37
-	ldr	r0, [sp, #16]
-	.loc	2 215 43 is_stmt 0              @ libraries/drivers/drv_sdio.c:215:43
-	ldr	r0, [r0]
-	.loc	2 215 27                        @ libraries/drivers/drv_sdio.c:215:27
+	str	r1, [r7, #40]
+	.loc	2 215 27 is_stmt 1              @ libraries/drivers/drv_sdio.c:215:27
 	bl	get_order
-	.loc	2 215 51                        @ libraries/drivers/drv_sdio.c:215:51
-	lsls	r0, r0, #4
-	.loc	2 215 59                        @ libraries/drivers/drv_sdio.c:215:59
-	ldr	r1, [sp, #16]
-	.loc	2 215 65                        @ libraries/drivers/drv_sdio.c:215:65
-	ldr	r1, [r1, #16]
-	lsrs	r1, r1, #1
-	bfi	r0, r1, #1, #1
-	.loc	2 215 9                         @ libraries/drivers/drv_sdio.c:215:9
-	ldr	r1, [sp, #12]
+	.loc	2 215 65 is_stmt 0              @ libraries/drivers/drv_sdio.c:215:65
+	ldr	r1, [r6, #16]
+	.loc	2 215 71                        @ libraries/drivers/drv_sdio.c:215:71
+	and	r1, r1, #2
+	.loc	2 215 56                        @ libraries/drivers/drv_sdio.c:215:56
+	orr.w	r0, r1, r0, lsl #4
 	.loc	2 215 24                        @ libraries/drivers/drv_sdio.c:215:24
-	str	r0, [r1, #44]
-	.loc	2 216 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:216:9
-	ldr	r1, [sp, #12]
-	.loc	2 216 29 is_stmt 0              @ libraries/drivers/drv_sdio.c:216:29
+	str	r0, [r7, #44]
+	.loc	2 216 29 is_stmt 1              @ libraries/drivers/drv_sdio.c:216:29
 	movw	r0, :lower16:cache_buf
 	movt	r0, :upper16:cache_buf
-	str	r0, [r1, #88]
-	.loc	2 217 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:217:9
-	ldr	r1, [sp, #12]
-	movs	r0, #1
-	.loc	2 217 27 is_stmt 0              @ libraries/drivers/drv_sdio.c:217:27
-	str	r0, [r1, #80]
-	.loc	2 218 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:218:5
-	b	.LBB8_2
-.Ltmp98:
-.LBB8_2:
-	.loc	2 220 9                         @ libraries/drivers/drv_sdio.c:220:9
-	ldr	r0, [sp, #20]
-	ldr	r0, [r0, #24]
-	and	r0, r0, #15
-.Ltmp99:
-	.loc	2 220 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:220:9
-	cmp	r0, #3
-	bne	.LBB8_4
+	str	r0, [r7, #88]
+	.loc	2 217 27                        @ libraries/drivers/drv_sdio.c:217:27
+	str.w	r9, [r7, #80]
 	b	.LBB8_3
+.Ltmp92:
+.LBB8_2:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 0 27 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:27
+	orr	r5, r5, #4096
+.Ltmp93:
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
 .LBB8_3:
-.Ltmp100:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	.loc	2 220 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:220:9
+	ldr.w	r0, [r8, #24]
+	ands	r0, r0, #15
+.Ltmp94:
+	.loc	2 220 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:220:9
+	beq	.LBB8_7
+.Ltmp95:
+@ %bb.4:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	cmp	r0, #3
+	bne	.LBB8_6
+.Ltmp96:
+@ %bb.5:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	2 221 17 is_stmt 1              @ libraries/drivers/drv_sdio.c:221:17
-	ldr	r0, [sp, #8]
-	orr	r0, r0, #768
-	str	r0, [sp, #8]
-	.loc	2 221 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:221:9
+	orr	r5, r5, #768
+.Ltmp97:
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	.loc	2 0 17 is_stmt 0                @ libraries/drivers/drv_sdio.c:0:17
 	b	.LBB8_7
-.LBB8_4:
-.Ltmp101:
-	.loc	2 222 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:222:13
-	ldr	r0, [sp, #20]
-.Ltmp102:
-	.loc	2 222 13 is_stmt 0              @ libraries/drivers/drv_sdio.c:222:13
-	ldrb	r0, [r0, #24]
-	lsls	r0, r0, #28
-	cbz	r0, .LBB8_6
-	b	.LBB8_5
-.LBB8_5:
-.Ltmp103:
-	.loc	2 223 17 is_stmt 1              @ libraries/drivers/drv_sdio.c:223:17
-	ldr	r0, [sp, #8]
-	orr	r0, r0, #256
-	str	r0, [sp, #8]
-	.loc	2 223 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:223:9
-	b	.LBB8_6
-.Ltmp104:
+.Ltmp98:
 .LBB8_6:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
-	b	.LBB8_7
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 223 17 is_stmt 1              @ libraries/drivers/drv_sdio.c:223:17
+	orr	r5, r5, #256
+.Ltmp99:
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
 .LBB8_7:
-	.loc	2 225 20 is_stmt 1              @ libraries/drivers/drv_sdio.c:225:20
-	ldr	r0, [sp, #20]
-	.loc	2 225 25 is_stmt 0              @ libraries/drivers/drv_sdio.c:225:25
-	ldr	r0, [r0, #4]
-	.loc	2 225 5                         @ libraries/drivers/drv_sdio.c:225:5
-	ldr	r1, [sp, #12]
-	.loc	2 225 18                        @ libraries/drivers/drv_sdio.c:225:18
-	str	r0, [r1, #8]
-	.loc	2 226 20 is_stmt 1              @ libraries/drivers/drv_sdio.c:226:20
-	ldr	r0, [sp, #8]
-	.loc	2 226 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:226:5
-	ldr	r1, [sp, #12]
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	.loc	2 225 25                        @ libraries/drivers/drv_sdio.c:225:25
+	ldr.w	r0, [r8, #4]
+	.loc	2 225 18 is_stmt 0              @ libraries/drivers/drv_sdio.c:225:18
+	str	r0, [r7, #8]
+	.loc	2 228 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:228:5
+	mov	r0, r4
 	.loc	2 226 18                        @ libraries/drivers/drv_sdio.c:226:18
-	str	r0, [r1, #12]
-	.loc	2 228 30 is_stmt 1              @ libraries/drivers/drv_sdio.c:228:30
-	ldr	r0, [sp, #28]
-	.loc	2 228 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:228:5
+	str	r5, [r7, #12]
+	.loc	2 228 5                         @ libraries/drivers/drv_sdio.c:228:5
 	bl	rthw_sdio_wait_completed
-.Ltmp105:
-	.loc	2 231 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:231:9
-	ldr	r0, [sp, #16]
-.Ltmp106:
-	.loc	2 231 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:231:9
-	cbz	r0, .LBB8_17
-	b	.LBB8_8
-.LBB8_8:
-	.loc	2 0 9                           @ libraries/drivers/drv_sdio.c:0:9
+	.loc	2 231 9                         @ libraries/drivers/drv_sdio.c:231:9
+	cbz	r6, .LBB8_17
+.Ltmp100:
+@ %bb.8:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
 	movw	r0, #16960
 	movt	r0, #15
-.Ltmp107:
-	.loc	2 233 30 is_stmt 1              @ libraries/drivers/drv_sdio.c:233:30
-	str	r0, [sp, #4]
-	.loc	2 235 9                         @ libraries/drivers/drv_sdio.c:235:9
-	b	.LBB8_9
+.Ltmp101:
+	.p2align	2
 .LBB8_9:                                @ =>This Inner Loop Header: Depth=1
-	.loc	2 235 16 is_stmt 0              @ libraries/drivers/drv_sdio.c:235:16
-	ldr	r1, [sp, #4]
-	movs	r0, #0
-	.loc	2 235 22                        @ libraries/drivers/drv_sdio.c:235:22
-	str	r0, [sp]                        @ 4-byte Spill
-	cbz	r1, .LBB8_11
-	b	.LBB8_10
-.LBB8_10:                               @   in Loop: Header=BB8_9 Depth=1
-	.loc	2 235 26                        @ libraries/drivers/drv_sdio.c:235:26
-	ldr	r0, [sp, #12]
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	str	r0, [sp]
+	.loc	2 235 16 is_stmt 1              @ libraries/drivers/drv_sdio.c:235:16
+	ldr	r0, [sp]
+	.loc	2 235 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:235:22
+	cbz	r0, .LBB8_12
+.Ltmp102:
+@ %bb.10:                               @   in Loop: Header=BB8_9 Depth=1
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	2 235 35                        @ libraries/drivers/drv_sdio.c:235:35
-	ldr	r0, [r0, #52]
-	.loc	2 235 22                        @ libraries/drivers/drv_sdio.c:235:22
-	ubfx	r0, r0, #12, #1
-	str	r0, [sp]                        @ 4-byte Spill
-	b	.LBB8_11
-.LBB8_11:                               @   in Loop: Header=BB8_9 Depth=1
-	.loc	2 0 0                           @ libraries/drivers/drv_sdio.c:0:0
-	ldr	r0, [sp]                        @ 4-byte Reload
+	ldr	r0, [r7, #52]
 	.loc	2 235 9                         @ libraries/drivers/drv_sdio.c:235:9
-	lsls	r0, r0, #31
-	cbz	r0, .LBB8_13
-	b	.LBB8_12
-.LBB8_12:                               @   in Loop: Header=BB8_9 Depth=1
-.Ltmp108:
+	lsls	r0, r0, #19
+	bpl	.LBB8_12
+.Ltmp103:
+@ %bb.11:                               @   in Loop: Header=BB8_9 Depth=1
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	2 237 18 is_stmt 1              @ libraries/drivers/drv_sdio.c:237:18
-	ldr	r0, [sp, #4]
+	ldr	r0, [sp]
 	subs	r0, #1
-	str	r0, [sp, #4]
-.Ltmp109:
-	.loc	2 235 9                         @ libraries/drivers/drv_sdio.c:235:9
 	b	.LBB8_9
-.LBB8_13:
-.Ltmp110:
+.Ltmp104:
+.LBB8_12:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	2 239 14                        @ libraries/drivers/drv_sdio.c:239:14
-	ldr	r0, [sp, #4]
+	ldr	r0, [sp]
 	.loc	2 239 26 is_stmt 0              @ libraries/drivers/drv_sdio.c:239:26
-	cbz	r0, .LBB8_15
-	b	.LBB8_14
-.LBB8_14:
-	.loc	2 239 30                        @ libraries/drivers/drv_sdio.c:239:30
-	ldr	r0, [sp, #12]
-	.loc	2 239 39                        @ libraries/drivers/drv_sdio.c:239:39
-	ldr	r0, [r0, #52]
+	cbz	r0, .LBB8_14
+.Ltmp105:
+@ %bb.13:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 0 26                          @ libraries/drivers/drv_sdio.c:0:26
 	movs	r1, #63
+	.loc	2 239 39                        @ libraries/drivers/drv_sdio.c:239:39
+	ldr	r0, [r7, #52]
 	movt	r1, #2304
-.Ltmp111:
+.Ltmp106:
 	.loc	2 239 13                        @ libraries/drivers/drv_sdio.c:239:13
 	tst	r0, r1
-	beq	.LBB8_16
-	b	.LBB8_15
-.LBB8_15:
-.Ltmp112:
-	.loc	2 241 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:241:13
-	ldr	r1, [sp, #20]
+	beq	.LBB8_15
+.Ltmp107:
+.LBB8_14:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 0 13                          @ libraries/drivers/drv_sdio.c:0:13
 	mov.w	r0, #-1
-	.loc	2 241 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:241:22
-	str	r0, [r1, #32]
-	.loc	2 242 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:242:9
-	b	.LBB8_16
-.Ltmp113:
-.LBB8_16:
-	.loc	2 243 5                         @ libraries/drivers/drv_sdio.c:243:5
-	b	.LBB8_17
-.Ltmp114:
-.LBB8_17:
-	.loc	2 246 9                         @ libraries/drivers/drv_sdio.c:246:9
-	ldr	r0, [sp, #16]
-.Ltmp115:
-	.loc	2 246 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:246:9
-	cbz	r0, .LBB8_21
-	b	.LBB8_18
-.LBB8_18:
-.Ltmp116:
-	.loc	2 248 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:248:13
-	ldr	r0, [sp, #16]
-.Ltmp117:
-	.loc	2 248 13 is_stmt 0              @ libraries/drivers/drv_sdio.c:248:13
-	ldrb	r0, [r0, #16]
+.Ltmp108:
+	.loc	2 241 22 is_stmt 1              @ libraries/drivers/drv_sdio.c:241:22
+	str.w	r0, [r8, #32]
+.Ltmp109:
+.LBB8_15:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 248 13                        @ libraries/drivers/drv_sdio.c:248:13
+	ldrb	r0, [r6, #16]
 	lsls	r0, r0, #30
-	cmp	r0, #0
-	bpl	.LBB8_20
-	b	.LBB8_19
-.LBB8_19:
-.Ltmp118:
-	.loc	2 250 23 is_stmt 1              @ libraries/drivers/drv_sdio.c:250:23
-	ldr	r0, [sp, #16]
-	.loc	2 250 64 is_stmt 0              @ libraries/drivers/drv_sdio.c:250:64
-	ldr	r2, [r0]
-	.loc	2 250 51                        @ libraries/drivers/drv_sdio.c:250:51
-	ldr	r1, [r0, #4]
-	.loc	2 250 29                        @ libraries/drivers/drv_sdio.c:250:29
-	ldr	r0, [r0, #8]
-	.loc	2 250 56                        @ libraries/drivers/drv_sdio.c:250:56
-	muls	r2, r1, r2
+	bpl	.LBB8_17
+.Ltmp110:
+@ %bb.16:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	2 250 64                        @ libraries/drivers/drv_sdio.c:250:64
+	ldrd	r0, r1, [r6]
+	.loc	2 250 56 is_stmt 0              @ libraries/drivers/drv_sdio.c:250:56
+	mul	r2, r0, r1
 	.loc	2 250 13                        @ libraries/drivers/drv_sdio.c:250:13
 	movw	r1, :lower16:cache_buf
+	.loc	2 250 29                        @ libraries/drivers/drv_sdio.c:250:29
+	ldr	r0, [r6, #8]
+	.loc	2 250 13                        @ libraries/drivers/drv_sdio.c:250:13
 	movt	r1, :upper16:cache_buf
 	bl	rt_memcpy
 	.loc	2 251 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:251:13
 	bl	SCB_CleanInvalidateDCache
-	.loc	2 252 9                         @ libraries/drivers/drv_sdio.c:252:9
-	b	.LBB8_20
-.Ltmp119:
-.LBB8_20:
-	.loc	2 253 5                         @ libraries/drivers/drv_sdio.c:253:5
-	b	.LBB8_21
-.Ltmp120:
-.LBB8_21:
+.Ltmp111:
+.LBB8_17:
+	@DEBUG_VALUE: rthw_sdio_send_command:cmd <- $r8
+	@DEBUG_VALUE: rthw_sdio_send_command:hw_sdio <- $r7
+	@DEBUG_VALUE: rthw_sdio_send_command:data <- $r6
+	@DEBUG_VALUE: rthw_sdio_send_command:reg_cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_send_command:sdio <- $r4
+	@DEBUG_VALUE: rthw_sdio_send_command:pkg <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	2 254 1                         @ libraries/drivers/drv_sdio.c:254:1
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp121:
+	add	sp, #4
+	pop.w	{r4, r5, r6, r7, r8, r9, pc}
+.Ltmp112:
 .Lfunc_end8:
 	.size	rthw_sdio_send_command, .Lfunc_end8-rthw_sdio_send_command
 	.cfi_endproc
@@ -1358,93 +1234,92 @@ SCB_CleanInvalidateDCache:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#12
-	sub	sp, #12
-	.cfi_def_cfa_offset 12
-	movw	r1, #60804
-	movt	r1, #57344
-	movs	r0, #0
-.Ltmp122:
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
+	.cfi_offset lr, -4
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	movw	r0, #60800
+	movs	r1, #0
+	movt	r0, #57344
+	movw	r12, #16352
+.Ltmp113:
 	.loc	11 2434 17 prologue_end         @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2434:17
-	str	r0, [r1]
+	str	r1, [r0, #4]
 	.loc	11 2435 5                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2435:5
 	dsb	sy
-	movw	r0, #60800
-	movt	r0, #57344
 	.loc	11 2437 19                      @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2437:19
-	ldr	r0, [r0]
-	.loc	11 2437 12 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2437:12
-	str	r0, [sp, #8]
+	ldr	r1, [r0]
+.Ltmp114:
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:ccsidr <- $r1
+	.loc	11 0 19 is_stmt 0               @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:0:19
+	ubfx	r3, r1, #3, #10
 	.loc	11 2440 23 is_stmt 1            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2440:23
-	ldr	r0, [sp, #8]
-	ubfx	r0, r0, #13, #15
-	.loc	11 2440 10 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2440:10
-	str	r0, [sp, #4]
-	.loc	11 2441 5 is_stmt 1             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2441:5
-	b	.LBB9_1
+	ubfx	r2, r1, #13, #15
+.Ltmp115:
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
+	.loc	11 2441 5                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2441:5
+	add.w	lr, r3, #1
+	lsls	r3, r3, #30
+.Ltmp116:
+	.p2align	2
 .LBB9_1:                                @ =>This Loop Header: Depth=1
                                         @     Child Loop BB9_2 Depth 2
-.Ltmp123:
-	.loc	11 2442 25                      @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2442:25
-	ldr	r0, [sp, #8]
-	ubfx	r0, r0, #3, #10
-	.loc	11 2442 12 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2442:12
-	str	r0, [sp]
-	.loc	11 2443 7 is_stmt 1             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2443:7
-	b	.LBB9_2
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
+	.loc	11 0 5 is_stmt 0                @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:0:5
+	and.w	r1, r12, r2, lsl #5
+.Ltmp117:
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:ways <- [DW_OP_constu 3, DW_OP_shr, DW_OP_constu 1023, DW_OP_and, DW_OP_stack_value] undef
+	mov	r4, r3
+	mov	r5, lr
+.Ltmp118:
+	.p2align	2
 .LBB9_2:                                @   Parent Loop BB9_1 Depth=1
                                         @ =>  This Inner Loop Header: Depth=2
-.Ltmp124:
-	.loc	11 2444 26                      @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2444:26
-	ldr	r1, [sp, #4]
-	.loc	11 2445 26                      @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2445:26
-	ldr	r0, [sp]
-	.loc	11 2445 31 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2445:31
-	lsls	r0, r0, #30
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:ways <- [DW_OP_constu 1, DW_OP_minus, DW_OP_stack_value] $r5
 	.loc	11 2444 76 is_stmt 1            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2444:76
-	bfi	r0, r1, #5, #9
-	movw	r1, #61300
-	movt	r1, #57344
-	.loc	11 2444 21 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2444:21
-	str	r0, [r1]
-	.loc	11 2449 7 is_stmt 1             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2449:7
-	b	.LBB9_3
-.Ltmp125:
-.LBB9_3:                                @   in Loop: Header=BB9_2 Depth=2
-	.loc	11 2449 20 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2449:20
-	ldr	r0, [sp]
-	subs	r1, r0, #1
-	str	r1, [sp]
-.Ltmp126:
+	orr.w	r6, r4, r1
+.Ltmp119:
+	.loc	11 2449 23                      @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2449:23
+	subs	r5, #1
+.Ltmp120:
+	add.w	r4, r4, #-1073741824
+.Ltmp121:
+	.loc	11 2444 21                      @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2444:21
+	str.w	r6, [r0, #500]
+.Ltmp122:
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:ways <- [DW_OP_constu 2, DW_OP_minus, DW_OP_stack_value] $r5
 	.loc	11 2449 7                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2449:7
-	cmp	r0, #0
 	bne	.LBB9_2
-	b	.LBB9_4
-.Ltmp127:
-.LBB9_4:                                @   in Loop: Header=BB9_1 Depth=1
-	.loc	11 2450 5 is_stmt 1             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2450:5
-	b	.LBB9_5
-.Ltmp128:
-.LBB9_5:                                @   in Loop: Header=BB9_1 Depth=1
-	.loc	11 2450 17 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2450:17
-	ldr	r0, [sp, #4]
-	subs	r1, r0, #1
-	str	r1, [sp, #4]
-.Ltmp129:
+.Ltmp123:
+@ %bb.3:                                @   in Loop: Header=BB9_1 Depth=1
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:ways <- [DW_OP_constu 2, DW_OP_minus, DW_OP_stack_value] $r5
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
 	.loc	11 2450 5                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2450:5
-	cmp	r0, #0
+	cmp	r2, #0
+.Ltmp124:
+	.loc	11 2450 17 is_stmt 0            @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2450:17
+	sub.w	r2, r2, #1
+.Ltmp125:
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
+	.loc	11 2450 5                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2450:5
 	bne	.LBB9_1
-	b	.LBB9_6
-.Ltmp130:
-.LBB9_6:
+.Ltmp126:
+@ %bb.4:
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:ways <- [DW_OP_constu 2, DW_OP_minus, DW_OP_stack_value] $r5
+	@DEBUG_VALUE: SCB_CleanInvalidateDCache:sets <- $r2
 	.loc	11 2452 5 is_stmt 1             @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2452:5
 	dsb	sy
 	.loc	11 2453 5                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2453:5
 	isb	sy
 	.loc	11 2455 1                       @ libraries/STM32H7xx_HAL/CMSIS/Include\core_cm7.h:2455:1
-	add	sp, #12
-	bx	lr
-.Ltmp131:
+	pop	{r4, r5, r6, pc}
+.Ltmp127:
 .Lfunc_end9:
 	.size	SCB_CleanInvalidateDCache, .Lfunc_end9-SCB_CleanInvalidateDCache
 	.cfi_endproc
@@ -1462,212 +1337,270 @@ get_order:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#12
-	sub	sp, #12
-	.cfi_def_cfa_offset 12
-	str	r0, [sp, #8]
-	movs	r0, #0
+	@DEBUG_VALUE: get_order:data <- $r0
+	mov	r1, r0
+.Ltmp128:
+	@DEBUG_VALUE: get_order:data <- $r1
+	.loc	2 61 5 prologue_end             @ libraries/drivers/drv_sdio.c:61:5
+	cmp	r0, #255
+	mov.w	r0, #0
+.Ltmp129:
+	@DEBUG_VALUE: get_order:order <- 0
+	bgt	.LBB10_5
+.Ltmp130:
+@ %bb.1:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:5
+	subs	r2, r1, #2
+	cmp	r2, #30
+	bhi	.LBB10_12
+.Ltmp131:
+@ %bb.2:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+.LCPI10_0:
+	tbb	[pc, r2]
 .Ltmp132:
-	.loc	2 59 9 prologue_end             @ libraries/drivers/drv_sdio.c:59:9
-	str	r0, [sp, #4]
-	.loc	2 61 13                         @ libraries/drivers/drv_sdio.c:61:13
-	ldr	r0, [sp, #8]
-	.loc	2 61 5 is_stmt 0                @ libraries/drivers/drv_sdio.c:61:5
-	str	r0, [sp]                        @ 4-byte Spill
-	cmp	r0, #1
-	beq	.LBB10_15
-	b	.LBB10_1
-.LBB10_1:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp	r0, #2
-	beq	.LBB10_16
-	b	.LBB10_2
-.LBB10_2:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp	r0, #4
-	beq	.LBB10_17
-	b	.LBB10_3
-.LBB10_3:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp	r0, #8
-	beq	.LBB10_18
-	b	.LBB10_4
+@ %bb.3:
+.LJTI10_0:
+	.byte	(.LBB10_4-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_17-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_18-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_19-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_14-(.LCPI10_0+4))/2
+	.byte	(.LBB10_20-(.LCPI10_0+4))/2
+	.p2align	1
 .LBB10_4:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp	r0, #16
-	beq	.LBB10_19
-	b	.LBB10_5
-.LBB10_5:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp	r0, #32
-	beq	.LBB10_20
-	b	.LBB10_6
-.LBB10_6:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp	r0, #64
-	beq	.LBB10_21
-	b	.LBB10_7
-.LBB10_7:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp	r0, #128
-	beq	.LBB10_22
-	b	.LBB10_8
-.LBB10_8:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp.w	r0, #256
-	beq	.LBB10_23
-	b	.LBB10_9
-.LBB10_9:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp.w	r0, #512
-	beq	.LBB10_24
-	b	.LBB10_10
-.LBB10_10:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp.w	r0, #1024
-	beq	.LBB10_25
-	b	.LBB10_11
-.LBB10_11:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp.w	r0, #2048
-	beq	.LBB10_26
-	b	.LBB10_12
-.LBB10_12:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp.w	r0, #4096
-	beq	.LBB10_27
-	b	.LBB10_13
-.LBB10_13:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp.w	r0, #8192
-	beq	.LBB10_28
-	b	.LBB10_14
-.LBB10_14:
-	ldr	r0, [sp]                        @ 4-byte Reload
-	cmp.w	r0, #16384
-	beq	.LBB10_29
-	b	.LBB10_30
-.LBB10_15:
-	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
-	movs	r0, #0
 .Ltmp133:
-	.loc	2 64 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:64:15
-	str	r0, [sp, #4]
-	.loc	2 65 9                          @ libraries/drivers/drv_sdio.c:65:9
-	b	.LBB10_31
-.LBB10_16:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
+	@DEBUG_VALUE: get_order:order <- 0
 	movs	r0, #1
-	.loc	2 67 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:67:15
-	str	r0, [sp, #4]
-	.loc	2 68 9                          @ libraries/drivers/drv_sdio.c:68:9
-	b	.LBB10_31
-.LBB10_17:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #2
-	.loc	2 70 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:70:15
-	str	r0, [sp, #4]
-	.loc	2 71 9                          @ libraries/drivers/drv_sdio.c:71:9
-	b	.LBB10_31
-.LBB10_18:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #3
-	.loc	2 73 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:73:15
-	str	r0, [sp, #4]
-	.loc	2 74 9                          @ libraries/drivers/drv_sdio.c:74:9
-	b	.LBB10_31
-.LBB10_19:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #4
-	.loc	2 76 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:76:15
-	str	r0, [sp, #4]
-	.loc	2 77 9                          @ libraries/drivers/drv_sdio.c:77:9
-	b	.LBB10_31
-.LBB10_20:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #5
-	.loc	2 79 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:79:15
-	str	r0, [sp, #4]
-	.loc	2 80 9                          @ libraries/drivers/drv_sdio.c:80:9
-	b	.LBB10_31
-.LBB10_21:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #6
-	.loc	2 82 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:82:15
-	str	r0, [sp, #4]
-	.loc	2 83 9                          @ libraries/drivers/drv_sdio.c:83:9
-	b	.LBB10_31
-.LBB10_22:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #7
-	.loc	2 85 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:85:15
-	str	r0, [sp, #4]
-	.loc	2 86 9                          @ libraries/drivers/drv_sdio.c:86:9
-	b	.LBB10_31
-.LBB10_23:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #8
-	.loc	2 88 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:88:15
-	str	r0, [sp, #4]
-	.loc	2 89 9                          @ libraries/drivers/drv_sdio.c:89:9
-	b	.LBB10_31
-.LBB10_24:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #9
-	.loc	2 91 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:91:15
-	str	r0, [sp, #4]
-	.loc	2 92 9                          @ libraries/drivers/drv_sdio.c:92:9
-	b	.LBB10_31
-.LBB10_25:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #10
-	.loc	2 94 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:94:15
-	str	r0, [sp, #4]
-	.loc	2 95 9                          @ libraries/drivers/drv_sdio.c:95:9
-	b	.LBB10_31
-.LBB10_26:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #11
-	.loc	2 97 15 is_stmt 1               @ libraries/drivers/drv_sdio.c:97:15
-	str	r0, [sp, #4]
-	.loc	2 98 9                          @ libraries/drivers/drv_sdio.c:98:9
-	b	.LBB10_31
-.LBB10_27:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #12
-	.loc	2 100 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:100:15
-	str	r0, [sp, #4]
-	.loc	2 101 9                         @ libraries/drivers/drv_sdio.c:101:9
-	b	.LBB10_31
-.LBB10_28:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #13
-	.loc	2 103 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:103:15
-	str	r0, [sp, #4]
-	.loc	2 104 9                         @ libraries/drivers/drv_sdio.c:104:9
-	b	.LBB10_31
-.LBB10_29:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #14
-	.loc	2 106 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:106:15
-	str	r0, [sp, #4]
-	.loc	2 107 9                         @ libraries/drivers/drv_sdio.c:107:9
-	b	.LBB10_31
-.LBB10_30:
-	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
-	movs	r0, #0
-	.loc	2 109 15 is_stmt 1              @ libraries/drivers/drv_sdio.c:109:15
-	str	r0, [sp, #4]
-	.loc	2 110 9                         @ libraries/drivers/drv_sdio.c:110:9
-	b	.LBB10_31
 .Ltmp134:
-.LBB10_31:
-	.loc	2 112 12                        @ libraries/drivers/drv_sdio.c:112:12
-	ldr	r0, [sp, #4]
-	.loc	2 112 5 is_stmt 0               @ libraries/drivers/drv_sdio.c:112:5
-	add	sp, #12
+	@DEBUG_VALUE: get_order:order <- 1
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:112:5
 	bx	lr
 .Ltmp135:
+.LBB10_5:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 61 5                          @ libraries/drivers/drv_sdio.c:61:5
+	cmp.w	r1, #2048
+	blt	.LBB10_9
+.Ltmp136:
+@ %bb.6:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	cmp.w	r1, #8192
+	bge	.LBB10_15
+.Ltmp137:
+@ %bb.7:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	cmp.w	r1, #2048
+	beq	.LBB10_21
+.Ltmp138:
+@ %bb.8:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	cmp.w	r1, #4096
+	itt	eq
+	moveq	r0, #12
+.Ltmp139:
+	@DEBUG_VALUE: get_order:order <- 12
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bxeq	lr
+	b	.LBB10_14
+.Ltmp140:
+.LBB10_9:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 61 5                          @ libraries/drivers/drv_sdio.c:61:5
+	cmp.w	r1, #256
+	beq	.LBB10_22
+.Ltmp141:
+@ %bb.10:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	cmp.w	r1, #512
+	beq	.LBB10_23
+.Ltmp142:
+@ %bb.11:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	cmp.w	r1, #1024
+	itt	eq
+	moveq	r0, #10
+.Ltmp143:
+	@DEBUG_VALUE: get_order:order <- 10
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bxeq	lr
+	b	.LBB10_14
+.Ltmp144:
+.LBB10_12:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 61 5                          @ libraries/drivers/drv_sdio.c:61:5
+	cmp	r1, #64
+	beq	.LBB10_25
+.Ltmp145:
+@ %bb.13:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	cmp	r1, #128
+	itt	eq
+	moveq	r0, #7
+.Ltmp146:
+	@DEBUG_VALUE: get_order:order <- 7
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bxeq	lr
+.Ltmp147:
+.LBB10_14:
+	@DEBUG_VALUE: get_order:order <- $r0
+	bx	lr
+.Ltmp148:
+.LBB10_15:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 61 5                          @ libraries/drivers/drv_sdio.c:61:5
+	beq	.LBB10_24
+.Ltmp149:
+@ %bb.16:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	cmp.w	r1, #16384
+	itt	eq
+	moveq	r0, #14
+.Ltmp150:
+	@DEBUG_VALUE: get_order:order <- 14
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bxeq	lr
+	b	.LBB10_14
+.Ltmp151:
+.LBB10_17:
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #2
+.Ltmp152:
+	@DEBUG_VALUE: get_order:order <- 2
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp153:
+.LBB10_18:
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #3
+.Ltmp154:
+	@DEBUG_VALUE: get_order:order <- 3
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp155:
+.LBB10_19:
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #4
+.Ltmp156:
+	@DEBUG_VALUE: get_order:order <- 4
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp157:
+.LBB10_20:
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #5
+.Ltmp158:
+	@DEBUG_VALUE: get_order:order <- 5
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp159:
+.LBB10_21:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #11
+.Ltmp160:
+	@DEBUG_VALUE: get_order:order <- 11
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp161:
+.LBB10_22:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #8
+.Ltmp162:
+	@DEBUG_VALUE: get_order:order <- 8
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp163:
+.LBB10_23:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #9
+.Ltmp164:
+	@DEBUG_VALUE: get_order:order <- 9
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp165:
+.LBB10_24:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #13
+.Ltmp166:
+	@DEBUG_VALUE: get_order:order <- 13
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp167:
+.LBB10_25:
+	@DEBUG_VALUE: get_order:data <- $r1
+	@DEBUG_VALUE: get_order:order <- 0
+	.loc	2 0 5                           @ libraries/drivers/drv_sdio.c:0:5
+	movs	r0, #6
+.Ltmp168:
+	@DEBUG_VALUE: get_order:order <- 6
+	@DEBUG_VALUE: get_order:order <- $r0
+	.loc	2 112 5                         @ libraries/drivers/drv_sdio.c:112:5
+	bx	lr
+.Ltmp169:
 .Lfunc_end10:
 	.size	get_order, .Lfunc_end10-get_order
 	.cfi_endproc
@@ -1685,205 +1618,181 @@ rthw_sdio_wait_completed:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- $r0
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- $r0
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #20]
-.Ltmp136:
-	.loc	2 123 32 prologue_end           @ libraries/drivers/drv_sdio.c:123:32
-	ldr	r0, [sp, #20]
-	.loc	2 123 38 is_stmt 0              @ libraries/drivers/drv_sdio.c:123:38
-	ldr.w	r0, [r0, #168]
-	.loc	2 123 43                        @ libraries/drivers/drv_sdio.c:123:43
-	ldr	r0, [r0]
-	.loc	2 123 26                        @ libraries/drivers/drv_sdio.c:123:26
-	str	r0, [sp, #12]
-	.loc	2 124 34 is_stmt 1              @ libraries/drivers/drv_sdio.c:124:34
-	ldr	r0, [sp, #20]
-	.loc	2 124 49 is_stmt 0              @ libraries/drivers/drv_sdio.c:124:49
-	ldr	r0, [r0, #4]
-	.loc	2 124 24                        @ libraries/drivers/drv_sdio.c:124:24
-	str	r0, [sp, #8]
-.Ltmp137:
-	.loc	2 126 24 is_stmt 1              @ libraries/drivers/drv_sdio.c:126:24
-	ldr	r0, [sp, #20]
-	.loc	2 126 30 is_stmt 0              @ libraries/drivers/drv_sdio.c:126:30
-	adds	r0, #136
-	.loc	2 127 23 is_stmt 1              @ libraries/drivers/drv_sdio.c:127:23
-	str	r0, [sp, #4]                    @ 4-byte Spill
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 24
+.Ltmp170:
+	.loc	2 123 38 prologue_end           @ libraries/drivers/drv_sdio.c:123:38
+	ldr.w	r1, [r0, #168]
+	.loc	2 124 49                        @ libraries/drivers/drv_sdio.c:124:49
+	ldr	r6, [r0, #4]
+.Ltmp171:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	.loc	2 126 30                        @ libraries/drivers/drv_sdio.c:126:30
+	add.w	r4, r0, #136
+	.loc	2 127 23                        @ libraries/drivers/drv_sdio.c:127:23
 	movw	r0, #5000
+.Ltmp172:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 123 43                        @ libraries/drivers/drv_sdio.c:123:43
+	ldr	r5, [r1]
+.Ltmp173:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	.loc	2 127 23                        @ libraries/drivers/drv_sdio.c:127:23
 	bl	rt_tick_from_millisecond
 	mov	r3, r0
+.Ltmp174:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- [DW_OP_plus_uconst 4, DW_OP_deref] $sp
 	.loc	2 126 9                         @ libraries/drivers/drv_sdio.c:126:9
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	mov	r2, sp
-	add	r1, sp, #16
-	str	r1, [r2]
 	mov.w	r1, #-1
 	movs	r2, #6
+	add	r0, sp, #4
+	str	r0, [sp]
+	mov	r0, r4
 	bl	rt_event_recv
-.Ltmp138:
+.Ltmp175:
 	.loc	2 126 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:126:9
-	cbz	r0, .LBB11_4
-	b	.LBB11_1
-.LBB11_1:
-.Ltmp139:
+	cbz	r0, .LBB11_2
+.Ltmp176:
+@ %bb.1:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- [DW_OP_plus_uconst 4, DW_OP_deref] $sp
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 129 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:129:9
-	b	.LBB11_2
-.LBB11_2:
-.Ltmp140:
-	.loc	2 129 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:129:9
 	movw	r0, :lower16:.L.str
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.9
-	movt	r0, :upper16:.L.str.9
+	adr	r0, .LCPI11_0
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB11_3
-.Ltmp141:
-.LBB11_3:
-	.loc	2 130 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:130:9
-	ldr	r1, [sp, #12]
 	mvn	r0, #1
-	.loc	2 130 18 is_stmt 0              @ libraries/drivers/drv_sdio.c:130:18
-	str	r0, [r1, #32]
-	.loc	2 131 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:131:9
-	b	.LBB11_16
-.Ltmp142:
-.LBB11_4:
-	.loc	2 134 20                        @ libraries/drivers/drv_sdio.c:134:20
-	ldr	r0, [sp, #8]
-	.loc	2 134 29 is_stmt 0              @ libraries/drivers/drv_sdio.c:134:29
-	ldr	r0, [r0, #20]
-	.loc	2 134 5                         @ libraries/drivers/drv_sdio.c:134:5
-	ldr	r1, [sp, #12]
+.Ltmp177:
+	.loc	2 131 9                         @ libraries/drivers/drv_sdio.c:131:9
+	b	.LBB11_10
+.Ltmp178:
+.LBB11_2:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- [DW_OP_plus_uconst 4, DW_OP_deref] $sp
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 134 29                        @ libraries/drivers/drv_sdio.c:134:29
+	ldr	r0, [r6, #20]
+.Ltmp179:
+	.loc	2 135 9                         @ libraries/drivers/drv_sdio.c:135:9
+	ldr	r1, [r5, #24]
+	and	r1, r1, #15
+.Ltmp180:
 	.loc	2 134 18                        @ libraries/drivers/drv_sdio.c:134:18
-	str	r0, [r1, #8]
-.Ltmp143:
-	.loc	2 135 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:135:9
-	ldr	r0, [sp, #12]
-	ldr	r0, [r0, #24]
-	and	r0, r0, #15
-.Ltmp144:
-	.loc	2 135 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:135:9
-	cmp	r0, #3
-	bne	.LBB11_6
-	b	.LBB11_5
-.LBB11_5:
-.Ltmp145:
-	.loc	2 137 24 is_stmt 1              @ libraries/drivers/drv_sdio.c:137:24
-	ldr	r0, [sp, #8]
-	.loc	2 137 33 is_stmt 0              @ libraries/drivers/drv_sdio.c:137:33
-	ldr	r0, [r0, #24]
-	.loc	2 137 9                         @ libraries/drivers/drv_sdio.c:137:9
-	ldr	r1, [sp, #12]
-	.loc	2 137 22                        @ libraries/drivers/drv_sdio.c:137:22
-	str	r0, [r1, #12]
-	.loc	2 138 24 is_stmt 1              @ libraries/drivers/drv_sdio.c:138:24
-	ldr	r0, [sp, #8]
-	.loc	2 138 33 is_stmt 0              @ libraries/drivers/drv_sdio.c:138:33
-	ldr	r0, [r0, #28]
-	.loc	2 138 9                         @ libraries/drivers/drv_sdio.c:138:9
-	ldr	r1, [sp, #12]
-	.loc	2 138 22                        @ libraries/drivers/drv_sdio.c:138:22
-	str	r0, [r1, #16]
-	.loc	2 139 24 is_stmt 1              @ libraries/drivers/drv_sdio.c:139:24
-	ldr	r0, [sp, #8]
-	.loc	2 139 33 is_stmt 0              @ libraries/drivers/drv_sdio.c:139:33
-	ldr	r0, [r0, #32]
-	.loc	2 139 9                         @ libraries/drivers/drv_sdio.c:139:9
-	ldr	r1, [sp, #12]
-	.loc	2 139 22                        @ libraries/drivers/drv_sdio.c:139:22
-	str	r0, [r1, #20]
-	.loc	2 140 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:140:5
-	b	.LBB11_6
-.Ltmp146:
-.LBB11_6:
-	.loc	2 142 9                         @ libraries/drivers/drv_sdio.c:142:9
-	ldr	r0, [sp, #16]
+	str	r0, [r5, #8]
+	.loc	2 135 9                         @ libraries/drivers/drv_sdio.c:135:9
+	cmp	r1, #3
+	bne	.LBB11_4
+.Ltmp181:
+@ %bb.3:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- [DW_OP_plus_uconst 4, DW_OP_deref] $sp
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 137 33                        @ libraries/drivers/drv_sdio.c:137:33
+	ldr	r0, [r6, #24]
+	.loc	2 137 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:137:22
+	str	r0, [r5, #12]
+	.loc	2 138 33 is_stmt 1              @ libraries/drivers/drv_sdio.c:138:33
+	ldr	r0, [r6, #28]
+	.loc	2 138 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:138:22
+	str	r0, [r5, #16]
+	.loc	2 139 33 is_stmt 1              @ libraries/drivers/drv_sdio.c:139:33
+	ldr	r0, [r6, #32]
+	.loc	2 139 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:139:22
+	str	r0, [r5, #20]
+.Ltmp182:
+.LBB11_4:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- [DW_OP_plus_uconst 4, DW_OP_deref] $sp
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 0 22                          @ libraries/drivers/drv_sdio.c:0:22
 	movs	r1, #63
+.Ltmp183:
+	.loc	2 142 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:142:9
+	ldr	r0, [sp, #4]
+.Ltmp184:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- $r0
+	.loc	2 0 9 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:9
 	movt	r1, #2304
-.Ltmp147:
-	.loc	2 142 9 is_stmt 0               @ libraries/drivers/drv_sdio.c:142:9
+.Ltmp185:
+	.loc	2 142 9                         @ libraries/drivers/drv_sdio.c:142:9
 	tst	r0, r1
-	beq	.LBB11_12
-	b	.LBB11_7
-.LBB11_7:
-.Ltmp148:
+	beq	.LBB11_9
+.Ltmp186:
+@ %bb.5:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- $r0
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 144 43 is_stmt 1              @ libraries/drivers/drv_sdio.c:144:43
-	ldrb.w	r0, [sp, #16]
 	lsls	r0, r0, #31
-	cbz	r0, .LBB11_10
-	b	.LBB11_8
-.LBB11_8:
-	.loc	2 144 47 is_stmt 0              @ libraries/drivers/drv_sdio.c:144:47
-	ldr	r0, [sp, #12]
-.Ltmp149:
-	.loc	2 144 13                        @ libraries/drivers/drv_sdio.c:144:13
-	ldrb	r0, [r0, #24]
+.Ltmp187:
+	beq	.LBB11_8
+.Ltmp188:
+@ %bb.6:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 144 13 is_stmt 0              @ libraries/drivers/drv_sdio.c:144:13
+	ldrb	r0, [r5, #24]
 	tst.w	r0, #5
-	beq	.LBB11_10
-	b	.LBB11_9
-.LBB11_9:
-.Ltmp150:
-	.loc	2 146 13 is_stmt 1              @ libraries/drivers/drv_sdio.c:146:13
-	ldr	r1, [sp, #12]
+	beq	.LBB11_8
+.Ltmp189:
+@ %bb.7:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 0 13                          @ libraries/drivers/drv_sdio.c:0:13
 	movs	r0, #0
-	.loc	2 146 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:146:22
-	str	r0, [r1, #32]
-	.loc	2 147 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:147:9
-	b	.LBB11_11
-.Ltmp151:
-.LBB11_10:
-	.loc	2 150 13                        @ libraries/drivers/drv_sdio.c:150:13
-	ldr	r1, [sp, #12]
+	b	.LBB11_10
+.Ltmp190:
+.LBB11_8:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
 	mov.w	r0, #-1
-	.loc	2 150 22 is_stmt 0              @ libraries/drivers/drv_sdio.c:150:22
-	str	r0, [r1, #32]
-	b	.LBB11_11
-.Ltmp152:
-.LBB11_11:
-	.loc	2 152 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:152:5
-	b	.LBB11_13
-.Ltmp153:
-.LBB11_12:
-	.loc	2 155 9                         @ libraries/drivers/drv_sdio.c:155:9
-	ldr	r1, [sp, #12]
+	b	.LBB11_10
+.Ltmp191:
+.LBB11_9:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:status <- $r0
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
 	movs	r0, #0
-	.loc	2 155 18 is_stmt 0              @ libraries/drivers/drv_sdio.c:155:18
-	str	r0, [r1, #32]
-	b	.LBB11_13
-.Ltmp154:
-.LBB11_13:
-	.loc	2 159 9 is_stmt 1               @ libraries/drivers/drv_sdio.c:159:9
-	ldr	r0, [sp, #12]
-	.loc	2 159 14 is_stmt 0              @ libraries/drivers/drv_sdio.c:159:14
-	ldr	r0, [r0, #32]
-.Ltmp155:
-	.loc	2 159 9                         @ libraries/drivers/drv_sdio.c:159:9
-	cbnz	r0, .LBB11_15
-	b	.LBB11_14
-.LBB11_14:
-.Ltmp156:
-	.loc	2 162 5 is_stmt 1               @ libraries/drivers/drv_sdio.c:162:5
-	b	.LBB11_16
-.Ltmp157:
-.LBB11_15:
-	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:5
-	b	.LBB11_16
-.LBB11_16:
+.Ltmp192:
+.LBB11_10:
+	@DEBUG_VALUE: rthw_sdio_wait_completed:hw_sdio <- $r6
+	@DEBUG_VALUE: rthw_sdio_wait_completed:cmd <- $r5
+	@DEBUG_VALUE: rthw_sdio_wait_completed:sdio <- [DW_OP_LLVM_entry_value 1] $r0
+	str	r0, [r5, #32]
 	.loc	2 167 1 is_stmt 1               @ libraries/drivers/drv_sdio.c:167:1
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp158:
+	add	sp, #8
+	pop	{r4, r5, r6, pc}
+.Ltmp193:
+	.p2align	2
+@ %bb.11:
+	.loc	2 0 1 is_stmt 0                 @ libraries/drivers/drv_sdio.c:0:1
+.LCPI11_0:
+.L.str.9:
+	.asciz	"wait cmd completed timeout\000"
 .Lfunc_end11:
 	.size	rthw_sdio_wait_completed, .Lfunc_end11-rthw_sdio_wait_completed
 	.cfi_endproc
@@ -1896,30 +1805,10 @@ rthw_sdio_wait_completed:
 	.asciz	"[E/drv.sdio] "
 	.size	.L.str, 14
 
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"malloc rthw_sdio fail"
-	.size	.L.str.1, 22
-
 	.type	.L.str.2,%object                @ @.str.2
 .L.str.2:
 	.asciz	"\n"
 	.size	.L.str.2, 2
-
-	.type	.L.str.3,%object                @ @.str.3
-.L.str.3:
-	.asciz	"alloc host fail"
-	.size	.L.str.3, 16
-
-	.type	.L.str.4,%object                @ @.str.4
-.L.str.4:
-	.asciz	"sdio"
-	.size	.L.str.4, 5
-
-	.type	.L.str.5,%object                @ @.str.5
-.L.str.5:
-	.asciz	"sdio2"
-	.size	.L.str.5, 6
 
 	.type	ops,%object                     @ @ops
 	.section	.rodata.ops,"a",%progbits
@@ -1945,17 +1834,6 @@ host2:
 	.long	0
 	.size	host2, 4
 
-	.type	.L.str.6,%object                @ @.str.6
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.6:
-	.asciz	"host create fail"
-	.size	.L.str.6, 17
-
-	.type	.L.str.7,%object                @ @.str.7
-.L.str.7:
-	.asciz	"host2 create fail"
-	.size	.L.str.7, 18
-
 	.hidden	__rt_init_rt_hw_sdio_init       @ @__rt_init_rt_hw_sdio_init
 	.type	__rt_init_rt_hw_sdio_init,%object
 	.section	.rti_fn.3,"a",%progbits
@@ -1966,17 +1844,6 @@ __tagsym$$used.0:
 	.long	rt_hw_sdio_init
 	.size	__rt_init_rt_hw_sdio_init, 4
 
-	.type	.L.str.8,%object                @ @.str.8
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.8:
-	.asciz	"size <= SDIO_BUFF_SIZE"
-	.size	.L.str.8, 23
-
-	.type	.L__FUNCTION__.rthw_sdio_request,%object @ @__FUNCTION__.rthw_sdio_request
-.L__FUNCTION__.rthw_sdio_request:
-	.asciz	"rthw_sdio_request"
-	.size	.L__FUNCTION__.rthw_sdio_request, 18
-
 	.type	cache_buf,%object               @ @cache_buf
 	.section	.bss.cache_buf,"aw",%nobits
 	.p2align	5
@@ -1984,14 +1851,547 @@ cache_buf:
 	.zero	4096
 	.size	cache_buf, 4096
 
-	.type	.L.str.9,%object                @ @.str.9
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.9:
-	.asciz	"wait cmd completed timeout"
-	.size	.L.str.9, 27
-
 	.globl	__rt_init_rt_hw_sdio_init
 	.file	12 "E:\\Smart-access-control\\Hardware\\CODE" "libraries/STM32H7xx_HAL/STM32H7xx_HAL_Driver/Inc/stm32h7xx_ll_sdmmc.h"
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp1-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Lfunc_end0-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp9-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp9-.Lfunc_begin1
+	.long	.Ltmp24-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp24-.Lfunc_begin1
+	.long	.Ltmp25-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp25-.Lfunc_begin1
+	.long	.Ltmp31-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp7-.Lfunc_begin1
+	.long	.Ltmp10-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp10-.Lfunc_begin1
+	.long	.Ltmp12-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp12-.Lfunc_begin1
+	.long	.Ltmp24-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp24-.Lfunc_begin1
+	.long	.Ltmp25-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp25-.Lfunc_begin1
+	.long	.Ltmp26-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp28-.Lfunc_begin1
+	.long	.Ltmp31-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp13-.Lfunc_begin1
+	.long	.Ltmp15-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp15-.Lfunc_begin1
+	.long	.Ltmp24-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp28-.Lfunc_begin1
+	.long	.Ltmp29-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp48-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp48-.Lfunc_begin6
+	.long	.Ltmp56-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp44-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp44-.Lfunc_begin6
+	.long	.Ltmp61-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp46-.Lfunc_begin6
+	.long	.Ltmp61-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp49-.Lfunc_begin6
+	.long	.Ltmp56-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp51-.Lfunc_begin6
+	.long	.Ltmp55-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp65-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp65-.Lfunc_begin7
+	.long	.Ltmp70-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp62-.Lfunc_begin7
+	.long	.Ltmp71-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp63-.Lfunc_begin7
+	.long	.Lfunc_end7-.Lfunc_begin7
+	.short	5                               @ Loc expr size
+	.byte	16                              @ DW_OP_constu
+	.byte	128                             @ 200000000
+	.byte	132                             @ 
+	.byte	175                             @ 
+	.byte	95                              @ 
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp72-.Lfunc_begin7
+	.long	.Lfunc_end7-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp63-.Lfunc_begin7
+	.long	.Lfunc_end7-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	92                              @ DW_OP_reg12
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp68-.Lfunc_begin7
+	.long	.Ltmp69-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp69-.Lfunc_begin7
+	.long	.Ltmp70-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp72-.Lfunc_begin7
+	.long	.Ltmp79-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp86-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp86-.Lfunc_begin8
+	.long	.Ltmp112-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp85-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp85-.Lfunc_begin8
+	.long	.Ltmp89-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp89-.Lfunc_begin8
+	.long	.Lfunc_end8-.Lfunc_begin8
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Ltmp84-.Lfunc_begin8
+	.long	.Ltmp112-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Ltmp87-.Lfunc_begin8
+	.long	.Ltmp112-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Ltmp88-.Lfunc_begin8
+	.long	.Ltmp112-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Ltmp91-.Lfunc_begin8
+	.long	.Ltmp92-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp93-.Lfunc_begin8
+	.long	.Ltmp112-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Ltmp114-.Lfunc_begin9
+	.long	.Ltmp116-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Ltmp115-.Lfunc_begin9
+	.long	.Lfunc_end9-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc26:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Lfunc_begin10-.Lfunc_begin10
+	.long	.Ltmp128-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp128-.Lfunc_begin10
+	.long	.Ltmp132-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp135-.Lfunc_begin10
+	.long	.Ltmp147-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp148-.Lfunc_begin10
+	.long	.Ltmp151-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp159-.Lfunc_begin10
+	.long	.Lfunc_end10-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc27:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Ltmp129-.Lfunc_begin10
+	.long	.Ltmp132-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp133-.Lfunc_begin10
+	.long	.Ltmp134-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp134-.Lfunc_begin10
+	.long	.Ltmp135-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp135-.Lfunc_begin10
+	.long	.Ltmp139-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp139-.Lfunc_begin10
+	.long	.Ltmp140-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp140-.Lfunc_begin10
+	.long	.Ltmp143-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp143-.Lfunc_begin10
+	.long	.Ltmp144-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp144-.Lfunc_begin10
+	.long	.Ltmp146-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp146-.Lfunc_begin10
+	.long	.Ltmp148-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp148-.Lfunc_begin10
+	.long	.Ltmp150-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp150-.Lfunc_begin10
+	.long	.Ltmp151-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp151-.Lfunc_begin10
+	.long	.Ltmp152-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp152-.Lfunc_begin10
+	.long	.Ltmp153-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp153-.Lfunc_begin10
+	.long	.Ltmp154-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp154-.Lfunc_begin10
+	.long	.Ltmp155-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp155-.Lfunc_begin10
+	.long	.Ltmp156-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp156-.Lfunc_begin10
+	.long	.Ltmp157-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp157-.Lfunc_begin10
+	.long	.Ltmp158-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp158-.Lfunc_begin10
+	.long	.Ltmp159-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp159-.Lfunc_begin10
+	.long	.Ltmp160-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp160-.Lfunc_begin10
+	.long	.Ltmp161-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp161-.Lfunc_begin10
+	.long	.Ltmp162-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp162-.Lfunc_begin10
+	.long	.Ltmp163-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp163-.Lfunc_begin10
+	.long	.Ltmp164-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp164-.Lfunc_begin10
+	.long	.Ltmp165-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp165-.Lfunc_begin10
+	.long	.Ltmp166-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp166-.Lfunc_begin10
+	.long	.Ltmp167-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp167-.Lfunc_begin10
+	.long	.Ltmp168-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp168-.Lfunc_begin10
+	.long	.Lfunc_end10-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc28:
+	.long	-1
+	.long	.Lfunc_begin11                  @   base address
+	.long	.Lfunc_begin11-.Lfunc_begin11
+	.long	.Ltmp172-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp172-.Lfunc_begin11
+	.long	.Ltmp193-.Lfunc_begin11
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc29:
+	.long	-1
+	.long	.Lfunc_begin11                  @   base address
+	.long	.Ltmp171-.Lfunc_begin11
+	.long	.Ltmp193-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc30:
+	.long	-1
+	.long	.Lfunc_begin11                  @   base address
+	.long	.Ltmp173-.Lfunc_begin11
+	.long	.Ltmp193-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc31:
+	.long	-1
+	.long	.Lfunc_begin11                  @   base address
+	.long	.Ltmp174-.Lfunc_begin11
+	.long	.Ltmp184-.Lfunc_begin11
+	.short	2                               @ Loc expr size
+	.byte	125                             @ DW_OP_breg13
+	.byte	4                               @ 4
+	.long	.Ltmp184-.Lfunc_begin11
+	.long	.Ltmp187-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp191-.Lfunc_begin11
+	.long	.Ltmp192-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -2357,7 +2757,7 @@ cache_buf:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2372,7 +2772,7 @@ cache_buf:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2441,6 +2841,21 @@ cache_buf:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	36                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	37                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2459,7 +2874,7 @@ cache_buf:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	37                              @ Abbreviation Code
+	.byte	38                              @ Abbreviation Code
 	.byte	11                              @ DW_TAG_lexical_block
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2468,7 +2883,22 @@ cache_buf:
 	.byte	1                               @ DW_FORM_addr
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	38                              @ Abbreviation Code
+	.byte	39                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	40                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2487,11 +2917,11 @@ cache_buf:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	39                              @ Abbreviation Code
+	.byte	41                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2502,7 +2932,22 @@ cache_buf:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	40                              @ Abbreviation Code
+	.byte	42                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	43                              @ Abbreviation Code
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
@@ -2517,7 +2962,20 @@ cache_buf:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	41                              @ Abbreviation Code
+	.byte	44                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	45                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2538,7 +2996,7 @@ cache_buf:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	42                              @ Abbreviation Code
+	.byte	46                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	11                              @ DW_AT_byte_size
@@ -2557,7 +3015,7 @@ cache_buf:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x1728 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x1744 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -4734,7 +5192,7 @@ cache_buf:
 	.long	622                             @ DW_AT_type
 	.byte	6                               @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	30                              @ Abbrev [30] 0x1166:0x51 DW_TAG_subprogram
+	.byte	30                              @ Abbrev [30] 0x1166:0x55 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4744,40 +5202,32 @@ cache_buf:
 	.short	305                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	31                              @ Abbrev [31] 0x117a:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	31                              @ Abbrev [31] 0x117a:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	305                             @ DW_AT_decl_line
 	.long	108                             @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1189:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	32                              @ Abbrev [32] 0x118a:0x10 DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string309                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	307                             @ DW_AT_decl_line
-	.long	5296                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1198:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	5324                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x119a:0x10 DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string311                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	308                             @ DW_AT_decl_line
 	.long	3313                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x11a7:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	32                              @ Abbrev [32] 0x11aa:0x10 DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string355                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	309                             @ DW_AT_decl_line
 	.long	592                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	33                              @ Abbrev [33] 0x11b7:0x52 DW_TAG_subprogram
+	.byte	33                              @ Abbrev [33] 0x11bb:0x55 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4788,37 +5238,31 @@ cache_buf:
 	.byte	1                               @ DW_AT_prototyped
 	.long	108                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	31                              @ Abbrev [31] 0x11cf:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	31                              @ Abbrev [31] 0x11d3:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string310                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	375                             @ DW_AT_decl_line
-	.long	5933                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x11de:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	5961                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x11e3:0x10 DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
+	.long	.Linfo_string309                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	378                             @ DW_AT_decl_line
+	.long	5324                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x11f3:0x10 DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	377                             @ DW_AT_decl_line
 	.long	108                             @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x11ed:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string309                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.short	378                             @ DW_AT_decl_line
-	.long	5296                            @ DW_AT_type
-	.byte	34                              @ Abbrev [34] 0x11fc:0xc DW_TAG_label
+	.byte	34                              @ Abbrev [34] 0x1203:0xc DW_TAG_label
 	.long	.Linfo_string95                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	437                             @ DW_AT_decl_line
-	.long	.Ltmp26                         @ DW_AT_low_pc
+	.long	.Ltmp30                         @ DW_AT_low_pc
 	.byte	0                               @ End Of Children Mark
-	.byte	35                              @ Abbrev [35] 0x1209:0x14 DW_TAG_subprogram
+	.byte	35                              @ Abbrev [35] 0x1210:0x14 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4828,7 +5272,7 @@ cache_buf:
 	.short	443                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	35                              @ Abbrev [35] 0x121d:0x14 DW_TAG_subprogram
+	.byte	35                              @ Abbrev [35] 0x1224:0x14 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4838,7 +5282,7 @@ cache_buf:
 	.short	453                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	33                              @ Abbrev [33] 0x1231:0x38 DW_TAG_subprogram
+	.byte	33                              @ Abbrev [33] 0x1238:0x38 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4849,24 +5293,24 @@ cache_buf:
 	.byte	1                               @ DW_AT_prototyped
 	.long	84                              @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	32                              @ Abbrev [32] 0x1249:0x10 DW_TAG_variable
+	.byte	36                              @ Abbrev [36] 0x1250:0x10 DW_TAG_variable
 	.byte	3                               @ DW_AT_location
 	.byte	145
-	.ascii	"\220\001"
+	.ascii	"\204\001"
 	.long	.Linfo_string356                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	466                             @ DW_AT_decl_line
-	.long	5358                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1259:0xf DW_TAG_variable
+	.long	5386                            @ DW_AT_type
+	.byte	36                              @ Abbrev [36] 0x1260:0xf DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	12
+	.byte	0
 	.long	.Linfo_string357                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	480                             @ DW_AT_decl_line
-	.long	5358                            @ DW_AT_type
+	.long	5386                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	35                              @ Abbrev [35] 0x1269:0x14 DW_TAG_subprogram
+	.byte	35                              @ Abbrev [35] 0x1270:0x14 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4876,7 +5320,7 @@ cache_buf:
 	.short	496                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	36                              @ Abbrev [36] 0x127d:0x78 DW_TAG_subprogram
+	.byte	37                              @ Abbrev [37] 0x1284:0x7d DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4885,60 +5329,50 @@ cache_buf:
 	.byte	2                               @ DW_AT_decl_file
 	.short	262                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	31                              @ Abbrev [31] 0x1290:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	36
+	.byte	31                              @ Abbrev [31] 0x1297:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	262                             @ DW_AT_decl_line
 	.long	108                             @ DW_AT_type
-	.byte	31                              @ Abbrev [31] 0x129f:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
+	.byte	31                              @ Abbrev [31] 0x12a7:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc8                    @ DW_AT_location
 	.long	.Linfo_string358                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	262                             @ DW_AT_decl_line
 	.long	1516                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x12ae:0xf DW_TAG_variable
+	.byte	36                              @ Abbrev [36] 0x12b7:0xf DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	20
+	.byte	0
 	.long	.Linfo_string351                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	264                             @ DW_AT_decl_line
-	.long	5888                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x12bd:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.long	5916                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x12c6:0x10 DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string309                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	265                             @ DW_AT_decl_line
-	.long	5296                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x12cc:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	5324                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x12d6:0x10 DW_TAG_variable
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string85                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	266                             @ DW_AT_decl_line
 	.long	1566                            @ DW_AT_type
-	.byte	37                              @ Abbrev [37] 0x12db:0x19 DW_TAG_lexical_block
-	.long	.Ltmp57                         @ DW_AT_low_pc
-	.long	.Ltmp65                         @ DW_AT_high_pc
-	.byte	32                              @ Abbrev [32] 0x12e4:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	38                              @ Abbrev [38] 0x12e6:0x1a DW_TAG_lexical_block
+	.long	.Ltmp50                         @ DW_AT_low_pc
+	.long	.Ltmp55                         @ DW_AT_high_pc
+	.byte	32                              @ Abbrev [32] 0x12ef:0x10 DW_TAG_variable
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string84                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	276                             @ DW_AT_decl_line
 	.long	592                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	36                              @ Abbrev [36] 0x12f5:0x7d DW_TAG_subprogram
+	.byte	37                              @ Abbrev [37] 0x1301:0x82 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -4947,64 +5381,51 @@ cache_buf:
 	.byte	2                               @ DW_AT_decl_file
 	.short	323                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	31                              @ Abbrev [31] 0x1308:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	31                              @ Abbrev [31] 0x1314:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc12                   @ DW_AT_location
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	323                             @ DW_AT_decl_line
 	.long	108                             @ DW_AT_type
-	.byte	31                              @ Abbrev [31] 0x1317:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	39                              @ Abbrev [39] 0x1324:0xe DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	81
 	.long	.Linfo_string122                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	323                             @ DW_AT_decl_line
 	.long	1844                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1326:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	32                              @ Abbrev [32] 0x1332:0x10 DW_TAG_variable
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string359                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.short	325                             @ DW_AT_decl_line
+	.short	326                             @ DW_AT_decl_line
 	.long	592                             @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1335:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	32                              @ Abbrev [32] 0x1342:0x10 DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
 	.long	.Linfo_string360                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	325                             @ DW_AT_decl_line
 	.long	592                             @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1344:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string361                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.short	326                             @ DW_AT_decl_line
-	.long	592                             @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1353:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string309                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.short	327                             @ DW_AT_decl_line
-	.long	5296                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1362:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	32                              @ Abbrev [32] 0x1352:0x10 DW_TAG_variable
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string311                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	328                             @ DW_AT_decl_line
 	.long	3313                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x1362:0x10 DW_TAG_variable
+	.long	.Ldebug_loc16                   @ DW_AT_location
+	.long	.Linfo_string309                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	327                             @ DW_AT_decl_line
+	.long	5324                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x1372:0x10 DW_TAG_variable
+	.long	.Ldebug_loc17                   @ DW_AT_location
+	.long	.Linfo_string361                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	325                             @ DW_AT_decl_line
+	.long	592                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	38                              @ Abbrev [38] 0x1372:0x7f DW_TAG_subprogram
+	.byte	40                              @ Abbrev [40] 0x1383:0x85 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -5013,68 +5434,56 @@ cache_buf:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	175                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	39                              @ Abbrev [39] 0x1384:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
+	.byte	41                              @ Abbrev [41] 0x1395:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string309                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	175                             @ DW_AT_decl_line
-	.long	5296                            @ DW_AT_type
-	.byte	39                              @ Abbrev [39] 0x1392:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.long	5324                            @ DW_AT_type
+	.byte	41                              @ Abbrev [41] 0x13a4:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string351                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	175                             @ DW_AT_decl_line
-	.long	5883                            @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x13a0:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.long	5911                            @ DW_AT_type
+	.byte	42                              @ Abbrev [42] 0x13b3:0xf DW_TAG_variable
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string108                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	177                             @ DW_AT_decl_line
 	.long	1716                            @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x13ae:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
-	.long	.Linfo_string85                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	178                             @ DW_AT_decl_line
-	.long	1566                            @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x13bc:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	42                              @ Abbrev [42] 0x13c2:0xf DW_TAG_variable
+	.long	.Ldebug_loc21                   @ DW_AT_location
 	.long	.Linfo_string311                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	179                             @ DW_AT_decl_line
 	.long	3313                            @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x13ca:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string362                @ DW_AT_name
+	.byte	42                              @ Abbrev [42] 0x13d1:0xf DW_TAG_variable
+	.long	.Ldebug_loc22                   @ DW_AT_location
+	.long	.Linfo_string85                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	178                             @ DW_AT_decl_line
+	.long	1566                            @ DW_AT_type
+	.byte	42                              @ Abbrev [42] 0x13e0:0xf DW_TAG_variable
+	.long	.Ldebug_loc23                   @ DW_AT_location
+	.long	.Linfo_string363                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	180                             @ DW_AT_decl_line
 	.long	592                             @ DW_AT_type
-	.byte	37                              @ Abbrev [37] 0x13d8:0x18 DW_TAG_lexical_block
-	.long	.Ltmp107                        @ DW_AT_low_pc
-	.long	.Ltmp114                        @ DW_AT_high_pc
-	.byte	40                              @ Abbrev [40] 0x13e1:0xe DW_TAG_variable
+	.byte	38                              @ Abbrev [38] 0x13ef:0x18 DW_TAG_lexical_block
+	.long	.Ltmp101                        @ DW_AT_low_pc
+	.long	.Ltmp109                        @ DW_AT_high_pc
+	.byte	43                              @ Abbrev [43] 0x13f8:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	4
-	.long	.Linfo_string363                @ DW_AT_name
+	.byte	0
+	.long	.Linfo_string362                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	233                             @ DW_AT_decl_line
 	.long	3615                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	36                              @ Abbrev [36] 0x13f1:0x41 DW_TAG_subprogram
+	.byte	37                              @ Abbrev [37] 0x1408:0x40 DW_TAG_subprogram
 	.long	.Lfunc_begin9                   @ DW_AT_low_pc
 	.long	.Lfunc_end9                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -5083,32 +5492,25 @@ cache_buf:
 	.byte	11                              @ DW_AT_decl_file
 	.short	2427                            @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	32                              @ Abbrev [32] 0x1404:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	32                              @ Abbrev [32] 0x141b:0x10 DW_TAG_variable
+	.long	.Ldebug_loc24                   @ DW_AT_location
 	.long	.Linfo_string364                @ DW_AT_name
 	.byte	11                              @ DW_AT_decl_file
 	.short	2430                            @ DW_AT_decl_line
 	.long	3261                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1413:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	32                              @ Abbrev [32] 0x142b:0x10 DW_TAG_variable
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string365                @ DW_AT_name
 	.byte	11                              @ DW_AT_decl_file
 	.short	2431                            @ DW_AT_decl_line
 	.long	3261                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x1422:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	44                              @ Abbrev [44] 0x143b:0xc DW_TAG_variable
 	.long	.Linfo_string366                @ DW_AT_name
 	.byte	11                              @ DW_AT_decl_file
 	.short	2432                            @ DW_AT_decl_line
 	.long	3261                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	41                              @ Abbrev [41] 0x1432:0x33 DW_TAG_subprogram
+	.byte	45                              @ Abbrev [45] 0x1448:0x35 DW_TAG_subprogram
 	.long	.Lfunc_begin10                  @ DW_AT_low_pc
 	.long	.Lfunc_end10                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -5118,24 +5520,20 @@ cache_buf:
 	.byte	57                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	84                              @ DW_AT_type
-	.byte	39                              @ Abbrev [39] 0x1448:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	41                              @ Abbrev [41] 0x145e:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc26                   @ DW_AT_location
 	.long	.Linfo_string85                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	57                              @ DW_AT_decl_line
 	.long	592                             @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x1456:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	42                              @ Abbrev [42] 0x146d:0xf DW_TAG_variable
+	.long	.Ldebug_loc27                   @ DW_AT_location
 	.long	.Linfo_string367                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
 	.long	84                              @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	38                              @ Abbrev [38] 0x1465:0x4b DW_TAG_subprogram
+	.byte	40                              @ Abbrev [40] 0x147d:0x4f DW_TAG_subprogram
 	.long	.Lfunc_begin11                  @ DW_AT_low_pc
 	.long	.Lfunc_end11                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -5144,366 +5542,358 @@ cache_buf:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	120                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	39                              @ Abbrev [39] 0x1477:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	41                              @ Abbrev [41] 0x148f:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc28                   @ DW_AT_location
 	.long	.Linfo_string309                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	120                             @ DW_AT_decl_line
-	.long	5296                            @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x1485:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
-	.long	.Linfo_string368                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	122                             @ DW_AT_decl_line
-	.long	592                             @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x1493:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
-	.long	.Linfo_string108                @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	123                             @ DW_AT_decl_line
-	.long	1716                            @ DW_AT_type
-	.byte	40                              @ Abbrev [40] 0x14a1:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	5324                            @ DW_AT_type
+	.byte	42                              @ Abbrev [42] 0x149e:0xf DW_TAG_variable
+	.long	.Ldebug_loc29                   @ DW_AT_location
 	.long	.Linfo_string311                @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	124                             @ DW_AT_decl_line
 	.long	3313                            @ DW_AT_type
+	.byte	42                              @ Abbrev [42] 0x14ad:0xf DW_TAG_variable
+	.long	.Ldebug_loc30                   @ DW_AT_location
+	.long	.Linfo_string108                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	123                             @ DW_AT_decl_line
+	.long	1716                            @ DW_AT_type
+	.byte	42                              @ Abbrev [42] 0x14bc:0xf DW_TAG_variable
+	.long	.Ldebug_loc31                   @ DW_AT_location
+	.long	.Linfo_string368                @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	122                             @ DW_AT_decl_line
+	.long	592                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	5                               @ Abbrev [5] 0x14b0:0x5 DW_TAG_pointer_type
-	.long	5301                            @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0x14b5:0x39 DW_TAG_structure_type
+	.byte	5                               @ Abbrev [5] 0x14cc:0x5 DW_TAG_pointer_type
+	.long	5329                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x14d1:0x39 DW_TAG_structure_type
 	.long	.Linfo_string354                @ DW_AT_name
 	.byte	172                             @ DW_AT_byte_size
 	.byte	2                               @ DW_AT_decl_file
 	.byte	41                              @ DW_AT_decl_line
-	.byte	10                              @ Abbrev [10] 0x14bd:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x14d9:0xc DW_TAG_member
 	.long	.Linfo_string8                  @ DW_AT_name
 	.long	108                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	43                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x14c9:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x14e5:0xc DW_TAG_member
 	.long	.Linfo_string310                @ DW_AT_name
-	.long	5358                            @ DW_AT_type
+	.long	5386                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	44                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x14d5:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x14f1:0xc DW_TAG_member
 	.long	.Linfo_string348                @ DW_AT_name
-	.long	5847                            @ DW_AT_type
+	.long	5875                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	45                              @ DW_AT_decl_line
 	.byte	136                             @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x14e1:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x14fd:0xc DW_TAG_member
 	.long	.Linfo_string351                @ DW_AT_name
-	.long	5883                            @ DW_AT_type
+	.long	5911                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	46                              @ DW_AT_decl_line
 	.byte	168                             @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x14ee:0x2d DW_TAG_structure_type
+	.byte	9                               @ Abbrev [9] 0x150a:0x2d DW_TAG_structure_type
 	.long	.Linfo_string347                @ DW_AT_name
 	.byte	132                             @ DW_AT_byte_size
 	.byte	10                              @ DW_AT_decl_file
 	.byte	95                              @ DW_AT_decl_line
-	.byte	10                              @ Abbrev [10] 0x14f6:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1512:0xc DW_TAG_member
 	.long	.Linfo_string311                @ DW_AT_name
 	.long	3313                            @ DW_AT_type
 	.byte	10                              @ DW_AT_decl_file
 	.byte	97                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1502:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x151e:0xc DW_TAG_member
 	.long	.Linfo_string312                @ DW_AT_name
-	.long	5403                            @ DW_AT_type
+	.long	5431                            @ DW_AT_type
 	.byte	10                              @ DW_AT_decl_file
 	.byte	98                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x150e:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x152a:0xc DW_TAG_member
 	.long	.Linfo_string314                @ DW_AT_name
-	.long	5431                            @ DW_AT_type
+	.long	5459                            @ DW_AT_type
 	.byte	10                              @ DW_AT_decl_file
 	.byte	99                              @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	4                               @ Abbrev [4] 0x151b:0xb DW_TAG_typedef
-	.long	5414                            @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x1537:0xb DW_TAG_typedef
+	.long	5442                            @ DW_AT_type
 	.long	.Linfo_string313                @ DW_AT_name
 	.byte	10                              @ DW_AT_decl_file
 	.byte	93                              @ DW_AT_decl_line
-	.byte	5                               @ Abbrev [5] 0x1526:0x5 DW_TAG_pointer_type
-	.long	5419                            @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x152b:0xc DW_TAG_subroutine_type
+	.byte	5                               @ Abbrev [5] 0x1542:0x5 DW_TAG_pointer_type
+	.long	5447                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x1547:0xc DW_TAG_subroutine_type
 	.long	592                             @ DW_AT_type
 	.byte	1                               @ DW_AT_prototyped
-	.byte	16                              @ Abbrev [16] 0x1531:0x5 DW_TAG_formal_parameter
+	.byte	16                              @ Abbrev [16] 0x154d:0x5 DW_TAG_formal_parameter
 	.long	3313                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	4                               @ Abbrev [4] 0x1537:0xb DW_TAG_typedef
-	.long	5442                            @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x1553:0xb DW_TAG_typedef
+	.long	5470                            @ DW_AT_type
 	.long	.Linfo_string346                @ DW_AT_name
 	.byte	7                               @ DW_AT_decl_file
 	.byte	167                             @ DW_AT_decl_line
-	.byte	42                              @ Abbrev [42] 0x1542:0xa1 DW_TAG_structure_type
+	.byte	46                              @ Abbrev [46] 0x155e:0xa1 DW_TAG_structure_type
 	.byte	124                             @ DW_AT_byte_size
 	.byte	7                               @ DW_AT_decl_file
 	.byte	121                             @ DW_AT_decl_line
-	.byte	10                              @ Abbrev [10] 0x1546:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1562:0xc DW_TAG_member
 	.long	.Linfo_string315                @ DW_AT_name
 	.long	2893                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	124                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1552:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x156e:0xc DW_TAG_member
 	.long	.Linfo_string316                @ DW_AT_name
-	.long	5603                            @ DW_AT_type
+	.long	5631                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	126                             @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x155e:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x157a:0xc DW_TAG_member
 	.long	.Linfo_string323                @ DW_AT_name
-	.long	5679                            @ DW_AT_type
+	.long	5707                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	128                             @ DW_AT_decl_line
 	.byte	24                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x156a:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1586:0xc DW_TAG_member
 	.long	.Linfo_string325                @ DW_AT_name
-	.long	5690                            @ DW_AT_type
+	.long	5718                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	130                             @ DW_AT_decl_line
 	.byte	28                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1576:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1592:0xc DW_TAG_member
 	.long	.Linfo_string326                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	132                             @ DW_AT_decl_line
 	.byte	32                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1582:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x159e:0xc DW_TAG_member
 	.long	.Linfo_string327                @ DW_AT_name
-	.long	5690                            @ DW_AT_type
+	.long	5718                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	134                             @ DW_AT_decl_line
 	.byte	36                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x158e:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x15aa:0xc DW_TAG_member
 	.long	.Linfo_string328                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	136                             @ DW_AT_decl_line
 	.byte	40                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x159a:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x15b6:0xc DW_TAG_member
 	.long	.Linfo_string329                @ DW_AT_name
 	.long	3256                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	138                             @ DW_AT_decl_line
 	.byte	44                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x15a6:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x15c2:0xc DW_TAG_member
 	.long	.Linfo_string330                @ DW_AT_name
-	.long	5695                            @ DW_AT_type
+	.long	5723                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	140                             @ DW_AT_decl_line
 	.byte	48                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x15b2:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x15ce:0xc DW_TAG_member
 	.long	.Linfo_string332                @ DW_AT_name
 	.long	3256                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	142                             @ DW_AT_decl_line
 	.byte	52                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x15be:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x15da:0xc DW_TAG_member
 	.long	.Linfo_string333                @ DW_AT_name
-	.long	5711                            @ DW_AT_type
+	.long	5739                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	144                             @ DW_AT_decl_line
 	.byte	56                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x15ca:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x15e6:0xc DW_TAG_member
 	.long	.Linfo_string344                @ DW_AT_name
-	.long	5835                            @ DW_AT_type
+	.long	5863                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	146                             @ DW_AT_decl_line
 	.byte	92                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x15d6:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x15f2:0xc DW_TAG_member
 	.long	.Linfo_string345                @ DW_AT_name
-	.long	5835                            @ DW_AT_type
+	.long	5863                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	148                             @ DW_AT_decl_line
 	.byte	108                             @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	4                               @ Abbrev [4] 0x15e3:0xb DW_TAG_typedef
-	.long	5614                            @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x15ff:0xb DW_TAG_typedef
+	.long	5642                            @ DW_AT_type
 	.long	.Linfo_string322                @ DW_AT_name
 	.byte	12                              @ DW_AT_decl_file
 	.byte	69                              @ DW_AT_decl_line
-	.byte	42                              @ Abbrev [42] 0x15ee:0x41 DW_TAG_structure_type
+	.byte	46                              @ Abbrev [46] 0x160a:0x41 DW_TAG_structure_type
 	.byte	20                              @ DW_AT_byte_size
 	.byte	12                              @ DW_AT_decl_file
 	.byte	47                              @ DW_AT_decl_line
-	.byte	10                              @ Abbrev [10] 0x15f2:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x160e:0xc DW_TAG_member
 	.long	.Linfo_string317                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	12                              @ DW_AT_decl_file
 	.byte	49                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x15fe:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x161a:0xc DW_TAG_member
 	.long	.Linfo_string318                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	12                              @ DW_AT_decl_file
 	.byte	52                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x160a:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1626:0xc DW_TAG_member
 	.long	.Linfo_string319                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	12                              @ DW_AT_decl_file
 	.byte	56                              @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1616:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1632:0xc DW_TAG_member
 	.long	.Linfo_string320                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	12                              @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1622:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x163e:0xc DW_TAG_member
 	.long	.Linfo_string321                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	12                              @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
 	.byte	16                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	4                               @ Abbrev [4] 0x162f:0xb DW_TAG_typedef
+	.byte	4                               @ Abbrev [4] 0x164b:0xb DW_TAG_typedef
 	.long	2815                            @ DW_AT_type
 	.long	.Linfo_string324                @ DW_AT_name
 	.byte	6                               @ DW_AT_decl_file
 	.byte	55                              @ DW_AT_decl_line
-	.byte	5                               @ Abbrev [5] 0x163a:0x5 DW_TAG_pointer_type
+	.byte	5                               @ Abbrev [5] 0x1656:0x5 DW_TAG_pointer_type
 	.long	4359                            @ DW_AT_type
-	.byte	29                              @ Abbrev [29] 0x163f:0x5 DW_TAG_volatile_type
-	.long	5700                            @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0x1644:0xb DW_TAG_typedef
+	.byte	29                              @ Abbrev [29] 0x165b:0x5 DW_TAG_volatile_type
+	.long	5728                            @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x1660:0xb DW_TAG_typedef
 	.long	2836                            @ DW_AT_type
 	.long	.Linfo_string331                @ DW_AT_name
 	.byte	7                               @ DW_AT_decl_file
 	.byte	61                              @ DW_AT_decl_line
-	.byte	4                               @ Abbrev [4] 0x164f:0xb DW_TAG_typedef
-	.long	5722                            @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x166b:0xb DW_TAG_typedef
+	.long	5750                            @ DW_AT_type
 	.long	.Linfo_string343                @ DW_AT_name
 	.byte	7                               @ DW_AT_decl_file
 	.byte	113                             @ DW_AT_decl_line
-	.byte	42                              @ Abbrev [42] 0x165a:0x71 DW_TAG_structure_type
+	.byte	46                              @ Abbrev [46] 0x1676:0x71 DW_TAG_structure_type
 	.byte	36                              @ DW_AT_byte_size
 	.byte	7                               @ DW_AT_decl_file
 	.byte	93                              @ DW_AT_decl_line
-	.byte	10                              @ Abbrev [10] 0x165e:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x167a:0xc DW_TAG_member
 	.long	.Linfo_string334                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	95                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x166a:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1686:0xc DW_TAG_member
 	.long	.Linfo_string335                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	97                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1676:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1692:0xc DW_TAG_member
 	.long	.Linfo_string336                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	99                              @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1682:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x169e:0xc DW_TAG_member
 	.long	.Linfo_string337                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	101                             @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x168e:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x16aa:0xc DW_TAG_member
 	.long	.Linfo_string338                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	103                             @ DW_AT_decl_line
 	.byte	16                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x169a:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x16b6:0xc DW_TAG_member
 	.long	.Linfo_string339                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	105                             @ DW_AT_decl_line
 	.byte	20                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x16a6:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x16c2:0xc DW_TAG_member
 	.long	.Linfo_string340                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	107                             @ DW_AT_decl_line
 	.byte	24                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x16b2:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x16ce:0xc DW_TAG_member
 	.long	.Linfo_string341                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	109                             @ DW_AT_decl_line
 	.byte	28                              @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x16be:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x16da:0xc DW_TAG_member
 	.long	.Linfo_string342                @ DW_AT_name
 	.long	3261                            @ DW_AT_type
 	.byte	7                               @ DW_AT_decl_file
 	.byte	111                             @ DW_AT_decl_line
 	.byte	32                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x16cb:0xc DW_TAG_array_type
+	.byte	11                              @ Abbrev [11] 0x16e7:0xc DW_TAG_array_type
 	.long	3261                            @ DW_AT_type
-	.byte	12                              @ Abbrev [12] 0x16d0:0x6 DW_TAG_subrange_type
+	.byte	12                              @ Abbrev [12] 0x16ec:0x6 DW_TAG_subrange_type
 	.long	622                             @ DW_AT_type
 	.byte	4                               @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x16d7:0x24 DW_TAG_structure_type
+	.byte	19                              @ Abbrev [19] 0x16f3:0x24 DW_TAG_structure_type
 	.long	.Linfo_string350                @ DW_AT_name
 	.byte	32                              @ DW_AT_byte_size
 	.byte	1                               @ DW_AT_decl_file
 	.short	703                             @ DW_AT_decl_line
-	.byte	20                              @ Abbrev [20] 0x16e0:0xd DW_TAG_member
+	.byte	20                              @ Abbrev [20] 0x16fc:0xd DW_TAG_member
 	.long	.Linfo_string129                @ DW_AT_name
 	.long	2040                            @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
 	.short	705                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	20                              @ Abbrev [20] 0x16ed:0xd DW_TAG_member
+	.byte	20                              @ Abbrev [20] 0x1709:0xd DW_TAG_member
 	.long	.Linfo_string349                @ DW_AT_name
 	.long	592                             @ DW_AT_type
 	.byte	1                               @ DW_AT_decl_file
 	.short	707                             @ DW_AT_decl_line
 	.byte	28                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	5                               @ Abbrev [5] 0x16fb:0x5 DW_TAG_pointer_type
-	.long	5888                            @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0x1700:0x2d DW_TAG_structure_type
+	.byte	5                               @ Abbrev [5] 0x1717:0x5 DW_TAG_pointer_type
+	.long	5916                            @ DW_AT_type
+	.byte	9                               @ Abbrev [9] 0x171c:0x2d DW_TAG_structure_type
 	.long	.Linfo_string353                @ DW_AT_name
 	.byte	12                              @ DW_AT_byte_size
 	.byte	2                               @ DW_AT_decl_file
 	.byte	34                              @ DW_AT_decl_line
-	.byte	10                              @ Abbrev [10] 0x1708:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1724:0xc DW_TAG_member
 	.long	.Linfo_string108                @ DW_AT_name
 	.long	1716                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	36                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1714:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x1730:0xc DW_TAG_member
 	.long	.Linfo_string352                @ DW_AT_name
 	.long	1430                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	37                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	10                              @ Abbrev [10] 0x1720:0xc DW_TAG_member
+	.byte	10                              @ Abbrev [10] 0x173c:0xc DW_TAG_member
 	.long	.Linfo_string133                @ DW_AT_name
 	.long	592                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	38                              @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	5                               @ Abbrev [5] 0x172d:0x5 DW_TAG_pointer_type
-	.long	5358                            @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x1749:0x5 DW_TAG_pointer_type
+	.long	5386                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
 	.section	.debug_ranges,"",%progbits
@@ -6254,15 +6644,15 @@ cache_buf:
 .Linfo_string358:
 	.asciz	"req"                           @ string offset=3616
 .Linfo_string359:
-	.asciz	"temp"                          @ string offset=3620
+	.asciz	"clk"                           @ string offset=3620
 .Linfo_string360:
-	.asciz	"clk_src"                       @ string offset=3625
+	.asciz	"clk_src"                       @ string offset=3624
 .Linfo_string361:
-	.asciz	"clk"                           @ string offset=3633
+	.asciz	"temp"                          @ string offset=3632
 .Linfo_string362:
-	.asciz	"reg_cmd"                       @ string offset=3637
+	.asciz	"count"                         @ string offset=3637
 .Linfo_string363:
-	.asciz	"count"                         @ string offset=3645
+	.asciz	"reg_cmd"                       @ string offset=3643
 .Linfo_string364:
 	.asciz	"ccsidr"                        @ string offset=3651
 .Linfo_string365:
@@ -6275,7 +6665,7 @@ cache_buf:
 	.asciz	"status"                        @ string offset=3674
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

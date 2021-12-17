@@ -49,122 +49,113 @@ lv_port_indev_init:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#40
-	sub	sp, #40
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	.pad	#32
+	sub	sp, #32
 	.cfi_def_cfa_offset 48
 .Ltmp0:
 	.loc	4 89 5 prologue_end             @ lvgl/src/lv_driver/lv_port_indev.c:89:5
 	bl	touchpad_init
-	add	r0, sp, #12
+	add	r4, sp, #4
 	.loc	4 92 5                          @ lvgl/src/lv_driver/lv_port_indev.c:92:5
-	str	r0, [sp, #8]                    @ 4-byte Spill
+	mov	r0, r4
 	bl	lv_indev_drv_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	movs	r1, #1
-	.loc	4 93 20                         @ lvgl/src/lv_driver/lv_port_indev.c:93:20
-	str	r1, [sp, #4]                    @ 4-byte Spill
-	strb.w	r1, [sp, #12]
 	.loc	4 94 23                         @ lvgl/src/lv_driver/lv_port_indev.c:94:23
-	movw	r1, :lower16:touchpad_read
-	movt	r1, :upper16:touchpad_read
-	str	r1, [sp, #16]
+	movw	r0, :lower16:touchpad_read
+	movs	r5, #1
+	movt	r0, :upper16:touchpad_read
+	str	r0, [sp, #8]
+	.loc	4 95 22                         @ lvgl/src/lv_driver/lv_port_indev.c:95:22
+	mov	r0, r4
+	.loc	4 93 20                         @ lvgl/src/lv_driver/lv_port_indev.c:93:20
+	strb.w	r5, [sp, #4]
 	.loc	4 95 22                         @ lvgl/src/lv_driver/lv_port_indev.c:95:22
 	bl	lv_indev_drv_register
 	.loc	4 95 20 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:95:20
 	movw	r1, :lower16:indev_touchpad
 	movt	r1, :upper16:indev_touchpad
 	str	r0, [r1]
-	.loc	4 102 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:102:5
-	bl	mouse_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	.loc	4 105 5                         @ lvgl/src/lv_driver/lv_port_indev.c:105:5
+	.loc	4 105 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:105:5
+	mov	r0, r4
 	bl	lv_indev_drv_init
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	.loc	4 106 20                        @ lvgl/src/lv_driver/lv_port_indev.c:106:20
-	strb.w	r1, [sp, #12]
 	.loc	4 107 23                        @ lvgl/src/lv_driver/lv_port_indev.c:107:23
-	movw	r1, :lower16:mouse_read
-	movt	r1, :upper16:mouse_read
-	str	r1, [sp, #16]
+	movw	r0, :lower16:mouse_read
+	.loc	4 106 20                        @ lvgl/src/lv_driver/lv_port_indev.c:106:20
+	strb.w	r5, [sp, #4]
+	.loc	4 107 23                        @ lvgl/src/lv_driver/lv_port_indev.c:107:23
+	movt	r0, :upper16:mouse_read
+	str	r0, [sp, #8]
 	.loc	4 108 19                        @ lvgl/src/lv_driver/lv_port_indev.c:108:19
+	mov	r0, r4
 	bl	lv_indev_drv_register
 	.loc	4 108 17 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:108:17
 	movw	r1, :lower16:indev_mouse
 	movt	r1, :upper16:indev_mouse
 	str	r0, [r1]
-	.loc	4 120 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:120:5
-	bl	keypad_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	.loc	4 123 5                         @ lvgl/src/lv_driver/lv_port_indev.c:123:5
+	.loc	4 123 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:123:5
+	mov	r0, r4
 	bl	lv_indev_drv_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	movs	r1, #2
+	movs	r0, #2
 	.loc	4 124 20                        @ lvgl/src/lv_driver/lv_port_indev.c:124:20
-	strb.w	r1, [sp, #12]
+	strb.w	r0, [sp, #4]
 	.loc	4 125 23                        @ lvgl/src/lv_driver/lv_port_indev.c:125:23
-	movw	r1, :lower16:keypad_read
-	movt	r1, :upper16:keypad_read
-	str	r1, [sp, #16]
+	movw	r0, :lower16:keypad_read
+	movt	r0, :upper16:keypad_read
+	str	r0, [sp, #8]
 	.loc	4 126 20                        @ lvgl/src/lv_driver/lv_port_indev.c:126:20
+	mov	r0, r4
 	bl	lv_indev_drv_register
 	.loc	4 126 18 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:126:18
 	movw	r1, :lower16:indev_keypad
 	movt	r1, :upper16:indev_keypad
 	str	r0, [r1]
-	.loc	4 138 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:138:5
-	bl	encoder_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	.loc	4 141 5                         @ lvgl/src/lv_driver/lv_port_indev.c:141:5
+	.loc	4 141 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:141:5
+	mov	r0, r4
 	bl	lv_indev_drv_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	movs	r1, #4
+	movs	r0, #4
 	.loc	4 142 20                        @ lvgl/src/lv_driver/lv_port_indev.c:142:20
-	strb.w	r1, [sp, #12]
+	strb.w	r0, [sp, #4]
 	.loc	4 143 23                        @ lvgl/src/lv_driver/lv_port_indev.c:143:23
-	movw	r1, :lower16:encoder_read
-	movt	r1, :upper16:encoder_read
-	str	r1, [sp, #16]
+	movw	r0, :lower16:encoder_read
+	movt	r0, :upper16:encoder_read
+	str	r0, [sp, #8]
 	.loc	4 144 21                        @ lvgl/src/lv_driver/lv_port_indev.c:144:21
+	mov	r0, r4
 	bl	lv_indev_drv_register
 	.loc	4 144 19 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:144:19
 	movw	r1, :lower16:indev_encoder
 	movt	r1, :upper16:indev_encoder
 	str	r0, [r1]
-	.loc	4 156 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:156:5
-	bl	button_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	.loc	4 159 5                         @ lvgl/src/lv_driver/lv_port_indev.c:159:5
+	.loc	4 159 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:159:5
+	mov	r0, r4
 	bl	lv_indev_drv_init
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	movs	r1, #3
+	movs	r0, #3
 	.loc	4 160 20                        @ lvgl/src/lv_driver/lv_port_indev.c:160:20
-	strb.w	r1, [sp, #12]
+	strb.w	r0, [sp, #4]
 	.loc	4 161 23                        @ lvgl/src/lv_driver/lv_port_indev.c:161:23
-	movw	r1, :lower16:button_read
-	movt	r1, :upper16:button_read
-	str	r1, [sp, #16]
+	movw	r0, :lower16:button_read
+	movt	r0, :upper16:button_read
+	str	r0, [sp, #8]
 	.loc	4 162 20                        @ lvgl/src/lv_driver/lv_port_indev.c:162:20
+	mov	r0, r4
 	bl	lv_indev_drv_register
-	mov	r1, r0
 	.loc	4 162 18 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:162:18
-	movw	r0, :lower16:indev_button
-	movt	r0, :upper16:indev_button
-	str	r1, [r0]
-	.loc	4 169 32 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:169:32
-	ldr	r0, [r0]
-	.loc	4 169 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:169:5
+	movw	r1, :lower16:indev_button
+	movt	r1, :upper16:indev_button
+	str	r0, [r1]
+	.loc	4 169 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:169:5
 	movw	r1, :lower16:lv_port_indev_init.btn_points
 	movt	r1, :upper16:lv_port_indev_init.btn_points
 	bl	lv_indev_set_button_points
-	.loc	4 170 1 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:170:1
-	add	sp, #40
-	pop	{r7, pc}
+	.loc	4 170 1                         @ lvgl/src/lv_driver/lv_port_indev.c:170:1
+	add	sp, #32
+	pop	{r4, r5, r7, pc}
 .Ltmp1:
 .Lfunc_end0:
 	.size	lv_port_indev_init, .Lfunc_end0-lv_port_indev_init
@@ -211,92 +202,66 @@ touchpad_read:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: touchpad_read:indev_drv <- $r0
+	@DEBUG_VALUE: touchpad_read:data <- $r1
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-	movs	r0, #0
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
 .Ltmp4:
 	.loc	4 195 8 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:195:8
-	bl	GT9147_Scan
-.Ltmp5:
-	.loc	4 195 8 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:195:8
-	cbz	r0, .LBB2_2
-	b	.LBB2_1
-.LBB2_1:
-.Ltmp6:
-	.loc	4 196 9 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:196:9
-	movw	r0, :lower16:touchpad_read.last_x
-	movt	r0, :upper16:touchpad_read.last_x
-	movw	r1, :lower16:touchpad_read.last_y
-	movt	r1, :upper16:touchpad_read.last_y
-	bl	touchpad_get_xy
-	.loc	4 197 9                         @ lvgl/src/lv_driver/lv_port_indev.c:197:9
-	ldr	r1, [sp]
-	movs	r0, #1
-	.loc	4 197 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:197:21
-	strb	r0, [r1, #14]
-	.loc	4 198 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:198:5
-	b	.LBB2_3
-.Ltmp7:
-.LBB2_2:
-	.loc	4 199 9                         @ lvgl/src/lv_driver/lv_port_indev.c:199:9
-	ldr	r1, [sp]
 	movs	r0, #0
-	.loc	4 199 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:199:21
-	strb	r0, [r1, #14]
-	b	.LBB2_3
+.Ltmp5:
+	@DEBUG_VALUE: touchpad_read:indev_drv <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 8 is_stmt 0                 @ lvgl/src/lv_driver/lv_port_indev.c:0:8
+	mov	r4, r1
+.Ltmp6:
+	@DEBUG_VALUE: touchpad_read:data <- $r4
+	@DEBUG_VALUE: touchpad_read:data <- $r4
+	movs	r5, #0
+	.loc	4 195 8                         @ lvgl/src/lv_driver/lv_port_indev.c:195:8
+	bl	GT9147_Scan
+.Ltmp7:
+	.loc	4 195 8                         @ lvgl/src/lv_driver/lv_port_indev.c:195:8
+	cbz	r0, .LBB2_2
 .Ltmp8:
-.LBB2_3:
-	.loc	4 203 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:203:21
+@ %bb.1:
+	@DEBUG_VALUE: touchpad_read:data <- $r4
+	@DEBUG_VALUE: touchpad_read:indev_drv <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 196 9 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:196:9
+	bl	touchpad_get_xy
+	movs	r5, #1
+.Ltmp9:
+.LBB2_2:
+	@DEBUG_VALUE: touchpad_read:data <- $r4
+	@DEBUG_VALUE: touchpad_read:indev_drv <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 203 21                        @ lvgl/src/lv_driver/lv_port_indev.c:203:21
 	movw	r0, :lower16:touchpad_read.last_x
+.Ltmp10:
+	.loc	4 0 0 is_stmt 0                 @ lvgl/src/lv_driver/lv_port_indev.c:0:0
+	strb	r5, [r4, #14]
+.Ltmp11:
+	.loc	4 203 21                        @ lvgl/src/lv_driver/lv_port_indev.c:203:21
 	movt	r0, :upper16:touchpad_read.last_x
 	ldrh	r0, [r0]
-	.loc	4 203 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:203:5
-	ldr	r1, [sp]
 	.loc	4 203 19                        @ lvgl/src/lv_driver/lv_port_indev.c:203:19
-	strh	r0, [r1]
+	strh	r0, [r4]
 	.loc	4 204 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:204:21
 	movw	r0, :lower16:touchpad_read.last_y
 	movt	r0, :upper16:touchpad_read.last_y
-	ldrh	r0, [r0]
-	.loc	4 204 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:204:5
-	ldr	r1, [sp]
-	.loc	4 204 19                        @ lvgl/src/lv_driver/lv_port_indev.c:204:19
-	strh	r0, [r1, #2]
+	ldrh	r1, [r0]
+	.loc	4 207 5                         @ lvgl/src/lv_driver/lv_port_indev.c:207:5
 	movs	r0, #0
-	.loc	4 207 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:207:5
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp9:
+	.loc	4 204 19                        @ lvgl/src/lv_driver/lv_port_indev.c:204:19
+	strh	r1, [r4, #2]
+	.loc	4 207 5                         @ lvgl/src/lv_driver/lv_port_indev.c:207:5
+	pop	{r4, r5, r7, pc}
+.Ltmp12:
 .Lfunc_end2:
 	.size	touchpad_read, .Lfunc_end2-touchpad_read
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.mouse_init,"ax",%progbits
-	.p2align	3                               @ -- Begin function mouse_init
-	.type	mouse_init,%function
-	.code	16                              @ @mouse_init
-	.thumb_func
-mouse_init:
-.Lfunc_begin3:
-	.loc	4 233 0                         @ lvgl/src/lv_driver/lv_port_indev.c:233:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	.loc	4 235 1 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:235:1
-	bx	lr
-.Ltmp10:
-.Lfunc_end3:
-	.size	mouse_init, .Lfunc_end3-mouse_init
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -307,82 +272,40 @@ mouse_init:
 	.code	16                              @ @mouse_read
 	.thumb_func
 mouse_read:
-.Lfunc_begin4:
+.Lfunc_begin3:
 	.loc	4 239 0                         @ lvgl/src/lv_driver/lv_port_indev.c:239:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	@DEBUG_VALUE: mouse_read:indev_drv <- $r0
+	@DEBUG_VALUE: mouse_read:data <- $r1
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp11:
-	.loc	4 241 19 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:241:19
-	ldr	r0, [sp]
-	.loc	4 241 47 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:241:47
-	adds	r1, r0, #2
-	.loc	4 241 5                         @ lvgl/src/lv_driver/lv_port_indev.c:241:5
-	bl	mouse_get_xy
-.Ltmp12:
-	.loc	4 244 8 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:244:8
-	bl	mouse_is_pressed
+	.cfi_offset r4, -8
+	mov	r4, r1
 .Ltmp13:
-	.loc	4 244 8 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:244:8
-	cbz	r0, .LBB4_2
-	b	.LBB4_1
-.LBB4_1:
+	@DEBUG_VALUE: mouse_read:data <- $r4
+	.loc	4 241 47 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:241:47
+	adds	r1, #2
+	.loc	4 241 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:241:5
+	mov	r0, r4
 .Ltmp14:
-	.loc	4 245 9 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:245:9
-	ldr	r1, [sp]
-	movs	r0, #1
-	.loc	4 245 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:245:21
-	strb	r0, [r1, #14]
-	.loc	4 246 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:246:5
-	b	.LBB4_3
-.Ltmp15:
-.LBB4_2:
-	.loc	4 247 9                         @ lvgl/src/lv_driver/lv_port_indev.c:247:9
-	ldr	r1, [sp]
-	movs	r0, #0
-	.loc	4 247 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:247:21
-	strb	r0, [r1, #14]
-	b	.LBB4_3
-.Ltmp16:
-.LBB4_3:
-	.loc	4 0 21                          @ lvgl/src/lv_driver/lv_port_indev.c:0:21
-	movs	r0, #0
+	@DEBUG_VALUE: mouse_read:indev_drv <- [DW_OP_LLVM_entry_value 1] $r0
+	bl	mouse_get_xy
 	.loc	4 251 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:251:5
-	add	sp, #8
-	pop	{r7, pc}
+	movs	r0, #0
+	movs	r1, #0
+.Ltmp15:
+	.loc	4 247 21                        @ lvgl/src/lv_driver/lv_port_indev.c:247:21
+	strb	r1, [r4, #14]
+.Ltmp16:
+	.loc	4 251 5                         @ lvgl/src/lv_driver/lv_port_indev.c:251:5
+	pop	{r4, pc}
 .Ltmp17:
-.Lfunc_end4:
-	.size	mouse_read, .Lfunc_end4-mouse_read
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.keypad_init,"ax",%progbits
-	.p2align	3                               @ -- Begin function keypad_init
-	.type	keypad_init,%function
-	.code	16                              @ @keypad_init
-	.thumb_func
-keypad_init:
-.Lfunc_begin5:
-	.loc	4 277 0                         @ lvgl/src/lv_driver/lv_port_indev.c:277:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	.loc	4 279 1 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:279:1
-	bx	lr
-.Ltmp18:
-.Lfunc_end5:
-	.size	keypad_init, .Lfunc_end5-keypad_init
+.Lfunc_end3:
+	.size	mouse_read, .Lfunc_end3-mouse_read
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -393,157 +316,43 @@ keypad_init:
 	.code	16                              @ @keypad_read
 	.thumb_func
 keypad_read:
-.Lfunc_begin6:
+.Lfunc_begin4:
 	.loc	4 283 0                         @ lvgl/src/lv_driver/lv_port_indev.c:283:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	@DEBUG_VALUE: keypad_read:indev_drv <- $r0
+	@DEBUG_VALUE: keypad_read:data <- $r1
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
+	.cfi_offset r4, -8
+	mov	r4, r1
+.Ltmp18:
+	@DEBUG_VALUE: keypad_read:data <- $r4
+	.loc	4 287 47 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:287:47
+	adds	r1, #2
+	.loc	4 287 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:287:5
+	mov	r0, r4
 .Ltmp19:
-	.loc	4 287 19 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:287:19
-	ldr	r0, [sp, #8]
-	.loc	4 287 47 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:287:47
-	adds	r1, r0, #2
-	.loc	4 287 5                         @ lvgl/src/lv_driver/lv_port_indev.c:287:5
+	@DEBUG_VALUE: keypad_read:indev_drv <- [DW_OP_LLVM_entry_value 1] $r0
 	bl	mouse_get_xy
-	.loc	4 290 24 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:290:24
-	bl	keypad_get_key
-	.loc	4 290 14 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:290:14
-	str	r0, [sp, #4]
-.Ltmp20:
-	.loc	4 291 8 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:291:8
-	ldr	r0, [sp, #4]
-.Ltmp21:
-	.loc	4 291 8 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:291:8
-	cbz	r0, .LBB6_10
-	b	.LBB6_1
-.LBB6_1:
-.Ltmp22:
-	.loc	4 292 9 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:292:9
-	ldr	r1, [sp, #8]
-	movs	r0, #1
-	.loc	4 292 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:292:21
-	strb	r0, [r1, #14]
-	.loc	4 295 16 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:295:16
-	ldr	r0, [sp, #4]
-	.loc	4 295 9 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:295:9
-	subs	r0, #1
-	mov	r1, r0
-	str	r1, [sp]                        @ 4-byte Spill
-	cmp	r0, #4
-	bhi	.LBB6_9
-@ %bb.2:
-	.loc	4 0 9                           @ lvgl/src/lv_driver/lv_port_indev.c:0:9
-	ldr	r1, [sp]                        @ 4-byte Reload
-.LCPI6_0:
-	tbb	[pc, r1]
-@ %bb.3:
-.LJTI6_0:
-	.byte	(.LBB6_4-(.LCPI6_0+4))/2
-	.byte	(.LBB6_5-(.LCPI6_0+4))/2
-	.byte	(.LBB6_6-(.LCPI6_0+4))/2
-	.byte	(.LBB6_7-(.LCPI6_0+4))/2
-	.byte	(.LBB6_8-(.LCPI6_0+4))/2
-	.p2align	1
-.LBB6_4:
-	movs	r0, #9
-.Ltmp23:
-	.loc	4 297 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:297:21
-	str	r0, [sp, #4]
-	.loc	4 298 13                        @ lvgl/src/lv_driver/lv_port_indev.c:298:13
-	b	.LBB6_9
-.LBB6_5:
-	.loc	4 0 13 is_stmt 0                @ lvgl/src/lv_driver/lv_port_indev.c:0:13
-	movs	r0, #11
-	.loc	4 300 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:300:21
-	str	r0, [sp, #4]
-	.loc	4 301 13                        @ lvgl/src/lv_driver/lv_port_indev.c:301:13
-	b	.LBB6_9
-.LBB6_6:
-	.loc	4 0 13 is_stmt 0                @ lvgl/src/lv_driver/lv_port_indev.c:0:13
-	movs	r0, #20
-	.loc	4 303 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:303:21
-	str	r0, [sp, #4]
-	.loc	4 304 13                        @ lvgl/src/lv_driver/lv_port_indev.c:304:13
-	b	.LBB6_9
-.LBB6_7:
-	.loc	4 0 13 is_stmt 0                @ lvgl/src/lv_driver/lv_port_indev.c:0:13
-	movs	r0, #19
-	.loc	4 306 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:306:21
-	str	r0, [sp, #4]
-	.loc	4 307 13                        @ lvgl/src/lv_driver/lv_port_indev.c:307:13
-	b	.LBB6_9
-.LBB6_8:
-	.loc	4 0 13 is_stmt 0                @ lvgl/src/lv_driver/lv_port_indev.c:0:13
-	movs	r0, #10
-	.loc	4 309 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:309:21
-	str	r0, [sp, #4]
-	.loc	4 310 13                        @ lvgl/src/lv_driver/lv_port_indev.c:310:13
-	b	.LBB6_9
-.Ltmp24:
-.LBB6_9:
-	.loc	4 313 20                        @ lvgl/src/lv_driver/lv_port_indev.c:313:20
-	ldr	r0, [sp, #4]
-	.loc	4 313 18 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:313:18
-	movw	r1, :lower16:keypad_read.last_key
-	movt	r1, :upper16:keypad_read.last_key
-	str	r0, [r1]
-	.loc	4 314 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:314:5
-	b	.LBB6_11
-.Ltmp25:
-.LBB6_10:
-	.loc	4 315 9                         @ lvgl/src/lv_driver/lv_port_indev.c:315:9
-	ldr	r1, [sp, #8]
-	movs	r0, #0
-	.loc	4 315 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:315:21
-	strb	r0, [r1, #14]
-	b	.LBB6_11
-.Ltmp26:
-.LBB6_11:
-	.loc	4 318 17 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:318:17
-	movw	r0, :lower16:keypad_read.last_key
-	movt	r0, :upper16:keypad_read.last_key
-	ldr	r0, [r0]
-	.loc	4 318 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:318:5
-	ldr	r1, [sp, #8]
-	.loc	4 318 15                        @ lvgl/src/lv_driver/lv_port_indev.c:318:15
-	str	r0, [r1, #4]
-	movs	r0, #0
 	.loc	4 321 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:321:5
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp27:
-.Lfunc_end6:
-	.size	keypad_read, .Lfunc_end6-keypad_read
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.encoder_init,"ax",%progbits
-	.p2align	3                               @ -- Begin function encoder_init
-	.type	encoder_init,%function
-	.code	16                              @ @encoder_init
-	.thumb_func
-encoder_init:
-.Lfunc_begin7:
-	.loc	4 338 0                         @ lvgl/src/lv_driver/lv_port_indev.c:338:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	.loc	4 340 1 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:340:1
-	bx	lr
-.Ltmp28:
-.Lfunc_end7:
-	.size	encoder_init, .Lfunc_end7-encoder_init
+	movs	r0, #0
+	movs	r1, #0
+.Ltmp20:
+	@DEBUG_VALUE: keypad_read:act_key <- 0
+	.loc	4 315 21                        @ lvgl/src/lv_driver/lv_port_indev.c:315:21
+	strb	r1, [r4, #14]
+.Ltmp21:
+	.loc	4 318 15                        @ lvgl/src/lv_driver/lv_port_indev.c:318:15
+	str	r1, [r4, #4]
+	.loc	4 321 5                         @ lvgl/src/lv_driver/lv_port_indev.c:321:5
+	pop	{r4, pc}
+.Ltmp22:
+.Lfunc_end4:
+	.size	keypad_read, .Lfunc_end4-keypad_read
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -554,60 +363,29 @@ encoder_init:
 	.code	16                              @ @encoder_read
 	.thumb_func
 encoder_read:
-.Lfunc_begin8:
+.Lfunc_begin5:
 	.loc	4 344 0                         @ lvgl/src/lv_driver/lv_port_indev.c:344:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 8
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp29:
-	.loc	4 346 22 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:346:22
-	movw	r0, :lower16:encoder_diff
-	movt	r0, :upper16:encoder_diff
-	ldr	r0, [r0]
-	.loc	4 346 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:346:5
-	ldr	r1, [sp]
-	.loc	4 346 20                        @ lvgl/src/lv_driver/lv_port_indev.c:346:20
-	strh	r0, [r1, #12]
-	.loc	4 347 19 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:347:19
-	movw	r0, :lower16:encoder_state
-	movt	r0, :upper16:encoder_state
-	ldrb	r0, [r0]
-	.loc	4 347 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:347:5
-	ldr	r1, [sp]
-	.loc	4 347 17                        @ lvgl/src/lv_driver/lv_port_indev.c:347:17
-	strb	r0, [r1, #14]
+	@DEBUG_VALUE: encoder_read:indev_drv <- $r0
+	@DEBUG_VALUE: encoder_read:data <- $r1
+	.loc	4 350 5 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:350:5
 	movs	r0, #0
-	.loc	4 350 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:350:5
-	add	sp, #8
+.Ltmp23:
+	@DEBUG_VALUE: encoder_read:indev_drv <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 5 is_stmt 0                 @ lvgl/src/lv_driver/lv_port_indev.c:0:5
+	movs	r2, #0
+	@DEBUG_VALUE: encoder_read:data <- $r1
+	.loc	4 346 20 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:346:20
+	strh	r2, [r1, #12]
+	.loc	4 347 17                        @ lvgl/src/lv_driver/lv_port_indev.c:347:17
+	strb	r2, [r1, #14]
+	.loc	4 350 5                         @ lvgl/src/lv_driver/lv_port_indev.c:350:5
 	bx	lr
-.Ltmp30:
-.Lfunc_end8:
-	.size	encoder_read, .Lfunc_end8-encoder_read
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.button_init,"ax",%progbits
-	.p2align	3                               @ -- Begin function button_init
-	.type	button_init,%function
-	.code	16                              @ @button_init
-	.thumb_func
-button_init:
-.Lfunc_begin9:
-	.loc	4 368 0                         @ lvgl/src/lv_driver/lv_port_indev.c:368:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	.loc	4 370 1 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:370:1
-	bx	lr
-.Ltmp31:
-.Lfunc_end9:
-	.size	button_init, .Lfunc_end9-button_init
+.Ltmp24:
+.Lfunc_end5:
+	.size	encoder_read, .Lfunc_end5-encoder_read
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -618,74 +396,32 @@ button_init:
 	.code	16                              @ @button_read
 	.thumb_func
 button_read:
-.Lfunc_begin10:
+.Lfunc_begin6:
 	.loc	4 374 0                         @ lvgl/src/lv_driver/lv_port_indev.c:374:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
-	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-.Ltmp32:
-	.loc	4 379 22 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:379:22
-	bl	button_get_pressed_id
-	.loc	4 379 12 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:379:12
-	strb.w	r0, [sp, #7]
-.Ltmp33:
-	.loc	4 381 8 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:381:8
-	ldrsb.w	r0, [sp, #7]
-.Ltmp34:
-	.loc	4 381 8 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:381:8
-	cmp	r0, #0
-	bmi	.LBB10_2
-	b	.LBB10_1
-.LBB10_1:
-.Ltmp35:
-	.loc	4 382 9 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:382:9
-	ldr	r1, [sp, #8]
-	movs	r0, #1
-	.loc	4 382 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:382:21
-	strb	r0, [r1, #14]
-	.loc	4 383 20 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:383:20
-	ldrb.w	r0, [sp, #7]
-	.loc	4 383 18 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:383:18
-	movw	r1, :lower16:button_read.last_btn
-	movt	r1, :upper16:button_read.last_btn
-	strb	r0, [r1]
-	.loc	4 384 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:384:5
-	b	.LBB10_3
-.Ltmp36:
-.LBB10_2:
-	.loc	4 385 9                         @ lvgl/src/lv_driver/lv_port_indev.c:385:9
-	ldr	r1, [sp, #8]
+	@DEBUG_VALUE: button_read:indev_drv <- $r0
+	@DEBUG_VALUE: button_read:data <- $r1
+	.loc	4 392 5 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:392:5
 	movs	r0, #0
-	.loc	4 385 21 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:385:21
-	strb	r0, [r1, #14]
-	b	.LBB10_3
-.Ltmp37:
-.LBB10_3:
-	.loc	4 389 20 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:389:20
-	movw	r0, :lower16:button_read.last_btn
-	movt	r0, :upper16:button_read.last_btn
-	ldrb	r0, [r0]
-	.loc	4 389 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:389:5
-	ldr	r1, [sp, #8]
+.Ltmp25:
+	@DEBUG_VALUE: button_read:indev_drv <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 5 is_stmt 0                 @ lvgl/src/lv_driver/lv_port_indev.c:0:5
+	movs	r2, #0
+.Ltmp26:
+	@DEBUG_VALUE: button_read:btn_act <- -1
+	@DEBUG_VALUE: button_read:data <- $r1
+	.loc	4 385 21 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:385:21
+	strb	r2, [r1, #14]
+.Ltmp27:
 	.loc	4 389 18                        @ lvgl/src/lv_driver/lv_port_indev.c:389:18
-	str	r0, [r1, #8]
-	movs	r0, #0
-	.loc	4 392 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:392:5
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp38:
-.Lfunc_end10:
-	.size	button_read, .Lfunc_end10-button_read
+	str	r2, [r1, #8]
+	.loc	4 392 5                         @ lvgl/src/lv_driver/lv_port_indev.c:392:5
+	bx	lr
+.Ltmp28:
+.Lfunc_end6:
+	.size	button_read, .Lfunc_end6-button_read
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -696,37 +432,38 @@ button_read:
 	.code	16                              @ @touchpad_get_xy
 	.thumb_func
 touchpad_get_xy:
-.Lfunc_begin11:
+.Lfunc_begin7:
 	.loc	4 220 0                         @ lvgl/src/lv_driver/lv_port_indev.c:220:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 8
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp39:
 	.loc	4 223 24 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:223:24
 	movw	r0, :lower16:tp_dev
+	.loc	4 223 10 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:223:10
+	movw	r2, :lower16:touchpad_read.last_x
+	.loc	4 223 24                        @ lvgl/src/lv_driver/lv_port_indev.c:223:24
 	movt	r0, :upper16:tp_dev
-	ldrh	r1, [r0, #12]
-	.loc	4 223 7 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:223:7
-	ldr	r2, [sp, #4]
 	.loc	4 223 10                        @ lvgl/src/lv_driver/lv_port_indev.c:223:10
-	strh	r1, [r2]
+	movt	r2, :upper16:touchpad_read.last_x
+.Ltmp29:
+	@DEBUG_VALUE: touchpad_get_xy:x <- $r2
+	.loc	4 223 24                        @ lvgl/src/lv_driver/lv_port_indev.c:223:24
+	ldrh	r1, [r0, #12]
 	.loc	4 224 24 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:224:24
 	ldrh	r0, [r0, #32]
-	.loc	4 224 7 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:224:7
-	ldr	r1, [sp]
+	.loc	4 223 10                        @ lvgl/src/lv_driver/lv_port_indev.c:223:10
+	strh	r1, [r2]
 	.loc	4 224 10                        @ lvgl/src/lv_driver/lv_port_indev.c:224:10
+	movw	r1, :lower16:touchpad_read.last_y
+	movt	r1, :upper16:touchpad_read.last_y
+.Ltmp30:
+	@DEBUG_VALUE: touchpad_get_xy:y <- $r1
 	strh	r0, [r1]
-	.loc	4 225 1 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:225:1
-	add	sp, #8
+	.loc	4 225 1                         @ lvgl/src/lv_driver/lv_port_indev.c:225:1
 	bx	lr
-.Ltmp40:
-.Lfunc_end11:
-	.size	touchpad_get_xy, .Lfunc_end11-touchpad_get_xy
+.Ltmp31:
+.Lfunc_end7:
+	.size	touchpad_get_xy, .Lfunc_end7-touchpad_get_xy
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -737,186 +474,26 @@ touchpad_get_xy:
 	.code	16                              @ @mouse_get_xy
 	.thumb_func
 mouse_get_xy:
-.Lfunc_begin12:
+.Lfunc_begin8:
 	.loc	4 264 0                         @ lvgl/src/lv_driver/lv_port_indev.c:264:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 8
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp41:
-	.loc	4 267 7 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:267:7
-	ldr	r1, [sp, #4]
-	movs	r0, #0
-	.loc	4 267 10 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:267:10
-	strh	r0, [r1]
-	.loc	4 268 7 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:268:7
-	ldr	r1, [sp]
-	.loc	4 268 10 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:268:10
-	strh	r0, [r1]
-	.loc	4 269 1 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:269:1
-	add	sp, #8
+	@DEBUG_VALUE: mouse_get_xy:x <- $r0
+	@DEBUG_VALUE: mouse_get_xy:y <- $r1
+	movs	r2, #0
+	@DEBUG_VALUE: mouse_get_xy:x <- $r0
+.Ltmp32:
+	.loc	4 267 10 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:267:10
+	strh	r2, [r0]
+	@DEBUG_VALUE: mouse_get_xy:y <- $r1
+	.loc	4 268 10                        @ lvgl/src/lv_driver/lv_port_indev.c:268:10
+	strh	r2, [r1]
+	.loc	4 269 1                         @ lvgl/src/lv_driver/lv_port_indev.c:269:1
 	bx	lr
-.Ltmp42:
-.Lfunc_end12:
-	.size	mouse_get_xy, .Lfunc_end12-mouse_get_xy
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.mouse_is_pressed,"ax",%progbits
-	.p2align	3                               @ -- Begin function mouse_is_pressed
-	.type	mouse_is_pressed,%function
-	.code	16                              @ @mouse_is_pressed
-	.thumb_func
-mouse_is_pressed:
-.Lfunc_begin13:
-	.loc	4 256 0                         @ lvgl/src/lv_driver/lv_port_indev.c:256:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	movs	r0, #0
-.Ltmp43:
-	.loc	4 259 5 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:259:5
-	bx	lr
-.Ltmp44:
-.Lfunc_end13:
-	.size	mouse_is_pressed, .Lfunc_end13-mouse_is_pressed
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.keypad_get_key,"ax",%progbits
-	.p2align	3                               @ -- Begin function keypad_get_key
-	.type	keypad_get_key,%function
-	.code	16                              @ @keypad_get_key
-	.thumb_func
-keypad_get_key:
-.Lfunc_begin14:
-	.loc	4 326 0                         @ lvgl/src/lv_driver/lv_port_indev.c:326:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	movs	r0, #0
-.Ltmp45:
-	.loc	4 329 5 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:329:5
-	bx	lr
-.Ltmp46:
-.Lfunc_end14:
-	.size	keypad_get_key, .Lfunc_end14-keypad_get_key
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.button_get_pressed_id,"ax",%progbits
-	.p2align	3                               @ -- Begin function button_get_pressed_id
-	.type	button_get_pressed_id,%function
-	.code	16                              @ @button_get_pressed_id
-	.thumb_func
-button_get_pressed_id:
-.Lfunc_begin15:
-	.loc	4 397 0                         @ lvgl/src/lv_driver/lv_port_indev.c:397:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
-	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	movs	r0, #0
-.Ltmp47:
-	.loc	4 401 11 prologue_end           @ lvgl/src/lv_driver/lv_port_indev.c:401:11
-	strb.w	r0, [sp, #6]
-	.loc	4 401 9 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:401:9
-	b	.LBB15_1
-.LBB15_1:                               @ =>This Inner Loop Header: Depth=1
-.Ltmp48:
-	.loc	4 401 16                        @ lvgl/src/lv_driver/lv_port_indev.c:401:16
-	ldrb.w	r0, [sp, #6]
-.Ltmp49:
-	.loc	4 401 5                         @ lvgl/src/lv_driver/lv_port_indev.c:401:5
-	cmp	r0, #1
-	bgt	.LBB15_6
-	b	.LBB15_2
-.LBB15_2:                               @   in Loop: Header=BB15_1 Depth=1
-.Ltmp50:
-	.loc	4 403 30 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:403:30
-	ldrb.w	r0, [sp, #6]
-	.loc	4 403 12 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:403:12
-	bl	button_is_pressed
-.Ltmp51:
-	.loc	4 403 12                        @ lvgl/src/lv_driver/lv_port_indev.c:403:12
-	cbz	r0, .LBB15_4
-	b	.LBB15_3
-.LBB15_3:
-.Ltmp52:
-	.loc	4 404 20 is_stmt 1              @ lvgl/src/lv_driver/lv_port_indev.c:404:20
-	ldrb.w	r0, [sp, #6]
-	.loc	4 404 13 is_stmt 0              @ lvgl/src/lv_driver/lv_port_indev.c:404:13
-	strb.w	r0, [sp, #7]
-	b	.LBB15_7
-.Ltmp53:
-.LBB15_4:                               @   in Loop: Header=BB15_1 Depth=1
-	.loc	4 406 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:406:5
-	b	.LBB15_5
-.Ltmp54:
-.LBB15_5:                               @   in Loop: Header=BB15_1 Depth=1
-	.loc	4 401 24                        @ lvgl/src/lv_driver/lv_port_indev.c:401:24
-	ldrb.w	r0, [sp, #6]
-	adds	r0, #1
-	strb.w	r0, [sp, #6]
-	.loc	4 401 5 is_stmt 0               @ lvgl/src/lv_driver/lv_port_indev.c:401:5
-	b	.LBB15_1
-.Ltmp55:
-.LBB15_6:
-	.loc	4 0 5                           @ lvgl/src/lv_driver/lv_port_indev.c:0:5
-	movs	r0, #255
-	.loc	4 409 5 is_stmt 1               @ lvgl/src/lv_driver/lv_port_indev.c:409:5
-	strb.w	r0, [sp, #7]
-	b	.LBB15_7
-.LBB15_7:
-	.loc	4 410 1                         @ lvgl/src/lv_driver/lv_port_indev.c:410:1
-	ldrsb.w	r0, [sp, #7]
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp56:
-.Lfunc_end15:
-	.size	button_get_pressed_id, .Lfunc_end15-button_get_pressed_id
-	.cfi_endproc
-	.cantunwind
-	.fnend
-                                        @ -- End function
-	.section	.text.button_is_pressed,"ax",%progbits
-	.p2align	3                               @ -- Begin function button_is_pressed
-	.type	button_is_pressed,%function
-	.code	16                              @ @button_is_pressed
-	.thumb_func
-button_is_pressed:
-.Lfunc_begin16:
-	.loc	4 414 0                         @ lvgl/src/lv_driver/lv_port_indev.c:414:0
-	.fnstart
-	.cfi_startproc
-@ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-                                        @ kill: def $r1 killed $r0
-	strb.w	r0, [sp, #3]
-	movs	r0, #0
-.Ltmp57:
-	.loc	4 418 5 prologue_end            @ lvgl/src/lv_driver/lv_port_indev.c:418:5
-	add	sp, #4
-	bx	lr
-.Ltmp58:
-.Lfunc_end16:
-	.size	button_is_pressed, .Lfunc_end16-button_is_pressed
+.Ltmp33:
+.Lfunc_end8:
+	.size	mouse_get_xy, .Lfunc_end8-mouse_get_xy
 	.cfi_endproc
 	.cantunwind
 	.fnend
@@ -990,32 +567,158 @@ touchpad_read.last_y:
 	.short	0                               @ 0x0
 	.size	touchpad_read.last_y, 2
 
-	.type	keypad_read.last_key,%object    @ @keypad_read.last_key
-	.section	.bss.keypad_read.last_key,"aw",%nobits
-	.p2align	2
-keypad_read.last_key:
-	.long	0                               @ 0x0
-	.size	keypad_read.last_key, 4
-
-	.type	encoder_diff,%object            @ @encoder_diff
-	.section	.bss.encoder_diff,"aw",%nobits
-	.p2align	2
-encoder_diff:
-	.long	0                               @ 0x0
-	.size	encoder_diff, 4
-
-	.type	encoder_state,%object           @ @encoder_state
-	.section	.bss.encoder_state,"aw",%nobits
-encoder_state:
-	.byte	0                               @ 0x0
-	.size	encoder_state, 1
-
-	.type	button_read.last_btn,%object    @ @button_read.last_btn
-	.section	.bss.button_read.last_btn,"aw",%nobits
-button_read.last_btn:
-	.byte	0                               @ 0x0
-	.size	button_read.last_btn, 1
-
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp5-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp5-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp6-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp6-.Lfunc_begin2
+	.long	.Ltmp12-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp14-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp14-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp13-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp13-.Lfunc_begin3
+	.long	.Ltmp17-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp19-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp19-.Lfunc_begin4
+	.long	.Lfunc_end4-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp18-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp18-.Lfunc_begin4
+	.long	.Ltmp22-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp20-.Lfunc_begin4
+	.long	.Lfunc_end4-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp23-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp23-.Lfunc_begin5
+	.long	.Lfunc_end5-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp25-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp25-.Lfunc_begin6
+	.long	.Lfunc_end6-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp26-.Lfunc_begin6
+	.long	.Lfunc_end6-.Lfunc_begin6
+	.short	2                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.byte	32                              @ DW_OP_not
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp29-.Lfunc_begin7
+	.long	.Lfunc_end7-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp30-.Lfunc_begin7
+	.long	.Lfunc_end7-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1404,7 +1107,7 @@ button_read.last_btn:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1447,15 +1150,13 @@ button_read.last_btn:
 	.byte	11                              @ DW_FORM_data1
 	.byte	59                              @ DW_AT_decl_line
 	.byte	5                               @ DW_FORM_data2
-	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	35                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1470,7 +1171,7 @@ button_read.last_btn:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1482,6 +1183,34 @@ button_read.last_btn:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	37                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	38                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	39                              @ Abbreviation Code
 	.byte	4                               @ DW_TAG_enumeration_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	73                              @ DW_AT_type
@@ -1494,7 +1223,7 @@ button_read.last_btn:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	38                              @ Abbreviation Code
+	.byte	40                              @ Abbreviation Code
 	.byte	40                              @ DW_TAG_enumerator
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -1503,47 +1232,9 @@ button_read.last_btn:
 	.byte	15                              @ DW_FORM_udata
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	39                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	64                              @ DW_AT_frame_base
-	.byte	10                              @ DW_FORM_block1
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
-	.byte	39                              @ DW_AT_prototyped
-	.byte	12                              @ DW_FORM_flag
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	40                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	64                              @ DW_AT_frame_base
-	.byte	10                              @ DW_FORM_block1
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_FORM_data2
-	.byte	39                              @ DW_AT_prototyped
-	.byte	12                              @ DW_FORM_flag
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
 	.byte	41                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
-	.byte	1                               @ DW_CHILDREN_yes
+	.byte	0                               @ DW_CHILDREN_no
 	.byte	17                              @ DW_AT_low_pc
 	.byte	1                               @ DW_FORM_addr
 	.byte	18                              @ DW_AT_high_pc
@@ -1574,35 +1265,14 @@ button_read.last_btn:
 	.byte	58                              @ DW_AT_decl_file
 	.byte	11                              @ DW_FORM_data1
 	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_FORM_data2
+	.byte	11                              @ DW_FORM_data1
 	.byte	39                              @ DW_AT_prototyped
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	43                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	64                              @ DW_AT_frame_base
-	.byte	10                              @ DW_FORM_block1
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
-	.byte	39                              @ DW_AT_prototyped
-	.byte	12                              @ DW_FORM_flag
-	.byte	73                              @ DW_AT_type
-	.byte	19                              @ DW_FORM_ref4
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	44                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	0                               @ DW_CHILDREN_no
+	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
 	.byte	1                               @ DW_FORM_addr
 	.byte	18                              @ DW_AT_high_pc
@@ -1617,8 +1287,6 @@ button_read.last_btn:
 	.byte	5                               @ DW_FORM_data2
 	.byte	39                              @ DW_AT_prototyped
 	.byte	12                              @ DW_FORM_flag
-	.byte	73                              @ DW_AT_type
-	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	0                               @ EOM(3)
@@ -1629,7 +1297,7 @@ button_read.last_btn:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x116a DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x1094 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1658,8 +1326,8 @@ button_read.last_btn:
 	.byte	4                               @ Abbrev [4] 0x4a:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	12
-	.long	.Linfo_string279                @ DW_AT_name
+	.byte	4
+	.long	.Linfo_string269                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	82                              @ DW_AT_decl_line
 	.long	285                             @ DW_AT_type
@@ -3509,7 +3177,7 @@ button_read.last_btn:
 	.byte	5                               @ DW_AT_location
 	.byte	3
 	.long	indev_button
-	.byte	31                              @ Abbrev [31] 0xe04:0x55 DW_TAG_subprogram
+	.byte	31                              @ Abbrev [31] 0xe04:0x57 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3535,201 +3203,174 @@ button_read.last_btn:
 	.byte	5                               @ DW_AT_location
 	.byte	3
 	.long	touchpad_read.last_y
-	.byte	32                              @ Abbrev [32] 0xe3c:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string279                @ DW_AT_name
+	.byte	32                              @ Abbrev [32] 0xe3c:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
+	.long	.Linfo_string269                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	189                             @ DW_AT_decl_line
-	.long	4458                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0xe4a:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string280                @ DW_AT_name
+	.long	4226                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0xe4b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
+	.long	.Linfo_string270                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	189                             @ DW_AT_decl_line
 	.long	500                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	33                              @ Abbrev [33] 0xe59:0x57 DW_TAG_subprogram
+	.byte	33                              @ Abbrev [33] 0xe5b:0x54 DW_TAG_subprogram
+	.long	.Lfunc_begin4                   @ DW_AT_low_pc
+	.long	.Lfunc_end4                     @ DW_AT_high_pc
+	.byte	1                               @ DW_AT_frame_base
+	.byte	93
+	.long	.Linfo_string264                @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	282                             @ DW_AT_decl_line
+	.byte	1                               @ DW_AT_prototyped
+	.long	488                             @ DW_AT_type
+	.byte	34                              @ Abbrev [34] 0xe72:0xc DW_TAG_variable
+	.long	.Linfo_string208                @ DW_AT_name
+	.long	581                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.short	284                             @ DW_AT_decl_line
+	.byte	35                              @ Abbrev [35] 0xe7e:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc4                    @ DW_AT_location
+	.long	.Linfo_string269                @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	282                             @ DW_AT_decl_line
+	.long	4226                            @ DW_AT_type
+	.byte	35                              @ Abbrev [35] 0xe8e:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc5                    @ DW_AT_location
+	.long	.Linfo_string270                @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	282                             @ DW_AT_decl_line
+	.long	500                             @ DW_AT_type
+	.byte	36                              @ Abbrev [36] 0xe9e:0x10 DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
+	.long	.Linfo_string271                @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	290                             @ DW_AT_decl_line
+	.long	581                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	37                              @ Abbrev [37] 0xeaf:0xb DW_TAG_variable
+	.long	.Linfo_string238                @ DW_AT_name
+	.long	1678                            @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.byte	37                              @ Abbrev [37] 0xeba:0xb DW_TAG_variable
+	.long	.Linfo_string239                @ DW_AT_name
+	.long	599                             @ DW_AT_type
+	.byte	4                               @ DW_AT_decl_file
+	.byte	59                              @ DW_AT_decl_line
+	.byte	33                              @ Abbrev [33] 0xec5:0x52 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
 	.long	.Linfo_string266                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.short	282                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.long	488                             @ DW_AT_type
-	.byte	34                              @ Abbrev [34] 0xe70:0x12 DW_TAG_variable
-	.long	.Linfo_string208                @ DW_AT_name
-	.long	581                             @ DW_AT_type
-	.byte	4                               @ DW_AT_decl_file
-	.short	284                             @ DW_AT_decl_line
-	.byte	5                               @ DW_AT_location
-	.byte	3
-	.long	keypad_read.last_key
-	.byte	35                              @ Abbrev [35] 0xe82:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
-	.long	.Linfo_string279                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	282                             @ DW_AT_decl_line
-	.long	4458                            @ DW_AT_type
-	.byte	35                              @ Abbrev [35] 0xe91:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string280                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	282                             @ DW_AT_decl_line
-	.long	500                             @ DW_AT_type
-	.byte	36                              @ Abbrev [36] 0xea0:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string281                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	290                             @ DW_AT_decl_line
-	.long	581                             @ DW_AT_type
-	.byte	0                               @ End Of Children Mark
-	.byte	3                               @ Abbrev [3] 0xeb0:0x11 DW_TAG_variable
-	.long	.Linfo_string238                @ DW_AT_name
-	.long	1678                            @ DW_AT_type
-	.byte	4                               @ DW_AT_decl_file
-	.byte	58                              @ DW_AT_decl_line
-	.byte	5                               @ DW_AT_location
-	.byte	3
-	.long	encoder_diff
-	.byte	3                               @ Abbrev [3] 0xec1:0x11 DW_TAG_variable
-	.long	.Linfo_string239                @ DW_AT_name
-	.long	599                             @ DW_AT_type
-	.byte	4                               @ DW_AT_decl_file
-	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_AT_location
-	.byte	3
-	.long	encoder_state
-	.byte	33                              @ Abbrev [33] 0xed2:0x57 DW_TAG_subprogram
-	.long	.Lfunc_begin10                  @ DW_AT_low_pc
-	.long	.Lfunc_end10                    @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string270                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
 	.short	373                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	488                             @ DW_AT_type
-	.byte	34                              @ Abbrev [34] 0xee9:0x12 DW_TAG_variable
+	.byte	34                              @ Abbrev [34] 0xedc:0xc DW_TAG_variable
 	.long	.Linfo_string240                @ DW_AT_name
 	.long	448                             @ DW_AT_type
 	.byte	4                               @ DW_AT_decl_file
 	.short	376                             @ DW_AT_decl_line
-	.byte	5                               @ DW_AT_location
-	.byte	3
-	.long	button_read.last_btn
-	.byte	35                              @ Abbrev [35] 0xefb:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
-	.long	.Linfo_string279                @ DW_AT_name
+	.byte	35                              @ Abbrev [35] 0xee8:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc8                    @ DW_AT_location
+	.long	.Linfo_string269                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	373                             @ DW_AT_decl_line
-	.long	4458                            @ DW_AT_type
-	.byte	35                              @ Abbrev [35] 0xf0a:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string280                @ DW_AT_name
+	.long	4226                            @ DW_AT_type
+	.byte	38                              @ Abbrev [38] 0xef8:0xe DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	81
+	.long	.Linfo_string270                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	373                             @ DW_AT_decl_line
 	.long	500                             @ DW_AT_type
-	.byte	36                              @ Abbrev [36] 0xf19:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	7
-	.long	.Linfo_string282                @ DW_AT_name
+	.byte	36                              @ Abbrev [36] 0xf06:0x10 DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
+	.long	.Linfo_string272                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	379                             @ DW_AT_decl_line
-	.long	4440                            @ DW_AT_type
+	.long	4231                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	37                              @ Abbrev [37] 0xf29:0x27 DW_TAG_enumeration_type
+	.byte	39                              @ Abbrev [39] 0xf17:0x27 DW_TAG_enumeration_type
 	.long	459                             @ DW_AT_type
 	.byte	1                               @ DW_AT_byte_size
 	.byte	5                               @ DW_AT_decl_file
 	.byte	39                              @ DW_AT_decl_line
-	.byte	38                              @ Abbrev [38] 0xf31:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf1f:0x6 DW_TAG_enumerator
 	.long	.Linfo_string241                @ DW_AT_name
 	.byte	0                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf37:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf25:0x6 DW_TAG_enumerator
 	.long	.Linfo_string242                @ DW_AT_name
 	.byte	1                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf3d:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf2b:0x6 DW_TAG_enumerator
 	.long	.Linfo_string243                @ DW_AT_name
 	.byte	2                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf43:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf31:0x6 DW_TAG_enumerator
 	.long	.Linfo_string244                @ DW_AT_name
 	.byte	3                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf49:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf37:0x6 DW_TAG_enumerator
 	.long	.Linfo_string245                @ DW_AT_name
 	.byte	4                               @ DW_AT_const_value
 	.byte	0                               @ End Of Children Mark
-	.byte	37                              @ Abbrev [37] 0xf50:0x15 DW_TAG_enumeration_type
+	.byte	39                              @ Abbrev [39] 0xf3e:0x15 DW_TAG_enumeration_type
 	.long	459                             @ DW_AT_type
 	.byte	1                               @ DW_AT_byte_size
 	.byte	5                               @ DW_AT_decl_file
 	.byte	50                              @ DW_AT_decl_line
-	.byte	38                              @ Abbrev [38] 0xf58:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf46:0x6 DW_TAG_enumerator
 	.long	.Linfo_string246                @ DW_AT_name
 	.byte	0                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf5e:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf4c:0x6 DW_TAG_enumerator
 	.long	.Linfo_string247                @ DW_AT_name
 	.byte	1                               @ DW_AT_const_value
 	.byte	0                               @ End Of Children Mark
-	.byte	37                              @ Abbrev [37] 0xf65:0x51 DW_TAG_enumeration_type
+	.byte	39                              @ Abbrev [39] 0xf53:0x51 DW_TAG_enumeration_type
 	.long	459                             @ DW_AT_type
 	.byte	1                               @ DW_AT_byte_size
 	.byte	14                              @ DW_AT_decl_file
 	.byte	25                              @ DW_AT_decl_line
-	.byte	38                              @ Abbrev [38] 0xf6d:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf5b:0x6 DW_TAG_enumerator
 	.long	.Linfo_string248                @ DW_AT_name
 	.byte	17                              @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf73:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf61:0x6 DW_TAG_enumerator
 	.long	.Linfo_string249                @ DW_AT_name
 	.byte	18                              @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf79:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf67:0x6 DW_TAG_enumerator
 	.long	.Linfo_string250                @ DW_AT_name
 	.byte	19                              @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf7f:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf6d:0x6 DW_TAG_enumerator
 	.long	.Linfo_string251                @ DW_AT_name
 	.byte	20                              @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf85:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf73:0x6 DW_TAG_enumerator
 	.long	.Linfo_string252                @ DW_AT_name
 	.byte	27                              @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf8b:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf79:0x6 DW_TAG_enumerator
 	.long	.Linfo_string253                @ DW_AT_name
 	.byte	127                             @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf91:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf7f:0x6 DW_TAG_enumerator
 	.long	.Linfo_string254                @ DW_AT_name
 	.byte	8                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf97:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf85:0x6 DW_TAG_enumerator
 	.long	.Linfo_string255                @ DW_AT_name
 	.byte	10                              @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xf9d:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf8b:0x6 DW_TAG_enumerator
 	.long	.Linfo_string256                @ DW_AT_name
 	.byte	9                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xfa3:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf91:0x6 DW_TAG_enumerator
 	.long	.Linfo_string257                @ DW_AT_name
 	.byte	11                              @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xfa9:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf97:0x6 DW_TAG_enumerator
 	.long	.Linfo_string258                @ DW_AT_name
 	.byte	2                               @ DW_AT_const_value
-	.byte	38                              @ Abbrev [38] 0xfaf:0x6 DW_TAG_enumerator
+	.byte	40                              @ Abbrev [40] 0xf9d:0x6 DW_TAG_enumerator
 	.long	.Linfo_string259                @ DW_AT_name
 	.byte	3                               @ DW_AT_const_value
 	.byte	0                               @ End Of Children Mark
-	.byte	39                              @ Abbrev [39] 0xfb6:0x12 DW_TAG_subprogram
+	.byte	41                              @ Abbrev [41] 0xfa4:0x12 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3738,218 +3379,111 @@ button_read.last_btn:
 	.byte	4                               @ DW_AT_decl_file
 	.byte	181                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	39                              @ Abbrev [39] 0xfc8:0x12 DW_TAG_subprogram
+	.byte	31                              @ Abbrev [31] 0xfb6:0x35 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
 	.long	.Linfo_string263                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.byte	232                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.byte	31                              @ Abbrev [31] 0xfda:0x33 DW_TAG_subprogram
-	.long	.Lfunc_begin4                   @ DW_AT_low_pc
-	.long	.Lfunc_end4                     @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string264                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
 	.byte	238                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	488                             @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0xff0:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string279                @ DW_AT_name
+	.byte	32                              @ Abbrev [32] 0xfcc:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc2                    @ DW_AT_location
+	.long	.Linfo_string269                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	238                             @ DW_AT_decl_line
-	.long	4458                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0xffe:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string280                @ DW_AT_name
+	.long	4226                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0xfdb:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc3                    @ DW_AT_location
+	.long	.Linfo_string270                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	238                             @ DW_AT_decl_line
 	.long	500                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	40                              @ Abbrev [40] 0x100d:0x13 DW_TAG_subprogram
+	.byte	33                              @ Abbrev [33] 0xfeb:0x36 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
 	.long	.Linfo_string265                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.short	276                             @ DW_AT_decl_line
+	.short	343                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	40                              @ Abbrev [40] 0x1020:0x13 DW_TAG_subprogram
+	.long	488                             @ DW_AT_type
+	.byte	35                              @ Abbrev [35] 0x1002:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc7                    @ DW_AT_location
+	.long	.Linfo_string269                @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	343                             @ DW_AT_decl_line
+	.long	4226                            @ DW_AT_type
+	.byte	38                              @ Abbrev [38] 0x1012:0xe DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	81
+	.long	.Linfo_string270                @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	343                             @ DW_AT_decl_line
+	.long	500                             @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	42                              @ Abbrev [42] 0x1021:0x31 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
 	.long	.Linfo_string267                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.short	337                             @ DW_AT_decl_line
+	.byte	219                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	33                              @ Abbrev [33] 0x1033:0x36 DW_TAG_subprogram
+	.byte	32                              @ Abbrev [32] 0x1033:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc10                   @ DW_AT_location
+	.long	.Linfo_string4                  @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	219                             @ DW_AT_decl_line
+	.long	4249                            @ DW_AT_type
+	.byte	32                              @ Abbrev [32] 0x1042:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc11                   @ DW_AT_location
+	.long	.Linfo_string8                  @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	219                             @ DW_AT_decl_line
+	.long	4249                            @ DW_AT_type
+	.byte	0                               @ End Of Children Mark
+	.byte	43                              @ Abbrev [43] 0x1052:0x30 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
 	.byte	93
 	.long	.Linfo_string268                @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.short	343                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.long	488                             @ DW_AT_type
-	.byte	35                              @ Abbrev [35] 0x104a:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string279                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	343                             @ DW_AT_decl_line
-	.long	4458                            @ DW_AT_type
-	.byte	35                              @ Abbrev [35] 0x1059:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string280                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	343                             @ DW_AT_decl_line
-	.long	500                             @ DW_AT_type
-	.byte	0                               @ End Of Children Mark
-	.byte	40                              @ Abbrev [40] 0x1069:0x13 DW_TAG_subprogram
-	.long	.Lfunc_begin9                   @ DW_AT_low_pc
-	.long	.Lfunc_end9                     @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string269                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	367                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.byte	41                              @ Abbrev [41] 0x107c:0x2f DW_TAG_subprogram
-	.long	.Lfunc_begin11                  @ DW_AT_low_pc
-	.long	.Lfunc_end11                    @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string271                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.byte	219                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.byte	32                              @ Abbrev [32] 0x108e:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string4                  @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.byte	219                             @ DW_AT_decl_line
-	.long	4463                            @ DW_AT_type
-	.byte	32                              @ Abbrev [32] 0x109c:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string8                  @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.byte	219                             @ DW_AT_decl_line
-	.long	4463                            @ DW_AT_type
-	.byte	0                               @ End Of Children Mark
-	.byte	42                              @ Abbrev [42] 0x10ab:0x32 DW_TAG_subprogram
-	.long	.Lfunc_begin12                  @ DW_AT_low_pc
-	.long	.Lfunc_end12                    @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string272                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
 	.short	263                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	35                              @ Abbrev [35] 0x10be:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	38                              @ Abbrev [38] 0x1065:0xe DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	80
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	263                             @ DW_AT_decl_line
-	.long	4463                            @ DW_AT_type
-	.byte	35                              @ Abbrev [35] 0x10cd:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	4249                            @ DW_AT_type
+	.byte	38                              @ Abbrev [38] 0x1073:0xe DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	81
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	263                             @ DW_AT_decl_line
-	.long	4463                            @ DW_AT_type
+	.long	4249                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	43                              @ Abbrev [43] 0x10dd:0x16 DW_TAG_subprogram
-	.long	.Lfunc_begin13                  @ DW_AT_low_pc
-	.long	.Lfunc_end13                    @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string273                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.byte	255                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.long	488                             @ DW_AT_type
-	.byte	44                              @ Abbrev [44] 0x10f3:0x17 DW_TAG_subprogram
-	.long	.Lfunc_begin14                  @ DW_AT_low_pc
-	.long	.Lfunc_end14                    @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
+	.byte	14                              @ Abbrev [14] 0x1082:0x5 DW_TAG_pointer_type
+	.long	285                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x1087:0xb DW_TAG_typedef
+	.long	4242                            @ DW_AT_type
 	.long	.Linfo_string274                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	325                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.long	581                             @ DW_AT_type
-	.byte	33                              @ Abbrev [33] 0x110a:0x27 DW_TAG_subprogram
-	.long	.Lfunc_begin15                  @ DW_AT_low_pc
-	.long	.Lfunc_end15                    @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string275                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	396                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.long	4440                            @ DW_AT_type
-	.byte	36                              @ Abbrev [36] 0x1121:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	6
-	.long	.Linfo_string283                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	398                             @ DW_AT_decl_line
-	.long	448                             @ DW_AT_type
-	.byte	0                               @ End Of Children Mark
-	.byte	33                              @ Abbrev [33] 0x1131:0x27 DW_TAG_subprogram
-	.long	.Lfunc_begin16                  @ DW_AT_low_pc
-	.long	.Lfunc_end16                    @ DW_AT_high_pc
-	.byte	1                               @ DW_AT_frame_base
-	.byte	93
-	.long	.Linfo_string278                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	413                             @ DW_AT_decl_line
-	.byte	1                               @ DW_AT_prototyped
-	.long	488                             @ DW_AT_type
-	.byte	35                              @ Abbrev [35] 0x1148:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	3
-	.long	.Linfo_string284                @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	413                             @ DW_AT_decl_line
-	.long	448                             @ DW_AT_type
-	.byte	0                               @ End Of Children Mark
-	.byte	8                               @ Abbrev [8] 0x1158:0xb DW_TAG_typedef
-	.long	4451                            @ DW_AT_type
-	.long	.Linfo_string277                @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	56                              @ DW_AT_decl_line
-	.byte	11                              @ Abbrev [11] 0x1163:0x7 DW_TAG_base_type
-	.long	.Linfo_string276                @ DW_AT_name
+	.byte	11                              @ Abbrev [11] 0x1092:0x7 DW_TAG_base_type
+	.long	.Linfo_string273                @ DW_AT_name
 	.byte	6                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	14                              @ Abbrev [14] 0x116a:0x5 DW_TAG_pointer_type
-	.long	285                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x116f:0x5 DW_TAG_pointer_type
+	.byte	14                              @ Abbrev [14] 0x1099:0x5 DW_TAG_pointer_type
 	.long	146                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
@@ -3973,22 +3507,6 @@ button_read.last_btn:
 	.long	.Lfunc_end7
 	.long	.Lfunc_begin8
 	.long	.Lfunc_end8
-	.long	.Lfunc_begin9
-	.long	.Lfunc_end9
-	.long	.Lfunc_begin10
-	.long	.Lfunc_end10
-	.long	.Lfunc_begin11
-	.long	.Lfunc_end11
-	.long	.Lfunc_begin12
-	.long	.Lfunc_end12
-	.long	.Lfunc_begin13
-	.long	.Lfunc_end13
-	.long	.Lfunc_begin14
-	.long	.Lfunc_end14
-	.long	.Lfunc_begin15
-	.long	.Lfunc_end15
-	.long	.Lfunc_begin16
-	.long	.Lfunc_end16
 	.long	0
 	.long	0
 	.section	.debug_str,"MS",%progbits,1
@@ -4519,52 +4037,32 @@ button_read.last_btn:
 .Linfo_string262:
 	.asciz	"touchpad_read"                 @ string offset=3000
 .Linfo_string263:
-	.asciz	"mouse_init"                    @ string offset=3014
+	.asciz	"mouse_read"                    @ string offset=3014
 .Linfo_string264:
-	.asciz	"mouse_read"                    @ string offset=3025
+	.asciz	"keypad_read"                   @ string offset=3025
 .Linfo_string265:
-	.asciz	"keypad_init"                   @ string offset=3036
+	.asciz	"encoder_read"                  @ string offset=3037
 .Linfo_string266:
-	.asciz	"keypad_read"                   @ string offset=3048
+	.asciz	"button_read"                   @ string offset=3050
 .Linfo_string267:
-	.asciz	"encoder_init"                  @ string offset=3060
+	.asciz	"touchpad_get_xy"               @ string offset=3062
 .Linfo_string268:
-	.asciz	"encoder_read"                  @ string offset=3073
+	.asciz	"mouse_get_xy"                  @ string offset=3078
 .Linfo_string269:
-	.asciz	"button_init"                   @ string offset=3086
+	.asciz	"indev_drv"                     @ string offset=3091
 .Linfo_string270:
-	.asciz	"button_read"                   @ string offset=3098
+	.asciz	"data"                          @ string offset=3101
 .Linfo_string271:
-	.asciz	"touchpad_get_xy"               @ string offset=3110
+	.asciz	"act_key"                       @ string offset=3106
 .Linfo_string272:
-	.asciz	"mouse_get_xy"                  @ string offset=3126
+	.asciz	"btn_act"                       @ string offset=3114
 .Linfo_string273:
-	.asciz	"mouse_is_pressed"              @ string offset=3139
+	.asciz	"signed char"                   @ string offset=3122
 .Linfo_string274:
-	.asciz	"keypad_get_key"                @ string offset=3156
-.Linfo_string275:
-	.asciz	"button_get_pressed_id"         @ string offset=3171
-.Linfo_string276:
-	.asciz	"signed char"                   @ string offset=3193
-.Linfo_string277:
-	.asciz	"int8_t"                        @ string offset=3205
-.Linfo_string278:
-	.asciz	"button_is_pressed"             @ string offset=3212
-.Linfo_string279:
-	.asciz	"indev_drv"                     @ string offset=3230
-.Linfo_string280:
-	.asciz	"data"                          @ string offset=3240
-.Linfo_string281:
-	.asciz	"act_key"                       @ string offset=3245
-.Linfo_string282:
-	.asciz	"btn_act"                       @ string offset=3253
-.Linfo_string283:
-	.asciz	"i"                             @ string offset=3261
-.Linfo_string284:
-	.asciz	"id"                            @ string offset=3263
+	.asciz	"int8_t"                        @ string offset=3134
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

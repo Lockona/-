@@ -39,252 +39,201 @@ fal_show_part_table:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r4, lr}
-	push	{r4, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+	.cfi_def_cfa_offset 36
 	.cfi_offset lr, -4
-	.cfi_offset r4, -8
-	.pad	#56
-	sub	sp, #56
-	.cfi_def_cfa_offset 64
+	.cfi_offset r11, -8
+	.cfi_offset r10, -12
+	.cfi_offset r9, -16
+	.cfi_offset r8, -20
+	.cfi_offset r7, -24
+	.cfi_offset r6, -28
+	.cfi_offset r5, -32
+	.cfi_offset r4, -36
+	.pad	#20
+	sub	sp, #20
+	.cfi_def_cfa_offset 56
 .Ltmp0:
-	.loc	4 83 11 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:83:11
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	str	r0, [sp, #52]
-	.loc	4 83 28 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:83:28
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
-	str	r0, [sp, #48]
-	.loc	4 84 38 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:84:38
-	ldr	r0, [sp, #52]
-	.loc	4 84 31 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:84:31
-	bl	strlen
-	.loc	4 84 15                         @ packages/fal-v0.5.0/src/fal_partition.c:84:15
-	str	r0, [sp, #40]
-	.loc	4 84 74                         @ packages/fal-v0.5.0/src/fal_partition.c:84:74
-	ldr	r0, [sp, #48]
-	.loc	4 84 67                         @ packages/fal-v0.5.0/src/fal_partition.c:84:67
-	bl	strlen
-	.loc	4 84 46                         @ packages/fal-v0.5.0/src/fal_partition.c:84:46
-	str	r0, [sp, #36]
-.Ltmp1:
-	.loc	4 87 9 is_stmt 1                @ packages/fal-v0.5.0/src/fal_partition.c:87:9
-	movw	r0, :lower16:partition_table_len
-	movt	r0, :upper16:partition_table_len
-	ldr	r0, [r0]
-.Ltmp2:
-	.loc	4 87 9 is_stmt 0                @ packages/fal-v0.5.0/src/fal_partition.c:87:9
-	cbz	r0, .LBB0_10
-	b	.LBB0_1
-.LBB0_1:
-	.loc	4 0 9                           @ packages/fal-v0.5.0/src/fal_partition.c:0:9
-	movs	r0, #0
-.Ltmp3:
-	.loc	4 89 16 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:89:16
-	str	r0, [sp, #44]
-	.loc	4 89 14 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:89:14
-	b	.LBB0_2
-.LBB0_2:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp4:
-	.loc	4 89 21                         @ packages/fal-v0.5.0/src/fal_partition.c:89:21
-	ldr	r0, [sp, #44]
-	.loc	4 89 25                         @ packages/fal-v0.5.0/src/fal_partition.c:89:25
-	movw	r1, :lower16:partition_table_len
-	movt	r1, :upper16:partition_table_len
-	ldr	r1, [r1]
-.Ltmp5:
-	.loc	4 89 9                          @ packages/fal-v0.5.0/src/fal_partition.c:89:9
-	cmp	r0, r1
-	bhs	.LBB0_9
-	b	.LBB0_3
-.LBB0_3:                                @   in Loop: Header=BB0_2 Depth=1
-.Ltmp6:
-	.loc	4 91 21 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:91:21
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- 4
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- 9
+	.loc	4 87 9 prologue_end             @ packages/fal-v0.5.0/src/fal_partition.c:87:9
+	movw	r10, :lower16:partition_table_len
 	movw	r0, :lower16:partition_table
+	movt	r10, :upper16:partition_table_len
 	movt	r0, :upper16:partition_table
+	ldr.w	r7, [r10]
+.Ltmp1:
+	@DEBUG_VALUE: fal_show_part_table:i <- 0
+	@DEBUG_VALUE: fal_show_part_table:item2 <- undef
+	@DEBUG_VALUE: fal_show_part_table:item1 <- undef
+	.loc	4 87 9 is_stmt 0                @ packages/fal-v0.5.0/src/fal_partition.c:87:9
+	cbz	r7, .LBB0_3
+.Ltmp2:
+@ %bb.1:
+	@DEBUG_VALUE: fal_show_part_table:i <- 0
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- 9
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- 4
+	.loc	4 0 9                           @ packages/fal-v0.5.0/src/fal_partition.c:0:9
+	mov	r8, r0
 	ldr	r0, [r0]
-	.loc	4 91 37 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:91:37
-	ldr	r1, [sp, #44]
-	.loc	4 91 21                         @ packages/fal-v0.5.0/src/fal_partition.c:91:21
-	add.w	r0, r0, r1, lsl #6
-	.loc	4 91 18                         @ packages/fal-v0.5.0/src/fal_partition.c:91:18
-	str	r0, [sp, #32]
+.Ltmp3:
+	.loc	4 89 9 is_stmt 1                @ packages/fal-v0.5.0/src/fal_partition.c:89:9
+	add.w	r5, r0, #28
+	movs	r4, #4
+	movs	r6, #9
+.Ltmp4:
+	.p2align	2
+.LBB0_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- $r4
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- $r6
+	@DEBUG_VALUE: fal_show_part_table:i <- undef
+	@DEBUG_VALUE: fal_show_part_table:part <- undef
+	.loc	4 92 17                         @ packages/fal-v0.5.0/src/fal_partition.c:92:17
+	sub.w	r0, r5, #24
+	bl	strlen
+.Ltmp5:
+	.loc	4 92 17 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:92:17
+	cmp	r0, r4
+	it	hi
+	movhi	r4, r0
+.Ltmp6:
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- $r4
+	.loc	4 96 17 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:96:17
+	mov	r0, r5
+	bl	strlen
 .Ltmp7:
-	.loc	4 92 24 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:92:24
-	ldr	r0, [sp, #32]
-	.loc	4 92 30 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:92:30
-	adds	r0, #4
-	.loc	4 92 17                         @ packages/fal-v0.5.0/src/fal_partition.c:92:17
-	bl	strlen
-	.loc	4 92 38                         @ packages/fal-v0.5.0/src/fal_partition.c:92:38
-	ldr	r1, [sp, #40]
+	.loc	4 96 17 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:96:17
+	cmp	r0, r6
 .Ltmp8:
-	.loc	4 92 17                         @ packages/fal-v0.5.0/src/fal_partition.c:92:17
-	cmp	r0, r1
-	bls	.LBB0_5
-	b	.LBB0_4
-.LBB0_4:                                @   in Loop: Header=BB0_2 Depth=1
+	.loc	4 89 23 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:89:23
+	add.w	r5, r5, #64
 .Ltmp9:
-	.loc	4 94 40 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:94:40
-	ldr	r0, [sp, #32]
-	.loc	4 94 46 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:94:46
-	adds	r0, #4
-	.loc	4 94 33                         @ packages/fal-v0.5.0/src/fal_partition.c:94:33
-	bl	strlen
-	.loc	4 94 31                         @ packages/fal-v0.5.0/src/fal_partition.c:94:31
-	str	r0, [sp, #40]
-	.loc	4 95 13 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:95:13
-	b	.LBB0_5
+	.loc	4 96 17                         @ packages/fal-v0.5.0/src/fal_partition.c:96:17
+	it	hi
+	movhi	r6, r0
 .Ltmp10:
-.LBB0_5:                                @   in Loop: Header=BB0_2 Depth=1
-	.loc	4 96 24                         @ packages/fal-v0.5.0/src/fal_partition.c:96:24
-	ldr	r0, [sp, #32]
-	.loc	4 96 30 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:96:30
-	adds	r0, #28
-	.loc	4 96 17                         @ packages/fal-v0.5.0/src/fal_partition.c:96:17
-	bl	strlen
-	.loc	4 96 44                         @ packages/fal-v0.5.0/src/fal_partition.c:96:44
-	ldr	r1, [sp, #36]
+	@DEBUG_VALUE: fal_show_part_table:i <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- $r6
+	.loc	4 89 23                         @ packages/fal-v0.5.0/src/fal_partition.c:89:23
+	subs	r7, #1
 .Ltmp11:
-	.loc	4 96 17                         @ packages/fal-v0.5.0/src/fal_partition.c:96:17
-	cmp	r0, r1
-	bls	.LBB0_7
-	b	.LBB0_6
-.LBB0_6:                                @   in Loop: Header=BB0_2 Depth=1
-.Ltmp12:
-	.loc	4 98 45 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:98:45
-	ldr	r0, [sp, #32]
-	.loc	4 98 51 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:98:51
-	adds	r0, #28
-	.loc	4 98 38                         @ packages/fal-v0.5.0/src/fal_partition.c:98:38
-	bl	strlen
-	.loc	4 98 36                         @ packages/fal-v0.5.0/src/fal_partition.c:98:36
-	str	r0, [sp, #36]
-	.loc	4 99 13 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:99:13
-	b	.LBB0_7
-.Ltmp13:
-.LBB0_7:                                @   in Loop: Header=BB0_2 Depth=1
-	.loc	4 100 9                         @ packages/fal-v0.5.0/src/fal_partition.c:100:9
-	b	.LBB0_8
-.Ltmp14:
-.LBB0_8:                                @   in Loop: Header=BB0_2 Depth=1
-	.loc	4 89 47                         @ packages/fal-v0.5.0/src/fal_partition.c:89:47
-	ldr	r0, [sp, #44]
-	adds	r0, #1
-	str	r0, [sp, #44]
 	.loc	4 89 9 is_stmt 0                @ packages/fal-v0.5.0/src/fal_partition.c:89:9
-	b	.LBB0_2
-.Ltmp15:
-.LBB0_9:
-	.loc	4 101 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:101:5
-	b	.LBB0_10
-.Ltmp16:
-.LBB0_10:
-	.loc	4 102 5                         @ packages/fal-v0.5.0/src/fal_partition.c:102:5
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	str	r0, [sp, #24]                   @ 4-byte Spill
+	bne	.LBB0_2
+	b	.LBB0_4
+.Ltmp12:
+.LBB0_3:
+	@DEBUG_VALUE: fal_show_part_table:i <- 0
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- 9
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- 4
+	.loc	4 0 9                           @ packages/fal-v0.5.0/src/fal_partition.c:0:9
+	mov	r8, r0
+	movs	r6, #9
+	movs	r4, #4
+.Ltmp13:
+.LBB0_4:
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- $r4
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- $r6
+	.loc	4 102 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:102:5
+	movw	r5, :lower16:.L.str.2
+	movt	r5, :upper16:.L.str.2
+	mov	r0, r5
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.3
 	movt	r0, :upper16:.L.str.3
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	str	r0, [sp, #28]                   @ 4-byte Spill
+	movw	r7, :lower16:.L.str.4
+	movt	r7, :upper16:.L.str.4
+	mov	r0, r7
 	bl	rt_kprintf
-	ldr	r0, [sp, #24]                   @ 4-byte Reload
 	.loc	4 103 5                         @ packages/fal-v0.5.0/src/fal_partition.c:103:5
+	mov	r0, r5
 	bl	rt_kprintf
-	ldr	r1, [sp, #40]
-	ldr	r3, [sp, #52]
-	ldr	r0, [sp, #36]
-	ldr	r2, [sp, #48]
-	mov	r12, sp
-	str.w	r2, [r12, #8]
+	movs	r0, #24
+	adr	r3, .LCPI0_2
+	strd	r6, r0, [sp]
+	adr	r0, .LCPI0_1
 	movs	r2, #24
-	str.w	r2, [r12, #4]
-	str.w	r0, [r12]
-	movw	r0, :lower16:.L.str.5
-	movt	r0, :upper16:.L.str.5
+	adr	r1, .LCPI0_0
+	str	r1, [sp, #8]
+	mov	r1, r4
 	bl	rt_kprintf
-	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	mov	r0, r7
 	bl	rt_kprintf
-	ldr	r0, [sp, #24]                   @ 4-byte Reload
 	.loc	4 105 5                         @ packages/fal-v0.5.0/src/fal_partition.c:105:5
+	mov	r0, r5
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.6
-	movt	r0, :upper16:.L.str.6
+	adr	r0, .LCPI0_3
 	bl	rt_kprintf
-	ldr	r0, [sp, #28]                   @ 4-byte Reload
+	mov	r0, r7
 	bl	rt_kprintf
-	movs	r0, #0
-.Ltmp17:
-	.loc	4 106 12                        @ packages/fal-v0.5.0/src/fal_partition.c:106:12
-	str	r0, [sp, #44]
-	.loc	4 106 10 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:106:10
-	b	.LBB0_11
-.LBB0_11:                               @ =>This Inner Loop Header: Depth=1
-.Ltmp18:
-	.loc	4 106 17                        @ packages/fal-v0.5.0/src/fal_partition.c:106:17
-	ldr	r0, [sp, #44]
+.Ltmp14:
+	@DEBUG_VALUE: fal_show_part_table:i <- 0
 	.loc	4 106 21                        @ packages/fal-v0.5.0/src/fal_partition.c:106:21
-	movw	r1, :lower16:partition_table_len
-	movt	r1, :upper16:partition_table_len
-	ldr	r1, [r1]
-.Ltmp19:
-	.loc	4 106 5                         @ packages/fal-v0.5.0/src/fal_partition.c:106:5
-	cmp	r0, r1
-	bhs	.LBB0_14
-	b	.LBB0_12
-.LBB0_12:                               @   in Loop: Header=BB0_11 Depth=1
-.Ltmp20:
-	.loc	4 110 17 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:110:17
-	movw	r0, :lower16:partition_table
-	movt	r0, :upper16:partition_table
-	ldr	r0, [r0]
-	.loc	4 110 33 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:110:33
-	ldr	r1, [sp, #44]
-	.loc	4 110 17                        @ packages/fal-v0.5.0/src/fal_partition.c:110:17
-	add.w	r0, r0, r1, lsl #6
-	.loc	4 110 14                        @ packages/fal-v0.5.0/src/fal_partition.c:110:14
-	str	r0, [sp, #32]
+	ldr.w	r0, [r10]
+.Ltmp15:
+	.loc	4 106 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:106:5
+	cbz	r0, .LBB0_7
+.Ltmp16:
+@ %bb.5:
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- $r6
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- $r4
+	@DEBUG_VALUE: fal_show_part_table:i <- 0
+	.loc	4 0 5                           @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	mov	r5, r8
+	mov.w	r9, #0
+	mov.w	r8, #0
+	movs	r7, #24
+.Ltmp17:
+	.p2align	2
+.LBB0_6:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- $r6
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- $r4
+	@DEBUG_VALUE: fal_show_part_table:i <- $r8
 	.loc	4 115 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:115:9
 	movw	r0, :lower16:.L.str.2
+	.loc	4 110 17                        @ packages/fal-v0.5.0/src/fal_partition.c:110:17
+	ldr.w	r11, [r5]
+.Ltmp18:
+	@DEBUG_VALUE: fal_show_part_table:part <- undef
+	.loc	4 115 9                         @ packages/fal-v0.5.0/src/fal_partition.c:115:9
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	ldr	r1, [sp, #40]
-	ldr.w	r12, [sp, #32]
-	add.w	r3, r12, #4
-	ldr	r0, [sp, #36]
-	add.w	r2, r12, #28
-	ldr.w	lr, [r12, #52]
-	ldr.w	r4, [r12, #56]
-	mov	r12, sp
-	str.w	r4, [r12, #16]
-	str.w	lr, [r12, #12]
-	str.w	r2, [r12, #8]
-	movs	r2, #24
-	str.w	r2, [r12, #4]
-	str.w	r0, [r12]
+	add.w	r0, r11, r9
+	adds	r3, r0, #4
+	add.w	r1, r0, #28
+	ldrd	r2, r0, [r0, #52]
+	str	r0, [sp, #16]
 	movw	r0, :lower16:.L.str.7
+	strd	r1, r2, [sp, #8]
+	movs	r2, #24
 	movt	r0, :upper16:.L.str.7
+	mov	r1, r4
+	strd	r6, r7, [sp]
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.4
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
-	.loc	4 117 5                         @ packages/fal-v0.5.0/src/fal_partition.c:117:5
-	b	.LBB0_13
-.Ltmp21:
-.LBB0_13:                               @   in Loop: Header=BB0_11 Depth=1
+.Ltmp19:
 	.loc	4 106 43                        @ packages/fal-v0.5.0/src/fal_partition.c:106:43
-	ldr	r0, [sp, #44]
-	adds	r0, #1
-	str	r0, [sp, #44]
-	.loc	4 106 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:106:5
-	b	.LBB0_11
+	add.w	r8, r8, #1
+.Ltmp20:
+	@DEBUG_VALUE: fal_show_part_table:i <- $r8
+	.loc	4 106 21 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:106:21
+	ldr.w	r0, [r10]
+.Ltmp21:
+	.loc	4 106 5                         @ packages/fal-v0.5.0/src/fal_partition.c:106:5
+	cmp	r8, r0
 .Ltmp22:
-.LBB0_14:
+	.loc	4 106 19                        @ packages/fal-v0.5.0/src/fal_partition.c:106:19
+	add.w	r9, r9, #64
+.Ltmp23:
+	.loc	4 106 5                         @ packages/fal-v0.5.0/src/fal_partition.c:106:5
+	blo	.LBB0_6
+.Ltmp24:
+.LBB0_7:
+	@DEBUG_VALUE: fal_show_part_table:flash_dev_name_max <- $r6
+	@DEBUG_VALUE: fal_show_part_table:part_name_max <- $r4
 	.loc	4 118 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:118:5
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
@@ -296,9 +245,24 @@ fal_show_part_table:
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
 	.loc	4 119 1                         @ packages/fal-v0.5.0/src/fal_partition.c:119:1
-	add	sp, #56
-	pop	{r4, pc}
-.Ltmp23:
+	add	sp, #20
+	pop.w	{r4, r5, r6, r7, r8, r9, r10, r11, pc}
+.Ltmp25:
+	.p2align	2
+@ %bb.8:
+	.loc	4 0 1 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:1
+.LCPI0_0:
+.L.str.1:
+	.asciz	"flash_dev\000\000"
+.LCPI0_1:
+.L.str.5:
+	.asciz	"| %-*.*s | %-*.*s |   offset   |    length  |\000\000"
+.LCPI0_2:
+.L.str:
+	.asciz	"name\000\000\000"
+.LCPI0_3:
+.L.str.6:
+	.asciz	"-------------------------------------------------------------\000\000"
 .Lfunc_end0:
 	.size	fal_show_part_table, .Lfunc_end0-fal_show_part_table
 	.cfi_endproc
@@ -314,209 +278,186 @@ fal_show_part_table:
 	.thumb_func
 fal_partition_init:
 .Lfunc_begin1:
-	.loc	4 127 0                         @ packages/fal-v0.5.0/src/fal_partition.c:127:0
+	.loc	4 127 0 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:127:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+	.cfi_def_cfa_offset 36
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	movs	r0, #0
-.Ltmp24:
-	.loc	4 129 33 prologue_end           @ packages/fal-v0.5.0/src/fal_partition.c:129:33
-	str	r0, [sp, #4]
-.Ltmp25:
-	.loc	4 131 9                         @ packages/fal-v0.5.0/src/fal_partition.c:131:9
-	movw	r0, :lower16:init_ok
-	movt	r0, :upper16:init_ok
-	ldrb	r0, [r0]
+	.cfi_offset r11, -8
+	.cfi_offset r10, -12
+	.cfi_offset r9, -16
+	.cfi_offset r8, -20
+	.cfi_offset r7, -24
+	.cfi_offset r6, -28
+	.cfi_offset r5, -32
+	.cfi_offset r4, -36
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 40
 .Ltmp26:
-	.loc	4 131 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:131:9
-	cbz	r0, .LBB1_2
-	b	.LBB1_1
-.LBB1_1:
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- 0
+	.loc	4 131 9 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:131:9
+	movw	r0, :lower16:init_ok
+	movw	r5, :lower16:partition_table_len
+	movt	r0, :upper16:init_ok
+	movt	r5, :upper16:partition_table_len
+	ldrb	r0, [r0]
 .Ltmp27:
-	.loc	4 133 16 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:133:16
-	movw	r0, :lower16:partition_table_len
-	movt	r0, :upper16:partition_table_len
-	ldr	r0, [r0]
-	.loc	4 133 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:133:9
-	str	r0, [sp, #12]
-	b	.LBB1_12
+	.loc	4 131 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:131:9
+	cmp	r0, #0
+	bne	.LBB1_9
 .Ltmp28:
-.LBB1_2:
+@ %bb.1:
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- 0
 	.loc	4 137 21 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:137:21
-	movw	r1, :lower16:partition_table
-	movt	r1, :upper16:partition_table
+	movw	r6, :lower16:partition_table
+	movw	r9, :lower16:.L__FUNCTION__.fal_partition_init
+	movt	r6, :upper16:partition_table
 	movw	r0, :lower16:partition_table_def
-	movt	r0, :upper16:partition_table_def
-	str	r0, [r1]
-	.loc	4 138 25                        @ packages/fal-v0.5.0/src/fal_partition.c:138:25
-	movw	r1, :lower16:partition_table_len
-	movt	r1, :upper16:partition_table_len
-	movs	r0, #5
-	str	r0, [r1]
-	movs	r0, #0
+	mov.w	r8, #0
+	mov.w	r11, #52
 .Ltmp29:
-	.loc	4 267 12                        @ packages/fal-v0.5.0/src/fal_partition.c:267:12
-	str	r0, [sp, #8]
-	.loc	4 267 10 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:267:10
-	b	.LBB1_3
-.LBB1_3:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp30:
-	.loc	4 267 17                        @ packages/fal-v0.5.0/src/fal_partition.c:267:17
-	ldr	r0, [sp, #8]
-	.loc	4 267 21                        @ packages/fal-v0.5.0/src/fal_partition.c:267:21
-	movw	r1, :lower16:partition_table_len
-	movt	r1, :upper16:partition_table_len
-	ldr	r1, [r1]
-.Ltmp31:
-	.loc	4 267 5                         @ packages/fal-v0.5.0/src/fal_partition.c:267:5
-	cmp	r0, r1
-	bhs	.LBB1_10
+	@DEBUG_VALUE: fal_partition_init:i <- 0
+	.loc	4 0 21 is_stmt 0                @ packages/fal-v0.5.0/src/fal_partition.c:0:21
+	movt	r9, :upper16:.L__FUNCTION__.fal_partition_init
+	adr.w	r10, .LCPI1_1
+	adr	r7, .LCPI1_2
+	.loc	4 137 21                        @ packages/fal-v0.5.0/src/fal_partition.c:137:21
+	movt	r0, :upper16:partition_table_def
+	str	r0, [r6]
+	movs	r0, #5
+	.loc	4 138 25 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:138:25
+	str	r0, [r5]
 	b	.LBB1_4
-.LBB1_4:                                @   in Loop: Header=BB1_3 Depth=1
-.Ltmp32:
-	.loc	4 269 43 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:269:43
-	movw	r0, :lower16:partition_table
-	movt	r0, :upper16:partition_table
-	ldr	r0, [r0]
-	.loc	4 269 59 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:269:59
-	ldr	r1, [sp, #8]
-	.loc	4 269 43                        @ packages/fal-v0.5.0/src/fal_partition.c:269:43
-	add.w	r0, r0, r1, lsl #6
-	.loc	4 269 62                        @ packages/fal-v0.5.0/src/fal_partition.c:269:62
-	adds	r0, #28
-	.loc	4 269 21                        @ packages/fal-v0.5.0/src/fal_partition.c:269:21
-	bl	fal_flash_device_find
-	.loc	4 269 19                        @ packages/fal-v0.5.0/src/fal_partition.c:269:19
-	str	r0, [sp, #4]
-.Ltmp33:
-	.loc	4 270 13 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:270:13
-	ldr	r0, [sp, #4]
-.Ltmp34:
-	.loc	4 270 13 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:270:13
-	cbnz	r0, .LBB1_6
-	b	.LBB1_5
-.LBB1_5:                                @   in Loop: Header=BB1_3 Depth=1
-.Ltmp35:
-	.loc	4 272 13 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:272:13
-	movw	r0, :lower16:.L.str.9
-	movt	r0, :upper16:.L.str.9
-	movw	r1, :lower16:.L__FUNCTION__.fal_partition_init
-	movt	r1, :upper16:.L__FUNCTION__.fal_partition_init
+.Ltmp30:
+	.p2align	2
+.LBB1_2:                                @   in Loop: Header=BB1_4 Depth=1
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- $r0
+	.loc	4 272 13                        @ packages/fal-v0.5.0/src/fal_partition.c:272:13
 	mov.w	r2, #272
+	adr	r0, .LCPI1_0
+.Ltmp31:
+	mov	r1, r9
 	bl	rt_kprintf
-	movw	r0, :lower16:partition_table
-	movt	r0, :upper16:partition_table
-	ldr	r0, [r0]
-	ldr	r1, [sp, #8]
-	add.w	r0, r0, r1, lsl #6
-	add.w	r1, r0, #28
-	movw	r0, :lower16:.L.str.10
-	movt	r0, :upper16:.L.str.10
+	ldr	r0, [r6]
+	add	r0, r11
+	sub.w	r1, r0, #24
+	mov	r0, r10
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.11
-	movt	r0, :upper16:.L.str.11
+	mov	r0, r7
 	bl	rt_kprintf
-	.loc	4 273 13                        @ packages/fal-v0.5.0/src/fal_partition.c:273:13
-	b	.LBB1_9
+.Ltmp32:
+.LBB1_3:                                @   in Loop: Header=BB1_4 Depth=1
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	.loc	4 267 43                        @ packages/fal-v0.5.0/src/fal_partition.c:267:43
+	add.w	r8, r8, #1
+.Ltmp33:
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	.loc	4 267 21 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:267:21
+	ldr	r0, [r5]
+.Ltmp34:
+	.loc	4 267 5                         @ packages/fal-v0.5.0/src/fal_partition.c:267:5
+	cmp	r8, r0
+.Ltmp35:
+	.loc	4 267 19                        @ packages/fal-v0.5.0/src/fal_partition.c:267:19
+	add.w	r11, r11, #64
+	bhs	.LBB1_7
 .Ltmp36:
-.LBB1_6:                                @   in Loop: Header=BB1_3 Depth=1
-	.loc	4 276 13                        @ packages/fal-v0.5.0/src/fal_partition.c:276:13
-	movw	r0, :lower16:partition_table
-	movt	r0, :upper16:partition_table
-	ldr	r0, [r0]
-	.loc	4 276 29 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:276:29
-	ldr	r1, [sp, #8]
-	.loc	4 276 13                        @ packages/fal-v0.5.0/src/fal_partition.c:276:13
-	add.w	r0, r0, r1, lsl #6
-	.loc	4 276 32                        @ packages/fal-v0.5.0/src/fal_partition.c:276:32
-	ldr	r0, [r0, #52]
-	.loc	4 276 48                        @ packages/fal-v0.5.0/src/fal_partition.c:276:48
-	ldr	r1, [sp, #4]
-	.loc	4 276 59                        @ packages/fal-v0.5.0/src/fal_partition.c:276:59
-	ldr	r1, [r1, #28]
+.LBB1_4:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	.loc	4 269 43 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:269:43
+	ldr	r0, [r6]
+	.loc	4 269 21 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:269:21
+	add	r0, r11
+	subs	r0, #24
+	bl	fal_flash_device_find
 .Ltmp37:
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- $r0
+	.loc	4 270 13 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:270:13
+	cmp	r0, #0
+	beq	.LBB1_2
+.Ltmp38:
+@ %bb.5:                                @   in Loop: Header=BB1_4 Depth=1
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- $r0
+	.loc	4 0 0 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:0
+	mov	r4, r0
+.Ltmp39:
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- $r4
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- $r4
+	.loc	4 276 13 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:276:13
+	ldr	r0, [r6]
+	.loc	4 276 32 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:276:32
+	ldr.w	r0, [r0, r11]
+	.loc	4 276 59                        @ packages/fal-v0.5.0/src/fal_partition.c:276:59
+	ldr	r1, [r4, #28]
+.Ltmp40:
 	.loc	4 276 13                        @ packages/fal-v0.5.0/src/fal_partition.c:276:13
 	cmp	r0, r1
-	blt	.LBB1_8
-	b	.LBB1_7
-.LBB1_7:
-.Ltmp38:
+	blt	.LBB1_3
+.Ltmp41:
+@ %bb.6:
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	@DEBUG_VALUE: fal_partition_init:flash_dev <- $r4
 	.loc	4 278 13 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:278:13
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_init
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_init
 	movw	r2, #279
 	bl	rt_kprintf
-	movw	r0, :lower16:partition_table
-	movt	r0, :upper16:partition_table
-	ldr	r0, [r0]
-	ldr	r1, [sp, #8]
-	add.w	r0, r0, r1, lsl #6
-	adds	r1, r0, #4
-	ldr	r2, [r0, #52]
-	ldr	r0, [sp, #4]
-	ldr	r3, [r0, #28]
+	ldr	r0, [r6]
+	ldr	r3, [r4, #28]
+	add.w	r1, r0, r11
 	movw	r0, :lower16:.L.str.13
 	movt	r0, :upper16:.L.str.13
+	ldr	r2, [r1], #-48
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.4
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
-	.loc	4 280 33                        @ packages/fal-v0.5.0/src/fal_partition.c:280:33
-	movw	r1, :lower16:partition_table_len
-	movt	r1, :upper16:partition_table_len
 	movs	r0, #0
-	str	r0, [r1]
-	.loc	4 281 13                        @ packages/fal-v0.5.0/src/fal_partition.c:281:13
-	b	.LBB1_11
-.Ltmp39:
-.LBB1_8:                                @   in Loop: Header=BB1_3 Depth=1
-	.loc	4 283 5                         @ packages/fal-v0.5.0/src/fal_partition.c:283:5
-	b	.LBB1_9
-.Ltmp40:
-.LBB1_9:                                @   in Loop: Header=BB1_3 Depth=1
-	.loc	4 267 43                        @ packages/fal-v0.5.0/src/fal_partition.c:267:43
-	ldr	r0, [sp, #8]
-	adds	r0, #1
-	str	r0, [sp, #8]
-	.loc	4 267 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:267:5
-	b	.LBB1_3
-.Ltmp41:
-.LBB1_10:
-	.loc	4 285 13 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:285:13
-	movw	r1, :lower16:init_ok
-	movt	r1, :upper16:init_ok
-	movs	r0, #1
-	strb	r0, [r1]
-	.loc	4 285 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:285:5
-	b	.LBB1_11
-.LBB1_11:
+	.loc	4 280 33                        @ packages/fal-v0.5.0/src/fal_partition.c:280:33
+	str	r0, [r5]
+	b	.LBB1_8
 .Ltmp42:
-	@DEBUG_LABEL: fal_partition_init:_exit
-	.loc	4 290 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:290:5
-	bl	fal_show_part_table
-	.loc	4 300 12                        @ packages/fal-v0.5.0/src/fal_partition.c:300:12
-	movw	r0, :lower16:partition_table_len
-	movt	r0, :upper16:partition_table_len
-	ldr	r0, [r0]
-	.loc	4 300 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:300:5
-	str	r0, [sp, #12]
-	b	.LBB1_12
-.LBB1_12:
-	.loc	4 301 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:301:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
+.LBB1_7:
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	.loc	4 285 13                        @ packages/fal-v0.5.0/src/fal_partition.c:285:13
+	movw	r1, :lower16:init_ok
+	movs	r0, #1
+	movt	r1, :upper16:init_ok
+	strb	r0, [r1]
 .Ltmp43:
+.LBB1_8:
+	@DEBUG_VALUE: fal_partition_init:i <- $r8
+	@DEBUG_LABEL: fal_partition_init:_exit
+	.loc	4 290 5                         @ packages/fal-v0.5.0/src/fal_partition.c:290:5
+	bl	fal_show_part_table
+.Ltmp44:
+.LBB1_9:
+	.loc	4 0 0 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:0
+	ldr	r0, [r5]
+	.loc	4 301 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:301:1
+	add	sp, #4
+	pop.w	{r4, r5, r6, r7, r8, r9, r10, r11, pc}
+.Ltmp45:
+	.p2align	2
+@ %bb.10:
+	.loc	4 0 1 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:1
+.LCPI1_0:
+.L.str.9:
+	.asciz	"[D/FAL] (%s:%d) \000\000\000"
+.LCPI1_1:
+.L.str.10:
+	.asciz	"Warning: Do NOT found the flash device(%s)."
+.LCPI1_2:
+.L.str.11:
+	.asciz	"\n\000\000"
 .Lfunc_end1:
 	.size	fal_partition_init, .Lfunc_end1-fal_partition_init
 	.cfi_endproc
@@ -532,121 +473,122 @@ fal_partition_init:
 	.thumb_func
 fal_partition_find:
 .Lfunc_begin2:
-	.loc	4 312 0                         @ packages/fal-v0.5.0/src/fal_partition.c:312:0
+	.loc	4 312 0 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:312:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: fal_partition_find:name <- $r0
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-.Ltmp44:
-	.loc	4 313 5 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:313:5
-	movw	r0, :lower16:init_ok
-	movt	r0, :upper16:init_ok
-	ldrb	r0, [r0]
-.Ltmp45:
-	.loc	4 313 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:313:5
-	cbnz	r0, .LBB2_3
-	b	.LBB2_1
-.LBB2_1:
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
 .Ltmp46:
-	.loc	4 313 5                         @ packages/fal-v0.5.0/src/fal_partition.c:313:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.15
-	movt	r1, :upper16:.L.str.15
-	movw	r2, :lower16:.L__FUNCTION__.fal_partition_find
-	movt	r2, :upper16:.L__FUNCTION__.fal_partition_find
-	bl	rt_kprintf
-	b	.LBB2_2
-.LBB2_2:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB2_2
+	.loc	4 313 5 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:313:5
+	movw	r1, :lower16:init_ok
+	movt	r1, :upper16:init_ok
+	ldrb	r1, [r1]
 .Ltmp47:
-.LBB2_3:
-	.loc	4 0 5                           @ packages/fal-v0.5.0/src/fal_partition.c:0:5
-	movs	r0, #0
+	.loc	4 313 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:313:5
+	cmp	r1, #1
+	@DEBUG_VALUE: fal_partition_find:name <- $r0
+	bne	.LBB2_7
 .Ltmp48:
-	.loc	4 317 12 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:317:12
-	str	r0, [sp, #4]
-	.loc	4 317 10 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:317:10
-	b	.LBB2_4
-.LBB2_4:                                @ =>This Inner Loop Header: Depth=1
+@ %bb.1:
+	@DEBUG_VALUE: fal_partition_find:name <- $r0
+	.loc	4 0 5                           @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	mov	r4, r0
 .Ltmp49:
-	.loc	4 317 17                        @ packages/fal-v0.5.0/src/fal_partition.c:317:17
-	ldr	r0, [sp, #4]
-	.loc	4 317 21                        @ packages/fal-v0.5.0/src/fal_partition.c:317:21
-	movw	r1, :lower16:partition_table_len
-	movt	r1, :upper16:partition_table_len
-	ldr	r1, [r1]
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
+	@DEBUG_VALUE: fal_partition_find:i <- 0
+	.loc	4 317 21 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:317:21
+	movw	r0, :lower16:partition_table_len
+	movt	r0, :upper16:partition_table_len
+	ldr	r1, [r0]
 .Ltmp50:
-	.loc	4 317 5                         @ packages/fal-v0.5.0/src/fal_partition.c:317:5
-	cmp	r0, r1
-	bhs	.LBB2_9
-	b	.LBB2_5
-.LBB2_5:                                @   in Loop: Header=BB2_4 Depth=1
+	.loc	4 317 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:317:5
+	cbz	r1, .LBB2_9
 .Ltmp51:
-	.loc	4 319 21 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:319:21
-	ldr	r0, [sp, #8]
-	.loc	4 319 27 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:319:27
-	movw	r1, :lower16:partition_table
-	movt	r1, :upper16:partition_table
-	ldr	r1, [r1]
-	.loc	4 319 43                        @ packages/fal-v0.5.0/src/fal_partition.c:319:43
-	ldr	r2, [sp, #4]
-	.loc	4 319 27                        @ packages/fal-v0.5.0/src/fal_partition.c:319:27
-	add.w	r1, r1, r2, lsl #6
-	.loc	4 319 46                        @ packages/fal-v0.5.0/src/fal_partition.c:319:46
-	adds	r1, #4
-	.loc	4 319 14                        @ packages/fal-v0.5.0/src/fal_partition.c:319:14
-	bl	strcmp
-.Ltmp52:
-	.loc	4 319 13                        @ packages/fal-v0.5.0/src/fal_partition.c:319:13
-	cbnz	r0, .LBB2_7
-	b	.LBB2_6
-.LBB2_6:
-.Ltmp53:
-	.loc	4 321 21 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:321:21
+@ %bb.2:
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
+	@DEBUG_VALUE: fal_partition_find:i <- 0
+	.loc	4 0 5                           @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	ldr	r6, [r0]
 	movw	r0, :lower16:partition_table
 	movt	r0, :upper16:partition_table
-	ldr	r0, [r0]
-	.loc	4 321 37 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:321:37
-	ldr	r1, [sp, #4]
-	.loc	4 321 21                        @ packages/fal-v0.5.0/src/fal_partition.c:321:21
-	add.w	r0, r0, r1, lsl #6
-	.loc	4 321 13                        @ packages/fal-v0.5.0/src/fal_partition.c:321:13
-	str	r0, [sp, #12]
-	b	.LBB2_10
+	.loc	4 317 5                         @ packages/fal-v0.5.0/src/fal_partition.c:317:5
+	cmp	r6, #1
+	ldr	r5, [r0]
+	it	ls
+	movls	r6, #1
+.Ltmp52:
+	.p2align	2
+.LBB2_3:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
+	@DEBUG_VALUE: fal_partition_find:i <- undef
+	.loc	4 319 14 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:319:14
+	adds	r1, r5, #4
+	mov	r0, r4
+	bl	strcmp
+.Ltmp53:
+	.loc	4 319 13 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:319:13
+	cbz	r0, .LBB2_6
 .Ltmp54:
-.LBB2_7:                                @   in Loop: Header=BB2_4 Depth=1
-	.loc	4 323 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:323:5
-	b	.LBB2_8
+@ %bb.4:                                @   in Loop: Header=BB2_3 Depth=1
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
+	@DEBUG_VALUE: fal_partition_find:i <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	.loc	4 317 19 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:317:19
+	subs	r6, #1
+	add.w	r5, r5, #64
 .Ltmp55:
-.LBB2_8:                                @   in Loop: Header=BB2_4 Depth=1
-	.loc	4 317 43                        @ packages/fal-v0.5.0/src/fal_partition.c:317:43
-	ldr	r0, [sp, #4]
-	adds	r0, #1
-	str	r0, [sp, #4]
 	.loc	4 317 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:317:5
-	b	.LBB2_4
+	bne	.LBB2_3
 .Ltmp56:
-.LBB2_9:
+@ %bb.5:
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
 	.loc	4 0 5                           @ packages/fal-v0.5.0/src/fal_partition.c:0:5
-	movs	r0, #0
-	.loc	4 325 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:325:5
-	str	r0, [sp, #12]
-	b	.LBB2_10
-.LBB2_10:
-	.loc	4 326 1                         @ packages/fal-v0.5.0/src/fal_partition.c:326:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
+	movs	r5, #0
 .Ltmp57:
+.LBB2_6:
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
+	.loc	4 326 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:326:1
+	mov	r0, r5
+	pop	{r4, r5, r6, pc}
+.Ltmp58:
+.LBB2_7:
+	@DEBUG_VALUE: fal_partition_find:name <- $r0
+	.loc	4 313 5                         @ packages/fal-v0.5.0/src/fal_partition.c:313:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp59:
+	@DEBUG_VALUE: fal_partition_find:name <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r1, :lower16:.L.str.15
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.15
+	adr	r2, .LCPI2_0
+	bl	rt_kprintf
+.Ltmp60:
+	.p2align	2
+.LBB2_8:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_find:name <- [DW_OP_LLVM_entry_value 1] $r0
+	b	.LBB2_8
+.Ltmp61:
+.LBB2_9:
+	@DEBUG_VALUE: fal_partition_find:name <- $r4
+	@DEBUG_VALUE: fal_partition_find:i <- 0
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	movs	r0, #0
+	.loc	4 326 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:326:1
+	pop	{r4, r5, r6, pc}
+.Ltmp62:
+	.p2align	2
+@ %bb.10:
+	.loc	4 0 1 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:1
+.LCPI2_0:
+.L__FUNCTION__.fal_partition_find:
+	.asciz	"fal_partition_find\000"
 .Lfunc_end2:
 	.size	fal_partition_find, .Lfunc_end2-fal_partition_find
 	.cfi_endproc
@@ -662,80 +604,94 @@ fal_partition_find:
 	.thumb_func
 fal_get_partition_table:
 .Lfunc_begin3:
-	.loc	4 336 0                         @ packages/fal-v0.5.0/src/fal_partition.c:336:0
+	.loc	4 336 0 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:336:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: fal_get_partition_table:len <- $r0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-.Ltmp58:
+.Ltmp63:
 	.loc	4 337 5 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:337:5
-	movw	r0, :lower16:init_ok
-	movt	r0, :upper16:init_ok
-	ldrb	r0, [r0]
-.Ltmp59:
+	movw	r1, :lower16:init_ok
+	movt	r1, :upper16:init_ok
+	ldrb	r1, [r1]
+.Ltmp64:
+	@DEBUG_VALUE: fal_get_partition_table:len <- $r0
 	.loc	4 337 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:337:5
-	cbnz	r0, .LBB3_3
-	b	.LBB3_1
-.LBB3_1:
-.Ltmp60:
+	cbz	r1, .LBB3_3
+.Ltmp65:
+@ %bb.1:
+	@DEBUG_VALUE: fal_get_partition_table:len <- $r0
+	.loc	4 338 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:338:5
+	cbz	r0, .LBB3_5
+.Ltmp66:
+@ %bb.2:
+	@DEBUG_VALUE: fal_get_partition_table:len <- $r0
+	.loc	4 342 12                        @ packages/fal-v0.5.0/src/fal_partition.c:342:12
+	movw	r1, :lower16:partition_table
+	.loc	4 340 12                        @ packages/fal-v0.5.0/src/fal_partition.c:340:12
+	movw	r2, :lower16:partition_table_len
+	.loc	4 342 12                        @ packages/fal-v0.5.0/src/fal_partition.c:342:12
+	movt	r1, :upper16:partition_table
+	.loc	4 340 12                        @ packages/fal-v0.5.0/src/fal_partition.c:340:12
+	movt	r2, :upper16:partition_table_len
+	.loc	4 342 12                        @ packages/fal-v0.5.0/src/fal_partition.c:342:12
+	ldr	r1, [r1]
+	.loc	4 340 12                        @ packages/fal-v0.5.0/src/fal_partition.c:340:12
+	ldr	r2, [r2]
+	.loc	4 340 10 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:340:10
+	str	r2, [r0]
+	.loc	4 342 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:342:5
+	mov	r0, r1
+.Ltmp67:
+	@DEBUG_VALUE: fal_get_partition_table:len <- [DW_OP_LLVM_entry_value 1] $r0
+	pop	{r7, pc}
+.Ltmp68:
+.LBB3_3:
+	@DEBUG_VALUE: fal_get_partition_table:len <- $r0
 	.loc	4 337 5                         @ packages/fal-v0.5.0/src/fal_partition.c:337:5
 	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
+.Ltmp69:
+	@DEBUG_VALUE: fal_get_partition_table:len <- [DW_OP_LLVM_entry_value 1] $r0
 	movw	r1, :lower16:.L.str.15
-	movt	r1, :upper16:.L.str.15
 	movw	r2, :lower16:.L__FUNCTION__.fal_get_partition_table
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.15
 	movt	r2, :upper16:.L__FUNCTION__.fal_get_partition_table
 	bl	rt_kprintf
-	b	.LBB3_2
-.LBB3_2:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB3_2
-.Ltmp61:
-.LBB3_3:
-	.loc	4 338 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:338:5
-	ldr	r0, [sp, #4]
-.Ltmp62:
-	.loc	4 338 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:338:5
-	cbnz	r0, .LBB3_6
+.Ltmp70:
+	.p2align	2
+.LBB3_4:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_get_partition_table:len <- [DW_OP_LLVM_entry_value 1] $r0
 	b	.LBB3_4
-.LBB3_4:
-.Ltmp63:
+.Ltmp71:
+.LBB3_5:
+	@DEBUG_VALUE: fal_get_partition_table:len <- $r0
 	.loc	4 338 5                         @ packages/fal-v0.5.0/src/fal_partition.c:338:5
 	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.16
-	movt	r1, :upper16:.L.str.16
+.Ltmp72:
+	@DEBUG_VALUE: fal_get_partition_table:len <- [DW_OP_LLVM_entry_value 1] $r0
 	movw	r2, :lower16:.L__FUNCTION__.fal_get_partition_table
+	movt	r0, :upper16:.L.str.14
+	adr	r1, .LCPI3_0
 	movt	r2, :upper16:.L__FUNCTION__.fal_get_partition_table
 	bl	rt_kprintf
-	b	.LBB3_5
-.LBB3_5:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB3_5
-.Ltmp64:
-.LBB3_6:
-	.loc	4 340 12 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:340:12
-	movw	r0, :lower16:partition_table_len
-	movt	r0, :upper16:partition_table_len
-	ldr	r0, [r0]
-	.loc	4 340 6 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:340:6
-	ldr	r1, [sp, #4]
-	.loc	4 340 10                        @ packages/fal-v0.5.0/src/fal_partition.c:340:10
-	str	r0, [r1]
-	.loc	4 342 12 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:342:12
-	movw	r0, :lower16:partition_table
-	movt	r0, :upper16:partition_table
-	ldr	r0, [r0]
-	.loc	4 342 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:342:5
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp65:
+.Ltmp73:
+	.p2align	2
+.LBB3_6:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_get_partition_table:len <- [DW_OP_LLVM_entry_value 1] $r0
+	b	.LBB3_6
+.Ltmp74:
+	.p2align	2
+@ %bb.7:
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+.LCPI3_0:
+.L.str.16:
+	.asciz	"len"
 .Lfunc_end3:
 	.size	fal_get_partition_table, .Lfunc_end3-fal_get_partition_table
 	.cfi_endproc
@@ -755,77 +711,95 @@ fal_set_partition_table_temp:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- $r0
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- $r1
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp66:
+.Ltmp75:
 	.loc	4 354 5 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:354:5
-	movw	r0, :lower16:init_ok
-	movt	r0, :upper16:init_ok
-	ldrb	r0, [r0]
-.Ltmp67:
+	movw	r2, :lower16:init_ok
+	movt	r2, :upper16:init_ok
+	ldrb	r2, [r2]
+.Ltmp76:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- $r1
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- $r0
 	.loc	4 354 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:354:5
-	cbnz	r0, .LBB4_3
-	b	.LBB4_1
-.LBB4_1:
-.Ltmp68:
-	.loc	4 354 5                         @ packages/fal-v0.5.0/src/fal_partition.c:354:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.15
-	movt	r1, :upper16:.L.str.15
-	movw	r2, :lower16:.L__FUNCTION__.fal_set_partition_table_temp
-	movt	r2, :upper16:.L__FUNCTION__.fal_set_partition_table_temp
-	bl	rt_kprintf
-	b	.LBB4_2
-.LBB4_2:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB4_2
-.Ltmp69:
-.LBB4_3:
+	cbz	r2, .LBB4_3
+.Ltmp77:
+@ %bb.1:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- $r1
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- $r0
 	.loc	4 355 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:355:5
-	ldr	r0, [sp, #4]
-.Ltmp70:
-	.loc	4 355 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:355:5
-	cbnz	r0, .LBB4_6
-	b	.LBB4_4
-.LBB4_4:
-.Ltmp71:
-	.loc	4 355 5                         @ packages/fal-v0.5.0/src/fal_partition.c:355:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.17
-	movt	r1, :upper16:.L.str.17
-	movw	r2, :lower16:.L__FUNCTION__.fal_set_partition_table_temp
-	movt	r2, :upper16:.L__FUNCTION__.fal_set_partition_table_temp
-	bl	rt_kprintf
-	b	.LBB4_5
-.LBB4_5:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB4_5
-.Ltmp72:
-.LBB4_6:
-	.loc	4 357 27 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:357:27
-	ldr	r0, [sp]
-	.loc	4 357 25 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:357:25
-	movw	r1, :lower16:partition_table_len
-	movt	r1, :upper16:partition_table_len
-	str	r0, [r1]
-	.loc	4 358 23 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:358:23
-	ldr	r0, [sp, #4]
-	.loc	4 358 21 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:358:21
+	cbz	r0, .LBB4_5
+.Ltmp78:
+@ %bb.2:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- $r1
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- $r0
+	.loc	4 357 25                        @ packages/fal-v0.5.0/src/fal_partition.c:357:25
+	movw	r2, :lower16:partition_table_len
+	movt	r2, :upper16:partition_table_len
+	str	r1, [r2]
+	.loc	4 358 21                        @ packages/fal-v0.5.0/src/fal_partition.c:358:21
 	movw	r1, :lower16:partition_table
+.Ltmp79:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- [DW_OP_LLVM_entry_value 1] $r1
 	movt	r1, :upper16:partition_table
 	str	r0, [r1]
-	.loc	4 359 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:359:1
-	add	sp, #8
+	.loc	4 359 1                         @ packages/fal-v0.5.0/src/fal_partition.c:359:1
 	pop	{r7, pc}
-.Ltmp73:
+.Ltmp80:
+.LBB4_3:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- $r1
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- $r0
+	.loc	4 354 5                         @ packages/fal-v0.5.0/src/fal_partition.c:354:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp81:
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r1, :lower16:.L.str.15
+.Ltmp82:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r2, :lower16:.L__FUNCTION__.fal_set_partition_table_temp
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.15
+	movt	r2, :upper16:.L__FUNCTION__.fal_set_partition_table_temp
+	bl	rt_kprintf
+.Ltmp83:
+	.p2align	2
+.LBB4_4:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- [DW_OP_LLVM_entry_value 1] $r0
+	b	.LBB4_4
+.Ltmp84:
+.LBB4_5:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- $r1
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- $r0
+	.loc	4 355 5                         @ packages/fal-v0.5.0/src/fal_partition.c:355:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp85:
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r2, :lower16:.L__FUNCTION__.fal_set_partition_table_temp
+	movt	r0, :upper16:.L.str.14
+	adr	r1, .LCPI4_0
+.Ltmp86:
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- [DW_OP_LLVM_entry_value 1] $r1
+	movt	r2, :upper16:.L__FUNCTION__.fal_set_partition_table_temp
+	bl	rt_kprintf
+.Ltmp87:
+	.p2align	2
+.LBB4_6:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_set_partition_table_temp:len <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: fal_set_partition_table_temp:table <- [DW_OP_LLVM_entry_value 1] $r0
+	b	.LBB4_6
+.Ltmp88:
+	.p2align	2
+@ %bb.7:
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+.LCPI4_0:
+.L.str.17:
+	.asciz	"table\000\000"
 .Lfunc_end4:
 	.size	fal_set_partition_table_temp, .Lfunc_end4-fal_set_partition_table_temp
 	.cfi_endproc
@@ -841,206 +815,282 @@ fal_set_partition_table_temp:
 	.thumb_func
 fal_partition_read:
 .Lfunc_begin5:
-	.loc	4 373 0                         @ packages/fal-v0.5.0/src/fal_partition.c:373:0
+	.loc	4 373 0 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:373:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: fal_partition_read:part <- $r0
+	@DEBUG_VALUE: fal_partition_read:addr <- $r1
+	@DEBUG_VALUE: fal_partition_read:buf <- $r2
+	@DEBUG_VALUE: fal_partition_read:size <- $r3
+	@DEBUG_VALUE: fal_partition_read:part <- $r0
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #24]
-	str	r1, [sp, #20]
-	str	r2, [sp, #16]
-	str	r3, [sp, #12]
-	movs	r0, #0
-.Ltmp74:
-	.loc	4 374 9 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:374:9
-	str	r0, [sp, #8]
-	.loc	4 375 33                        @ packages/fal-v0.5.0/src/fal_partition.c:375:33
-	str	r0, [sp, #4]
-.Ltmp75:
-	.loc	4 377 5                         @ packages/fal-v0.5.0/src/fal_partition.c:377:5
-	ldr	r0, [sp, #24]
-.Ltmp76:
-	.loc	4 377 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:377:5
-	cbnz	r0, .LBB5_3
-	b	.LBB5_1
-.LBB5_1:
-.Ltmp77:
-	.loc	4 377 5                         @ packages/fal-v0.5.0/src/fal_partition.c:377:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.18
-	movt	r1, :upper16:.L.str.18
-	movw	r2, :lower16:.L__FUNCTION__.fal_partition_read
-	movt	r2, :upper16:.L__FUNCTION__.fal_partition_read
-	bl	rt_kprintf
-	b	.LBB5_2
-.LBB5_2:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB5_2
-.Ltmp78:
-.LBB5_3:
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+.Ltmp89:
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:size <- $r3
+	@DEBUG_VALUE: fal_partition_read:buf <- $r2
+	@DEBUG_VALUE: fal_partition_read:addr <- $r1
+	.loc	4 377 5 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:377:5
+	cbz	r0, .LBB5_4
+.Ltmp90:
+@ %bb.1:
+	@DEBUG_VALUE: fal_partition_read:size <- $r3
+	@DEBUG_VALUE: fal_partition_read:buf <- $r2
+	@DEBUG_VALUE: fal_partition_read:addr <- $r1
+	@DEBUG_VALUE: fal_partition_read:part <- $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
+	@DEBUG_VALUE: fal_partition_read:part <- $r0
+	@DEBUG_VALUE: fal_partition_read:size <- $r3
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	mov	r7, r2
+.Ltmp91:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:addr <- $r1
 	.loc	4 378 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:378:5
-	ldr	r0, [sp, #16]
-.Ltmp79:
-	.loc	4 378 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:378:5
-	cbnz	r0, .LBB5_6
-	b	.LBB5_4
-.LBB5_4:
-.Ltmp80:
-	.loc	4 378 5                         @ packages/fal-v0.5.0/src/fal_partition.c:378:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.19
-	movt	r1, :upper16:.L.str.19
-	movw	r2, :lower16:.L__FUNCTION__.fal_partition_read
-	movt	r2, :upper16:.L__FUNCTION__.fal_partition_read
-	bl	rt_kprintf
-	b	.LBB5_5
-.LBB5_5:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB5_5
-.Ltmp81:
-.LBB5_6:
-	.loc	4 380 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:380:9
-	ldr	r0, [sp, #20]
-	.loc	4 380 16 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:380:16
-	ldr	r1, [sp, #12]
-	.loc	4 380 14                        @ packages/fal-v0.5.0/src/fal_partition.c:380:14
-	add	r0, r1
-	.loc	4 380 23                        @ packages/fal-v0.5.0/src/fal_partition.c:380:23
-	ldr	r1, [sp, #24]
-	.loc	4 380 29                        @ packages/fal-v0.5.0/src/fal_partition.c:380:29
-	ldr	r1, [r1, #56]
-.Ltmp82:
+	cbz	r2, .LBB5_6
+.Ltmp92:
+@ %bb.2:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r3
+	@DEBUG_VALUE: fal_partition_read:addr <- $r1
+	@DEBUG_VALUE: fal_partition_read:part <- $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	mov	r5, r0
+.Ltmp93:
+	@DEBUG_VALUE: fal_partition_read:part <- $r5
+	@DEBUG_VALUE: fal_partition_read:part <- $r5
+	mov	r4, r1
+.Ltmp94:
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	.loc	4 380 14 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:380:14
+	adds	r0, r3, r1
+	mov	r6, r3
+.Ltmp95:
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	.loc	4 380 29 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:380:29
+	ldr	r1, [r5, #56]
+.Ltmp96:
 	.loc	4 380 9                         @ packages/fal-v0.5.0/src/fal_partition.c:380:9
 	cmp	r0, r1
 	bls	.LBB5_8
-	b	.LBB5_7
-.LBB5_7:
-.Ltmp83:
+.Ltmp97:
+@ %bb.3:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:part <- $r5
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
 	.loc	4 382 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:382:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_read
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_read
 	mov.w	r2, #382
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.20
-	movt	r0, :upper16:.L.str.20
+	adr	r0, .LCPI5_1
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	mov.w	r0, #-1
-	.loc	4 383 9                         @ packages/fal-v0.5.0/src/fal_partition.c:383:9
-	str	r0, [sp, #28]
+	mov.w	r5, #-1
+.Ltmp98:
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 9 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:9
 	b	.LBB5_13
-.Ltmp84:
+.Ltmp99:
+.LBB5_4:
+	@DEBUG_VALUE: fal_partition_read:size <- $r3
+	@DEBUG_VALUE: fal_partition_read:buf <- $r2
+	@DEBUG_VALUE: fal_partition_read:addr <- $r1
+	@DEBUG_VALUE: fal_partition_read:part <- $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
+	.loc	4 377 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:377:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp100:
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r1, :lower16:.L.str.18
+.Ltmp101:
+	@DEBUG_VALUE: fal_partition_read:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r2, :lower16:.L__FUNCTION__.fal_partition_read
+.Ltmp102:
+	@DEBUG_VALUE: fal_partition_read:buf <- [DW_OP_LLVM_entry_value 1] $r2
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.18
+	movt	r2, :upper16:.L__FUNCTION__.fal_partition_read
+	bl	rt_kprintf
+.Ltmp103:
+	@DEBUG_VALUE: fal_partition_read:size <- [DW_OP_LLVM_entry_value 1] $r3
+	.p2align	2
+.LBB5_5:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_read:buf <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: fal_partition_read:size <- [DW_OP_LLVM_entry_value 1] $r3
+	@DEBUG_VALUE: fal_partition_read:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
+	b	.LBB5_5
+.Ltmp104:
+.LBB5_6:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r3
+	@DEBUG_VALUE: fal_partition_read:addr <- $r1
+	@DEBUG_VALUE: fal_partition_read:part <- $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
+	.loc	4 378 5                         @ packages/fal-v0.5.0/src/fal_partition.c:378:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp105:
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r1, :lower16:.L.str.19
+.Ltmp106:
+	@DEBUG_VALUE: fal_partition_read:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r2, :lower16:.L__FUNCTION__.fal_partition_read
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.19
+	movt	r2, :upper16:.L__FUNCTION__.fal_partition_read
+	bl	rt_kprintf
+.Ltmp107:
+	@DEBUG_VALUE: fal_partition_read:size <- [DW_OP_LLVM_entry_value 1] $r3
+	.p2align	2
+.LBB5_7:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- [DW_OP_LLVM_entry_value 1] $r3
+	@DEBUG_VALUE: fal_partition_read:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
+	b	.LBB5_7
+.Ltmp108:
 .LBB5_8:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:part <- $r5
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- 0
 	.loc	4 386 39                        @ packages/fal-v0.5.0/src/fal_partition.c:386:39
-	ldr	r0, [sp, #24]
-	.loc	4 386 45 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:386:45
-	adds	r0, #28
-	.loc	4 386 17                        @ packages/fal-v0.5.0/src/fal_partition.c:386:17
+	add.w	r8, r5, #28
+	.loc	4 386 17 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:386:17
+	mov	r0, r8
 	bl	fal_flash_device_find
-	.loc	4 386 15                        @ packages/fal-v0.5.0/src/fal_partition.c:386:15
-	str	r0, [sp, #4]
-.Ltmp85:
+.Ltmp109:
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- $r0
 	.loc	4 387 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:387:9
-	ldr	r0, [sp, #4]
-.Ltmp86:
-	.loc	4 387 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:387:9
-	cbnz	r0, .LBB5_10
-	b	.LBB5_9
-.LBB5_9:
-.Ltmp87:
-	.loc	4 389 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:389:9
+	cbz	r0, .LBB5_11
+.Ltmp110:
+@ %bb.9:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:part <- $r5
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	.loc	4 393 37                        @ packages/fal-v0.5.0/src/fal_partition.c:393:37
+	ldr	r1, [r5, #52]
+	.loc	4 393 26 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:393:26
+	ldr	r3, [r0, #40]
+	.loc	4 393 44                        @ packages/fal-v0.5.0/src/fal_partition.c:393:44
+	adds	r0, r1, r4
+.Ltmp111:
+	.loc	4 393 11                        @ packages/fal-v0.5.0/src/fal_partition.c:393:11
+	mov	r1, r7
+	mov	r2, r6
+	blx	r3
+	mov	r5, r0
+.Ltmp112:
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- $r5
+	.loc	4 394 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:394:9
+	cmp.w	r0, #-1
+	ble	.LBB5_12
+.Ltmp113:
+@ %bb.10:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:ret <- $r5
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 400 1                         @ packages/fal-v0.5.0/src/fal_partition.c:400:1
+	mov	r0, r5
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp114:
+.LBB5_11:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:part <- $r5
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	@DEBUG_VALUE: fal_partition_read:flash_dev <- $r0
+	@DEBUG_VALUE: fal_partition_read:ret <- 0
+	.loc	4 389 9                         @ packages/fal-v0.5.0/src/fal_partition.c:389:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
+.Ltmp115:
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_read
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_read
 	movw	r2, #389
 	bl	rt_kprintf
-	ldr	r0, [sp, #24]
-	add.w	r1, r0, #28
-	adds	r2, r0, #4
 	movw	r0, :lower16:.L.str.21
+	adds	r2, r5, #4
 	movt	r0, :upper16:.L.str.21
+	mov	r1, r8
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	mov.w	r0, #-1
-	.loc	4 390 9                         @ packages/fal-v0.5.0/src/fal_partition.c:390:9
-	str	r0, [sp, #28]
+	mov.w	r5, #-1
+.Ltmp116:
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 9 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:9
 	b	.LBB5_13
-.Ltmp88:
-.LBB5_10:
-	.loc	4 393 11                        @ packages/fal-v0.5.0/src/fal_partition.c:393:11
-	ldr	r0, [sp, #4]
-	.loc	4 393 26 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:393:26
-	ldr	r3, [r0, #40]
-	.loc	4 393 31                        @ packages/fal-v0.5.0/src/fal_partition.c:393:31
-	ldr	r0, [sp, #24]
-	.loc	4 393 37                        @ packages/fal-v0.5.0/src/fal_partition.c:393:37
-	ldr	r0, [r0, #52]
-	.loc	4 393 46                        @ packages/fal-v0.5.0/src/fal_partition.c:393:46
-	ldr	r1, [sp, #20]
-	.loc	4 393 44                        @ packages/fal-v0.5.0/src/fal_partition.c:393:44
-	add	r0, r1
-	.loc	4 393 52                        @ packages/fal-v0.5.0/src/fal_partition.c:393:52
-	ldr	r1, [sp, #16]
-	.loc	4 393 57                        @ packages/fal-v0.5.0/src/fal_partition.c:393:57
-	ldr	r2, [sp, #12]
-	.loc	4 393 11                        @ packages/fal-v0.5.0/src/fal_partition.c:393:11
-	blx	r3
-	.loc	4 393 9                         @ packages/fal-v0.5.0/src/fal_partition.c:393:9
-	str	r0, [sp, #8]
-.Ltmp89:
-	.loc	4 394 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:394:9
-	ldr	r0, [sp, #8]
-.Ltmp90:
-	.loc	4 394 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:394:9
-	cmp.w	r0, #-1
-	bgt	.LBB5_12
-	b	.LBB5_11
-.LBB5_11:
-.Ltmp91:
+.Ltmp117:
+.LBB5_12:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:ret <- $r5
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	4 396 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:396:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_read
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_read
 	mov.w	r2, #396
 	bl	rt_kprintf
-	ldr	r0, [sp, #24]
-	add.w	r1, r0, #28
-	movw	r0, :lower16:.L.str.22
-	movt	r0, :upper16:.L.str.22
+	adr	r0, .LCPI5_0
+	mov	r1, r8
 	bl	rt_kprintf
+.Ltmp118:
+.LBB5_13:
+	@DEBUG_VALUE: fal_partition_read:buf <- $r7
+	@DEBUG_VALUE: fal_partition_read:size <- $r6
+	@DEBUG_VALUE: fal_partition_read:addr <- $r4
+	@DEBUG_VALUE: fal_partition_read:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 0 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:0
 	movw	r0, :lower16:.L.str.4
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
-	.loc	4 397 5                         @ packages/fal-v0.5.0/src/fal_partition.c:397:5
-	b	.LBB5_12
-.Ltmp92:
-.LBB5_12:
-	.loc	4 399 12                        @ packages/fal-v0.5.0/src/fal_partition.c:399:12
-	ldr	r0, [sp, #8]
-	.loc	4 399 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:399:5
-	str	r0, [sp, #28]
-	b	.LBB5_13
-.LBB5_13:
 	.loc	4 400 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:400:1
-	ldr	r0, [sp, #28]
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp93:
+	mov	r0, r5
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp119:
+	.p2align	2
+@ %bb.14:
+	.loc	4 0 1 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:1
+.LCPI5_0:
+.L.str.22:
+	.asciz	"Partition read error! Flash device(%s) read error!\000"
+.LCPI5_1:
+.L.str.20:
+	.asciz	"Partition read error! Partition address out of bound.\000\000"
 .Lfunc_end5:
 	.size	fal_partition_read, .Lfunc_end5-fal_partition_read
 	.cfi_endproc
@@ -1056,206 +1106,282 @@ fal_partition_read:
 	.thumb_func
 fal_partition_write:
 .Lfunc_begin6:
-	.loc	4 414 0                         @ packages/fal-v0.5.0/src/fal_partition.c:414:0
+	.loc	4 414 0 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:414:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: fal_partition_write:part <- $r0
+	@DEBUG_VALUE: fal_partition_write:addr <- $r1
+	@DEBUG_VALUE: fal_partition_write:buf <- $r2
+	@DEBUG_VALUE: fal_partition_write:size <- $r3
+	@DEBUG_VALUE: fal_partition_write:part <- $r0
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #24]
-	str	r1, [sp, #20]
-	str	r2, [sp, #16]
-	str	r3, [sp, #12]
-	movs	r0, #0
-.Ltmp94:
-	.loc	4 415 9 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:415:9
-	str	r0, [sp, #8]
-	.loc	4 416 33                        @ packages/fal-v0.5.0/src/fal_partition.c:416:33
-	str	r0, [sp, #4]
-.Ltmp95:
-	.loc	4 418 5                         @ packages/fal-v0.5.0/src/fal_partition.c:418:5
-	ldr	r0, [sp, #24]
-.Ltmp96:
-	.loc	4 418 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:418:5
-	cbnz	r0, .LBB6_3
-	b	.LBB6_1
-.LBB6_1:
-.Ltmp97:
-	.loc	4 418 5                         @ packages/fal-v0.5.0/src/fal_partition.c:418:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.18
-	movt	r1, :upper16:.L.str.18
-	movw	r2, :lower16:.L__FUNCTION__.fal_partition_write
-	movt	r2, :upper16:.L__FUNCTION__.fal_partition_write
-	bl	rt_kprintf
-	b	.LBB6_2
-.LBB6_2:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB6_2
-.Ltmp98:
-.LBB6_3:
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+.Ltmp120:
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:size <- $r3
+	@DEBUG_VALUE: fal_partition_write:buf <- $r2
+	@DEBUG_VALUE: fal_partition_write:addr <- $r1
+	.loc	4 418 5 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:418:5
+	cbz	r0, .LBB6_4
+.Ltmp121:
+@ %bb.1:
+	@DEBUG_VALUE: fal_partition_write:size <- $r3
+	@DEBUG_VALUE: fal_partition_write:buf <- $r2
+	@DEBUG_VALUE: fal_partition_write:addr <- $r1
+	@DEBUG_VALUE: fal_partition_write:part <- $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
+	@DEBUG_VALUE: fal_partition_write:part <- $r0
+	@DEBUG_VALUE: fal_partition_write:size <- $r3
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	mov	r7, r2
+.Ltmp122:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:addr <- $r1
 	.loc	4 419 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:419:5
-	ldr	r0, [sp, #16]
-.Ltmp99:
-	.loc	4 419 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:419:5
-	cbnz	r0, .LBB6_6
-	b	.LBB6_4
-.LBB6_4:
-.Ltmp100:
-	.loc	4 419 5                         @ packages/fal-v0.5.0/src/fal_partition.c:419:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.19
-	movt	r1, :upper16:.L.str.19
-	movw	r2, :lower16:.L__FUNCTION__.fal_partition_write
-	movt	r2, :upper16:.L__FUNCTION__.fal_partition_write
-	bl	rt_kprintf
-	b	.LBB6_5
-.LBB6_5:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB6_5
-.Ltmp101:
-.LBB6_6:
-	.loc	4 421 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:421:9
-	ldr	r0, [sp, #20]
-	.loc	4 421 16 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:421:16
-	ldr	r1, [sp, #12]
-	.loc	4 421 14                        @ packages/fal-v0.5.0/src/fal_partition.c:421:14
-	add	r0, r1
-	.loc	4 421 23                        @ packages/fal-v0.5.0/src/fal_partition.c:421:23
-	ldr	r1, [sp, #24]
-	.loc	4 421 29                        @ packages/fal-v0.5.0/src/fal_partition.c:421:29
-	ldr	r1, [r1, #56]
-.Ltmp102:
+	cbz	r2, .LBB6_6
+.Ltmp123:
+@ %bb.2:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r3
+	@DEBUG_VALUE: fal_partition_write:addr <- $r1
+	@DEBUG_VALUE: fal_partition_write:part <- $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	mov	r5, r0
+.Ltmp124:
+	@DEBUG_VALUE: fal_partition_write:part <- $r5
+	@DEBUG_VALUE: fal_partition_write:part <- $r5
+	mov	r4, r1
+.Ltmp125:
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	.loc	4 421 14 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:421:14
+	adds	r0, r3, r1
+	mov	r6, r3
+.Ltmp126:
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	.loc	4 421 29 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:421:29
+	ldr	r1, [r5, #56]
+.Ltmp127:
 	.loc	4 421 9                         @ packages/fal-v0.5.0/src/fal_partition.c:421:9
 	cmp	r0, r1
 	bls	.LBB6_8
-	b	.LBB6_7
-.LBB6_7:
-.Ltmp103:
+.Ltmp128:
+@ %bb.3:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:part <- $r5
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
 	.loc	4 423 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:423:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_write
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_write
 	movw	r2, #423
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.23
-	movt	r0, :upper16:.L.str.23
+	adr	r0, .LCPI6_1
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	mov.w	r0, #-1
-	.loc	4 424 9                         @ packages/fal-v0.5.0/src/fal_partition.c:424:9
-	str	r0, [sp, #28]
+	mov.w	r5, #-1
+.Ltmp129:
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 9 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:9
 	b	.LBB6_13
-.Ltmp104:
+.Ltmp130:
+.LBB6_4:
+	@DEBUG_VALUE: fal_partition_write:size <- $r3
+	@DEBUG_VALUE: fal_partition_write:buf <- $r2
+	@DEBUG_VALUE: fal_partition_write:addr <- $r1
+	@DEBUG_VALUE: fal_partition_write:part <- $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
+	.loc	4 418 5 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:418:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp131:
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r1, :lower16:.L.str.18
+.Ltmp132:
+	@DEBUG_VALUE: fal_partition_write:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r2, :lower16:.L__FUNCTION__.fal_partition_write
+.Ltmp133:
+	@DEBUG_VALUE: fal_partition_write:buf <- [DW_OP_LLVM_entry_value 1] $r2
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.18
+	movt	r2, :upper16:.L__FUNCTION__.fal_partition_write
+	bl	rt_kprintf
+.Ltmp134:
+	@DEBUG_VALUE: fal_partition_write:size <- [DW_OP_LLVM_entry_value 1] $r3
+	.p2align	2
+.LBB6_5:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_write:buf <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: fal_partition_write:size <- [DW_OP_LLVM_entry_value 1] $r3
+	@DEBUG_VALUE: fal_partition_write:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
+	b	.LBB6_5
+.Ltmp135:
+.LBB6_6:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r3
+	@DEBUG_VALUE: fal_partition_write:addr <- $r1
+	@DEBUG_VALUE: fal_partition_write:part <- $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
+	.loc	4 419 5                         @ packages/fal-v0.5.0/src/fal_partition.c:419:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp136:
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r1, :lower16:.L.str.19
+.Ltmp137:
+	@DEBUG_VALUE: fal_partition_write:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r2, :lower16:.L__FUNCTION__.fal_partition_write
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.19
+	movt	r2, :upper16:.L__FUNCTION__.fal_partition_write
+	bl	rt_kprintf
+.Ltmp138:
+	@DEBUG_VALUE: fal_partition_write:size <- [DW_OP_LLVM_entry_value 1] $r3
+	.p2align	2
+.LBB6_7:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- [DW_OP_LLVM_entry_value 1] $r3
+	@DEBUG_VALUE: fal_partition_write:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
+	b	.LBB6_7
+.Ltmp139:
 .LBB6_8:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:part <- $r5
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- 0
 	.loc	4 427 39                        @ packages/fal-v0.5.0/src/fal_partition.c:427:39
-	ldr	r0, [sp, #24]
-	.loc	4 427 45 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:427:45
-	adds	r0, #28
-	.loc	4 427 17                        @ packages/fal-v0.5.0/src/fal_partition.c:427:17
+	add.w	r8, r5, #28
+	.loc	4 427 17 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:427:17
+	mov	r0, r8
 	bl	fal_flash_device_find
-	.loc	4 427 15                        @ packages/fal-v0.5.0/src/fal_partition.c:427:15
-	str	r0, [sp, #4]
-.Ltmp105:
+.Ltmp140:
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- $r0
 	.loc	4 428 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:428:9
-	ldr	r0, [sp, #4]
-.Ltmp106:
-	.loc	4 428 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:428:9
-	cbnz	r0, .LBB6_10
-	b	.LBB6_9
-.LBB6_9:
-.Ltmp107:
-	.loc	4 430 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:430:9
+	cbz	r0, .LBB6_11
+.Ltmp141:
+@ %bb.9:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:part <- $r5
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	.loc	4 434 38                        @ packages/fal-v0.5.0/src/fal_partition.c:434:38
+	ldr	r1, [r5, #52]
+	.loc	4 434 26 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:434:26
+	ldr	r3, [r0, #44]
+	.loc	4 434 45                        @ packages/fal-v0.5.0/src/fal_partition.c:434:45
+	adds	r0, r1, r4
+.Ltmp142:
+	.loc	4 434 11                        @ packages/fal-v0.5.0/src/fal_partition.c:434:11
+	mov	r1, r7
+	mov	r2, r6
+	blx	r3
+	mov	r5, r0
+.Ltmp143:
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- $r5
+	.loc	4 435 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:435:9
+	cmp.w	r0, #-1
+	ble	.LBB6_12
+.Ltmp144:
+@ %bb.10:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:ret <- $r5
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 441 1                         @ packages/fal-v0.5.0/src/fal_partition.c:441:1
+	mov	r0, r5
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp145:
+.LBB6_11:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:part <- $r5
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	@DEBUG_VALUE: fal_partition_write:flash_dev <- $r0
+	@DEBUG_VALUE: fal_partition_write:ret <- 0
+	.loc	4 430 9                         @ packages/fal-v0.5.0/src/fal_partition.c:430:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
+.Ltmp146:
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_write
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_write
 	mov.w	r2, #430
 	bl	rt_kprintf
-	ldr	r0, [sp, #24]
-	add.w	r1, r0, #28
-	adds	r2, r0, #4
 	movw	r0, :lower16:.L.str.24
+	adds	r2, r5, #4
 	movt	r0, :upper16:.L.str.24
+	mov	r1, r8
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	mov.w	r0, #-1
-	.loc	4 431 9                         @ packages/fal-v0.5.0/src/fal_partition.c:431:9
-	str	r0, [sp, #28]
+	mov.w	r5, #-1
+.Ltmp147:
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 9 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:9
 	b	.LBB6_13
-.Ltmp108:
-.LBB6_10:
-	.loc	4 434 11                        @ packages/fal-v0.5.0/src/fal_partition.c:434:11
-	ldr	r0, [sp, #4]
-	.loc	4 434 26 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:434:26
-	ldr	r3, [r0, #44]
-	.loc	4 434 32                        @ packages/fal-v0.5.0/src/fal_partition.c:434:32
-	ldr	r0, [sp, #24]
-	.loc	4 434 38                        @ packages/fal-v0.5.0/src/fal_partition.c:434:38
-	ldr	r0, [r0, #52]
-	.loc	4 434 47                        @ packages/fal-v0.5.0/src/fal_partition.c:434:47
-	ldr	r1, [sp, #20]
-	.loc	4 434 45                        @ packages/fal-v0.5.0/src/fal_partition.c:434:45
-	add	r0, r1
-	.loc	4 434 53                        @ packages/fal-v0.5.0/src/fal_partition.c:434:53
-	ldr	r1, [sp, #16]
-	.loc	4 434 58                        @ packages/fal-v0.5.0/src/fal_partition.c:434:58
-	ldr	r2, [sp, #12]
-	.loc	4 434 11                        @ packages/fal-v0.5.0/src/fal_partition.c:434:11
-	blx	r3
-	.loc	4 434 9                         @ packages/fal-v0.5.0/src/fal_partition.c:434:9
-	str	r0, [sp, #8]
-.Ltmp109:
-	.loc	4 435 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:435:9
-	ldr	r0, [sp, #8]
-.Ltmp110:
-	.loc	4 435 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:435:9
-	cmp.w	r0, #-1
-	bgt	.LBB6_12
-	b	.LBB6_11
-.LBB6_11:
-.Ltmp111:
+.Ltmp148:
+.LBB6_12:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:ret <- $r5
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	4 437 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:437:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_write
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_write
 	movw	r2, #437
 	bl	rt_kprintf
-	ldr	r0, [sp, #24]
-	add.w	r1, r0, #28
-	movw	r0, :lower16:.L.str.25
-	movt	r0, :upper16:.L.str.25
+	adr	r0, .LCPI6_0
+	mov	r1, r8
 	bl	rt_kprintf
+.Ltmp149:
+.LBB6_13:
+	@DEBUG_VALUE: fal_partition_write:buf <- $r7
+	@DEBUG_VALUE: fal_partition_write:size <- $r6
+	@DEBUG_VALUE: fal_partition_write:addr <- $r4
+	@DEBUG_VALUE: fal_partition_write:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 0 0 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:0
 	movw	r0, :lower16:.L.str.4
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
-	.loc	4 438 5                         @ packages/fal-v0.5.0/src/fal_partition.c:438:5
-	b	.LBB6_12
-.Ltmp112:
-.LBB6_12:
-	.loc	4 440 12                        @ packages/fal-v0.5.0/src/fal_partition.c:440:12
-	ldr	r0, [sp, #8]
-	.loc	4 440 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:440:5
-	str	r0, [sp, #28]
-	b	.LBB6_13
-.LBB6_13:
 	.loc	4 441 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:441:1
-	ldr	r0, [sp, #28]
-	add	sp, #32
-	pop	{r7, pc}
-.Ltmp113:
+	mov	r0, r5
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp150:
+	.p2align	2
+@ %bb.14:
+	.loc	4 0 1 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:1
+.LCPI6_0:
+.L.str.25:
+	.asciz	"Partition write error! Flash device(%s) write error!\000\000\000"
+.LCPI6_1:
+.L.str.23:
+	.asciz	"Partition write error! Partition address out of bound.\000"
 .Lfunc_end6:
 	.size	fal_partition_write, .Lfunc_end6-fal_partition_write
 	.cfi_endproc
@@ -1271,182 +1397,219 @@ fal_partition_write:
 	.thumb_func
 fal_partition_erase:
 .Lfunc_begin7:
-	.loc	4 454 0                         @ packages/fal-v0.5.0/src/fal_partition.c:454:0
+	.loc	4 454 0 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:454:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: fal_partition_erase:part <- $r0
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r1
+	@DEBUG_VALUE: fal_partition_erase:size <- $r2
+	@DEBUG_VALUE: fal_partition_erase:part <- $r0
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
-	movs	r0, #0
-.Ltmp114:
-	.loc	4 455 9 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:455:9
-	str	r0, [sp, #4]
-	.loc	4 456 33                        @ packages/fal-v0.5.0/src/fal_partition.c:456:33
-	str	r0, [sp]
-.Ltmp115:
-	.loc	4 458 5                         @ packages/fal-v0.5.0/src/fal_partition.c:458:5
-	ldr	r0, [sp, #16]
-.Ltmp116:
-	.loc	4 458 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:458:5
-	cbnz	r0, .LBB7_3
-	b	.LBB7_1
-.LBB7_1:
-.Ltmp117:
-	.loc	4 458 5                         @ packages/fal-v0.5.0/src/fal_partition.c:458:5
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	movw	r1, :lower16:.L.str.18
-	movt	r1, :upper16:.L.str.18
-	movw	r2, :lower16:.L__FUNCTION__.fal_partition_erase
-	movt	r2, :upper16:.L__FUNCTION__.fal_partition_erase
-	bl	rt_kprintf
-	b	.LBB7_2
-.LBB7_2:                                @ =>This Inner Loop Header: Depth=1
-	b	.LBB7_2
-.Ltmp118:
-.LBB7_3:
-	.loc	4 460 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:460:9
-	ldr	r0, [sp, #12]
-	.loc	4 460 16 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:460:16
-	ldr	r1, [sp, #8]
-	.loc	4 460 14                        @ packages/fal-v0.5.0/src/fal_partition.c:460:14
-	add	r0, r1
-	.loc	4 460 23                        @ packages/fal-v0.5.0/src/fal_partition.c:460:23
-	ldr	r1, [sp, #16]
-	.loc	4 460 29                        @ packages/fal-v0.5.0/src/fal_partition.c:460:29
-	ldr	r1, [r1, #56]
-.Ltmp119:
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
+.Ltmp151:
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- 0
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	@DEBUG_VALUE: fal_partition_erase:size <- $r2
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r1
+	.loc	4 458 5 prologue_end            @ packages/fal-v0.5.0/src/fal_partition.c:458:5
+	cbz	r0, .LBB7_3
+.Ltmp152:
+@ %bb.1:
+	@DEBUG_VALUE: fal_partition_erase:size <- $r2
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r1
+	@DEBUG_VALUE: fal_partition_erase:part <- $r0
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- 0
+	.loc	4 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:5
+	mov	r5, r0
+.Ltmp153:
+	@DEBUG_VALUE: fal_partition_erase:part <- $r5
+	@DEBUG_VALUE: fal_partition_erase:part <- $r5
+	mov	r7, r1
+.Ltmp154:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	.loc	4 460 14 is_stmt 1              @ packages/fal-v0.5.0/src/fal_partition.c:460:14
+	adds	r0, r2, r1
+	mov	r6, r2
+.Ltmp155:
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	.loc	4 460 29 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:460:29
+	ldr	r1, [r5, #56]
+.Ltmp156:
 	.loc	4 460 9                         @ packages/fal-v0.5.0/src/fal_partition.c:460:9
 	cmp	r0, r1
 	bls	.LBB7_5
-	b	.LBB7_4
-.LBB7_4:
-.Ltmp120:
+.Ltmp157:
+@ %bb.2:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:part <- $r5
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- 0
 	.loc	4 462 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:462:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_erase
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_erase
 	mov.w	r2, #462
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.26
-	movt	r0, :upper16:.L.str.26
+	adr	r0, .LCPI7_1
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
+	b	.LBB7_9
+.Ltmp158:
+.LBB7_3:
+	@DEBUG_VALUE: fal_partition_erase:size <- $r2
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r1
+	@DEBUG_VALUE: fal_partition_erase:part <- $r0
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- 0
+	.loc	4 458 5                         @ packages/fal-v0.5.0/src/fal_partition.c:458:5
+	movw	r0, :lower16:.L.str.14
+.Ltmp159:
+	@DEBUG_VALUE: fal_partition_erase:part <- [DW_OP_LLVM_entry_value 1] $r0
+	movw	r1, :lower16:.L.str.18
+.Ltmp160:
+	@DEBUG_VALUE: fal_partition_erase:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r2, :lower16:.L__FUNCTION__.fal_partition_erase
+.Ltmp161:
+	@DEBUG_VALUE: fal_partition_erase:size <- [DW_OP_LLVM_entry_value 1] $r2
+	movt	r0, :upper16:.L.str.14
+	movt	r1, :upper16:.L.str.18
+	movt	r2, :upper16:.L__FUNCTION__.fal_partition_erase
 	bl	rt_kprintf
-	mov.w	r0, #-1
-	.loc	4 463 9                         @ packages/fal-v0.5.0/src/fal_partition.c:463:9
-	str	r0, [sp, #20]
-	b	.LBB7_10
-.Ltmp121:
+.Ltmp162:
+	.p2align	2
+.LBB7_4:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: fal_partition_erase:size <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: fal_partition_erase:addr <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: fal_partition_erase:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- 0
+	b	.LBB7_4
+.Ltmp163:
 .LBB7_5:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:part <- $r5
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- 0
 	.loc	4 466 39                        @ packages/fal-v0.5.0/src/fal_partition.c:466:39
-	ldr	r0, [sp, #16]
-	.loc	4 466 45 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:466:45
-	adds	r0, #28
-	.loc	4 466 17                        @ packages/fal-v0.5.0/src/fal_partition.c:466:17
+	add.w	r4, r5, #28
+	.loc	4 466 17 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:466:17
+	mov	r0, r4
 	bl	fal_flash_device_find
-	.loc	4 466 15                        @ packages/fal-v0.5.0/src/fal_partition.c:466:15
-	str	r0, [sp]
-.Ltmp122:
+.Ltmp164:
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- $r0
 	.loc	4 467 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:467:9
-	ldr	r0, [sp]
-.Ltmp123:
-	.loc	4 467 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:467:9
-	cbnz	r0, .LBB7_7
-	b	.LBB7_6
-.LBB7_6:
-.Ltmp124:
-	.loc	4 469 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:469:9
-	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
-	movw	r1, :lower16:.L__FUNCTION__.fal_partition_erase
-	movt	r1, :upper16:.L__FUNCTION__.fal_partition_erase
-	movw	r2, #469
-	bl	rt_kprintf
-	ldr	r0, [sp, #16]
-	add.w	r1, r0, #28
-	adds	r2, r0, #4
-	movw	r0, :lower16:.L.str.27
-	movt	r0, :upper16:.L.str.27
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	mov.w	r0, #-1
-	.loc	4 470 9                         @ packages/fal-v0.5.0/src/fal_partition.c:470:9
-	str	r0, [sp, #20]
-	b	.LBB7_10
-.Ltmp125:
-.LBB7_7:
-	.loc	4 473 11                        @ packages/fal-v0.5.0/src/fal_partition.c:473:11
-	ldr	r0, [sp]
+	cbz	r0, .LBB7_8
+.Ltmp165:
+@ %bb.6:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:part <- $r5
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- $r0
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	.loc	4 473 38                        @ packages/fal-v0.5.0/src/fal_partition.c:473:38
+	ldr	r1, [r5, #52]
 	.loc	4 473 26 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:473:26
 	ldr	r2, [r0, #48]
-	.loc	4 473 32                        @ packages/fal-v0.5.0/src/fal_partition.c:473:32
-	ldr	r0, [sp, #16]
-	.loc	4 473 38                        @ packages/fal-v0.5.0/src/fal_partition.c:473:38
-	ldr	r0, [r0, #52]
-	.loc	4 473 47                        @ packages/fal-v0.5.0/src/fal_partition.c:473:47
-	ldr	r1, [sp, #12]
 	.loc	4 473 45                        @ packages/fal-v0.5.0/src/fal_partition.c:473:45
-	add	r0, r1
-	.loc	4 473 53                        @ packages/fal-v0.5.0/src/fal_partition.c:473:53
-	ldr	r1, [sp, #8]
+	adds	r0, r1, r7
+.Ltmp166:
 	.loc	4 473 11                        @ packages/fal-v0.5.0/src/fal_partition.c:473:11
+	mov	r1, r6
 	blx	r2
-	.loc	4 473 9                         @ packages/fal-v0.5.0/src/fal_partition.c:473:9
-	str	r0, [sp, #4]
-.Ltmp126:
+	mov	r5, r0
+.Ltmp167:
+	@DEBUG_VALUE: fal_partition_erase:part <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: fal_partition_erase:ret <- $r5
 	.loc	4 474 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:474:9
-	ldr	r0, [sp, #4]
-.Ltmp127:
-	.loc	4 474 9 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:474:9
 	cmp.w	r0, #-1
-	bgt	.LBB7_9
-	b	.LBB7_8
-.LBB7_8:
-.Ltmp128:
-	.loc	4 476 9 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:476:9
+	bgt	.LBB7_11
+.Ltmp168:
+@ %bb.7:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:ret <- $r5
+	@DEBUG_VALUE: fal_partition_erase:part <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	4 476 9                         @ packages/fal-v0.5.0/src/fal_partition.c:476:9
 	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
 	movw	r1, :lower16:.L__FUNCTION__.fal_partition_erase
+	movt	r0, :upper16:.L.str.12
 	movt	r1, :upper16:.L__FUNCTION__.fal_partition_erase
 	mov.w	r2, #476
 	bl	rt_kprintf
-	ldr	r0, [sp, #16]
-	add.w	r1, r0, #28
-	movw	r0, :lower16:.L.str.28
-	movt	r0, :upper16:.L.str.28
+	adr	r0, .LCPI7_0
+	mov	r1, r4
 	bl	rt_kprintf
+	b	.LBB7_10
+.Ltmp169:
+.LBB7_8:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:part <- $r5
+	@DEBUG_VALUE: fal_partition_erase:flash_dev <- $r0
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	.loc	4 469 9                         @ packages/fal-v0.5.0/src/fal_partition.c:469:9
+	movw	r0, :lower16:.L.str.12
+.Ltmp170:
+	movw	r1, :lower16:.L__FUNCTION__.fal_partition_erase
+	movt	r0, :upper16:.L.str.12
+	movt	r1, :upper16:.L__FUNCTION__.fal_partition_erase
+	movw	r2, #469
+	bl	rt_kprintf
+	movw	r0, :lower16:.L.str.27
+	adds	r2, r5, #4
+	movt	r0, :upper16:.L.str.27
+	mov	r1, r4
+	bl	rt_kprintf
+.Ltmp171:
+.LBB7_9:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:part <- $r5
+	@DEBUG_VALUE: fal_partition_erase:ret <- 0
+	.loc	4 0 9 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:9
+	mov.w	r5, #-1
+.Ltmp172:
+	@DEBUG_VALUE: fal_partition_erase:part <- [DW_OP_LLVM_entry_value 1] $r0
+.LBB7_10:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:part <- [DW_OP_LLVM_entry_value 1] $r0
 	movw	r0, :lower16:.L.str.4
 	movt	r0, :upper16:.L.str.4
 	bl	rt_kprintf
-	.loc	4 477 5                         @ packages/fal-v0.5.0/src/fal_partition.c:477:5
-	b	.LBB7_9
-.Ltmp129:
-.LBB7_9:
-	.loc	4 479 12                        @ packages/fal-v0.5.0/src/fal_partition.c:479:12
-	ldr	r0, [sp, #4]
-	.loc	4 479 5 is_stmt 0               @ packages/fal-v0.5.0/src/fal_partition.c:479:5
-	str	r0, [sp, #20]
-	b	.LBB7_10
-.LBB7_10:
+.Ltmp173:
+.LBB7_11:
+	@DEBUG_VALUE: fal_partition_erase:addr <- $r7
+	@DEBUG_VALUE: fal_partition_erase:size <- $r6
+	@DEBUG_VALUE: fal_partition_erase:part <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	4 480 1 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:480:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp130:
+	mov	r0, r5
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp174:
+	.p2align	2
+@ %bb.12:
+	.loc	4 0 1 is_stmt 0                 @ packages/fal-v0.5.0/src/fal_partition.c:0:1
+.LCPI7_0:
+.L.str.28:
+	.asciz	"Partition erase error! Flash device(%s) erase error!\000\000\000"
+.LCPI7_1:
+.L.str.26:
+	.asciz	"Partition erase error! Partition address out of bound.\000"
 .Lfunc_end7:
 	.size	fal_partition_erase, .Lfunc_end7-fal_partition_erase
 	.cfi_endproc
@@ -1462,31 +1625,28 @@ fal_partition_erase:
 	.thumb_func
 fal_partition_erase_all:
 .Lfunc_begin8:
-	.loc	4 491 0                         @ packages/fal-v0.5.0/src/fal_partition.c:491:0
+	.loc	4 491 0 is_stmt 1               @ packages/fal-v0.5.0/src/fal_partition.c:491:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: fal_partition_erase_all:part <- $r0
+	@DEBUG_VALUE: fal_partition_erase_all:part <- $r0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-.Ltmp131:
-	.loc	4 492 32 prologue_end           @ packages/fal-v0.5.0/src/fal_partition.c:492:32
-	ldr	r0, [sp, #4]
-	.loc	4 492 47 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:492:47
+.Ltmp175:
+	.loc	4 492 47 prologue_end           @ packages/fal-v0.5.0/src/fal_partition.c:492:47
 	ldr	r2, [r0, #56]
+	.loc	4 492 12 is_stmt 0              @ packages/fal-v0.5.0/src/fal_partition.c:492:12
 	movs	r1, #0
-	.loc	4 492 12                        @ packages/fal-v0.5.0/src/fal_partition.c:492:12
 	bl	fal_partition_erase
+.Ltmp176:
+	@DEBUG_VALUE: fal_partition_erase_all:part <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	4 492 5                         @ packages/fal-v0.5.0/src/fal_partition.c:492:5
-	add	sp, #8
 	pop	{r7, pc}
-.Ltmp132:
+.Ltmp177:
 .Lfunc_end8:
 	.size	fal_partition_erase_all, .Lfunc_end8-fal_partition_erase_all
 	.cfi_endproc
@@ -1530,17 +1690,6 @@ __tagsym$$used.0:
 	.long	0                               @ 0x0
 	.size	partition_table_def, 320
 
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	"name"
-	.size	.L.str, 5
-
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"flash_dev"
-	.size	.L.str.1, 10
-
 	.type	partition_table_len,%object     @ @partition_table_len
 	.section	.bss.partition_table_len,"aw",%nobits
 	.p2align	2
@@ -1571,16 +1720,6 @@ partition_table:
 	.asciz	"\033[0m\n"
 	.size	.L.str.4, 6
 
-	.type	.L.str.5,%object                @ @.str.5
-.L.str.5:
-	.asciz	"| %-*.*s | %-*.*s |   offset   |    length  |"
-	.size	.L.str.5, 46
-
-	.type	.L.str.6,%object                @ @.str.6
-.L.str.6:
-	.asciz	"-------------------------------------------------------------"
-	.size	.L.str.6, 62
-
 	.type	.L.str.7,%object                @ @.str.7
 .L.str.7:
 	.asciz	"| %-*.*s | %-*.*s | 0x%08lx | 0x%08x |"
@@ -1597,26 +1736,11 @@ init_ok:
 	.byte	0                               @ 0x0
 	.size	init_ok, 1
 
-	.type	.L.str.9,%object                @ @.str.9
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.9:
-	.asciz	"[D/FAL] (%s:%d) "
-	.size	.L.str.9, 17
-
 	.type	.L__FUNCTION__.fal_partition_init,%object @ @__FUNCTION__.fal_partition_init
+	.section	.rodata.str1.1,"aMS",%progbits,1
 .L__FUNCTION__.fal_partition_init:
 	.asciz	"fal_partition_init"
 	.size	.L__FUNCTION__.fal_partition_init, 19
-
-	.type	.L.str.10,%object               @ @.str.10
-.L.str.10:
-	.asciz	"Warning: Do NOT found the flash device(%s)."
-	.size	.L.str.10, 44
-
-	.type	.L.str.11,%object               @ @.str.11
-.L.str.11:
-	.asciz	"\n"
-	.size	.L.str.11, 2
 
 	.type	.L.str.12,%object               @ @.str.12
 .L.str.12:
@@ -1638,30 +1762,15 @@ init_ok:
 	.asciz	"init_ok"
 	.size	.L.str.15, 8
 
-	.type	.L__FUNCTION__.fal_partition_find,%object @ @__FUNCTION__.fal_partition_find
-.L__FUNCTION__.fal_partition_find:
-	.asciz	"fal_partition_find"
-	.size	.L__FUNCTION__.fal_partition_find, 19
-
 	.type	.L__FUNCTION__.fal_get_partition_table,%object @ @__FUNCTION__.fal_get_partition_table
 .L__FUNCTION__.fal_get_partition_table:
 	.asciz	"fal_get_partition_table"
 	.size	.L__FUNCTION__.fal_get_partition_table, 24
 
-	.type	.L.str.16,%object               @ @.str.16
-.L.str.16:
-	.asciz	"len"
-	.size	.L.str.16, 4
-
 	.type	.L__FUNCTION__.fal_set_partition_table_temp,%object @ @__FUNCTION__.fal_set_partition_table_temp
 .L__FUNCTION__.fal_set_partition_table_temp:
 	.asciz	"fal_set_partition_table_temp"
 	.size	.L__FUNCTION__.fal_set_partition_table_temp, 29
-
-	.type	.L.str.17,%object               @ @.str.17
-.L.str.17:
-	.asciz	"table"
-	.size	.L.str.17, 6
 
 	.type	.L.str.18,%object               @ @.str.18
 .L.str.18:
@@ -1678,61 +1787,812 @@ init_ok:
 	.asciz	"buf"
 	.size	.L.str.19, 4
 
-	.type	.L.str.20,%object               @ @.str.20
-.L.str.20:
-	.asciz	"Partition read error! Partition address out of bound."
-	.size	.L.str.20, 54
-
 	.type	.L.str.21,%object               @ @.str.21
 .L.str.21:
 	.asciz	"Partition read error! Don't found flash device(%s) of the partition(%s)."
 	.size	.L.str.21, 73
-
-	.type	.L.str.22,%object               @ @.str.22
-.L.str.22:
-	.asciz	"Partition read error! Flash device(%s) read error!"
-	.size	.L.str.22, 51
 
 	.type	.L__FUNCTION__.fal_partition_write,%object @ @__FUNCTION__.fal_partition_write
 .L__FUNCTION__.fal_partition_write:
 	.asciz	"fal_partition_write"
 	.size	.L__FUNCTION__.fal_partition_write, 20
 
-	.type	.L.str.23,%object               @ @.str.23
-.L.str.23:
-	.asciz	"Partition write error! Partition address out of bound."
-	.size	.L.str.23, 55
-
 	.type	.L.str.24,%object               @ @.str.24
 .L.str.24:
 	.asciz	"Partition write error!  Don't found flash device(%s) of the partition(%s)."
 	.size	.L.str.24, 75
-
-	.type	.L.str.25,%object               @ @.str.25
-.L.str.25:
-	.asciz	"Partition write error! Flash device(%s) write error!"
-	.size	.L.str.25, 53
 
 	.type	.L__FUNCTION__.fal_partition_erase,%object @ @__FUNCTION__.fal_partition_erase
 .L__FUNCTION__.fal_partition_erase:
 	.asciz	"fal_partition_erase"
 	.size	.L__FUNCTION__.fal_partition_erase, 20
 
-	.type	.L.str.26,%object               @ @.str.26
-.L.str.26:
-	.asciz	"Partition erase error! Partition address out of bound."
-	.size	.L.str.26, 55
-
 	.type	.L.str.27,%object               @ @.str.27
 .L.str.27:
 	.asciz	"Partition erase error! Don't found flash device(%s) of the partition(%s)."
 	.size	.L.str.27, 74
 
-	.type	.L.str.28,%object               @ @.str.28
-.L.str.28:
-	.asciz	"Partition erase error! Flash device(%s) erase error!"
-	.size	.L.str.28, 53
-
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	52                              @ DW_OP_lit4
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp12-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp12-.Lfunc_begin0
+	.long	.Ltmp13-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	52                              @ DW_OP_lit4
+	.long	.Ltmp13-.Lfunc_begin0
+	.long	.Ltmp25-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	57                              @ DW_OP_lit9
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp12-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp12-.Lfunc_begin0
+	.long	.Ltmp13-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	57                              @ DW_OP_lit9
+	.long	.Ltmp13-.Lfunc_begin0
+	.long	.Ltmp25-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp12-.Lfunc_begin0
+	.long	.Ltmp13-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp14-.Lfunc_begin0
+	.long	.Ltmp17-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp17-.Lfunc_begin0
+	.long	.Ltmp24-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp26-.Lfunc_begin1
+	.long	.Ltmp30-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp30-.Lfunc_begin1
+	.long	.Ltmp31-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp37-.Lfunc_begin1
+	.long	.Ltmp39-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp39-.Lfunc_begin1
+	.long	.Ltmp42-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp29-.Lfunc_begin1
+	.long	.Ltmp30-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp30-.Lfunc_begin1
+	.long	.Ltmp44-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp49-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp49-.Lfunc_begin2
+	.long	.Ltmp58-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp58-.Lfunc_begin2
+	.long	.Ltmp59-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp59-.Lfunc_begin2
+	.long	.Ltmp61-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp61-.Lfunc_begin2
+	.long	.Ltmp62-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp49-.Lfunc_begin2
+	.long	.Ltmp52-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp61-.Lfunc_begin2
+	.long	.Ltmp62-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp67-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp67-.Lfunc_begin3
+	.long	.Ltmp68-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp68-.Lfunc_begin3
+	.long	.Ltmp69-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp69-.Lfunc_begin3
+	.long	.Ltmp71-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp71-.Lfunc_begin3
+	.long	.Ltmp72-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp72-.Lfunc_begin3
+	.long	.Ltmp74-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp81-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp81-.Lfunc_begin4
+	.long	.Ltmp84-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp84-.Lfunc_begin4
+	.long	.Ltmp85-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp85-.Lfunc_begin4
+	.long	.Ltmp88-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp79-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp79-.Lfunc_begin4
+	.long	.Ltmp80-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp80-.Lfunc_begin4
+	.long	.Ltmp82-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp82-.Lfunc_begin4
+	.long	.Ltmp84-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp84-.Lfunc_begin4
+	.long	.Ltmp86-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp86-.Lfunc_begin4
+	.long	.Ltmp88-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp93-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp93-.Lfunc_begin5
+	.long	.Ltmp98-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp98-.Lfunc_begin5
+	.long	.Ltmp99-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp99-.Lfunc_begin5
+	.long	.Ltmp100-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp100-.Lfunc_begin5
+	.long	.Ltmp104-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp104-.Lfunc_begin5
+	.long	.Ltmp105-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp105-.Lfunc_begin5
+	.long	.Ltmp108-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp108-.Lfunc_begin5
+	.long	.Ltmp112-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp112-.Lfunc_begin5
+	.long	.Ltmp114-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp114-.Lfunc_begin5
+	.long	.Ltmp116-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp116-.Lfunc_begin5
+	.long	.Ltmp119-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp94-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp94-.Lfunc_begin5
+	.long	.Ltmp99-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp99-.Lfunc_begin5
+	.long	.Ltmp101-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp101-.Lfunc_begin5
+	.long	.Ltmp104-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp104-.Lfunc_begin5
+	.long	.Ltmp106-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp106-.Lfunc_begin5
+	.long	.Ltmp108-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp108-.Lfunc_begin5
+	.long	.Ltmp119-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp91-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp91-.Lfunc_begin5
+	.long	.Ltmp99-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp99-.Lfunc_begin5
+	.long	.Ltmp102-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp102-.Lfunc_begin5
+	.long	.Ltmp104-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp104-.Lfunc_begin5
+	.long	.Ltmp119-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp95-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp95-.Lfunc_begin5
+	.long	.Ltmp99-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp99-.Lfunc_begin5
+	.long	.Ltmp103-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp103-.Lfunc_begin5
+	.long	.Ltmp104-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp104-.Lfunc_begin5
+	.long	.Ltmp107-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp107-.Lfunc_begin5
+	.long	.Ltmp108-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp108-.Lfunc_begin5
+	.long	.Ltmp119-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp89-.Lfunc_begin5
+	.long	.Ltmp109-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp109-.Lfunc_begin5
+	.long	.Ltmp111-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp114-.Lfunc_begin5
+	.long	.Ltmp115-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp89-.Lfunc_begin5
+	.long	.Ltmp112-.Lfunc_begin5
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp112-.Lfunc_begin5
+	.long	.Ltmp114-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp114-.Lfunc_begin5
+	.long	.Ltmp117-.Lfunc_begin5
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp117-.Lfunc_begin5
+	.long	.Ltmp118-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp124-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp124-.Lfunc_begin6
+	.long	.Ltmp129-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp129-.Lfunc_begin6
+	.long	.Ltmp130-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp130-.Lfunc_begin6
+	.long	.Ltmp131-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp131-.Lfunc_begin6
+	.long	.Ltmp135-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp135-.Lfunc_begin6
+	.long	.Ltmp136-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp136-.Lfunc_begin6
+	.long	.Ltmp139-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp139-.Lfunc_begin6
+	.long	.Ltmp143-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp143-.Lfunc_begin6
+	.long	.Ltmp145-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp145-.Lfunc_begin6
+	.long	.Ltmp147-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp147-.Lfunc_begin6
+	.long	.Ltmp150-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp125-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp125-.Lfunc_begin6
+	.long	.Ltmp130-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp130-.Lfunc_begin6
+	.long	.Ltmp132-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp132-.Lfunc_begin6
+	.long	.Ltmp135-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp135-.Lfunc_begin6
+	.long	.Ltmp137-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp137-.Lfunc_begin6
+	.long	.Ltmp139-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp139-.Lfunc_begin6
+	.long	.Ltmp150-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp122-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp122-.Lfunc_begin6
+	.long	.Ltmp130-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp130-.Lfunc_begin6
+	.long	.Ltmp133-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp133-.Lfunc_begin6
+	.long	.Ltmp135-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp135-.Lfunc_begin6
+	.long	.Ltmp150-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp126-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp126-.Lfunc_begin6
+	.long	.Ltmp130-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp130-.Lfunc_begin6
+	.long	.Ltmp134-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp134-.Lfunc_begin6
+	.long	.Ltmp135-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp135-.Lfunc_begin6
+	.long	.Ltmp138-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp138-.Lfunc_begin6
+	.long	.Ltmp139-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp139-.Lfunc_begin6
+	.long	.Ltmp150-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp120-.Lfunc_begin6
+	.long	.Ltmp140-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp140-.Lfunc_begin6
+	.long	.Ltmp142-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp145-.Lfunc_begin6
+	.long	.Ltmp146-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp120-.Lfunc_begin6
+	.long	.Ltmp143-.Lfunc_begin6
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp143-.Lfunc_begin6
+	.long	.Ltmp145-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp145-.Lfunc_begin6
+	.long	.Ltmp148-.Lfunc_begin6
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp148-.Lfunc_begin6
+	.long	.Ltmp149-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp153-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp153-.Lfunc_begin7
+	.long	.Ltmp158-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp158-.Lfunc_begin7
+	.long	.Ltmp159-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp159-.Lfunc_begin7
+	.long	.Ltmp163-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp163-.Lfunc_begin7
+	.long	.Ltmp167-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp167-.Lfunc_begin7
+	.long	.Ltmp169-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp169-.Lfunc_begin7
+	.long	.Ltmp172-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp172-.Lfunc_begin7
+	.long	.Ltmp174-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp154-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp154-.Lfunc_begin7
+	.long	.Ltmp158-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp158-.Lfunc_begin7
+	.long	.Ltmp160-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp160-.Lfunc_begin7
+	.long	.Ltmp163-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp163-.Lfunc_begin7
+	.long	.Ltmp174-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp155-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp155-.Lfunc_begin7
+	.long	.Ltmp158-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp158-.Lfunc_begin7
+	.long	.Ltmp161-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp161-.Lfunc_begin7
+	.long	.Ltmp163-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp163-.Lfunc_begin7
+	.long	.Ltmp174-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp151-.Lfunc_begin7
+	.long	.Ltmp164-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp164-.Lfunc_begin7
+	.long	.Ltmp166-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp169-.Lfunc_begin7
+	.long	.Ltmp170-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc26:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp151-.Lfunc_begin7
+	.long	.Ltmp167-.Lfunc_begin7
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp167-.Lfunc_begin7
+	.long	.Ltmp169-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp169-.Lfunc_begin7
+	.long	.Ltmp172-.Lfunc_begin7
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	0
+	.long	0
+.Ldebug_loc27:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp176-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp176-.Lfunc_begin8
+	.long	.Lfunc_end8-.Lfunc_begin8
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1886,7 +2746,7 @@ init_ok:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1898,6 +2758,19 @@ init_ok:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	14                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	15                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1920,7 +2793,7 @@ init_ok:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	15                              @ Abbreviation Code
+	.byte	16                              @ Abbreviation Code
 	.byte	10                              @ DW_TAG_label
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -1933,7 +2806,7 @@ init_ok:
 	.byte	1                               @ DW_FORM_addr
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	16                              @ Abbreviation Code
+	.byte	17                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1956,26 +2829,11 @@ init_ok:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	17                              @ Abbreviation Code
+	.byte	18                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_FORM_data2
-	.byte	73                              @ DW_AT_type
-	.byte	19                              @ DW_FORM_ref4
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	18                              @ Abbreviation Code
-	.byte	52                              @ DW_TAG_variable
-	.byte	0                               @ DW_CHILDREN_no
-	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1987,6 +2845,21 @@ init_ok:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	19                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	20                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2007,7 +2880,7 @@ init_ok:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	20                              @ Abbreviation Code
+	.byte	21                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	11                              @ DW_AT_byte_size
@@ -2018,7 +2891,7 @@ init_ok:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	21                              @ Abbreviation Code
+	.byte	22                              @ Abbreviation Code
 	.byte	21                              @ DW_TAG_subroutine_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
@@ -2027,7 +2900,7 @@ init_ok:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	22                              @ Abbreviation Code
+	.byte	23                              @ Abbreviation Code
 	.byte	21                              @ DW_TAG_subroutine_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	73                              @ DW_AT_type
@@ -2036,7 +2909,7 @@ init_ok:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	23                              @ Abbreviation Code
+	.byte	24                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
@@ -2051,7 +2924,7 @@ init_ok:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x4d9 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x4f2 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -2167,24 +3040,30 @@ init_ok:
 	.long	partition_table
 	.byte	11                              @ Abbrev [11] 0xf9:0x5 DW_TAG_pointer_type
 	.long	67                              @ DW_AT_type
-	.byte	2                               @ Abbrev [2] 0xfe:0x11 DW_TAG_variable
+	.byte	2                               @ Abbrev [2] 0xfe:0x17 DW_TAG_variable
 	.long	.Linfo_string19                 @ DW_AT_name
-	.long	271                             @ DW_AT_type
+	.long	277                             @ DW_AT_type
 	.byte	4                               @ DW_AT_decl_file
 	.byte	75                              @ DW_AT_decl_line
-	.byte	5                               @ DW_AT_location
+	.byte	11                              @ DW_AT_location
 	.byte	3
 	.long	init_ok
-	.byte	8                               @ Abbrev [8] 0x10f:0xb DW_TAG_typedef
-	.long	282                             @ DW_AT_type
+	.byte	148
+	.byte	1
+	.byte	49
+	.byte	30
+	.byte	48
+	.byte	34
+	.byte	8                               @ Abbrev [8] 0x115:0xb DW_TAG_typedef
+	.long	288                             @ DW_AT_type
 	.long	.Linfo_string21                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.byte	9                               @ Abbrev [9] 0x11a:0x7 DW_TAG_base_type
+	.byte	9                               @ Abbrev [9] 0x120:0x7 DW_TAG_base_type
 	.long	.Linfo_string20                 @ DW_AT_name
 	.byte	8                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	12                              @ Abbrev [12] 0x121:0x68 DW_TAG_subprogram
+	.byte	12                              @ Abbrev [12] 0x127:0x62 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2194,56 +3073,41 @@ init_ok:
 	.byte	81                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	13                              @ Abbrev [13] 0x134:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	52
+	.byte	13                              @ Abbrev [13] 0x13a:0xf DW_TAG_variable
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string32                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.byte	83                              @ DW_AT_decl_line
-	.long	980                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x142:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	48
+	.byte	84                              @ DW_AT_decl_line
+	.long	204                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x149:0xf DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string33                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.byte	83                              @ DW_AT_decl_line
-	.long	980                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x150:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	44
+	.byte	84                              @ DW_AT_decl_line
+	.long	204                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x158:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string34                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	84                              @ DW_AT_decl_line
 	.long	204                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x15e:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	40
+	.byte	14                              @ Abbrev [14] 0x167:0xb DW_TAG_variable
 	.long	.Linfo_string35                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.byte	84                              @ DW_AT_decl_line
-	.long	204                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x16c:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	36
+	.byte	83                              @ DW_AT_decl_line
+	.long	1005                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x172:0xb DW_TAG_variable
 	.long	.Linfo_string36                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
-	.byte	84                              @ DW_AT_decl_line
-	.long	204                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x17a:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
+	.byte	83                              @ DW_AT_decl_line
+	.long	1005                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x17d:0xb DW_TAG_variable
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	85                              @ DW_AT_decl_line
 	.long	249                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	14                              @ Abbrev [14] 0x189:0x40 DW_TAG_subprogram
+	.byte	15                              @ Abbrev [15] 0x189:0x42 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2252,31 +3116,27 @@ init_ok:
 	.byte	4                               @ DW_AT_decl_file
 	.byte	126                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	973                             @ DW_AT_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	13                              @ Abbrev [13] 0x1a0:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	13                              @ Abbrev [13] 0x1a0:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
+	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.byte	129                             @ DW_AT_decl_line
+	.long	1010                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x1af:0xf DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string34                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	128                             @ DW_AT_decl_line
 	.long	204                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x1ae:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string38                 @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.byte	129                             @ DW_AT_decl_line
-	.long	985                             @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x1bc:0xc DW_TAG_label
+	.byte	16                              @ Abbrev [16] 0x1be:0xc DW_TAG_label
 	.long	.Linfo_string48                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	287                             @ DW_AT_decl_line
-	.long	.Ltmp42                         @ DW_AT_low_pc
+	.long	.Ltmp43                         @ DW_AT_low_pc
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x1c9:0x37 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x1cb:0x39 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2287,24 +3147,20 @@ init_ok:
 	.byte	1                               @ DW_AT_prototyped
 	.long	249                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x1e1:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	18                              @ Abbrev [18] 0x1e3:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string7                  @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	311                             @ DW_AT_decl_line
-	.long	1231                            @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x1f0:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	1256                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x1f3:0x10 DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
 	.long	.Linfo_string34                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	315                             @ DW_AT_decl_line
 	.long	204                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x200:0x28 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x204:0x29 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2315,16 +3171,14 @@ init_ok:
 	.byte	1                               @ DW_AT_prototyped
 	.long	249                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x218:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	18                              @ Abbrev [18] 0x21c:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string13                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	335                             @ DW_AT_decl_line
-	.long	1241                            @ DW_AT_type
+	.long	1266                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x228:0x33 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x22d:0x35 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2334,24 +3188,20 @@ init_ok:
 	.short	352                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x23c:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	18                              @ Abbrev [18] 0x241:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc8                    @ DW_AT_location
 	.long	.Linfo_string49                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	352                             @ DW_AT_decl_line
-	.long	1246                            @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x24b:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1271                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x251:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string13                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	352                             @ DW_AT_decl_line
 	.long	204                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x25b:0x73 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x262:0x79 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2360,58 +3210,46 @@ init_ok:
 	.byte	4                               @ DW_AT_decl_file
 	.short	372                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	973                             @ DW_AT_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x273:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	18                              @ Abbrev [18] 0x27a:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	372                             @ DW_AT_decl_line
 	.long	249                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x282:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	18                              @ Abbrev [18] 0x28a:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string39                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	372                             @ DW_AT_decl_line
 	.long	153                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x291:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	18                              @ Abbrev [18] 0x29a:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc12                   @ DW_AT_location
 	.long	.Linfo_string50                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	372                             @ DW_AT_decl_line
-	.long	1167                            @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x2a0:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	1192                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x2aa:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string51                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	372                             @ DW_AT_decl_line
 	.long	204                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x2af:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string52                 @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	374                             @ DW_AT_decl_line
-	.long	973                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x2be:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	19                              @ Abbrev [19] 0x2ba:0x10 DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
 	.long	.Linfo_string38                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	375                             @ DW_AT_decl_line
-	.long	985                             @ DW_AT_type
+	.long	1010                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x2ca:0x10 DW_TAG_variable
+	.long	.Ldebug_loc15                   @ DW_AT_location
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	374                             @ DW_AT_decl_line
+	.long	998                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x2ce:0x73 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x2db:0x79 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2420,58 +3258,46 @@ init_ok:
 	.byte	4                               @ DW_AT_decl_file
 	.short	413                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	973                             @ DW_AT_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x2e6:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.byte	18                              @ Abbrev [18] 0x2f3:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc16                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	413                             @ DW_AT_decl_line
 	.long	249                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x2f5:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	18                              @ Abbrev [18] 0x303:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string39                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	413                             @ DW_AT_decl_line
 	.long	153                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x304:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	18                              @ Abbrev [18] 0x313:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string50                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	413                             @ DW_AT_decl_line
-	.long	1199                            @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x313:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	1224                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x323:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string51                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	413                             @ DW_AT_decl_line
 	.long	204                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x322:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
-	.long	.Linfo_string52                 @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	415                             @ DW_AT_decl_line
-	.long	973                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x331:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	19                              @ Abbrev [19] 0x333:0x10 DW_TAG_variable
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string38                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	416                             @ DW_AT_decl_line
-	.long	985                             @ DW_AT_type
+	.long	1010                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x343:0x10 DW_TAG_variable
+	.long	.Ldebug_loc21                   @ DW_AT_location
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	415                             @ DW_AT_decl_line
+	.long	998                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x341:0x64 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x354:0x69 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2480,50 +3306,40 @@ init_ok:
 	.byte	4                               @ DW_AT_decl_file
 	.short	453                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	973                             @ DW_AT_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x359:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	18                              @ Abbrev [18] 0x36c:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc22                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	453                             @ DW_AT_decl_line
 	.long	249                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x368:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	18                              @ Abbrev [18] 0x37c:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc23                   @ DW_AT_location
 	.long	.Linfo_string39                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	453                             @ DW_AT_decl_line
 	.long	153                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x377:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	18                              @ Abbrev [18] 0x38c:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc24                   @ DW_AT_location
 	.long	.Linfo_string51                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	453                             @ DW_AT_decl_line
 	.long	204                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x386:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string52                 @ DW_AT_name
-	.byte	4                               @ DW_AT_decl_file
-	.short	455                             @ DW_AT_decl_line
-	.long	973                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x395:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	19                              @ Abbrev [19] 0x39c:0x10 DW_TAG_variable
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string38                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	456                             @ DW_AT_decl_line
-	.long	985                             @ DW_AT_type
+	.long	1010                            @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3ac:0x10 DW_TAG_variable
+	.long	.Ldebug_loc26                   @ DW_AT_location
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	4                               @ DW_AT_decl_file
+	.short	455                             @ DW_AT_decl_line
+	.long	998                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x3a5:0x28 DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x3bd:0x29 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2532,150 +3348,148 @@ init_ok:
 	.byte	4                               @ DW_AT_decl_file
 	.short	490                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	973                             @ DW_AT_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	17                              @ Abbrev [17] 0x3bd:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	18                              @ Abbrev [18] 0x3d5:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc27                   @ DW_AT_location
 	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.short	490                             @ DW_AT_decl_line
 	.long	249                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x3cd:0x7 DW_TAG_base_type
+	.byte	9                               @ Abbrev [9] 0x3e6:0x7 DW_TAG_base_type
 	.long	.Linfo_string24                 @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	11                              @ Abbrev [11] 0x3d4:0x5 DW_TAG_pointer_type
+	.byte	11                              @ Abbrev [11] 0x3ed:0x5 DW_TAG_pointer_type
 	.long	183                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x3d9:0x5 DW_TAG_pointer_type
-	.long	990                             @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x3de:0x5 DW_TAG_const_type
-	.long	995                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x3e3:0x86 DW_TAG_structure_type
+	.byte	11                              @ Abbrev [11] 0x3f2:0x5 DW_TAG_pointer_type
+	.long	1015                            @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x3f7:0x5 DW_TAG_const_type
+	.long	1020                            @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x3fc:0x86 DW_TAG_structure_type
 	.long	.Linfo_string47                 @ DW_AT_name
 	.byte	56                              @ DW_AT_byte_size
 	.byte	2                               @ DW_AT_decl_file
 	.byte	111                             @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x3eb:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x404:0xc DW_TAG_member
 	.long	.Linfo_string7                  @ DW_AT_name
 	.long	171                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	113                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	7                               @ Abbrev [7] 0x3f7:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x410:0xc DW_TAG_member
 	.long	.Linfo_string39                 @ DW_AT_name
 	.long	153                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	116                             @ DW_AT_decl_line
 	.byte	24                              @ DW_AT_data_member_location
-	.byte	7                               @ Abbrev [7] 0x403:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x41c:0xc DW_TAG_member
 	.long	.Linfo_string13                 @ DW_AT_name
 	.long	204                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	117                             @ DW_AT_decl_line
 	.byte	28                              @ DW_AT_data_member_location
-	.byte	7                               @ Abbrev [7] 0x40f:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x428:0xc DW_TAG_member
 	.long	.Linfo_string40                 @ DW_AT_name
 	.long	204                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	119                             @ DW_AT_decl_line
 	.byte	32                              @ DW_AT_data_member_location
-	.byte	7                               @ Abbrev [7] 0x41b:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x434:0xc DW_TAG_member
 	.long	.Linfo_string41                 @ DW_AT_name
-	.long	1063                            @ DW_AT_type
+	.long	1088                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	127                             @ DW_AT_decl_line
 	.byte	36                              @ DW_AT_data_member_location
-	.byte	20                              @ Abbrev [20] 0x427:0x35 DW_TAG_structure_type
+	.byte	21                              @ Abbrev [21] 0x440:0x35 DW_TAG_structure_type
 	.byte	16                              @ DW_AT_byte_size
 	.byte	2                               @ DW_AT_decl_file
 	.byte	121                             @ DW_AT_decl_line
-	.byte	7                               @ Abbrev [7] 0x42b:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x444:0xc DW_TAG_member
 	.long	.Linfo_string42                 @ DW_AT_name
-	.long	1129                            @ DW_AT_type
+	.long	1154                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	123                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	7                               @ Abbrev [7] 0x437:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x450:0xc DW_TAG_member
 	.long	.Linfo_string43                 @ DW_AT_name
-	.long	1140                            @ DW_AT_type
+	.long	1165                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	124                             @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	7                               @ Abbrev [7] 0x443:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x45c:0xc DW_TAG_member
 	.long	.Linfo_string44                 @ DW_AT_name
-	.long	1172                            @ DW_AT_type
+	.long	1197                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	125                             @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	7                               @ Abbrev [7] 0x44f:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x468:0xc DW_TAG_member
 	.long	.Linfo_string45                 @ DW_AT_name
-	.long	1209                            @ DW_AT_type
+	.long	1234                            @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	126                             @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0x45c:0xc DW_TAG_member
+	.byte	7                               @ Abbrev [7] 0x475:0xc DW_TAG_member
 	.long	.Linfo_string46                 @ DW_AT_name
 	.long	204                             @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	132                             @ DW_AT_decl_line
 	.byte	52                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x469:0x5 DW_TAG_pointer_type
-	.long	1134                            @ DW_AT_type
-	.byte	21                              @ Abbrev [21] 0x46e:0x6 DW_TAG_subroutine_type
-	.long	973                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x482:0x5 DW_TAG_pointer_type
+	.long	1159                            @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x487:0x6 DW_TAG_subroutine_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_prototyped
-	.byte	11                              @ Abbrev [11] 0x474:0x5 DW_TAG_pointer_type
-	.long	1145                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x479:0x16 DW_TAG_subroutine_type
-	.long	973                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x48d:0x5 DW_TAG_pointer_type
+	.long	1170                            @ DW_AT_type
+	.byte	23                              @ Abbrev [23] 0x492:0x16 DW_TAG_subroutine_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_prototyped
-	.byte	23                              @ Abbrev [23] 0x47f:0x5 DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x498:0x5 DW_TAG_formal_parameter
 	.long	197                             @ DW_AT_type
-	.byte	23                              @ Abbrev [23] 0x484:0x5 DW_TAG_formal_parameter
-	.long	1167                            @ DW_AT_type
-	.byte	23                              @ Abbrev [23] 0x489:0x5 DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x49d:0x5 DW_TAG_formal_parameter
+	.long	1192                            @ DW_AT_type
+	.byte	24                              @ Abbrev [24] 0x4a2:0x5 DW_TAG_formal_parameter
 	.long	204                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x48f:0x5 DW_TAG_pointer_type
-	.long	271                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x494:0x5 DW_TAG_pointer_type
-	.long	1177                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x499:0x16 DW_TAG_subroutine_type
-	.long	973                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x4a8:0x5 DW_TAG_pointer_type
+	.long	277                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x4ad:0x5 DW_TAG_pointer_type
+	.long	1202                            @ DW_AT_type
+	.byte	23                              @ Abbrev [23] 0x4b2:0x16 DW_TAG_subroutine_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_prototyped
-	.byte	23                              @ Abbrev [23] 0x49f:0x5 DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x4b8:0x5 DW_TAG_formal_parameter
 	.long	197                             @ DW_AT_type
-	.byte	23                              @ Abbrev [23] 0x4a4:0x5 DW_TAG_formal_parameter
-	.long	1199                            @ DW_AT_type
-	.byte	23                              @ Abbrev [23] 0x4a9:0x5 DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x4bd:0x5 DW_TAG_formal_parameter
+	.long	1224                            @ DW_AT_type
+	.byte	24                              @ Abbrev [24] 0x4c2:0x5 DW_TAG_formal_parameter
 	.long	204                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x4af:0x5 DW_TAG_pointer_type
-	.long	1204                            @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x4b4:0x5 DW_TAG_const_type
-	.long	271                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x4b9:0x5 DW_TAG_pointer_type
-	.long	1214                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x4be:0x11 DW_TAG_subroutine_type
-	.long	973                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x4c8:0x5 DW_TAG_pointer_type
+	.long	1229                            @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x4cd:0x5 DW_TAG_const_type
+	.long	277                             @ DW_AT_type
+	.byte	11                              @ Abbrev [11] 0x4d2:0x5 DW_TAG_pointer_type
+	.long	1239                            @ DW_AT_type
+	.byte	23                              @ Abbrev [23] 0x4d7:0x11 DW_TAG_subroutine_type
+	.long	998                             @ DW_AT_type
 	.byte	1                               @ DW_AT_prototyped
-	.byte	23                              @ Abbrev [23] 0x4c4:0x5 DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x4dd:0x5 DW_TAG_formal_parameter
 	.long	197                             @ DW_AT_type
-	.byte	23                              @ Abbrev [23] 0x4c9:0x5 DW_TAG_formal_parameter
+	.byte	24                              @ Abbrev [24] 0x4e2:0x5 DW_TAG_formal_parameter
 	.long	204                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x4cf:0x5 DW_TAG_pointer_type
-	.long	1236                            @ DW_AT_type
-	.byte	5                               @ Abbrev [5] 0x4d4:0x5 DW_TAG_const_type
+	.byte	11                              @ Abbrev [11] 0x4e8:0x5 DW_TAG_pointer_type
+	.long	1261                            @ DW_AT_type
+	.byte	5                               @ Abbrev [5] 0x4ed:0x5 DW_TAG_const_type
 	.long	183                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x4d9:0x5 DW_TAG_pointer_type
+	.byte	11                              @ Abbrev [11] 0x4f2:0x5 DW_TAG_pointer_type
 	.long	204                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x4de:0x5 DW_TAG_pointer_type
+	.byte	11                              @ Abbrev [11] 0x4f7:0x5 DW_TAG_pointer_type
 	.long	72                              @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
@@ -2767,15 +3581,15 @@ init_ok:
 .Linfo_string31:
 	.asciz	"fal_partition_erase_all"       @ string offset=517
 .Linfo_string32:
-	.asciz	"item1"                         @ string offset=541
+	.asciz	"part_name_max"                 @ string offset=541
 .Linfo_string33:
-	.asciz	"item2"                         @ string offset=547
+	.asciz	"flash_dev_name_max"            @ string offset=555
 .Linfo_string34:
-	.asciz	"i"                             @ string offset=553
+	.asciz	"i"                             @ string offset=574
 .Linfo_string35:
-	.asciz	"part_name_max"                 @ string offset=555
+	.asciz	"item2"                         @ string offset=576
 .Linfo_string36:
-	.asciz	"flash_dev_name_max"            @ string offset=569
+	.asciz	"item1"                         @ string offset=582
 .Linfo_string37:
 	.asciz	"part"                          @ string offset=588
 .Linfo_string38:
@@ -2810,7 +3624,7 @@ init_ok:
 	.asciz	"ret"                           @ string offset=689
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

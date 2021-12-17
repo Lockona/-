@@ -37,37 +37,40 @@ rt_flash_init:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
+	.cfi_offset r4, -8
 .Ltmp0:
 	.loc	2 21 5 prologue_end             @ libraries/drivers/drv_spi_flash.c:21:5
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L.str.1
-	movt	r1, :upper16:.L.str.1
-	str	r1, [sp, #4]                    @ 4-byte Spill
+	movw	r4, :lower16:.L.str.1
 	movs	r2, #0
+	movt	r4, :upper16:.L.str.1
+	adr	r0, .LCPI0_0
 	movt	r2, #22530
 	movs	r3, #16
+	mov	r1, r4
 	bl	rt_hw_spi_device_attach
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	.loc	2 24 5                          @ libraries/drivers/drv_spi_flash.c:24:5
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
+	adr	r0, .LCPI0_1
+	mov	r1, r4
 	bl	rt_sfud_flash_probe
 	.loc	2 26 5                          @ libraries/drivers/drv_spi_flash.c:26:5
 	bl	fal_init
-	movs	r0, #0
 	.loc	2 28 5                          @ libraries/drivers/drv_spi_flash.c:28:5
-	add	sp, #8
-	pop	{r7, pc}
+	movs	r0, #0
+	pop	{r4, pc}
 .Ltmp1:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 5 is_stmt 0                 @ libraries/drivers/drv_spi_flash.c:0:5
+.LCPI0_0:
+.L.str:
+	.asciz	"spi1\000\000\000"
+.LCPI0_1:
+.L.str.2:
+	.asciz	"norflash0\000\000"
 .Lfunc_end0:
 	.size	rt_flash_init, .Lfunc_end0-rt_flash_init
 	.cfi_endproc
@@ -84,21 +87,11 @@ __tagsym$$used.0:
 	.long	rt_flash_init
 	.size	__rt_init_rt_flash_init, 4
 
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	"spi1"
-	.size	.L.str, 5
-
 	.type	.L.str.1,%object                @ @.str.1
+	.section	.rodata.str1.1,"aMS",%progbits,1
 .L.str.1:
 	.asciz	"spi10"
 	.size	.L.str.1, 6
-
-	.type	.L.str.2,%object                @ @.str.2
-.L.str.2:
-	.asciz	"norflash0"
-	.size	.L.str.2, 10
 
 	.globl	__rt_init_rt_flash_init
 	.section	.debug_abbrev,"",%progbits
@@ -475,7 +468,7 @@ __tagsym$$used.0:
 	.asciz	"rt_flash_init"                 @ string offset=293
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

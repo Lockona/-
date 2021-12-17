@@ -601,8 +601,8 @@ int rt_ov2640_init(void)
 	#if OV2640_MODE
     ov2640_jpeg_mode();
 	rt_enter_critical();
-	jpeg_data_buf = rt_malloc(JPEG_BUF_SIZE);
-	rgb_frame_buf = rt_malloc(OV2640_WIDTH*OV2640_HEIGHT*3);
+	jpeg_data_buf = (rt_uint32_t *)rt_malloc(JPEG_BUF_SIZE);
+	rgb_frame_buf = (uint8_t *)rt_malloc(OV2640_WIDTH*OV2640_HEIGHT*3);
 	if ((RT_NULL == jpeg_data_buf))
 	{
 		rt_exit_critical();

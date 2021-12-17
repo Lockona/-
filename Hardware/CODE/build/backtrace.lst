@@ -37,123 +37,118 @@ rt_hw_backtrace:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- $r0
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r1
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #20]
-	str	r1, [sp, #16]
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
 .Ltmp0:
-	.loc	2 36 11 prologue_end            @ rt-thread/libcpu/arm/common/backtrace.c:36:11
-	ldr	r0, [sp, #20]
-	.loc	2 36 10 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:36:10
+	.loc	2 37 5 prologue_end             @ rt-thread/libcpu/arm/common/backtrace.c:37:5
+	movw	r6, :lower16:.L.str
+	mov	r4, r0
+.Ltmp1:
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- $r4
+	.loc	2 36 10                         @ rt-thread/libcpu/arm/common/backtrace.c:36:10
 	ldr	r0, [r0]
-	.loc	2 36 8                          @ rt-thread/libcpu/arm/common/backtrace.c:36:8
-	str	r0, [sp, #8]
-	.loc	2 37 28 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:37:28
-	ldr	r0, [sp, #8]
+.Ltmp2:
+	@DEBUG_VALUE: rt_hw_backtrace:pc <- $r0
+	.loc	2 37 5                          @ rt-thread/libcpu/arm/common/backtrace.c:37:5
+	movt	r6, :upper16:.L.str
+	mov	r5, r1
+.Ltmp3:
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r5
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r5
 	.loc	2 37 30 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:37:30
 	sub.w	r1, r0, #12
 	.loc	2 37 5                          @ rt-thread/libcpu/arm/common/backtrace.c:37:5
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	bl	rt_kprintf
-	movs	r0, #0
-.Ltmp1:
-	.loc	2 39 10 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:39:10
-	str	r0, [sp, #12]
-	.loc	2 39 9 is_stmt 0                @ rt-thread/libcpu/arm/common/backtrace.c:39:9
-	b	.LBB0_1
-.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp2:
-	.loc	2 39 14                         @ rt-thread/libcpu/arm/common/backtrace.c:39:14
-	ldr	r0, [sp, #12]
-.Ltmp3:
-	.loc	2 39 5                          @ rt-thread/libcpu/arm/common/backtrace.c:39:5
-	cmp	r0, #9
-	bhi	.LBB0_8
-	b	.LBB0_2
-.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
+	mov	r0, r6
 .Ltmp4:
-	.loc	2 41 31 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:41:31
-	ldr	r0, [sp, #20]
-	.loc	2 41 29 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:41:29
-	ldr	r0, [r0, #-12]
-	.loc	2 41 12                         @ rt-thread/libcpu/arm/common/backtrace.c:41:12
-	str	r0, [sp, #20]
-	.loc	2 42 15 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:42:15
-	ldr	r0, [sp, #20]
-	.loc	2 42 14 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:42:14
-	ldr	r0, [r0]
-	.loc	2 42 12                         @ rt-thread/libcpu/arm/common/backtrace.c:42:12
-	str	r0, [sp, #8]
-	.loc	2 44 22 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:44:22
-	ldr	r0, [sp, #8]
-	.loc	2 44 25 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:44:25
-	subs	r0, #12
-	.loc	2 44 20                         @ rt-thread/libcpu/arm/common/backtrace.c:44:20
-	str	r0, [sp, #4]
+	bl	rt_kprintf
+	movs	r7, #10
 .Ltmp5:
-	.loc	2 46 12 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:46:12
-	ldr	r0, [sp, #4]
+	@DEBUG_VALUE: rt_hw_backtrace:i <- 0
+	.p2align	2
+.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r5
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- $r4
+	@DEBUG_VALUE: rt_hw_backtrace:i <- undef
+	.loc	2 41 29 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:41:29
+	ldr	r4, [r4, #-12]
 .Ltmp6:
-	.loc	2 46 12 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:46:12
-	cmp.w	r0, #805306368
-	bhi	.LBB0_4
-	b	.LBB0_3
-.LBB0_3:
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- $r4
+	.loc	2 42 14                         @ rt-thread/libcpu/arm/common/backtrace.c:42:14
+	ldr	r0, [r4]
 .Ltmp7:
-	.loc	2 46 38                         @ rt-thread/libcpu/arm/common/backtrace.c:46:38
-	b	.LBB0_8
+	@DEBUG_VALUE: rt_hw_backtrace:pc <- $r0
+	.loc	2 44 25                         @ rt-thread/libcpu/arm/common/backtrace.c:44:25
+	sub.w	r1, r0, #12
 .Ltmp8:
-.LBB0_4:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	2 48 12 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:48:12
-	ldr	r0, [sp, #4]
-	.loc	2 48 26 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:48:26
-	ldr	r1, [sp, #16]
+	@DEBUG_VALUE: rt_hw_backtrace:func_entry <- $r1
+	.loc	2 46 12                         @ rt-thread/libcpu/arm/common/backtrace.c:46:12
+	cmp.w	r1, #805306368
+	bls	.LBB0_4
 .Ltmp9:
+@ %bb.2:                                @   in Loop: Header=BB0_1 Depth=1
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r5
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- $r4
+	@DEBUG_VALUE: rt_hw_backtrace:func_entry <- $r1
+	@DEBUG_VALUE: rt_hw_backtrace:pc <- $r0
 	.loc	2 48 12                         @ rt-thread/libcpu/arm/common/backtrace.c:48:12
-	cmp	r0, r1
-	bne	.LBB0_6
-	b	.LBB0_5
-.LBB0_5:
+	cmp	r1, r5
+	beq	.LBB0_5
 .Ltmp10:
-	.loc	2 50 45 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:50:45
-	ldr	r1, [sp, #4]
-	.loc	2 50 13 is_stmt 0               @ rt-thread/libcpu/arm/common/backtrace.c:50:13
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
-	bl	rt_kprintf
-	.loc	2 52 13 is_stmt 1               @ rt-thread/libcpu/arm/common/backtrace.c:52:13
-	b	.LBB0_8
+@ %bb.3:                                @   in Loop: Header=BB0_1 Depth=1
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r5
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- $r4
+	@DEBUG_VALUE: rt_hw_backtrace:func_entry <- $r1
+	@DEBUG_VALUE: rt_hw_backtrace:pc <- $r0
+	.loc	2 55 9                          @ rt-thread/libcpu/arm/common/backtrace.c:55:9
+	mov	r0, r6
 .Ltmp11:
-.LBB0_6:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	2 55 32                         @ rt-thread/libcpu/arm/common/backtrace.c:55:32
-	ldr	r1, [sp, #4]
-	.loc	2 55 9 is_stmt 0                @ rt-thread/libcpu/arm/common/backtrace.c:55:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
-	.loc	2 56 5 is_stmt 1                @ rt-thread/libcpu/arm/common/backtrace.c:56:5
-	b	.LBB0_7
 .Ltmp12:
-.LBB0_7:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	2 39 21                         @ rt-thread/libcpu/arm/common/backtrace.c:39:21
-	ldr	r0, [sp, #12]
-	adds	r0, #1
-	str	r0, [sp, #12]
-	.loc	2 39 5 is_stmt 0                @ rt-thread/libcpu/arm/common/backtrace.c:39:5
-	b	.LBB0_1
+	@DEBUG_VALUE: rt_hw_backtrace:i <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	.loc	2 39 15                         @ rt-thread/libcpu/arm/common/backtrace.c:39:15
+	subs	r7, #1
 .Ltmp13:
-.LBB0_8:
-	.loc	2 57 1 is_stmt 1                @ rt-thread/libcpu/arm/common/backtrace.c:57:1
-	add	sp, #24
-	pop	{r7, pc}
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- undef
+	.loc	2 39 5 is_stmt 0                @ rt-thread/libcpu/arm/common/backtrace.c:39:5
+	bne	.LBB0_1
 .Ltmp14:
+.LBB0_4:
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r5
+	.loc	2 57 1 is_stmt 1                @ rt-thread/libcpu/arm/common/backtrace.c:57:1
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp15:
+.LBB0_5:
+	@DEBUG_VALUE: rt_hw_backtrace:thread_entry <- $r5
+	@DEBUG_VALUE: rt_hw_backtrace:fp <- $r4
+	@DEBUG_VALUE: rt_hw_backtrace:func_entry <- $r1
+	@DEBUG_VALUE: rt_hw_backtrace:pc <- $r0
+	.loc	2 50 13                         @ rt-thread/libcpu/arm/common/backtrace.c:50:13
+	adr	r0, .LCPI0_0
+.Ltmp16:
+	bl	rt_kprintf
+.Ltmp17:
+	.loc	2 57 1                          @ rt-thread/libcpu/arm/common/backtrace.c:57:1
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp18:
+	.p2align	2
+@ %bb.6:
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/libcpu/arm/common/backtrace.c:0:1
+.LCPI0_0:
+.L.str.1:
+	.asciz	"EntryPoint:0x%x\n\000\000\000"
 .Lfunc_end0:
 	.size	rt_hw_backtrace, .Lfunc_end0-rt_hw_backtrace
 	.cfi_endproc
@@ -166,11 +161,59 @@ rt_hw_backtrace:
 	.asciz	"[0x%x]\n"
 	.size	.L.str, 8
 
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"EntryPoint:0x%x\n"
-	.size	.L.str.1, 17
-
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp1-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp13-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp15-.Lfunc_begin0
+	.long	.Ltmp18-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp18-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp7-.Lfunc_begin0
+	.long	.Ltmp11-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp15-.Lfunc_begin0
+	.long	.Ltmp16-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	.Ltmp8-.Lfunc_begin0
+	.long	.Ltmp12-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp15-.Lfunc_begin0
+	.long	.Ltmp17-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -247,7 +290,7 @@ rt_hw_backtrace:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -262,7 +305,20 @@ rt_hw_backtrace:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	8                               @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -281,7 +337,7 @@ rt_hw_backtrace:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x8d DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x8e DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -300,7 +356,7 @@ rt_hw_backtrace:
 	.long	.Linfo_string3                  @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	5                               @ Abbrev [5] 0x3d:0x5a DW_TAG_subprogram
+	.byte	5                               @ Abbrev [5] 0x3d:0x5b DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -310,42 +366,31 @@ rt_hw_backtrace:
 	.byte	32                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	6                               @ Abbrev [6] 0x50:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	6                               @ Abbrev [6] 0x50:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string6                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	32                              @ DW_AT_decl_line
 	.long	38                              @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x5e:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	6                               @ Abbrev [6] 0x5f:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string7                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	32                              @ DW_AT_decl_line
 	.long	43                              @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x6c:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	7                               @ Abbrev [7] 0x6e:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string8                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	34                              @ DW_AT_decl_line
 	.long	43                              @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x7a:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	8                               @ Abbrev [8] 0x7d:0xb DW_TAG_variable
 	.long	.Linfo_string9                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	34                              @ DW_AT_decl_line
 	.long	43                              @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x88:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	7                               @ Abbrev [7] 0x88:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string10                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	34                              @ DW_AT_decl_line
@@ -371,14 +416,14 @@ rt_hw_backtrace:
 .Linfo_string7:
 	.asciz	"thread_entry"                  @ string offset=177
 .Linfo_string8:
-	.asciz	"i"                             @ string offset=190
+	.asciz	"pc"                            @ string offset=190
 .Linfo_string9:
-	.asciz	"pc"                            @ string offset=192
+	.asciz	"i"                             @ string offset=193
 .Linfo_string10:
 	.asciz	"func_entry"                    @ string offset=195
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

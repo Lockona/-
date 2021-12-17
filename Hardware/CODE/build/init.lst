@@ -41,27 +41,8 @@ lwip_init:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
 .Ltmp0:
-	.loc	1 342 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:342:3
-	b	.LBB0_1
-.LBB0_1:
-.Ltmp1:
-	.loc	1 342 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:342:3
-	b	.LBB0_2
-.Ltmp2:
-.LBB0_2:
-	.loc	1 345 3 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:345:3
-	b	.LBB0_3
-.LBB0_3:
-.Ltmp3:
-	.loc	1 345 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:345:3
-	b	.LBB0_4
-.Ltmp4:
-.LBB0_4:
-	.loc	1 351 3 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:351:3
+	.loc	1 351 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:351:3
 	bl	sys_init
 	.loc	1 353 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:353:3
 	bl	mem_init
@@ -80,9 +61,8 @@ lwip_init:
 	.loc	1 383 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:383:3
 	bl	sys_timeouts_init
 	.loc	1 385 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/init.c:385:1
-	add	sp, #8
 	pop	{r7, pc}
-.Ltmp5:
+.Ltmp1:
 .Lfunc_end0:
 	.size	lwip_init, .Lfunc_end0-lwip_init
 	.cfi_endproc
@@ -133,8 +113,6 @@ lwip_init:
 	.byte	3                               @ Abbreviation Code
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
-	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -164,7 +142,7 @@ lwip_init:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x47 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x44 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -172,7 +150,7 @@ lwip_init:
 	.long	.Linfo_string2                  @ DW_AT_comp_dir
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
-	.byte	2                               @ Abbrev [2] 0x26:0x24 DW_TAG_subprogram
+	.byte	2                               @ Abbrev [2] 0x26:0x21 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -182,16 +160,13 @@ lwip_init:
 	.short	337                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	3                               @ Abbrev [3] 0x3a:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	3                               @ Abbrev [3] 0x3a:0xc DW_TAG_variable
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	340                             @ DW_AT_decl_line
-	.long	74                              @ DW_AT_type
+	.long	71                              @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	4                               @ Abbrev [4] 0x4a:0x7 DW_TAG_base_type
+	.byte	4                               @ Abbrev [4] 0x47:0x7 DW_TAG_base_type
 	.long	.Linfo_string5                  @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
@@ -212,7 +187,7 @@ lwip_init:
 	.asciz	"int"                           @ string offset=157
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

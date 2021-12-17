@@ -37,122 +37,117 @@ fal_init:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
+	.cfi_offset r4, -8
 .Ltmp0:
 	.loc	2 43 14 prologue_end            @ packages/fal-v0.5.0/src/fal.c:43:14
 	bl	fal_flash_init
-	.loc	2 43 12 is_stmt 0               @ packages/fal-v0.5.0/src/fal.c:43:12
-	str	r0, [sp, #4]
 .Ltmp1:
-	.loc	2 45 9 is_stmt 1                @ packages/fal-v0.5.0/src/fal.c:45:9
-	ldr	r0, [sp, #4]
+	@DEBUG_VALUE: fal_init:result <- $r0
+	.loc	2 45 9                          @ packages/fal-v0.5.0/src/fal.c:45:9
+	cmp	r0, #0
+	bmi	.LBB0_2
 .Ltmp2:
-	.loc	2 45 9 is_stmt 0                @ packages/fal-v0.5.0/src/fal.c:45:9
-	cmp.w	r0, #-1
-	bgt	.LBB0_2
-	b	.LBB0_1
-.LBB0_1:
-.Ltmp3:
-	.loc	2 46 9 is_stmt 1                @ packages/fal-v0.5.0/src/fal.c:46:9
-	b	.LBB0_3
-.Ltmp4:
-.LBB0_2:
+@ %bb.1:
+	@DEBUG_VALUE: fal_init:result <- $r0
 	.loc	2 50 14                         @ packages/fal-v0.5.0/src/fal.c:50:14
 	bl	fal_partition_init
-	.loc	2 50 12 is_stmt 0               @ packages/fal-v0.5.0/src/fal.c:50:12
-	str	r0, [sp, #4]
-	.loc	2 50 5                          @ packages/fal-v0.5.0/src/fal.c:50:5
-	b	.LBB0_3
-.LBB0_3:
-.Ltmp5:
+.Ltmp3:
+.LBB0_2:
+	.loc	2 0 14 is_stmt 0                @ packages/fal-v0.5.0/src/fal.c:0:14
+	mov	r4, r0
+.Ltmp4:
+	@DEBUG_VALUE: fal_init:result <- $r4
 	@DEBUG_LABEL: fal_init:__exit
-	.loc	2 54 10 is_stmt 1               @ packages/fal-v0.5.0/src/fal.c:54:10
-	ldr	r0, [sp, #4]
-	.loc	2 54 22 is_stmt 0               @ packages/fal-v0.5.0/src/fal.c:54:22
+	.loc	2 54 22 is_stmt 1               @ packages/fal-v0.5.0/src/fal.c:54:22
 	cmp	r0, #1
-	blt	.LBB0_6
-	b	.LBB0_4
-.LBB0_4:
-	.loc	2 54 27                         @ packages/fal-v0.5.0/src/fal.c:54:27
 	movw	r0, :lower16:init_ok
 	movt	r0, :upper16:init_ok
-	ldrb	r0, [r0]
+	blt	.LBB0_5
+.Ltmp5:
+@ %bb.3:
+	@DEBUG_VALUE: fal_init:result <- $r4
+	.loc	2 0 22 is_stmt 0                @ packages/fal-v0.5.0/src/fal.c:0:22
+	ldrb	r1, [r0]
+	.loc	2 54 22                         @ packages/fal-v0.5.0/src/fal.c:54:22
+	cbnz	r1, .LBB0_5
 .Ltmp6:
-	.loc	2 54 9                          @ packages/fal-v0.5.0/src/fal.c:54:9
-	cbnz	r0, .LBB0_6
-	b	.LBB0_5
-.LBB0_5:
+@ %bb.4:
+	@DEBUG_VALUE: fal_init:result <- $r4
+	.loc	2 0 22                          @ packages/fal-v0.5.0/src/fal.c:0:22
+	movs	r1, #1
 .Ltmp7:
 	.loc	2 56 17 is_stmt 1               @ packages/fal-v0.5.0/src/fal.c:56:17
-	movw	r1, :lower16:init_ok
-	movt	r1, :upper16:init_ok
-	movs	r0, #1
-	strb	r0, [r1]
+	strb	r1, [r0]
 	.loc	2 57 9                          @ packages/fal-v0.5.0/src/fal.c:57:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
+	adr	r0, .LCPI0_0
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
-	movw	r1, :lower16:.L.str.2
-	movt	r1, :upper16:.L.str.2
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
-	bl	rt_kprintf
-	.loc	2 58 5                          @ packages/fal-v0.5.0/src/fal.c:58:5
-	b	.LBB0_9
+	adr	r0, .LCPI0_1
+	b	.LBB0_8
 .Ltmp8:
-.LBB0_6:
+.LBB0_5:
+	@DEBUG_VALUE: fal_init:result <- $r4
 	.loc	2 59 13                         @ packages/fal-v0.5.0/src/fal.c:59:13
-	ldr	r0, [sp, #4]
+	cmp	r4, #0
+	ble	.LBB0_7
 .Ltmp9:
-	.loc	2 59 13 is_stmt 0               @ packages/fal-v0.5.0/src/fal.c:59:13
-	cmp	r0, #0
-	bgt	.LBB0_8
-	b	.LBB0_7
-.LBB0_7:
+@ %bb.6:
+	@DEBUG_VALUE: fal_init:result <- $r4
+	.loc	2 65 5                          @ packages/fal-v0.5.0/src/fal.c:65:5
+	mov	r0, r4
+	pop	{r4, pc}
 .Ltmp10:
+.LBB0_7:
+	@DEBUG_VALUE: fal_init:result <- $r4
+	.loc	2 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal.c:0:5
+	movs	r1, #0
+.Ltmp11:
 	.loc	2 61 17 is_stmt 1               @ packages/fal-v0.5.0/src/fal.c:61:17
-	movw	r1, :lower16:init_ok
-	movt	r1, :upper16:init_ok
-	movs	r0, #0
-	strb	r0, [r1]
+	strb	r1, [r0]
 	.loc	2 62 9                          @ packages/fal-v0.5.0/src/fal.c:62:9
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	movw	r1, :lower16:.L__FUNCTION__.fal_init
-	movt	r1, :upper16:.L__FUNCTION__.fal_init
+	adr	r0, .LCPI0_2
+	adr	r1, .LCPI0_3
 	movs	r2, #62
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.5
 	movt	r0, :upper16:.L.str.5
-	movw	r1, :lower16:.L.str.2
-	movt	r1, :upper16:.L.str.2
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
-	bl	rt_kprintf
-	.loc	2 63 5                          @ packages/fal-v0.5.0/src/fal.c:63:5
-	b	.LBB0_8
-.Ltmp11:
-.LBB0_8:
-	.loc	2 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal.c:0:5
-	b	.LBB0_9
-.LBB0_9:
-	.loc	2 65 12 is_stmt 1               @ packages/fal-v0.5.0/src/fal.c:65:12
-	ldr	r0, [sp, #4]
-	.loc	2 65 5 is_stmt 0                @ packages/fal-v0.5.0/src/fal.c:65:5
-	add	sp, #8
-	pop	{r7, pc}
 .Ltmp12:
+.LBB0_8:
+	@DEBUG_VALUE: fal_init:result <- $r4
+	.loc	2 0 0 is_stmt 0                 @ packages/fal-v0.5.0/src/fal.c:0:0
+	adr	r1, .LCPI0_4
+	bl	rt_kprintf
+	adr	r0, .LCPI0_5
+	bl	rt_kprintf
+.Ltmp13:
+	.loc	2 65 5 is_stmt 1                @ packages/fal-v0.5.0/src/fal.c:65:5
+	mov	r0, r4
+	pop	{r4, pc}
+.Ltmp14:
+	.p2align	2
+@ %bb.9:
+	.loc	2 0 5 is_stmt 0                 @ packages/fal-v0.5.0/src/fal.c:0:5
+.LCPI0_0:
+.L.str:
+	.asciz	"\033[32;22m[I/FAL] \000\000\000"
+.LCPI0_1:
+.L.str.1:
+	.asciz	"RT-Thread Flash Abstraction Layer (V%s) initialize success."
+.LCPI0_2:
+.L.str.4:
+	.asciz	"\033[31;22m[E/FAL] (%s:%d) \000\000\000"
+.LCPI0_3:
+.L__FUNCTION__.fal_init:
+	.asciz	"fal_init\000\000\000"
+.LCPI0_4:
+.L.str.2:
+	.asciz	"0.5.0\000\000"
+.LCPI0_5:
+.L.str.3:
+	.asciz	"\033[0m\n\000\000"
 .Lfunc_end0:
 	.size	fal_init, .Lfunc_end0-fal_init
 	.cfi_endproc
@@ -178,7 +173,7 @@ fal_init_check:
 	ldrb	r0, [r0]
 	.loc	2 75 5 is_stmt 0                @ packages/fal-v0.5.0/src/fal.c:75:5
 	bx	lr
-.Ltmp13:
+.Ltmp15:
 .Lfunc_end1:
 	.size	fal_init_check, .Lfunc_end1-fal_init_check
 	.cfi_endproc
@@ -191,42 +186,26 @@ init_ok:
 	.byte	0                               @ 0x0
 	.size	init_ok, 1
 
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	"\033[32;22m[I/FAL] "
-	.size	.L.str, 17
-
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"RT-Thread Flash Abstraction Layer (V%s) initialize success."
-	.size	.L.str.1, 60
-
-	.type	.L.str.2,%object                @ @.str.2
-.L.str.2:
-	.asciz	"0.5.0"
-	.size	.L.str.2, 6
-
-	.type	.L.str.3,%object                @ @.str.3
-.L.str.3:
-	.asciz	"\033[0m\n"
-	.size	.L.str.3, 6
-
-	.type	.L.str.4,%object                @ @.str.4
-.L.str.4:
-	.asciz	"\033[31;22m[E/FAL] (%s:%d) "
-	.size	.L.str.4, 25
-
-	.type	.L__FUNCTION__.fal_init,%object @ @__FUNCTION__.fal_init
-.L__FUNCTION__.fal_init:
-	.asciz	"fal_init"
-	.size	.L__FUNCTION__.fal_init, 9
-
 	.type	.L.str.5,%object                @ @.str.5
+	.section	.rodata.str1.1,"aMS",%progbits,1
 .L.str.5:
 	.asciz	"RT-Thread Flash Abstraction Layer (V%s) initialize failed."
 	.size	.L.str.5, 59
 
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp14-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -313,7 +292,7 @@ init_ok:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -368,7 +347,7 @@ init_ok:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x8e DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x95 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -376,24 +355,30 @@ init_ok:
 	.long	.Linfo_string2                  @ DW_AT_comp_dir
 	.long	0                               @ DW_AT_low_pc
 	.long	.Ldebug_ranges0                 @ DW_AT_ranges
-	.byte	2                               @ Abbrev [2] 0x26:0x11 DW_TAG_variable
+	.byte	2                               @ Abbrev [2] 0x26:0x17 DW_TAG_variable
 	.long	.Linfo_string3                  @ DW_AT_name
-	.long	55                              @ DW_AT_type
+	.long	61                              @ DW_AT_type
 	.byte	2                               @ DW_AT_decl_file
 	.byte	27                              @ DW_AT_decl_line
-	.byte	5                               @ DW_AT_location
+	.byte	11                              @ DW_AT_location
 	.byte	3
 	.long	init_ok
-	.byte	3                               @ Abbrev [3] 0x37:0xb DW_TAG_typedef
-	.long	66                              @ DW_AT_type
+	.byte	148
+	.byte	1
+	.byte	49
+	.byte	30
+	.byte	48
+	.byte	34
+	.byte	3                               @ Abbrev [3] 0x3d:0xb DW_TAG_typedef
+	.long	72                              @ DW_AT_type
 	.long	.Linfo_string5                  @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.byte	4                               @ Abbrev [4] 0x42:0x7 DW_TAG_base_type
+	.byte	4                               @ Abbrev [4] 0x48:0x7 DW_TAG_base_type
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	8                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	5                               @ Abbrev [5] 0x49:0x31 DW_TAG_subprogram
+	.byte	5                               @ Abbrev [5] 0x4f:0x32 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -402,23 +387,21 @@ init_ok:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	35                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	145                             @ DW_AT_type
+	.long	152                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	6                               @ Abbrev [6] 0x60:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	6                               @ Abbrev [6] 0x66:0xf DW_TAG_variable
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string9                  @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	40                              @ DW_AT_decl_line
-	.long	145                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x6e:0xb DW_TAG_label
+	.long	152                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x75:0xb DW_TAG_label
 	.long	.Linfo_string10                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	52                              @ DW_AT_decl_line
-	.long	.Ltmp5                          @ DW_AT_low_pc
+	.long	.Ltmp4                          @ DW_AT_low_pc
 	.byte	0                               @ End Of Children Mark
-	.byte	8                               @ Abbrev [8] 0x7a:0x17 DW_TAG_subprogram
+	.byte	8                               @ Abbrev [8] 0x81:0x17 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -427,9 +410,9 @@ init_ok:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	73                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	145                             @ DW_AT_type
+	.long	152                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	4                               @ Abbrev [4] 0x91:0x7 DW_TAG_base_type
+	.byte	4                               @ Abbrev [4] 0x98:0x7 DW_TAG_base_type
 	.long	.Linfo_string7                  @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
@@ -468,7 +451,7 @@ init_ok:
 	.asciz	"__exit"                        @ string offset=188
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

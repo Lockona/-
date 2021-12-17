@@ -37,90 +37,83 @@ rt_thread_idle_sethook:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_thread_idle_sethook:hook <- $r0
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	mvn	r0, #2
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	mov	r4, r0
 .Ltmp0:
-	.loc	2 76 14 prologue_end            @ rt-thread/src/idle.c:76:14
-	str	r0, [sp]
-	.loc	2 79 13                         @ rt-thread/src/idle.c:79:13
-	bl	rt_hw_interrupt_disable
-	.loc	2 79 11 is_stmt 0               @ rt-thread/src/idle.c:79:11
-	str	r0, [sp, #4]
-	movs	r0, #0
+	@DEBUG_VALUE: rt_thread_idle_sethook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_sethook:ret <- -3
+	@DEBUG_VALUE: rt_thread_idle_sethook:hook <- $r4
+	movs	r5, #0
 .Ltmp1:
-	.loc	2 81 12 is_stmt 1               @ rt-thread/src/idle.c:81:12
-	str	r0, [sp, #8]
-	.loc	2 81 10 is_stmt 0               @ rt-thread/src/idle.c:81:10
-	b	.LBB0_1
-.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+	.loc	2 79 13 prologue_end            @ rt-thread/src/idle.c:79:13
+	bl	rt_hw_interrupt_disable
 .Ltmp2:
-	.loc	2 81 17                         @ rt-thread/src/idle.c:81:17
-	ldr	r0, [sp, #8]
-.Ltmp3:
-	.loc	2 81 5                          @ rt-thread/src/idle.c:81:5
-	cmp	r0, #3
-	bhi	.LBB0_6
-	b	.LBB0_2
-.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
-.Ltmp4:
-	.loc	2 83 28 is_stmt 1               @ rt-thread/src/idle.c:83:28
-	ldr	r1, [sp, #8]
-	.loc	2 83 13 is_stmt 0               @ rt-thread/src/idle.c:83:13
-	movw	r0, :lower16:idle_hook_list
-	movt	r0, :upper16:idle_hook_list
-	ldr.w	r0, [r0, r1, lsl #2]
-.Ltmp5:
-	.loc	2 83 13                         @ rt-thread/src/idle.c:83:13
-	cbnz	r0, .LBB0_4
-	b	.LBB0_3
-.LBB0_3:
-.Ltmp6:
-	.loc	2 85 33 is_stmt 1               @ rt-thread/src/idle.c:85:33
-	ldr	r0, [sp, #12]
-	.loc	2 85 28 is_stmt 0               @ rt-thread/src/idle.c:85:28
-	ldr	r2, [sp, #8]
-	.loc	2 85 13                         @ rt-thread/src/idle.c:85:13
+	@DEBUG_VALUE: rt_thread_idle_sethook:i <- 0
+	@DEBUG_VALUE: rt_thread_idle_sethook:level <- $r0
+	.loc	2 0 13 is_stmt 0                @ rt-thread/src/idle.c:0:13
 	movw	r1, :lower16:idle_hook_list
 	movt	r1, :upper16:idle_hook_list
-	.loc	2 85 31                         @ rt-thread/src/idle.c:85:31
-	str.w	r0, [r1, r2, lsl #2]
-	movs	r0, #0
-	.loc	2 86 17 is_stmt 1               @ rt-thread/src/idle.c:86:17
-	str	r0, [sp]
-	.loc	2 87 13                         @ rt-thread/src/idle.c:87:13
-	b	.LBB0_6
+.Ltmp3:
+	.p2align	2
+.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: rt_thread_idle_sethook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_sethook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_sethook:ret <- -3
+	@DEBUG_VALUE: rt_thread_idle_sethook:i <- $r5
+	.loc	2 83 13 is_stmt 1               @ rt-thread/src/idle.c:83:13
+	ldr.w	r2, [r1, r5, lsl #2]
+.Ltmp4:
+	@DEBUG_VALUE: rt_thread_idle_sethook:i <- undef
+	.loc	2 0 13 is_stmt 0                @ rt-thread/src/idle.c:0:13
+	cbz	r2, .LBB0_4
+.Ltmp5:
+@ %bb.2:                                @   in Loop: Header=BB0_1 Depth=1
+	@DEBUG_VALUE: rt_thread_idle_sethook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_sethook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_sethook:ret <- -3
+	adds	r5, #1
+.Ltmp6:
+	@DEBUG_VALUE: rt_thread_idle_sethook:i <- $r5
+	.loc	2 81 5 is_stmt 1                @ rt-thread/src/idle.c:81:5
+	cmp	r5, #4
+	bne	.LBB0_1
 .Ltmp7:
-.LBB0_4:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	2 89 5                          @ rt-thread/src/idle.c:89:5
-	b	.LBB0_5
+@ %bb.3:
+	@DEBUG_VALUE: rt_thread_idle_sethook:i <- $r5
+	@DEBUG_VALUE: rt_thread_idle_sethook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_sethook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_sethook:ret <- -3
+	.loc	2 0 5 is_stmt 0                 @ rt-thread/src/idle.c:0:5
+	mvn	r4, #2
 .Ltmp8:
-.LBB0_5:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	2 81 46                         @ rt-thread/src/idle.c:81:46
-	ldr	r0, [sp, #8]
-	adds	r0, #1
-	str	r0, [sp, #8]
-	.loc	2 81 5 is_stmt 0                @ rt-thread/src/idle.c:81:5
-	b	.LBB0_1
+	b	.LBB0_5
 .Ltmp9:
-.LBB0_6:
-	.loc	2 91 28 is_stmt 1               @ rt-thread/src/idle.c:91:28
-	ldr	r0, [sp, #4]
-	.loc	2 91 5 is_stmt 0                @ rt-thread/src/idle.c:91:5
-	bl	rt_hw_interrupt_enable
-	.loc	2 93 12 is_stmt 1               @ rt-thread/src/idle.c:93:12
-	ldr	r0, [sp]
-	.loc	2 93 5 is_stmt 0                @ rt-thread/src/idle.c:93:5
-	add	sp, #16
-	pop	{r7, pc}
+.LBB0_4:
+	@DEBUG_VALUE: rt_thread_idle_sethook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_sethook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_sethook:ret <- -3
+	.loc	2 85 31 is_stmt 1               @ rt-thread/src/idle.c:85:31
+	str.w	r4, [r1, r5, lsl #2]
+	movs	r4, #0
 .Ltmp10:
+	@DEBUG_VALUE: rt_thread_idle_sethook:ret <- 0
+.LBB0_5:
+	@DEBUG_VALUE: rt_thread_idle_sethook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_sethook:ret <- $r4
+	.loc	2 91 5                          @ rt-thread/src/idle.c:91:5
+	bl	rt_hw_interrupt_enable
+.Ltmp11:
+	.loc	2 93 5                          @ rt-thread/src/idle.c:93:5
+	mov	r0, r4
+	pop	{r4, r5, r7, pc}
+.Ltmp12:
 .Lfunc_end0:
 	.size	rt_thread_idle_sethook, .Lfunc_end0-rt_thread_idle_sethook
 	.cfi_endproc
@@ -136,95 +129,90 @@ rt_thread_idle_sethook:
 	.thumb_func
 rt_thread_idle_delhook:
 .Lfunc_begin1:
-	.loc	2 105 0 is_stmt 1               @ rt-thread/src/idle.c:105:0
+	.loc	2 105 0                         @ rt-thread/src/idle.c:105:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: rt_thread_idle_delhook:hook <- $r0
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	mvn	r0, #5
-.Ltmp11:
-	.loc	2 108 14 prologue_end           @ rt-thread/src/idle.c:108:14
-	str	r0, [sp]
-	.loc	2 111 13                        @ rt-thread/src/idle.c:111:13
-	bl	rt_hw_interrupt_disable
-	.loc	2 111 11 is_stmt 0              @ rt-thread/src/idle.c:111:11
-	str	r0, [sp, #4]
-	movs	r0, #0
-.Ltmp12:
-	.loc	2 113 12 is_stmt 1              @ rt-thread/src/idle.c:113:12
-	str	r0, [sp, #8]
-	.loc	2 113 10 is_stmt 0              @ rt-thread/src/idle.c:113:10
-	b	.LBB1_1
-.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	mov	r4, r0
 .Ltmp13:
-	.loc	2 113 17                        @ rt-thread/src/idle.c:113:17
-	ldr	r0, [sp, #8]
+	@DEBUG_VALUE: rt_thread_idle_delhook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_delhook:ret <- -6
+	@DEBUG_VALUE: rt_thread_idle_delhook:hook <- $r4
+	movs	r5, #0
 .Ltmp14:
-	.loc	2 113 5                         @ rt-thread/src/idle.c:113:5
-	cmp	r0, #3
-	bhi	.LBB1_6
-	b	.LBB1_2
-.LBB1_2:                                @   in Loop: Header=BB1_1 Depth=1
+	.loc	2 111 13 prologue_end           @ rt-thread/src/idle.c:111:13
+	bl	rt_hw_interrupt_disable
 .Ltmp15:
-	.loc	2 115 28 is_stmt 1              @ rt-thread/src/idle.c:115:28
-	ldr	r1, [sp, #8]
-	.loc	2 115 13 is_stmt 0              @ rt-thread/src/idle.c:115:13
-	movw	r0, :lower16:idle_hook_list
-	movt	r0, :upper16:idle_hook_list
-	ldr.w	r0, [r0, r1, lsl #2]
-	.loc	2 115 34                        @ rt-thread/src/idle.c:115:34
-	ldr	r1, [sp, #12]
-.Ltmp16:
-	.loc	2 115 13                        @ rt-thread/src/idle.c:115:13
-	cmp	r0, r1
-	bne	.LBB1_4
-	b	.LBB1_3
-.LBB1_3:
-.Ltmp17:
-	.loc	2 117 28 is_stmt 1              @ rt-thread/src/idle.c:117:28
-	ldr	r2, [sp, #8]
-	.loc	2 117 13 is_stmt 0              @ rt-thread/src/idle.c:117:13
+	@DEBUG_VALUE: rt_thread_idle_delhook:i <- 0
+	@DEBUG_VALUE: rt_thread_idle_delhook:level <- $r0
+	.loc	2 0 13 is_stmt 0                @ rt-thread/src/idle.c:0:13
 	movw	r1, :lower16:idle_hook_list
 	movt	r1, :upper16:idle_hook_list
-	movs	r0, #0
-	.loc	2 117 31                        @ rt-thread/src/idle.c:117:31
-	str.w	r0, [r1, r2, lsl #2]
-	.loc	2 118 17 is_stmt 1              @ rt-thread/src/idle.c:118:17
-	str	r0, [sp]
-	.loc	2 119 13                        @ rt-thread/src/idle.c:119:13
-	b	.LBB1_6
+.Ltmp16:
+	.p2align	2
+.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: rt_thread_idle_delhook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_delhook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_delhook:ret <- -6
+	@DEBUG_VALUE: rt_thread_idle_delhook:i <- $r5
+	.loc	2 115 13 is_stmt 1              @ rt-thread/src/idle.c:115:13
+	ldr.w	r2, [r1, r5, lsl #2]
+.Ltmp17:
+	@DEBUG_VALUE: rt_thread_idle_delhook:i <- undef
+	.loc	2 115 13 is_stmt 0              @ rt-thread/src/idle.c:115:13
+	cmp	r2, r4
+	beq	.LBB1_4
 .Ltmp18:
-.LBB1_4:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	2 121 5                         @ rt-thread/src/idle.c:121:5
-	b	.LBB1_5
+@ %bb.2:                                @   in Loop: Header=BB1_1 Depth=1
+	@DEBUG_VALUE: rt_thread_idle_delhook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_delhook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_delhook:ret <- -6
+	.loc	2 0 0                           @ rt-thread/src/idle.c:0:0
+	adds	r5, #1
 .Ltmp19:
-.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	2 113 46                        @ rt-thread/src/idle.c:113:46
-	ldr	r0, [sp, #8]
-	adds	r0, #1
-	str	r0, [sp, #8]
-	.loc	2 113 5 is_stmt 0               @ rt-thread/src/idle.c:113:5
-	b	.LBB1_1
+	@DEBUG_VALUE: rt_thread_idle_delhook:i <- $r5
+	.loc	2 113 5 is_stmt 1               @ rt-thread/src/idle.c:113:5
+	cmp	r5, #4
+	bne	.LBB1_1
 .Ltmp20:
-.LBB1_6:
-	.loc	2 123 28 is_stmt 1              @ rt-thread/src/idle.c:123:28
-	ldr	r0, [sp, #4]
-	.loc	2 123 5 is_stmt 0               @ rt-thread/src/idle.c:123:5
-	bl	rt_hw_interrupt_enable
-	.loc	2 125 12 is_stmt 1              @ rt-thread/src/idle.c:125:12
-	ldr	r0, [sp]
-	.loc	2 125 5 is_stmt 0               @ rt-thread/src/idle.c:125:5
-	add	sp, #16
-	pop	{r7, pc}
+@ %bb.3:
+	@DEBUG_VALUE: rt_thread_idle_delhook:i <- $r5
+	@DEBUG_VALUE: rt_thread_idle_delhook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_delhook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_delhook:ret <- -6
+	.loc	2 0 5 is_stmt 0                 @ rt-thread/src/idle.c:0:5
+	mvn	r4, #5
 .Ltmp21:
+	b	.LBB1_5
+.Ltmp22:
+.LBB1_4:
+	@DEBUG_VALUE: rt_thread_idle_delhook:hook <- $r4
+	@DEBUG_VALUE: rt_thread_idle_delhook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_delhook:ret <- -6
+	movs	r4, #0
+.Ltmp23:
+	.loc	2 117 31 is_stmt 1              @ rt-thread/src/idle.c:117:31
+	str.w	r4, [r1, r5, lsl #2]
+.Ltmp24:
+	@DEBUG_VALUE: rt_thread_idle_delhook:ret <- 0
+.LBB1_5:
+	@DEBUG_VALUE: rt_thread_idle_delhook:level <- $r0
+	@DEBUG_VALUE: rt_thread_idle_delhook:ret <- $r4
+	.loc	2 123 5                         @ rt-thread/src/idle.c:123:5
+	bl	rt_hw_interrupt_enable
+.Ltmp25:
+	.loc	2 125 5                         @ rt-thread/src/idle.c:125:5
+	mov	r0, r4
+	pop	{r4, r5, r7, pc}
+.Ltmp26:
 .Lfunc_end1:
 	.size	rt_thread_idle_delhook, .Lfunc_end1-rt_thread_idle_delhook
 	.cfi_endproc
@@ -240,171 +228,168 @@ rt_thread_idle_delhook:
 	.thumb_func
 rt_thread_idle_excute:
 .Lfunc_begin2:
-	.loc	2 150 0 is_stmt 1               @ rt-thread/src/idle.c:150:0
+	.loc	2 150 0                         @ rt-thread/src/idle.c:150:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r6, r7, r8, r9, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, lr}
+	.cfi_def_cfa_offset 28
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-.Ltmp22:
-	.loc	2 153 5 prologue_end            @ rt-thread/src/idle.c:153:5
-	b	.LBB2_1
-.LBB2_1:                                @ =>This Inner Loop Header: Depth=1
-	.loc	2 153 12 is_stmt 0              @ rt-thread/src/idle.c:153:12
-	bl	_has_defunct_thread
-	.loc	2 153 5                         @ rt-thread/src/idle.c:153:5
-	cmp	r0, #0
-	beq	.LBB2_14
-	b	.LBB2_2
-.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp23:
-	.loc	2 160 9 is_stmt 1               @ rt-thread/src/idle.c:160:9
-	b	.LBB2_3
-.LBB2_3:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp24:
-	.loc	2 160 9 is_stmt 0               @ rt-thread/src/idle.c:160:9
-	bl	rt_hw_interrupt_disable
-	str	r0, [sp, #4]
-.Ltmp25:
-	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
-	bl	rt_interrupt_get_nest
-.Ltmp26:
-	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
-	cbz	r0, .LBB2_5
-	b	.LBB2_4
-.LBB2_4:                                @   in Loop: Header=BB2_1 Depth=1
+	.cfi_offset r9, -8
+	.cfi_offset r8, -12
+	.cfi_offset r7, -16
+	.cfi_offset r6, -20
+	.cfi_offset r5, -24
+	.cfi_offset r4, -28
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 32
 .Ltmp27:
-	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	movw	r1, :lower16:.L__FUNCTION__.rt_thread_idle_excute
-	movt	r1, :upper16:.L__FUNCTION__.rt_thread_idle_excute
-	movs	r2, #160
-	bl	rt_assert_handler
+	.loc	2 153 12 prologue_end           @ rt-thread/src/idle.c:153:12
+	bl	_has_defunct_thread
+	.loc	2 153 5 is_stmt 0               @ rt-thread/src/idle.c:153:5
+	cbz	r0, .LBB2_9
+@ %bb.1:
+	.loc	2 0 5                           @ rt-thread/src/idle.c:0:5
+	movw	r5, :lower16:rt_thread_defunct
+	adr.w	r8, .LCPI2_0
+	movt	r5, :upper16:rt_thread_defunct
+	adr.w	r9, .LCPI2_1
+	.p2align	2
+.LBB2_2:                                @ =>This Inner Loop Header: Depth=1
 .Ltmp28:
-	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
-	b	.LBB2_5
+	.loc	2 160 9 is_stmt 1               @ rt-thread/src/idle.c:160:9
+	bl	rt_hw_interrupt_disable
+	mov	r4, r0
 .Ltmp29:
-.LBB2_5:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
-	ldr	r0, [sp, #4]
-	bl	rt_hw_interrupt_enable
-	b	.LBB2_6
+	@DEBUG_VALUE: level <- $r4
+	.loc	2 160 9 is_stmt 0               @ rt-thread/src/idle.c:160:9
+	bl	rt_interrupt_get_nest
 .Ltmp30:
-.LBB2_6:                                @   in Loop: Header=BB2_1 Depth=1
+	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
+	cbz	r0, .LBB2_4
+.Ltmp31:
+@ %bb.3:                                @   in Loop: Header=BB2_2 Depth=1
+	@DEBUG_VALUE: level <- $r4
+	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
+	movs	r2, #160
+	mov	r0, r8
+	mov	r1, r9
+	bl	rt_assert_handler
+.Ltmp32:
+.LBB2_4:                                @   in Loop: Header=BB2_2 Depth=1
+	@DEBUG_VALUE: level <- $r4
+	.loc	2 160 9                         @ rt-thread/src/idle.c:160:9
+	mov	r0, r4
+	bl	rt_hw_interrupt_enable
+.Ltmp33:
 	.loc	2 163 16 is_stmt 1              @ rt-thread/src/idle.c:163:16
 	bl	rt_hw_interrupt_disable
-	.loc	2 163 14 is_stmt 0              @ rt-thread/src/idle.c:163:14
-	str	r0, [sp, #12]
-.Ltmp31:
-	.loc	2 166 13 is_stmt 1              @ rt-thread/src/idle.c:166:13
+	mov	r6, r0
+.Ltmp34:
+	@DEBUG_VALUE: lock <- $r6
+	.loc	2 166 13                        @ rt-thread/src/idle.c:166:13
 	bl	_has_defunct_thread
-.Ltmp32:
+.Ltmp35:
 	.loc	2 166 13 is_stmt 0              @ rt-thread/src/idle.c:166:13
-	cbz	r0, .LBB2_12
-	b	.LBB2_7
-.LBB2_7:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp33:
+	cbz	r0, .LBB2_11
+.Ltmp36:
+@ %bb.5:                                @   in Loop: Header=BB2_2 Depth=1
+	@DEBUG_VALUE: lock <- $r6
 	.loc	2 169 22 is_stmt 1              @ rt-thread/src/idle.c:169:22
-	movw	r0, :lower16:rt_thread_defunct
-	movt	r0, :upper16:rt_thread_defunct
-	ldr	r0, [r0]
-	subs	r0, #20
-	.loc	2 169 20 is_stmt 0              @ rt-thread/src/idle.c:169:20
-	str	r0, [sp, #8]
-	.loc	2 180 30 is_stmt 1              @ rt-thread/src/idle.c:180:30
-	ldr	r0, [sp, #8]
-	.loc	2 180 38 is_stmt 0              @ rt-thread/src/idle.c:180:38
-	adds	r0, #20
+	ldr	r4, [r5]
+	.loc	2 180 13                        @ rt-thread/src/idle.c:180:13
+	mov	r0, r4
+	.loc	2 169 22                        @ rt-thread/src/idle.c:169:22
+	sub.w	r7, r4, #20
+.Ltmp37:
+	@DEBUG_VALUE: thread <- $r7
 	.loc	2 180 13                        @ rt-thread/src/idle.c:180:13
 	bl	rt_list_remove
-	.loc	2 183 13 is_stmt 1              @ rt-thread/src/idle.c:183:13
+	.loc	2 183 13                        @ rt-thread/src/idle.c:183:13
 	bl	rt_enter_critical
-.Ltmp34:
-	.loc	2 186 17                        @ rt-thread/src/idle.c:186:17
-	ldr	r0, [sp, #8]
-	.loc	2 186 25 is_stmt 0              @ rt-thread/src/idle.c:186:25
-	ldr	r0, [r0, #120]
-.Ltmp35:
-	.loc	2 186 17                        @ rt-thread/src/idle.c:186:17
-	cbz	r0, .LBB2_9
-	b	.LBB2_8
-.LBB2_8:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp36:
-	.loc	2 187 17 is_stmt 1              @ rt-thread/src/idle.c:187:17
-	ldr	r0, [sp, #8]
-	.loc	2 187 25 is_stmt 0              @ rt-thread/src/idle.c:187:25
-	ldr	r1, [r0, #120]
-	.loc	2 187 17                        @ rt-thread/src/idle.c:187:17
-	blx	r1
-	b	.LBB2_9
-.Ltmp37:
-.LBB2_9:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	2 194 56 is_stmt 1              @ rt-thread/src/idle.c:194:56
-	ldr	r0, [sp, #8]
-	.loc	2 194 17 is_stmt 0              @ rt-thread/src/idle.c:194:17
-	bl	rt_object_is_systemobject
 .Ltmp38:
-	.loc	2 194 17                        @ rt-thread/src/idle.c:194:17
-	cmp	r0, #1
-	bne	.LBB2_11
-	b	.LBB2_10
-.LBB2_10:
+	.loc	2 186 25                        @ rt-thread/src/idle.c:186:25
+	ldr	r1, [r4, #100]
 .Ltmp39:
-	.loc	2 197 47 is_stmt 1              @ rt-thread/src/idle.c:197:47
-	ldr	r0, [sp, #8]
-	.loc	2 197 17 is_stmt 0              @ rt-thread/src/idle.c:197:17
-	bl	rt_object_detach
-	.loc	2 199 17 is_stmt 1              @ rt-thread/src/idle.c:199:17
-	bl	rt_exit_critical
-	.loc	2 202 40                        @ rt-thread/src/idle.c:202:40
-	ldr	r0, [sp, #12]
-	.loc	2 202 17 is_stmt 0              @ rt-thread/src/idle.c:202:17
-	bl	rt_hw_interrupt_enable
-	.loc	2 204 17 is_stmt 1              @ rt-thread/src/idle.c:204:17
-	b	.LBB2_14
+	.loc	2 186 17 is_stmt 0              @ rt-thread/src/idle.c:186:17
+	cbz	r1, .LBB2_7
 .Ltmp40:
-.LBB2_11:                               @   in Loop: Header=BB2_1 Depth=1
-	.loc	2 208 13                        @ rt-thread/src/idle.c:208:13
-	bl	rt_exit_critical
-	.loc	2 209 9                         @ rt-thread/src/idle.c:209:9
-	b	.LBB2_13
+@ %bb.6:                                @   in Loop: Header=BB2_2 Depth=1
+	@DEBUG_VALUE: thread <- $r7
+	@DEBUG_VALUE: lock <- $r6
+	@DEBUG_VALUE: thread <- $r7
+	.loc	2 187 17 is_stmt 1              @ rt-thread/src/idle.c:187:17
+	mov	r0, r7
+	blx	r1
 .Ltmp41:
-.LBB2_12:
-	.loc	2 213 36                        @ rt-thread/src/idle.c:213:36
-	ldr	r0, [sp, #12]
-	.loc	2 213 13 is_stmt 0              @ rt-thread/src/idle.c:213:13
-	bl	rt_hw_interrupt_enable
-	.loc	2 216 13 is_stmt 1              @ rt-thread/src/idle.c:216:13
-	b	.LBB2_14
+.LBB2_7:                                @   in Loop: Header=BB2_2 Depth=1
+	@DEBUG_VALUE: thread <- $r7
+	@DEBUG_VALUE: lock <- $r6
+	.loc	2 194 17                        @ rt-thread/src/idle.c:194:17
+	mov	r0, r7
+	bl	rt_object_is_systemobject
 .Ltmp42:
-.LBB2_13:                               @   in Loop: Header=BB2_1 Depth=1
-	.loc	2 220 32                        @ rt-thread/src/idle.c:220:32
-	ldr	r0, [sp, #12]
-	.loc	2 220 9 is_stmt 0               @ rt-thread/src/idle.c:220:9
-	bl	rt_hw_interrupt_enable
-	.loc	2 224 9 is_stmt 1               @ rt-thread/src/idle.c:224:9
-	ldr	r0, [sp, #8]
-	ldr	r0, [r0, #40]
-	bl	rt_free
-	.loc	2 226 39                        @ rt-thread/src/idle.c:226:39
-	ldr	r0, [sp, #8]
-	.loc	2 226 9 is_stmt 0               @ rt-thread/src/idle.c:226:9
-	bl	rt_object_delete
+	.loc	2 194 17 is_stmt 0              @ rt-thread/src/idle.c:194:17
+	cmp	r0, #1
+	beq	.LBB2_10
 .Ltmp43:
-	.loc	2 153 5 is_stmt 1               @ rt-thread/src/idle.c:153:5
-	b	.LBB2_1
-.LBB2_14:
-	.loc	2 229 1                         @ rt-thread/src/idle.c:229:1
-	add	sp, #16
-	pop	{r7, pc}
+@ %bb.8:                                @   in Loop: Header=BB2_2 Depth=1
+	@DEBUG_VALUE: thread <- $r7
+	@DEBUG_VALUE: lock <- $r6
+	.loc	2 208 13 is_stmt 1              @ rt-thread/src/idle.c:208:13
+	bl	rt_exit_critical
 .Ltmp44:
+	.loc	2 220 9                         @ rt-thread/src/idle.c:220:9
+	mov	r0, r6
+	bl	rt_hw_interrupt_enable
+	.loc	2 224 9                         @ rt-thread/src/idle.c:224:9
+	ldr	r0, [r4, #20]
+	bl	rt_free
+	.loc	2 226 9                         @ rt-thread/src/idle.c:226:9
+	mov	r0, r7
+	bl	rt_object_delete
+.Ltmp45:
+	.loc	2 153 12                        @ rt-thread/src/idle.c:153:12
+	bl	_has_defunct_thread
+	.loc	2 153 5 is_stmt 0               @ rt-thread/src/idle.c:153:5
+	cmp	r0, #0
+	bne	.LBB2_2
+.Ltmp46:
+.LBB2_9:
+	.loc	2 229 1 is_stmt 1               @ rt-thread/src/idle.c:229:1
+	add	sp, #4
+	pop.w	{r4, r5, r6, r7, r8, r9, pc}
+.LBB2_10:
+.Ltmp47:
+	@DEBUG_VALUE: thread <- $r7
+	@DEBUG_VALUE: lock <- $r6
+	.loc	2 197 17                        @ rt-thread/src/idle.c:197:17
+	mov	r0, r7
+	bl	rt_object_detach
+	.loc	2 199 17                        @ rt-thread/src/idle.c:199:17
+	bl	rt_exit_critical
+.Ltmp48:
+.LBB2_11:
+	@DEBUG_VALUE: lock <- $r6
+	.loc	2 0 0 is_stmt 0                 @ rt-thread/src/idle.c:0:0
+	mov	r0, r6
+	bl	rt_hw_interrupt_enable
+.Ltmp49:
+	.loc	2 229 1 is_stmt 1               @ rt-thread/src/idle.c:229:1
+	add	sp, #4
+	pop.w	{r4, r5, r6, r7, r8, r9, pc}
+.Ltmp50:
+	.p2align	2
+@ %bb.12:
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/src/idle.c:0:1
+.LCPI2_0:
+.L.str:
+	.asciz	"0\000\000"
+.LCPI2_1:
+.L__FUNCTION__.rt_thread_idle_excute:
+	.asciz	"rt_thread_idle_excute\000\000"
 .Lfunc_end2:
 	.size	rt_thread_idle_excute, .Lfunc_end2-rt_thread_idle_excute
 	.cfi_endproc
@@ -418,32 +403,24 @@ rt_thread_idle_excute:
 	.thumb_func
 _has_defunct_thread:
 .Lfunc_begin3:
-	.loc	2 132 0                         @ rt-thread/src/idle.c:132:0
+	.loc	2 132 0 is_stmt 1               @ rt-thread/src/idle.c:132:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-.Ltmp45:
-	.loc	2 139 31 prologue_end           @ rt-thread/src/idle.c:139:31
+	.loc	2 141 15 prologue_end           @ rt-thread/src/idle.c:141:15
 	movw	r0, :lower16:rt_thread_defunct
 	movt	r0, :upper16:rt_thread_defunct
-	str	r0, [sp]
-	.loc	2 141 12                        @ rt-thread/src/idle.c:141:12
-	ldr	r0, [sp]
-	.loc	2 141 15 is_stmt 0              @ rt-thread/src/idle.c:141:15
-	ldr	r0, [r0]
-	.loc	2 141 23                        @ rt-thread/src/idle.c:141:23
-	ldr	r1, [sp]
-	.loc	2 141 20                        @ rt-thread/src/idle.c:141:20
-	subs	r0, r0, r1
+.Ltmp51:
+	@DEBUG_VALUE: _has_defunct_thread:l <- $r0
+	ldr	r1, [r0]
+	.loc	2 141 20 is_stmt 0              @ rt-thread/src/idle.c:141:20
+	subs	r0, r1, r0
+.Ltmp52:
 	it	ne
 	movne	r0, #1
 	.loc	2 141 5                         @ rt-thread/src/idle.c:141:5
-	add	sp, #4
 	bx	lr
-.Ltmp46:
+.Ltmp53:
 .Lfunc_end3:
 	.size	_has_defunct_thread, .Lfunc_end3-_has_defunct_thread
 	.cfi_endproc
@@ -462,39 +439,21 @@ rt_list_remove:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-	str	r0, [sp]
-.Ltmp47:
-	.loc	3 88 21 prologue_end            @ rt-thread/include\rtservice.h:88:21
-	ldr	r0, [sp]
-	.loc	3 88 8 is_stmt 0                @ rt-thread/include\rtservice.h:88:8
-	ldr	r1, [r0]
-	.loc	3 88 24                         @ rt-thread/include\rtservice.h:88:24
-	ldr	r0, [r0, #4]
-	.loc	3 88 19                         @ rt-thread/include\rtservice.h:88:19
-	str	r0, [r1, #4]
-	.loc	3 89 21 is_stmt 1               @ rt-thread/include\rtservice.h:89:21
-	ldr	r1, [sp]
-	.loc	3 89 24 is_stmt 0               @ rt-thread/include\rtservice.h:89:24
-	ldr	r0, [r1]
-	.loc	3 89 8                          @ rt-thread/include\rtservice.h:89:8
-	ldr	r1, [r1, #4]
-	.loc	3 89 19                         @ rt-thread/include\rtservice.h:89:19
-	str	r0, [r1]
-	.loc	3 91 25 is_stmt 1               @ rt-thread/include\rtservice.h:91:25
-	ldr	r0, [sp]
-	.loc	3 91 23 is_stmt 0               @ rt-thread/include\rtservice.h:91:23
-	str	r0, [r0, #4]
-	.loc	3 91 5                          @ rt-thread/include\rtservice.h:91:5
-	ldr	r1, [sp]
-	.loc	3 91 13                         @ rt-thread/include\rtservice.h:91:13
-	str	r0, [r1]
-	.loc	3 92 1 is_stmt 1                @ rt-thread/include\rtservice.h:92:1
-	add	sp, #4
+	@DEBUG_VALUE: rt_list_remove:n <- $r0
+	@DEBUG_VALUE: rt_list_remove:n <- $r0
+	.loc	3 88 8 prologue_end             @ rt-thread/include\rtservice.h:88:8
+	ldrd	r1, r2, [r0]
+	.loc	3 88 19 is_stmt 0               @ rt-thread/include\rtservice.h:88:19
+	str	r2, [r1, #4]
+	.loc	3 89 8 is_stmt 1                @ rt-thread/include\rtservice.h:89:8
+	ldr	r2, [r0, #4]
+	.loc	3 89 19 is_stmt 0               @ rt-thread/include\rtservice.h:89:19
+	str	r1, [r2]
+	.loc	3 91 13 is_stmt 1               @ rt-thread/include\rtservice.h:91:13
+	strd	r0, r0, [r0]
+	.loc	3 92 1                          @ rt-thread/include\rtservice.h:92:1
 	bx	lr
-.Ltmp48:
+.Ltmp54:
 .Lfunc_end4:
 	.size	rt_list_remove, .Lfunc_end4-rt_list_remove
 	.cfi_endproc
@@ -514,87 +473,57 @@ rt_thread_idle_init:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#40
-	sub	sp, #40
-	.cfi_def_cfa_offset 48
-	movs	r0, #0
-.Ltmp49:
-	.loc	2 277 12 prologue_end           @ rt-thread/src/idle.c:277:12
-	str	r0, [sp, #36]
-	.loc	2 277 10 is_stmt 0              @ rt-thread/src/idle.c:277:10
-	b	.LBB5_1
-.LBB5_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp50:
-	.loc	2 277 17                        @ rt-thread/src/idle.c:277:17
-	ldr	r0, [sp, #36]
-.Ltmp51:
-	.loc	2 277 5                         @ rt-thread/src/idle.c:277:5
-	cbnz	r0, .LBB5_4
-	b	.LBB5_2
-.LBB5_2:                                @   in Loop: Header=BB5_1 Depth=1
-.Ltmp52:
-	.loc	2 279 43 is_stmt 1              @ rt-thread/src/idle.c:279:43
-	ldr	r2, [sp, #36]
-	.loc	2 279 9 is_stmt 0               @ rt-thread/src/idle.c:279:9
-	movw	r1, :lower16:.L.str.1
-	movt	r1, :upper16:.L.str.1
-	add	r0, sp, #28
-	str	r0, [sp, #20]                   @ 4-byte Spill
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	.pad	#24
+	sub	sp, #24
+	.cfi_def_cfa_offset 40
+.Ltmp55:
+	@DEBUG_VALUE: rt_thread_idle_init:i <- undef
+	add	r4, sp, #16
+.Ltmp56:
+	.loc	2 279 9 prologue_end            @ rt-thread/src/idle.c:279:9
+	adr	r1, .LCPI5_0
+	movs	r2, #0
+	mov	r0, r4
 	bl	rt_sprintf
-	ldr	r1, [sp, #20]                   @ 4-byte Reload
-	.loc	2 280 30 is_stmt 1              @ rt-thread/src/idle.c:280:30
-	ldr	r3, [sp, #36]
-	.loc	2 280 25 is_stmt 0              @ rt-thread/src/idle.c:280:25
-	movw	r0, :lower16:idle
-	movt	r0, :upper16:idle
-	str	r0, [sp, #24]                   @ 4-byte Spill
-	add.w	r0, r0, r3, lsl #7
-	.loc	2 284 18 is_stmt 1              @ rt-thread/src/idle.c:284:18
-	movw	r2, :lower16:rt_thread_stack
-	movt	r2, :upper16:rt_thread_stack
-	add.w	r2, r2, r3, lsl #9
 	.loc	2 280 9                         @ rt-thread/src/idle.c:280:9
-	mov	r3, sp
-	mov.w	r12, #32
-	str.w	r12, [r3, #12]
-	mov.w	r12, #31
-	str.w	r12, [r3, #8]
-	mov.w	r12, #512
-	str.w	r12, [r3, #4]
-	str	r2, [r3]
+	movw	r5, :lower16:idle
+	movw	r0, :lower16:rt_thread_stack
+	movt	r5, :upper16:idle
 	movw	r2, :lower16:rt_thread_idle_entry
+	movt	r0, :upper16:rt_thread_stack
+	movs	r1, #31
+	str	r0, [sp]
+	mov.w	r0, #512
+	strd	r0, r1, [sp, #4]
 	movt	r2, :upper16:rt_thread_idle_entry
 	movs	r3, #0
+	movs	r0, #32
+	str	r0, [sp, #12]
+	mov	r0, r5
+	mov	r1, r4
 	bl	rt_thread_init
-                                        @ kill: def $r1 killed $r0
-	.loc	2 292 33                        @ rt-thread/src/idle.c:292:33
-	ldr	r0, [sp, #24]                   @ 4-byte Reload
-	ldr	r1, [sp, #36]
-	.loc	2 292 28 is_stmt 0              @ rt-thread/src/idle.c:292:28
-	add.w	r0, r0, r1, lsl #7
 	.loc	2 292 9                         @ rt-thread/src/idle.c:292:9
+	mov	r0, r5
 	bl	rt_thread_startup
-	.loc	2 293 5 is_stmt 1               @ rt-thread/src/idle.c:293:5
-	b	.LBB5_3
-.Ltmp53:
-.LBB5_3:                                @   in Loop: Header=BB5_1 Depth=1
-	.loc	2 277 32                        @ rt-thread/src/idle.c:277:32
-	ldr	r0, [sp, #36]
-	adds	r0, #1
-	str	r0, [sp, #36]
-	.loc	2 277 5 is_stmt 0               @ rt-thread/src/idle.c:277:5
-	b	.LBB5_1
-.Ltmp54:
-.LBB5_4:
-	.loc	2 294 1 is_stmt 1               @ rt-thread/src/idle.c:294:1
-	add	sp, #40
-	pop	{r7, pc}
-.Ltmp55:
+.Ltmp57:
+	@DEBUG_VALUE: rt_thread_idle_init:i <- undef
+	.loc	2 294 1                         @ rt-thread/src/idle.c:294:1
+	add	sp, #24
+	pop	{r4, r5, r7, pc}
+.Ltmp58:
+	.p2align	2
+@ %bb.1:
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/src/idle.c:0:1
+.LCPI5_0:
+.L.str.1:
+	.asciz	"tidle%d"
 .Lfunc_end5:
 	.size	rt_thread_idle_init, .Lfunc_end5-rt_thread_idle_init
 	.cfi_endproc
@@ -608,84 +537,49 @@ rt_thread_idle_init:
 	.thumb_func
 rt_thread_idle_entry:
 .Lfunc_begin6:
-	.loc	2 233 0                         @ rt-thread/src/idle.c:233:0
+	.loc	2 233 0 is_stmt 1               @ rt-thread/src/idle.c:233:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
-	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-.Ltmp56:
-	.loc	2 244 5 prologue_end            @ rt-thread/src/idle.c:244:5
-	b	.LBB6_1
-.LBB6_1:                                @ =>This Loop Header: Depth=1
-                                        @     Child Loop BB6_2 Depth 2
-	.loc	2 0 5 is_stmt 0                 @ rt-thread/src/idle.c:0:5
-	movs	r0, #0
-.Ltmp57:
-	.loc	2 249 16 is_stmt 1              @ rt-thread/src/idle.c:249:16
-	str	r0, [sp]
-	.loc	2 249 14 is_stmt 0              @ rt-thread/src/idle.c:249:14
-	b	.LBB6_2
-.LBB6_2:                                @   Parent Loop BB6_1 Depth=1
-                                        @ =>  This Inner Loop Header: Depth=2
-.Ltmp58:
-	.loc	2 249 21                        @ rt-thread/src/idle.c:249:21
-	ldr	r0, [sp]
+	@DEBUG_VALUE: rt_thread_idle_entry:parameter <- $r0
+	movw	r4, :lower16:idle_hook_list
+	movs	r5, #0
+	movt	r4, :upper16:idle_hook_list
 .Ltmp59:
-	.loc	2 249 9                         @ rt-thread/src/idle.c:249:9
-	cmp	r0, #3
-	bhi	.LBB6_7
-	b	.LBB6_3
-.LBB6_3:                                @   in Loop: Header=BB6_2 Depth=2
+	.p2align	2
+.LBB6_1:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: i <- $r5
+	.loc	2 251 17 prologue_end           @ rt-thread/src/idle.c:251:17
+	ldr.w	r0, [r4, r5, lsl #2]
 .Ltmp60:
-	.loc	2 251 32 is_stmt 1              @ rt-thread/src/idle.c:251:32
-	ldr	r1, [sp]
+	@DEBUG_VALUE: rt_thread_idle_entry:parameter <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 251 17 is_stmt 0              @ rt-thread/src/idle.c:251:17
-	movw	r0, :lower16:idle_hook_list
-	movt	r0, :upper16:idle_hook_list
-	ldr.w	r0, [r0, r1, lsl #2]
+	cbz	r0, .LBB6_3
 .Ltmp61:
-	.loc	2 251 17                        @ rt-thread/src/idle.c:251:17
-	cbz	r0, .LBB6_5
-	b	.LBB6_4
-.LBB6_4:                                @   in Loop: Header=BB6_2 Depth=2
-.Ltmp62:
-	.loc	2 253 32 is_stmt 1              @ rt-thread/src/idle.c:253:32
-	ldr	r1, [sp]
-	.loc	2 253 17 is_stmt 0              @ rt-thread/src/idle.c:253:17
-	movw	r0, :lower16:idle_hook_list
-	movt	r0, :upper16:idle_hook_list
-	ldr.w	r0, [r0, r1, lsl #2]
+@ %bb.2:                                @   in Loop: Header=BB6_1 Depth=1
+	@DEBUG_VALUE: i <- $r5
+	.loc	2 253 17 is_stmt 1              @ rt-thread/src/idle.c:253:17
 	blx	r0
-	.loc	2 254 13 is_stmt 1              @ rt-thread/src/idle.c:254:13
-	b	.LBB6_5
-.Ltmp63:
-.LBB6_5:                                @   in Loop: Header=BB6_2 Depth=2
-	.loc	2 255 9                         @ rt-thread/src/idle.c:255:9
-	b	.LBB6_6
-.Ltmp64:
-.LBB6_6:                                @   in Loop: Header=BB6_2 Depth=2
+.Ltmp62:
+.LBB6_3:                                @   in Loop: Header=BB6_1 Depth=1
+	@DEBUG_VALUE: i <- $r5
 	.loc	2 249 50                        @ rt-thread/src/idle.c:249:50
-	ldr	r0, [sp]
-	adds	r0, #1
-	str	r0, [sp]
+	adds	r5, #1
+.Ltmp63:
+	@DEBUG_VALUE: i <- $r5
 	.loc	2 249 9 is_stmt 0               @ rt-thread/src/idle.c:249:9
-	b	.LBB6_2
-.Ltmp65:
-.LBB6_7:                                @   in Loop: Header=BB6_1 Depth=1
+	cmp	r5, #4
+	bne	.LBB6_1
+.Ltmp64:
+@ %bb.4:                                @   in Loop: Header=BB6_1 Depth=1
+	@DEBUG_VALUE: i <- $r5
 	.loc	2 258 9 is_stmt 1               @ rt-thread/src/idle.c:258:9
 	bl	rt_thread_idle_excute
-.Ltmp66:
-	.loc	2 244 5                         @ rt-thread/src/idle.c:244:5
+	movs	r5, #0
+.Ltmp65:
+	.loc	2 0 9 is_stmt 0                 @ rt-thread/src/idle.c:0:9
 	b	.LBB6_1
-.Ltmp67:
+.Ltmp66:
 .Lfunc_end6:
 	.size	rt_thread_idle_entry, .Lfunc_end6-rt_thread_idle_entry
 	.cfi_endproc
@@ -701,27 +595,16 @@ rt_thread_idle_entry:
 	.thumb_func
 rt_thread_idle_gethandler:
 .Lfunc_begin7:
-	.loc	2 303 0                         @ rt-thread/src/idle.c:303:0
+	.loc	2 303 0 is_stmt 1               @ rt-thread/src/idle.c:303:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#4
-	sub	sp, #4
-	.cfi_def_cfa_offset 4
-	movs	r0, #0
-.Ltmp68:
-	.loc	2 307 18 prologue_end           @ rt-thread/src/idle.c:307:18
-	str	r0, [sp]
-	.loc	2 310 32                        @ rt-thread/src/idle.c:310:32
-	ldr	r1, [sp]
-	.loc	2 310 27 is_stmt 0              @ rt-thread/src/idle.c:310:27
+	@DEBUG_VALUE: rt_thread_idle_gethandler:id <- 0
+	.loc	2 310 5 prologue_end            @ rt-thread/src/idle.c:310:5
 	movw	r0, :lower16:idle
 	movt	r0, :upper16:idle
-	add.w	r0, r0, r1, lsl #7
-	.loc	2 310 5                         @ rt-thread/src/idle.c:310:5
-	add	sp, #4
 	bx	lr
-.Ltmp69:
+.Ltmp67:
 .Lfunc_end7:
 	.size	rt_thread_idle_gethandler, .Lfunc_end7-rt_thread_idle_gethandler
 	.cfi_endproc
@@ -734,22 +617,6 @@ rt_thread_idle_gethandler:
 idle_hook_list:
 	.zero	16
 	.size	idle_hook_list, 16
-
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	"0"
-	.size	.L.str, 2
-
-	.type	.L__FUNCTION__.rt_thread_idle_excute,%object @ @__FUNCTION__.rt_thread_idle_excute
-.L__FUNCTION__.rt_thread_idle_excute:
-	.asciz	"rt_thread_idle_excute"
-	.size	.L__FUNCTION__.rt_thread_idle_excute, 22
-
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"tidle%d"
-	.size	.L.str.1, 8
 
 	.type	idle,%object                    @ @idle
 	.section	.bss.idle,"aw",%nobits
@@ -765,6 +632,207 @@ rt_thread_stack:
 	.zero	512
 	.size	rt_thread_stack, 512
 
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp0-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp8-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp9-.Lfunc_begin0
+	.long	.Ltmp10-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp10-.Lfunc_begin0
+	.short	11                              @ Loc expr size
+	.byte	16                              @ DW_OP_constu
+	.byte	253                             @ 18446744073709551613
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	1                               @ 
+	.long	.Ltmp10-.Lfunc_begin0
+	.long	.Ltmp12-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp6-.Lfunc_begin0
+	.long	.Ltmp9-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp11-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp13-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp13-.Lfunc_begin1
+	.long	.Ltmp21-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp22-.Lfunc_begin1
+	.long	.Ltmp23-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp13-.Lfunc_begin1
+	.long	.Ltmp24-.Lfunc_begin1
+	.short	11                              @ Loc expr size
+	.byte	16                              @ DW_OP_constu
+	.byte	250                             @ 18446744073709551610
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	255                             @ 
+	.byte	1                               @ 
+	.long	.Ltmp24-.Lfunc_begin1
+	.long	.Ltmp26-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp15-.Lfunc_begin1
+	.long	.Ltmp16-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp16-.Lfunc_begin1
+	.long	.Ltmp17-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp19-.Lfunc_begin1
+	.long	.Ltmp22-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp15-.Lfunc_begin1
+	.long	.Ltmp25-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp29-.Lfunc_begin2
+	.long	.Ltmp36-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp34-.Lfunc_begin2
+	.long	.Ltmp46-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp47-.Lfunc_begin2
+	.long	.Ltmp50-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp37-.Lfunc_begin2
+	.long	.Ltmp46-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp47-.Lfunc_begin2
+	.long	.Ltmp48-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp51-.Lfunc_begin3
+	.long	.Ltmp52-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp59-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp60-.Lfunc_begin6
+	.long	.Ltmp61-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp59-.Lfunc_begin6
+	.long	.Ltmp65-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -992,7 +1060,7 @@ rt_thread_stack:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1007,7 +1075,7 @@ rt_thread_stack:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1042,13 +1110,20 @@ rt_thread_stack:
 	.byte	24                              @ Abbreviation Code
 	.byte	11                              @ DW_TAG_lexical_block
 	.byte	1                               @ DW_CHILDREN_yes
+	.byte	85                              @ DW_AT_ranges
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	25                              @ Abbreviation Code
+	.byte	11                              @ DW_TAG_lexical_block
+	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
 	.byte	1                               @ DW_FORM_addr
 	.byte	18                              @ DW_AT_high_pc
 	.byte	1                               @ DW_FORM_addr
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	25                              @ Abbreviation Code
+	.byte	26                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1069,25 +1144,6 @@ rt_thread_stack:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	26                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	1                               @ DW_CHILDREN_yes
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	64                              @ DW_AT_frame_base
-	.byte	10                              @ DW_FORM_block1
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	11                              @ DW_FORM_data1
-	.byte	39                              @ DW_AT_prototyped
-	.byte	12                              @ DW_FORM_flag
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
 	.byte	27                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
@@ -1102,15 +1158,13 @@ rt_thread_stack:
 	.byte	58                              @ DW_AT_decl_file
 	.byte	11                              @ DW_FORM_data1
 	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_FORM_data2
+	.byte	11                              @ DW_FORM_data1
 	.byte	39                              @ DW_AT_prototyped
-	.byte	12                              @ DW_FORM_flag
-	.byte	63                              @ DW_AT_external
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	28                              @ Abbreviation Code
-	.byte	52                              @ DW_TAG_variable
+	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
 	.byte	10                              @ DW_FORM_block1
@@ -1119,7 +1173,7 @@ rt_thread_stack:
 	.byte	58                              @ DW_AT_decl_file
 	.byte	11                              @ DW_FORM_data1
 	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_FORM_data2
+	.byte	11                              @ DW_FORM_data1
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
@@ -1141,10 +1195,74 @@ rt_thread_stack:
 	.byte	5                               @ DW_FORM_data2
 	.byte	39                              @ DW_AT_prototyped
 	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	30                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	31                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	32                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	63                              @ DW_AT_external
 	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	33                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	28                              @ DW_AT_const_value
+	.byte	13                              @ DW_FORM_sdata
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	0                               @ EOM(3)
@@ -1155,14 +1273,14 @@ rt_thread_stack:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x52d DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x531 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
 	.long	.Lline_table_start0             @ DW_AT_stmt_list
 	.long	.Linfo_string2                  @ DW_AT_comp_dir
 	.long	0                               @ DW_AT_low_pc
-	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.long	.Ldebug_ranges1                 @ DW_AT_ranges
 	.byte	2                               @ Abbrev [2] 0x26:0x11 DW_TAG_variable
 	.long	.Linfo_string3                  @ DW_AT_name
 	.long	55                              @ DW_AT_type
@@ -1551,7 +1669,7 @@ rt_thread_stack:
 	.long	847                             @ DW_AT_type
 	.byte	19                              @ Abbrev [19] 0x34f:0x5 DW_TAG_volatile_type
 	.long	407                             @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x354:0x50 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x354:0x54 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1562,40 +1680,32 @@ rt_thread_stack:
 	.byte	1                               @ DW_AT_prototyped
 	.long	479                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	21                              @ Abbrev [21] 0x36b:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	21                              @ Abbrev [21] 0x36b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string63                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	72                              @ DW_AT_decl_line
 	.long	796                             @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x379:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	22                              @ Abbrev [22] 0x37a:0xf DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string64                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	74                              @ DW_AT_decl_line
-	.long	1319                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x387:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string66                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	75                              @ DW_AT_decl_line
-	.long	490                             @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x395:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	76                              @ DW_AT_decl_line
 	.long	479                             @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x389:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
+	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	74                              @ DW_AT_decl_line
+	.long	1323                            @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x398:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	75                              @ DW_AT_decl_line
+	.long	490                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	20                              @ Abbrev [20] 0x3a4:0x50 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x3a8:0x54 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1606,40 +1716,32 @@ rt_thread_stack:
 	.byte	1                               @ DW_AT_prototyped
 	.long	479                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	21                              @ Abbrev [21] 0x3bb:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	21                              @ Abbrev [21] 0x3bf:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string63                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	104                             @ DW_AT_decl_line
 	.long	796                             @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x3c9:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	22                              @ Abbrev [22] 0x3ce:0xf DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string64                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	106                             @ DW_AT_decl_line
-	.long	1319                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x3d7:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string66                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	107                             @ DW_AT_decl_line
-	.long	490                             @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x3e5:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	108                             @ DW_AT_decl_line
 	.long	479                             @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x3dd:0xf DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
+	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	106                             @ DW_AT_decl_line
+	.long	1323                            @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x3ec:0xf DW_TAG_variable
+	.long	.Ldebug_loc7                    @ DW_AT_location
+	.long	.Linfo_string67                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	107                             @ DW_AT_decl_line
+	.long	490                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	23                              @ Abbrev [23] 0x3f4:0x52 DW_TAG_subprogram
+	.byte	23                              @ Abbrev [23] 0x3fc:0x51 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1649,40 +1751,33 @@ rt_thread_stack:
 	.byte	149                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	24                              @ Abbrev [24] 0x407:0x3e DW_TAG_lexical_block
-	.long	.Ltmp23                         @ DW_AT_low_pc
-	.long	.Ltmp43                         @ DW_AT_high_pc
-	.byte	22                              @ Abbrev [22] 0x410:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	24                              @ Abbrev [24] 0x40f:0x3d DW_TAG_lexical_block
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	22                              @ Abbrev [22] 0x414:0xf DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	155                             @ DW_AT_decl_line
 	.long	490                             @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x41e:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	22                              @ Abbrev [22] 0x423:0xf DW_TAG_variable
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	156                             @ DW_AT_decl_line
 	.long	825                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x42c:0x18 DW_TAG_lexical_block
-	.long	.Ltmp24                         @ DW_AT_low_pc
-	.long	.Ltmp30                         @ DW_AT_high_pc
-	.byte	22                              @ Abbrev [22] 0x435:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string66                 @ DW_AT_name
+	.byte	25                              @ Abbrev [25] 0x432:0x19 DW_TAG_lexical_block
+	.long	.Ltmp28                         @ DW_AT_low_pc
+	.long	.Ltmp33                         @ DW_AT_high_pc
+	.byte	22                              @ Abbrev [22] 0x43b:0xf DW_TAG_variable
+	.long	.Ldebug_loc8                    @ DW_AT_location
+	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	160                             @ DW_AT_decl_line
 	.long	490                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x446:0x25 DW_TAG_subprogram
+	.byte	26                              @ Abbrev [26] 0x44d:0x26 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1691,17 +1786,15 @@ rt_thread_stack:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	131                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1312                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x45c:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1316                            @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x463:0xf DW_TAG_variable
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string70                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	139                             @ DW_AT_decl_line
 	.long	837                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	26                              @ Abbrev [26] 0x46b:0x21 DW_TAG_subprogram
+	.byte	27                              @ Abbrev [27] 0x473:0x20 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1710,16 +1803,15 @@ rt_thread_stack:
 	.byte	3                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	21                              @ Abbrev [21] 0x47d:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	28                              @ Abbrev [28] 0x485:0xd DW_TAG_formal_parameter
+	.byte	1                               @ DW_AT_location
+	.byte	80
 	.long	.Linfo_string71                 @ DW_AT_name
 	.byte	3                               @ DW_AT_decl_file
 	.byte	86                              @ DW_AT_decl_line
-	.long	1330                            @ DW_AT_type
+	.long	1334                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	27                              @ Abbrev [27] 0x48c:0x33 DW_TAG_subprogram
+	.byte	29                              @ Abbrev [29] 0x493:0x30 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1729,24 +1821,21 @@ rt_thread_stack:
 	.short	272                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	28                              @ Abbrev [28] 0x4a0:0xf DW_TAG_variable
+	.byte	30                              @ Abbrev [30] 0x4a7:0xf DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	36
-	.long	.Linfo_string64                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.short	274                             @ DW_AT_decl_line
-	.long	508                             @ DW_AT_type
-	.byte	28                              @ Abbrev [28] 0x4af:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
+	.byte	16
 	.long	.Linfo_string72                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	275                             @ DW_AT_decl_line
 	.long	363                             @ DW_AT_type
+	.byte	31                              @ Abbrev [31] 0x4b6:0xc DW_TAG_variable
+	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.short	274                             @ DW_AT_decl_line
+	.long	508                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	26                              @ Abbrev [26] 0x4bf:0x39 DW_TAG_subprogram
+	.byte	27                              @ Abbrev [27] 0x4c3:0x3b DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1755,28 +1844,24 @@ rt_thread_stack:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	232                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	21                              @ Abbrev [21] 0x4d1:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	21                              @ Abbrev [21] 0x4d5:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc12                   @ DW_AT_location
 	.long	.Linfo_string19                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	232                             @ DW_AT_decl_line
 	.long	460                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x4df:0x18 DW_TAG_lexical_block
-	.long	.Ltmp57                         @ DW_AT_low_pc
+	.byte	25                              @ Abbrev [25] 0x4e4:0x19 DW_TAG_lexical_block
+	.long	.Ltmp59                         @ DW_AT_low_pc
 	.long	.Ltmp66                         @ DW_AT_high_pc
-	.byte	22                              @ Abbrev [22] 0x4e8:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string64                 @ DW_AT_name
+	.byte	22                              @ Abbrev [22] 0x4ed:0xf DW_TAG_variable
+	.long	.Ldebug_loc13                   @ DW_AT_location
+	.long	.Linfo_string65                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	247                             @ DW_AT_decl_line
-	.long	1319                            @ DW_AT_type
+	.long	1323                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	29                              @ Abbrev [29] 0x4f8:0x28 DW_TAG_subprogram
+	.byte	32                              @ Abbrev [32] 0x4fe:0x26 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1787,30 +1872,35 @@ rt_thread_stack:
 	.byte	1                               @ DW_AT_prototyped
 	.long	825                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	28                              @ Abbrev [28] 0x510:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	33                              @ Abbrev [33] 0x516:0xd DW_TAG_variable
+	.byte	0                               @ DW_AT_const_value
 	.long	.Linfo_string73                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	307                             @ DW_AT_decl_line
-	.long	1312                            @ DW_AT_type
+	.long	1316                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	7                               @ Abbrev [7] 0x520:0x7 DW_TAG_base_type
+	.byte	7                               @ Abbrev [7] 0x524:0x7 DW_TAG_base_type
 	.long	.Linfo_string58                 @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	9                               @ Abbrev [9] 0x527:0xb DW_TAG_typedef
+	.byte	9                               @ Abbrev [9] 0x52b:0xb DW_TAG_typedef
 	.long	508                             @ DW_AT_type
-	.long	.Linfo_string65                 @ DW_AT_name
+	.long	.Linfo_string66                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	88                              @ DW_AT_decl_line
-	.byte	11                              @ Abbrev [11] 0x532:0x5 DW_TAG_pointer_type
+	.byte	11                              @ Abbrev [11] 0x536:0x5 DW_TAG_pointer_type
 	.long	407                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
 	.section	.debug_ranges,"",%progbits
 .Ldebug_ranges0:
+	.long	.Ltmp28
+	.long	.Ltmp45
+	.long	.Ltmp47
+	.long	.Ltmp49
+	.long	0
+	.long	0
+.Ldebug_ranges1:
 	.long	.Lfunc_begin0
 	.long	.Lfunc_end0
 	.long	.Lfunc_begin1
@@ -1959,13 +2049,13 @@ rt_thread_stack:
 .Linfo_string63:
 	.asciz	"hook"                          @ string offset=793
 .Linfo_string64:
-	.asciz	"i"                             @ string offset=798
+	.asciz	"ret"                           @ string offset=798
 .Linfo_string65:
-	.asciz	"rt_size_t"                     @ string offset=800
+	.asciz	"i"                             @ string offset=802
 .Linfo_string66:
-	.asciz	"level"                         @ string offset=810
+	.asciz	"rt_size_t"                     @ string offset=804
 .Linfo_string67:
-	.asciz	"ret"                           @ string offset=816
+	.asciz	"level"                         @ string offset=814
 .Linfo_string68:
 	.asciz	"lock"                          @ string offset=820
 .Linfo_string69:
@@ -1980,7 +2070,7 @@ rt_thread_stack:
 	.asciz	"id"                            @ string offset=847
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

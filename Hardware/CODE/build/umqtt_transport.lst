@@ -37,239 +37,232 @@ umqtt_trans_connect:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- $r0
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r1
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	.pad	#8
+	sub	sp, #8
 	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-	movs	r0, #0
+	mov	r4, r1
 .Ltmp0:
-	.loc	2 179 9 prologue_end            @ packages/umqtt-latest/src/trans/umqtt_transport.c:179:9
-	str	r0, [sp, #4]
-	.loc	2 180 22                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:180:22
-	str	r0, [sp]
-	.loc	2 182 6                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:182:6
-	ldr	r1, [sp, #8]
-	mov.w	r0, #-1
-	.loc	2 182 11 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:182:11
-	str	r0, [r1]
-	.loc	2 183 30 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:183:30
-	ldr	r0, [sp, #12]
-	mov	r1, sp
-	.loc	2 183 12 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:183:12
-	bl	umqtt_resolve_uri
-	.loc	2 183 10                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:183:10
-	str	r0, [sp, #4]
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	movs	r1, #0
 .Ltmp1:
-	.loc	2 184 10 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:184:10
-	ldr	r0, [sp, #4]
-	.loc	2 184 20 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:184:20
-	cmp	r0, #0
-	bmi	.LBB0_2
-	b	.LBB0_1
-.LBB0_1:
-	.loc	2 184 24                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:184:24
-	ldr	r0, [sp]
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- 0
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- 0
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- $r0
+	.loc	2 180 22 prologue_end           @ packages/umqtt-latest/src/trans/umqtt_transport.c:180:22
+	str	r1, [sp, #4]
+	mov.w	r1, #-1
+	.loc	2 182 11                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:182:11
+	str	r1, [r4]
 .Ltmp2:
-	.loc	2 184 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:184:9
-	cbnz	r0, .LBB0_5
-	b	.LBB0_2
-.LBB0_2:
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- [DW_OP_plus_uconst 4, DW_OP_deref] $sp
+	.loc	2 0 11 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:11
+	add	r1, sp, #4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- $r0
+	.loc	2 183 12 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:183:12
+	bl	umqtt_resolve_uri
 .Ltmp3:
-	.loc	2 186 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:186:9
-	b	.LBB0_3
-.LBB0_3:
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- undef
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r0
+	.loc	2 184 20                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:184:20
+	cmp	r0, #0
+	bmi	.LBB0_6
 .Ltmp4:
-	.loc	2 186 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:186:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	bl	rt_kprintf
-	b	.LBB0_4
+@ %bb.1:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r0
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 0 20 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:20
+	ldr	r0, [sp, #4]
 .Ltmp5:
-.LBB0_4:
-	.loc	2 0 9                           @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:9
-	mov.w	r0, #-1
-	.loc	2 187 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:187:14
-	str	r0, [sp, #4]
-	.loc	2 188 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:188:9
-	b	.LBB0_18
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- $r0
+	.loc	2 184 20                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:184:20
+	cbz	r0, .LBB0_6
 .Ltmp6:
-.LBB0_5:
-	.loc	2 191 18                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:18
-	ldr	r0, [sp]
+@ %bb.2:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- $r0
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 191 18 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:18
 	ldr	r0, [r0, #4]
+.Ltmp7:
 	movs	r1, #1
 	movs	r2, #0
 	bl	sal_socket
-	.loc	2 191 11 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:11
-	ldr	r1, [sp, #8]
-	.loc	2 191 16                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:16
-	str	r0, [r1]
-.Ltmp7:
-	.loc	2 191 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:9
-	cmp.w	r0, #-1
-	bgt	.LBB0_9
-	b	.LBB0_6
-.LBB0_6:
 .Ltmp8:
-	.loc	2 193 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:193:9
-	b	.LBB0_7
-.LBB0_7:
+	.loc	2 191 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:9
+	cmp.w	r0, #-1
 .Ltmp9:
-	.loc	2 193 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:193:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	bl	rt_kprintf
-	b	.LBB0_8
+	.loc	2 191 16                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:16
+	str	r0, [r4]
 .Ltmp10:
-.LBB0_8:
-	.loc	2 0 9                           @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:9
-	mov.w	r0, #-1
-	.loc	2 194 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:194:14
-	str	r0, [sp, #4]
-	.loc	2 195 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:195:9
-	b	.LBB0_18
+	.loc	2 191 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:191:9
+	ble	.LBB0_7
 .Ltmp11:
-.LBB0_9:
-	.loc	2 198 12                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:198:12
-	ldr	r0, [sp, #8]
-	ldr	r0, [r0]
-	movw	r1, #26238
-	movt	r1, #16388
-	movs	r2, #0
-	bl	sal_ioctlsocket
-	.loc	2 198 10 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:198:10
-	str	r0, [sp, #4]
-.Ltmp12:
-	.loc	2 199 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:199:9
-	ldr	r0, [sp, #4]
-.Ltmp13:
-	.loc	2 199 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:199:9
-	cmp.w	r0, #-1
-	bgt	.LBB0_13
-	b	.LBB0_10
-.LBB0_10:
-.Ltmp14:
-	.loc	2 201 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:201:9
-	b	.LBB0_11
-.LBB0_11:
-.Ltmp15:
-	.loc	2 201 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:201:9
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.2
-	movt	r0, :upper16:.L.str.2
-	bl	rt_kprintf
-	b	.LBB0_12
-.Ltmp16:
-.LBB0_12:
+@ %bb.3:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 0 9                           @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:9
-	mov.w	r0, #-1
-	.loc	2 202 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:202:14
-	str	r0, [sp, #4]
-	.loc	2 203 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:203:9
-	b	.LBB0_18
-.Ltmp17:
-.LBB0_13:
-	.loc	2 206 17                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:206:17
-	ldr	r0, [sp, #8]
-	ldr	r0, [r0]
-	ldr	r1, [sp]
-	ldr	r2, [r1, #16]
-	ldr	r1, [r1, #20]
-	bl	sal_connect
-	.loc	2 206 15 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:206:15
-	str	r0, [sp, #4]
-.Ltmp18:
-	.loc	2 206 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:206:9
+	movw	r1, #26238
+	.loc	2 198 12 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:198:12
+	movs	r2, #0
+	movt	r1, #16388
+	bl	sal_ioctlsocket
+.Ltmp12:
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r0
+	.loc	2 199 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:199:9
 	cmp.w	r0, #-1
-	bgt	.LBB0_17
-	b	.LBB0_14
-.LBB0_14:
-.Ltmp19:
+	ble	.LBB0_8
+.Ltmp13:
+@ %bb.4:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r0
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 206 17                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:206:17
+	ldr	r1, [sp, #4]
+.Ltmp14:
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- $r1
+	ldr	r0, [r4]
+.Ltmp15:
+	ldrd	r2, r1, [r1, #16]
+.Ltmp16:
+	bl	sal_connect
+	mov	r5, r0
+.Ltmp17:
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r5
+	.loc	2 206 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:206:9
+	cmp.w	r0, #-1
+	bgt	.LBB0_10
+.Ltmp18:
+@ %bb.5:
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r5
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 208 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:208:9
-	b	.LBB0_15
-.LBB0_15:
-.Ltmp20:
-	.loc	2 208 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:208:9
 	movw	r0, :lower16:.L.str
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.5
-	movt	r0, :upper16:.L.str.5
+	adr	r0, .LCPI0_0
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB0_16
-.Ltmp21:
-.LBB0_16:
-	.loc	2 209 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:209:9
-	ldr	r0, [sp, #8]
-	ldr	r0, [r0]
+.Ltmp19:
+	.loc	2 209 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:209:9
+	ldr	r0, [r4]
 	bl	sal_closesocket
-	.loc	2 210 10                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:210:10
-	ldr	r1, [sp, #8]
-	mov.w	r0, #-1
-	.loc	2 210 15 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:210:15
-	str	r0, [r1]
-	.loc	2 211 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:211:14
-	str	r0, [sp, #4]
-	.loc	2 212 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:212:9
-	b	.LBB0_18
+	mov.w	r5, #-1
+.Ltmp20:
+	.loc	2 210 15                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:210:15
+	str	r5, [r4]
+.Ltmp21:
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- -1
+	.loc	2 0 15 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:15
+	b	.LBB0_10
 .Ltmp22:
-.LBB0_17:
-	.loc	2 206 76                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:206:76
-	b	.LBB0_18
+.LBB0_6:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 186 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:186:9
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	bl	rt_kprintf
+	adr	r0, .LCPI0_3
+	b	.LBB0_9
 .Ltmp23:
-.LBB0_18:
-	@DEBUG_LABEL: umqtt_trans_connect:exit
-	.loc	2 216 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:216:9
-	ldr	r0, [sp]
+.LBB0_7:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 193 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:193:9
+	movw	r0, :lower16:.L.str
+	movt	r0, :upper16:.L.str
+	bl	rt_kprintf
+	adr	r0, .LCPI0_2
+	b	.LBB0_9
 .Ltmp24:
-	.loc	2 216 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:216:9
-	cbz	r0, .LBB0_20
-	b	.LBB0_19
-.LBB0_19:
+.LBB0_8:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r0
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 201 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:201:9
+	movw	r0, :lower16:.L.str
 .Ltmp25:
-	.loc	2 217 22 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:217:22
-	ldr	r0, [sp]
-	.loc	2 217 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:217:9
-	bl	freeaddrinfo
-	movs	r0, #0
-	.loc	2 218 18 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:218:18
-	str	r0, [sp]
-	.loc	2 219 5                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:219:5
-	b	.LBB0_20
+	movt	r0, :upper16:.L.str
+	bl	rt_kprintf
+	adr	r0, .LCPI0_1
 .Ltmp26:
-.LBB0_20:
-	.loc	2 220 12                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:220:12
-	ldr	r0, [sp, #4]
-	.loc	2 220 5 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:220:5
-	add	sp, #16
-	pop	{r7, pc}
+.LBB0_9:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 0 0 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:0
+	bl	rt_kprintf
+	movw	r0, :lower16:.L.str.2
+	movt	r0, :upper16:.L.str.2
+	bl	rt_kprintf
+	mov.w	r5, #-1
 .Ltmp27:
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- -1
+.LBB0_10:
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r5
+	@DEBUG_LABEL: umqtt_trans_connect:exit
+	.loc	2 216 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:216:9
+	ldr	r0, [sp, #4]
+.Ltmp28:
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- $r0
+	.loc	2 216 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:216:9
+	cbz	r0, .LBB0_12
+.Ltmp29:
+@ %bb.11:
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r5
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- $r0
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 217 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:217:9
+	bl	freeaddrinfo
+.Ltmp30:
+	.loc	2 0 9 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:9
+	movs	r0, #0
+.Ltmp31:
+	@DEBUG_VALUE: umqtt_trans_connect:addr_res <- 0
+	.loc	2 218 18 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:218:18
+	str	r0, [sp, #4]
+.Ltmp32:
+.LBB0_12:
+	@DEBUG_VALUE: umqtt_trans_connect:_ret <- $r5
+	@DEBUG_VALUE: umqtt_trans_connect:sock <- $r4
+	@DEBUG_VALUE: umqtt_trans_connect:uri <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 220 5                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:220:5
+	mov	r0, r5
+	add	sp, #8
+	pop	{r4, r5, r7, pc}
+.Ltmp33:
+	.p2align	2
+@ %bb.13:
+	.loc	2 0 5 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:5
+.LCPI0_0:
+.L.str.5:
+	.asciz	" connect err!\000\000"
+.LCPI0_1:
+.L.str.4:
+	.asciz	" iocontrol socket error!\000\000\000"
+.LCPI0_2:
+.L.str.3:
+	.asciz	"create socket error!\000\000\000"
+.LCPI0_3:
+.L.str.1:
+	.asciz	"resolve uri err"
 .Lfunc_end0:
 	.size	umqtt_trans_connect, .Lfunc_end0-umqtt_trans_connect
 	.cfi_endproc
@@ -287,481 +280,432 @@ umqtt_resolve_uri:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r1
+	.save	{r4, r5, r6, r7, r8, r9, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, lr}
+	.cfi_def_cfa_offset 28
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#104
-	sub	sp, #104
-	.cfi_def_cfa_offset 112
-	str	r0, [sp, #100]
-	str	r1, [sp, #96]
-	movs	r0, #0
-.Ltmp28:
-	.loc	2 55 9 prologue_end             @ packages/umqtt-latest/src/trans/umqtt_transport.c:55:9
-	str	r0, [sp, #16]                   @ 4-byte Spill
-	str	r0, [sp, #92]
-	.loc	2 56 9                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:56:9
-	str	r0, [sp, #88]
-	.loc	2 56 22 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:56:22
-	str	r0, [sp, #84]
-	.loc	2 56 41                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:56:41
-	str	r0, [sp, #80]
-	.loc	2 58 10 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:58:10
-	strh.w	r0, [sp, #72]
-	str	r0, [sp, #68]
-	.loc	2 63 17                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:63:17
-	str	r0, [sp, #28]
-	.loc	2 64 11                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:64:11
-	str	r0, [sp, #24]
-	.loc	2 65 23                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:65:23
-	ldr	r0, [sp, #100]
-	.loc	2 65 17 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:65:17
-	str	r0, [sp, #20]
-	.loc	2 66 22 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:66:22
-	ldr	r0, [sp, #20]
-	.loc	2 66 15 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:66:15
-	bl	strlen
-	.loc	2 66 13                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:66:13
-	str	r0, [sp, #88]
-.Ltmp29:
-	.loc	2 69 17 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:69:17
-	ldr	r0, [sp, #20]
-	.loc	2 69 9 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:69:9
-	movw	r1, :lower16:.L.str.6
-	movt	r1, :upper16:.L.str.6
-	movs	r2, #6
-	bl	strncmp
-.Ltmp30:
-	.loc	2 69 9                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:69:9
-	cbnz	r0, .LBB1_2
-	b	.LBB1_1
-.LBB1_1:
-.Ltmp31:
-	.loc	2 71 21 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:71:21
-	ldr	r0, [sp, #20]
-	.loc	2 71 25 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:71:25
-	adds	r0, #6
-	.loc	2 71 19                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:71:19
-	str	r0, [sp, #28]
-	.loc	2 72 5 is_stmt 1                @ packages/umqtt-latest/src/trans/umqtt_transport.c:72:5
-	b	.LBB1_6
-.Ltmp32:
-.LBB1_2:
-	.loc	2 73 22                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:73:22
-	ldr	r0, [sp, #20]
-	.loc	2 73 14 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:73:14
-	movw	r1, :lower16:.L.str.7
-	movt	r1, :upper16:.L.str.7
-	movs	r2, #6
-	bl	strncmp
-.Ltmp33:
-	.loc	2 73 14                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:73:14
-	cbnz	r0, .LBB1_4
-	b	.LBB1_3
-.LBB1_3:
+	.cfi_offset r9, -8
+	.cfi_offset r8, -12
+	.cfi_offset r7, -16
+	.cfi_offset r6, -20
+	.cfi_offset r5, -24
+	.cfi_offset r4, -28
+	.pad	#44
+	sub	sp, #44
+	.cfi_def_cfa_offset 72
+	movs	r2, #0
 .Ltmp34:
-	.loc	2 75 21 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:75:21
-	ldr	r0, [sp, #20]
-	.loc	2 75 25 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:75:25
-	adds	r0, #6
-	.loc	2 75 19                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:75:19
-	str	r0, [sp, #28]
-	.loc	2 77 5 is_stmt 1                @ packages/umqtt-latest/src/trans/umqtt_transport.c:77:5
-	b	.LBB1_5
+	.loc	2 58 10 prologue_end            @ packages/umqtt-latest/src/trans/umqtt_transport.c:58:10
+	strh.w	r2, [sp, #40]
+	mov	r8, r1
 .Ltmp35:
-.LBB1_4:
-	.loc	2 0 5 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:5
-	mvn	r0, #7
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	.loc	2 0 10 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:10
+	mov	r5, r0
 .Ltmp36:
-	.loc	2 80 12 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:80:12
-	str	r0, [sp, #92]
-	.loc	2 81 9                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:81:9
-	b	.LBB1_32
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r5
+	.loc	2 58 10                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:58:10
+	str	r2, [sp, #36]
 .Ltmp37:
-.LBB1_5:
-	.loc	2 0 9 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:9
-	b	.LBB1_6
-.LBB1_6:
+	@DEBUG_VALUE: umqtt_resolve_uri:uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- 0
+	.loc	2 66 15 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:66:15
+	bl	strlen
+	mov	r4, r0
 .Ltmp38:
-	.loc	2 84 9 is_stmt 1                @ packages/umqtt-latest/src/trans/umqtt_transport.c:84:9
-	ldr	r0, [sp, #28]
-	ldrsb.w	r0, [r0]
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	.loc	2 69 9                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:69:9
+	adr	r1, .LCPI1_0
+	movs	r2, #6
+	mov	r0, r5
+	bl	strncmp
 .Ltmp39:
+	.loc	2 69 9 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:69:9
+	cbz	r0, .LBB1_2
+.Ltmp40:
+@ %bb.1:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 73 14 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:73:14
+	adr	r1, .LCPI1_1
+	movs	r2, #6
+	mov	r0, r5
+	bl	strncmp
+.Ltmp41:
+	.loc	2 73 14 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:73:14
+	cbnz	r0, .LBB1_12
+.Ltmp42:
+.LBB1_2:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 84 9 is_stmt 1                @ packages/umqtt-latest/src/trans/umqtt_transport.c:84:9
+	mov	r7, r5
+	ldrb	r0, [r7, #6]!
+.Ltmp43:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
 	.loc	2 84 9 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:84:9
 	cmp	r0, #91
-	bne	.LBB1_16
-	b	.LBB1_7
-.LBB1_7:
-.Ltmp40:
-	.loc	2 86 19 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:86:19
-	ldr	r0, [sp, #28]
-	adds	r0, #1
-	str	r0, [sp, #28]
-	.loc	2 87 22                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:87:22
-	ldr	r0, [sp, #28]
-	.loc	2 87 15 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:87:15
-	movw	r1, :lower16:.L.str.8
-	movt	r1, :upper16:.L.str.8
-	bl	strstr
-	.loc	2 87 13                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:87:13
-	str	r0, [sp, #76]
-.Ltmp41:
-	.loc	2 88 14 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:88:14
-	ldr	r0, [sp, #76]
-.Ltmp42:
-	.loc	2 88 13 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:88:13
-	cbnz	r0, .LBB1_9
-	b	.LBB1_8
-.LBB1_8:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mvn	r0, #7
-.Ltmp43:
-	.loc	2 89 16 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:89:16
-	str	r0, [sp, #92]
-	.loc	2 90 13                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:90:13
-	b	.LBB1_32
+	bne	.LBB1_8
 .Ltmp44:
-.LBB1_9:
-	.loc	2 92 25                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:92:25
-	ldr	r0, [sp, #76]
-	.loc	2 92 31 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:92:31
-	ldr	r1, [sp, #28]
-	.loc	2 92 29                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:92:29
-	subs	r0, r0, r1
-	.loc	2 92 23                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:92:23
-	str	r0, [sp, #84]
+@ %bb.3:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 86 19 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:86:19
+	adds	r7, r5, #7
 .Ltmp45:
-	.loc	2 93 14 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:93:14
-	ldr	r0, [sp, #84]
-	.loc	2 93 33 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:93:33
-	cmp	r0, #1
-	blt	.LBB1_11
-	b	.LBB1_10
-.LBB1_10:
-	.loc	2 93 37                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:93:37
-	ldr	r0, [sp, #84]
-	.loc	2 93 53                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:93:53
-	ldr	r1, [sp, #88]
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	.loc	2 87 15                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:87:15
+	movs	r1, #93
+	mov	r0, r7
+	bl	strchr
 .Ltmp46:
-	.loc	2 93 13                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:93:13
-	cmp	r0, r1
-	ble	.LBB1_12
-	b	.LBB1_11
-.LBB1_11:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mvn	r0, #7
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	.loc	2 88 13                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:88:13
+	cbz	r0, .LBB1_12
 .Ltmp47:
-	.loc	2 94 16 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:94:16
-	str	r0, [sp, #92]
-	.loc	2 95 13                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:95:13
-	b	.LBB1_32
+@ %bb.4:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 92 29                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:92:29
+	sub.w	r9, r0, r7
 .Ltmp48:
-.LBB1_12:
-	.loc	2 98 20                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:98:20
-	ldr	r0, [sp, #88]
-	.loc	2 98 34 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:98:34
-	ldr	r1, [sp, #84]
-	.loc	2 98 32                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:98:32
-	subs	r0, r0, r1
-	.loc	2 98 48                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:98:48
-	subs	r0, #9
-	.loc	2 98 18                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:98:18
-	str	r0, [sp, #80]
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	.loc	2 0 29 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:29
+	mvn	r5, #7
 .Ltmp49:
-	.loc	2 99 14 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:99:14
-	ldr	r0, [sp, #80]
-	.loc	2 99 29 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:99:29
-	cmp	r0, #5
-	bgt	.LBB1_14
-	b	.LBB1_13
-.LBB1_13:
-	.loc	2 99 33                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:99:33
-	ldr	r0, [sp, #80]
+	.loc	2 93 33 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:93:33
+	cmp.w	r9, #1
+	mov.w	r6, #0
+	blt	.LBB1_14
 .Ltmp50:
-	.loc	2 99 13                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:99:13
-	cmp	r0, #0
-	bgt	.LBB1_15
-	b	.LBB1_14
-.LBB1_14:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mvn	r0, #7
+@ %bb.5:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	cmp	r9, r4
+	bgt	.LBB1_14
 .Ltmp51:
-	.loc	2 100 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:100:16
-	str	r0, [sp, #92]
-	.loc	2 101 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:101:13
-	b	.LBB1_32
+@ %bb.6:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 98 32                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:98:32
+	sub.w	r1, r4, r9
 .Ltmp52:
-.LBB1_15:
-	.loc	2 104 27                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:104:27
-	ldr	r0, [sp, #28]
-	.loc	2 104 39 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:104:39
-	ldr	r1, [sp, #84]
-	.loc	2 104 37                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:104:37
-	add	r0, r1
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- [DW_OP_constu 3, DW_OP_minus, DW_OP_stack_value] undef
+	.loc	2 99 29                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:99:29
+	sub.w	r2, r1, #10
+	cmp	r2, #4
+	bhi	.LBB1_12
+.Ltmp53:
+@ %bb.7:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	.loc	2 0 0 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:0
+	subs	r1, #6
+.Ltmp54:
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- [DW_OP_constu 3, DW_OP_minus, DW_OP_stack_value] $r1
+	.loc	2 98 48 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:98:48
+	subs	r4, r1, #3
+.Ltmp55:
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- $r4
 	.loc	2 104 53                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:104:53
 	adds	r1, r0, #2
-	.loc	2 104 58                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:104:58
-	ldr	r2, [sp, #80]
-	add	r0, sp, #68
-	.loc	2 104 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:104:9
-	str	r0, [sp, #12]                   @ 4-byte Spill
-	bl	strncpy
-	ldr	r1, [sp, #12]                   @ 4-byte Reload
-	.loc	2 105 18 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:105:18
-	ldr	r2, [sp, #80]
-	movs	r0, #0
-	.loc	2 105 28 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:105:28
-	strb	r0, [r1, r2]
-	.loc	2 107 5 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:107:5
-	b	.LBB1_25
-.Ltmp53:
-.LBB1_16:
-	.loc	2 110 22                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:110:22
-	ldr	r0, [sp, #28]
-	.loc	2 110 15 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:110:15
-	movw	r1, :lower16:.L.str.9
-	movt	r1, :upper16:.L.str.9
-	bl	strstr
-	.loc	2 110 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:110:13
-	str	r0, [sp, #76]
-.Ltmp54:
-	.loc	2 111 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:111:14
-	ldr	r0, [sp, #76]
-.Ltmp55:
-	.loc	2 111 13 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:111:13
-	cbnz	r0, .LBB1_18
-	b	.LBB1_17
-.LBB1_17:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mvn	r0, #7
+	b	.LBB1_18
 .Ltmp56:
-	.loc	2 113 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:113:16
-	str	r0, [sp, #92]
-	.loc	2 114 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:114:13
-	b	.LBB1_32
+.LBB1_8:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 110 15                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:110:15
+	movs	r1, #58
+	mov	r0, r7
+	bl	strchr
 .Ltmp57:
-.LBB1_18:
-	.loc	2 116 25                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:116:25
-	ldr	r0, [sp, #76]
-	.loc	2 116 31 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:116:31
-	ldr	r1, [sp, #28]
-	.loc	2 116 29                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:116:29
-	subs	r0, r0, r1
-	.loc	2 116 23                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:116:23
-	str	r0, [sp, #84]
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	.loc	2 111 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:111:13
+	cbz	r0, .LBB1_12
 .Ltmp58:
-	.loc	2 117 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:117:14
-	ldr	r0, [sp, #84]
-	.loc	2 117 33 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:117:33
-	cmp	r0, #1
-	blt	.LBB1_20
-	b	.LBB1_19
-.LBB1_19:
-	.loc	2 117 37                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:117:37
-	ldr	r0, [sp, #84]
-	.loc	2 117 53                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:117:53
-	ldr	r1, [sp, #88]
+@ %bb.9:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:umqtt_uri <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 116 29                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:116:29
+	sub.w	r9, r0, r7
 .Ltmp59:
-	.loc	2 117 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:117:13
-	cmp	r0, r1
-	ble	.LBB1_21
-	b	.LBB1_20
-.LBB1_20:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mvn	r0, #7
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	.loc	2 0 29 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:29
+	mvn	r5, #7
 .Ltmp60:
-	.loc	2 119 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:119:16
-	str	r0, [sp, #92]
-	.loc	2 120 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:120:13
-	b	.LBB1_32
+	.loc	2 117 33 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:117:33
+	cmp.w	r9, #1
+	mov.w	r6, #0
+	blt	.LBB1_14
 .Ltmp61:
-.LBB1_21:
-	.loc	2 122 20                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:122:20
-	ldr	r0, [sp, #88]
-	.loc	2 122 34 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:122:34
-	ldr	r1, [sp, #84]
-	.loc	2 122 48                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:122:48
-	mvns	r1, r1
-	add	r0, r1
-	subs	r0, #6
-	.loc	2 122 18                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:122:18
-	str	r0, [sp, #80]
+@ %bb.10:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	cmp	r9, r4
+	bgt	.LBB1_14
 .Ltmp62:
-	.loc	2 123 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:123:14
-	ldr	r0, [sp, #80]
-	.loc	2 123 29 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:123:29
-	cmp	r0, #5
-	bgt	.LBB1_23
-	b	.LBB1_22
-.LBB1_22:
-	.loc	2 123 33                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:123:33
-	ldr	r0, [sp, #80]
+@ %bb.11:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- 0
+	.loc	2 122 48                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:122:48
+	mvn.w	r1, r9
+	.loc	2 122 28 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:122:28
+	add	r1, r4
 .Ltmp63:
-	.loc	2 123 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:123:13
-	cmp	r0, #0
-	bgt	.LBB1_24
-	b	.LBB1_23
-.LBB1_23:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mvn	r0, #7
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- undef
+	.loc	2 123 29 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:123:29
+	subs	r2, r1, #7
+	cmp	r2, #4
+	bls	.LBB1_17
 .Ltmp64:
-	.loc	2 125 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:125:16
-	str	r0, [sp, #92]
-	.loc	2 126 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:126:13
-	b	.LBB1_32
+.LBB1_12:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	.loc	2 0 29 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:29
+	mvn	r5, #7
 .Ltmp65:
-.LBB1_24:
-	.loc	2 129 27                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:129:27
-	ldr	r0, [sp, #28]
-	.loc	2 129 39 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:129:39
-	ldr	r1, [sp, #84]
-	.loc	2 129 37                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:129:37
-	add	r0, r1
-	.loc	2 129 53                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:129:53
-	adds	r1, r0, #1
-	.loc	2 129 58                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:129:58
-	ldr	r2, [sp, #80]
-	add	r0, sp, #68
-	.loc	2 129 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:129:9
-	str	r0, [sp, #8]                    @ 4-byte Spill
-	bl	strncpy
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
-	.loc	2 130 18 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:130:18
-	ldr	r2, [sp, #80]
-	movs	r0, #0
-	.loc	2 130 28 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:130:28
-	strb	r0, [r1, r2]
-	b	.LBB1_25
+.LBB1_13:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	movs	r6, #0
 .Ltmp66:
-.LBB1_25:
-	.loc	2 137 35 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:137:35
-	ldr	r0, [sp, #84]
-	.loc	2 137 49 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:137:49
-	adds	r0, #1
-	.loc	2 137 25                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:137:25
-	bl	rt_malloc
-	.loc	2 137 23                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:137:23
-	str	r0, [sp, #24]
+.LBB1_14:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- $r5
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- $r6
+	@DEBUG_LABEL: umqtt_resolve_uri:exit
+	.loc	2 160 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:160:9
+	cbz	r6, .LBB1_16
 .Ltmp67:
-	.loc	2 139 14 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:139:14
-	ldr	r0, [sp, #24]
+@ %bb.15:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- $r6
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- $r5
+	.loc	2 162 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:162:9
+	mov	r0, r6
+	bl	rt_free
 .Ltmp68:
-	.loc	2 139 13 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:139:13
-	cbnz	r0, .LBB1_27
-	b	.LBB1_26
-.LBB1_26:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mvn	r0, #1
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+.LBB1_16:
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- $r5
+	.loc	2 165 5                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:165:5
+	mov	r0, r5
+	add	sp, #44
+	pop.w	{r4, r5, r6, r7, r8, r9, pc}
 .Ltmp69:
-	.loc	2 141 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:141:16
-	str	r0, [sp, #92]
-	.loc	2 142 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:142:13
-	b	.LBB1_32
+.LBB1_17:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:uri_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	.loc	2 0 0 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:0
+	subs	r4, r1, #6
 .Ltmp70:
-.LBB1_27:
-	.loc	2 145 16                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:145:16
-	ldr	r0, [sp, #24]
-	.loc	2 145 31 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:145:31
-	ldr	r1, [sp, #28]
-	.loc	2 145 42                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:145:42
-	ldr	r2, [sp, #84]
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- $r4
+	.loc	2 129 53 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:129:53
+	adds	r1, r0, #1
+.Ltmp71:
+.LBB1_18:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ptr <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- 0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	.loc	2 0 53 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:53
+	add	r0, sp, #36
+.Ltmp72:
+	mov	r2, r4
+	bl	strncpy
+	movs	r5, #0
+	strb	r5, [r0, r4]
+.Ltmp73:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	.loc	2 137 49 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:137:49
+	add.w	r0, r9, #1
+	.loc	2 137 25 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:137:25
+	bl	rt_malloc
+.Ltmp74:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- $r0
+	.loc	2 139 13 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:139:13
+	cbz	r0, .LBB1_21
+.Ltmp75:
+@ %bb.19:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	.loc	2 145 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:145:9
+	mov	r1, r7
+	mov	r2, r9
+	.loc	2 0 0 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:0
+	mov	r6, r0
+.Ltmp76:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- $r6
 	.loc	2 145 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:145:9
 	bl	__aeabi_memcpy
-	.loc	2 146 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:146:9
-	ldr	r1, [sp, #24]
-	.loc	2 146 23 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:146:23
-	ldr	r2, [sp, #84]
-	movs	r0, #0
+	add	r1, sp, #36
+	add	r2, sp, #4
+	.loc	2 150 15 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:150:15
+	mov	r0, r6
+	mov	r3, r8
 	.loc	2 146 38                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:146:38
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	strb	r0, [r1, r2]
-	.loc	2 148 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:148:9
-	str	r0, [sp, #64]
-	str	r0, [sp, #60]
-	str	r0, [sp, #56]
-	str	r0, [sp, #52]
-	str	r0, [sp, #48]
-	str	r0, [sp, #44]
-	str	r0, [sp, #40]
-	str	r0, [sp, #36]
-	.loc	2 150 27                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:150:27
-	ldr	r0, [sp, #24]
-	.loc	2 150 59 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:150:59
-	ldr	r3, [sp, #96]
-	add	r1, sp, #68
-	add	r2, sp, #36
+	strb.w	r5, [r6, r9]
+	.loc	2 148 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:148:9
+	strd	r5, r5, [sp, #4]
+	strd	r5, r5, [sp, #12]
+	strd	r5, r5, [sp, #20]
+	strd	r5, r5, [sp, #28]
 	.loc	2 150 15                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:150:15
 	bl	getaddrinfo
-	.loc	2 150 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:150:13
-	str	r0, [sp, #32]
-.Ltmp71:
-	.loc	2 151 13 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:151:13
-	ldr	r0, [sp, #32]
-.Ltmp72:
-	.loc	2 151 13 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:151:13
-	cbz	r0, .LBB1_31
-	b	.LBB1_28
-.LBB1_28:
-.Ltmp73:
+.Ltmp77:
+	@DEBUG_VALUE: umqtt_resolve_uri:ret <- $r0
+	.loc	2 151 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:151:13
+	cmp	r0, #0
+	beq	.LBB1_14
+.Ltmp78:
+@ %bb.20:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- $r6
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ret <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	.loc	2 0 0 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:0
+	mov	r4, r0
+.Ltmp79:
+	@DEBUG_VALUE: umqtt_resolve_uri:ret <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:ret <- $r4
 	.loc	2 153 13 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:153:13
-	b	.LBB1_29
-.LBB1_29:
-.Ltmp74:
-	.loc	2 153 13 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:153:13
 	movw	r0, :lower16:.L.str
 	movt	r0, :upper16:.L.str
 	bl	rt_kprintf
-	ldr	r1, [sp, #32]
-	ldr	r2, [sp, #24]
-	movw	r0, :lower16:.L.str.10
-	movt	r0, :upper16:.L.str.10
+	adr	r0, .LCPI1_2
+	mov	r1, r4
+	mov	r2, r6
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.2
 	movt	r0, :upper16:.L.str.2
 	bl	rt_kprintf
-	b	.LBB1_30
-.Ltmp75:
-.LBB1_30:
-	.loc	2 0 13                          @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
-	mov.w	r0, #-1
-	.loc	2 154 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:154:16
-	str	r0, [sp, #92]
-	.loc	2 155 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:155:13
-	b	.LBB1_32
-.Ltmp76:
-.LBB1_31:
-	.loc	2 157 5                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:157:5
-	b	.LBB1_32
-.Ltmp77:
-.LBB1_32:
-	@DEBUG_LABEL: umqtt_resolve_uri:exit
-	.loc	2 160 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:160:9
-	ldr	r0, [sp, #24]
-.Ltmp78:
-	.loc	2 160 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:160:9
-	cbz	r0, .LBB1_34
-	b	.LBB1_33
-.LBB1_33:
-.Ltmp79:
-	.loc	2 162 17 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:162:17
-	ldr	r0, [sp, #24]
-	.loc	2 162 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:162:9
-	bl	rt_free
-	movs	r0, #0
-	.loc	2 163 23 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:163:23
-	str	r0, [sp, #24]
-	.loc	2 164 5                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:164:5
-	b	.LBB1_34
+	mov.w	r5, #-1
 .Ltmp80:
-.LBB1_34:
-	.loc	2 165 12                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:165:12
-	ldr	r0, [sp, #92]
-	.loc	2 165 5 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:165:5
-	add	sp, #104
-	pop	{r7, pc}
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- -1
+	.loc	2 0 13 is_stmt 0                @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:13
+	b	.LBB1_14
 .Ltmp81:
+.LBB1_21:
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_len <- $r9
+	@DEBUG_VALUE: umqtt_resolve_uri:res <- $r8
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr <- $r7
+	@DEBUG_VALUE: umqtt_resolve_uri:port_len <- $r4
+	@DEBUG_VALUE: umqtt_resolve_uri:host_addr_new <- $r0
+	@DEBUG_VALUE: umqtt_resolve_uri:rc <- 0
+	mvn	r5, #1
+	b	.LBB1_13
+.Ltmp82:
+	.p2align	2
+@ %bb.22:
+.LCPI1_0:
+.L.str.6:
+	.asciz	"tcp://\000"
+.LCPI1_1:
+.L.str.7:
+	.asciz	"ssl://\000"
+.LCPI1_2:
+.L.str.10:
+	.asciz	"getaddrinfo err: %d '%s'\000\000\000"
 .Lfunc_end1:
 	.size	umqtt_resolve_uri, .Lfunc_end1-umqtt_resolve_uri
 	.cfi_endproc
@@ -781,55 +725,40 @@ umqtt_trans_disconnect:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: umqtt_trans_disconnect:sock <- $r0
+	@DEBUG_VALUE: umqtt_trans_disconnect:sock <- $r0
+	@DEBUG_VALUE: umqtt_trans_disconnect:sock <- $r0
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-	movs	r0, #0
-.Ltmp82:
-	.loc	2 233 9 prologue_end            @ packages/umqtt-latest/src/trans/umqtt_transport.c:233:9
-	str	r0, [sp, #4]
-	.loc	2 234 12                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:234:12
-	ldr	r0, [sp, #8]
-	bl	sal_closesocket
-	.loc	2 234 10 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:234:10
-	str	r0, [sp, #4]
 .Ltmp83:
-	.loc	2 235 9 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:235:9
-	ldr	r0, [sp, #4]
+	@DEBUG_VALUE: umqtt_trans_disconnect:_ret <- 0
+	.loc	2 234 12 prologue_end           @ packages/umqtt-latest/src/trans/umqtt_transport.c:234:12
+	bl	sal_closesocket
 .Ltmp84:
-	.loc	2 235 9 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:235:9
+	@DEBUG_VALUE: umqtt_trans_disconnect:sock <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: umqtt_trans_disconnect:_ret <- $r0
+	.loc	2 235 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:235:9
 	cmp.w	r0, #-1
-	bgt	.LBB2_2
-	b	.LBB2_1
-.LBB2_1:
+	.loc	2 238 1                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:238:1
+	it	gt
+	popgt	{r7, pc}
 .Ltmp85:
-	.loc	2 236 17 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:236:17
+.LBB2_1:
+	@DEBUG_VALUE: umqtt_trans_disconnect:_ret <- $r0
+	@DEBUG_VALUE: umqtt_trans_disconnect:sock <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	2 236 17                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:236:17
 	bl	_rt_errno
+.Ltmp86:
 	ldr	r0, [r0]
 	.loc	2 236 16 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:236:16
 	rsbs	r0, r0, #0
-	.loc	2 236 9                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:236:9
-	str	r0, [sp, #12]
-	b	.LBB2_3
-.Ltmp86:
-.LBB2_2:
-	.loc	2 237 12 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:237:12
-	ldr	r0, [sp, #4]
-	.loc	2 237 5 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:237:5
-	str	r0, [sp, #12]
-	b	.LBB2_3
-.LBB2_3:
-	.loc	2 238 1 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:238:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
 .Ltmp87:
+	.loc	2 238 1 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:238:1
+	pop	{r7, pc}
+.Ltmp88:
 .Lfunc_end2:
 	.size	umqtt_trans_disconnect, .Lfunc_end2-umqtt_trans_disconnect
 	.cfi_endproc
@@ -849,92 +778,125 @@ umqtt_trans_send:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r0
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r1
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r2
+	@DEBUG_VALUE: umqtt_trans_send:timeout <- $r3
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r2
+	.save	{r4, r5, r6, r7, r8, lr}
+	push.w	{r4, r5, r6, r7, r8, lr}
+	.cfi_def_cfa_offset 24
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#40
-	sub	sp, #40
-	.cfi_def_cfa_offset 48
-	str	r0, [sp, #32]
-	str	r1, [sp, #28]
-	str	r2, [sp, #24]
-	str	r3, [sp, #20]
-	movs	r0, #0
-.Ltmp88:
-	.loc	2 253 9 prologue_end            @ packages/umqtt-latest/src/trans/umqtt_transport.c:253:9
-	str	r0, [sp, #16]
-	.loc	2 254 17                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:254:17
-	str	r0, [sp, #12]
-	.loc	2 255 5                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:255:5
-	b	.LBB3_1
-.LBB3_1:                                @ =>This Inner Loop Header: Depth=1
-	.loc	2 255 12 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:255:12
-	ldr	r0, [sp, #12]
-	.loc	2 255 21                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:255:21
-	ldr	r1, [sp, #24]
-	.loc	2 255 5                         @ packages/umqtt-latest/src/trans/umqtt_transport.c:255:5
-	cmp	r0, r1
-	bhs	.LBB3_5
-	b	.LBB3_2
-.LBB3_2:                                @   in Loop: Header=BB3_1 Depth=1
+	.cfi_offset r8, -8
+	.cfi_offset r7, -12
+	.cfi_offset r6, -16
+	.cfi_offset r5, -20
+	.cfi_offset r4, -24
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 32
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r1
 .Ltmp89:
-	.loc	2 257 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:257:16
-	ldr	r0, [sp, #32]
-	ldr	r1, [sp, #28]
-	ldr	r3, [sp, #12]
-	add	r1, r3
-	ldr	r2, [sp, #24]
-	subs	r2, r2, r3
-	mov	r12, sp
-	movs	r3, #0
-	str.w	r3, [r12, #4]
-	str.w	r3, [r12]
-	bl	sal_sendto
-	.loc	2 257 14 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:257:14
-	str	r0, [sp, #16]
+	@DEBUG_VALUE: umqtt_trans_send:offset <- 0
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- 0
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r0
+	mov.w	r4, #0
 .Ltmp90:
-	.loc	2 258 13 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:258:13
-	ldr	r0, [sp, #16]
+	.loc	2 255 5 prologue_end            @ packages/umqtt-latest/src/trans/umqtt_transport.c:255:5
+	cbz	r2, .LBB3_6
 .Ltmp91:
-	.loc	2 258 13 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:258:13
-	cmp.w	r0, #-1
-	bgt	.LBB3_4
-	b	.LBB3_3
-.LBB3_3:
+@ %bb.1:
+	@DEBUG_VALUE: umqtt_trans_send:timeout <- $r3
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r2
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r1
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r0
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- 0
+	@DEBUG_VALUE: umqtt_trans_send:offset <- 0
+	.loc	2 0 5 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:5
+	mov	r5, r2
 .Ltmp92:
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r5
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r5
+	mov	r8, r1
+.Ltmp93:
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r8
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r8
+	mov	r7, r0
+.Ltmp94:
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r7
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r7
+	movs	r6, #0
+.Ltmp95:
+	.p2align	2
+.LBB3_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r8
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r7
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r5
+	@DEBUG_VALUE: umqtt_trans_send:offset <- $r6
+	.loc	2 257 16 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:257:16
+	add.w	r1, r8, r6
+	subs	r2, r5, r6
+	movs	r3, #0
+.Ltmp96:
+	@DEBUG_VALUE: umqtt_trans_send:timeout <- [DW_OP_LLVM_entry_value 1] $r3
+	mov	r0, r7
+	str	r4, [sp]
+	str	r4, [sp, #4]
+	bl	sal_sendto
+.Ltmp97:
+	@DEBUG_VALUE: umqtt_trans_send:offset <- undef
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r0
+	.loc	2 258 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:258:13
+	cmp.w	r0, #-1
+	ble	.LBB3_5
+.Ltmp98:
+@ %bb.3:                                @   in Loop: Header=BB3_2 Depth=1
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r8
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r7
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r5
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r0
+	.loc	2 0 0 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:0
+	add	r6, r0
+.Ltmp99:
+	@DEBUG_VALUE: umqtt_trans_send:offset <- $r6
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r0
+	.loc	2 255 5 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:255:5
+	cmp	r6, r5
+	blo	.LBB3_2
+.Ltmp100:
+@ %bb.4:
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r8
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r7
+	@DEBUG_VALUE: umqtt_trans_send:offset <- $r6
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r5
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r0
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r0
+	.loc	2 0 0 is_stmt 0                 @ packages/umqtt-latest/src/trans/umqtt_transport.c:0:0
+	mov	r4, r0
+.Ltmp101:
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r4
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r4
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r4
+	b	.LBB3_6
+.Ltmp102:
+.LBB3_5:
+	@DEBUG_VALUE: umqtt_trans_send:send_buf <- $r8
+	@DEBUG_VALUE: umqtt_trans_send:sock <- $r7
+	@DEBUG_VALUE: umqtt_trans_send:buf_len <- $r5
+	@DEBUG_VALUE: umqtt_trans_send:_ret <- $r0
 	.loc	2 259 21 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:259:21
 	bl	_rt_errno
+.Ltmp103:
 	ldr	r0, [r0]
 	.loc	2 259 20 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:259:20
-	rsbs	r0, r0, #0
-	.loc	2 259 13                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:259:13
-	str	r0, [sp, #36]
-	b	.LBB3_6
-.Ltmp93:
-.LBB3_4:                                @   in Loop: Header=BB3_1 Depth=1
-	.loc	2 260 19 is_stmt 1              @ packages/umqtt-latest/src/trans/umqtt_transport.c:260:19
-	ldr	r1, [sp, #16]
-	.loc	2 260 16 is_stmt 0              @ packages/umqtt-latest/src/trans/umqtt_transport.c:260:16
-	ldr	r0, [sp, #12]
-	add	r0, r1
-	str	r0, [sp, #12]
-.Ltmp94:
-	.loc	2 255 5 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:255:5
-	b	.LBB3_1
-.LBB3_5:
-	.loc	2 263 12                        @ packages/umqtt-latest/src/trans/umqtt_transport.c:263:12
-	ldr	r0, [sp, #16]
-	.loc	2 263 5 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:263:5
-	str	r0, [sp, #36]
-	b	.LBB3_6
+	rsbs	r4, r0, #0
+.Ltmp104:
 .LBB3_6:
 	.loc	2 264 1 is_stmt 1               @ packages/umqtt-latest/src/trans/umqtt_transport.c:264:1
-	ldr	r0, [sp, #36]
-	add	sp, #40
-	pop	{r7, pc}
-.Ltmp95:
+	mov	r0, r4
+	add	sp, #8
+	pop.w	{r4, r5, r6, r7, r8, pc}
+.Ltmp105:
 .Lfunc_end3:
 	.size	umqtt_trans_send, .Lfunc_end3-umqtt_trans_send
 	.cfi_endproc
@@ -954,31 +916,38 @@ umqtt_trans_recv:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: umqtt_trans_recv:sock <- $r0
+	@DEBUG_VALUE: umqtt_trans_recv:sock <- $r0
+	@DEBUG_VALUE: umqtt_trans_recv:recv_buf <- $r1
+	@DEBUG_VALUE: umqtt_trans_recv:recv_buf <- $r1
+	@DEBUG_VALUE: umqtt_trans_recv:buf_len <- $r2
+	@DEBUG_VALUE: umqtt_trans_recv:buf_len <- $r2
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #20]
-	str	r1, [sp, #16]
-	str	r2, [sp, #12]
-.Ltmp96:
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
+.Ltmp106:
 	.loc	2 278 12 prologue_end           @ packages/umqtt-latest/src/trans/umqtt_transport.c:278:12
-	ldr	r0, [sp, #20]
-	ldr	r1, [sp, #16]
-	ldr	r2, [sp, #12]
-	mov	r12, sp
 	movs	r3, #0
-	str.w	r3, [r12, #4]
-	str.w	r3, [r12]
+	mov.w	r12, #0
+	str.w	r12, [sp]
+	str.w	r12, [sp, #4]
+	@DEBUG_VALUE: umqtt_trans_recv:buf_len <- $r2
+	@DEBUG_VALUE: umqtt_trans_recv:recv_buf <- $r1
+	@DEBUG_VALUE: umqtt_trans_recv:sock <- $r0
 	bl	sal_recvfrom
+.Ltmp107:
+	@DEBUG_VALUE: umqtt_trans_recv:buf_len <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: umqtt_trans_recv:recv_buf <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: umqtt_trans_recv:sock <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	2 278 5 is_stmt 0               @ packages/umqtt-latest/src/trans/umqtt_transport.c:278:5
-	add	sp, #24
+	add	sp, #8
 	pop	{r7, pc}
-.Ltmp97:
+.Ltmp108:
 .Lfunc_end4:
 	.size	umqtt_trans_recv, .Lfunc_end4-umqtt_trans_recv
 	.cfi_endproc
@@ -991,60 +960,500 @@ umqtt_trans_recv:
 	.asciz	"[E/umqtt.transport] "
 	.size	.L.str, 21
 
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"resolve uri err"
-	.size	.L.str.1, 16
-
 	.type	.L.str.2,%object                @ @.str.2
 .L.str.2:
 	.asciz	"\n"
 	.size	.L.str.2, 2
 
-	.type	.L.str.3,%object                @ @.str.3
-.L.str.3:
-	.asciz	"create socket error!"
-	.size	.L.str.3, 21
-
-	.type	.L.str.4,%object                @ @.str.4
-.L.str.4:
-	.asciz	" iocontrol socket error!"
-	.size	.L.str.4, 25
-
-	.type	.L.str.5,%object                @ @.str.5
-.L.str.5:
-	.asciz	" connect err!"
-	.size	.L.str.5, 14
-
-	.type	.L.str.6,%object                @ @.str.6
-.L.str.6:
-	.asciz	"tcp://"
-	.size	.L.str.6, 7
-
-	.type	.L.str.7,%object                @ @.str.7
-.L.str.7:
-	.asciz	"ssl://"
-	.size	.L.str.7, 7
-
-	.type	.L.str.8,%object                @ @.str.8
-.L.str.8:
-	.asciz	"]"
-	.size	.L.str.8, 2
-
-	.type	.L.str.9,%object                @ @.str.9
-.L.str.9:
-	.asciz	":"
-	.size	.L.str.9, 2
-
-	.type	.L.str.10,%object               @ @.str.10
-.L.str.10:
-	.asciz	"getaddrinfo err: %d '%s'"
-	.size	.L.str.10, 25
-
 	.file	3 "E:\\Smart-access-control\\Hardware\\CODE" "./rt-thread/components/net/sal_socket/include\\sal_netdb.h"
 	.file	4 "D:\\Keil_v5\\ARM\\ARMCLANG\\Bin\\..\\include" "stdint.h"
 	.file	5 "E:\\Smart-access-control\\Hardware\\CODE" "./rt-thread/components/net/sal_socket/include/sal_socket.h"
 	.file	6 "E:\\Smart-access-control\\Hardware\\CODE" "rt-thread/include\\rtdef.h"
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp33-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp0-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp33-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp2-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp2-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	125                             @ DW_OP_breg13
+	.byte	4                               @ 4
+	.long	.Ltmp5-.Lfunc_begin0
+	.long	.Ltmp7-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp14-.Lfunc_begin0
+	.long	.Ltmp16-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp28-.Lfunc_begin0
+	.long	.Ltmp30-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp31-.Lfunc_begin0
+	.long	.Ltmp32-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp12-.Lfunc_begin0
+	.long	.Ltmp15-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp17-.Lfunc_begin0
+	.long	.Ltmp20-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp21-.Lfunc_begin0
+	.long	.Ltmp22-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	127                             @ -1
+	.long	.Ltmp24-.Lfunc_begin0
+	.long	.Ltmp25-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp27-.Lfunc_begin0
+	.long	.Ltmp33-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp36-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp36-.Lfunc_begin1
+	.long	.Ltmp49-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp56-.Lfunc_begin1
+	.long	.Ltmp60-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp35-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp35-.Lfunc_begin1
+	.long	.Ltmp82-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp36-.Lfunc_begin1
+	.long	.Ltmp52-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp55-.Lfunc_begin1
+	.long	.Ltmp56-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp56-.Lfunc_begin1
+	.long	.Ltmp63-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp70-.Lfunc_begin1
+	.long	.Ltmp79-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp81-.Lfunc_begin1
+	.long	.Ltmp82-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp36-.Lfunc_begin1
+	.long	.Ltmp48-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp48-.Lfunc_begin1
+	.long	.Ltmp56-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	89                              @ DW_OP_reg9
+	.long	.Ltmp56-.Lfunc_begin1
+	.long	.Ltmp59-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp59-.Lfunc_begin1
+	.long	.Ltmp64-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	89                              @ DW_OP_reg9
+	.long	.Ltmp69-.Lfunc_begin1
+	.long	.Ltmp82-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	89                              @ DW_OP_reg9
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp36-.Lfunc_begin1
+	.long	.Ltmp38-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp38-.Lfunc_begin1
+	.long	.Ltmp55-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp56-.Lfunc_begin1
+	.long	.Ltmp65-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp69-.Lfunc_begin1
+	.long	.Ltmp70-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp36-.Lfunc_begin1
+	.long	.Ltmp66-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp66-.Lfunc_begin1
+	.long	.Ltmp69-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp69-.Lfunc_begin1
+	.long	.Ltmp80-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp80-.Lfunc_begin1
+	.long	.Ltmp81-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	127                             @ -1
+	.long	.Ltmp81-.Lfunc_begin1
+	.long	.Ltmp82-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp37-.Lfunc_begin1
+	.long	.Ltmp49-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp56-.Lfunc_begin1
+	.long	.Ltmp60-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp37-.Lfunc_begin1
+	.long	.Ltmp65-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp66-.Lfunc_begin1
+	.long	.Ltmp68-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp69-.Lfunc_begin1
+	.long	.Ltmp74-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp74-.Lfunc_begin1
+	.long	.Ltmp76-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp76-.Lfunc_begin1
+	.long	.Ltmp81-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp81-.Lfunc_begin1
+	.long	.Ltmp82-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp37-.Lfunc_begin1
+	.long	.Ltmp43-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp43-.Lfunc_begin1
+	.long	.Ltmp64-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp69-.Lfunc_begin1
+	.long	.Ltmp82-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp46-.Lfunc_begin1
+	.long	.Ltmp56-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp57-.Lfunc_begin1
+	.long	.Ltmp64-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp69-.Lfunc_begin1
+	.long	.Ltmp72-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp77-.Lfunc_begin1
+	.long	.Ltmp79-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp79-.Lfunc_begin1
+	.long	.Ltmp81-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp84-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp84-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp83-.Lfunc_begin2
+	.long	.Ltmp84-.Lfunc_begin2
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp84-.Lfunc_begin2
+	.long	.Ltmp86-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp94-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp94-.Lfunc_begin3
+	.long	.Ltmp104-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp93-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp93-.Lfunc_begin3
+	.long	.Ltmp104-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	88                              @ DW_OP_reg8
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp92-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp92-.Lfunc_begin3
+	.long	.Ltmp104-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp95-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	83                              @ DW_OP_reg3
+	.long	.Ltmp96-.Lfunc_begin3
+	.long	.Ltmp98-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	83                              @ DW_OP_reg3
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp89-.Lfunc_begin3
+	.long	.Ltmp95-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp95-.Lfunc_begin3
+	.long	.Ltmp97-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp99-.Lfunc_begin3
+	.long	.Ltmp102-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Ltmp89-.Lfunc_begin3
+	.long	.Ltmp95-.Lfunc_begin3
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp97-.Lfunc_begin3
+	.long	.Ltmp101-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp101-.Lfunc_begin3
+	.long	.Ltmp102-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp102-.Lfunc_begin3
+	.long	.Ltmp103-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp107-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp107-.Lfunc_begin4
+	.long	.Lfunc_end4-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp107-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp107-.Lfunc_begin4
+	.long	.Lfunc_end4-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp107-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp107-.Lfunc_begin4
+	.long	.Lfunc_end4-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1127,7 +1536,7 @@ umqtt_trans_recv:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1142,7 +1551,7 @@ umqtt_trans_recv:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1188,6 +1597,21 @@ umqtt_trans_recv:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	10                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	11                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -1210,11 +1634,11 @@ umqtt_trans_recv:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	11                              @ Abbreviation Code
+	.byte	12                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1225,21 +1649,21 @@ umqtt_trans_recv:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	12                              @ Abbreviation Code
+	.byte	13                              @ Abbreviation Code
 	.byte	15                              @ DW_TAG_pointer_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	13                              @ Abbreviation Code
+	.byte	14                              @ Abbreviation Code
 	.byte	38                              @ DW_TAG_const_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	14                              @ Abbreviation Code
+	.byte	15                              @ Abbreviation Code
 	.byte	19                              @ DW_TAG_structure_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	3                               @ DW_AT_name
@@ -1252,7 +1676,7 @@ umqtt_trans_recv:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	15                              @ Abbreviation Code
+	.byte	16                              @ Abbreviation Code
 	.byte	13                              @ DW_TAG_member
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -1267,7 +1691,7 @@ umqtt_trans_recv:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	16                              @ Abbreviation Code
+	.byte	17                              @ Abbreviation Code
 	.byte	22                              @ DW_TAG_typedef
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
@@ -1280,14 +1704,14 @@ umqtt_trans_recv:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	17                              @ Abbreviation Code
+	.byte	18                              @ Abbreviation Code
 	.byte	1                               @ DW_TAG_array_type
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	18                              @ Abbreviation Code
+	.byte	19                              @ Abbreviation Code
 	.byte	33                              @ DW_TAG_subrange_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	73                              @ DW_AT_type
@@ -1296,7 +1720,7 @@ umqtt_trans_recv:
 	.byte	11                              @ DW_FORM_data1
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	19                              @ Abbreviation Code
+	.byte	20                              @ Abbreviation Code
 	.byte	36                              @ DW_TAG_base_type
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
@@ -1315,7 +1739,7 @@ umqtt_trans_recv:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x3fc DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x40e DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -1385,7 +1809,7 @@ umqtt_trans_recv:
 	.long	.Linfo_string3                  @ DW_AT_name
 	.byte	6                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	5                               @ Abbrev [5] 0xa0:0x5b DW_TAG_subprogram
+	.byte	5                               @ Abbrev [5] 0xa0:0x5f DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1394,47 +1818,39 @@ umqtt_trans_recv:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	177                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	705                             @ DW_AT_type
+	.long	723                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	6                               @ Abbrev [6] 0xb7:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	6                               @ Abbrev [6] 0xb7:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string28                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	177                             @ DW_AT_decl_line
-	.long	712                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0xc5:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	730                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0xc6:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string30                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	177                             @ DW_AT_decl_line
-	.long	729                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0xd3:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	747                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0xd5:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string31                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	179                             @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0xe1:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
-	.long	.Linfo_string32                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
 	.byte	180                             @ DW_AT_decl_line
-	.long	734                             @ DW_AT_type
-	.byte	8                               @ Abbrev [8] 0xef:0xb DW_TAG_label
+	.long	752                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0xe4:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	179                             @ DW_AT_decl_line
+	.long	723                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0xf3:0xb DW_TAG_label
 	.long	.Linfo_string53                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	215                             @ DW_AT_decl_line
-	.long	.Ltmp23                         @ DW_AT_low_pc
+	.long	.Ltmp27                         @ DW_AT_low_pc
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0xfb:0xe0 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0xff:0xe3 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1443,118 +1859,96 @@ umqtt_trans_recv:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	53                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	705                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x111:0xf DW_TAG_formal_parameter
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\344"
-	.long	.Linfo_string54                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	53                              @ DW_AT_decl_line
-	.long	712                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x120:0xf DW_TAG_formal_parameter
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\340"
-	.long	.Linfo_string55                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	53                              @ DW_AT_decl_line
-	.long	976                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x12f:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\334"
+	.long	723                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x115:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string56                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	55                              @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x13e:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\330"
+	.byte	53                              @ DW_AT_decl_line
+	.long	730                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x124:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string57                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	56                              @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x14d:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\324"
-	.long	.Linfo_string58                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	56                              @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x15c:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\320"
-	.long	.Linfo_string59                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	56                              @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x16b:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\314"
-	.long	.Linfo_string60                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	57                              @ DW_AT_decl_line
-	.long	971                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x17a:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.asciz	"\304"
-	.long	.Linfo_string61                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	58                              @ DW_AT_decl_line
-	.long	981                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x189:0xe DW_TAG_variable
+	.byte	53                              @ DW_AT_decl_line
+	.long	1006                            @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x133:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
 	.byte	36
-	.long	.Linfo_string62                 @ DW_AT_name
+	.long	.Linfo_string54                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	58                              @ DW_AT_decl_line
+	.long	994                             @ DW_AT_type
+	.byte	10                              @ Abbrev [10] 0x141:0xe DW_TAG_variable
+	.byte	2                               @ DW_AT_location
+	.byte	145
+	.byte	4
+	.long	.Linfo_string55                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	60                              @ DW_AT_decl_line
-	.long	739                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x197:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
-	.long	.Linfo_string63                 @ DW_AT_name
+	.long	757                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x14f:0xf DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
+	.long	.Linfo_string58                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	61                              @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x1a5:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
-	.long	.Linfo_string64                 @ DW_AT_name
+	.byte	56                              @ DW_AT_decl_line
+	.long	723                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x15e:0xf DW_TAG_variable
+	.long	.Ldebug_loc7                    @ DW_AT_location
+	.long	.Linfo_string59                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	63                              @ DW_AT_decl_line
-	.long	712                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x1b3:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
-	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	56                              @ DW_AT_decl_line
+	.long	723                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x16d:0xf DW_TAG_variable
+	.long	.Ldebug_loc8                    @ DW_AT_location
+	.long	.Linfo_string60                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
-	.byte	64                              @ DW_AT_decl_line
-	.long	971                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x1c1:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	56                              @ DW_AT_decl_line
+	.long	723                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x17c:0xf DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
+	.long	.Linfo_string61                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	55                              @ DW_AT_decl_line
+	.long	723                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x18b:0xf DW_TAG_variable
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string28                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	65                              @ DW_AT_decl_line
-	.long	712                             @ DW_AT_type
-	.byte	8                               @ Abbrev [8] 0x1cf:0xb DW_TAG_label
+	.long	730                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x19a:0xf DW_TAG_variable
+	.long	.Ldebug_loc11                   @ DW_AT_location
+	.long	.Linfo_string62                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.long	989                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x1a9:0xf DW_TAG_variable
+	.long	.Ldebug_loc12                   @ DW_AT_location
+	.long	.Linfo_string63                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	63                              @ DW_AT_decl_line
+	.long	730                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x1b8:0xf DW_TAG_variable
+	.long	.Ldebug_loc13                   @ DW_AT_location
+	.long	.Linfo_string64                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	57                              @ DW_AT_decl_line
+	.long	989                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x1c7:0xf DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
+	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.long	723                             @ DW_AT_type
+	.byte	8                               @ Abbrev [8] 0x1d6:0xb DW_TAG_label
 	.long	.Linfo_string53                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	159                             @ DW_AT_decl_line
-	.long	.Ltmp77                         @ DW_AT_low_pc
+	.long	.Ltmp66                         @ DW_AT_low_pc
 	.byte	0                               @ End Of Children Mark
-	.byte	5                               @ Abbrev [5] 0x1db:0x34 DW_TAG_subprogram
+	.byte	5                               @ Abbrev [5] 0x1e2:0x36 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1563,26 +1957,22 @@ umqtt_trans_recv:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	231                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	705                             @ DW_AT_type
+	.long	723                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	6                               @ Abbrev [6] 0x1f2:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	6                               @ Abbrev [6] 0x1f9:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string30                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	231                             @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x200:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string31                 @ DW_AT_name
+	.long	723                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x208:0xf DW_TAG_variable
+	.long	.Ldebug_loc16                   @ DW_AT_location
+	.long	.Linfo_string52                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	233                             @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
+	.long	723                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	5                               @ Abbrev [5] 0x20f:0x6c DW_TAG_subprogram
+	.byte	5                               @ Abbrev [5] 0x218:0x72 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1591,58 +1981,46 @@ umqtt_trans_recv:
 	.byte	2                               @ DW_AT_decl_file
 	.byte	251                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	705                             @ DW_AT_type
+	.long	723                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	6                               @ Abbrev [6] 0x226:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
+	.byte	6                               @ Abbrev [6] 0x22f:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string30                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	251                             @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x234:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
+	.long	723                             @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x23e:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string66                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	251                             @ DW_AT_decl_line
-	.long	993                             @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x242:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.long	1011                            @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x24d:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	251                             @ DW_AT_decl_line
-	.long	1014                            @ DW_AT_type
-	.byte	6                               @ Abbrev [6] 0x250:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.long	1032                            @ DW_AT_type
+	.byte	6                               @ Abbrev [6] 0x25c:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string70                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	251                             @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x25e:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
-	.long	.Linfo_string31                 @ DW_AT_name
-	.byte	2                               @ DW_AT_decl_file
-	.byte	253                             @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	7                               @ Abbrev [7] 0x26c:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	723                             @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x26b:0xf DW_TAG_variable
+	.long	.Ldebug_loc21                   @ DW_AT_location
 	.long	.Linfo_string71                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	254                             @ DW_AT_decl_line
-	.long	1014                            @ DW_AT_type
+	.long	1032                            @ DW_AT_type
+	.byte	7                               @ Abbrev [7] 0x27a:0xf DW_TAG_variable
+	.long	.Ldebug_loc22                   @ DW_AT_location
+	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	2                               @ DW_AT_decl_file
+	.byte	253                             @ DW_AT_decl_line
+	.long	723                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	10                              @ Abbrev [10] 0x27b:0x46 DW_TAG_subprogram
+	.byte	11                              @ Abbrev [11] 0x28a:0x49 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -1651,193 +2029,187 @@ umqtt_trans_recv:
 	.byte	2                               @ DW_AT_decl_file
 	.short	276                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	705                             @ DW_AT_type
+	.long	723                             @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	11                              @ Abbrev [11] 0x293:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	12                              @ Abbrev [12] 0x2a2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc23                   @ DW_AT_location
 	.long	.Linfo_string30                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	276                             @ DW_AT_decl_line
-	.long	705                             @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x2a2:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.long	723                             @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x2b2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc24                   @ DW_AT_location
 	.long	.Linfo_string72                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	276                             @ DW_AT_decl_line
-	.long	1025                            @ DW_AT_type
-	.byte	11                              @ Abbrev [11] 0x2b1:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	1043                            @ DW_AT_type
+	.byte	12                              @ Abbrev [12] 0x2c2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.short	276                             @ DW_AT_decl_line
-	.long	1014                            @ DW_AT_type
+	.long	1032                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	4                               @ Abbrev [4] 0x2c1:0x7 DW_TAG_base_type
+	.byte	4                               @ Abbrev [4] 0x2d3:0x7 DW_TAG_base_type
 	.long	.Linfo_string23                 @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	12                              @ Abbrev [12] 0x2c8:0x5 DW_TAG_pointer_type
-	.long	717                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x2cd:0x5 DW_TAG_const_type
-	.long	722                             @ DW_AT_type
-	.byte	4                               @ Abbrev [4] 0x2d2:0x7 DW_TAG_base_type
+	.byte	13                              @ Abbrev [13] 0x2da:0x5 DW_TAG_pointer_type
+	.long	735                             @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x2df:0x5 DW_TAG_const_type
+	.long	740                             @ DW_AT_type
+	.byte	4                               @ Abbrev [4] 0x2e4:0x7 DW_TAG_base_type
 	.long	.Linfo_string29                 @ DW_AT_name
 	.byte	6                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	12                              @ Abbrev [12] 0x2d9:0x5 DW_TAG_pointer_type
-	.long	705                             @ DW_AT_type
-	.byte	12                              @ Abbrev [12] 0x2de:0x5 DW_TAG_pointer_type
-	.long	739                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x2e3:0x69 DW_TAG_structure_type
-	.long	.Linfo_string52                 @ DW_AT_name
+	.byte	13                              @ Abbrev [13] 0x2eb:0x5 DW_TAG_pointer_type
+	.long	723                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x2f0:0x5 DW_TAG_pointer_type
+	.long	757                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x2f5:0x69 DW_TAG_structure_type
+	.long	.Linfo_string51                 @ DW_AT_name
 	.byte	32                              @ DW_AT_byte_size
 	.byte	3                               @ DW_AT_decl_file
 	.byte	60                              @ DW_AT_decl_line
-	.byte	15                              @ Abbrev [15] 0x2eb:0xc DW_TAG_member
-	.long	.Linfo_string33                 @ DW_AT_name
-	.long	705                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x2fd:0xc DW_TAG_member
+	.long	.Linfo_string32                 @ DW_AT_name
+	.long	723                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	61                              @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x2f7:0xc DW_TAG_member
-	.long	.Linfo_string34                 @ DW_AT_name
-	.long	705                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x309:0xc DW_TAG_member
+	.long	.Linfo_string33                 @ DW_AT_name
+	.long	723                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
 	.byte	4                               @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x303:0xc DW_TAG_member
-	.long	.Linfo_string35                 @ DW_AT_name
-	.long	705                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x315:0xc DW_TAG_member
+	.long	.Linfo_string34                 @ DW_AT_name
+	.long	723                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	63                              @ DW_AT_decl_line
 	.byte	8                               @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x30f:0xc DW_TAG_member
-	.long	.Linfo_string36                 @ DW_AT_name
-	.long	705                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x321:0xc DW_TAG_member
+	.long	.Linfo_string35                 @ DW_AT_name
+	.long	723                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	64                              @ DW_AT_decl_line
 	.byte	12                              @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x31b:0xc DW_TAG_member
-	.long	.Linfo_string37                 @ DW_AT_name
-	.long	844                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x32d:0xc DW_TAG_member
+	.long	.Linfo_string36                 @ DW_AT_name
+	.long	862                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	65                              @ DW_AT_decl_line
 	.byte	16                              @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x327:0xc DW_TAG_member
-	.long	.Linfo_string41                 @ DW_AT_name
-	.long	873                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x339:0xc DW_TAG_member
+	.long	.Linfo_string40                 @ DW_AT_name
+	.long	891                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	66                              @ DW_AT_decl_line
 	.byte	20                              @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x333:0xc DW_TAG_member
-	.long	.Linfo_string50                 @ DW_AT_name
-	.long	971                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x345:0xc DW_TAG_member
+	.long	.Linfo_string49                 @ DW_AT_name
+	.long	989                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	67                              @ DW_AT_decl_line
 	.byte	24                              @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x33f:0xc DW_TAG_member
-	.long	.Linfo_string51                 @ DW_AT_name
-	.long	734                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x351:0xc DW_TAG_member
+	.long	.Linfo_string50                 @ DW_AT_name
+	.long	752                             @ DW_AT_type
 	.byte	3                               @ DW_AT_decl_file
 	.byte	68                              @ DW_AT_decl_line
 	.byte	28                              @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x34c:0xb DW_TAG_typedef
-	.long	855                             @ DW_AT_type
-	.long	.Linfo_string40                 @ DW_AT_name
+	.byte	17                              @ Abbrev [17] 0x35e:0xb DW_TAG_typedef
+	.long	873                             @ DW_AT_type
+	.long	.Linfo_string39                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	21                              @ DW_AT_decl_line
-	.byte	16                              @ Abbrev [16] 0x357:0xb DW_TAG_typedef
-	.long	866                             @ DW_AT_type
-	.long	.Linfo_string39                 @ DW_AT_name
+	.byte	17                              @ Abbrev [17] 0x369:0xb DW_TAG_typedef
+	.long	884                             @ DW_AT_type
+	.long	.Linfo_string38                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	64                              @ DW_AT_decl_line
-	.byte	4                               @ Abbrev [4] 0x362:0x7 DW_TAG_base_type
-	.long	.Linfo_string38                 @ DW_AT_name
+	.byte	4                               @ Abbrev [4] 0x374:0x7 DW_TAG_base_type
+	.long	.Linfo_string37                 @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	12                              @ Abbrev [12] 0x369:0x5 DW_TAG_pointer_type
-	.long	878                             @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x36e:0x2d DW_TAG_structure_type
-	.long	.Linfo_string49                 @ DW_AT_name
+	.byte	13                              @ Abbrev [13] 0x37b:0x5 DW_TAG_pointer_type
+	.long	896                             @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x380:0x2d DW_TAG_structure_type
+	.long	.Linfo_string48                 @ DW_AT_name
 	.byte	16                              @ DW_AT_byte_size
 	.byte	5                               @ DW_AT_decl_file
 	.byte	153                             @ DW_AT_decl_line
-	.byte	15                              @ Abbrev [15] 0x376:0xc DW_TAG_member
-	.long	.Linfo_string42                 @ DW_AT_name
-	.long	923                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x388:0xc DW_TAG_member
+	.long	.Linfo_string41                 @ DW_AT_name
+	.long	941                             @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	155                             @ DW_AT_decl_line
 	.byte	0                               @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x382:0xc DW_TAG_member
-	.long	.Linfo_string45                 @ DW_AT_name
-	.long	941                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x394:0xc DW_TAG_member
+	.long	.Linfo_string44                 @ DW_AT_name
+	.long	959                             @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	156                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_data_member_location
-	.byte	15                              @ Abbrev [15] 0x38e:0xc DW_TAG_member
-	.long	.Linfo_string47                 @ DW_AT_name
-	.long	952                             @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x3a0:0xc DW_TAG_member
+	.long	.Linfo_string46                 @ DW_AT_name
+	.long	970                             @ DW_AT_type
 	.byte	5                               @ DW_AT_decl_file
 	.byte	157                             @ DW_AT_decl_line
 	.byte	2                               @ DW_AT_data_member_location
 	.byte	0                               @ End Of Children Mark
-	.byte	16                              @ Abbrev [16] 0x39b:0xb DW_TAG_typedef
-	.long	934                             @ DW_AT_type
-	.long	.Linfo_string44                 @ DW_AT_name
+	.byte	17                              @ Abbrev [17] 0x3ad:0xb DW_TAG_typedef
+	.long	952                             @ DW_AT_type
+	.long	.Linfo_string43                 @ DW_AT_name
 	.byte	4                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.byte	4                               @ Abbrev [4] 0x3a6:0x7 DW_TAG_base_type
-	.long	.Linfo_string43                 @ DW_AT_name
+	.byte	4                               @ Abbrev [4] 0x3b8:0x7 DW_TAG_base_type
+	.long	.Linfo_string42                 @ DW_AT_name
 	.byte	8                               @ DW_AT_encoding
 	.byte	1                               @ DW_AT_byte_size
-	.byte	16                              @ Abbrev [16] 0x3ad:0xb DW_TAG_typedef
-	.long	923                             @ DW_AT_type
-	.long	.Linfo_string46                 @ DW_AT_name
+	.byte	17                              @ Abbrev [17] 0x3bf:0xb DW_TAG_typedef
+	.long	941                             @ DW_AT_type
+	.long	.Linfo_string45                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	25                              @ DW_AT_decl_line
-	.byte	17                              @ Abbrev [17] 0x3b8:0xc DW_TAG_array_type
-	.long	722                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x3bd:0x6 DW_TAG_subrange_type
-	.long	964                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x3ca:0xc DW_TAG_array_type
+	.long	740                             @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3cf:0x6 DW_TAG_subrange_type
+	.long	982                             @ DW_AT_type
 	.byte	14                              @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x3c4:0x7 DW_TAG_base_type
-	.long	.Linfo_string48                 @ DW_AT_name
+	.byte	20                              @ Abbrev [20] 0x3d6:0x7 DW_TAG_base_type
+	.long	.Linfo_string47                 @ DW_AT_name
 	.byte	8                               @ DW_AT_byte_size
 	.byte	7                               @ DW_AT_encoding
-	.byte	12                              @ Abbrev [12] 0x3cb:0x5 DW_TAG_pointer_type
-	.long	722                             @ DW_AT_type
-	.byte	12                              @ Abbrev [12] 0x3d0:0x5 DW_TAG_pointer_type
-	.long	734                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x3d5:0xc DW_TAG_array_type
-	.long	722                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x3da:0x6 DW_TAG_subrange_type
-	.long	964                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x3dd:0x5 DW_TAG_pointer_type
+	.long	740                             @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x3e2:0xc DW_TAG_array_type
+	.long	740                             @ DW_AT_type
+	.byte	19                              @ Abbrev [19] 0x3e7:0x6 DW_TAG_subrange_type
+	.long	982                             @ DW_AT_type
 	.byte	6                               @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
-	.byte	12                              @ Abbrev [12] 0x3e1:0x5 DW_TAG_pointer_type
-	.long	998                             @ DW_AT_type
-	.byte	13                              @ Abbrev [13] 0x3e6:0x5 DW_TAG_const_type
-	.long	1003                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x3eb:0xb DW_TAG_typedef
-	.long	934                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x3ee:0x5 DW_TAG_pointer_type
+	.long	752                             @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x3f3:0x5 DW_TAG_pointer_type
+	.long	1016                            @ DW_AT_type
+	.byte	14                              @ Abbrev [14] 0x3f8:0x5 DW_TAG_const_type
+	.long	1021                            @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x3fd:0xb DW_TAG_typedef
+	.long	952                             @ DW_AT_type
 	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	6                               @ DW_AT_decl_file
 	.byte	67                              @ DW_AT_decl_line
-	.byte	16                              @ Abbrev [16] 0x3f6:0xb DW_TAG_typedef
-	.long	866                             @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x408:0xb DW_TAG_typedef
+	.long	884                             @ DW_AT_type
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	6                               @ DW_AT_decl_file
 	.byte	69                              @ DW_AT_decl_line
-	.byte	12                              @ Abbrev [12] 0x401:0x5 DW_TAG_pointer_type
-	.long	1003                            @ DW_AT_type
+	.byte	13                              @ Abbrev [13] 0x413:0x5 DW_TAG_pointer_type
+	.long	1021                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
 	.section	.debug_ranges,"",%progbits
@@ -1918,75 +2290,75 @@ umqtt_trans_recv:
 .Linfo_string30:
 	.asciz	"sock"                          @ string offset=581
 .Linfo_string31:
-	.asciz	"_ret"                          @ string offset=586
+	.asciz	"addr_res"                      @ string offset=586
 .Linfo_string32:
-	.asciz	"addr_res"                      @ string offset=591
+	.asciz	"ai_flags"                      @ string offset=595
 .Linfo_string33:
-	.asciz	"ai_flags"                      @ string offset=600
+	.asciz	"ai_family"                     @ string offset=604
 .Linfo_string34:
-	.asciz	"ai_family"                     @ string offset=609
+	.asciz	"ai_socktype"                   @ string offset=614
 .Linfo_string35:
-	.asciz	"ai_socktype"                   @ string offset=619
+	.asciz	"ai_protocol"                   @ string offset=626
 .Linfo_string36:
-	.asciz	"ai_protocol"                   @ string offset=631
+	.asciz	"ai_addrlen"                    @ string offset=638
 .Linfo_string37:
-	.asciz	"ai_addrlen"                    @ string offset=643
+	.asciz	"unsigned int"                  @ string offset=649
 .Linfo_string38:
-	.asciz	"unsigned int"                  @ string offset=654
+	.asciz	"uint32_t"                      @ string offset=662
 .Linfo_string39:
-	.asciz	"uint32_t"                      @ string offset=667
+	.asciz	"socklen_t"                     @ string offset=671
 .Linfo_string40:
-	.asciz	"socklen_t"                     @ string offset=676
+	.asciz	"ai_addr"                       @ string offset=681
 .Linfo_string41:
-	.asciz	"ai_addr"                       @ string offset=686
+	.asciz	"sa_len"                        @ string offset=689
 .Linfo_string42:
-	.asciz	"sa_len"                        @ string offset=694
+	.asciz	"unsigned char"                 @ string offset=696
 .Linfo_string43:
-	.asciz	"unsigned char"                 @ string offset=701
+	.asciz	"uint8_t"                       @ string offset=710
 .Linfo_string44:
-	.asciz	"uint8_t"                       @ string offset=715
+	.asciz	"sa_family"                     @ string offset=718
 .Linfo_string45:
-	.asciz	"sa_family"                     @ string offset=723
+	.asciz	"sa_family_t"                   @ string offset=728
 .Linfo_string46:
-	.asciz	"sa_family_t"                   @ string offset=733
+	.asciz	"sa_data"                       @ string offset=740
 .Linfo_string47:
-	.asciz	"sa_data"                       @ string offset=745
+	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=748
 .Linfo_string48:
-	.asciz	"__ARRAY_SIZE_TYPE__"           @ string offset=753
+	.asciz	"sockaddr"                      @ string offset=768
 .Linfo_string49:
-	.asciz	"sockaddr"                      @ string offset=773
+	.asciz	"ai_canonname"                  @ string offset=777
 .Linfo_string50:
-	.asciz	"ai_canonname"                  @ string offset=782
+	.asciz	"ai_next"                       @ string offset=790
 .Linfo_string51:
-	.asciz	"ai_next"                       @ string offset=795
+	.asciz	"addrinfo"                      @ string offset=798
 .Linfo_string52:
-	.asciz	"addrinfo"                      @ string offset=803
+	.asciz	"_ret"                          @ string offset=807
 .Linfo_string53:
 	.asciz	"exit"                          @ string offset=812
 .Linfo_string54:
-	.asciz	"umqtt_uri"                     @ string offset=817
+	.asciz	"port_str"                      @ string offset=817
 .Linfo_string55:
-	.asciz	"res"                           @ string offset=827
+	.asciz	"hint"                          @ string offset=826
 .Linfo_string56:
-	.asciz	"rc"                            @ string offset=831
+	.asciz	"umqtt_uri"                     @ string offset=831
 .Linfo_string57:
-	.asciz	"uri_len"                       @ string offset=834
+	.asciz	"res"                           @ string offset=841
 .Linfo_string58:
-	.asciz	"host_addr_len"                 @ string offset=842
+	.asciz	"port_len"                      @ string offset=845
 .Linfo_string59:
-	.asciz	"port_len"                      @ string offset=856
+	.asciz	"host_addr_len"                 @ string offset=854
 .Linfo_string60:
-	.asciz	"ptr"                           @ string offset=865
+	.asciz	"uri_len"                       @ string offset=868
 .Linfo_string61:
-	.asciz	"port_str"                      @ string offset=869
+	.asciz	"rc"                            @ string offset=876
 .Linfo_string62:
-	.asciz	"hint"                          @ string offset=878
+	.asciz	"host_addr_new"                 @ string offset=879
 .Linfo_string63:
-	.asciz	"ret"                           @ string offset=883
+	.asciz	"host_addr"                     @ string offset=893
 .Linfo_string64:
-	.asciz	"host_addr"                     @ string offset=887
+	.asciz	"ptr"                           @ string offset=903
 .Linfo_string65:
-	.asciz	"host_addr_new"                 @ string offset=897
+	.asciz	"ret"                           @ string offset=907
 .Linfo_string66:
 	.asciz	"send_buf"                      @ string offset=911
 .Linfo_string67:
@@ -2003,7 +2375,7 @@ umqtt_trans_recv:
 	.asciz	"recv_buf"                      @ string offset=966
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

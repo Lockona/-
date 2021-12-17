@@ -37,405 +37,386 @@ msh_exec_script:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r0
+	@DEBUG_VALUE: msh_exec_script:size <- $r1
+	@DEBUG_VALUE: msh_exec_script:size <- $r1
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#56
-	sub	sp, #56
-	.cfi_def_cfa_offset 64
-	str	r0, [sp, #48]
-	str	r1, [sp, #44]
-	mov.w	r0, #-1
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
 .Ltmp0:
-	.loc	1 62 9 prologue_end             @ rt-thread/components/finsh/msh_file.c:62:9
-	str	r0, [sp, #36]
-	movs	r0, #0
-	.loc	1 64 17                         @ rt-thread/components/finsh/msh_file.c:64:17
-	str	r0, [sp, #24]
+	.loc	1 66 9 prologue_end             @ rt-thread/components/finsh/msh_file.c:66:9
+	cmp	r1, #0
 .Ltmp1:
-	.loc	1 66 9                          @ rt-thread/components/finsh/msh_file.c:66:9
-	ldr	r0, [sp, #44]
+	@DEBUG_VALUE: msh_exec_script:cmd_length <- 0
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r0
+	beq	.LBB0_23
 .Ltmp2:
-	.loc	1 66 9 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:66:9
-	cbnz	r0, .LBB0_2
-	b	.LBB0_1
-.LBB0_1:
-	.loc	1 0 9                           @ rt-thread/components/finsh/msh_file.c:0:9
-	mov.w	r0, #-1
+@ %bb.1:
+	@DEBUG_VALUE: msh_exec_script:size <- $r1
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r0
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	@DEBUG_VALUE: msh_exec_script:cmd_length <- 0
+	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
+	mov	r4, r0
 .Ltmp3:
-	.loc	1 66 20                         @ rt-thread/components/finsh/msh_file.c:66:20
-	str	r0, [sp, #52]
-	b	.LBB0_35
-.Ltmp4:
-.LBB0_2:
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
 	.loc	1 69 5 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:69:5
-	b	.LBB0_3
-.LBB0_3:                                @ =>This Inner Loop Header: Depth=1
-	.loc	1 69 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:69:13
-	ldr	r0, [sp, #48]
-	.loc	1 69 22                         @ rt-thread/components/finsh/msh_file.c:69:22
-	ldr	r1, [sp, #24]
-	.loc	1 69 13                         @ rt-thread/components/finsh/msh_file.c:69:13
-	ldrsb	r1, [r0, r1]
-	movs	r0, #0
-	.loc	1 69 41                         @ rt-thread/components/finsh/msh_file.c:69:41
-	cmp	r1, #32
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	beq	.LBB0_6
+	bic.w	r0, r1, r1, asr #31
+	movs	r5, #0
 	b	.LBB0_4
-.LBB0_4:                                @   in Loop: Header=BB0_3 Depth=1
-	.loc	1 69 44                         @ rt-thread/components/finsh/msh_file.c:69:44
-	ldr	r0, [sp, #48]
-	.loc	1 69 53                         @ rt-thread/components/finsh/msh_file.c:69:53
-	ldr	r1, [sp, #24]
-	.loc	1 69 44                         @ rt-thread/components/finsh/msh_file.c:69:44
-	ldrsb	r1, [r0, r1]
-	movs	r0, #0
-	.loc	1 69 74                         @ rt-thread/components/finsh/msh_file.c:69:74
-	cmp	r1, #9
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	beq	.LBB0_6
-	b	.LBB0_5
-.LBB0_5:                                @   in Loop: Header=BB0_3 Depth=1
-	.loc	1 69 77                         @ rt-thread/components/finsh/msh_file.c:69:77
-	ldr	r1, [sp, #24]
-	.loc	1 69 90                         @ rt-thread/components/finsh/msh_file.c:69:90
-	ldr	r2, [sp, #44]
-	movs	r0, #0
-	.loc	1 69 88                         @ rt-thread/components/finsh/msh_file.c:69:88
-	cmp	r1, r2
-	it	lt
-	movlt	r0, #1
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	b	.LBB0_6
-.LBB0_6:                                @   in Loop: Header=BB0_3 Depth=1
-	.loc	1 0 0                           @ rt-thread/components/finsh/msh_file.c:0:0
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	.loc	1 69 5                          @ rt-thread/components/finsh/msh_file.c:69:5
-	lsls	r0, r0, #31
-	cbz	r0, .LBB0_8
-	b	.LBB0_7
-.LBB0_7:                                @   in Loop: Header=BB0_3 Depth=1
-	.loc	1 70 20 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:70:20
-	ldr	r0, [sp, #24]
-	adds	r0, #1
-	str	r0, [sp, #24]
-	.loc	1 69 5                          @ rt-thread/components/finsh/msh_file.c:69:5
-	b	.LBB0_3
-.LBB0_8:
-	.loc	1 73 14                         @ rt-thread/components/finsh/msh_file.c:73:14
-	ldr	r0, [sp, #24]
-	.loc	1 73 25 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:73:25
-	adds	r0, #32
-	.loc	1 73 12                         @ rt-thread/components/finsh/msh_file.c:73:12
-	str	r0, [sp, #28]
-	.loc	1 76 34 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:76:34
-	ldr	r0, [sp, #28]
-	.loc	1 76 24 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:76:24
-	bl	rt_malloc
-	.loc	1 76 13                         @ rt-thread/components/finsh/msh_file.c:76:13
-	str	r0, [sp, #32]
+.Ltmp4:
+	.p2align	2
+.LBB0_2:                                @   in Loop: Header=BB0_4 Depth=1
+	@DEBUG_VALUE: msh_exec_script:cmd_length <- $r5
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	cmp	r0, r5
+	beq	.LBB0_26
 .Ltmp5:
-	.loc	1 77 9 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:77:9
-	ldr	r0, [sp, #32]
+@ %bb.3:                                @   in Loop: Header=BB0_4 Depth=1
+	@DEBUG_VALUE: msh_exec_script:cmd_length <- $r5
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	.loc	1 70 20                         @ rt-thread/components/finsh/msh_file.c:70:20
+	adds	r5, #1
 .Ltmp6:
-	.loc	1 77 9 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:77:9
-	cbnz	r0, .LBB0_10
-	b	.LBB0_9
-.LBB0_9:
-	.loc	1 0 9                           @ rt-thread/components/finsh/msh_file.c:0:9
-	mvn	r0, #4
+	@DEBUG_VALUE: msh_exec_script:cmd_length <- $r5
+.LBB0_4:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	@DEBUG_VALUE: msh_exec_script:cmd_length <- $r5
+	.loc	1 69 13                         @ rt-thread/components/finsh/msh_file.c:69:13
+	ldrb	r1, [r4, r5]
 .Ltmp7:
-	.loc	1 77 29                         @ rt-thread/components/finsh/msh_file.c:77:29
-	str	r0, [sp, #52]
-	b	.LBB0_35
+	@DEBUG_VALUE: msh_exec_script:size <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	1 69 41 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:69:41
+	cmp	r1, #9
+	it	ne
+	cmpne	r1, #32
+	bne	.LBB0_2
 .Ltmp8:
-.LBB0_10:
-	.loc	1 80 12 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:80:12
-	ldr	r0, [sp, #32]
-	.loc	1 80 21 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:80:21
-	ldr	r1, [sp, #48]
-	.loc	1 80 31                         @ rt-thread/components/finsh/msh_file.c:80:31
-	ldr	r2, [sp, #24]
+.LBB0_5:
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	.loc	1 73 25 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:73:25
+	add.w	r0, r5, #32
+.Ltmp9:
+	@DEBUG_VALUE: msh_exec_script:length <- $r0
+	.loc	1 76 24                         @ rt-thread/components/finsh/msh_file.c:76:24
+	bl	rt_malloc
+.Ltmp10:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r0
+	.loc	1 0 24 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:24
+	cbz	r0, .LBB0_14
+.Ltmp11:
+@ %bb.6:
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r0
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	.loc	1 80 5 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:80:5
+	mov	r1, r4
+	mov	r2, r5
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:0
+	mov	r7, r0
+.Ltmp12:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
 	.loc	1 80 5                          @ rt-thread/components/finsh/msh_file.c:80:5
 	bl	__aeabi_memcpy
-	.loc	1 81 5 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:81:5
-	ldr	r1, [sp, #32]
-	.loc	1 81 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:81:13
-	ldr	r2, [sp, #24]
 	movs	r0, #0
-	.loc	1 81 25                         @ rt-thread/components/finsh/msh_file.c:81:25
-	strb	r0, [r1, r2]
-.Ltmp9:
-	.loc	1 83 16 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:83:16
-	ldr	r0, [sp, #32]
-	.loc	1 83 9 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:83:9
-	movw	r1, :lower16:.L.str
-	movt	r1, :upper16:.L.str
-	bl	strstr
-	.loc	1 83 43                         @ rt-thread/components/finsh/msh_file.c:83:43
-	cbnz	r0, .LBB0_12
-	b	.LBB0_11
-.LBB0_11:
-	.loc	1 83 53                         @ rt-thread/components/finsh/msh_file.c:83:53
-	ldr	r0, [sp, #32]
-	.loc	1 83 46                         @ rt-thread/components/finsh/msh_file.c:83:46
-	movw	r1, :lower16:.L.str.1
-	movt	r1, :upper16:.L.str.1
-	bl	strstr
-.Ltmp10:
-	.loc	1 83 9                          @ rt-thread/components/finsh/msh_file.c:83:9
-	cbz	r0, .LBB0_15
-	b	.LBB0_12
-.LBB0_12:
-.Ltmp11:
-	.loc	1 86 19 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:86:19
-	ldr	r0, [sp, #32]
-	movs	r2, #0
-	.loc	1 86 14 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:86:14
-	mov	r1, r2
-	bl	open
-	.loc	1 86 12                         @ rt-thread/components/finsh/msh_file.c:86:12
-	str	r0, [sp, #36]
-.Ltmp12:
-	.loc	1 89 13 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:89:13
-	ldr	r0, [sp, #36]
+	.loc	1 81 25 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:81:25
+	strb	r0, [r7, r5]
 .Ltmp13:
-	.loc	1 89 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:89:13
-	cmp.w	r0, #-1
-	bgt	.LBB0_14
-	b	.LBB0_13
-.LBB0_13:
+	.loc	1 83 9                          @ rt-thread/components/finsh/msh_file.c:83:9
+	adr	r1, .LCPI0_0
+	mov	r0, r7
+	bl	strstr
+	.loc	1 83 43 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:83:43
+	cbnz	r0, .LBB0_8
 .Ltmp14:
-	.loc	1 91 25 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:91:25
-	ldr	r0, [sp, #32]
-	.loc	1 91 34 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:91:34
-	ldr	r1, [sp, #28]
-	.loc	1 91 41                         @ rt-thread/components/finsh/msh_file.c:91:41
-	subs	r1, #1
-	.loc	1 91 59                         @ rt-thread/components/finsh/msh_file.c:91:59
-	ldr	r3, [sp, #24]
-	.loc	1 91 71                         @ rt-thread/components/finsh/msh_file.c:91:71
-	ldr	r2, [sp, #48]
-	.loc	1 91 13                         @ rt-thread/components/finsh/msh_file.c:91:13
-	mov	r12, sp
-	str.w	r2, [r12]
-	movw	r2, :lower16:.L.str.2
-	movt	r2, :upper16:.L.str.2
-	bl	rt_snprintf
-	.loc	1 92 23 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:92:23
-	ldr	r0, [sp, #32]
-	movs	r2, #0
-	.loc	1 92 18 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:92:18
-	mov	r1, r2
-	bl	open
-	.loc	1 92 16                         @ rt-thread/components/finsh/msh_file.c:92:16
-	str	r0, [sp, #36]
-	.loc	1 93 9 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:93:9
-	b	.LBB0_14
+@ %bb.7:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	.loc	1 83 46                         @ rt-thread/components/finsh/msh_file.c:83:46
+	adr	r1, .LCPI0_1
+	mov	r0, r7
+	bl	strstr
 .Ltmp15:
-.LBB0_14:
-	.loc	1 94 5                          @ rt-thread/components/finsh/msh_file.c:94:5
-	b	.LBB0_15
+	.loc	1 83 9                          @ rt-thread/components/finsh/msh_file.c:83:9
+	cbz	r0, .LBB0_10
 .Ltmp16:
-.LBB0_15:
-	.loc	1 96 13                         @ rt-thread/components/finsh/msh_file.c:96:13
-	ldr	r0, [sp, #32]
-	.loc	1 96 5 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:96:5
-	bl	rt_free
+.LBB0_8:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	.loc	1 86 14 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:86:14
+	movs	r1, #0
+	movs	r2, #0
+	mov	r0, r7
+	bl	open
+	mov	r6, r0
 .Ltmp17:
-	.loc	1 97 9 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:97:9
-	ldr	r0, [sp, #36]
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	.loc	1 89 13                         @ rt-thread/components/finsh/msh_file.c:89:13
+	cmp.w	r0, #-1
+	bgt	.LBB0_11
 .Ltmp18:
-	.loc	1 97 9 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:97:9
-	cmp	r0, #0
-	bmi	.LBB0_33
-	b	.LBB0_16
-.LBB0_16:
-	.loc	1 0 9                           @ rt-thread/components/finsh/msh_file.c:0:9
-	movs	r0, #128
+@ %bb.9:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	.loc	1 91 41                         @ rt-thread/components/finsh/msh_file.c:91:41
+	add.w	r1, r5, #31
+	.loc	1 91 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:91:13
+	adr	r2, .LCPI0_2
+	mov	r0, r7
+	mov	r3, r5
+	str	r4, [sp]
+	bl	rt_snprintf
+	.loc	1 92 18 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:92:18
+	movs	r1, #0
+	movs	r2, #0
+	mov	r0, r7
+	bl	open
+	mov	r6, r0
 .Ltmp19:
-	.loc	1 103 29 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:103:29
-	bl	rt_malloc
-	.loc	1 103 18 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:103:18
-	str	r0, [sp, #20]
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	.loc	1 0 18 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:18
+	b	.LBB0_11
 .Ltmp20:
-	.loc	1 104 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:104:13
-	ldr	r0, [sp, #20]
+.LBB0_10:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	mov.w	r6, #-1
 .Ltmp21:
-	.loc	1 104 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:104:13
-	cbnz	r0, .LBB0_18
-	b	.LBB0_17
-.LBB0_17:
-.Ltmp22:
-	.loc	1 106 19 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:106:19
-	ldr	r0, [sp, #36]
-	.loc	1 106 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:106:13
-	bl	close
-	mvn	r0, #4
-	.loc	1 107 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:107:13
-	str	r0, [sp, #52]
-	b	.LBB0_35
-.Ltmp23:
-.LBB0_18:
-	.loc	1 111 9                         @ rt-thread/components/finsh/msh_file.c:111:9
-	b	.LBB0_19
-.LBB0_19:                               @ =>This Loop Header: Depth=1
-                                        @     Child Loop BB0_21 Depth 2
-.Ltmp24:
-	.loc	1 113 35                        @ rt-thread/components/finsh/msh_file.c:113:35
-	ldr	r0, [sp, #36]
-	.loc	1 113 39 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:113:39
-	ldr	r1, [sp, #20]
-	movs	r2, #128
-	.loc	1 113 22                        @ rt-thread/components/finsh/msh_file.c:113:22
-	bl	msh_readline
-	.loc	1 113 20                        @ rt-thread/components/finsh/msh_file.c:113:20
-	str	r0, [sp, #16]
-.Ltmp25:
-	.loc	1 114 17 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:114:17
-	ldr	r0, [sp, #16]
-.Ltmp26:
-	.loc	1 114 17 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:114:17
-	cmp	r0, #1
-	blt	.LBB0_30
-	b	.LBB0_20
-.LBB0_20:                               @   in Loop: Header=BB0_19 Depth=1
-	.loc	1 0 17                          @ rt-thread/components/finsh/msh_file.c:0:17
-	movs	r0, #0
-.Ltmp27:
-	.loc	1 116 22 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:116:22
-	strb.w	r0, [sp, #15]
-.Ltmp28:
-	.loc	1 119 28                        @ rt-thread/components/finsh/msh_file.c:119:28
-	str	r0, [sp, #8]
-	.loc	1 119 22 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:119:22
-	b	.LBB0_21
-.LBB0_21:                               @   Parent Loop BB0_19 Depth=1
-                                        @ =>  This Inner Loop Header: Depth=2
-.Ltmp29:
-	.loc	1 119 33                        @ rt-thread/components/finsh/msh_file.c:119:33
-	ldr	r0, [sp, #8]
-	.loc	1 119 41                        @ rt-thread/components/finsh/msh_file.c:119:41
-	ldr	r1, [sp, #16]
-.Ltmp30:
-	.loc	1 119 17                        @ rt-thread/components/finsh/msh_file.c:119:17
-	cmp	r0, r1
-	bge	.LBB0_27
-	b	.LBB0_22
-.LBB0_22:                               @   in Loop: Header=BB0_21 Depth=2
-.Ltmp31:
-	.loc	1 121 26 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:121:26
-	ldr	r0, [sp, #20]
-	.loc	1 121 35 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:121:35
-	ldr	r1, [sp, #8]
-	.loc	1 121 26                        @ rt-thread/components/finsh/msh_file.c:121:26
-	ldrb	r0, [r0, r1]
-	.loc	1 121 24                        @ rt-thread/components/finsh/msh_file.c:121:24
-	strb.w	r0, [sp, #15]
-.Ltmp32:
-	.loc	1 122 25 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:122:25
-	ldrsb.w	r0, [sp, #15]
-	.loc	1 122 35 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:122:35
-	cmp	r0, #32
-	beq	.LBB0_24
-	b	.LBB0_23
-.LBB0_23:                               @   in Loop: Header=BB0_21 Depth=2
-	.loc	1 122 38                        @ rt-thread/components/finsh/msh_file.c:122:38
-	ldrsb.w	r0, [sp, #15]
-.Ltmp33:
-	.loc	1 122 25                        @ rt-thread/components/finsh/msh_file.c:122:25
-	cmp	r0, #9
-	bne	.LBB0_25
-	b	.LBB0_24
-.LBB0_24:                               @   in Loop: Header=BB0_21 Depth=2
-.Ltmp34:
-	.loc	1 122 50                        @ rt-thread/components/finsh/msh_file.c:122:50
-	b	.LBB0_26
-.LBB0_25:                               @   in Loop: Header=BB0_19 Depth=1
-	.loc	1 123 26 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:123:26
-	b	.LBB0_27
-.Ltmp35:
-.LBB0_26:                               @   in Loop: Header=BB0_21 Depth=2
-	.loc	1 119 55                        @ rt-thread/components/finsh/msh_file.c:119:55
-	ldr	r0, [sp, #8]
-	adds	r0, #1
-	str	r0, [sp, #8]
-	.loc	1 119 17 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:119:17
-	b	.LBB0_21
-.Ltmp36:
-.LBB0_27:                               @   in Loop: Header=BB0_19 Depth=1
-	.loc	1 126 21 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:126:21
-	ldrsb.w	r0, [sp, #15]
-.Ltmp37:
-	.loc	1 126 21 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:126:21
-	cmp	r0, #35
-	beq	.LBB0_29
-	b	.LBB0_28
-.LBB0_28:                               @   in Loop: Header=BB0_19 Depth=1
-.Ltmp38:
-	.loc	1 127 30 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:127:30
-	ldr	r0, [sp, #20]
-	.loc	1 127 40 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:127:40
-	ldr	r1, [sp, #16]
-	.loc	1 127 21                        @ rt-thread/components/finsh/msh_file.c:127:21
-	bl	msh_exec
-	b	.LBB0_29
-.Ltmp39:
-.LBB0_29:                               @   in Loop: Header=BB0_19 Depth=1
-	.loc	1 128 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:128:13
-	b	.LBB0_30
-.Ltmp40:
-.LBB0_30:                               @   in Loop: Header=BB0_19 Depth=1
-	.loc	1 129 9                         @ rt-thread/components/finsh/msh_file.c:129:9
-	b	.LBB0_31
-.Ltmp41:
-.LBB0_31:                               @   in Loop: Header=BB0_19 Depth=1
-	.loc	1 130 16                        @ rt-thread/components/finsh/msh_file.c:130:16
-	ldr	r0, [sp, #16]
-.Ltmp42:
-	.loc	1 129 9                         @ rt-thread/components/finsh/msh_file.c:129:9
-	cmp	r0, #0
-	bgt	.LBB0_19
-	b	.LBB0_32
-.Ltmp43:
-.LBB0_32:
-	.loc	1 132 15                        @ rt-thread/components/finsh/msh_file.c:132:15
-	ldr	r0, [sp, #36]
-	.loc	1 132 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:132:9
-	bl	close
-	.loc	1 133 17 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:133:17
-	ldr	r0, [sp, #20]
-	.loc	1 133 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:133:9
+.LBB0_11:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	.loc	1 96 5 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:96:5
+	mov	r0, r7
 	bl	rt_free
-	movs	r0, #0
-	.loc	1 135 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:135:13
-	str	r0, [sp, #40]
-	.loc	1 136 5                         @ rt-thread/components/finsh/msh_file.c:136:5
-	b	.LBB0_34
-.Ltmp44:
-.LBB0_33:
-	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
-	mov.w	r0, #-1
-.Ltmp45:
-	.loc	1 139 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:139:13
-	str	r0, [sp, #40]
-	b	.LBB0_34
-.Ltmp46:
-.LBB0_34:
-	.loc	1 142 12                        @ rt-thread/components/finsh/msh_file.c:142:12
-	ldr	r0, [sp, #40]
-	.loc	1 142 5 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:142:5
-	str	r0, [sp, #52]
-	b	.LBB0_35
-.LBB0_35:
+	.loc	1 97 9                          @ rt-thread/components/finsh/msh_file.c:97:9
+	cmp	r6, #0
+	bmi	.LBB0_23
+.Ltmp22:
+@ %bb.12:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	.loc	1 103 29                        @ rt-thread/components/finsh/msh_file.c:103:29
+	movs	r0, #128
+	bl	rt_malloc
+	mov	r4, r0
+.Ltmp23:
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: line_buf <- $r4
+	.loc	1 104 13                        @ rt-thread/components/finsh/msh_file.c:104:13
+	cbnz	r0, .LBB0_16
+.Ltmp24:
+@ %bb.13:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 106 13                        @ rt-thread/components/finsh/msh_file.c:106:13
+	mov	r0, r6
+	bl	close
+.Ltmp25:
+	@DEBUG_VALUE: msh_exec_script:ret <- 0
+	.loc	1 0 13 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:13
+	cbnz	r4, .LBB0_25
+.Ltmp26:
+.LBB0_14:
+	mvn	r0, #4
 	.loc	1 143 1 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:143:1
-	ldr	r0, [sp, #52]
-	add	sp, #56
-	pop	{r7, pc}
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+	.p2align	2
+.LBB0_15:                               @   in Loop: Header=BB0_16 Depth=1
+.Ltmp27:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 129 9                         @ rt-thread/components/finsh/msh_file.c:129:9
+	cmp	r5, #0
+	ble	.LBB0_24
+.Ltmp28:
+.LBB0_16:                               @ =>This Loop Header: Depth=1
+                                        @     Child Loop BB0_19 Depth 2
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 113 22                        @ rt-thread/components/finsh/msh_file.c:113:22
+	mov	r0, r6
+	mov	r1, r4
+	bl	msh_readline
+.Ltmp29:
+	@DEBUG_VALUE: length <- $r0
+	.loc	1 114 17                        @ rt-thread/components/finsh/msh_file.c:114:17
+	cmp	r0, #1
+	blt	.LBB0_24
+.Ltmp30:
+@ %bb.17:                               @   in Loop: Header=BB0_16 Depth=1
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: length <- $r0
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 17 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:17
+	mov	r5, r0
+.Ltmp31:
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: length <- $r5
+	movs	r0, #0
+	b	.LBB0_19
+.Ltmp32:
+	.p2align	2
+.LBB0_18:                               @   in Loop: Header=BB0_19 Depth=2
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: ch <- $r1
+	@DEBUG_VALUE: index <- $r0
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 119 55 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:119:55
+	adds	r0, #1
+.Ltmp33:
+	@DEBUG_VALUE: index <- $r0
+	.loc	1 119 17 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:119:17
+	cmp	r5, r0
+.Ltmp34:
+	@DEBUG_VALUE: ch <- undef
+	beq	.LBB0_21
+.Ltmp35:
+.LBB0_19:                               @   Parent Loop BB0_16 Depth=1
+                                        @ =>  This Inner Loop Header: Depth=2
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: index <- $r0
+	.loc	1 121 26 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:121:26
+	ldrb	r1, [r4, r0]
+.Ltmp36:
+	@DEBUG_VALUE: ch <- $r1
+	.loc	1 122 35                        @ rt-thread/components/finsh/msh_file.c:122:35
+	cmp	r1, #9
+	beq	.LBB0_18
+.Ltmp37:
+@ %bb.20:                               @   in Loop: Header=BB0_19 Depth=2
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: ch <- $r1
+	@DEBUG_VALUE: index <- $r0
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	cmp	r1, #32
+	beq	.LBB0_18
+.Ltmp38:
+.LBB0_21:                               @   in Loop: Header=BB0_16 Depth=1
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: index <- $r0
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:0
+	cmp	r1, #35
+.Ltmp39:
+	@DEBUG_VALUE: ch <- undef
+	beq	.LBB0_15
+.Ltmp40:
+@ %bb.22:                               @   in Loop: Header=BB0_16 Depth=1
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: length <- $r5
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: index <- $r0
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 127 21 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:127:21
+	mov	r0, r4
+.Ltmp41:
+	mov	r1, r5
+	bl	msh_exec
+	b	.LBB0_15
+.Ltmp42:
+.LBB0_23:
+	.loc	1 0 21 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:21
+	mov.w	r0, #-1
+	.loc	1 143 1 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:143:1
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.LBB0_24:
+.Ltmp43:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: line_buf <- $r4
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 132 9                         @ rt-thread/components/finsh/msh_file.c:132:9
+	mov	r0, r6
+	bl	close
+	.loc	1 133 9                         @ rt-thread/components/finsh/msh_file.c:133:9
+	mov	r0, r4
+	bl	rt_free
+.Ltmp44:
+	@DEBUG_VALUE: msh_exec_script:ret <- 0
+	@DEBUG_VALUE: msh_exec_script:ret <- 0
+	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
+	cmp	r4, #0
+	beq	.LBB0_14
+.Ltmp45:
+.LBB0_25:
+	@DEBUG_VALUE: msh_exec_script:pg_name <- $r7
+	@DEBUG_VALUE: msh_exec_script:fd <- $r6
+	@DEBUG_VALUE: msh_exec_script:ret <- 0
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- [DW_OP_LLVM_entry_value 1] $r0
+	movs	r0, #0
+.Ltmp46:
+	@DEBUG_VALUE: msh_exec_script:ret <- $r0
+	.loc	1 143 1 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:143:1
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
 .Ltmp47:
+.LBB0_26:
+	@DEBUG_VALUE: msh_exec_script:cmd_length <- $r5
+	@DEBUG_VALUE: msh_exec_script:cmd_line <- $r4
+	@DEBUG_VALUE: msh_exec_script:fd <- -1
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:0
+	mov	r5, r0
+.Ltmp48:
+	b	.LBB0_5
+.Ltmp49:
+	.p2align	2
+@ %bb.27:
+.LCPI0_0:
+.L.str:
+	.asciz	".sh"
+.LCPI0_1:
+.L.str.1:
+	.asciz	".SH"
+.LCPI0_2:
+.L.str.2:
+	.asciz	"/bin/%.*s\000\000"
 .Lfunc_end0:
 	.size	msh_exec_script, .Lfunc_end0-msh_exec_script
 	.cfi_endproc
@@ -449,184 +430,225 @@ msh_exec_script:
 	.thumb_func
 msh_readline:
 .Lfunc_begin1:
-	.loc	1 20 0                          @ rt-thread/components/finsh/msh_file.c:20:0
+	.loc	1 20 0 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:20:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: msh_readline:fd <- $r0
+	@DEBUG_VALUE: msh_readline:line_buf <- $r1
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#32
-	sub	sp, #32
-	.cfi_def_cfa_offset 40
-	str	r0, [sp, #24]
-	str	r1, [sp, #20]
-	str	r2, [sp, #16]
-	movs	r0, #0
-.Ltmp48:
-	.loc	1 22 9 prologue_end             @ rt-thread/components/finsh/msh_file.c:22:9
-	str	r0, [sp, #8]
-	.loc	1 24 5                          @ rt-thread/components/finsh/msh_file.c:24:5
-	b	.LBB1_1
-.LBB1_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp49:
-	.loc	1 26 18                         @ rt-thread/components/finsh/msh_file.c:26:18
-	ldr	r0, [sp, #24]
-	add.w	r1, sp, #15
-	movs	r2, #1
-	.loc	1 26 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:26:13
-	bl	read
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
+	mov	r4, r1
 .Ltmp50:
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	add.w	r1, sp, #3
+.Ltmp51:
+	.loc	1 26 13 prologue_end            @ rt-thread/components/finsh/msh_file.c:26:13
+	movs	r2, #1
+	mov	r5, r0
+.Ltmp52:
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	@DEBUG_VALUE: msh_readline:index <- 0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	bl	read
+.Ltmp53:
+	.loc	1 26 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:26:13
+	cmp	r0, #1
+	bne	.LBB1_10
+.Ltmp54:
+@ %bb.1:
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- 0
+	.loc	1 0 13                          @ rt-thread/components/finsh/msh_file.c:0:13
+	add.w	r6, sp, #3
+	b	.LBB1_3
+.Ltmp55:
+	.p2align	2
+.LBB1_2:                                @   in Loop: Header=BB1_3 Depth=1
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- 0
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	.loc	1 26 13                         @ rt-thread/components/finsh/msh_file.c:26:13
+	movs	r2, #1
+	mov	r0, r5
+	mov	r1, r6
+	bl	read
+.Ltmp56:
 	.loc	1 26 13                         @ rt-thread/components/finsh/msh_file.c:26:13
 	cmp	r0, #1
-	beq	.LBB1_3
-	b	.LBB1_2
-.LBB1_2:
-	.loc	1 0 13                          @ rt-thread/components/finsh/msh_file.c:0:13
-	movs	r0, #0
-.Ltmp51:
-	.loc	1 29 13 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:29:13
-	str	r0, [sp, #28]
-	b	.LBB1_17
-.Ltmp52:
-.LBB1_3:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 31 5                          @ rt-thread/components/finsh/msh_file.c:31:5
-	b	.LBB1_4
-.Ltmp53:
-.LBB1_4:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 32 12                         @ rt-thread/components/finsh/msh_file.c:32:12
-	ldrsb.w	r1, [sp, #15]
-	movs	r0, #1
-	.loc	1 32 23 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:32:23
-	cmp	r1, #10
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	beq	.LBB1_6
-	b	.LBB1_5
-.LBB1_5:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 32 26                         @ rt-thread/components/finsh/msh_file.c:32:26
-	ldrsb.w	r0, [sp, #15]
-	.loc	1 32 29                         @ rt-thread/components/finsh/msh_file.c:32:29
-	subs	r0, #13
-	clz	r0, r0
-	lsrs	r0, r0, #5
-	.loc	1 32 23                         @ rt-thread/components/finsh/msh_file.c:32:23
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	b	.LBB1_6
-.LBB1_6:                                @   in Loop: Header=BB1_1 Depth=1
-	.loc	1 0 23                          @ rt-thread/components/finsh/msh_file.c:0:23
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-.Ltmp54:
-	.loc	1 31 5 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:31:5
-	lsls	r0, r0, #31
-	cmp	r0, #0
-	bne	.LBB1_1
-	b	.LBB1_7
-.Ltmp55:
-.LBB1_7:
-	.loc	1 35 26                         @ rt-thread/components/finsh/msh_file.c:35:26
-	ldrb.w	r0, [sp, #15]
-	.loc	1 35 5 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:35:5
-	ldr	r1, [sp, #20]
-	.loc	1 35 20                         @ rt-thread/components/finsh/msh_file.c:35:20
-	ldr	r2, [sp, #8]
-	adds	r3, r2, #1
-	str	r3, [sp, #8]
-	.loc	1 35 24                         @ rt-thread/components/finsh/msh_file.c:35:24
-	strb	r0, [r1, r2]
-	.loc	1 37 5 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:37:5
-	b	.LBB1_8
-.LBB1_8:                                @ =>This Inner Loop Header: Depth=1
-	.loc	1 37 12 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:37:12
-	ldr	r0, [sp, #8]
-	.loc	1 37 20                         @ rt-thread/components/finsh/msh_file.c:37:20
-	ldr	r1, [sp, #16]
-	.loc	1 37 5                          @ rt-thread/components/finsh/msh_file.c:37:5
-	cmp	r0, r1
-	bge	.LBB1_16
-	b	.LBB1_9
-.LBB1_9:                                @   in Loop: Header=BB1_8 Depth=1
-.Ltmp56:
-	.loc	1 39 18 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:39:18
-	ldr	r0, [sp, #24]
-	add.w	r1, sp, #15
-	movs	r2, #1
-	.loc	1 39 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:39:13
-	bl	read
+	bne	.LBB1_11
 .Ltmp57:
-	.loc	1 39 13                         @ rt-thread/components/finsh/msh_file.c:39:13
-	cmp	r0, #1
-	bne	.LBB1_14
-	b	.LBB1_10
-.LBB1_10:                               @   in Loop: Header=BB1_8 Depth=1
+.LBB1_3:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- 0
+	.loc	1 32 12 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:32:12
+	ldrb.w	r0, [sp, #3]
 .Ltmp58:
-	.loc	1 41 17 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:41:17
-	ldrsb.w	r0, [sp, #15]
-	.loc	1 41 28 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:41:28
-	cmp	r0, #10
-	beq	.LBB1_12
-	b	.LBB1_11
-.LBB1_11:                               @   in Loop: Header=BB1_8 Depth=1
-	.loc	1 41 31                         @ rt-thread/components/finsh/msh_file.c:41:31
-	ldrsb.w	r0, [sp, #15]
-.Ltmp59:
-	.loc	1 41 17                         @ rt-thread/components/finsh/msh_file.c:41:17
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	.loc	1 31 5                          @ rt-thread/components/finsh/msh_file.c:31:5
 	cmp	r0, #13
-	bne	.LBB1_13
-	b	.LBB1_12
-.LBB1_12:
+	beq	.LBB1_2
+.Ltmp59:
+@ %bb.4:                                @   in Loop: Header=BB1_3 Depth=1
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- 0
+	cmp	r0, #10
+	beq	.LBB1_2
 .Ltmp60:
-	.loc	1 43 17 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:43:17
-	ldr	r1, [sp, #20]
-	.loc	1 43 26 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:43:26
-	ldr	r2, [sp, #8]
-	movs	r0, #0
-	.loc	1 43 33                         @ rt-thread/components/finsh/msh_file.c:43:33
-	strb	r0, [r1, r2]
-	.loc	1 44 17 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:44:17
-	b	.LBB1_16
+@ %bb.5:
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- 0
+	@DEBUG_VALUE: msh_readline:index <- 1
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
+	movs	r6, #1
+	add.w	r7, sp, #3
+	.loc	1 35 24 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:35:24
+	strb	r0, [r4]
 .Ltmp61:
-.LBB1_13:                               @   in Loop: Header=BB1_8 Depth=1
-	.loc	1 47 33                         @ rt-thread/components/finsh/msh_file.c:47:33
-	ldrb.w	r0, [sp, #15]
-	.loc	1 47 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:47:13
-	ldr	r1, [sp, #20]
-	.loc	1 47 27                         @ rt-thread/components/finsh/msh_file.c:47:27
-	ldr	r2, [sp, #8]
-	adds	r3, r2, #1
-	str	r3, [sp, #8]
-	.loc	1 47 31                         @ rt-thread/components/finsh/msh_file.c:47:31
-	strb	r0, [r1, r2]
-	.loc	1 48 9 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:48:9
-	b	.LBB1_15
+	.p2align	2
+.LBB1_6:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	.loc	1 39 13                         @ rt-thread/components/finsh/msh_file.c:39:13
+	movs	r2, #1
+	mov	r0, r5
+	mov	r1, r7
+	bl	read
 .Ltmp62:
-.LBB1_14:
-	.loc	1 51 13                         @ rt-thread/components/finsh/msh_file.c:51:13
-	ldr	r1, [sp, #20]
-	.loc	1 51 22 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:51:22
-	ldr	r2, [sp, #8]
-	movs	r0, #0
-	.loc	1 51 29                         @ rt-thread/components/finsh/msh_file.c:51:29
-	strb	r0, [r1, r2]
-	.loc	1 52 13 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:52:13
-	b	.LBB1_16
+	.loc	1 39 13 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:39:13
+	cmp	r0, #1
+	bne	.LBB1_13
 .Ltmp63:
-.LBB1_15:                               @   in Loop: Header=BB1_8 Depth=1
-	.loc	1 37 5                          @ rt-thread/components/finsh/msh_file.c:37:5
-	b	.LBB1_8
-.LBB1_16:
-	.loc	1 56 12                         @ rt-thread/components/finsh/msh_file.c:56:12
-	ldr	r0, [sp, #8]
-	.loc	1 56 5 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:56:5
-	str	r0, [sp, #28]
-	b	.LBB1_17
-.LBB1_17:
-	.loc	1 57 1 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:57:1
-	ldr	r0, [sp, #28]
-	add	sp, #32
-	pop	{r7, pc}
+@ %bb.7:                                @   in Loop: Header=BB1_6 Depth=1
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	@DEBUG_VALUE: msh_readline:size <- 128
+	.loc	1 41 17 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:41:17
+	ldrb.w	r0, [sp, #3]
 .Ltmp64:
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	.loc	1 41 28 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:41:28
+	cmp	r0, #13
+	it	ne
+	cmpne	r0, #10
+	beq	.LBB1_12
+.Ltmp65:
+@ %bb.8:                                @   in Loop: Header=BB1_6 Depth=1
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	.loc	1 47 27 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:47:27
+	adds	r1, r6, #1
+.Ltmp66:
+	@DEBUG_VALUE: msh_readline:index <- $r1
+	.loc	1 47 31 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:47:31
+	strb	r0, [r4, r6]
+.Ltmp67:
+	.loc	1 37 5 is_stmt 1                @ rt-thread/components/finsh/msh_file.c:37:5
+	cmp	r1, #128
+	mov	r6, r1
+.Ltmp68:
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	bne	.LBB1_6
+.Ltmp69:
+@ %bb.9:
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
+	movs	r6, #128
+.Ltmp70:
+	b	.LBB1_14
+.Ltmp71:
+.LBB1_10:
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- 0
+	movs	r6, #0
+	b	.LBB1_14
+.Ltmp72:
+.LBB1_11:
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	@DEBUG_VALUE: msh_readline:size <- 128
+	@DEBUG_VALUE: msh_readline:index <- 0
+	movs	r6, #0
+	b	.LBB1_14
+.Ltmp73:
+.LBB1_12:
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- $r0
+	@DEBUG_VALUE: msh_readline:size <- 128
+	movs	r0, #0
+.Ltmp74:
+	.loc	1 43 33 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:43:33
+	strb	r0, [r4, r6]
+	.loc	1 44 17                         @ rt-thread/components/finsh/msh_file.c:44:17
+	b	.LBB1_14
+.Ltmp75:
+.LBB1_13:
+	@DEBUG_VALUE: msh_readline:index <- $r6
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:ch <- [DW_OP_plus_uconst 3, DW_OP_deref] $sp
+	@DEBUG_VALUE: msh_readline:size <- 128
+	.loc	1 0 17 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:17
+	movs	r0, #0
+.Ltmp76:
+	.loc	1 51 29 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:51:29
+	strb	r0, [r4, r6]
+.Ltmp77:
+.LBB1_14:
+	@DEBUG_VALUE: msh_readline:fd <- $r5
+	@DEBUG_VALUE: msh_readline:line_buf <- $r4
+	@DEBUG_VALUE: msh_readline:size <- 128
+	.loc	1 57 1                          @ rt-thread/components/finsh/msh_file.c:57:1
+	mov	r0, r6
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp78:
 .Lfunc_end1:
 	.size	msh_readline, .Lfunc_end1-msh_readline
 	.cfi_endproc
@@ -646,48 +668,48 @@ cmd_ls:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: cmd_ls:argc <- $r0
+	@DEBUG_VALUE: cmd_ls:argc <- $r0
+	@DEBUG_VALUE: cmd_ls:argv <- $r1
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp65:
+.Ltmp79:
 	.loc	1 153 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:153:9
-	ldr	r0, [sp, #4]
-.Ltmp66:
-	.loc	1 153 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:153:9
 	cmp	r0, #1
+	@DEBUG_VALUE: cmd_ls:argv <- $r1
 	bne	.LBB2_2
-	b	.LBB2_1
-.LBB2_1:
-.Ltmp67:
-	.loc	1 156 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:156:9
+.Ltmp80:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_ls:argv <- $r1
+	@DEBUG_VALUE: cmd_ls:argc <- $r0
+	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
 	movw	r0, :lower16:working_directory
+.Ltmp81:
+	@DEBUG_VALUE: cmd_ls:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	movt	r0, :upper16:working_directory
-	bl	ls
-	.loc	1 160 5                         @ rt-thread/components/finsh/msh_file.c:160:5
 	b	.LBB2_3
-.Ltmp68:
+.Ltmp82:
 .LBB2_2:
-	.loc	1 163 12                        @ rt-thread/components/finsh/msh_file.c:163:12
-	ldr	r0, [sp]
-	ldr	r0, [r0, #4]
-	.loc	1 163 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:163:9
-	bl	ls
-	b	.LBB2_3
-.Ltmp69:
+	@DEBUG_VALUE: cmd_ls:argv <- $r1
+	@DEBUG_VALUE: cmd_ls:argc <- $r0
+	.loc	1 163 12 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:163:12
+	ldr	r0, [r1, #4]
+.Ltmp83:
+	@DEBUG_VALUE: cmd_ls:argc <- [DW_OP_LLVM_entry_value 1] $r0
 .LBB2_3:
-	.loc	1 0 9                           @ rt-thread/components/finsh/msh_file.c:0:9
-	movs	r0, #0
+	@DEBUG_VALUE: cmd_ls:argv <- $r1
+	@DEBUG_VALUE: cmd_ls:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:0
+	bl	ls
+.Ltmp84:
+	@DEBUG_VALUE: cmd_ls:argv <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	1 166 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:166:5
-	add	sp, #8
+	movs	r0, #0
 	pop	{r7, pc}
-.Ltmp70:
+.Ltmp85:
 .Lfunc_end2:
 	.size	cmd_ls, .Lfunc_end2-cmd_ls
 	.cfi_endproc
@@ -707,54 +729,62 @@ cmd_cp:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: cmd_cp:argc <- $r0
+	@DEBUG_VALUE: cmd_cp:argc <- $r0
+	@DEBUG_VALUE: cmd_cp:argv <- $r1
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp71:
+.Ltmp86:
 	.loc	1 174 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:174:9
-	ldr	r0, [sp, #4]
-.Ltmp72:
-	.loc	1 174 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:174:9
 	cmp	r0, #3
-	beq	.LBB3_2
-	b	.LBB3_1
-.LBB3_1:
-.Ltmp73:
-	.loc	1 176 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:176:9
-	movw	r0, :lower16:.L.str.3
-	movt	r0, :upper16:.L.str.3
-	bl	rt_kprintf
-	.loc	1 177 9                         @ rt-thread/components/finsh/msh_file.c:177:9
-	movw	r0, :lower16:.L.str.4
-	movt	r0, :upper16:.L.str.4
-	bl	rt_kprintf
-	.loc	1 178 5                         @ rt-thread/components/finsh/msh_file.c:178:5
-	b	.LBB3_3
-.Ltmp74:
-.LBB3_2:
+	@DEBUG_VALUE: cmd_cp:argv <- $r1
+	bne	.LBB3_2
+.Ltmp87:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_cp:argv <- $r1
+	@DEBUG_VALUE: cmd_cp:argc <- $r0
 	.loc	1 181 14                        @ rt-thread/components/finsh/msh_file.c:181:14
-	ldr	r1, [sp]
-	ldr	r0, [r1, #4]
-	.loc	1 181 23 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:181:23
-	ldr	r1, [r1, #8]
-	.loc	1 181 9                         @ rt-thread/components/finsh/msh_file.c:181:9
+	ldrd	r0, r1, [r1, #4]
+.Ltmp88:
+	@DEBUG_VALUE: cmd_cp:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: cmd_cp:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 181 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:181:9
 	bl	copy
-	b	.LBB3_3
-.Ltmp75:
-.LBB3_3:
-	.loc	1 0 9                           @ rt-thread/components/finsh/msh_file.c:0:9
-	movs	r0, #0
+.Ltmp89:
 	.loc	1 184 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:184:5
-	add	sp, #8
+	movs	r0, #0
 	pop	{r7, pc}
-.Ltmp76:
+.Ltmp90:
+.LBB3_2:
+	@DEBUG_VALUE: cmd_cp:argv <- $r1
+	@DEBUG_VALUE: cmd_cp:argc <- $r0
+	.loc	1 176 9                         @ rt-thread/components/finsh/msh_file.c:176:9
+	adr	r0, .LCPI3_0
+.Ltmp91:
+	@DEBUG_VALUE: cmd_cp:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	bl	rt_kprintf
+.Ltmp92:
+	@DEBUG_VALUE: cmd_cp:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	1 177 9                         @ rt-thread/components/finsh/msh_file.c:177:9
+	adr	r0, .LCPI3_1
+	bl	rt_kprintf
+.Ltmp93:
+	.loc	1 184 5                         @ rt-thread/components/finsh/msh_file.c:184:5
+	movs	r0, #0
+	pop	{r7, pc}
+.Ltmp94:
+	.p2align	2
+@ %bb.3:
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
+.LCPI3_0:
+.L.str.3:
+	.asciz	"Usage: cp SOURCE DEST\n\000"
+.LCPI3_1:
+.L.str.4:
+	.asciz	"Copy SOURCE to DEST.\n\000\000"
 .Lfunc_end3:
 	.size	cmd_cp, .Lfunc_end3-cmd_cp
 	.cfi_endproc
@@ -770,257 +800,271 @@ cmd_cp:
 	.thumb_func
 cmd_mv:
 .Lfunc_begin4:
-	.loc	1 189 0                         @ rt-thread/components/finsh/msh_file.c:189:0
+	.loc	1 189 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:189:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: cmd_mv:argc <- $r0
+	@DEBUG_VALUE: cmd_mv:argc <- $r0
+	@DEBUG_VALUE: cmd_mv:argv <- $r1
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#40
-	sub	sp, #40
-	.cfi_def_cfa_offset 48
-	str	r0, [sp, #32]
-	str	r1, [sp, #28]
-.Ltmp77:
-	.loc	1 190 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:190:9
-	ldr	r0, [sp, #32]
-.Ltmp78:
-	.loc	1 190 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:190:9
-	cmp	r0, #3
-	beq	.LBB4_2
-	b	.LBB4_1
-.LBB4_1:
-.Ltmp79:
-	.loc	1 192 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:192:9
-	movw	r0, :lower16:.L.str.5
-	movt	r0, :upper16:.L.str.5
-	bl	rt_kprintf
-	.loc	1 193 9                         @ rt-thread/components/finsh/msh_file.c:193:9
-	movw	r0, :lower16:.L.str.6
-	movt	r0, :upper16:.L.str.6
-	bl	rt_kprintf
-	.loc	1 194 5                         @ rt-thread/components/finsh/msh_file.c:194:5
-	b	.LBB4_18
-.Ltmp80:
-.LBB4_2:
-	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
-	movs	r0, #0
-.Ltmp81:
-	.loc	1 198 15 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:198:15
-	str	r0, [sp, #12]                   @ 4-byte Spill
-	str	r0, [sp, #20]
-	.loc	1 200 34                        @ rt-thread/components/finsh/msh_file.c:200:34
-	ldr	r0, [sp, #28]
-	ldr	r1, [r0, #4]
-	.loc	1 200 43 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:200:43
-	ldr	r2, [r0, #8]
-	.loc	1 200 9                         @ rt-thread/components/finsh/msh_file.c:200:9
-	movw	r0, :lower16:.L.str.7
-	movt	r0, :upper16:.L.str.7
-	bl	rt_kprintf
-	ldr	r2, [sp, #12]                   @ 4-byte Reload
-	.loc	1 202 19 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:202:19
-	ldr	r0, [sp, #28]
-	ldr	r0, [r0, #8]
-	mov.w	r1, #65536
-	.loc	1 202 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:202:14
-	bl	open
-	.loc	1 202 12                        @ rt-thread/components/finsh/msh_file.c:202:12
-	str	r0, [sp, #24]
-.Ltmp82:
-	.loc	1 203 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:203:13
-	ldr	r0, [sp, #24]
-.Ltmp83:
-	.loc	1 203 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:203:13
-	cmp	r0, #0
-	bmi	.LBB4_11
-	b	.LBB4_3
-.LBB4_3:
-.Ltmp84:
-	.loc	1 207 19 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:207:19
-	ldr	r0, [sp, #24]
-	.loc	1 207 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:207:13
-	bl	close
-	mov.w	r0, #256
-	.loc	1 210 28 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:210:28
-	bl	rt_malloc
-	.loc	1 210 18 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:210:18
-	str	r0, [sp, #20]
-.Ltmp85:
-	.loc	1 211 17 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:211:17
-	ldr	r0, [sp, #20]
-.Ltmp86:
-	.loc	1 211 17 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:211:17
-	cbnz	r0, .LBB4_5
-	b	.LBB4_4
-.LBB4_4:
-.Ltmp87:
-	.loc	1 213 17 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:213:17
-	movw	r0, :lower16:.L.str.8
-	movt	r0, :upper16:.L.str.8
-	bl	rt_kprintf
-	mvn	r0, #4
-	.loc	1 214 17                        @ rt-thread/components/finsh/msh_file.c:214:17
-	str	r0, [sp, #36]
-	b	.LBB4_19
-.Ltmp88:
-.LBB4_5:
-	.loc	1 217 19                        @ rt-thread/components/finsh/msh_file.c:217:19
-	ldr	r0, [sp, #28]
-	ldr	r0, [r0, #4]
-	.loc	1 217 29 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:217:29
-	str	r0, [sp, #8]                    @ 4-byte Spill
-	bl	rt_strlen
-	mov	r1, r0
-	.loc	1 217 27                        @ rt-thread/components/finsh/msh_file.c:217:27
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
-	add	r0, r1
-	.loc	1 217 17                        @ rt-thread/components/finsh/msh_file.c:217:17
-	str	r0, [sp, #16]
-	.loc	1 218 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:218:13
-	b	.LBB4_6
-.LBB4_6:                                @ =>This Inner Loop Header: Depth=1
-	.loc	1 218 20 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:218:20
-	ldr	r0, [sp, #16]
-	.loc	1 218 27                        @ rt-thread/components/finsh/msh_file.c:218:27
-	ldr	r1, [sp, #28]
-	ldr	r1, [r1, #4]
-	.loc	1 218 13                        @ rt-thread/components/finsh/msh_file.c:218:13
-	cmp	r0, r1
-	beq	.LBB4_10
-	b	.LBB4_7
-.LBB4_7:                                @   in Loop: Header=BB4_6 Depth=1
-.Ltmp89:
-	.loc	1 220 22 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:220:22
-	ldr	r0, [sp, #16]
-	.loc	1 220 21 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:220:21
-	ldrsb.w	r0, [r0]
-.Ltmp90:
-	.loc	1 220 21                        @ rt-thread/components/finsh/msh_file.c:220:21
-	cmp	r0, #47
-	bne	.LBB4_9
-	b	.LBB4_8
-.LBB4_8:
-.Ltmp91:
-	.loc	1 220 34                        @ rt-thread/components/finsh/msh_file.c:220:34
-	b	.LBB4_10
-.Ltmp92:
-.LBB4_9:                                @   in Loop: Header=BB4_6 Depth=1
-	.loc	1 221 21 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:221:21
-	ldr	r0, [sp, #16]
-	subs	r0, #1
-	str	r0, [sp, #16]
-.Ltmp93:
-	.loc	1 218 13                        @ rt-thread/components/finsh/msh_file.c:218:13
-	b	.LBB4_6
-.LBB4_10:
-	.loc	1 224 25                        @ rt-thread/components/finsh/msh_file.c:224:25
-	ldr	r0, [sp, #20]
-	.loc	1 224 58 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:224:58
-	ldr	r1, [sp, #28]
-	ldr	r3, [r1, #8]
-	.loc	1 224 67                        @ rt-thread/components/finsh/msh_file.c:224:67
-	ldr	r1, [sp, #16]
-	.loc	1 224 13                        @ rt-thread/components/finsh/msh_file.c:224:13
-	mov	r2, sp
-	str	r1, [r2]
-	movw	r2, :lower16:.L.str.9
-	movt	r2, :upper16:.L.str.9
-	movs	r1, #255
-	bl	rt_snprintf
-	.loc	1 225 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:225:9
-	b	.LBB4_14
-.Ltmp94:
-.LBB4_11:
-	.loc	1 228 23                        @ rt-thread/components/finsh/msh_file.c:228:23
-	ldr	r0, [sp, #28]
-	ldr	r0, [r0, #8]
-	movs	r2, #0
-	.loc	1 228 18 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:228:18
-	mov	r1, r2
-	bl	open
-	.loc	1 228 16                        @ rt-thread/components/finsh/msh_file.c:228:16
-	str	r0, [sp, #24]
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 24
 .Ltmp95:
-	.loc	1 229 17 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:229:17
-	ldr	r0, [sp, #24]
+	.loc	1 190 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:190:9
+	cmp	r0, #3
+	@DEBUG_VALUE: cmd_mv:argv <- $r1
+	bne	.LBB4_4
 .Ltmp96:
-	.loc	1 229 17 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:229:17
-	cmp	r0, #0
-	bmi	.LBB4_13
-	b	.LBB4_12
-.LBB4_12:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_mv:argv <- $r1
+	@DEBUG_VALUE: cmd_mv:argc <- $r0
+	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
+	mov	r4, r1
 .Ltmp97:
-	.loc	1 231 23 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:231:23
-	ldr	r0, [sp, #24]
-	.loc	1 231 17 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:231:17
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: dest <- 0
+	.loc	1 200 34 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:200:34
+	ldr	r1, [r1, #4]
+	.loc	1 200 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:200:9
+	adr	r0, .LCPI4_2
+.Ltmp98:
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 200 43                        @ rt-thread/components/finsh/msh_file.c:200:43
+	ldr	r2, [r4, #8]
+	.loc	1 200 9                         @ rt-thread/components/finsh/msh_file.c:200:9
+	bl	rt_kprintf
+	.loc	1 202 19 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:202:19
+	ldr	r0, [r4, #8]
+	.loc	1 202 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:202:14
+	mov.w	r1, #65536
+	movs	r2, #0
+	bl	open
+.Ltmp99:
+	@DEBUG_VALUE: fd <- $r0
+	.loc	1 203 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:203:13
+	cmp	r0, #0
+	bmi	.LBB4_5
+.Ltmp100:
+@ %bb.2:
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: fd <- $r0
+	@DEBUG_VALUE: dest <- 0
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 207 13                        @ rt-thread/components/finsh/msh_file.c:207:13
 	bl	close
-	.loc	1 233 24 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:233:24
-	ldr	r0, [sp, #28]
-	ldr	r0, [r0, #8]
+.Ltmp101:
+	.loc	1 210 28                        @ rt-thread/components/finsh/msh_file.c:210:28
+	mov.w	r0, #256
+	bl	rt_malloc
+	mov	r5, r0
+.Ltmp102:
+	@DEBUG_VALUE: dest <- $r5
+	.loc	1 211 17                        @ rt-thread/components/finsh/msh_file.c:211:17
+	cbz	r0, .LBB4_15
+.Ltmp103:
+@ %bb.3:
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 217 19                        @ rt-thread/components/finsh/msh_file.c:217:19
+	ldr	r6, [r4, #4]
+	.loc	1 217 29 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:217:29
+	mov	r0, r6
+	bl	rt_strlen
+	.loc	1 217 27                        @ rt-thread/components/finsh/msh_file.c:217:27
+	add	r0, r6
+.Ltmp104:
+	@DEBUG_VALUE: src <- $r0
+	.loc	1 0 27                          @ rt-thread/components/finsh/msh_file.c:0:27
+	b	.LBB4_9
+.Ltmp105:
+.LBB4_4:
+	@DEBUG_VALUE: cmd_mv:argv <- $r1
+	@DEBUG_VALUE: cmd_mv:argc <- $r0
+	.loc	1 192 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:192:9
+	adr	r0, .LCPI4_0
+.Ltmp106:
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	bl	rt_kprintf
+.Ltmp107:
+	@DEBUG_VALUE: cmd_mv:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	1 193 9                         @ rt-thread/components/finsh/msh_file.c:193:9
+	adr	r0, .LCPI4_1
+	bl	rt_kprintf
+	b	.LBB4_14
+.Ltmp108:
+.LBB4_5:
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: fd <- $r0
+	@DEBUG_VALUE: dest <- 0
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 228 23                        @ rt-thread/components/finsh/msh_file.c:228:23
+	ldr	r0, [r4, #8]
+.Ltmp109:
+	.loc	1 228 18 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:228:18
+	movs	r1, #0
+	movs	r2, #0
+	bl	open
+.Ltmp110:
+	@DEBUG_VALUE: fd <- $r0
+	.loc	1 229 17 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:229:17
+	cmp	r0, #0
+	bmi	.LBB4_7
+.Ltmp111:
+@ %bb.6:
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: fd <- $r0
+	@DEBUG_VALUE: dest <- 0
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 231 17                        @ rt-thread/components/finsh/msh_file.c:231:17
+	bl	close
+.Ltmp112:
+	.loc	1 233 24                        @ rt-thread/components/finsh/msh_file.c:233:24
+	ldr	r0, [r4, #8]
 	.loc	1 233 17 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:233:17
 	bl	unlink
-	.loc	1 234 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:234:13
-	b	.LBB4_13
-.Ltmp98:
-.LBB4_13:
-	.loc	1 236 20                        @ rt-thread/components/finsh/msh_file.c:236:20
-	ldr	r0, [sp, #28]
-	ldr	r0, [r0, #8]
-	.loc	1 236 18 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:236:18
-	str	r0, [sp, #20]
-	b	.LBB4_14
-.Ltmp99:
-.LBB4_14:
-	.loc	1 239 16 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:239:16
-	ldr	r0, [sp, #28]
-	ldr	r0, [r0, #4]
-	.loc	1 239 25 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:239:25
-	ldr	r1, [sp, #20]
-	.loc	1 239 9                         @ rt-thread/components/finsh/msh_file.c:239:9
-	bl	rename
-.Ltmp100:
-	.loc	1 240 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:240:13
-	ldr	r0, [sp, #20]
-	.loc	1 240 29 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:240:29
-	cbz	r0, .LBB4_17
-	b	.LBB4_15
-.LBB4_15:
-	.loc	1 240 32                        @ rt-thread/components/finsh/msh_file.c:240:32
-	ldr	r0, [sp, #20]
-	.loc	1 240 40                        @ rt-thread/components/finsh/msh_file.c:240:40
-	ldr	r1, [sp, #28]
-	ldr	r1, [r1, #8]
-.Ltmp101:
-	.loc	1 240 13                        @ rt-thread/components/finsh/msh_file.c:240:13
+.Ltmp113:
+.LBB4_7:
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: dest <- 0
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 236 20 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:236:20
+	ldr	r5, [r4, #8]
+.Ltmp114:
+	@DEBUG_VALUE: dest <- $r5
+	.loc	1 0 20 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:20
+	b	.LBB4_11
+.Ltmp115:
+.LBB4_8:                                @   in Loop: Header=BB4_9 Depth=1
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: src <- $r0
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 221 21 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:221:21
+	subs	r0, #1
+.Ltmp116:
+	@DEBUG_VALUE: src <- $r0
+.LBB4_9:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: src <- $r0
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 218 27                        @ rt-thread/components/finsh/msh_file.c:218:27
+	ldr	r1, [r4, #4]
+	.loc	1 218 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:218:13
 	cmp	r0, r1
-	beq	.LBB4_17
-	b	.LBB4_16
-.LBB4_16:
-.Ltmp102:
-	.loc	1 240 57                        @ rt-thread/components/finsh/msh_file.c:240:57
-	ldr	r0, [sp, #20]
+	@DEBUG_VALUE: src <- $r0
+.Ltmp117:
+	.loc	1 220 21 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:220:21
+	itt	ne
+	ldrbne	r1, [r0]
+.Ltmp118:
+	.loc	1 220 21 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:220:21
+	cmpne	r1, #47
+	bne	.LBB4_8
+.Ltmp119:
+@ %bb.10:
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: src <- $r0
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 224 58 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:224:58
+	ldr	r3, [r4, #8]
+	.loc	1 224 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:224:13
+	adr	r2, .LCPI4_3
+	movs	r1, #255
+	str	r0, [sp]
+	mov	r0, r5
+.Ltmp120:
+	bl	rt_snprintf
+	cbz	r5, .LBB4_16
+.Ltmp121:
+.LBB4_11:
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: dest <- $r5
+	.loc	1 239 16 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:239:16
+	ldr	r0, [r4, #4]
+	.loc	1 239 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:239:9
+	mov	r1, r5
+	bl	rename
+.Ltmp122:
+	.loc	1 240 29 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:240:29
+	cbz	r5, .LBB4_14
+.Ltmp123:
+@ %bb.12:
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 240 40 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:240:40
+	ldr	r0, [r4, #8]
+.Ltmp124:
+	.loc	1 240 13                        @ rt-thread/components/finsh/msh_file.c:240:13
+	cmp	r5, r0
+	beq	.LBB4_14
+.Ltmp125:
+@ %bb.13:
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	1 240 49                        @ rt-thread/components/finsh/msh_file.c:240:49
+	mov	r0, r5
 	bl	rt_free
-	b	.LBB4_17
-.Ltmp103:
-.LBB4_17:
+.Ltmp126:
+.LBB4_14:
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	1 0 49                          @ rt-thread/components/finsh/msh_file.c:0:49
-	b	.LBB4_18
-.LBB4_18:
 	movs	r0, #0
-	.loc	1 243 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:243:5
-	str	r0, [sp, #36]
-	b	.LBB4_19
-.LBB4_19:
-	.loc	1 244 1                         @ rt-thread/components/finsh/msh_file.c:244:1
-	ldr	r0, [sp, #36]
-	add	sp, #40
-	pop	{r7, pc}
-.Ltmp104:
+	.loc	1 244 1 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:244:1
+	add	sp, #8
+	pop	{r4, r5, r6, pc}
+.Ltmp127:
+.LBB4_15:
+	@DEBUG_VALUE: dest <- $r5
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 213 17                        @ rt-thread/components/finsh/msh_file.c:213:17
+	adr	r0, .LCPI4_4
+	bl	rt_kprintf
+	cmp	r5, #0
+	bne	.LBB4_11
+.Ltmp128:
+.LBB4_16:
+	@DEBUG_VALUE: cmd_mv:argv <- $r4
+	@DEBUG_VALUE: cmd_mv:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 17 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:17
+	mvn	r0, #4
+	.loc	1 244 1 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:244:1
+	add	sp, #8
+	pop	{r4, r5, r6, pc}
+.Ltmp129:
+	.p2align	2
+@ %bb.17:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:1
+.LCPI4_0:
+.L.str.5:
+	.asciz	"Usage: mv SOURCE DEST\n\000"
+.LCPI4_1:
+.L.str.6:
+	.asciz	"Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.\n"
+.LCPI4_2:
+.L.str.7:
+	.asciz	"%s => %s\n\000\000"
+.LCPI4_3:
+.L.str.9:
+	.asciz	"%s/%s\000\000"
+.LCPI4_4:
+.L.str.8:
+	.asciz	"out of memory\n\000"
 .Lfunc_end4:
 	.size	cmd_mv, .Lfunc_end4-cmd_mv
 	.cfi_endproc
@@ -1036,95 +1080,93 @@ cmd_mv:
 	.thumb_func
 cmd_cat:
 .Lfunc_begin5:
-	.loc	1 248 0                         @ rt-thread/components/finsh/msh_file.c:248:0
+	.loc	1 248 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:248:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: cmd_cat:argc <- $r0
+	@DEBUG_VALUE: cmd_cat:argc <- $r0
+	@DEBUG_VALUE: cmd_cat:argv <- $r1
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-	str	r1, [sp, #4]
-.Ltmp105:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp130:
 	.loc	1 252 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:252:9
-	ldr	r0, [sp, #8]
-.Ltmp106:
-	.loc	1 252 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:252:9
 	cmp	r0, #1
+	@DEBUG_VALUE: cmd_cat:argv <- $r1
 	bne	.LBB5_2
-	b	.LBB5_1
-.LBB5_1:
-.Ltmp107:
-	.loc	1 254 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:254:9
-	movw	r0, :lower16:.L.str.10
-	movt	r0, :upper16:.L.str.10
+.Ltmp131:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_cat:argv <- $r1
+	@DEBUG_VALUE: cmd_cat:argc <- $r0
+	.loc	1 254 9                         @ rt-thread/components/finsh/msh_file.c:254:9
+	adr	r0, .LCPI5_0
+.Ltmp132:
+	@DEBUG_VALUE: cmd_cat:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	bl	rt_kprintf
+.Ltmp133:
+	@DEBUG_VALUE: cmd_cat:argv <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	1 255 9                         @ rt-thread/components/finsh/msh_file.c:255:9
-	movw	r0, :lower16:.L.str.11
-	movt	r0, :upper16:.L.str.11
+	adr	r0, .LCPI5_1
 	bl	rt_kprintf
-	movs	r0, #0
-	.loc	1 256 9                         @ rt-thread/components/finsh/msh_file.c:256:9
-	str	r0, [sp, #12]
-	b	.LBB5_7
-.Ltmp108:
-.LBB5_2:
-	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
-	movs	r0, #1
-.Ltmp109:
-	.loc	1 259 16 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:259:16
-	str	r0, [sp]
-	.loc	1 259 10 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:259:10
-	b	.LBB5_3
-.LBB5_3:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp110:
-	.loc	1 259 21                        @ rt-thread/components/finsh/msh_file.c:259:21
-	ldr	r0, [sp]
-	.loc	1 259 29                        @ rt-thread/components/finsh/msh_file.c:259:29
-	ldr	r1, [sp, #8]
-.Ltmp111:
-	.loc	1 259 5                         @ rt-thread/components/finsh/msh_file.c:259:5
-	cmp	r0, r1
-	bge	.LBB5_6
-	b	.LBB5_4
-.LBB5_4:                                @   in Loop: Header=BB5_3 Depth=1
-.Ltmp112:
-	.loc	1 261 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:261:13
-	ldr	r0, [sp, #4]
-	.loc	1 261 18 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:261:18
-	ldr	r1, [sp]
-	.loc	1 261 13                        @ rt-thread/components/finsh/msh_file.c:261:13
-	ldr.w	r0, [r0, r1, lsl #2]
-	.loc	1 261 9                         @ rt-thread/components/finsh/msh_file.c:261:9
-	bl	cat
-	.loc	1 262 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:262:5
-	b	.LBB5_5
-.Ltmp113:
-.LBB5_5:                                @   in Loop: Header=BB5_3 Depth=1
-	.loc	1 259 41                        @ rt-thread/components/finsh/msh_file.c:259:41
-	ldr	r0, [sp]
-	adds	r0, #1
-	str	r0, [sp]
-	.loc	1 259 5 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:259:5
-	b	.LBB5_3
-.Ltmp114:
-.LBB5_6:
-	.loc	1 0 5                           @ rt-thread/components/finsh/msh_file.c:0:5
-	movs	r0, #0
-	.loc	1 264 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:264:5
-	str	r0, [sp, #12]
-	b	.LBB5_7
-.LBB5_7:
+.Ltmp134:
 	.loc	1 265 1                         @ rt-thread/components/finsh/msh_file.c:265:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp115:
+	movs	r0, #0
+	pop	{r4, r5, r7, pc}
+.Ltmp135:
+.LBB5_2:
+	@DEBUG_VALUE: cmd_cat:argv <- $r1
+	@DEBUG_VALUE: cmd_cat:argc <- $r0
+	@DEBUG_VALUE: cmd_cat:index <- 1
+	.loc	1 259 5                         @ rt-thread/components/finsh/msh_file.c:259:5
+	cmp	r0, #2
+	blt	.LBB5_5
+.Ltmp136:
+@ %bb.3:
+	@DEBUG_VALUE: cmd_cat:argv <- $r1
+	@DEBUG_VALUE: cmd_cat:argc <- $r0
+	@DEBUG_VALUE: cmd_cat:index <- 1
+	rsbs	r4, r0, #0
+	subs	r5, r1, #4
+.Ltmp137:
+	.p2align	2
+.LBB5_4:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: cmd_cat:index <- undef
+	.loc	1 261 13                        @ rt-thread/components/finsh/msh_file.c:261:13
+	ldr	r0, [r5, #8]
+.Ltmp138:
+	@DEBUG_VALUE: cmd_cat:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 261 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:261:9
+	bl	cat
+.Ltmp139:
+	@DEBUG_VALUE: cmd_cat:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: cmd_cat:index <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	.loc	1 259 27 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:259:27
+	adds	r4, #1
+	adds	r5, #4
+.Ltmp140:
+	.loc	1 259 5 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:259:5
+	adds	r0, r4, #1
+	bne	.LBB5_4
+.Ltmp141:
+.LBB5_5:
+	.loc	1 265 1 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:265:1
+	movs	r0, #0
+	pop	{r4, r5, r7, pc}
+.Ltmp142:
+	.p2align	2
+@ %bb.6:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:1
+.LCPI5_0:
+.L.str.10:
+	.asciz	"Usage: cat [FILE]...\n\000\000"
+.LCPI5_1:
+.L.str.11:
+	.asciz	"Concatenate FILE(s)\n\000\000\000"
 .Lfunc_end5:
 	.size	cmd_cat, .Lfunc_end5-cmd_cat
 	.cfi_endproc
@@ -1140,95 +1182,93 @@ cmd_cat:
 	.thumb_func
 cmd_rm:
 .Lfunc_begin6:
-	.loc	1 269 0                         @ rt-thread/components/finsh/msh_file.c:269:0
+	.loc	1 269 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:269:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: cmd_rm:argc <- $r0
+	@DEBUG_VALUE: cmd_rm:argc <- $r0
+	@DEBUG_VALUE: cmd_rm:argv <- $r1
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-	str	r1, [sp, #4]
-.Ltmp116:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp143:
 	.loc	1 272 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:272:9
-	ldr	r0, [sp, #8]
-.Ltmp117:
-	.loc	1 272 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:272:9
 	cmp	r0, #1
+	@DEBUG_VALUE: cmd_rm:argv <- $r1
 	bne	.LBB6_2
-	b	.LBB6_1
-.LBB6_1:
-.Ltmp118:
-	.loc	1 274 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:274:9
-	movw	r0, :lower16:.L.str.12
-	movt	r0, :upper16:.L.str.12
+.Ltmp144:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_rm:argv <- $r1
+	@DEBUG_VALUE: cmd_rm:argc <- $r0
+	.loc	1 274 9                         @ rt-thread/components/finsh/msh_file.c:274:9
+	adr	r0, .LCPI6_0
+.Ltmp145:
+	@DEBUG_VALUE: cmd_rm:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	bl	rt_kprintf
+.Ltmp146:
+	@DEBUG_VALUE: cmd_rm:argv <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	1 275 9                         @ rt-thread/components/finsh/msh_file.c:275:9
-	movw	r0, :lower16:.L.str.13
-	movt	r0, :upper16:.L.str.13
+	adr	r0, .LCPI6_1
 	bl	rt_kprintf
-	movs	r0, #0
-	.loc	1 276 9                         @ rt-thread/components/finsh/msh_file.c:276:9
-	str	r0, [sp, #12]
-	b	.LBB6_7
-.Ltmp119:
-.LBB6_2:
-	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
-	movs	r0, #1
-.Ltmp120:
-	.loc	1 279 16 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:279:16
-	str	r0, [sp]
-	.loc	1 279 10 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:279:10
-	b	.LBB6_3
-.LBB6_3:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp121:
-	.loc	1 279 21                        @ rt-thread/components/finsh/msh_file.c:279:21
-	ldr	r0, [sp]
-	.loc	1 279 29                        @ rt-thread/components/finsh/msh_file.c:279:29
-	ldr	r1, [sp, #8]
-.Ltmp122:
-	.loc	1 279 5                         @ rt-thread/components/finsh/msh_file.c:279:5
-	cmp	r0, r1
-	bge	.LBB6_6
-	b	.LBB6_4
-.LBB6_4:                                @   in Loop: Header=BB6_3 Depth=1
-.Ltmp123:
-	.loc	1 281 16 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:281:16
-	ldr	r0, [sp, #4]
-	.loc	1 281 21 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:281:21
-	ldr	r1, [sp]
-	.loc	1 281 16                        @ rt-thread/components/finsh/msh_file.c:281:16
-	ldr.w	r0, [r0, r1, lsl #2]
-	.loc	1 281 9                         @ rt-thread/components/finsh/msh_file.c:281:9
-	bl	unlink
-	.loc	1 282 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:282:5
-	b	.LBB6_5
-.Ltmp124:
-.LBB6_5:                                @   in Loop: Header=BB6_3 Depth=1
-	.loc	1 279 41                        @ rt-thread/components/finsh/msh_file.c:279:41
-	ldr	r0, [sp]
-	adds	r0, #1
-	str	r0, [sp]
-	.loc	1 279 5 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:279:5
-	b	.LBB6_3
-.Ltmp125:
-.LBB6_6:
-	.loc	1 0 5                           @ rt-thread/components/finsh/msh_file.c:0:5
-	movs	r0, #0
-	.loc	1 284 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:284:5
-	str	r0, [sp, #12]
-	b	.LBB6_7
-.LBB6_7:
+.Ltmp147:
 	.loc	1 285 1                         @ rt-thread/components/finsh/msh_file.c:285:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp126:
+	movs	r0, #0
+	pop	{r4, r5, r7, pc}
+.Ltmp148:
+.LBB6_2:
+	@DEBUG_VALUE: cmd_rm:argv <- $r1
+	@DEBUG_VALUE: cmd_rm:argc <- $r0
+	@DEBUG_VALUE: cmd_rm:index <- 1
+	.loc	1 279 5                         @ rt-thread/components/finsh/msh_file.c:279:5
+	cmp	r0, #2
+	blt	.LBB6_5
+.Ltmp149:
+@ %bb.3:
+	@DEBUG_VALUE: cmd_rm:argv <- $r1
+	@DEBUG_VALUE: cmd_rm:argc <- $r0
+	@DEBUG_VALUE: cmd_rm:index <- 1
+	rsbs	r4, r0, #0
+	subs	r5, r1, #4
+.Ltmp150:
+	.p2align	2
+.LBB6_4:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: cmd_rm:index <- undef
+	.loc	1 281 16                        @ rt-thread/components/finsh/msh_file.c:281:16
+	ldr	r0, [r5, #8]
+.Ltmp151:
+	@DEBUG_VALUE: cmd_rm:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 281 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:281:9
+	bl	unlink
+.Ltmp152:
+	@DEBUG_VALUE: cmd_rm:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: cmd_rm:index <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	.loc	1 279 27 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:279:27
+	adds	r4, #1
+	adds	r5, #4
+.Ltmp153:
+	.loc	1 279 5 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:279:5
+	adds	r0, r4, #1
+	bne	.LBB6_4
+.Ltmp154:
+.LBB6_5:
+	.loc	1 285 1 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:285:1
+	movs	r0, #0
+	pop	{r4, r5, r7, pc}
+.Ltmp155:
+	.p2align	2
+@ %bb.6:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:1
+.LCPI6_0:
+.L.str.12:
+	.asciz	"Usage: rm FILE...\n\000"
+.LCPI6_1:
+.L.str.13:
+	.asciz	"Remove (unlink) the FILE(s).\n\000\000"
 .Lfunc_end6:
 	.size	cmd_rm, .Lfunc_end6-cmd_rm
 	.cfi_endproc
@@ -1244,83 +1284,86 @@ cmd_rm:
 	.thumb_func
 cmd_cd:
 .Lfunc_begin7:
-	.loc	1 290 0                         @ rt-thread/components/finsh/msh_file.c:290:0
+	.loc	1 290 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:290:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	@DEBUG_VALUE: cmd_cd:argc <- $r0
+	@DEBUG_VALUE: cmd_cd:argc <- $r0
+	@DEBUG_VALUE: cmd_cd:argv <- $r1
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp127:
+	.cfi_offset r4, -8
+.Ltmp156:
 	.loc	1 291 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:291:9
-	ldr	r0, [sp, #4]
-.Ltmp128:
-	.loc	1 291 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:291:9
+	cmp	r0, #2
+	@DEBUG_VALUE: cmd_cd:argv <- $r1
+	beq	.LBB7_3
+.Ltmp157:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_cd:argv <- $r1
+	@DEBUG_VALUE: cmd_cd:argc <- $r0
 	cmp	r0, #1
-	bne	.LBB7_2
-	b	.LBB7_1
-.LBB7_1:
-.Ltmp129:
-	.loc	1 293 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:293:9
+	bne	.LBB7_5
+.Ltmp158:
+@ %bb.2:
+	@DEBUG_VALUE: cmd_cd:argv <- $r1
+	@DEBUG_VALUE: cmd_cd:argc <- $r0
+	.loc	1 293 9                         @ rt-thread/components/finsh/msh_file.c:293:9
 	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
+.Ltmp159:
+	@DEBUG_VALUE: cmd_cd:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	movw	r1, :lower16:working_directory
+.Ltmp160:
+	@DEBUG_VALUE: cmd_cd:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	movt	r0, :upper16:.L.str.14
 	movt	r1, :upper16:working_directory
 	bl	rt_kprintf
-	.loc	1 294 5                         @ rt-thread/components/finsh/msh_file.c:294:5
-	b	.LBB7_7
-.Ltmp130:
-.LBB7_2:
-	.loc	1 295 14                        @ rt-thread/components/finsh/msh_file.c:295:14
-	ldr	r0, [sp, #4]
-.Ltmp131:
-	.loc	1 295 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:295:14
-	cmp	r0, #2
-	bne	.LBB7_6
-	b	.LBB7_3
+.Ltmp161:
+	.loc	1 303 5                         @ rt-thread/components/finsh/msh_file.c:303:5
+	movs	r0, #0
+	pop	{r4, pc}
+.Ltmp162:
 .LBB7_3:
-.Ltmp132:
-	.loc	1 297 19 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:297:19
-	ldr	r0, [sp]
-	ldr	r0, [r0, #4]
-	.loc	1 297 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:297:13
+	@DEBUG_VALUE: cmd_cd:argv <- $r1
+	@DEBUG_VALUE: cmd_cd:argc <- $r0
+	.loc	1 297 19                        @ rt-thread/components/finsh/msh_file.c:297:19
+	ldr	r0, [r1, #4]
+.Ltmp163:
+	@DEBUG_VALUE: cmd_cd:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 19 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:19
+	mov	r4, r1
+.Ltmp164:
+	@DEBUG_VALUE: cmd_cd:argv <- $r4
+	@DEBUG_VALUE: cmd_cd:argv <- $r4
+	.loc	1 297 13                        @ rt-thread/components/finsh/msh_file.c:297:13
 	bl	chdir
-.Ltmp133:
+.Ltmp165:
 	.loc	1 297 13                        @ rt-thread/components/finsh/msh_file.c:297:13
 	cbz	r0, .LBB7_5
-	b	.LBB7_4
-.LBB7_4:
-.Ltmp134:
+.Ltmp166:
+@ %bb.4:
+	@DEBUG_VALUE: cmd_cd:argv <- $r4
+	@DEBUG_VALUE: cmd_cd:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	1 299 51 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:299:51
-	ldr	r0, [sp]
-	ldr	r1, [r0, #4]
+	ldr	r1, [r4, #4]
 	.loc	1 299 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:299:13
-	movw	r0, :lower16:.L.str.15
-	movt	r0, :upper16:.L.str.15
+	adr	r0, .LCPI7_0
 	bl	rt_kprintf
-	.loc	1 300 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:300:9
-	b	.LBB7_5
-.Ltmp135:
+.Ltmp167:
 .LBB7_5:
-	.loc	1 301 5                         @ rt-thread/components/finsh/msh_file.c:301:5
-	b	.LBB7_6
-.Ltmp136:
-.LBB7_6:
-	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
-	b	.LBB7_7
-.LBB7_7:
-	movs	r0, #0
 	.loc	1 303 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:303:5
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp137:
+	movs	r0, #0
+	pop	{r4, pc}
+.Ltmp168:
+	.p2align	2
+@ %bb.6:
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
+.LCPI7_0:
+.L.str.15:
+	.asciz	"No such directory: %s\n\000"
 .Lfunc_end7:
 	.size	cmd_cd, .Lfunc_end7-cmd_cd
 	.cfi_endproc
@@ -1336,32 +1379,28 @@ cmd_cd:
 	.thumb_func
 cmd_pwd:
 .Lfunc_begin8:
-	.loc	1 308 0                         @ rt-thread/components/finsh/msh_file.c:308:0
+	.loc	1 308 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:308:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: cmd_pwd:argc <- undef
+	@DEBUG_VALUE: cmd_pwd:argv <- undef
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp138:
+.Ltmp169:
 	.loc	1 309 5 prologue_end            @ rt-thread/components/finsh/msh_file.c:309:5
 	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
 	movw	r1, :lower16:working_directory
+	movt	r0, :upper16:.L.str.14
 	movt	r1, :upper16:working_directory
 	bl	rt_kprintf
-	movs	r0, #0
 	.loc	1 310 5                         @ rt-thread/components/finsh/msh_file.c:310:5
-	add	sp, #8
+	movs	r0, #0
 	pop	{r7, pc}
-.Ltmp139:
+.Ltmp170:
 .Lfunc_end8:
 	.size	cmd_pwd, .Lfunc_end8-cmd_pwd
 	.cfi_endproc
@@ -1381,53 +1420,64 @@ cmd_mkdir:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: cmd_mkdir:argc <- $r0
+	@DEBUG_VALUE: cmd_mkdir:argc <- $r0
+	@DEBUG_VALUE: cmd_mkdir:argv <- $r1
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp140:
+.Ltmp171:
 	.loc	1 317 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:317:9
-	ldr	r0, [sp, #4]
-.Ltmp141:
-	.loc	1 317 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:317:9
 	cmp	r0, #1
+	@DEBUG_VALUE: cmd_mkdir:argv <- $r1
 	bne	.LBB9_2
-	b	.LBB9_1
-.LBB9_1:
-.Ltmp142:
-	.loc	1 319 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:319:9
-	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
+.Ltmp172:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_mkdir:argv <- $r1
+	@DEBUG_VALUE: cmd_mkdir:argc <- $r0
+	.loc	1 319 9                         @ rt-thread/components/finsh/msh_file.c:319:9
+	adr	r0, .LCPI9_0
+.Ltmp173:
+	@DEBUG_VALUE: cmd_mkdir:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	bl	rt_kprintf
+.Ltmp174:
+	@DEBUG_VALUE: cmd_mkdir:argv <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	1 320 9                         @ rt-thread/components/finsh/msh_file.c:320:9
-	movw	r0, :lower16:.L.str.17
-	movt	r0, :upper16:.L.str.17
+	adr	r0, .LCPI9_1
 	bl	rt_kprintf
-	.loc	1 321 5                         @ rt-thread/components/finsh/msh_file.c:321:5
-	b	.LBB9_3
-.Ltmp143:
-.LBB9_2:
-	.loc	1 324 15                        @ rt-thread/components/finsh/msh_file.c:324:15
-	ldr	r0, [sp]
-	ldr	r0, [r0, #4]
-	movs	r1, #0
-	.loc	1 324 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:324:9
-	bl	mkdir
-	b	.LBB9_3
-.Ltmp144:
-.LBB9_3:
-	.loc	1 0 9                           @ rt-thread/components/finsh/msh_file.c:0:9
+.Ltmp175:
+	.loc	1 327 5                         @ rt-thread/components/finsh/msh_file.c:327:5
 	movs	r0, #0
-	.loc	1 327 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:327:5
-	add	sp, #8
 	pop	{r7, pc}
-.Ltmp145:
+.Ltmp176:
+.LBB9_2:
+	@DEBUG_VALUE: cmd_mkdir:argv <- $r1
+	@DEBUG_VALUE: cmd_mkdir:argc <- $r0
+	.loc	1 324 15                        @ rt-thread/components/finsh/msh_file.c:324:15
+	ldr	r0, [r1, #4]
+.Ltmp177:
+	@DEBUG_VALUE: cmd_mkdir:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 324 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:324:9
+	movs	r1, #0
+.Ltmp178:
+	@DEBUG_VALUE: cmd_mkdir:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	bl	mkdir
+.Ltmp179:
+	.loc	1 327 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:327:5
+	movs	r0, #0
+	pop	{r7, pc}
+.Ltmp180:
+	.p2align	2
+@ %bb.3:
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
+.LCPI9_0:
+.L.str.16:
+	.asciz	"Usage: mkdir [OPTION] DIRECTORY\n\000\000\000"
+.LCPI9_1:
+.L.str.17:
+	.asciz	"Create the DIRECTORY, if they do not already exist.\n\000\000\000"
 .Lfunc_end9:
 	.size	cmd_mkdir, .Lfunc_end9-cmd_mkdir
 	.cfi_endproc
@@ -1443,138 +1493,143 @@ cmd_mkdir:
 	.thumb_func
 cmd_mkfs:
 .Lfunc_begin10:
-	.loc	1 332 0                         @ rt-thread/components/finsh/msh_file.c:332:0
+	.loc	1 332 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:332:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	@DEBUG_VALUE: cmd_mkfs:argc <- $r0
+	@DEBUG_VALUE: cmd_mkfs:argc <- $r0
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r1
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	movs	r0, #0
-.Ltmp146:
-	.loc	1 333 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:333:9
-	str	r0, [sp, #8]
-	.loc	1 334 11                        @ rt-thread/components/finsh/msh_file.c:334:11
-	movw	r0, :lower16:.L.str.18
-	movt	r0, :upper16:.L.str.18
-	str	r0, [sp, #4]
-.Ltmp147:
-	.loc	1 336 9                         @ rt-thread/components/finsh/msh_file.c:336:9
-	ldr	r0, [sp, #16]
-.Ltmp148:
-	.loc	1 336 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:336:9
+	.cfi_offset r4, -8
+.Ltmp181:
+	@DEBUG_VALUE: cmd_mkfs:type <- undef
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
+	.loc	1 336 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:336:9
 	cmp	r0, #2
-	bne	.LBB10_2
-	b	.LBB10_1
-.LBB10_1:
-.Ltmp149:
-	.loc	1 338 27 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:338:27
-	ldr	r0, [sp, #4]
-	.loc	1 338 33 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:338:33
-	ldr	r1, [sp, #12]
-	ldr	r1, [r1, #4]
-	.loc	1 338 18                        @ rt-thread/components/finsh/msh_file.c:338:18
-	bl	dfs_mkfs
-	.loc	1 338 16                        @ rt-thread/components/finsh/msh_file.c:338:16
-	str	r0, [sp, #8]
-	.loc	1 339 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:339:5
-	b	.LBB10_8
-.Ltmp150:
-.LBB10_2:
-	.loc	1 340 14                        @ rt-thread/components/finsh/msh_file.c:340:14
-	ldr	r0, [sp, #16]
-.Ltmp151:
-	.loc	1 340 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:340:14
+	mov	r4, r1
+.Ltmp182:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	beq	.LBB10_4
+.Ltmp183:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argc <- $r0
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
 	cmp	r0, #4
-	bne	.LBB10_6
-	b	.LBB10_3
-.LBB10_3:
-.Ltmp152:
-	.loc	1 342 20 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:342:20
-	ldr	r0, [sp, #12]
-	ldr	r0, [r0, #4]
+	bne	.LBB10_5
+.Ltmp184:
+@ %bb.2:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argc <- $r0
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
+	.loc	1 342 20                        @ rt-thread/components/finsh/msh_file.c:342:20
+	ldr	r0, [r4, #4]
+.Ltmp185:
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	1 342 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:342:13
-	movw	r1, :lower16:.L.str.19
-	movt	r1, :upper16:.L.str.19
+	adr	r1, .LCPI10_1
 	bl	strcmp
-.Ltmp153:
+.Ltmp186:
 	.loc	1 342 13                        @ rt-thread/components/finsh/msh_file.c:342:13
-	cbnz	r0, .LBB10_5
-	b	.LBB10_4
-.LBB10_4:
-.Ltmp154:
-	.loc	1 344 20 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:344:20
-	ldr	r0, [sp, #12]
-	ldr	r0, [r0, #8]
-	.loc	1 344 18 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:344:18
-	str	r0, [sp, #4]
-	.loc	1 345 31 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:345:31
-	ldr	r0, [sp, #4]
-	.loc	1 345 37 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:345:37
-	ldr	r1, [sp, #12]
-	ldr	r1, [r1, #12]
-	.loc	1 345 22                        @ rt-thread/components/finsh/msh_file.c:345:22
-	bl	dfs_mkfs
-	.loc	1 345 20                        @ rt-thread/components/finsh/msh_file.c:345:20
-	str	r0, [sp, #8]
-	.loc	1 346 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:346:9
-	b	.LBB10_5
-.Ltmp155:
-.LBB10_5:
-	.loc	1 347 5                         @ rt-thread/components/finsh/msh_file.c:347:5
-	b	.LBB10_7
-.Ltmp156:
-.LBB10_6:
-	.loc	1 350 9                         @ rt-thread/components/finsh/msh_file.c:350:9
-	movw	r0, :lower16:.L.str.20
-	movt	r0, :upper16:.L.str.20
-	bl	rt_kprintf
-	movs	r0, #0
-	.loc	1 351 9                         @ rt-thread/components/finsh/msh_file.c:351:9
-	str	r0, [sp, #20]
-	b	.LBB10_11
-.Ltmp157:
-.LBB10_7:
-	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
-	b	.LBB10_8
-.LBB10_8:
-.Ltmp158:
-	.loc	1 354 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:354:9
-	ldr	r0, [sp, #8]
-.Ltmp159:
-	.loc	1 354 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:354:9
-	cbz	r0, .LBB10_10
+	cbz	r0, .LBB10_6
+.Ltmp187:
+@ %bb.3:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
+	.loc	1 0 13                          @ rt-thread/components/finsh/msh_file.c:0:13
+	movs	r1, #0
+.Ltmp188:
+	@DEBUG_VALUE: cmd_mkfs:result <- $r1
+	cbnz	r1, .LBB10_8
 	b	.LBB10_9
-.LBB10_9:
-.Ltmp160:
-	.loc	1 356 48 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:356:48
-	ldr	r1, [sp, #8]
-	.loc	1 356 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:356:9
-	movw	r0, :lower16:.L.str.21
-	movt	r0, :upper16:.L.str.21
+.Ltmp189:
+.LBB10_4:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argc <- $r0
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
+	adr	r0, .LCPI10_0
+.Ltmp190:
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: cmd_mkfs:type <- $r0
+	movs	r1, #1
+	b	.LBB10_7
+.Ltmp191:
+.LBB10_5:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argc <- $r0
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
+	.loc	1 350 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:350:9
+	adr	r0, .LCPI10_3
+.Ltmp192:
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	bl	rt_kprintf
-	.loc	1 357 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:357:5
-	b	.LBB10_10
-.Ltmp161:
-.LBB10_10:
-	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
-	movs	r0, #0
-	.loc	1 359 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:359:5
-	str	r0, [sp, #20]
-	b	.LBB10_11
-.LBB10_11:
+.Ltmp193:
 	.loc	1 360 1                         @ rt-thread/components/finsh/msh_file.c:360:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp162:
+	movs	r0, #0
+	pop	{r4, pc}
+.Ltmp194:
+.LBB10_6:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
+	.loc	1 344 20                        @ rt-thread/components/finsh/msh_file.c:344:20
+	ldr	r0, [r4, #8]
+.Ltmp195:
+	@DEBUG_VALUE: cmd_mkfs:type <- $r0
+	.loc	1 0 20 is_stmt 0                @ rt-thread/components/finsh/msh_file.c:0:20
+	movs	r1, #3
+.Ltmp196:
+.LBB10_7:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:type <- $r0
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: cmd_mkfs:result <- 0
+	ldr.w	r1, [r4, r1, lsl #2]
+	bl	dfs_mkfs
+.Ltmp197:
+	mov	r1, r0
+.Ltmp198:
+	@DEBUG_VALUE: cmd_mkfs:result <- $r1
+	@DEBUG_VALUE: cmd_mkfs:result <- $r1
+	.loc	1 354 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:354:9
+	cbz	r1, .LBB10_9
+.Ltmp199:
+.LBB10_8:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:result <- $r1
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 356 9                         @ rt-thread/components/finsh/msh_file.c:356:9
+	adr	r0, .LCPI10_2
+	bl	rt_kprintf
+.Ltmp200:
+.LBB10_9:
+	@DEBUG_VALUE: cmd_mkfs:argv <- $r4
+	@DEBUG_VALUE: cmd_mkfs:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 360 1                         @ rt-thread/components/finsh/msh_file.c:360:1
+	movs	r0, #0
+	pop	{r4, pc}
+.Ltmp201:
+	.p2align	2
+@ %bb.10:
+	.loc	1 0 1 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:1
+.LCPI10_0:
+.L.str.18:
+	.asciz	"elm"
+.LCPI10_1:
+.L.str.19:
+	.asciz	"-t\000"
+.LCPI10_2:
+.L.str.21:
+	.asciz	"mkfs failed, result=%d\n"
+.LCPI10_3:
+.L.str.20:
+	.asciz	"Usage: mkfs [-t type] device\n\000\000"
 .Lfunc_end10:
 	.size	cmd_mkfs, .Lfunc_end10-cmd_mkfs
 	.cfi_endproc
@@ -1590,86 +1645,100 @@ cmd_mkfs:
 	.thumb_func
 cmd_df:
 .Lfunc_begin11:
-	.loc	1 365 0                         @ rt-thread/components/finsh/msh_file.c:365:0
+	.loc	1 365 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:365:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	@DEBUG_VALUE: cmd_df:argc <- $r0
+	@DEBUG_VALUE: cmd_df:argc <- $r0
+	@DEBUG_VALUE: cmd_df:argv <- $r1
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp163:
+	.cfi_offset r4, -8
+.Ltmp202:
 	.loc	1 366 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:366:9
-	ldr	r0, [sp, #4]
-.Ltmp164:
-	.loc	1 366 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:366:9
 	cmp	r0, #2
-	beq	.LBB11_2
-	b	.LBB11_1
-.LBB11_1:
-.Ltmp165:
-	.loc	1 368 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:368:9
-	movw	r0, :lower16:.L.str.22
-	movt	r0, :upper16:.L.str.22
-	bl	df
-	.loc	1 369 5                         @ rt-thread/components/finsh/msh_file.c:369:5
-	b	.LBB11_7
-.Ltmp166:
-.LBB11_2:
+	@DEBUG_VALUE: cmd_df:argv <- $r1
+	bne	.LBB11_4
+.Ltmp203:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_df:argv <- $r1
+	@DEBUG_VALUE: cmd_df:argc <- $r0
 	.loc	1 372 21                        @ rt-thread/components/finsh/msh_file.c:372:21
-	ldr	r0, [sp]
-	ldr	r0, [r0, #4]
+	ldr	r4, [r1, #4]
 	.loc	1 372 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:372:14
-	movw	r1, :lower16:.L.str.23
-	movt	r1, :upper16:.L.str.23
+	adr	r1, .LCPI11_1
+.Ltmp204:
+	@DEBUG_VALUE: cmd_df:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	mov	r0, r4
+.Ltmp205:
+	@DEBUG_VALUE: cmd_df:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	bl	strcmp
 	.loc	1 372 46                        @ rt-thread/components/finsh/msh_file.c:372:46
-	cbz	r0, .LBB11_4
-	b	.LBB11_3
-.LBB11_3:
-	.loc	1 372 57                        @ rt-thread/components/finsh/msh_file.c:372:57
-	ldr	r0, [sp]
-	ldr	r0, [r0, #4]
+	cbz	r0, .LBB11_6
+.Ltmp206:
+@ %bb.2:
+	@DEBUG_VALUE: cmd_df:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: cmd_df:argc <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	1 372 50                        @ rt-thread/components/finsh/msh_file.c:372:50
-	movw	r1, :lower16:.L.str.24
-	movt	r1, :upper16:.L.str.24
+	adr	r1, .LCPI11_2
+	mov	r0, r4
 	bl	strcmp
-.Ltmp167:
+.Ltmp207:
 	.loc	1 372 13                        @ rt-thread/components/finsh/msh_file.c:372:13
-	cbnz	r0, .LBB11_5
-	b	.LBB11_4
+	cbz	r0, .LBB11_6
+.Ltmp208:
+@ %bb.3:
+	@DEBUG_VALUE: cmd_df:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: cmd_df:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 378 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:378:13
+	mov	r0, r4
+	b	.LBB11_5
+.Ltmp209:
 .LBB11_4:
-.Ltmp168:
-	.loc	1 374 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:374:13
-	movw	r0, :lower16:.L.str.25
-	movt	r0, :upper16:.L.str.25
-	bl	rt_kprintf
-	.loc	1 375 9                         @ rt-thread/components/finsh/msh_file.c:375:9
-	b	.LBB11_6
-.Ltmp169:
+	@DEBUG_VALUE: cmd_df:argv <- $r1
+	@DEBUG_VALUE: cmd_df:argc <- $r0
+	.loc	1 368 9                         @ rt-thread/components/finsh/msh_file.c:368:9
+	adr	r0, .LCPI11_0
+.Ltmp210:
+	@DEBUG_VALUE: cmd_df:argc <- [DW_OP_LLVM_entry_value 1] $r0
 .LBB11_5:
-	.loc	1 378 16                        @ rt-thread/components/finsh/msh_file.c:378:16
-	ldr	r0, [sp]
-	ldr	r0, [r0, #4]
-	.loc	1 378 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:378:13
+	@DEBUG_VALUE: cmd_df:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:0
 	bl	df
-	b	.LBB11_6
-.Ltmp170:
-.LBB11_6:
-	.loc	1 0 13                          @ rt-thread/components/finsh/msh_file.c:0:13
-	b	.LBB11_7
-.LBB11_7:
-	movs	r0, #0
+.Ltmp211:
 	.loc	1 382 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:382:5
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp171:
+	movs	r0, #0
+	pop	{r4, pc}
+.Ltmp212:
+.LBB11_6:
+	@DEBUG_VALUE: cmd_df:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: cmd_df:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 374 13                        @ rt-thread/components/finsh/msh_file.c:374:13
+	adr	r0, .LCPI11_3
+	bl	rt_kprintf
+.Ltmp213:
+	.loc	1 382 5                         @ rt-thread/components/finsh/msh_file.c:382:5
+	movs	r0, #0
+	pop	{r4, pc}
+.Ltmp214:
+	.p2align	2
+@ %bb.7:
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
+.LCPI11_0:
+.L.str.22:
+	.asciz	"/\000\000"
+.LCPI11_1:
+.L.str.23:
+	.asciz	"--help\000"
+.LCPI11_2:
+.L.str.24:
+	.asciz	"-h\000"
+.LCPI11_3:
+.L.str.25:
+	.asciz	"df [path]\n\000"
 .Lfunc_end11:
 	.size	cmd_df, .Lfunc_end11-cmd_df
 	.cfi_endproc
@@ -1685,142 +1754,141 @@ cmd_df:
 	.thumb_func
 cmd_echo:
 .Lfunc_begin12:
-	.loc	1 387 0                         @ rt-thread/components/finsh/msh_file.c:387:0
+	.loc	1 387 0 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:387:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: cmd_echo:argc <- $r0
+	@DEBUG_VALUE: cmd_echo:argc <- $r0
+	@DEBUG_VALUE: cmd_echo:argv <- $r1
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #20]
-	str	r1, [sp, #16]
-.Ltmp172:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp215:
 	.loc	1 388 9 prologue_end            @ rt-thread/components/finsh/msh_file.c:388:9
-	ldr	r0, [sp, #20]
-.Ltmp173:
-	.loc	1 388 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:388:9
-	cmp	r0, #2
-	bne	.LBB12_2
-	b	.LBB12_1
-.LBB12_1:
-.Ltmp174:
-	.loc	1 390 28 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:390:28
-	ldr	r0, [sp, #16]
-	ldr	r1, [r0, #4]
-	.loc	1 390 9 is_stmt 0               @ rt-thread/components/finsh/msh_file.c:390:9
-	movw	r0, :lower16:.L.str.14
-	movt	r0, :upper16:.L.str.14
-	bl	rt_kprintf
-	.loc	1 391 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:391:5
-	b	.LBB12_9
-.Ltmp175:
-.LBB12_2:
-	.loc	1 392 14                        @ rt-thread/components/finsh/msh_file.c:392:14
-	ldr	r0, [sp, #20]
-.Ltmp176:
-	.loc	1 392 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:392:14
 	cmp	r0, #3
-	bne	.LBB12_7
-	b	.LBB12_3
+	mov	r4, r1
+.Ltmp216:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	beq	.LBB12_3
+.Ltmp217:
+@ %bb.1:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: cmd_echo:argc <- $r0
+	cmp	r0, #2
+	bne	.LBB12_5
+.Ltmp218:
+@ %bb.2:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: cmd_echo:argc <- $r0
+	.loc	1 390 9                         @ rt-thread/components/finsh/msh_file.c:390:9
+	movw	r0, :lower16:.L.str.14
+.Ltmp219:
+	@DEBUG_VALUE: cmd_echo:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 390 28 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:390:28
+	ldr	r1, [r4, #4]
+	.loc	1 390 9                         @ rt-thread/components/finsh/msh_file.c:390:9
+	movt	r0, :upper16:.L.str.14
+	b	.LBB12_7
+.Ltmp220:
 .LBB12_3:
-.Ltmp177:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: cmd_echo:argc <- $r0
 	.loc	1 396 19 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:396:19
-	ldr	r0, [sp, #16]
-	ldr	r0, [r0, #8]
+	ldr	r0, [r4, #8]
+.Ltmp221:
+	@DEBUG_VALUE: cmd_echo:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 396 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:396:14
 	movw	r1, #1090
 	movs	r2, #0
-	.loc	1 396 14 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:396:14
 	bl	open
-	.loc	1 396 12                        @ rt-thread/components/finsh/msh_file.c:396:12
-	str	r0, [sp, #12]
-.Ltmp178:
+.Ltmp222:
+	@DEBUG_VALUE: fd <- $r0
 	.loc	1 397 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:397:13
-	ldr	r0, [sp, #12]
-.Ltmp179:
-	.loc	1 397 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:397:13
 	cmp	r0, #0
-	bmi	.LBB12_5
-	b	.LBB12_4
-.LBB12_4:
-.Ltmp180:
-	.loc	1 399 20 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:399:20
-	ldr	r0, [sp, #12]
-	.loc	1 399 24 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:399:24
-	str	r0, [sp, #8]                    @ 4-byte Spill
-	ldr	r0, [sp, #16]
-	ldr	r0, [r0, #4]
+	bmi	.LBB12_6
+.Ltmp223:
+@ %bb.4:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: fd <- $r0
+	@DEBUG_VALUE: cmd_echo:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 399 24                        @ rt-thread/components/finsh/msh_file.c:399:24
+	ldr	r4, [r4, #4]
+.Ltmp224:
+	@DEBUG_VALUE: cmd_echo:argv <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	1 0 0 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:0
+	mov	r5, r0
+.Ltmp225:
+	@DEBUG_VALUE: fd <- $r5
+	@DEBUG_VALUE: fd <- $r5
 	.loc	1 399 33                        @ rt-thread/components/finsh/msh_file.c:399:33
-	str	r0, [sp, #4]                    @ 4-byte Spill
+	mov	r0, r4
 	bl	strlen
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	mov	r2, r0
 	.loc	1 399 13                        @ rt-thread/components/finsh/msh_file.c:399:13
-	ldr	r0, [sp, #8]                    @ 4-byte Reload
+	mov	r0, r5
+	mov	r1, r4
 	bl	write
-	.loc	1 400 19 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:400:19
-	ldr	r0, [sp, #12]
-	.loc	1 400 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:400:13
+	.loc	1 400 13 is_stmt 1              @ rt-thread/components/finsh/msh_file.c:400:13
+	mov	r0, r5
 	bl	close
-	.loc	1 401 9 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:401:9
-	b	.LBB12_6
-.Ltmp181:
-.LBB12_5:
-	.loc	1 404 50                        @ rt-thread/components/finsh/msh_file.c:404:50
-	ldr	r0, [sp, #16]
-	ldr	r1, [r0, #8]
-	.loc	1 404 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:404:13
-	movw	r0, :lower16:.L.str.26
-	movt	r0, :upper16:.L.str.26
-	bl	rt_kprintf
-	b	.LBB12_6
-.Ltmp182:
-.LBB12_6:
-	.loc	1 406 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:406:5
-	b	.LBB12_8
-.Ltmp183:
-.LBB12_7:
-	.loc	1 409 9                         @ rt-thread/components/finsh/msh_file.c:409:9
-	movw	r0, :lower16:.L.str.27
-	movt	r0, :upper16:.L.str.27
-	bl	rt_kprintf
-	b	.LBB12_8
-.Ltmp184:
-.LBB12_8:
-	.loc	1 0 9 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:9
-	b	.LBB12_9
-.LBB12_9:
+.Ltmp226:
+	.loc	1 412 5                         @ rt-thread/components/finsh/msh_file.c:412:5
 	movs	r0, #0
+	pop	{r4, r5, r7, pc}
+.Ltmp227:
+.LBB12_5:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: cmd_echo:argc <- $r0
+	.loc	1 409 9                         @ rt-thread/components/finsh/msh_file.c:409:9
+	adr	r0, .LCPI12_1
+.Ltmp228:
+	@DEBUG_VALUE: cmd_echo:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	bl	rt_kprintf
+.Ltmp229:
+	.loc	1 412 5                         @ rt-thread/components/finsh/msh_file.c:412:5
+	movs	r0, #0
+	pop	{r4, r5, r7, pc}
+.Ltmp230:
+.LBB12_6:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: fd <- $r0
+	@DEBUG_VALUE: cmd_echo:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 404 50                        @ rt-thread/components/finsh/msh_file.c:404:50
+	ldr	r1, [r4, #8]
+	.loc	1 404 13 is_stmt 0              @ rt-thread/components/finsh/msh_file.c:404:13
+	adr	r0, .LCPI12_0
+.Ltmp231:
+.LBB12_7:
+	@DEBUG_VALUE: cmd_echo:argv <- $r4
+	@DEBUG_VALUE: cmd_echo:argc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	1 0 0                           @ rt-thread/components/finsh/msh_file.c:0:0
+	bl	rt_kprintf
+.Ltmp232:
 	.loc	1 412 5 is_stmt 1               @ rt-thread/components/finsh/msh_file.c:412:5
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp185:
+	movs	r0, #0
+	pop	{r4, r5, r7, pc}
+.Ltmp233:
+	.p2align	2
+@ %bb.8:
+	.loc	1 0 5 is_stmt 0                 @ rt-thread/components/finsh/msh_file.c:0:5
+.LCPI12_0:
+.L.str.26:
+	.asciz	"open file:%s failed!\n\000\000"
+.LCPI12_1:
+.L.str.27:
+	.asciz	"Usage: echo \"string\" [filename]\n\000\000\000"
 .Lfunc_end12:
 	.size	cmd_echo, .Lfunc_end12-cmd_echo
 	.cfi_endproc
 	.cantunwind
 	.fnend
                                         @ -- End function
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	".sh"
-	.size	.L.str, 4
-
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	".SH"
-	.size	.L.str.1, 4
-
-	.type	.L.str.2,%object                @ @.str.2
-.L.str.2:
-	.asciz	"/bin/%.*s"
-	.size	.L.str.2, 10
-
 	.hidden	__fsym___cmd_ls_name            @ @__fsym___cmd_ls_name
 	.type	__fsym___cmd_ls_name,%object
 	.section	.rodata.name,"a",%progbits
@@ -1847,17 +1915,6 @@ __tagsym$$used.0:
 	.long	__fsym___cmd_ls_desc
 	.long	cmd_ls
 	.size	__fsym___cmd_ls, 12
-
-	.type	.L.str.3,%object                @ @.str.3
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.3:
-	.asciz	"Usage: cp SOURCE DEST\n"
-	.size	.L.str.3, 23
-
-	.type	.L.str.4,%object                @ @.str.4
-.L.str.4:
-	.asciz	"Copy SOURCE to DEST.\n"
-	.size	.L.str.4, 22
 
 	.hidden	__fsym___cmd_cp_name            @ @__fsym___cmd_cp_name
 	.type	__fsym___cmd_cp_name,%object
@@ -1886,32 +1943,6 @@ __tagsym$$used.1:
 	.long	cmd_cp
 	.size	__fsym___cmd_cp, 12
 
-	.type	.L.str.5,%object                @ @.str.5
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.5:
-	.asciz	"Usage: mv SOURCE DEST\n"
-	.size	.L.str.5, 23
-
-	.type	.L.str.6,%object                @ @.str.6
-.L.str.6:
-	.asciz	"Rename SOURCE to DEST, or move SOURCE(s) to DIRECTORY.\n"
-	.size	.L.str.6, 56
-
-	.type	.L.str.7,%object                @ @.str.7
-.L.str.7:
-	.asciz	"%s => %s\n"
-	.size	.L.str.7, 10
-
-	.type	.L.str.8,%object                @ @.str.8
-.L.str.8:
-	.asciz	"out of memory\n"
-	.size	.L.str.8, 15
-
-	.type	.L.str.9,%object                @ @.str.9
-.L.str.9:
-	.asciz	"%s/%s"
-	.size	.L.str.9, 6
-
 	.hidden	__fsym___cmd_mv_name            @ @__fsym___cmd_mv_name
 	.type	__fsym___cmd_mv_name,%object
 	.section	.rodata.name,"a",%progbits
@@ -1939,17 +1970,6 @@ __tagsym$$used.2:
 	.long	cmd_mv
 	.size	__fsym___cmd_mv, 12
 
-	.type	.L.str.10,%object               @ @.str.10
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.10:
-	.asciz	"Usage: cat [FILE]...\n"
-	.size	.L.str.10, 22
-
-	.type	.L.str.11,%object               @ @.str.11
-.L.str.11:
-	.asciz	"Concatenate FILE(s)\n"
-	.size	.L.str.11, 21
-
 	.hidden	__fsym___cmd_cat_name           @ @__fsym___cmd_cat_name
 	.type	__fsym___cmd_cat_name,%object
 	.section	.rodata.name,"a",%progbits
@@ -1976,17 +1996,6 @@ __tagsym$$used.3:
 	.long	__fsym___cmd_cat_desc
 	.long	cmd_cat
 	.size	__fsym___cmd_cat, 12
-
-	.type	.L.str.12,%object               @ @.str.12
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.12:
-	.asciz	"Usage: rm FILE...\n"
-	.size	.L.str.12, 19
-
-	.type	.L.str.13,%object               @ @.str.13
-.L.str.13:
-	.asciz	"Remove (unlink) the FILE(s).\n"
-	.size	.L.str.13, 30
 
 	.hidden	__fsym___cmd_rm_name            @ @__fsym___cmd_rm_name
 	.type	__fsym___cmd_rm_name,%object
@@ -2020,11 +2029,6 @@ __tagsym$$used.4:
 .L.str.14:
 	.asciz	"%s\n"
 	.size	.L.str.14, 4
-
-	.type	.L.str.15,%object               @ @.str.15
-.L.str.15:
-	.asciz	"No such directory: %s\n"
-	.size	.L.str.15, 23
 
 	.hidden	__fsym___cmd_cd_name            @ @__fsym___cmd_cd_name
 	.type	__fsym___cmd_cd_name,%object
@@ -2080,17 +2084,6 @@ __tagsym$$used.6:
 	.long	cmd_pwd
 	.size	__fsym___cmd_pwd, 12
 
-	.type	.L.str.16,%object               @ @.str.16
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.16:
-	.asciz	"Usage: mkdir [OPTION] DIRECTORY\n"
-	.size	.L.str.16, 33
-
-	.type	.L.str.17,%object               @ @.str.17
-.L.str.17:
-	.asciz	"Create the DIRECTORY, if they do not already exist.\n"
-	.size	.L.str.17, 53
-
 	.hidden	__fsym___cmd_mkdir_name         @ @__fsym___cmd_mkdir_name
 	.type	__fsym___cmd_mkdir_name,%object
 	.section	.rodata.name,"a",%progbits
@@ -2117,27 +2110,6 @@ __tagsym$$used.7:
 	.long	__fsym___cmd_mkdir_desc
 	.long	cmd_mkdir
 	.size	__fsym___cmd_mkdir, 12
-
-	.type	.L.str.18,%object               @ @.str.18
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.18:
-	.asciz	"elm"
-	.size	.L.str.18, 4
-
-	.type	.L.str.19,%object               @ @.str.19
-.L.str.19:
-	.asciz	"-t"
-	.size	.L.str.19, 3
-
-	.type	.L.str.20,%object               @ @.str.20
-.L.str.20:
-	.asciz	"Usage: mkfs [-t type] device\n"
-	.size	.L.str.20, 30
-
-	.type	.L.str.21,%object               @ @.str.21
-.L.str.21:
-	.asciz	"mkfs failed, result=%d\n"
-	.size	.L.str.21, 24
 
 	.hidden	__fsym___cmd_mkfs_name          @ @__fsym___cmd_mkfs_name
 	.type	__fsym___cmd_mkfs_name,%object
@@ -2166,27 +2138,6 @@ __tagsym$$used.8:
 	.long	cmd_mkfs
 	.size	__fsym___cmd_mkfs, 12
 
-	.type	.L.str.22,%object               @ @.str.22
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.22:
-	.asciz	"/"
-	.size	.L.str.22, 2
-
-	.type	.L.str.23,%object               @ @.str.23
-.L.str.23:
-	.asciz	"--help"
-	.size	.L.str.23, 7
-
-	.type	.L.str.24,%object               @ @.str.24
-.L.str.24:
-	.asciz	"-h"
-	.size	.L.str.24, 3
-
-	.type	.L.str.25,%object               @ @.str.25
-.L.str.25:
-	.asciz	"df [path]\n"
-	.size	.L.str.25, 11
-
 	.hidden	__fsym___cmd_df_name            @ @__fsym___cmd_df_name
 	.type	__fsym___cmd_df_name,%object
 	.section	.rodata.name,"a",%progbits
@@ -2213,17 +2164,6 @@ __tagsym$$used.9:
 	.long	__fsym___cmd_df_desc
 	.long	cmd_df
 	.size	__fsym___cmd_df, 12
-
-	.type	.L.str.26,%object               @ @.str.26
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.26:
-	.asciz	"open file:%s failed!\n"
-	.size	.L.str.26, 22
-
-	.type	.L.str.27,%object               @ @.str.27
-.L.str.27:
-	.asciz	"Usage: echo \"string\" [filename]\n"
-	.size	.L.str.27, 33
 
 	.hidden	__fsym___cmd_echo_name          @ @__fsym___cmd_echo_name
 	.type	__fsym___cmd_echo_name,%object
@@ -2252,17 +2192,965 @@ __tagsym$$used.10:
 	.long	cmd_echo
 	.size	__fsym___cmd_echo, 12
 
-	.globl	__fsym___cmd_ls
-	.globl	__fsym___cmd_cp
-	.globl	__fsym___cmd_mv
 	.globl	__fsym___cmd_cat
-	.globl	__fsym___cmd_rm
 	.globl	__fsym___cmd_cd
-	.globl	__fsym___cmd_pwd
-	.globl	__fsym___cmd_mkdir
-	.globl	__fsym___cmd_mkfs
+	.globl	__fsym___cmd_cp
 	.globl	__fsym___cmd_df
 	.globl	__fsym___cmd_echo
+	.globl	__fsym___cmd_ls
+	.globl	__fsym___cmd_mkdir
+	.globl	__fsym___cmd_mkfs
+	.globl	__fsym___cmd_mv
+	.globl	__fsym___cmd_pwd
+	.globl	__fsym___cmd_rm
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp3-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp3-.Lfunc_begin0
+	.long	.Ltmp23-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp23-.Lfunc_begin0
+	.long	.Ltmp26-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp27-.Lfunc_begin0
+	.long	.Ltmp42-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp43-.Lfunc_begin0
+	.long	.Ltmp47-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp47-.Lfunc_begin0
+	.long	.Ltmp49-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp7-.Lfunc_begin0
+	.long	.Ltmp8-.Lfunc_begin0
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp4-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp8-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp47-.Lfunc_begin0
+	.long	.Ltmp48-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp1-.Lfunc_begin0
+	.long	.Ltmp17-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	127                             @ -1
+	.long	.Ltmp17-.Lfunc_begin0
+	.long	.Ltmp20-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp20-.Lfunc_begin0
+	.long	.Ltmp21-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	127                             @ -1
+	.long	.Ltmp21-.Lfunc_begin0
+	.long	.Ltmp26-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp27-.Lfunc_begin0
+	.long	.Ltmp42-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp43-.Lfunc_begin0
+	.long	.Ltmp47-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp47-.Lfunc_begin0
+	.long	.Ltmp49-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	127                             @ -1
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp9-.Lfunc_begin0
+	.long	.Ltmp10-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp10-.Lfunc_begin0
+	.long	.Ltmp12-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp12-.Lfunc_begin0
+	.long	.Ltmp26-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp27-.Lfunc_begin0
+	.long	.Ltmp42-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	.Ltmp43-.Lfunc_begin0
+	.long	.Ltmp47-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp23-.Lfunc_begin0
+	.long	.Ltmp26-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp27-.Lfunc_begin0
+	.long	.Ltmp42-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp43-.Lfunc_begin0
+	.long	.Ltmp45-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp25-.Lfunc_begin0
+	.long	.Ltmp26-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp44-.Lfunc_begin0
+	.long	.Ltmp46-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp46-.Lfunc_begin0
+	.long	.Ltmp47-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp27-.Lfunc_begin0
+	.long	.Ltmp28-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp29-.Lfunc_begin0
+	.long	.Ltmp31-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp31-.Lfunc_begin0
+	.long	.Ltmp42-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp32-.Lfunc_begin0
+	.long	.Ltmp34-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp36-.Lfunc_begin0
+	.long	.Ltmp38-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp32-.Lfunc_begin0
+	.long	.Ltmp41-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp52-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp52-.Lfunc_begin1
+	.long	.Ltmp78-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp50-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp50-.Lfunc_begin1
+	.long	.Ltmp78-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp52-.Lfunc_begin1
+	.long	.Ltmp58-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	125                             @ DW_OP_breg13
+	.byte	3                               @ 3
+	.long	.Ltmp58-.Lfunc_begin1
+	.long	.Ltmp61-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp61-.Lfunc_begin1
+	.long	.Ltmp64-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	125                             @ DW_OP_breg13
+	.byte	3                               @ 3
+	.long	.Ltmp64-.Lfunc_begin1
+	.long	.Ltmp71-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp71-.Lfunc_begin1
+	.long	.Ltmp73-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	125                             @ DW_OP_breg13
+	.byte	3                               @ 3
+	.long	.Ltmp73-.Lfunc_begin1
+	.long	.Ltmp74-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp75-.Lfunc_begin1
+	.long	.Ltmp77-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	125                             @ DW_OP_breg13
+	.byte	3                               @ 3
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Ltmp52-.Lfunc_begin1
+	.long	.Ltmp60-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp60-.Lfunc_begin1
+	.long	.Ltmp61-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	1                               @ 1
+	.long	.Ltmp61-.Lfunc_begin1
+	.long	.Ltmp66-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp66-.Lfunc_begin1
+	.long	.Ltmp68-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp68-.Lfunc_begin1
+	.long	.Ltmp70-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	.Ltmp71-.Lfunc_begin1
+	.long	.Ltmp73-.Lfunc_begin1
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp73-.Lfunc_begin1
+	.long	.Ltmp77-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	128                             @ 128
+	.byte	1                               @ 
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp81-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp81-.Lfunc_begin2
+	.long	.Ltmp82-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp82-.Lfunc_begin2
+	.long	.Ltmp83-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp83-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Lfunc_begin2-.Lfunc_begin2
+	.long	.Ltmp84-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp84-.Lfunc_begin2
+	.long	.Lfunc_end2-.Lfunc_begin2
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp88-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp88-.Lfunc_begin3
+	.long	.Ltmp90-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp90-.Lfunc_begin3
+	.long	.Ltmp91-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp91-.Lfunc_begin3
+	.long	.Ltmp94-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp88-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp88-.Lfunc_begin3
+	.long	.Ltmp90-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp90-.Lfunc_begin3
+	.long	.Ltmp92-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp92-.Lfunc_begin3
+	.long	.Ltmp94-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp98-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp98-.Lfunc_begin4
+	.long	.Ltmp105-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp105-.Lfunc_begin4
+	.long	.Ltmp106-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp106-.Lfunc_begin4
+	.long	.Ltmp129-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp97-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp97-.Lfunc_begin4
+	.long	.Ltmp105-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp105-.Lfunc_begin4
+	.long	.Ltmp107-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp107-.Lfunc_begin4
+	.long	.Ltmp108-.Lfunc_begin4
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp108-.Lfunc_begin4
+	.long	.Ltmp126-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp127-.Lfunc_begin4
+	.long	.Ltmp129-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp97-.Lfunc_begin4
+	.long	.Ltmp102-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp102-.Lfunc_begin4
+	.long	.Ltmp105-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp108-.Lfunc_begin4
+	.long	.Ltmp114-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp114-.Lfunc_begin4
+	.long	.Ltmp126-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp127-.Lfunc_begin4
+	.long	.Ltmp128-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp99-.Lfunc_begin4
+	.long	.Ltmp101-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp108-.Lfunc_begin4
+	.long	.Ltmp109-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp110-.Lfunc_begin4
+	.long	.Ltmp112-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp104-.Lfunc_begin4
+	.long	.Ltmp105-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp115-.Lfunc_begin4
+	.long	.Ltmp120-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp132-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp132-.Lfunc_begin5
+	.long	.Ltmp135-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp135-.Lfunc_begin5
+	.long	.Ltmp137-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp138-.Lfunc_begin5
+	.long	.Ltmp141-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc26:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp133-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp133-.Lfunc_begin5
+	.long	.Ltmp135-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp135-.Lfunc_begin5
+	.long	.Ltmp137-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp139-.Lfunc_begin5
+	.long	.Ltmp141-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc27:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp135-.Lfunc_begin5
+	.long	.Ltmp137-.Lfunc_begin5
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	1                               @ 1
+	.long	0
+	.long	0
+.Ldebug_loc28:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp145-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp145-.Lfunc_begin6
+	.long	.Ltmp148-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp148-.Lfunc_begin6
+	.long	.Ltmp150-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp151-.Lfunc_begin6
+	.long	.Ltmp154-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc29:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp146-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp146-.Lfunc_begin6
+	.long	.Ltmp148-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp148-.Lfunc_begin6
+	.long	.Ltmp150-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp152-.Lfunc_begin6
+	.long	.Ltmp154-.Lfunc_begin6
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc30:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Ltmp148-.Lfunc_begin6
+	.long	.Ltmp150-.Lfunc_begin6
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	1                               @ 1
+	.long	0
+	.long	0
+.Ldebug_loc31:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp159-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp159-.Lfunc_begin7
+	.long	.Ltmp162-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp162-.Lfunc_begin7
+	.long	.Ltmp163-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp163-.Lfunc_begin7
+	.long	.Ltmp167-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc32:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp160-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp160-.Lfunc_begin7
+	.long	.Ltmp162-.Lfunc_begin7
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp162-.Lfunc_begin7
+	.long	.Ltmp164-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp164-.Lfunc_begin7
+	.long	.Ltmp167-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc33:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Lfunc_begin9-.Lfunc_begin9
+	.long	.Ltmp173-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp173-.Lfunc_begin9
+	.long	.Ltmp176-.Lfunc_begin9
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp176-.Lfunc_begin9
+	.long	.Ltmp177-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp177-.Lfunc_begin9
+	.long	.Ltmp180-.Lfunc_begin9
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc34:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Lfunc_begin9-.Lfunc_begin9
+	.long	.Ltmp174-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp174-.Lfunc_begin9
+	.long	.Ltmp176-.Lfunc_begin9
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp176-.Lfunc_begin9
+	.long	.Ltmp178-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp178-.Lfunc_begin9
+	.long	.Ltmp180-.Lfunc_begin9
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc35:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Lfunc_begin10-.Lfunc_begin10
+	.long	.Ltmp185-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp185-.Lfunc_begin10
+	.long	.Ltmp189-.Lfunc_begin10
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp189-.Lfunc_begin10
+	.long	.Ltmp190-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp190-.Lfunc_begin10
+	.long	.Ltmp191-.Lfunc_begin10
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp191-.Lfunc_begin10
+	.long	.Ltmp192-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp192-.Lfunc_begin10
+	.long	.Ltmp201-.Lfunc_begin10
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc36:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Lfunc_begin10-.Lfunc_begin10
+	.long	.Ltmp182-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp182-.Lfunc_begin10
+	.long	.Ltmp201-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc37:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Ltmp190-.Lfunc_begin10
+	.long	.Ltmp191-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp195-.Lfunc_begin10
+	.long	.Ltmp197-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc38:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Ltmp181-.Lfunc_begin10
+	.long	.Ltmp188-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp188-.Lfunc_begin10
+	.long	.Ltmp189-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp189-.Lfunc_begin10
+	.long	.Ltmp198-.Lfunc_begin10
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp198-.Lfunc_begin10
+	.long	.Ltmp200-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc39:
+	.long	-1
+	.long	.Lfunc_begin11                  @   base address
+	.long	.Lfunc_begin11-.Lfunc_begin11
+	.long	.Ltmp205-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp205-.Lfunc_begin11
+	.long	.Ltmp209-.Lfunc_begin11
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp209-.Lfunc_begin11
+	.long	.Ltmp210-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp210-.Lfunc_begin11
+	.long	.Ltmp214-.Lfunc_begin11
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc40:
+	.long	-1
+	.long	.Lfunc_begin11                  @   base address
+	.long	.Lfunc_begin11-.Lfunc_begin11
+	.long	.Ltmp204-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp204-.Lfunc_begin11
+	.long	.Ltmp209-.Lfunc_begin11
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp209-.Lfunc_begin11
+	.long	.Ltmp210-.Lfunc_begin11
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp212-.Lfunc_begin11
+	.long	.Ltmp214-.Lfunc_begin11
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc41:
+	.long	-1
+	.long	.Lfunc_begin12                  @   base address
+	.long	.Lfunc_begin12-.Lfunc_begin12
+	.long	.Ltmp219-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp219-.Lfunc_begin12
+	.long	.Ltmp220-.Lfunc_begin12
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp220-.Lfunc_begin12
+	.long	.Ltmp221-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp221-.Lfunc_begin12
+	.long	.Ltmp227-.Lfunc_begin12
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp227-.Lfunc_begin12
+	.long	.Ltmp228-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp228-.Lfunc_begin12
+	.long	.Ltmp233-.Lfunc_begin12
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc42:
+	.long	-1
+	.long	.Lfunc_begin12                  @   base address
+	.long	.Lfunc_begin12-.Lfunc_begin12
+	.long	.Ltmp216-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp216-.Lfunc_begin12
+	.long	.Ltmp224-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	.Ltmp224-.Lfunc_begin12
+	.long	.Ltmp227-.Lfunc_begin12
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp227-.Lfunc_begin12
+	.long	.Ltmp233-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc43:
+	.long	-1
+	.long	.Lfunc_begin12                  @   base address
+	.long	.Ltmp222-.Lfunc_begin12
+	.long	.Ltmp225-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp225-.Lfunc_begin12
+	.long	.Ltmp227-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp230-.Lfunc_begin12
+	.long	.Ltmp231-.Lfunc_begin12
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -2446,7 +3334,7 @@ __tagsym$$used.10:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2461,7 +3349,7 @@ __tagsym$$used.10:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2475,13 +3363,20 @@ __tagsym$$used.10:
 	.byte	17                              @ Abbreviation Code
 	.byte	11                              @ DW_TAG_lexical_block
 	.byte	1                               @ DW_CHILDREN_yes
+	.byte	85                              @ DW_AT_ranges
+	.byte	6                               @ DW_FORM_data4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	18                              @ Abbreviation Code
+	.byte	11                              @ DW_TAG_lexical_block
+	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
 	.byte	1                               @ DW_FORM_addr
 	.byte	18                              @ DW_AT_high_pc
 	.byte	1                               @ DW_FORM_addr
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	18                              @ Abbreviation Code
+	.byte	19                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2502,7 +3397,7 @@ __tagsym$$used.10:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	19                              @ Abbreviation Code
+	.byte	20                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2525,11 +3420,11 @@ __tagsym$$used.10:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	20                              @ Abbreviation Code
+	.byte	21                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2540,11 +3435,24 @@ __tagsym$$used.10:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	21                              @ Abbreviation Code
+	.byte	22                              @ Abbreviation Code
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	23                              @ Abbreviation Code
+	.byte	5                               @ DW_TAG_formal_parameter
+	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2563,14 +3471,14 @@ __tagsym$$used.10:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x7a0 DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x7b6 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
 	.long	.Lline_table_start0             @ DW_AT_stmt_list
 	.long	.Linfo_string2                  @ DW_AT_comp_dir
 	.long	0                               @ DW_AT_low_pc
-	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.long	.Ldebug_ranges4                 @ DW_AT_ranges
 	.byte	2                               @ Abbrev [2] 0x26:0x12 DW_TAG_variable
 	.long	.Linfo_string3                  @ DW_AT_name
 	.long	56                              @ DW_AT_type
@@ -3000,7 +3908,7 @@ __tagsym$$used.10:
 	.long	__fsym___cmd_echo
 	.byte	10                              @ Abbrev [10] 0x393:0x5 DW_TAG_pointer_type
 	.long	73                              @ DW_AT_type
-	.byte	14                              @ Abbrev [14] 0x398:0xc6 DW_TAG_subprogram
+	.byte	14                              @ Abbrev [14] 0x398:0xcd DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3009,106 +3917,83 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	15                              @ Abbrev [15] 0x3af:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	48
+	.byte	15                              @ Abbrev [15] 0x3af:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string58                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
 	.long	185                             @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x3bd:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	44
+	.byte	15                              @ Abbrev [15] 0x3be:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string59                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	59                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x3cb:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	40
+	.long	1972                            @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x3cd:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string60                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
-	.byte	61                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x3d9:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	36
+	.byte	64                              @ DW_AT_decl_line
+	.long	1972                            @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x3dc:0xf DW_TAG_variable
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string61                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	62                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x3e7:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
+	.long	1972                            @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x3eb:0xf DW_TAG_variable
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string62                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	64                              @ DW_AT_decl_line
+	.long	1972                            @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x3fa:0xf DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
+	.long	.Linfo_string63                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	63                              @ DW_AT_decl_line
 	.long	915                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x3f5:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
-	.long	.Linfo_string63                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	64                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x403:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
-	.long	.Linfo_string64                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	64                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x411:0x4c DW_TAG_lexical_block
-	.long	.Ltmp19                         @ DW_AT_low_pc
-	.long	.Ltmp44                         @ DW_AT_high_pc
-	.byte	16                              @ Abbrev [16] 0x41a:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	16                              @ Abbrev [16] 0x409:0xf DW_TAG_variable
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string65                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	61                              @ DW_AT_decl_line
+	.long	1972                            @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x418:0x4c DW_TAG_lexical_block
+	.long	.Ldebug_ranges0                 @ DW_AT_ranges
+	.byte	16                              @ Abbrev [16] 0x41d:0xf DW_TAG_variable
+	.long	.Ldebug_loc6                    @ DW_AT_location
+	.long	.Linfo_string64                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	100                             @ DW_AT_decl_line
 	.long	915                             @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x428:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
-	.long	.Linfo_string63                 @ DW_AT_name
+	.byte	16                              @ Abbrev [16] 0x42c:0xf DW_TAG_variable
+	.long	.Ldebug_loc8                    @ DW_AT_location
+	.long	.Linfo_string62                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	101                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x436:0x26 DW_TAG_lexical_block
-	.long	.Ltmp27                         @ DW_AT_low_pc
-	.long	.Ltmp40                         @ DW_AT_high_pc
-	.byte	16                              @ Abbrev [16] 0x43f:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	15
+	.long	1972                            @ DW_AT_type
+	.byte	18                              @ Abbrev [18] 0x43b:0x28 DW_TAG_lexical_block
+	.long	.Ltmp32                         @ DW_AT_low_pc
+	.long	.Ltmp42                         @ DW_AT_high_pc
+	.byte	16                              @ Abbrev [16] 0x444:0xf DW_TAG_variable
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string66                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	116                             @ DW_AT_decl_line
 	.long	73                              @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x44d:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	16                              @ Abbrev [16] 0x453:0xf DW_TAG_variable
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	117                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	18                              @ Abbrev [18] 0x45e:0x5d DW_TAG_subprogram
+	.byte	19                              @ Abbrev [19] 0x465:0x62 DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3117,49 +4002,39 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	19                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x474:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
+	.long	1972                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x47b:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string61                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	19                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x482:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
-	.long	.Linfo_string65                 @ DW_AT_name
+	.long	1972                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x48a:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc12                   @ DW_AT_location
+	.long	.Linfo_string64                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	19                              @ DW_AT_decl_line
 	.long	915                             @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x490:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	15                              @ Abbrev [15] 0x499:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string59                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	19                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x49e:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	15
+	.long	1972                            @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x4a8:0xf DW_TAG_variable
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string66                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	21                              @ DW_AT_decl_line
 	.long	73                              @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x4ac:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	16                              @ Abbrev [16] 0x4b7:0xf DW_TAG_variable
+	.long	.Ldebug_loc14                   @ DW_AT_location
 	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	22                              @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	14                              @ Abbrev [14] 0x4bb:0x34 DW_TAG_subprogram
+	.byte	14                              @ Abbrev [14] 0x4c7:0x36 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3168,26 +4043,22 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	149                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	15                              @ Abbrev [15] 0x4d2:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	15                              @ Abbrev [15] 0x4de:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc16                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	149                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x4e0:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1972                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x4ed:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	149                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
+	.long	1979                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	14                              @ Abbrev [14] 0x4ef:0x34 DW_TAG_subprogram
+	.byte	14                              @ Abbrev [14] 0x4fd:0x36 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3196,26 +4067,22 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	170                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	15                              @ Abbrev [15] 0x506:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	15                              @ Abbrev [15] 0x514:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	170                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x514:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1972                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x523:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	170                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
+	.long	1979                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	14                              @ Abbrev [14] 0x523:0x72 DW_TAG_subprogram
+	.byte	14                              @ Abbrev [14] 0x533:0x6f DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3224,50 +4091,38 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	188                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	15                              @ Abbrev [15] 0x53a:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	32
+	.byte	15                              @ Abbrev [15] 0x54a:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	188                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x548:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	28
+	.long	1972                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x559:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc21                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	188                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x556:0x3e DW_TAG_lexical_block
-	.long	.Ltmp81                         @ DW_AT_low_pc
-	.long	.Ltmp103                        @ DW_AT_high_pc
-	.byte	16                              @ Abbrev [16] 0x55f:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	24
-	.long	.Linfo_string61                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.byte	197                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x56d:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.long	1979                            @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x568:0x39 DW_TAG_lexical_block
+	.long	.Ldebug_ranges2                 @ DW_AT_ranges
+	.byte	16                              @ Abbrev [16] 0x56d:0xf DW_TAG_variable
+	.long	.Ldebug_loc22                   @ DW_AT_location
 	.long	.Linfo_string70                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	198                             @ DW_AT_decl_line
 	.long	915                             @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x57b:0x18 DW_TAG_lexical_block
-	.long	.Ltmp84                         @ DW_AT_low_pc
-	.long	.Ltmp94                         @ DW_AT_high_pc
-	.byte	16                              @ Abbrev [16] 0x584:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	16                              @ Abbrev [16] 0x57c:0xf DW_TAG_variable
+	.long	.Ldebug_loc23                   @ DW_AT_location
+	.long	.Linfo_string61                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.byte	197                             @ DW_AT_decl_line
+	.long	1972                            @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x58b:0x15 DW_TAG_lexical_block
+	.long	.Ldebug_ranges1                 @ DW_AT_ranges
+	.byte	16                              @ Abbrev [16] 0x590:0xf DW_TAG_variable
+	.long	.Ldebug_loc24                   @ DW_AT_location
 	.long	.Linfo_string71                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	205                             @ DW_AT_decl_line
@@ -3275,7 +4130,7 @@ __tagsym$$used.10:
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	14                              @ Abbrev [14] 0x595:0x42 DW_TAG_subprogram
+	.byte	14                              @ Abbrev [14] 0x5a2:0x45 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3284,34 +4139,28 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.byte	247                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	15                              @ Abbrev [15] 0x5ac:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	15                              @ Abbrev [15] 0x5b9:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	247                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	15                              @ Abbrev [15] 0x5ba:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	1972                            @ DW_AT_type
+	.byte	15                              @ Abbrev [15] 0x5c8:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc26                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	247                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
-	.byte	16                              @ Abbrev [16] 0x5c8:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1979                            @ DW_AT_type
+	.byte	16                              @ Abbrev [16] 0x5d7:0xf DW_TAG_variable
+	.long	.Ldebug_loc27                   @ DW_AT_location
 	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.byte	249                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x5d7:0x46 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x5e7:0x49 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3320,34 +4169,28 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.short	268                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x5ef:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	21                              @ Abbrev [21] 0x5ff:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc28                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	268                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x5fe:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	1972                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x60f:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc29                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	268                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
-	.byte	21                              @ Abbrev [21] 0x60d:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1979                            @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x61f:0x10 DW_TAG_variable
+	.long	.Ldebug_loc30                   @ DW_AT_location
 	.long	.Linfo_string67                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	270                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x61d:0x37 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x630:0x39 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3356,26 +4199,22 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.short	289                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x635:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	21                              @ Abbrev [21] 0x648:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc31                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	289                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x644:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1972                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x658:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc32                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	289                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
+	.long	1979                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x654:0x37 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x669:0x31 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3384,26 +4223,20 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.short	307                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x66c:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	23                              @ Abbrev [23] 0x681:0xc DW_TAG_formal_parameter
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	307                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x67b:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1972                            @ DW_AT_type
+	.byte	23                              @ Abbrev [23] 0x68d:0xc DW_TAG_formal_parameter
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	307                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
+	.long	1979                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x68b:0x37 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x69a:0x39 DW_TAG_subprogram
 	.long	.Lfunc_begin9                   @ DW_AT_low_pc
 	.long	.Lfunc_end9                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3412,26 +4245,22 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.short	315                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x6a3:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	21                              @ Abbrev [21] 0x6b2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc33                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	315                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x6b2:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1972                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x6c2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc34                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	315                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
+	.long	1979                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x6c2:0x55 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x6d3:0x59 DW_TAG_subprogram
 	.long	.Lfunc_begin10                  @ DW_AT_low_pc
 	.long	.Lfunc_end10                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3440,42 +4269,34 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.short	331                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x6da:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	21                              @ Abbrev [21] 0x6eb:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc35                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	331                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x6e9:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	1972                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x6fb:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc36                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	331                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
-	.byte	21                              @ Abbrev [21] 0x6f8:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.long	1979                            @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x70b:0x10 DW_TAG_variable
+	.long	.Ldebug_loc37                   @ DW_AT_location
 	.long	.Linfo_string72                 @ DW_AT_name
-	.byte	1                               @ DW_AT_decl_file
-	.short	333                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	21                              @ Abbrev [21] 0x707:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
-	.long	.Linfo_string73                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	334                             @ DW_AT_decl_line
 	.long	915                             @ DW_AT_type
+	.byte	22                              @ Abbrev [22] 0x71b:0x10 DW_TAG_variable
+	.long	.Ldebug_loc38                   @ DW_AT_location
+	.long	.Linfo_string73                 @ DW_AT_name
+	.byte	1                               @ DW_AT_decl_file
+	.short	333                             @ DW_AT_decl_line
+	.long	1972                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x717:0x37 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x72c:0x39 DW_TAG_subprogram
 	.long	.Lfunc_begin11                  @ DW_AT_low_pc
 	.long	.Lfunc_end11                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3484,26 +4305,22 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.short	364                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x72f:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	21                              @ Abbrev [21] 0x744:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc39                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	364                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x73e:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	1972                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x754:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc40                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	364                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
+	.long	1979                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	19                              @ Abbrev [19] 0x74e:0x50 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x765:0x4f DW_TAG_subprogram
 	.long	.Lfunc_begin12                  @ DW_AT_low_pc
 	.long	.Lfunc_end12                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3512,47 +4329,74 @@ __tagsym$$used.10:
 	.byte	1                               @ DW_AT_decl_file
 	.short	386                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	20                              @ Abbrev [20] 0x766:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	20
+	.byte	21                              @ Abbrev [21] 0x77d:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc41                   @ DW_AT_location
 	.long	.Linfo_string68                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	386                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
-	.byte	20                              @ Abbrev [20] 0x775:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.long	1972                            @ DW_AT_type
+	.byte	21                              @ Abbrev [21] 0x78d:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc42                   @ DW_AT_location
 	.long	.Linfo_string69                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	386                             @ DW_AT_decl_line
-	.long	1957                            @ DW_AT_type
-	.byte	17                              @ Abbrev [17] 0x784:0x19 DW_TAG_lexical_block
-	.long	.Ltmp177                        @ DW_AT_low_pc
-	.long	.Ltmp183                        @ DW_AT_high_pc
-	.byte	21                              @ Abbrev [21] 0x78d:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	1979                            @ DW_AT_type
+	.byte	17                              @ Abbrev [17] 0x79d:0x16 DW_TAG_lexical_block
+	.long	.Ldebug_ranges3                 @ DW_AT_ranges
+	.byte	22                              @ Abbrev [22] 0x7a2:0x10 DW_TAG_variable
+	.long	.Ldebug_loc43                   @ DW_AT_location
 	.long	.Linfo_string61                 @ DW_AT_name
 	.byte	1                               @ DW_AT_decl_file
 	.short	394                             @ DW_AT_decl_line
-	.long	1950                            @ DW_AT_type
+	.long	1972                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	6                               @ Abbrev [6] 0x79e:0x7 DW_TAG_base_type
+	.byte	6                               @ Abbrev [6] 0x7b4:0x7 DW_TAG_base_type
 	.long	.Linfo_string45                 @ DW_AT_name
 	.byte	5                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	10                              @ Abbrev [10] 0x7a5:0x5 DW_TAG_pointer_type
+	.byte	10                              @ Abbrev [10] 0x7bb:0x5 DW_TAG_pointer_type
 	.long	915                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 .Ldebug_info_end0:
 	.section	.debug_ranges,"",%progbits
 .Ldebug_ranges0:
+	.long	.Ltmp22
+	.long	.Ltmp26
+	.long	.Ltmp27
+	.long	.Ltmp42
+	.long	.Ltmp43
+	.long	.Ltmp45
+	.long	0
+	.long	0
+.Ldebug_ranges1:
+	.long	.Ltmp100
+	.long	.Ltmp105
+	.long	.Ltmp115
+	.long	.Ltmp121
+	.long	.Ltmp127
+	.long	.Ltmp128
+	.long	0
+	.long	0
+.Ldebug_ranges2:
+	.long	.Ltmp97
+	.long	.Ltmp105
+	.long	.Ltmp108
+	.long	.Ltmp126
+	.long	.Ltmp127
+	.long	.Ltmp128
+	.long	0
+	.long	0
+.Ldebug_ranges3:
+	.long	.Ltmp220
+	.long	.Ltmp226
+	.long	.Ltmp230
+	.long	.Ltmp231
+	.long	0
+	.long	0
+.Ldebug_ranges4:
 	.long	.Lfunc_begin0
 	.long	.Lfunc_end0
 	.long	.Lfunc_begin1
@@ -3703,17 +4547,17 @@ __tagsym$$used.10:
 .Linfo_string59:
 	.asciz	"size"                          @ string offset=1000
 .Linfo_string60:
-	.asciz	"ret"                           @ string offset=1005
+	.asciz	"cmd_length"                    @ string offset=1005
 .Linfo_string61:
-	.asciz	"fd"                            @ string offset=1009
+	.asciz	"fd"                            @ string offset=1016
 .Linfo_string62:
-	.asciz	"pg_name"                       @ string offset=1012
+	.asciz	"length"                        @ string offset=1019
 .Linfo_string63:
-	.asciz	"length"                        @ string offset=1020
+	.asciz	"pg_name"                       @ string offset=1026
 .Linfo_string64:
-	.asciz	"cmd_length"                    @ string offset=1027
+	.asciz	"line_buf"                      @ string offset=1034
 .Linfo_string65:
-	.asciz	"line_buf"                      @ string offset=1038
+	.asciz	"ret"                           @ string offset=1043
 .Linfo_string66:
 	.asciz	"ch"                            @ string offset=1047
 .Linfo_string67:
@@ -3727,12 +4571,12 @@ __tagsym$$used.10:
 .Linfo_string71:
 	.asciz	"src"                           @ string offset=1071
 .Linfo_string72:
-	.asciz	"result"                        @ string offset=1075
+	.asciz	"type"                          @ string offset=1075
 .Linfo_string73:
-	.asciz	"type"                          @ string offset=1082
+	.asciz	"result"                        @ string offset=1080
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

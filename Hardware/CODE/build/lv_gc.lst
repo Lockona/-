@@ -52,88 +52,81 @@ _lv_gc_clear_roots:
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
 .Ltmp0:
 	.loc	3 44 5 prologue_end             @ lvgl/src/lv_misc/lv_gc.c:44:5
 	movw	r0, :lower16:_lv_task_ll
-	movt	r0, :upper16:_lv_task_ll
 	movs	r1, #12
-	str	r1, [sp, #4]                    @ 4-byte Spill
+	movt	r0, :upper16:_lv_task_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_disp_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_disp_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_indev_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_indev_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_drv_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_drv_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_file_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_file_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_anim_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_anim_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_group_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_group_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_img_defoder_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_img_defoder_ll
 	bl	_lv_memset_00
-	ldr	r1, [sp, #4]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_obj_style_trans_ll
+	movs	r1, #12
 	movt	r0, :upper16:_lv_obj_style_trans_ll
 	bl	_lv_memset_00
 	movw	r0, :lower16:_lv_img_cache_array
-	movt	r0, :upper16:_lv_img_cache_array
 	movs	r1, #4
-	str	r1, [sp, #12]                   @ 4-byte Spill
+	movt	r0, :upper16:_lv_img_cache_array
 	bl	_lv_memset_00
-	ldr	r1, [sp, #12]                   @ 4-byte Reload
 	movw	r0, :lower16:_lv_task_act
+	movs	r1, #4
 	movt	r0, :upper16:_lv_task_act
 	bl	_lv_memset_00
 	movw	r0, :lower16:_lv_mem_buf
-	movt	r0, :upper16:_lv_mem_buf
 	movs	r1, #128
-	str	r1, [sp, #8]                    @ 4-byte Spill
+	movt	r0, :upper16:_lv_mem_buf
 	bl	_lv_memset_00
-	ldr	r1, [sp, #8]                    @ 4-byte Reload
 	movw	r0, :lower16:_lv_draw_mask_list
+	movs	r1, #128
 	movt	r0, :upper16:_lv_draw_mask_list
 	bl	_lv_memset_00
-	ldr	r1, [sp, #12]                   @ 4-byte Reload
 	movw	r0, :lower16:_lv_theme_material_styles
+	movs	r1, #4
 	movt	r0, :upper16:_lv_theme_material_styles
 	bl	_lv_memset_00
-	ldr	r1, [sp, #12]                   @ 4-byte Reload
 	movw	r0, :lower16:_lv_theme_template_styles
+	movs	r1, #4
 	movt	r0, :upper16:_lv_theme_template_styles
 	bl	_lv_memset_00
-	ldr	r1, [sp, #12]                   @ 4-byte Reload
 	movw	r0, :lower16:_lv_theme_mono_styles
+	movs	r1, #4
 	movt	r0, :upper16:_lv_theme_mono_styles
 	bl	_lv_memset_00
-	ldr	r1, [sp, #12]                   @ 4-byte Reload
 	movw	r0, :lower16:_lv_theme_empty_styles
+	movs	r1, #4
 	movt	r0, :upper16:_lv_theme_empty_styles
 	bl	_lv_memset_00
-	ldr	r1, [sp, #12]                   @ 4-byte Reload
 	movw	r0, :lower16:_lv_font_decompr_buf
+	movs	r1, #4
 	movt	r0, :upper16:_lv_font_decompr_buf
 	bl	_lv_memset_00
 	.loc	3 45 1                          @ lvgl/src/lv_misc/lv_gc.c:45:1
-	add	sp, #16
 	pop	{r7, pc}
 .Ltmp1:
 .Lfunc_end0:
@@ -1527,7 +1520,7 @@ _lv_font_decompr_buf:
 	.asciz	"_lv_gc_clear_roots"            @ string offset=1220
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

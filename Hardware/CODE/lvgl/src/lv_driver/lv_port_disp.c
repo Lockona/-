@@ -82,7 +82,7 @@ void lv_port_disp_init(void)
     /* Example for 1) */
     static lv_disp_buf_t draw_buf_dsc_1;
 	rt_enter_critical();
-    lv_color_t *draw_buf_1 = rt_malloc(LV_HOR_RES_MAX * LV_VER_RES_MAX*4+4*1024);
+    lv_color_t *draw_buf_1 = (lv_color_t *)rt_malloc(LV_HOR_RES_MAX * LV_VER_RES_MAX*4+4*1024);
 	rt_exit_critical();
 //    lv_color_t *draw_buf_2 = rt_malloc(LV_HOR_RES_MAX * LV_VER_RES_MAX*2);                        /*A buffer for 20 rows*/
     lv_disp_buf_init(&draw_buf_dsc_1, draw_buf_1,NULL, LV_HOR_RES_MAX * LV_VER_RES_MAX); /*Initialize the display buffer*/

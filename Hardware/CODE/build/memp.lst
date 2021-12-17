@@ -41,102 +41,97 @@ memp_init_pool:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: memp_init_pool:desc <- $r0
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	mov	r4, r0
 .Ltmp0:
-	.loc	5 238 4 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:238:4
-	ldr	r0, [sp, #12]
-	.loc	5 238 10 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:238:10
-	ldr	r1, [r0, #12]
-	movs	r0, #0
+	@DEBUG_VALUE: memp_init_pool:desc <- $r4
+	.loc	5 241 25 prologue_end           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:25
+	ldrh	r0, [r0, #6]
+.Ltmp1:
+	.loc	5 238 10                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:238:10
+	ldr	r1, [r4, #12]
+.Ltmp2:
+	.loc	5 241 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:3
+	cmp	r0, #0
+	mov.w	r0, #0
+.Ltmp3:
 	.loc	5 238 14                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:238:14
 	str	r0, [r1]
-	.loc	5 239 24 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:239:24
-	ldr	r1, [sp, #12]
-	ldr	r1, [r1, #8]
-	adds	r1, #3
-	bic	r1, r1, #3
-	.loc	5 239 8 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:239:8
-	str	r1, [sp, #4]
-.Ltmp1:
-	.loc	5 241 10 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:10
-	str	r0, [sp, #8]
-	.loc	5 241 8 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:8
-	b	.LBB0_1
-.LBB0_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp2:
-	.loc	5 241 15                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:15
-	ldr	r0, [sp, #8]
-	.loc	5 241 19                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:19
-	ldr	r1, [sp, #12]
-	.loc	5 241 25                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:25
-	ldrh	r1, [r1, #6]
-.Ltmp3:
-	.loc	5 241 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:3
-	cmp	r0, r1
-	bge	.LBB0_4
-	b	.LBB0_2
-.LBB0_2:                                @   in Loop: Header=BB0_1 Depth=1
 .Ltmp4:
-	.loc	5 242 19 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:19
-	ldr	r0, [sp, #12]
-	.loc	5 242 25 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:25
-	ldr	r0, [r0, #12]
-	.loc	5 242 18                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:18
-	ldr	r0, [r0]
-	.loc	5 242 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:5
-	ldr	r1, [sp, #4]
-	.loc	5 242 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:16
-	str	r0, [r1]
-	.loc	5 243 18 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:243:18
-	ldr	r0, [sp, #4]
-	.loc	5 243 6 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:243:6
-	ldr	r1, [sp, #12]
-	.loc	5 243 12                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:243:12
-	ldr	r1, [r1, #12]
-	.loc	5 243 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:243:16
-	str	r0, [r1]
-	.loc	5 245 32 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:245:32
-	ldr	r0, [sp, #4]
-	.loc	5 245 38 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:245:38
-	ldr	r1, [sp, #12]
-	.loc	5 245 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:245:5
-	bl	memp_overflow_init_element
-	.loc	5 248 43 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:248:43
-	ldr	r0, [sp, #4]
-	.loc	5 248 62 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:248:62
-	ldr	r1, [sp, #12]
-	.loc	5 248 68                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:248:68
-	ldrh	r1, [r1, #4]
-	.loc	5 248 48                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:248:48
-	add	r0, r1
-	.loc	5 250 7 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:250:7
-	adds	r0, #44
-	.loc	5 248 9                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:248:9
-	str	r0, [sp, #4]
-	.loc	5 253 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:253:3
-	b	.LBB0_3
+	@DEBUG_VALUE: memp_init_pool:i <- 0
+	@DEBUG_VALUE: memp_init_pool:memp <- [DW_OP_plus_uconst 3, DW_OP_constu 18446744073709551612, DW_OP_and, DW_OP_stack_value] undef
+	.loc	5 262 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:262:1
+	it	eq
+	popeq	{r4, r5, r6, pc}
 .Ltmp5:
-.LBB0_3:                                @   in Loop: Header=BB0_1 Depth=1
-	.loc	5 241 30                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:30
-	ldr	r0, [sp, #8]
-	adds	r0, #1
-	str	r0, [sp, #8]
-	.loc	5 241 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:3
-	b	.LBB0_1
+.LBB0_1:
+	@DEBUG_VALUE: memp_init_pool:i <- 0
+	.loc	5 239 24                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:239:24
+	ldr	r0, [r4, #8]
 .Ltmp6:
-.LBB0_4:
-	.loc	5 262 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:262:1
-	add	sp, #16
-	pop	{r7, pc}
+	@DEBUG_VALUE: memp_init_pool:memp <- [DW_OP_plus_uconst 3, DW_OP_constu 18446744073709551612, DW_OP_and, DW_OP_stack_value] $r0
+	.loc	5 0 24 is_stmt 0                @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:24
+	movs	r6, #0
 .Ltmp7:
+	@DEBUG_VALUE: memp_init_pool:memp <- undef
+	.loc	5 239 24                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:239:24
+	adds	r0, #3
+.Ltmp8:
+	@DEBUG_VALUE: memp_init_pool:memp <- [DW_OP_constu 18446744073709551612, DW_OP_and, DW_OP_stack_value] $r0
+	bic	r5, r0, #3
+.Ltmp9:
+	@DEBUG_VALUE: memp_init_pool:memp <- $r5
+	.p2align	2
+.LBB0_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: memp_init_pool:memp <- $r5
+	@DEBUG_VALUE: memp_init_pool:i <- $r6
+	.loc	5 242 25 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:25
+	ldr	r0, [r4, #12]
+	.loc	5 242 18 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:18
+	ldr	r1, [r0]
+	.loc	5 242 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:242:16
+	str	r1, [r5]
+	.loc	5 243 16 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:243:16
+	str	r5, [r0]
+	.loc	5 245 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:245:5
+	mov	r0, r5
+	mov	r1, r4
+	bl	memp_overflow_init_element
+	.loc	5 248 68                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:248:68
+	ldrh	r0, [r4, #4]
+.Ltmp10:
+	.loc	5 241 30                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:30
+	adds	r6, #1
+.Ltmp11:
+	@DEBUG_VALUE: memp_init_pool:i <- $r6
+	.loc	5 241 25 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:25
+	ldrh	r1, [r4, #6]
+.Ltmp12:
+	.loc	5 248 48 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:248:48
+	add	r0, r5
+.Ltmp13:
+	.loc	5 241 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:3
+	cmp	r6, r1
+.Ltmp14:
+	.loc	5 250 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:250:7
+	add.w	r5, r0, #44
+.Ltmp15:
+	@DEBUG_VALUE: memp_init_pool:memp <- undef
+	.loc	5 241 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:241:3
+	blo	.LBB0_2
+.Ltmp16:
+@ %bb.3:
+	@DEBUG_VALUE: memp_init_pool:i <- $r6
+	.loc	5 262 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:262:1
+	pop	{r4, r5, r6, pc}
+.Ltmp17:
 .Lfunc_end0:
 	.size	memp_init_pool, .Lfunc_end0-memp_init_pool
 	.cfi_endproc
@@ -154,49 +149,35 @@ memp_overflow_init_element:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.pad	#12
-	sub	sp, #12
-	.cfi_def_cfa_offset 12
-	str	r0, [sp, #8]
-	str	r1, [sp, #4]
-.Ltmp8:
-	.loc	5 183 14 prologue_end           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:183:14
-	ldr	r0, [sp, #8]
-	.loc	5 183 28 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:183:28
-	adds	r0, #12
-	.loc	5 183 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:183:5
-	str	r0, [sp]
-	.loc	5 184 10 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:184:10
-	ldr	r1, [sp]
-	mov.w	r0, #-842150451
-	.loc	5 184 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:184:3
-	str	r0, [r1, #12]
-	str	r0, [r1, #8]
-	str	r0, [r1, #4]
-	str	r0, [r1]
-	.loc	5 187 14 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:187:14
-	ldr	r1, [sp, #8]
-	.loc	5 187 30 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:187:30
-	ldr	r2, [sp, #4]
+	@DEBUG_VALUE: memp_overflow_init_element:p <- $r0
+	@DEBUG_VALUE: memp_overflow_init_element:desc <- $r1
+	mov.w	r2, #-842150451
+.Ltmp18:
+	@DEBUG_VALUE: memp_overflow_init_element:m <- [DW_OP_plus_uconst 12, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: memp_overflow_init_element:p <- $r0
+	.loc	5 184 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:184:3
+	str	r2, [r0, #24]
+	str	r2, [r0, #20]
+	str	r2, [r0, #16]
+	str	r2, [r0, #12]
+	@DEBUG_VALUE: memp_overflow_init_element:desc <- $r1
 	.loc	5 187 36                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:187:36
-	ldrh	r2, [r2, #4]
-	.loc	5 187 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:187:16
-	add	r1, r2
-	.loc	5 187 28                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:187:28
-	adds	r1, #28
-	.loc	5 187 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:187:5
-	str	r1, [sp]
-	.loc	5 188 10 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:188:10
-	ldr	r1, [sp]
-	.loc	5 188 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:188:3
-	str	r0, [r1, #12]
-	str	r0, [r1, #8]
-	str	r0, [r1, #4]
-	str	r0, [r1]
-	.loc	5 194 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:194:1
-	add	sp, #12
+	ldrh	r1, [r1, #4]
+.Ltmp19:
+	@DEBUG_VALUE: memp_overflow_init_element:desc <- [DW_OP_LLVM_entry_value 1] $r1
+	.loc	5 183 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:183:16
+	add	r0, r1
+.Ltmp20:
+	@DEBUG_VALUE: memp_overflow_init_element:p <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: memp_overflow_init_element:m <- [DW_OP_plus_uconst 28, DW_OP_stack_value] $r0
+	.loc	5 188 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:188:3
+	str	r2, [r0, #40]
+	str	r2, [r0, #36]
+	str	r2, [r0, #32]
+	str	r2, [r0, #28]
+	.loc	5 194 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:194:1
 	bx	lr
-.Ltmp9:
+.Ltmp21:
 .Lfunc_end1:
 	.size	memp_overflow_init_element, .Lfunc_end1-memp_overflow_init_element
 	.cfi_endproc
@@ -216,55 +197,40 @@ memp_init:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	movs	r0, #0
-.Ltmp10:
-	.loc	5 276 10 prologue_end           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:276:10
-	strh.w	r0, [sp, #6]
-	.loc	5 276 8 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:276:8
-	b	.LBB2_1
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	movw	r5, :lower16:memp_pools
+	mvn	r4, #3
+.Ltmp22:
+	@DEBUG_VALUE: memp_init:i <- 0
+	movt	r5, :upper16:memp_pools
+.Ltmp23:
+	.p2align	2
 .LBB2_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp11:
-	.loc	5 276 15                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:276:15
-	ldrh.w	r0, [sp, #6]
-.Ltmp12:
-	.loc	5 276 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:276:3
-	cmp	r0, #14
-	bhi	.LBB2_4
-	b	.LBB2_2
-.LBB2_2:                                @   in Loop: Header=BB2_1 Depth=1
-.Ltmp13:
-	.loc	5 277 31 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:277:31
-	ldrh.w	r1, [sp, #6]
-	.loc	5 277 20 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:277:20
-	movw	r0, :lower16:memp_pools
-	movt	r0, :upper16:memp_pools
-	ldr.w	r0, [r0, r1, lsl #2]
-	.loc	5 277 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:277:5
+	@DEBUG_VALUE: memp_init:i <- undef
+	.loc	5 277 20 prologue_end           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:277:20
+	adds	r0, r5, r4
+	ldr	r0, [r0, #4]
+	.loc	5 277 5 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:277:5
 	bl	memp_init_pool
-	.loc	5 282 3 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:282:3
-	b	.LBB2_3
-.Ltmp14:
-.LBB2_3:                                @   in Loop: Header=BB2_1 Depth=1
-	.loc	5 276 48                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:276:48
-	ldrh.w	r0, [sp, #6]
-	adds	r0, #1
-	strh.w	r0, [sp, #6]
+.Ltmp24:
+	@DEBUG_VALUE: memp_init:i <- [DW_OP_plus_uconst 1, DW_OP_stack_value] undef
+	.loc	5 276 17 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:276:17
+	adds	r4, #4
+.Ltmp25:
 	.loc	5 276 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:276:3
-	b	.LBB2_1
-.Ltmp15:
-.LBB2_4:
+	cmp	r4, #56
+	bne	.LBB2_1
+.Ltmp26:
+@ %bb.2:
 	.loc	5 288 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:288:1
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp16:
+	pop	{r4, r5, r7, pc}
+.Ltmp27:
 .Lfunc_end2:
 	.size	memp_init, .Lfunc_end2-memp_init
 	.cfi_endproc
@@ -284,85 +250,56 @@ memp_malloc_pool_fn:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: memp_malloc_pool_fn:desc <- $r0
+	@DEBUG_VALUE: memp_malloc_pool_fn:desc <- $r0
+	@DEBUG_VALUE: memp_malloc_pool_fn:file <- $r1
+	@DEBUG_VALUE: memp_malloc_pool_fn:line <- $r2
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #8]
-	str	r1, [sp, #4]
-	str	r2, [sp]
-.Ltmp17:
+	@DEBUG_VALUE: memp_malloc_pool_fn:line <- $r2
+	@DEBUG_VALUE: memp_malloc_pool_fn:file <- $r1
+.Ltmp28:
 	.loc	5 364 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
-	b	.LBB3_1
-.LBB3_1:
-.Ltmp18:
-	.loc	5 364 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
-	ldr	r0, [sp, #8]
-.Ltmp19:
-	.loc	5 364 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
-	cbnz	r0, .LBB3_5
-	b	.LBB3_2
-.LBB3_2:
-.Ltmp20:
-	.loc	5 364 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
-	b	.LBB3_3
-.LBB3_3:
-.Ltmp21:
-	.loc	5 364 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
-	movw	r0, :lower16:.L.str.15
-	movt	r0, :upper16:.L.str.15
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
-	mov.w	r1, #364
-	bl	sys_arch_assert
-	b	.LBB3_4
-.Ltmp22:
-.LBB3_4:
-	.loc	5 364 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
-	b	.LBB3_5
-.Ltmp23:
-.LBB3_5:
-	.loc	5 364 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
-	b	.LBB3_6
-.Ltmp24:
-.LBB3_6:
-	.loc	5 365 7 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:365:7
-	ldr	r0, [sp, #8]
-.Ltmp25:
-	.loc	5 365 7 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:365:7
-	cbnz	r0, .LBB3_8
-	b	.LBB3_7
-.LBB3_7:
-	.loc	5 0 7                           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:7
-	movs	r0, #0
-.Ltmp26:
-	.loc	5 366 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:366:5
-	str	r0, [sp, #12]
-	b	.LBB3_9
-.Ltmp27:
-.LBB3_8:
-	.loc	5 372 33                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:372:33
-	ldr	r0, [sp, #8]
-	.loc	5 372 39 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:372:39
-	ldr	r1, [sp, #4]
-	.loc	5 372 45                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:372:45
-	ldr	r2, [sp]
+	cbz	r0, .LBB3_2
+.Ltmp29:
+@ %bb.1:
+	@DEBUG_VALUE: memp_malloc_pool_fn:line <- $r2
+	@DEBUG_VALUE: memp_malloc_pool_fn:file <- $r1
+	@DEBUG_VALUE: memp_malloc_pool_fn:desc <- $r0
 	.loc	5 372 10                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:372:10
 	bl	do_memp_malloc_pool_fn
-	.loc	5 372 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:372:3
-	str	r0, [sp, #12]
-	b	.LBB3_9
-.LBB3_9:
-	.loc	5 374 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:374:1
-	ldr	r0, [sp, #12]
-	add	sp, #16
+.Ltmp30:
+	@DEBUG_VALUE: memp_malloc_pool_fn:line <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: memp_malloc_pool_fn:file <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: memp_malloc_pool_fn:desc <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	5 374 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:374:1
 	pop	{r7, pc}
-.Ltmp28:
+.Ltmp31:
+.LBB3_2:
+	@DEBUG_VALUE: memp_malloc_pool_fn:line <- $r2
+	@DEBUG_VALUE: memp_malloc_pool_fn:file <- $r1
+	@DEBUG_VALUE: memp_malloc_pool_fn:desc <- $r0
+	.loc	5 364 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:364:3
+	movw	r0, :lower16:.L.str.15
+.Ltmp32:
+	@DEBUG_VALUE: memp_malloc_pool_fn:desc <- [DW_OP_LLVM_entry_value 1] $r0
+	movt	r0, :upper16:.L.str.15
+	bl	rt_kprintf
+.Ltmp33:
+	@DEBUG_VALUE: memp_malloc_pool_fn:line <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: memp_malloc_pool_fn:file <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r0, :lower16:.L.str.16
+	mov.w	r1, #364
+	movt	r0, :upper16:.L.str.16
+	bl	sys_arch_assert
+	movs	r0, #0
+.Ltmp34:
+	.loc	5 374 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:374:1
+	pop	{r7, pc}
+.Ltmp35:
 .Lfunc_end3:
 	.size	memp_malloc_pool_fn, .Lfunc_end3-memp_malloc_pool_fn
 	.cfi_endproc
@@ -380,136 +317,117 @@ do_memp_malloc_pool_fn:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:desc <- $r0
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:file <- $r1
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:line <- $r2
+	.save	{r4, r5, r6, r7, lr}
+	push	{r4, r5, r6, r7, lr}
+	.cfi_def_cfa_offset 20
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-	str	r0, [sp, #16]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
-.Ltmp29:
+	.cfi_offset r6, -12
+	.cfi_offset r5, -16
+	.cfi_offset r4, -20
+	.pad	#4
+	sub	sp, #4
+	.cfi_def_cfa_offset 24
+	mov	r5, r2
+.Ltmp36:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:line <- $r5
+	mov	r6, r1
+.Ltmp37:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:file <- $r6
+	mov	r7, r0
+.Ltmp38:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:desc <- $r7
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:line <- $r5
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:file <- $r6
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:desc <- $r7
 	.loc	5 304 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:304:3
 	bl	rt_enter_critical
-	.loc	5 306 11                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:306:11
-	ldr	r0, [sp, #16]
-	.loc	5 306 17 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:306:17
-	ldr	r0, [r0, #12]
-	.loc	5 306 10                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:306:10
-	ldr	r0, [r0]
-	.loc	5 306 8                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:306:8
-	str	r0, [sp, #4]
-.Ltmp30:
+	.loc	5 306 17                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:306:17
+	ldr	r0, [r7, #12]
+	.loc	5 306 10 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:306:10
+	ldr	r4, [r0]
+.Ltmp39:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:memp <- $r4
 	.loc	5 309 7 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:309:7
-	ldr	r0, [sp, #4]
-.Ltmp31:
-	.loc	5 309 7 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:309:7
-	cbz	r0, .LBB4_8
-	b	.LBB4_1
-.LBB4_1:
-.Ltmp32:
-	.loc	5 312 42 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:312:42
-	ldr	r0, [sp, #4]
-	.loc	5 312 48 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:312:48
-	ldr	r1, [sp, #16]
+	cbz	r4, .LBB4_4
+.Ltmp40:
+@ %bb.1:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:desc <- $r7
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:file <- $r6
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:line <- $r5
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:memp <- $r4
 	.loc	5 312 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:312:5
+	mov	r0, r4
+	mov	r1, r7
 	bl	memp_overflow_check_element_overflow
-	.loc	5 313 43 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:313:43
-	ldr	r0, [sp, #4]
-	.loc	5 313 49 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:313:49
-	ldr	r1, [sp, #16]
 	.loc	5 313 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:313:5
+	mov	r0, r4
+	mov	r1, r7
 	bl	memp_overflow_check_element_underflow
-	.loc	5 316 18 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:316:18
-	ldr	r0, [sp, #4]
-	.loc	5 316 24 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:316:24
-	ldr	r0, [r0]
-	.loc	5 316 6                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:316:6
-	ldr	r1, [sp, #16]
 	.loc	5 316 12                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:316:12
-	ldr	r1, [r1, #12]
+	ldr	r0, [r7, #12]
+	.loc	5 316 24 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:316:24
+	ldr	r1, [r4]
+	.loc	5 323 16 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:323:16
+	str	r5, [r4, #8]
 	.loc	5 316 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:316:16
-	str	r0, [r1]
-	.loc	5 318 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:318:5
-	ldr	r1, [sp, #4]
+	str	r1, [r0]
 	movs	r0, #0
-	.loc	5 318 16 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:318:16
-	str	r0, [r1]
-	.loc	5 322 18 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:322:18
-	ldr	r0, [sp, #12]
-	.loc	5 322 5 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:322:5
-	ldr	r1, [sp, #4]
-	.loc	5 322 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:322:16
-	str	r0, [r1, #4]
-	.loc	5 323 18 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:323:18
-	ldr	r0, [sp, #8]
-	.loc	5 323 5 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:323:5
-	ldr	r1, [sp, #4]
-	.loc	5 323 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:323:16
-	str	r0, [r1, #8]
-	.loc	5 328 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:328:5
-	b	.LBB4_2
-.LBB4_2:
-.Ltmp33:
+	.loc	5 318 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:318:16
+	strd	r0, r6, [r4]
+.Ltmp41:
+	.loc	5 328 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:328:5
+	lsls	r0, r4, #30
+	beq	.LBB4_3
+.Ltmp42:
+@ %bb.2:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:desc <- $r7
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:file <- $r6
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:line <- $r5
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:memp <- $r4
 	.loc	5 328 5 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:328:5
-	ldrb.w	r0, [sp, #4]
-	lsls	r0, r0, #30
-	cbz	r0, .LBB4_6
-	b	.LBB4_3
-.LBB4_3:
-.Ltmp34:
-	.loc	5 328 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:328:5
-	b	.LBB4_4
-.LBB4_4:
-.Ltmp35:
-	.loc	5 328 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:328:5
-	movw	r0, :lower16:.L.str.19
-	movt	r0, :upper16:.L.str.19
+	adr	r0, .LCPI4_0
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
 	movw	r1, #329
+	movt	r0, :upper16:.L.str.16
 	bl	sys_arch_assert
-	b	.LBB4_5
-.Ltmp36:
-.LBB4_5:
-	.loc	5 328 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:328:5
-	b	.LBB4_6
-.Ltmp37:
-.LBB4_6:
-	.loc	5 328 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:328:5
-	b	.LBB4_7
-.Ltmp38:
-.LBB4_7:
+.Ltmp43:
+.LBB4_3:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:desc <- $r7
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:file <- $r6
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:line <- $r5
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:memp <- $r4
 	.loc	5 336 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:336:5
 	bl	rt_exit_critical
-	.loc	5 338 20                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:338:20
-	ldr	r0, [sp, #4]
-	.loc	5 338 25 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:338:25
-	adds	r0, #28
-	.loc	5 338 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:338:5
-	str	r0, [sp, #20]
-	b	.LBB4_10
-.Ltmp39:
-.LBB4_8:
-	.loc	5 0 5                           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:5
-	b	.LBB4_9
-.LBB4_9:
-	.loc	5 346 3 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:346:3
+	.loc	5 338 25                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:338:25
+	add.w	r0, r4, #28
+.Ltmp44:
+	.loc	5 348 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:348:1
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp45:
+.LBB4_4:
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:desc <- $r7
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:file <- $r6
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:line <- $r5
+	@DEBUG_VALUE: do_memp_malloc_pool_fn:memp <- $r4
+	.loc	5 346 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:346:3
 	bl	rt_exit_critical
 	movs	r0, #0
-	.loc	5 347 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:347:3
-	str	r0, [sp, #20]
-	b	.LBB4_10
-.LBB4_10:
 	.loc	5 348 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:348:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r7, pc}
-.Ltmp40:
+	add	sp, #4
+	pop	{r4, r5, r6, r7, pc}
+.Ltmp46:
+	.p2align	2
+@ %bb.5:
+	.loc	5 0 1 is_stmt 0                 @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:1
+.LCPI4_0:
+.L.str.19:
+	.asciz	"memp_malloc: memp properly aligned\000"
 .Lfunc_end4:
 	.size	do_memp_malloc_pool_fn, .Lfunc_end4-do_memp_malloc_pool_fn
 	.cfi_endproc
@@ -525,87 +443,72 @@ do_memp_malloc_pool_fn:
 	.thumb_func
 memp_malloc_fn:
 .Lfunc_begin5:
-	.loc	5 389 0                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:389:0
+	.loc	5 389 0 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:389:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: memp_malloc_fn:type <- $r0
+	@DEBUG_VALUE: memp_malloc_fn:type <- $r0
+	@DEBUG_VALUE: memp_malloc_fn:file <- $r1
+	@DEBUG_VALUE: memp_malloc_fn:line <- $r2
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#24
-	sub	sp, #24
-	.cfi_def_cfa_offset 32
-                                        @ kill: def $r3 killed $r0
-	strb.w	r0, [sp, #19]
-	str	r1, [sp, #12]
-	str	r2, [sp, #8]
-.Ltmp41:
-	.loc	5 391 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
-	b	.LBB5_1
-.LBB5_1:
-.Ltmp42:
-	.loc	5 391 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
-	ldrb.w	r0, [sp, #19]
-.Ltmp43:
-	.loc	5 391 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
-	cmp	r0, #15
-	blt	.LBB5_5
-	b	.LBB5_2
-.LBB5_2:
-.Ltmp44:
-	.loc	5 391 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
-	b	.LBB5_3
-.LBB5_3:
-.Ltmp45:
-	.loc	5 391 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
-	movw	r0, :lower16:.L.str.17
-	movt	r0, :upper16:.L.str.17
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
-	movw	r1, #391
-	bl	sys_arch_assert
-	b	.LBB5_4
-.Ltmp46:
-.LBB5_4:
-	.loc	5 0 3                           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:3
-	movs	r0, #0
-	.loc	5 391 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
-	str	r0, [sp, #20]
-	b	.LBB5_7
 .Ltmp47:
-.LBB5_5:
-	.loc	5 391 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
-	b	.LBB5_6
+	.loc	5 391 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
+	cmp	r0, #15
+	@DEBUG_VALUE: memp_malloc_fn:line <- $r2
+	@DEBUG_VALUE: memp_malloc_fn:file <- $r1
+	bhs	.LBB5_2
 .Ltmp48:
-.LBB5_6:
-	.loc	5 400 44 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:44
-	ldrb.w	r1, [sp, #19]
-	.loc	5 400 33 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:33
-	movw	r0, :lower16:memp_pools
-	movt	r0, :upper16:memp_pools
-	ldr.w	r0, [r0, r1, lsl #2]
-	.loc	5 400 51                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:51
-	ldr	r1, [sp, #12]
-	.loc	5 400 57                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:57
-	ldr	r2, [sp, #8]
-	.loc	5 400 10                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:10
-	bl	do_memp_malloc_pool_fn
-	.loc	5 400 8                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:8
-	str	r0, [sp, #4]
-	.loc	5 403 10 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:403:10
-	ldr	r0, [sp, #4]
-	.loc	5 403 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:403:3
-	str	r0, [sp, #20]
-	b	.LBB5_7
-.LBB5_7:
-	.loc	5 404 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:404:1
-	ldr	r0, [sp, #20]
-	add	sp, #24
-	pop	{r7, pc}
+@ %bb.1:
+	@DEBUG_VALUE: memp_malloc_fn:line <- $r2
+	@DEBUG_VALUE: memp_malloc_fn:file <- $r1
+	@DEBUG_VALUE: memp_malloc_fn:type <- $r0
+	.loc	5 400 33                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:33
+	movw	r3, :lower16:memp_pools
+	movt	r3, :upper16:memp_pools
+	ldr.w	r0, [r3, r0, lsl #2]
 .Ltmp49:
+	@DEBUG_VALUE: memp_malloc_fn:type <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	5 400 10 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:400:10
+	bl	do_memp_malloc_pool_fn
+.Ltmp50:
+	@DEBUG_VALUE: memp_malloc_fn:line <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: memp_malloc_fn:file <- [DW_OP_LLVM_entry_value 1] $r1
+	@DEBUG_VALUE: memp_malloc_fn:memp <- $r0
+	.loc	5 404 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:404:1
+	pop	{r7, pc}
+.Ltmp51:
+.LBB5_2:
+	@DEBUG_VALUE: memp_malloc_fn:line <- $r2
+	@DEBUG_VALUE: memp_malloc_fn:file <- $r1
+	@DEBUG_VALUE: memp_malloc_fn:type <- $r0
+	.loc	5 391 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:391:3
+	adr	r0, .LCPI5_0
+.Ltmp52:
+	@DEBUG_VALUE: memp_malloc_fn:type <- [DW_OP_LLVM_entry_value 1] $r0
+	bl	rt_kprintf
+.Ltmp53:
+	@DEBUG_VALUE: memp_malloc_fn:line <- [DW_OP_LLVM_entry_value 1] $r2
+	@DEBUG_VALUE: memp_malloc_fn:file <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r0, :lower16:.L.str.16
+	movw	r1, #391
+	movt	r0, :upper16:.L.str.16
+	bl	sys_arch_assert
+	movs	r0, #0
+.Ltmp54:
+	.loc	5 404 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:404:1
+	pop	{r7, pc}
+.Ltmp55:
+	.p2align	2
+@ %bb.3:
+	.loc	5 0 1 is_stmt 0                 @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:1
+.LCPI5_0:
+.L.str.17:
+	.asciz	"memp_malloc: type < MEMP_MAX\000\000\000"
 .Lfunc_end5:
 	.size	memp_malloc_fn, .Lfunc_end5-memp_malloc_fn
 	.cfi_endproc
@@ -621,86 +524,66 @@ memp_malloc_fn:
 	.thumb_func
 memp_free_pool:
 .Lfunc_begin6:
-	.loc	5 453 0                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:453:0
+	.loc	5 453 0 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:453:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: memp_free_pool:desc <- $r0
+	@DEBUG_VALUE: memp_free_pool:mem <- $r1
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
-	str	r1, [sp]
-.Ltmp50:
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	mov	r4, r0
+.Ltmp56:
+	@DEBUG_VALUE: memp_free_pool:desc <- $r4
+	mov	r5, r1
+.Ltmp57:
+	@DEBUG_VALUE: memp_free_pool:mem <- $r5
+	@DEBUG_VALUE: memp_free_pool:mem <- $r5
 	.loc	5 454 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:454:3
-	b	.LBB6_1
-.LBB6_1:
-.Ltmp51:
+	cbnz	r0, .LBB6_2
+.Ltmp58:
+@ %bb.1:
+	@DEBUG_VALUE: memp_free_pool:mem <- $r5
+	@DEBUG_VALUE: memp_free_pool:desc <- $r4
 	.loc	5 454 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:454:3
-	ldr	r0, [sp, #4]
-.Ltmp52:
-	.loc	5 454 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:454:3
-	cbnz	r0, .LBB6_5
-	b	.LBB6_2
-.LBB6_2:
-.Ltmp53:
-	.loc	5 454 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:454:3
-	b	.LBB6_3
-.LBB6_3:
-.Ltmp54:
-	.loc	5 454 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:454:3
 	movw	r0, :lower16:.L.str.15
 	movt	r0, :upper16:.L.str.15
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
 	mov.w	r1, #454
+	movt	r0, :upper16:.L.str.16
 	bl	sys_arch_assert
-	b	.LBB6_4
-.Ltmp55:
-.LBB6_4:
-	.loc	5 454 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:454:3
-	b	.LBB6_5
-.Ltmp56:
-.LBB6_5:
-	.loc	5 454 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:454:3
-	b	.LBB6_6
-.Ltmp57:
-.LBB6_6:
-	.loc	5 455 8 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:455:8
-	ldr	r0, [sp, #4]
-	.loc	5 455 22 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:455:22
-	cbz	r0, .LBB6_8
-	b	.LBB6_7
-.LBB6_7:
-	.loc	5 455 26                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:455:26
-	ldr	r0, [sp]
-.Ltmp58:
-	.loc	5 455 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:455:7
-	cbnz	r0, .LBB6_9
-	b	.LBB6_8
-.LBB6_8:
 .Ltmp59:
-	.loc	5 456 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:456:5
-	b	.LBB6_10
+.LBB6_2:
+	@DEBUG_VALUE: memp_free_pool:mem <- $r5
+	@DEBUG_VALUE: memp_free_pool:desc <- $r4
+	.loc	5 455 22 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:455:22
+	cmp	r4, #0
+	it	ne
+	cmpne	r5, #0
+	bne	.LBB6_4
 .Ltmp60:
-.LBB6_9:
-	.loc	5 459 21                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:459:21
-	ldr	r0, [sp, #4]
-	.loc	5 459 27 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:459:27
-	ldr	r1, [sp]
-	.loc	5 459 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:459:3
-	bl	do_memp_free_pool
-	.loc	5 460 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:460:1
-	b	.LBB6_10
-.LBB6_10:
-	add	sp, #8
-	pop	{r7, pc}
+@ %bb.3:
+	@DEBUG_VALUE: memp_free_pool:mem <- $r5
+	@DEBUG_VALUE: memp_free_pool:desc <- $r4
+	.loc	5 460 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:460:1
+	pop	{r4, r5, r7, pc}
 .Ltmp61:
+.LBB6_4:
+	@DEBUG_VALUE: memp_free_pool:mem <- $r5
+	@DEBUG_VALUE: memp_free_pool:desc <- $r4
+	.loc	5 459 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:459:3
+	mov	r0, r4
+	mov	r1, r5
+	bl	do_memp_free_pool
+	.loc	5 460 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:460:1
+	pop	{r4, r5, r7, pc}
+.Ltmp62:
 .Lfunc_end6:
 	.size	memp_free_pool, .Lfunc_end6-memp_free_pool
 	.cfi_endproc
@@ -718,95 +601,73 @@ do_memp_free_pool:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: do_memp_free_pool:desc <- $r0
+	@DEBUG_VALUE: do_memp_free_pool:mem <- $r1
+	.save	{r4, r5, r6, lr}
+	push	{r4, r5, r6, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
-	str	r0, [sp, #12]
-	str	r1, [sp, #8]
-.Ltmp62:
-	.loc	5 412 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
-	b	.LBB7_1
-.LBB7_1:
+	.cfi_offset r6, -8
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+	mov	r4, r1
 .Ltmp63:
-	.loc	5 412 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
-	ldrb.w	r0, [sp, #8]
-	lsls	r0, r0, #30
-	cbz	r0, .LBB7_5
-	b	.LBB7_2
-.LBB7_2:
+	@DEBUG_VALUE: do_memp_free_pool:mem <- $r4
+	.loc	5 412 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
+	lsls	r1, r1, #30
+	mov	r5, r0
 .Ltmp64:
-	.loc	5 412 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
-	b	.LBB7_3
-.LBB7_3:
+	@DEBUG_VALUE: do_memp_free_pool:desc <- $r5
+	@DEBUG_VALUE: do_memp_free_pool:desc <- $r5
+	beq	.LBB7_2
 .Ltmp65:
-	.loc	5 412 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
-	movw	r0, :lower16:.L.str.20
-	movt	r0, :upper16:.L.str.20
+@ %bb.1:
+	@DEBUG_VALUE: do_memp_free_pool:desc <- $r5
+	@DEBUG_VALUE: do_memp_free_pool:mem <- $r4
+	.loc	5 412 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
+	adr	r0, .LCPI7_0
 	bl	rt_kprintf
 	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
 	movw	r1, #413
+	movt	r0, :upper16:.L.str.16
 	bl	sys_arch_assert
-	b	.LBB7_4
 .Ltmp66:
-.LBB7_4:
-	.loc	5 412 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
-	b	.LBB7_5
+.LBB7_2:
+	@DEBUG_VALUE: do_memp_free_pool:desc <- $r5
+	@DEBUG_VALUE: do_memp_free_pool:mem <- $r4
+	.loc	5 416 45 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:416:45
+	sub.w	r6, r4, #28
 .Ltmp67:
-.LBB7_5:
-	.loc	5 412 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:412:3
-	b	.LBB7_6
-.Ltmp68:
-.LBB7_6:
-	.loc	5 416 41 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:416:41
-	ldr	r0, [sp, #8]
-	.loc	5 416 45 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:416:45
-	subs	r0, #28
-	.loc	5 416 8                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:416:8
-	str	r0, [sp, #4]
-	.loc	5 418 3 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:418:3
+	@DEBUG_VALUE: do_memp_free_pool:memp <- $r6
+	.loc	5 418 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:418:3
 	bl	rt_enter_critical
-	.loc	5 421 40                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:421:40
-	ldr	r0, [sp, #4]
-	.loc	5 421 46 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:421:46
-	ldr	r1, [sp, #12]
 	.loc	5 421 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:421:3
+	mov	r0, r6
+	mov	r1, r5
 	bl	memp_overflow_check_element_overflow
-	.loc	5 422 41 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:422:41
-	ldr	r0, [sp, #4]
-	.loc	5 422 47 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:422:47
-	ldr	r1, [sp, #12]
 	.loc	5 422 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:422:3
+	mov	r0, r6
+	mov	r1, r5
 	bl	memp_overflow_check_element_underflow
-	.loc	5 434 17 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:434:17
-	ldr	r0, [sp, #12]
-	.loc	5 434 23 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:434:23
-	ldr	r0, [r0, #12]
-	.loc	5 434 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:434:16
-	ldr	r0, [r0]
-	.loc	5 434 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:434:3
-	ldr	r1, [sp, #4]
+	.loc	5 434 23                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:434:23
+	ldr	r0, [r5, #12]
+	.loc	5 434 16 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:434:16
+	ldr	r1, [r0]
 	.loc	5 434 14                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:434:14
-	str	r0, [r1]
-	.loc	5 435 16 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:435:16
-	ldr	r0, [sp, #4]
-	.loc	5 435 4 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:435:4
-	ldr	r1, [sp, #12]
-	.loc	5 435 10                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:435:10
-	ldr	r1, [r1, #12]
-	.loc	5 435 14                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:435:14
-	str	r0, [r1]
-	.loc	5 441 3 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:441:3
+	str	r1, [r4, #-28]
+	.loc	5 435 14 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:435:14
+	str	r6, [r0]
+	.loc	5 441 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:441:3
 	bl	rt_exit_critical
 	.loc	5 443 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:443:1
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp69:
+	pop	{r4, r5, r6, pc}
+.Ltmp68:
+	.p2align	2
+@ %bb.3:
+	.loc	5 0 1 is_stmt 0                 @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:1
+.LCPI7_0:
+.L.str.20:
+	.asciz	"memp_free: mem properly aligned"
 .Lfunc_end7:
 	.size	do_memp_free_pool, .Lfunc_end7-do_memp_free_pool
 	.cfi_endproc
@@ -822,86 +683,73 @@ do_memp_free_pool:
 	.thumb_func
 memp_free:
 .Lfunc_begin8:
-	.loc	5 470 0                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:470:0
+	.loc	5 470 0 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:470:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: memp_free:type <- $r0
+	@DEBUG_VALUE: memp_free:type <- $r0
+	@DEBUG_VALUE: memp_free:mem <- $r1
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-                                        @ kill: def $r2 killed $r0
-	strb.w	r0, [sp, #7]
-	str	r1, [sp]
-.Ltmp70:
+.Ltmp69:
 	.loc	5 475 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
-	b	.LBB8_1
-.LBB8_1:
-.Ltmp71:
-	.loc	5 475 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
-	ldrb.w	r0, [sp, #7]
-.Ltmp72:
-	.loc	5 475 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
 	cmp	r0, #15
-	blt	.LBB8_5
-	b	.LBB8_2
+	@DEBUG_VALUE: memp_free:mem <- $r1
+	bhs	.LBB8_3
+.Ltmp70:
+@ %bb.1:
+	@DEBUG_VALUE: memp_free:mem <- $r1
+	@DEBUG_VALUE: memp_free:type <- $r0
+	.loc	5 477 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:477:7
+	cmp	r1, #0
+	.loc	5 496 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:496:1
+	it	eq
+	popeq	{r7, pc}
+.Ltmp71:
 .LBB8_2:
-.Ltmp73:
-	.loc	5 475 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
-	b	.LBB8_3
-.LBB8_3:
-.Ltmp74:
-	.loc	5 475 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
-	movw	r0, :lower16:.L.str.18
-	movt	r0, :upper16:.L.str.18
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
-	movw	r1, #475
-	bl	sys_arch_assert
-	b	.LBB8_4
-.Ltmp75:
-.LBB8_4:
-	.loc	5 475 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
-	b	.LBB8_9
-.Ltmp76:
-.LBB8_5:
-	.loc	5 475 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
-	b	.LBB8_6
-.Ltmp77:
-.LBB8_6:
-	.loc	5 477 7 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:477:7
-	ldr	r0, [sp]
-.Ltmp78:
-	.loc	5 477 7 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:477:7
-	cbnz	r0, .LBB8_8
-	b	.LBB8_7
-.LBB8_7:
-.Ltmp79:
-	.loc	5 478 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:478:5
-	b	.LBB8_9
-.Ltmp80:
-.LBB8_8:
-	.loc	5 489 32                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:489:32
-	ldrb.w	r1, [sp, #7]
-	.loc	5 489 21 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:489:21
-	movw	r0, :lower16:memp_pools
-	movt	r0, :upper16:memp_pools
-	ldr.w	r0, [r0, r1, lsl #2]
-	.loc	5 489 39                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:489:39
-	ldr	r1, [sp]
-	.loc	5 489 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:489:3
+	@DEBUG_VALUE: memp_free:mem <- $r1
+	@DEBUG_VALUE: memp_free:type <- $r0
+	.loc	5 489 21                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:489:21
+	movw	r2, :lower16:memp_pools
+	movt	r2, :upper16:memp_pools
+	ldr.w	r0, [r2, r0, lsl #2]
+.Ltmp72:
+	@DEBUG_VALUE: memp_free:type <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	5 489 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:489:3
 	bl	do_memp_free_pool
+.Ltmp73:
+	@DEBUG_VALUE: memp_free:mem <- [DW_OP_LLVM_entry_value 1] $r1
 	.loc	5 496 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:496:1
-	b	.LBB8_9
-.LBB8_9:
-	add	sp, #8
 	pop	{r7, pc}
-.Ltmp81:
+.Ltmp74:
+.LBB8_3:
+	@DEBUG_VALUE: memp_free:mem <- $r1
+	@DEBUG_VALUE: memp_free:type <- $r0
+	.loc	5 475 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:475:3
+	adr	r0, .LCPI8_0
+.Ltmp75:
+	@DEBUG_VALUE: memp_free:type <- [DW_OP_LLVM_entry_value 1] $r0
+	bl	rt_kprintf
+.Ltmp76:
+	@DEBUG_VALUE: memp_free:mem <- [DW_OP_LLVM_entry_value 1] $r1
+	movw	r0, :lower16:.L.str.16
+	movw	r1, #475
+	movt	r0, :upper16:.L.str.16
+	bl	sys_arch_assert
+.Ltmp77:
+	.loc	5 496 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:496:1
+	pop	{r7, pc}
+.Ltmp78:
+	.p2align	2
+@ %bb.4:
+	.loc	5 0 1 is_stmt 0                 @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:1
+.LCPI8_0:
+.L.str.18:
+	.asciz	"memp_free: type < MEMP_MAX\000"
 .Lfunc_end8:
 	.size	memp_free, .Lfunc_end8-memp_free
 	.cfi_endproc
@@ -915,121 +763,105 @@ memp_free:
 	.thumb_func
 memp_overflow_check_element_overflow:
 .Lfunc_begin9:
-	.loc	5 129 0                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:129:0
+	.loc	5 129 0 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:129:0
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:p <- $r0
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:desc <- $r1
+	.save	{r4, r5, r6, r7, r8, r9, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, lr}
+	.cfi_def_cfa_offset 28
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#152
-	sub	sp, #152
+	.cfi_offset r9, -8
+	.cfi_offset r8, -12
+	.cfi_offset r7, -16
+	.cfi_offset r6, -20
+	.cfi_offset r5, -24
+	.cfi_offset r4, -28
+	.pad	#132
+	sub	sp, #132
 	.cfi_def_cfa_offset 160
-	str	r0, [sp, #148]
-	str	r1, [sp, #144]
-.Ltmp82:
-	.loc	5 133 14 prologue_end           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:133:14
-	ldr	r0, [sp, #148]
-	.loc	5 133 30 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:133:30
-	ldr	r1, [sp, #144]
-	.loc	5 133 36                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:133:36
+	mov	r4, r1
+.Ltmp79:
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:desc <- $r4
+	.loc	5 133 36 prologue_end           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:133:36
 	ldrh	r1, [r1, #4]
-	.loc	5 133 16                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:133:16
+.Ltmp80:
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:k <- 0
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:m <- undef
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:p <- $r0
+	.loc	5 0 36 is_stmt 0                @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:36
+	movw	r8, :lower16:.L__const.memp_overflow_check_element_overflow.errstr
+	movw	r9, :lower16:.L.str.16
+.Ltmp81:
+	.loc	5 134 3 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:3
 	add	r0, r1
-	.loc	5 133 28                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:133:28
-	adds	r0, #28
-	.loc	5 133 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:133:5
-	str	r0, [sp, #136]
-	movs	r0, #0
-.Ltmp83:
-	.loc	5 134 10 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:10
-	strh.w	r0, [sp, #142]
-	.loc	5 134 8 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:8
-	b	.LBB9_1
-.LBB9_1:                                @ =>This Inner Loop Header: Depth=1
-.Ltmp84:
-	.loc	5 134 15                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:15
-	ldrh.w	r0, [sp, #142]
-.Ltmp85:
+.Ltmp82:
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:p <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	5 0 3 is_stmt 0                 @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:3
+	movs	r7, #0
 	.loc	5 134 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:3
-	cmp	r0, #15
-	bhi	.LBB9_10
+	add.w	r5, r0, #28
+	movt	r8, :upper16:.L__const.memp_overflow_check_element_overflow.errstr
+	add	r6, sp, #4
+	movt	r9, :upper16:.L.str.16
 	b	.LBB9_2
-.LBB9_2:                                @   in Loop: Header=BB9_1 Depth=1
-.Ltmp86:
-	.loc	5 135 9 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:135:9
-	ldr	r0, [sp, #136]
-	.loc	5 135 11 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:135:11
-	ldrh.w	r1, [sp, #142]
-	.loc	5 135 9                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:135:9
-	ldrb	r0, [r0, r1]
-.Ltmp87:
-	.loc	5 135 9                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:135:9
-	cmp	r0, #205
-	beq	.LBB9_8
-	b	.LBB9_3
-.LBB9_3:                                @   in Loop: Header=BB9_1 Depth=1
-.Ltmp88:
-	.loc	5 136 12 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:136:12
-	movw	r1, :lower16:.L__const.memp_overflow_check_element_overflow.errstr
-	movt	r1, :upper16:.L__const.memp_overflow_check_element_overflow.errstr
-	add	r0, sp, #8
-	str	r0, [sp, #4]                    @ 4-byte Spill
-	movs	r2, #128
-	bl	__aeabi_memcpy
-                                        @ kill: def $r1 killed $r0
-	.loc	5 137 22                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:137:22
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r1, [sp, #144]
-	.loc	5 137 28 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:137:28
-	ldr	r1, [r1]
-	.loc	5 137 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:137:7
-	bl	strcat
-	.loc	5 138 7 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:138:7
-	b	.LBB9_4
-.LBB9_4:                                @   in Loop: Header=BB9_1 Depth=1
-.Ltmp89:
-	.loc	5 138 7 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:138:7
-	b	.LBB9_5
-.LBB9_5:                                @   in Loop: Header=BB9_1 Depth=1
-	.loc	5 0 7                           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:7
-	add	r0, sp, #8
-.Ltmp90:
-	.loc	5 138 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:138:7
-	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
-	movs	r1, #138
-	bl	sys_arch_assert
-	b	.LBB9_6
-.Ltmp91:
-.LBB9_6:                                @   in Loop: Header=BB9_1 Depth=1
-	.loc	5 138 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:138:7
-	b	.LBB9_7
-.Ltmp92:
-.LBB9_7:                                @   in Loop: Header=BB9_1 Depth=1
-	.loc	5 139 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:139:5
-	b	.LBB9_8
-.Ltmp93:
-.LBB9_8:                                @   in Loop: Header=BB9_1 Depth=1
-	.loc	5 140 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:140:3
-	b	.LBB9_9
-.Ltmp94:
-.LBB9_9:                                @   in Loop: Header=BB9_1 Depth=1
+.Ltmp83:
+	.p2align	2
+.LBB9_1:                                @   in Loop: Header=BB9_2 Depth=1
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:k <- $r7
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:desc <- $r4
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:p <- [DW_OP_LLVM_entry_value 1] $r0
 	.loc	5 134 54                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:54
-	ldrh.w	r0, [sp, #142]
-	adds	r0, #1
-	strh.w	r0, [sp, #142]
-	.loc	5 134 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:3
+	adds	r7, #1
+.Ltmp84:
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:k <- $r7
+	.loc	5 134 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:134:3
+	cmp	r7, #16
+	beq	.LBB9_4
+.Ltmp85:
+.LBB9_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:desc <- $r4
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:p <- [DW_OP_LLVM_entry_value 1] $r0
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:k <- $r7
+	.loc	5 135 9 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:135:9
+	ldrb	r0, [r5, r7]
+.Ltmp86:
+	.loc	5 135 9 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:135:9
+	cmp	r0, #205
+	beq	.LBB9_1
+.Ltmp87:
+@ %bb.3:                                @   in Loop: Header=BB9_2 Depth=1
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:k <- $r7
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:desc <- $r4
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:p <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	5 136 12 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:136:12
+	movs	r2, #128
+	mov	r0, r6
+	mov	r1, r8
+	bl	__aeabi_memcpy4
+	.loc	5 137 28                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:137:28
+	ldr	r1, [r4]
+	.loc	5 137 7 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:137:7
+	mov	r0, r6
+	bl	strcat
+.Ltmp88:
+	.loc	5 138 7 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:138:7
+	bl	rt_kprintf
+	movs	r1, #138
+	mov	r0, r9
+	bl	sys_arch_assert
 	b	.LBB9_1
-.Ltmp95:
-.LBB9_10:
-	.loc	5 145 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:145:1
-	add	sp, #152
-	pop	{r7, pc}
-.Ltmp96:
+.Ltmp89:
+.LBB9_4:
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:k <- $r7
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:desc <- $r4
+	@DEBUG_VALUE: memp_overflow_check_element_overflow:p <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	5 145 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:145:1
+	add	sp, #132
+	pop.w	{r4, r5, r6, r7, r8, r9, pc}
+.Ltmp90:
 .Lfunc_end9:
 	.size	memp_overflow_check_element_overflow, .Lfunc_end9-memp_overflow_check_element_overflow
 	.cfi_endproc
@@ -1047,111 +879,89 @@ memp_overflow_check_element_underflow:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:p <- $r0
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:desc <- $r1
+	.save	{r4, r5, r6, r7, r8, r9, lr}
+	push.w	{r4, r5, r6, r7, r8, r9, lr}
+	.cfi_def_cfa_offset 28
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#152
-	sub	sp, #152
+	.cfi_offset r9, -8
+	.cfi_offset r8, -12
+	.cfi_offset r7, -16
+	.cfi_offset r6, -20
+	.cfi_offset r5, -24
+	.cfi_offset r4, -28
+	.pad	#132
+	sub	sp, #132
 	.cfi_def_cfa_offset 160
-	str	r0, [sp, #148]
-	str	r1, [sp, #144]
-.Ltmp97:
-	.loc	5 160 14 prologue_end           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:160:14
-	ldr	r0, [sp, #148]
-	.loc	5 160 28 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:160:28
-	adds	r0, #12
-	.loc	5 160 5                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:160:5
-	str	r0, [sp, #136]
-	movs	r0, #0
-.Ltmp98:
-	.loc	5 161 10 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:10
-	strh.w	r0, [sp, #142]
-	.loc	5 161 8 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:8
-	b	.LBB10_1
-.LBB10_1:                               @ =>This Inner Loop Header: Depth=1
-.Ltmp99:
-	.loc	5 161 15                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:15
-	ldrh.w	r0, [sp, #142]
-.Ltmp100:
-	.loc	5 161 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:3
-	cmp	r0, #15
-	bhi	.LBB10_10
+	movw	r8, :lower16:.L__const.memp_overflow_check_element_underflow.errstr
+	movw	r9, :lower16:.L.str.16
+	mov	r4, r1
+.Ltmp91:
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:desc <- $r4
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:k <- 0
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:m <- [DW_OP_plus_uconst 28, DW_OP_constu 16, DW_OP_minus, DW_OP_stack_value] $r0
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:desc <- $r4
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:p <- $r0
+	.loc	5 161 3 prologue_end            @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:3
+	add.w	r5, r0, #12
+	movs	r7, #0
+	movt	r8, :upper16:.L__const.memp_overflow_check_element_underflow.errstr
+	add	r6, sp, #4
+	movt	r9, :upper16:.L.str.16
 	b	.LBB10_2
-.LBB10_2:                               @   in Loop: Header=BB10_1 Depth=1
-.Ltmp101:
+.Ltmp92:
+	.p2align	2
+.LBB10_1:                               @   in Loop: Header=BB10_2 Depth=1
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:k <- $r7
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:desc <- $r4
+	.loc	5 161 55 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:55
+	adds	r7, #1
+.Ltmp93:
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:k <- $r7
+	.loc	5 161 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:3
+	cmp	r7, #16
+	beq	.LBB10_4
+.Ltmp94:
+.LBB10_2:                               @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:desc <- $r4
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:k <- $r7
 	.loc	5 162 9 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:162:9
-	ldr	r0, [sp, #136]
-	.loc	5 162 11 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:162:11
-	ldrh.w	r1, [sp, #142]
-	.loc	5 162 9                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:162:9
-	ldrb	r0, [r0, r1]
-.Ltmp102:
-	.loc	5 162 9                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:162:9
+	ldrb	r0, [r5, r7]
+.Ltmp95:
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:p <- [DW_OP_LLVM_entry_value 1] $r0
+	.loc	5 162 9 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:162:9
 	cmp	r0, #205
-	beq	.LBB10_8
-	b	.LBB10_3
-.LBB10_3:                               @   in Loop: Header=BB10_1 Depth=1
-.Ltmp103:
+	beq	.LBB10_1
+.Ltmp96:
+@ %bb.3:                                @   in Loop: Header=BB10_2 Depth=1
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:k <- $r7
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:desc <- $r4
 	.loc	5 163 12 is_stmt 1              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:163:12
-	movw	r1, :lower16:.L__const.memp_overflow_check_element_underflow.errstr
-	movt	r1, :upper16:.L__const.memp_overflow_check_element_underflow.errstr
-	add	r0, sp, #8
-	str	r0, [sp, #4]                    @ 4-byte Spill
 	movs	r2, #128
-	bl	__aeabi_memcpy
-                                        @ kill: def $r1 killed $r0
-	.loc	5 164 22                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:164:22
-	ldr	r0, [sp, #4]                    @ 4-byte Reload
-	ldr	r1, [sp, #144]
-	.loc	5 164 28 is_stmt 0              @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:164:28
-	ldr	r1, [r1]
-	.loc	5 164 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:164:7
+	mov	r0, r6
+	mov	r1, r8
+	bl	__aeabi_memcpy4
+	.loc	5 164 28                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:164:28
+	ldr	r1, [r4]
+	.loc	5 164 7 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:164:7
+	mov	r0, r6
 	bl	strcat
+.Ltmp97:
 	.loc	5 165 7 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:165:7
-	b	.LBB10_4
-.LBB10_4:                               @   in Loop: Header=BB10_1 Depth=1
-.Ltmp104:
-	.loc	5 165 7 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:165:7
-	b	.LBB10_5
-.LBB10_5:                               @   in Loop: Header=BB10_1 Depth=1
-	.loc	5 0 7                           @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:0:7
-	add	r0, sp, #8
-.Ltmp105:
-	.loc	5 165 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:165:7
 	bl	rt_kprintf
-	movw	r0, :lower16:.L.str.16
-	movt	r0, :upper16:.L.str.16
 	movs	r1, #165
+	mov	r0, r9
 	bl	sys_arch_assert
-	b	.LBB10_6
-.Ltmp106:
-.LBB10_6:                               @   in Loop: Header=BB10_1 Depth=1
-	.loc	5 165 7                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:165:7
-	b	.LBB10_7
-.Ltmp107:
-.LBB10_7:                               @   in Loop: Header=BB10_1 Depth=1
-	.loc	5 166 5 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:166:5
-	b	.LBB10_8
-.Ltmp108:
-.LBB10_8:                               @   in Loop: Header=BB10_1 Depth=1
-	.loc	5 167 3                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:167:3
-	b	.LBB10_9
-.Ltmp109:
-.LBB10_9:                               @   in Loop: Header=BB10_1 Depth=1
-	.loc	5 161 55                        @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:55
-	ldrh.w	r0, [sp, #142]
-	adds	r0, #1
-	strh.w	r0, [sp, #142]
-	.loc	5 161 3 is_stmt 0               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:161:3
 	b	.LBB10_1
-.Ltmp110:
-.LBB10_10:
-	.loc	5 172 1 is_stmt 1               @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:172:1
-	add	sp, #152
-	pop	{r7, pc}
-.Ltmp111:
+.Ltmp98:
+.LBB10_4:
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:k <- $r7
+	@DEBUG_VALUE: memp_overflow_check_element_underflow:desc <- $r4
+	.loc	5 172 1                         @ rt-thread/components/net/lwip-2.0.2/src/core/memp.c:172:1
+	add	sp, #132
+	pop.w	{r4, r5, r6, r7, r8, r9, pc}
+.Ltmp99:
 .Lfunc_end10:
 	.size	memp_overflow_check_element_underflow, .Lfunc_end10-memp_overflow_check_element_underflow
 	.cfi_endproc
@@ -1702,39 +1512,496 @@ memp_pools:
 	.asciz	"rt-thread/components/net/lwip-2.0.2/src/core/memp.c"
 	.size	.L.str.16, 52
 
-	.type	.L.str.17,%object               @ @.str.17
-.L.str.17:
-	.asciz	"memp_malloc: type < MEMP_MAX"
-	.size	.L.str.17, 29
-
-	.type	.L.str.18,%object               @ @.str.18
-.L.str.18:
-	.asciz	"memp_free: type < MEMP_MAX"
-	.size	.L.str.18, 27
-
-	.type	.L.str.19,%object               @ @.str.19
-.L.str.19:
-	.asciz	"memp_malloc: memp properly aligned"
-	.size	.L.str.19, 35
-
 	.type	.L__const.memp_overflow_check_element_overflow.errstr,%object @ @__const.memp_overflow_check_element_overflow.errstr
 	.section	.rodata..L__const.memp_overflow_check_element_overflow.errstr,"a",%progbits
+	.p2align	2
 .L__const.memp_overflow_check_element_overflow.errstr:
 	.asciz	"detected memp overflow in pool \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
 	.size	.L__const.memp_overflow_check_element_overflow.errstr, 128
 
 	.type	.L__const.memp_overflow_check_element_underflow.errstr,%object @ @__const.memp_overflow_check_element_underflow.errstr
 	.section	.rodata..L__const.memp_overflow_check_element_underflow.errstr,"a",%progbits
+	.p2align	2
 .L__const.memp_overflow_check_element_underflow.errstr:
 	.asciz	"detected memp underflow in pool \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000"
 	.size	.L__const.memp_overflow_check_element_underflow.errstr, 128
 
-	.type	.L.str.20,%object               @ @.str.20
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str.20:
-	.asciz	"memp_free: mem properly aligned"
-	.size	.L.str.20, 32
-
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Lfunc_begin0-.Lfunc_begin0
+	.long	.Ltmp0-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp0-.Lfunc_begin0
+	.long	.Ltmp5-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp4-.Lfunc_begin0
+	.long	.Ltmp9-.Lfunc_begin0
+	.short	2                               @ Loc expr size
+	.byte	17                              @ DW_OP_consts
+	.byte	0                               @ 0
+	.long	.Ltmp9-.Lfunc_begin0
+	.long	.Ltmp17-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin0                   @   base address
+	.long	.Ltmp9-.Lfunc_begin0
+	.long	.Ltmp15-.Lfunc_begin0
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc3:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp20-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp20-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc4:
+	.long	-1
+	.long	.Lfunc_begin1                   @   base address
+	.long	.Lfunc_begin1-.Lfunc_begin1
+	.long	.Ltmp19-.Lfunc_begin1
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp19-.Lfunc_begin1
+	.long	.Lfunc_end1-.Lfunc_begin1
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc5:
+	.long	-1
+	.long	.Lfunc_begin2                   @   base address
+	.long	.Ltmp22-.Lfunc_begin2
+	.long	.Ltmp23-.Lfunc_begin2
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	0
+	.long	0
+.Ldebug_loc6:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp30-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp30-.Lfunc_begin3
+	.long	.Ltmp31-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp31-.Lfunc_begin3
+	.long	.Ltmp32-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp32-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc7:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp30-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp30-.Lfunc_begin3
+	.long	.Ltmp31-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp31-.Lfunc_begin3
+	.long	.Ltmp33-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp33-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc8:
+	.long	-1
+	.long	.Lfunc_begin3                   @   base address
+	.long	.Lfunc_begin3-.Lfunc_begin3
+	.long	.Ltmp30-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp30-.Lfunc_begin3
+	.long	.Ltmp31-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp31-.Lfunc_begin3
+	.long	.Ltmp33-.Lfunc_begin3
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp33-.Lfunc_begin3
+	.long	.Lfunc_end3-.Lfunc_begin3
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc9:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp38-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp38-.Lfunc_begin4
+	.long	.Ltmp46-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc10:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp37-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp37-.Lfunc_begin4
+	.long	.Ltmp46-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc11:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Lfunc_begin4-.Lfunc_begin4
+	.long	.Ltmp36-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp36-.Lfunc_begin4
+	.long	.Ltmp46-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc12:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp39-.Lfunc_begin4
+	.long	.Ltmp46-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc13:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp49-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp49-.Lfunc_begin5
+	.long	.Ltmp51-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp51-.Lfunc_begin5
+	.long	.Ltmp52-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp52-.Lfunc_begin5
+	.long	.Ltmp55-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc14:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp50-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp50-.Lfunc_begin5
+	.long	.Ltmp51-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp51-.Lfunc_begin5
+	.long	.Ltmp53-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp53-.Lfunc_begin5
+	.long	.Ltmp55-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc15:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Lfunc_begin5-.Lfunc_begin5
+	.long	.Ltmp50-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp50-.Lfunc_begin5
+	.long	.Ltmp51-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp51-.Lfunc_begin5
+	.long	.Ltmp53-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	82                              @ DW_OP_reg2
+	.long	.Ltmp53-.Lfunc_begin5
+	.long	.Ltmp55-.Lfunc_begin5
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	82                              @ DW_OP_reg2
+	.long	0
+	.long	0
+.Ldebug_loc16:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp50-.Lfunc_begin5
+	.long	.Ltmp51-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc17:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp56-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp56-.Lfunc_begin6
+	.long	.Ltmp62-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc18:
+	.long	-1
+	.long	.Lfunc_begin6                   @   base address
+	.long	.Lfunc_begin6-.Lfunc_begin6
+	.long	.Ltmp57-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp57-.Lfunc_begin6
+	.long	.Ltmp62-.Lfunc_begin6
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc19:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp64-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp64-.Lfunc_begin7
+	.long	.Ltmp68-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc20:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Lfunc_begin7-.Lfunc_begin7
+	.long	.Ltmp63-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp63-.Lfunc_begin7
+	.long	.Ltmp68-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc21:
+	.long	-1
+	.long	.Lfunc_begin7                   @   base address
+	.long	.Ltmp67-.Lfunc_begin7
+	.long	.Ltmp68-.Lfunc_begin7
+	.short	1                               @ Loc expr size
+	.byte	86                              @ DW_OP_reg6
+	.long	0
+	.long	0
+.Ldebug_loc22:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp72-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp72-.Lfunc_begin8
+	.long	.Ltmp74-.Lfunc_begin8
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp74-.Lfunc_begin8
+	.long	.Ltmp75-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp75-.Lfunc_begin8
+	.long	.Ltmp78-.Lfunc_begin8
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc23:
+	.long	-1
+	.long	.Lfunc_begin8                   @   base address
+	.long	.Lfunc_begin8-.Lfunc_begin8
+	.long	.Ltmp73-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp73-.Lfunc_begin8
+	.long	.Ltmp74-.Lfunc_begin8
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp74-.Lfunc_begin8
+	.long	.Ltmp76-.Lfunc_begin8
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp76-.Lfunc_begin8
+	.long	.Ltmp78-.Lfunc_begin8
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	81                              @ DW_OP_reg1
+	.long	0
+	.long	0
+.Ldebug_loc24:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Lfunc_begin9-.Lfunc_begin9
+	.long	.Ltmp82-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp82-.Lfunc_begin9
+	.long	.Lfunc_end9-.Lfunc_begin9
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc25:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Lfunc_begin9-.Lfunc_begin9
+	.long	.Ltmp79-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp79-.Lfunc_begin9
+	.long	.Ltmp90-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc26:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Ltmp80-.Lfunc_begin9
+	.long	.Ltmp83-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp83-.Lfunc_begin9
+	.long	.Ltmp90-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
+.Ldebug_loc27:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Lfunc_begin10-.Lfunc_begin10
+	.long	.Ltmp92-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp95-.Lfunc_begin10
+	.long	.Ltmp96-.Lfunc_begin10
+	.short	3                               @ Loc expr size
+	.byte	163                             @ DW_OP_entry_value
+	.byte	1                               @ 1
+	.byte	80                              @ DW_OP_reg0
+	.long	0
+	.long	0
+.Ldebug_loc28:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Lfunc_begin10-.Lfunc_begin10
+	.long	.Ltmp91-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	81                              @ DW_OP_reg1
+	.long	.Ltmp91-.Lfunc_begin10
+	.long	.Ltmp99-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
+.Ldebug_loc29:
+	.long	-1
+	.long	.Lfunc_begin10                  @   base address
+	.long	.Ltmp91-.Lfunc_begin10
+	.long	.Ltmp92-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	48                              @ DW_OP_lit0
+	.long	.Ltmp92-.Lfunc_begin10
+	.long	.Ltmp99-.Lfunc_begin10
+	.short	1                               @ Loc expr size
+	.byte	87                              @ DW_OP_reg7
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -1941,7 +2208,7 @@ memp_pools:
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1956,7 +2223,7 @@ memp_pools:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -1987,31 +2254,44 @@ memp_pools:
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	21                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	1                               @ DW_CHILDREN_yes
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	64                              @ DW_AT_frame_base
-	.byte	10                              @ DW_FORM_block1
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
 	.byte	11                              @ DW_FORM_data1
 	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_FORM_data2
-	.byte	39                              @ DW_AT_prototyped
-	.byte	12                              @ DW_FORM_flag
-	.byte	63                              @ DW_AT_external
-	.byte	12                              @ DW_FORM_flag
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	22                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	63                              @ DW_AT_external
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	23                              @ Abbreviation Code
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -2022,7 +2302,7 @@ memp_pools:
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	23                              @ Abbreviation Code
+	.byte	24                              @ Abbreviation Code
 	.byte	46                              @ DW_TAG_subprogram
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
@@ -2045,38 +2325,17 @@ memp_pools:
 	.byte	12                              @ DW_FORM_flag
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
-	.byte	24                              @ Abbreviation Code
+	.byte	25                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
 	.byte	11                              @ DW_FORM_data1
 	.byte	59                              @ DW_AT_decl_line
 	.byte	5                               @ DW_FORM_data2
-	.byte	73                              @ DW_AT_type
-	.byte	19                              @ DW_FORM_ref4
-	.byte	0                               @ EOM(1)
-	.byte	0                               @ EOM(2)
-	.byte	25                              @ Abbreviation Code
-	.byte	46                              @ DW_TAG_subprogram
-	.byte	1                               @ DW_CHILDREN_yes
-	.byte	17                              @ DW_AT_low_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	18                              @ DW_AT_high_pc
-	.byte	1                               @ DW_FORM_addr
-	.byte	64                              @ DW_AT_frame_base
-	.byte	10                              @ DW_FORM_block1
-	.byte	3                               @ DW_AT_name
-	.byte	14                              @ DW_FORM_strp
-	.byte	58                              @ DW_AT_decl_file
-	.byte	11                              @ DW_FORM_data1
-	.byte	59                              @ DW_AT_decl_line
-	.byte	5                               @ DW_FORM_data2
-	.byte	39                              @ DW_AT_prototyped
-	.byte	12                              @ DW_FORM_flag
 	.byte	73                              @ DW_AT_type
 	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
@@ -2098,15 +2357,51 @@ memp_pools:
 	.byte	5                               @ DW_FORM_data2
 	.byte	39                              @ DW_AT_prototyped
 	.byte	12                              @ DW_FORM_flag
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	27                              @ Abbreviation Code
+	.byte	46                              @ DW_TAG_subprogram
+	.byte	1                               @ DW_CHILDREN_yes
+	.byte	17                              @ DW_AT_low_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	18                              @ DW_AT_high_pc
+	.byte	1                               @ DW_FORM_addr
+	.byte	64                              @ DW_AT_frame_base
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	5                               @ DW_FORM_data2
+	.byte	39                              @ DW_AT_prototyped
+	.byte	12                              @ DW_FORM_flag
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	28                              @ Abbreviation Code
 	.byte	11                              @ DW_TAG_lexical_block
 	.byte	1                               @ DW_CHILDREN_yes
 	.byte	17                              @ DW_AT_low_pc
 	.byte	1                               @ DW_FORM_addr
 	.byte	18                              @ DW_AT_high_pc
 	.byte	1                               @ DW_FORM_addr
+	.byte	0                               @ EOM(1)
+	.byte	0                               @ EOM(2)
+	.byte	29                              @ Abbreviation Code
+	.byte	52                              @ DW_TAG_variable
+	.byte	0                               @ DW_CHILDREN_no
+	.byte	2                               @ DW_AT_location
+	.byte	10                              @ DW_FORM_block1
+	.byte	3                               @ DW_AT_name
+	.byte	14                              @ DW_FORM_strp
+	.byte	58                              @ DW_AT_decl_file
+	.byte	11                              @ DW_FORM_data1
+	.byte	59                              @ DW_AT_decl_line
+	.byte	11                              @ DW_FORM_data1
+	.byte	73                              @ DW_AT_type
+	.byte	19                              @ DW_FORM_ref4
 	.byte	0                               @ EOM(1)
 	.byte	0                               @ EOM(2)
 	.byte	0                               @ EOM(3)
@@ -2117,7 +2412,7 @@ memp_pools:
 	.short	3                               @ DWARF version number
 	.long	.debug_abbrev                   @ Offset Into Abbrev. Section
 	.byte	4                               @ Address Size (in bytes)
-	.byte	1                               @ Abbrev [1] 0xb:0x88c DW_TAG_compile_unit
+	.byte	1                               @ Abbrev [1] 0xb:0x899 DW_TAG_compile_unit
 	.long	.Linfo_string0                  @ DW_AT_producer
 	.short	12                              @ DW_AT_language
 	.long	.Linfo_string1                  @ DW_AT_name
@@ -2793,7 +3088,7 @@ memp_pools:
 	.long	.Linfo_string84                 @ DW_AT_name
 	.byte	7                               @ DW_AT_encoding
 	.byte	4                               @ DW_AT_byte_size
-	.byte	17                              @ Abbrev [17] 0x577:0x3e DW_TAG_subprogram
+	.byte	17                              @ Abbrev [17] 0x577:0x41 DW_TAG_subprogram
 	.long	.Lfunc_begin0                   @ DW_AT_low_pc
 	.long	.Lfunc_end0                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2803,32 +3098,26 @@ memp_pools:
 	.byte	230                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	18                              @ Abbrev [18] 0x58a:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	18                              @ Abbrev [18] 0x58a:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	230                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x598:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	19                              @ Abbrev [19] 0x599:0xf DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string98                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	235                             @ DW_AT_decl_line
 	.long	265                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x5a6:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	19                              @ Abbrev [19] 0x5a8:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string20                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	236                             @ DW_AT_decl_line
 	.long	215                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	20                              @ Abbrev [20] 0x5b5:0x3d DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x5b8:0x3c DW_TAG_subprogram
 	.long	.Lfunc_begin1                   @ DW_AT_low_pc
 	.long	.Lfunc_end1                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2837,32 +3126,25 @@ memp_pools:
 	.byte	5                               @ DW_AT_decl_file
 	.byte	178                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	18                              @ Abbrev [18] 0x5c7:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	18                              @ Abbrev [18] 0x5ca:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc3                    @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	178                             @ DW_AT_decl_line
 	.long	215                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x5d5:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	18                              @ Abbrev [18] 0x5d9:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc4                    @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	178                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x5e3:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	21                              @ Abbrev [21] 0x5e8:0xb DW_TAG_variable
 	.long	.Linfo_string100                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	181                             @ DW_AT_decl_line
 	.long	176                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	21                              @ Abbrev [21] 0x5f2:0x24 DW_TAG_subprogram
+	.byte	22                              @ Abbrev [22] 0x5f4:0x25 DW_TAG_subprogram
 	.long	.Lfunc_begin2                   @ DW_AT_low_pc
 	.long	.Lfunc_end2                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2872,16 +3154,14 @@ memp_pools:
 	.short	271                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	22                              @ Abbrev [22] 0x606:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	6
+	.byte	23                              @ Abbrev [23] 0x608:0x10 DW_TAG_variable
+	.long	.Ldebug_loc5                    @ DW_AT_location
 	.long	.Linfo_string98                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	273                             @ DW_AT_decl_line
 	.long	147                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	23                              @ Abbrev [23] 0x616:0x46 DW_TAG_subprogram
+	.byte	24                              @ Abbrev [24] 0x619:0x49 DW_TAG_subprogram
 	.long	.Lfunc_begin3                   @ DW_AT_low_pc
 	.long	.Lfunc_end3                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2892,32 +3172,26 @@ memp_pools:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1369                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	24                              @ Abbrev [24] 0x62e:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	25                              @ Abbrev [25] 0x631:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc6                    @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	361                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x63d:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	25                              @ Abbrev [25] 0x641:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc7                    @ DW_AT_location
 	.long	.Linfo_string17                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	361                             @ DW_AT_decl_line
 	.long	130                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x64c:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	25                              @ Abbrev [25] 0x651:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc8                    @ DW_AT_location
 	.long	.Linfo_string18                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	361                             @ DW_AT_decl_line
-	.long	2170                            @ DW_AT_type
+	.long	2183                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	25                              @ Abbrev [25] 0x65c:0x54 DW_TAG_subprogram
+	.byte	26                              @ Abbrev [26] 0x662:0x58 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2927,40 +3201,32 @@ memp_pools:
 	.short	294                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	1369                            @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x673:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	16
+	.byte	25                              @ Abbrev [25] 0x679:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc9                    @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	294                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x682:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	25                              @ Abbrev [25] 0x689:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc10                   @ DW_AT_location
 	.long	.Linfo_string17                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	294                             @ DW_AT_decl_line
 	.long	130                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x691:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	25                              @ Abbrev [25] 0x699:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc11                   @ DW_AT_location
 	.long	.Linfo_string18                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	294                             @ DW_AT_decl_line
-	.long	2170                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x6a0:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	2183                            @ DW_AT_type
+	.byte	23                              @ Abbrev [23] 0x6a9:0x10 DW_TAG_variable
+	.long	.Ldebug_loc12                   @ DW_AT_location
 	.long	.Linfo_string20                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	297                             @ DW_AT_decl_line
 	.long	215                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	23                              @ Abbrev [23] 0x6b0:0x55 DW_TAG_subprogram
+	.byte	24                              @ Abbrev [24] 0x6ba:0x59 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -2971,40 +3237,32 @@ memp_pools:
 	.byte	1                               @ DW_AT_prototyped
 	.long	1369                            @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	24                              @ Abbrev [24] 0x6c8:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	19
+	.byte	25                              @ Abbrev [25] 0x6d2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc13                   @ DW_AT_location
 	.long	.Linfo_string101                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	387                             @ DW_AT_decl_line
-	.long	2175                            @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x6d7:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.long	2188                            @ DW_AT_type
+	.byte	25                              @ Abbrev [25] 0x6e2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc14                   @ DW_AT_location
 	.long	.Linfo_string17                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	387                             @ DW_AT_decl_line
 	.long	130                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x6e6:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	25                              @ Abbrev [25] 0x6f2:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc15                   @ DW_AT_location
 	.long	.Linfo_string18                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	387                             @ DW_AT_decl_line
-	.long	2170                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x6f5:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.long	2183                            @ DW_AT_type
+	.byte	23                              @ Abbrev [23] 0x702:0x10 DW_TAG_variable
+	.long	.Ldebug_loc16                   @ DW_AT_location
 	.long	.Linfo_string20                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	390                             @ DW_AT_decl_line
 	.long	1369                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	21                              @ Abbrev [21] 0x705:0x33 DW_TAG_subprogram
+	.byte	22                              @ Abbrev [22] 0x713:0x35 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3014,24 +3272,20 @@ memp_pools:
 	.short	452                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	24                              @ Abbrev [24] 0x719:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	25                              @ Abbrev [25] 0x727:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc17                   @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	452                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x728:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.byte	25                              @ Abbrev [25] 0x737:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc18                   @ DW_AT_location
 	.long	.Linfo_string103                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	452                             @ DW_AT_decl_line
 	.long	1369                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	26                              @ Abbrev [26] 0x738:0x41 DW_TAG_subprogram
+	.byte	27                              @ Abbrev [27] 0x748:0x44 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3040,32 +3294,26 @@ memp_pools:
 	.byte	5                               @ DW_AT_decl_file
 	.short	407                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	24                              @ Abbrev [24] 0x74b:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	25                              @ Abbrev [25] 0x75b:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc19                   @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	407                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x75a:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	8
+	.byte	25                              @ Abbrev [25] 0x76b:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc20                   @ DW_AT_location
 	.long	.Linfo_string103                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	407                             @ DW_AT_decl_line
 	.long	1369                            @ DW_AT_type
-	.byte	22                              @ Abbrev [22] 0x769:0xf DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	23                              @ Abbrev [23] 0x77b:0x10 DW_TAG_variable
+	.long	.Ldebug_loc21                   @ DW_AT_location
 	.long	.Linfo_string20                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	409                             @ DW_AT_decl_line
 	.long	215                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	21                              @ Abbrev [21] 0x779:0x33 DW_TAG_subprogram
+	.byte	22                              @ Abbrev [22] 0x78c:0x35 DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3075,24 +3323,20 @@ memp_pools:
 	.short	469                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	24                              @ Abbrev [24] 0x78d:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	7
+	.byte	25                              @ Abbrev [25] 0x7a0:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc22                   @ DW_AT_location
 	.long	.Linfo_string101                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	469                             @ DW_AT_decl_line
-	.long	2175                            @ DW_AT_type
-	.byte	24                              @ Abbrev [24] 0x79c:0xf DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	0
+	.long	2188                            @ DW_AT_type
+	.byte	25                              @ Abbrev [25] 0x7b0:0x10 DW_TAG_formal_parameter
+	.long	.Ldebug_loc23                   @ DW_AT_location
 	.long	.Linfo_string103                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.short	469                             @ DW_AT_decl_line
 	.long	1369                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	20                              @ Abbrev [20] 0x7ac:0x67 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x7c1:0x63 DW_TAG_subprogram
 	.long	.Lfunc_begin9                   @ DW_AT_low_pc
 	.long	.Lfunc_end9                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3101,52 +3345,43 @@ memp_pools:
 	.byte	5                               @ DW_AT_decl_file
 	.byte	128                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	18                              @ Abbrev [18] 0x7be:0xf DW_TAG_formal_parameter
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\224\001"
+	.byte	18                              @ Abbrev [18] 0x7d3:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc24                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	128                             @ DW_AT_decl_line
 	.long	215                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x7cd:0xf DW_TAG_formal_parameter
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\220\001"
+	.byte	18                              @ Abbrev [18] 0x7e2:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc25                   @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	128                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x7dc:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\216\001"
-	.long	.Linfo_string104                @ DW_AT_name
+	.byte	19                              @ Abbrev [19] 0x7f1:0xf DW_TAG_variable
+	.long	.Ldebug_loc26                   @ DW_AT_location
+	.long	.Linfo_string105                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	131                             @ DW_AT_decl_line
 	.long	147                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x7eb:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\210\001"
+	.byte	21                              @ Abbrev [21] 0x800:0xb DW_TAG_variable
 	.long	.Linfo_string100                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	132                             @ DW_AT_decl_line
 	.long	176                             @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x7fa:0x18 DW_TAG_lexical_block
-	.long	.Ltmp88                         @ DW_AT_low_pc
-	.long	.Ltmp93                         @ DW_AT_high_pc
-	.byte	19                              @ Abbrev [19] 0x803:0xe DW_TAG_variable
+	.byte	28                              @ Abbrev [28] 0x80b:0x18 DW_TAG_lexical_block
+	.long	.Ltmp87                         @ DW_AT_low_pc
+	.long	.Ltmp89                         @ DW_AT_high_pc
+	.byte	29                              @ Abbrev [29] 0x814:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	8
-	.long	.Linfo_string105                @ DW_AT_name
+	.byte	4
+	.long	.Linfo_string104                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	136                             @ DW_AT_decl_line
-	.long	2186                            @ DW_AT_type
+	.long	2199                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	20                              @ Abbrev [20] 0x813:0x67 DW_TAG_subprogram
+	.byte	20                              @ Abbrev [20] 0x824:0x63 DW_TAG_subprogram
 	.long	.Lfunc_begin10                  @ DW_AT_low_pc
 	.long	.Lfunc_end10                    @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -3155,61 +3390,52 @@ memp_pools:
 	.byte	5                               @ DW_AT_decl_file
 	.byte	155                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
-	.byte	18                              @ Abbrev [18] 0x825:0xf DW_TAG_formal_parameter
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\224\001"
+	.byte	18                              @ Abbrev [18] 0x836:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc27                   @ DW_AT_location
 	.long	.Linfo_string99                 @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	155                             @ DW_AT_decl_line
 	.long	215                             @ DW_AT_type
-	.byte	18                              @ Abbrev [18] 0x834:0xf DW_TAG_formal_parameter
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\220\001"
+	.byte	18                              @ Abbrev [18] 0x845:0xf DW_TAG_formal_parameter
+	.long	.Ldebug_loc28                   @ DW_AT_location
 	.long	.Linfo_string4                  @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	155                             @ DW_AT_decl_line
 	.long	559                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x843:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\216\001"
-	.long	.Linfo_string104                @ DW_AT_name
+	.byte	19                              @ Abbrev [19] 0x854:0xf DW_TAG_variable
+	.long	.Ldebug_loc29                   @ DW_AT_location
+	.long	.Linfo_string105                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	158                             @ DW_AT_decl_line
 	.long	147                             @ DW_AT_type
-	.byte	19                              @ Abbrev [19] 0x852:0xf DW_TAG_variable
-	.byte	3                               @ DW_AT_location
-	.byte	145
-	.ascii	"\210\001"
+	.byte	21                              @ Abbrev [21] 0x863:0xb DW_TAG_variable
 	.long	.Linfo_string100                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	159                             @ DW_AT_decl_line
 	.long	176                             @ DW_AT_type
-	.byte	27                              @ Abbrev [27] 0x861:0x18 DW_TAG_lexical_block
-	.long	.Ltmp103                        @ DW_AT_low_pc
-	.long	.Ltmp108                        @ DW_AT_high_pc
-	.byte	19                              @ Abbrev [19] 0x86a:0xe DW_TAG_variable
+	.byte	28                              @ Abbrev [28] 0x86e:0x18 DW_TAG_lexical_block
+	.long	.Ltmp96                         @ DW_AT_low_pc
+	.long	.Ltmp98                         @ DW_AT_high_pc
+	.byte	29                              @ Abbrev [29] 0x877:0xe DW_TAG_variable
 	.byte	2                               @ DW_AT_location
 	.byte	145
-	.byte	8
-	.long	.Linfo_string105                @ DW_AT_name
+	.byte	4
+	.long	.Linfo_string104                @ DW_AT_name
 	.byte	5                               @ DW_AT_decl_file
 	.byte	163                             @ DW_AT_decl_line
-	.long	2186                            @ DW_AT_type
+	.long	2199                            @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
 	.byte	0                               @ End Of Children Mark
-	.byte	3                               @ Abbrev [3] 0x87a:0x5 DW_TAG_const_type
+	.byte	3                               @ Abbrev [3] 0x887:0x5 DW_TAG_const_type
 	.long	265                             @ DW_AT_type
-	.byte	8                               @ Abbrev [8] 0x87f:0xb DW_TAG_typedef
+	.byte	8                               @ Abbrev [8] 0x88c:0xb DW_TAG_typedef
 	.long	1264                            @ DW_AT_type
 	.long	.Linfo_string102                @ DW_AT_name
 	.byte	6                               @ DW_AT_decl_file
 	.byte	54                              @ DW_AT_decl_line
-	.byte	9                               @ Abbrev [9] 0x88a:0xc DW_TAG_array_type
+	.byte	9                               @ Abbrev [9] 0x897:0xc DW_TAG_array_type
 	.long	140                             @ DW_AT_type
-	.byte	10                              @ Abbrev [10] 0x88f:0x6 DW_TAG_subrange_type
+	.byte	10                              @ Abbrev [10] 0x89c:0x6 DW_TAG_subrange_type
 	.long	564                             @ DW_AT_type
 	.byte	128                             @ DW_AT_count
 	.byte	0                               @ End Of Children Mark
@@ -3451,12 +3677,12 @@ memp_pools:
 .Linfo_string103:
 	.asciz	"mem"                           @ string offset=1707
 .Linfo_string104:
-	.asciz	"k"                             @ string offset=1711
+	.asciz	"errstr"                        @ string offset=1711
 .Linfo_string105:
-	.asciz	"errstr"                        @ string offset=1713
+	.asciz	"k"                             @ string offset=1718
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

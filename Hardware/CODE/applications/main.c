@@ -43,7 +43,7 @@ lv_area_t *area_p;
 
 uint16_t row = 0;
 uint8_t *rgb_frame_buf;
-rt_uint8_t *image_p = RT_NULL;
+unsigned char *image_p = RT_NULL;
 rt_uint32_t image_len = 0;
 time_t now;
 struct tm *n_tm;
@@ -102,7 +102,7 @@ static void lvgl_gui(void *parameter)
 	rt_exit_critical();
 	lv_task_handler();
 	rt_thread_delay(1000);	
-	lvgl_time = rt_timer_create("lvgl_time", lvgl_time_inc, RT_NULL, 500, RT_TIMER_FLAG_PERIODIC);
+	lvgl_time = rt_timer_create("lvgl_time", lvgl_time_inc, RT_NULL, 400, RT_TIMER_FLAG_PERIODIC);
     if (RT_NULL != lvgl_time)
 		rt_timer_start(lvgl_time);
     while (1)
@@ -142,7 +142,7 @@ static void start(void *parameter)
 //	{
 //		
 //	}
-	while(rt_wlan_connect("Adbec12","zactionz2018.")!=RT_EOK)
+	while(rt_wlan_connect("Tenda_707D18","zactionz2018.")!=RT_EOK)
 	{
 		
 	}
@@ -162,9 +162,9 @@ static void start(void *parameter)
 	}
 	
 	rt_enter_critical();
-	cbuf = rt_malloc(OV2640_WIDTH * OV2640_HEIGHT * 4+4*1024);
-	dbuf0=rt_malloc(LV_HOR_RES * LV_VER_RES * 4+2*1024);
-    area_p = rt_malloc(sizeof(lv_area_t));
+	cbuf = (lv_color_t*)rt_malloc(OV2640_WIDTH * OV2640_HEIGHT * 4+4*1024);
+	dbuf0=(lv_color_t*)rt_malloc(LV_HOR_RES * LV_VER_RES * 4+2*1024);
+    area_p = (lv_area_t *)rt_malloc(sizeof(lv_area_t));
 	
 	rt_exit_critical();
 	ip_addr_t sntp_ip;
@@ -271,14 +271,14 @@ int main(void)
     }
     rt_exit_critical();
 //	light_sensor_get();
-    while (count++)
-    {
-        rt_thread_mdelay(500);
-        rt_pin_write(LED_PIN1, PIN_HIGH);
-        rt_thread_mdelay(500);
-        rt_pin_write(LED_PIN1, PIN_LOW);
-    
-    }
+//    while (count++)
+//    {
+//        rt_thread_mdelay(500);
+//        rt_pin_write(LED_PIN1, PIN_HIGH);
+//        rt_thread_mdelay(500);
+//        rt_pin_write(LED_PIN1, PIN_LOW);
+//    
+//    }
     return RT_EOK;
 }
 

@@ -51,9 +51,9 @@ def on_message(client, userdata, msg):
     global image_data
     t = json.loads(msg.payload)
     image_data = bytes(t['msg'][0:])
-    # print('success', int(time.time()))
-    # with open('C:\\Users\\Kero\\Pictures\\image9.jpg', 'wb') as f:
-    #     f.write(data)
+    print('success', int(time.time()))
+    with open('C:\\Users\\Kero\\Pictures\\image9.jpg', 'wb') as f:
+        f.write(image_data)
 
 
 def on_publish(msg, rc):  # 成功发布消息的操作

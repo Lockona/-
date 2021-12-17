@@ -35,11 +35,10 @@ rti_start:
 	.cfi_sections .debug_frame
 	.cfi_startproc
 @ %bb.0:
-	movs	r0, #0
-.Ltmp0:
 	.loc	2 58 5 prologue_end             @ rt-thread/src/components.c:58:5
+	movs	r0, #0
 	bx	lr
-.Ltmp1:
+.Ltmp0:
 .Lfunc_end0:
 	.size	rti_start, .Lfunc_end0-rti_start
 	.cfi_endproc
@@ -57,11 +56,10 @@ rti_board_start:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	movs	r0, #0
-.Ltmp2:
 	.loc	2 64 5 prologue_end             @ rt-thread/src/components.c:64:5
+	movs	r0, #0
 	bx	lr
-.Ltmp3:
+.Ltmp1:
 .Lfunc_end1:
 	.size	rti_board_start, .Lfunc_end1-rti_board_start
 	.cfi_endproc
@@ -79,11 +77,10 @@ rti_board_end:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	movs	r0, #0
-.Ltmp4:
 	.loc	2 70 5 prologue_end             @ rt-thread/src/components.c:70:5
+	movs	r0, #0
 	bx	lr
-.Ltmp5:
+.Ltmp2:
 .Lfunc_end2:
 	.size	rti_board_end, .Lfunc_end2-rti_board_end
 	.cfi_endproc
@@ -101,11 +98,10 @@ rti_end:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	movs	r0, #0
-.Ltmp6:
 	.loc	2 76 5 prologue_end             @ rt-thread/src/components.c:76:5
+	movs	r0, #0
 	bx	lr
-.Ltmp7:
+.Ltmp3:
 .Lfunc_end3:
 	.size	rti_end, .Lfunc_end3-rti_end
 	.cfi_endproc
@@ -125,57 +121,52 @@ rt_components_board_init:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-.Ltmp8:
-	.loc	2 97 17 prologue_end            @ rt-thread/src/components.c:97:17
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp4:
+	.loc	2 97 5 prologue_end             @ rt-thread/src/components.c:97:5
+	movw	r4, :lower16:__rt_init_rti_board_end
 	movw	r0, :lower16:__rt_init_rti_board_start
+	movt	r4, :upper16:__rt_init_rti_board_end
 	movt	r0, :upper16:__rt_init_rti_board_start
-	str	r0, [sp, #4]
-	.loc	2 97 10 is_stmt 0               @ rt-thread/src/components.c:97:10
-	b	.LBB4_1
-.LBB4_1:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp5:
+	@DEBUG_VALUE: rt_components_board_init:fn_ptr <- $r0
+	cmp	r0, r4
+.Ltmp6:
+	.loc	2 102 1                         @ rt-thread/src/components.c:102:1
+	it	hs
+	pophs	{r4, r5, r7, pc}
+.Ltmp7:
+.LBB4_1:
+	@DEBUG_VALUE: rt_components_board_init:fn_ptr <- $r0
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/src/components.c:0:1
+	movw	r5, :lower16:__rt_init_rti_board_start
+	movt	r5, :upper16:__rt_init_rti_board_start
+.Ltmp8:
+	.p2align	2
+.LBB4_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: rt_components_board_init:fn_ptr <- $r5
+	.loc	2 99 10 is_stmt 1               @ rt-thread/src/components.c:99:10
+	ldr	r0, [r5], #4
 .Ltmp9:
-	.loc	2 97 47                         @ rt-thread/src/components.c:97:47
-	ldr	r0, [sp, #4]
-	.loc	2 97 54                         @ rt-thread/src/components.c:97:54
-	movw	r1, :lower16:__rt_init_rti_board_end
-	movt	r1, :upper16:__rt_init_rti_board_end
-.Ltmp10:
-	.loc	2 97 5                          @ rt-thread/src/components.c:97:5
-	cmp	r0, r1
-	bhs	.LBB4_4
-	b	.LBB4_2
-.LBB4_2:                                @   in Loop: Header=BB4_1 Depth=1
-.Ltmp11:
-	.loc	2 99 11 is_stmt 1               @ rt-thread/src/components.c:99:11
-	ldr	r0, [sp, #4]
-	.loc	2 99 10 is_stmt 0               @ rt-thread/src/components.c:99:10
-	ldr	r0, [r0]
-	.loc	2 99 9                          @ rt-thread/src/components.c:99:9
+	.loc	2 99 9 is_stmt 0                @ rt-thread/src/components.c:99:9
 	blx	r0
-	.loc	2 100 5 is_stmt 1               @ rt-thread/src/components.c:100:5
-	b	.LBB4_3
+.Ltmp10:
+	@DEBUG_VALUE: rt_components_board_init:fn_ptr <- $r5
+	.loc	2 97 5 is_stmt 1                @ rt-thread/src/components.c:97:5
+	cmp	r5, r4
+	blo	.LBB4_2
+.Ltmp11:
+@ %bb.3:
+	@DEBUG_VALUE: rt_components_board_init:fn_ptr <- $r5
+	.loc	2 102 1                         @ rt-thread/src/components.c:102:1
+	pop	{r4, r5, r7, pc}
 .Ltmp12:
-.LBB4_3:                                @   in Loop: Header=BB4_1 Depth=1
-	.loc	2 97 88                         @ rt-thread/src/components.c:97:88
-	ldr	r0, [sp, #4]
-	adds	r0, #4
-	str	r0, [sp, #4]
-	.loc	2 97 5 is_stmt 0                @ rt-thread/src/components.c:97:5
-	b	.LBB4_1
-.Ltmp13:
-.LBB4_4:
-	.loc	2 102 1 is_stmt 1               @ rt-thread/src/components.c:102:1
-	add	sp, #8
-	pop	{r7, pc}
-.Ltmp14:
 .Lfunc_end4:
 	.size	rt_components_board_init, .Lfunc_end4-rt_components_board_init
 	.cfi_endproc
@@ -195,56 +186,51 @@ rt_components_init:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
-	.cfi_def_cfa_offset 8
+	.save	{r4, r5, r7, lr}
+	push	{r4, r5, r7, lr}
+	.cfi_def_cfa_offset 16
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-.Ltmp15:
-	.loc	2 123 17 prologue_end           @ rt-thread/src/components.c:123:17
+	.cfi_offset r5, -12
+	.cfi_offset r4, -16
+.Ltmp13:
+	.loc	2 123 5 prologue_end            @ rt-thread/src/components.c:123:5
+	movw	r4, :lower16:__rt_init_rti_end
 	movw	r0, :lower16:__rt_init_rti_board_end
+	movt	r4, :upper16:__rt_init_rti_end
 	movt	r0, :upper16:__rt_init_rti_board_end
-	str	r0, [sp, #4]
-	.loc	2 123 10 is_stmt 0              @ rt-thread/src/components.c:123:10
-	b	.LBB5_1
-.LBB5_1:                                @ =>This Inner Loop Header: Depth=1
+.Ltmp14:
+	@DEBUG_VALUE: rt_components_init:fn_ptr <- $r0
+	cmp	r0, r4
+.Ltmp15:
+	.loc	2 128 1                         @ rt-thread/src/components.c:128:1
+	it	hs
+	pophs	{r4, r5, r7, pc}
 .Ltmp16:
-	.loc	2 123 45                        @ rt-thread/src/components.c:123:45
-	ldr	r0, [sp, #4]
-	.loc	2 123 52                        @ rt-thread/src/components.c:123:52
-	movw	r1, :lower16:__rt_init_rti_end
-	movt	r1, :upper16:__rt_init_rti_end
+.LBB5_1:
+	@DEBUG_VALUE: rt_components_init:fn_ptr <- $r0
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/src/components.c:0:1
+	movw	r5, :lower16:__rt_init_rti_board_end
+	movt	r5, :upper16:__rt_init_rti_board_end
 .Ltmp17:
-	.loc	2 123 5                         @ rt-thread/src/components.c:123:5
-	cmp	r0, r1
-	bhs	.LBB5_4
-	b	.LBB5_2
-.LBB5_2:                                @   in Loop: Header=BB5_1 Depth=1
+	.p2align	2
+.LBB5_2:                                @ =>This Inner Loop Header: Depth=1
+	@DEBUG_VALUE: rt_components_init:fn_ptr <- $r5
+	.loc	2 125 10 is_stmt 1              @ rt-thread/src/components.c:125:10
+	ldr	r0, [r5], #4
 .Ltmp18:
-	.loc	2 125 11 is_stmt 1              @ rt-thread/src/components.c:125:11
-	ldr	r0, [sp, #4]
-	.loc	2 125 10 is_stmt 0              @ rt-thread/src/components.c:125:10
-	ldr	r0, [r0]
-	.loc	2 125 9                         @ rt-thread/src/components.c:125:9
+	.loc	2 125 9 is_stmt 0               @ rt-thread/src/components.c:125:9
 	blx	r0
-	.loc	2 126 5 is_stmt 1               @ rt-thread/src/components.c:126:5
-	b	.LBB5_3
 .Ltmp19:
-.LBB5_3:                                @   in Loop: Header=BB5_1 Depth=1
-	.loc	2 123 81                        @ rt-thread/src/components.c:123:81
-	ldr	r0, [sp, #4]
-	adds	r0, #4
-	str	r0, [sp, #4]
-	.loc	2 123 5 is_stmt 0               @ rt-thread/src/components.c:123:5
-	b	.LBB5_1
+	@DEBUG_VALUE: rt_components_init:fn_ptr <- $r5
+	.loc	2 123 5 is_stmt 1               @ rt-thread/src/components.c:123:5
+	cmp	r5, r4
+	blo	.LBB5_2
 .Ltmp20:
-.LBB5_4:
-	.loc	2 128 1 is_stmt 1               @ rt-thread/src/components.c:128:1
-	add	sp, #8
-	pop	{r7, pc}
+@ %bb.3:
+	@DEBUG_VALUE: rt_components_init:fn_ptr <- $r5
+	.loc	2 128 1                         @ rt-thread/src/components.c:128:1
+	pop	{r4, r5, r7, pc}
 .Ltmp21:
 .Lfunc_end5:
 	.size	rt_components_init, .Lfunc_end5-rt_components_init
@@ -273,8 +259,8 @@ $Sub$$main:
 .Ltmp22:
 	.loc	2 142 5 prologue_end            @ rt-thread/src/components.c:142:5
 	bl	rtthread_startup
-	movs	r0, #0
 	.loc	2 143 5                         @ rt-thread/src/components.c:143:5
+	movs	r0, #0
 	pop	{r7, pc}
 .Ltmp23:
 .Lfunc_end6:
@@ -320,8 +306,8 @@ rtthread_startup:
 	bl	rt_thread_idle_init
 	.loc	2 253 5                         @ rt-thread/src/components.c:253:5
 	bl	rt_system_scheduler_start
-	movs	r0, #0
 	.loc	2 256 5                         @ rt-thread/src/components.c:256:5
+	movs	r0, #0
 	pop	{r7, pc}
 .Ltmp25:
 .Lfunc_end7:
@@ -343,22 +329,18 @@ main_thread_entry:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
+	@DEBUG_VALUE: main_thread_entry:parameter <- undef
 	.save	{r7, lr}
 	push	{r7, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
 	.cfi_offset r7, -8
-	.pad	#8
-	sub	sp, #8
-	.cfi_def_cfa_offset 16
-	str	r0, [sp, #4]
 .Ltmp26:
 	.loc	2 180 5 prologue_end            @ rt-thread/src/components.c:180:5
 	bl	rt_components_init
 	.loc	2 187 5                         @ rt-thread/src/components.c:187:5
 	bl	($Super$$main)
 	.loc	2 191 1                         @ rt-thread/src/components.c:191:1
-	add	sp, #8
 	pop	{r7, pc}
 .Ltmp27:
 .Lfunc_end8:
@@ -380,57 +362,61 @@ rt_application_init:
 	.fnstart
 	.cfi_startproc
 @ %bb.0:
-	.save	{r7, lr}
-	push	{r7, lr}
+	.save	{r4, lr}
+	push	{r4, lr}
 	.cfi_def_cfa_offset 8
 	.cfi_offset lr, -4
-	.cfi_offset r7, -8
-	.pad	#16
-	sub	sp, #16
-	.cfi_def_cfa_offset 24
+	.cfi_offset r4, -8
+	.pad	#8
+	sub	sp, #8
+	.cfi_def_cfa_offset 16
 .Ltmp28:
 	.loc	2 198 11 prologue_end           @ rt-thread/src/components.c:198:11
-	mov	r1, sp
-	movs	r0, #20
-	str	r0, [r1, #4]
-	movs	r0, #10
-	str	r0, [r1]
-	movw	r0, :lower16:.L.str
-	movt	r0, :upper16:.L.str
 	movw	r1, :lower16:main_thread_entry
+	movs	r0, #10
+	str	r0, [sp]
+	adr	r0, .LCPI9_0
 	movt	r1, :upper16:main_thread_entry
 	movs	r2, #0
 	mov.w	r3, #2048
+	movs	r4, #20
+	str	r4, [sp, #4]
 	bl	rt_thread_create
-	.loc	2 198 9 is_stmt 0               @ rt-thread/src/components.c:198:9
-	str	r0, [sp, #12]
+	mov	r4, r0
 .Ltmp29:
-	.loc	2 200 5 is_stmt 1               @ rt-thread/src/components.c:200:5
-	ldr	r0, [sp, #12]
-.Ltmp30:
-	.loc	2 200 5 is_stmt 0               @ rt-thread/src/components.c:200:5
-	cbnz	r0, .LBB9_2
-	b	.LBB9_1
-.LBB9_1:
-.Ltmp31:
+	@DEBUG_VALUE: rt_application_init:tid <- $r4
 	.loc	2 200 5                         @ rt-thread/src/components.c:200:5
-	movw	r0, :lower16:.L.str.1
-	movt	r0, :upper16:.L.str.1
-	movw	r1, :lower16:.L__FUNCTION__.rt_application_init
-	movt	r1, :upper16:.L__FUNCTION__.rt_application_init
+	cbnz	r0, .LBB9_2
+.Ltmp30:
+@ %bb.1:
+	@DEBUG_VALUE: rt_application_init:tid <- $r4
+	.loc	2 200 5 is_stmt 0               @ rt-thread/src/components.c:200:5
+	adr	r0, .LCPI9_1
+	adr	r1, .LCPI9_2
 	movs	r2, #200
 	bl	rt_assert_handler
-	b	.LBB9_2
-.Ltmp32:
+.Ltmp31:
 .LBB9_2:
-	.loc	2 213 23 is_stmt 1              @ rt-thread/src/components.c:213:23
-	ldr	r0, [sp, #12]
-	.loc	2 213 5 is_stmt 0               @ rt-thread/src/components.c:213:5
+	@DEBUG_VALUE: rt_application_init:tid <- $r4
+	.loc	2 213 5 is_stmt 1               @ rt-thread/src/components.c:213:5
+	mov	r0, r4
 	bl	rt_thread_startup
-	.loc	2 214 1 is_stmt 1               @ rt-thread/src/components.c:214:1
-	add	sp, #16
-	pop	{r7, pc}
-.Ltmp33:
+	.loc	2 214 1                         @ rt-thread/src/components.c:214:1
+	add	sp, #8
+	pop	{r4, pc}
+.Ltmp32:
+	.p2align	2
+@ %bb.3:
+	.loc	2 0 1 is_stmt 0                 @ rt-thread/src/components.c:0:1
+.LCPI9_0:
+.L.str:
+	.asciz	"main\000\000\000"
+.LCPI9_1:
+.L.str.1:
+	.asciz	"tid != RT_NULL\000"
+.LCPI9_2:
+.L__FUNCTION__.rt_application_init:
+	.asciz	"rt_application_init"
 .Lfunc_end9:
 	.size	rt_application_init, .Lfunc_end9-rt_application_init
 	.cfi_endproc
@@ -477,26 +463,54 @@ __tagsym$$used.3:
 	.long	rti_end
 	.size	__rt_init_rti_end, 4
 
-	.type	.L.str,%object                  @ @.str
-	.section	.rodata.str1.1,"aMS",%progbits,1
-.L.str:
-	.asciz	"main"
-	.size	.L.str, 5
-
-	.type	.L.str.1,%object                @ @.str.1
-.L.str.1:
-	.asciz	"tid != RT_NULL"
-	.size	.L.str.1, 15
-
-	.type	.L__FUNCTION__.rt_application_init,%object @ @__FUNCTION__.rt_application_init
-.L__FUNCTION__.rt_application_init:
-	.asciz	"rt_application_init"
-	.size	.L__FUNCTION__.rt_application_init, 20
-
-	.globl	__rt_init_rti_start
-	.globl	__rt_init_rti_board_start
 	.globl	__rt_init_rti_board_end
+	.globl	__rt_init_rti_board_start
 	.globl	__rt_init_rti_end
+	.globl	__rt_init_rti_start
+	.section	.debug_loc,"",%progbits
+.Ldebug_loc0:
+	.long	-1
+	.long	.Lfunc_begin4                   @   base address
+	.long	.Ltmp5-.Lfunc_begin4
+	.long	.Ltmp8-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp8-.Lfunc_begin4
+	.long	.Ltmp9-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp10-.Lfunc_begin4
+	.long	.Ltmp12-.Lfunc_begin4
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc1:
+	.long	-1
+	.long	.Lfunc_begin5                   @   base address
+	.long	.Ltmp14-.Lfunc_begin5
+	.long	.Ltmp17-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	80                              @ DW_OP_reg0
+	.long	.Ltmp17-.Lfunc_begin5
+	.long	.Ltmp18-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	.Ltmp19-.Lfunc_begin5
+	.long	.Ltmp21-.Lfunc_begin5
+	.short	1                               @ Loc expr size
+	.byte	85                              @ DW_OP_reg5
+	.long	0
+	.long	0
+.Ldebug_loc2:
+	.long	-1
+	.long	.Lfunc_begin9                   @   base address
+	.long	.Ltmp29-.Lfunc_begin9
+	.long	.Ltmp32-.Lfunc_begin9
+	.short	1                               @ Loc expr size
+	.byte	84                              @ DW_OP_reg4
+	.long	0
+	.long	0
 	.section	.debug_abbrev,"",%progbits
 	.byte	1                               @ Abbreviation Code
 	.byte	17                              @ DW_TAG_compile_unit
@@ -627,7 +641,7 @@ __tagsym$$used.3:
 	.byte	52                              @ DW_TAG_variable
 	.byte	0                               @ DW_CHILDREN_no
 	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
+	.byte	6                               @ DW_FORM_data4
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -664,8 +678,6 @@ __tagsym$$used.3:
 	.byte	12                              @ Abbreviation Code
 	.byte	5                               @ DW_TAG_formal_parameter
 	.byte	0                               @ DW_CHILDREN_no
-	.byte	2                               @ DW_AT_location
-	.byte	10                              @ DW_FORM_block1
 	.byte	3                               @ DW_AT_name
 	.byte	14                              @ DW_FORM_strp
 	.byte	58                              @ DW_AT_decl_file
@@ -878,7 +890,7 @@ __tagsym$$used.3:
 	.byte	74                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.long	83                              @ DW_AT_type
-	.byte	9                               @ Abbrev [9] 0xe8:0x22 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0xe8:0x23 DW_TAG_subprogram
 	.long	.Lfunc_begin4                   @ DW_AT_low_pc
 	.long	.Lfunc_end4                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -888,16 +900,14 @@ __tagsym$$used.3:
 	.byte	83                              @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0xfb:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	10                              @ Abbrev [10] 0xfb:0xf DW_TAG_variable
+	.long	.Ldebug_loc0                    @ DW_AT_location
 	.long	.Linfo_string19                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	95                              @ DW_AT_decl_line
 	.long	414                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x10a:0x22 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x10b:0x23 DW_TAG_subprogram
 	.long	.Lfunc_begin5                   @ DW_AT_low_pc
 	.long	.Lfunc_end5                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -907,16 +917,14 @@ __tagsym$$used.3:
 	.byte	107                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0x11d:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	10                              @ Abbrev [10] 0x11e:0xf DW_TAG_variable
+	.long	.Ldebug_loc1                    @ DW_AT_location
 	.long	.Linfo_string19                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	121                             @ DW_AT_decl_line
 	.long	414                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	11                              @ Abbrev [11] 0x12c:0x17 DW_TAG_subprogram
+	.byte	11                              @ Abbrev [11] 0x12e:0x17 DW_TAG_subprogram
 	.long	.Lfunc_begin6                   @ DW_AT_low_pc
 	.long	.Lfunc_end6                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -927,7 +935,7 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	83                              @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	11                              @ Abbrev [11] 0x143:0x17 DW_TAG_subprogram
+	.byte	11                              @ Abbrev [11] 0x145:0x17 DW_TAG_subprogram
 	.long	.Lfunc_begin7                   @ DW_AT_low_pc
 	.long	.Lfunc_end7                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -938,7 +946,7 @@ __tagsym$$used.3:
 	.byte	1                               @ DW_AT_prototyped
 	.long	83                              @ DW_AT_type
 	.byte	1                               @ DW_AT_external
-	.byte	9                               @ Abbrev [9] 0x15a:0x22 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x15c:0x1f DW_TAG_subprogram
 	.long	.Lfunc_begin8                   @ DW_AT_low_pc
 	.long	.Lfunc_end8                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -948,16 +956,13 @@ __tagsym$$used.3:
 	.byte	173                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	12                              @ Abbrev [12] 0x16d:0xe DW_TAG_formal_parameter
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	4
+	.byte	12                              @ Abbrev [12] 0x16f:0xb DW_TAG_formal_parameter
 	.long	.Linfo_string20                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	173                             @ DW_AT_decl_line
 	.long	429                             @ DW_AT_type
 	.byte	0                               @ End Of Children Mark
-	.byte	9                               @ Abbrev [9] 0x17c:0x22 DW_TAG_subprogram
+	.byte	9                               @ Abbrev [9] 0x17b:0x23 DW_TAG_subprogram
 	.long	.Lfunc_begin9                   @ DW_AT_low_pc
 	.long	.Lfunc_end9                     @ DW_AT_high_pc
 	.byte	1                               @ DW_AT_frame_base
@@ -967,10 +972,8 @@ __tagsym$$used.3:
 	.byte	193                             @ DW_AT_decl_line
 	.byte	1                               @ DW_AT_prototyped
 	.byte	1                               @ DW_AT_external
-	.byte	10                              @ Abbrev [10] 0x18f:0xe DW_TAG_variable
-	.byte	2                               @ DW_AT_location
-	.byte	145
-	.byte	12
+	.byte	10                              @ Abbrev [10] 0x18e:0xf DW_TAG_variable
+	.long	.Ldebug_loc2                    @ DW_AT_location
 	.long	.Linfo_string21                 @ DW_AT_name
 	.byte	2                               @ DW_AT_decl_file
 	.byte	195                             @ DW_AT_decl_line
@@ -1470,7 +1473,7 @@ __tagsym$$used.3:
 	.asciz	"rt_thread_t"                   @ string offset=836
 	.ident	"Component: ARM Compiler 6.16 Tool: armclang [5dfeb700]"
 	.section	".note.GNU-stack","",%progbits
-	.eabi_attribute	30, 6	@ Tag_ABI_optimization_goals
+	.eabi_attribute	30, 1	@ Tag_ABI_optimization_goals
 	.ARM_attribute	16, 1	@ Tag_AV_eba
 	.section	.debug_line,"",%progbits
 .Lline_table_start0:

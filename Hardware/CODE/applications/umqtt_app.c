@@ -75,10 +75,11 @@ static int user_callback(struct umqtt_client *client, enum umqtt_evt event)
 void mqtt_client(void *parameter)
 {
 	char MQTT_URI[40]={0};
-	int _ret = RT_EOK;
+	const char topic[] = "$iot/znmj/face/search";
+ 	int _ret = RT_EOK;
 	umqtt_client_t m_client = RT_NULL;
 	cJSON *root = cJSON_CreateObject();
-	char *data;
+	char *data = RT_NULL;
 mqtt_start:
 	rt_sprintf(MQTT_URI,"tcp://%s:1883","106.52.51.28");
 	struct umqtt_info user_info = {
@@ -111,17 +112,27 @@ mqtt_start:
 		rt_mutex_take(send_photo_mux,RT_WAITING_FOREVER);
 		if(image_p!=RT_NULL)
 		{
+			
 			 if ((image_p[0] == 0xFF) && (image_p[1] == 0xD8))
 			 {
-				cJSON_AddItemToObject(root,"msg",cJSON_CreateCharArray(image_p,image_len));
+				rt_enter_critical();
+				cJSON_AddItemToObject(root,"msg",cJSON_CreateCharArray((unsigned char *)image_p,image_len));
 				data = cJSON_PrintUnformatted(root);
-				_ret=umqtt_publish(m_client, UMQTT_QOS0, "$iot/znmj/face/search",data, rt_strlen(data),100);
-				if (_ret != UMQTT_OK)
+				if(data != RT_NULL)
 				{
-					 rt_kprintf("  error status: %d\r\n", _ret);
+					rt_exit_critical();
+					_ret=umqtt_publish(m_client, UMQTT_QOS0, topic ,data, rt_strlen(data),100);
+					if (_ret != UMQTT_OK)
+					{
+						 rt_kprintf("  error status: %d\r\n", _ret);
+					}
+					rt_enter_critical();
+					cJSON_DeleteItemFromObject(root,"msg");
 				}
-				cJSON_DeleteItemFromObject(root,"msg");
 			}
+			 cJSON_free(data);
+			 rt_exit_critical();
+			data = RT_NULL;
 			image_p = RT_NULL;
 		}
 		rt_mutex_release(send_photo_mux);
@@ -134,7 +145,7 @@ mqtt_start:
 //			goto mqtt_start;
 //        }
 		rt_sem_release(ov_sync_sem);
-        rt_thread_mdelay(1000);
+        rt_thread_mdelay(1200);
     }
 }
 
