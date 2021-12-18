@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\build\rt-thread.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\build\rt-thread.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Fri Dec 17 20:25:25 2021
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6160001: Last Updated: Sat Dec 18 10:23:20 2021
 <BR><P>
 <H3>Maximum Stack Usage =       2232 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -23517,6 +23517,7 @@ Global Symbols
 <LI><a href="#[41f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[1b2]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;mqtt_client
+<LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_thread
 </UL>
 
 <P><STRONG><a name="[d3f]"></a>umqtt_subscribe</STRONG> (Thumb, 568 bytes, Stack size 104 bytes, umqtt.o(.text.umqtt_subscribe))
@@ -40522,7 +40523,6 @@ Local Symbols
 <LI><a href="#[41f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_memclr4
 </UL>
 <BR>[Called By]<UL><LI><a href="#[b46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_start
-<LI><a href="#[1bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_thread
 <LI><a href="#[d3d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_reconnect_callback
 </UL>
 
@@ -40613,16 +40613,16 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[1ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_uplink_timer_callback
 </UL>
 
-<P><STRONG><a name="[1bb]"></a>umqtt_thread</STRONG> (Thumb, 188 bytes, Stack size 24 bytes, umqtt.o(.text.umqtt_thread))
-<BR><BR>[Stack]<UL><LI>Max Depth = 776<LI>Call Chain = umqtt_thread &rArr; umqtt_connect &rArr; umqtt_handle_readpacket &rArr; add_one_qos2_msg &rArr; rt_calloc &rArr; rt_malloc &rArr; rt_memheap_alloc &rArr; rt_sem_take &rArr; rt_timer_start &rArr; rt_schedule &rArr; _rt_scheduler_stack_check &rArr; list_thread &rArr; object_split &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number &rArr; divide
+<P><STRONG><a name="[1bb]"></a>umqtt_thread</STRONG> (Thumb, 200 bytes, Stack size 24 bytes, umqtt.o(.text.umqtt_thread))
+<BR><BR>[Stack]<UL><LI>Max Depth = 880<LI>Call Chain = umqtt_thread &rArr; umqtt_start &rArr; umqtt_connect &rArr; umqtt_handle_readpacket &rArr; add_one_qos2_msg &rArr; rt_calloc &rArr; rt_malloc &rArr; rt_memheap_alloc &rArr; rt_sem_take &rArr; rt_timer_start &rArr; rt_schedule &rArr; _rt_scheduler_stack_check &rArr; list_thread &rArr; object_split &rArr; rt_kprintf &rArr; rt_vsnprintf &rArr; print_number &rArr; divide
 </UL>
-<BR>[Calls]<UL><LI><a href="#[406]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_assert_handler
+<BR>[Calls]<UL><LI><a href="#[b46]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_start
+<LI><a href="#[406]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_assert_handler
 <LI><a href="#[330]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_thread_mdelay
 <LI><a href="#[332]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_kprintf
 <LI><a href="#[402]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_timer_stop
 <LI><a href="#[d22]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_trans_disconnect
 <LI><a href="#[d24]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_handle_readpacket
-<LI><a href="#[d21]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;umqtt_connect
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> umqtt.o(.text.umqtt_create)
 </UL>
