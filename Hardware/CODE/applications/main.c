@@ -30,6 +30,7 @@ rt_mutex_t jpg_decode_mux=RT_NULL;
 rt_mutex_t send_photo_mux=RT_NULL;
 
 rt_thread_t start_task = RT_NULL;
+rt_thread_t wlan_task = RT_NULL;
 rt_thread_t lvgl_task = RT_NULL;
 rt_thread_t client_task = RT_NULL;
 rt_thread_t rc522_task = RT_NULL;
@@ -131,7 +132,37 @@ static void lvgl_gui(void *parameter)
 		}
     }
 }
- 
+
+static void wlan_connect_task(void *parameter)
+{
+	ip_addr_t sntp_ip;
+	rt_wlan_config_autoreconnect(RT_TRUE);
+	while(rt_wlan_is_ready()!=RT_TRUE)
+	{
+		rt_thread_mdelay(1000);
+	}
+	if(rt_wlan_is_ready()==RT_TRUE)
+	{
+		
+	
+		sntp_setoperatingmode(SNTP_OPMODE_POLL);
+		sntp_init();
+//			for(count=0;count<SNTP_MAX_SERVERS;count++)
+//			{
+//				sntp_ip.addr=server_list[count];
+//				sntp_setserver(count,&sntp_ip);
+//			}
+		netconn_gethostbyname("time.nist.gov", &sntp_ip);
+		sntp_setserver(0, &sntp_ip);
+		rt_enter_critical();
+		client_task=rt_thread_create("client",mqtt_client,RT_NULL,1024*3,10,500);
+		if(client_task!=RT_NULL)
+		{
+			rt_thread_startup(client_task);
+		}
+		rt_exit_critical();
+	}
+}
 
 static void start(void *parameter)
 {
@@ -142,42 +173,20 @@ static void start(void *parameter)
 //	{
 //		
 //	}
-	while(rt_wlan_connect("Tenda_707D18","zactionz2018.")!=RT_EOK)
-	{
-		
-	}
+//	while(rt_wlan_connect("Tenda_707D18","zactionz2018.")!=RT_EOK)
+//	{
+//		
+//	}
 //	while(rt_wlan_connect("zhou","zhou@+6732280.")!=RT_EOK)
 //	{
 //		
 //	}
-	timeout=rt_tick_get();
-	while(rt_wlan_is_ready()==RT_FALSE)
-	{
-		rt_thread_mdelay(50);
-		if(rt_tick_get()-timeout>60000)
-		{
-			rt_kprintf("wlan timeout!!!!\r\n");
-			break;
-		}
-	}
 	
+
 	rt_enter_critical();
 	cbuf = (lv_color_t*)rt_malloc(OV2640_WIDTH * OV2640_HEIGHT * 4+4*1024);
 	dbuf0=(lv_color_t*)rt_malloc(LV_HOR_RES * LV_VER_RES * 4+2*1024);
     area_p = (lv_area_t *)rt_malloc(sizeof(lv_area_t));
-	
-	rt_exit_critical();
-	ip_addr_t sntp_ip;
-	sntp_setoperatingmode(SNTP_OPMODE_POLL);
-    sntp_init();
-//	for(count=0;count<SNTP_MAX_SERVERS;count++)
-//	{
-//	sntp_ip.addr=server_list[count];
-//	sntp_setserver(count,&sntp_ip);
-//	}
-    netconn_gethostbyname("time.nist.gov", &sntp_ip);
-    sntp_setserver(0, &sntp_ip);
-	rt_enter_critical();
 	fd=open("/flash/admin_passw.dat",O_RDONLY);
 	if(fd<0)
 	{
@@ -200,6 +209,11 @@ static void start(void *parameter)
 	else
 	{
 		close(fd);
+	}
+	wlan_task =rt_thread_create("wlan_start",wlan_connect_task,RT_NULL,1024*3,12,500);
+	if(wlan_task!=RT_NULL)
+	{
+		rt_thread_startup(wlan_task);
 	}
 	rc522_task=rt_thread_create("rc522",rfid_get,RT_NULL,1024*3,11,500);
 	if(rc522_task!=RT_NULL)
@@ -224,11 +238,7 @@ static void start(void *parameter)
     {
         rt_thread_startup(ov_data_process_task);
     }
-	client_task=rt_thread_create("client",mqtt_client,RT_NULL,1024*3,10,500);
-	if(client_task!=RT_NULL)
-	{
-		rt_thread_startup(client_task);
-	}
+
     rt_exit_critical();
 	
 	
